@@ -97,6 +97,8 @@
 \addcontentsline{toc}{chapter}{Preliminaries on Sets, Mappings, and Relations}
 \setcounter{chapter}{0}
 
+
+
 \chapter{The Real Numbers: Sets, Sequences, and Functions}
 \minitoc
 
@@ -113,6 +115,28 @@
         \item For each positive number $a$, its multiplicative inverse  $a^{-1}$ also is positive.
         \item If $a>b$, then \[ ac >bc \text{ if } c>0 \text{ and } ac < bc \text{ if } c<0. \]
     \end{enumerate}
+	\item For a nonempty set of real numbers $E$, show that $\inf E = \sup E$ iff $E$ consists of a single point.
+	\item Let $a$ and $b$ be real numnbers.
+	\begin{enumerate}[label=(\roman*),align=left]
+        \item Show that if $ab = 0$, then $a=0$ or $b=0$.
+        \item Verify that $a^2 -b^2 = (a-b)(a+b)$ and conclude from part (i) that if $a^2 = b^2$, then $a=b$ or $a=-b$.
+        \item Let $c$ be a positive real number. Define $E = \{ x \in \mathbb{R} \ |\  x^2 < c\}$. Verify that $E$ is nonempty and bounded above. 
+		Define $x_0 = \sup E$. Show that $x_0^2 = c$. Use part (ii) to show that there is a unique $x>0$ for which $x^2=c$. It is denoted by $\sqrt{c}$.
+    \end{enumerate}
+	\item Let $a,b,c$ be real numbers s.t. $a\neq 0$ and consider the quadratic equation \[ ax^2+bx+c=0, x \in \mathbb{R}.\]
+	\begin{enumerate}[label=(\roman*),align=left]
+        \item Suppose $b^2 - 4ac >0$. Use the Field Axioms and the preceding problem to complete the square and thereby show that this equation has exactly tqo solutions given by
+		\[  x = \dfrac{-b + \sqrt{b^2-4ac}}{2a} \text{  and  } x = \dfrac{-b - \sqrt{b^2-4ac}}{2a}. \]
+	\end{enumerate}
+	\item Use the Completeness Axiom to show that every nonempty set of real numbers that is bounded below has an infimum and that
+	\[\inf E =\sup \{-x \ |\ x \in E.\]
+	\item For real numbers $a$ and $b$, verify the following:
+	\begin{enumerate}[label=(\roman*),align=left]
+		\item $|ab| = |a||b|.$
+		\item $|a+b| \le |a|+|b|.$
+		\item For $\epsilon >0,$
+		\[ |x-a| < \epsilon \text{  iff  } a - \epsilon < x < a + \epsilon.\]
+	\end{enumerate}
 \end{enumerate}
 
 \section{The Natural and Rational Numbers}
@@ -138,6 +162,25 @@
 \end{enumerate}
 
 \section{Countable and Uncountable Sets}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{15}
+	\item Show that the set $\mathbb{Z}$ of integers is countable.
+	\item Show that a set $A$ is countable iff there is an injective mapping of $A$ to $\mathbb{N}$.
+	\item Use an induction argument to complete the proof of part (i) of Corollary 4.
+	\item Prove Corollary 6 in the case of a finite family of countable sets.
+	\item Let both $f:A \to B$ and $g:B \to C$ be injective and surjective. Show that the composition $g \circ f:A \to B$ and the inverse $f^{-1}:B \to A$ are also injective and surjective.
+	\item Use an induction argument to establish the pigeonhole principle.
+	\item Show that $2^{\mathbb{N}}$, the collection of all sets of natural numbers, is uncountable.
+	\item Show that the Cartesian product of a finite collection of countable sets is countable. Use the preceding theorem to show that $\mathbb{N}^{\mathbb{N}}$, the collection of all mappings of $\mathbb{N}$ into $\mathbb{N}$, is not countable.
+	\item Show that a degenerate interval of real numbers fails to be finite.
+	\item Show that any two nondegenerate intervals of real numbers are equipotent.
+	\item Is the set $\mathbb{R} \times \mathbb{R}$ equipotent to $\mathbb{R}$?
+\end{enumerate}
+
 \section{Open Sets, Closed Sets, and Borel Sets of Real Numbers}
 
 \begin{namedthm*}{The Nested Set Theorem}
@@ -163,13 +206,134 @@ This is a contradiction to the assumption that $F_N$ is a nonempty subset of $F_
 	\setcounter{enumi}{26}
 	\item Is the set of rational numbers open or closed?
 	\item What are the sets of real numbers that are both open and closed?
-	\item Find two sets $A$ and $B$ such that 
+	\item Find two sets $A$ and $B$ such that $A \cap B = \emptyset$ and $\overline A \cap \overline B \neq \emptyset.$
+	\item A point $x$ is called an \textbf{accumulation point} of a set $E$ provided it is a point of closure of $E \setminus \{ x\}.$
+	\begin{enumerate}[label=(\roman*),align=left]
+        \item Show that the set $E'$ of accumulation points of $E$ is a closed set.
+        \item Show that $\overline E = E \cup E'.$
+    \end{enumerate}
+	\item A point $x$ is called an \textbf{ isolated point} of a set $E$ provided there is an $r>0$ for which $(x-r,x+r)\cap E = \{x\}.$ Show that if a set $E$ consists of isolated points, then it is countable.
+	\item A point $x$ is called an \textbf{interior point} of a set $E$ if there is an $r>0$ such that the open interval $(x-r,x+r)$ is contained in $E$. The set of interior points of $E$ is called the \textbf{interior} of $E$ denoted by int $E$. Show that
+	\begin{enumerate}[label=(\roman*),align=left]
+        \item $E$ is open iff $E = \text{ int } E$.
+        \item $E$ is dense iff $ \text{ int } (\mathbb{R} \setminus E)= \emptyset$.
+    \end{enumerate}
+	\item Show that the nested set theorem is false if $F_1$ is unbounded.
+	\item Show that the assertion of the Heine-Borel Theorem is equivalent to the Completeness Axiom for the real numbers. Show that the assertion of the Nested Set Theorem is equivalent to the Completeness Axiom for the real numbers.
+	\item Show that the collection of Borel sets is the smallest $\sigma$-algebra that contains the closed sets.
+	\item Show that the collection of Borel sets is the smallest $\sigma$-algebra that contains the intervals of the form $[a,b)$, where $a<b.$
+	\item Show that each open set is an $F_{\sigma}$ set.
 \end{enumerate}
 
 \section{Sequences of Real Numbers}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{37}
+	\item We call an extended real number a \textbf{cluster point} of a sequence $\{ a_n\}$ if a subsequence converges to this extended real number. Show that $\lim \inf \{a_n\}$ is the smallest cluster point of $\{a_n\}$ and $\lim \sup \{a_n\}$ is the largest cluster point of $\{a_n\}$.
+	\item Prove proposition 19.
+	\item Show that a sequence $\{a_n\}$ is convergent to an extended real number iff there is exactly one extended real number that is a cluster point of the sequence.
+	\item Show that $\lim \inf a_n \le \lim \sup a_n$.
+	\item Prove that if, for all $n$, $a_n \ge 0$ and $b_n \ge 0 $, then \[ \lim \sup [a_n \cdot b_n] \le (\lim \sup a_n) \cdot (\lim \sup b_n),\] provided the product on the right is not of the form $0 \cdot \infty.$
+	\item Show that every real sequence has a monotone subsequence. Use this to provide another proof of the Bolzano-Weierstrass Theorem.
+	\item Let $p$ be a natural number greater than 1, and $x$ a real number $0 \le x \le 1.$ Show that there is a sequence $\{a_n\}$ of integers with $0 \le a_n < p$ for each $n$ such that \[ x = \sum_{n=1}^\infty\dfrac{a_n}{p^n} \] 
+	and that this sequence is unique except when $x$ is of the form $q/p^n$, $0<q<p^n$, in which case there are exactly two such sequences. Show that, conversely, if $\{a_n\}$ is any sequence of integers with $0\le a_n < p$, the series \[ x = \sum_{n=1}^\infty\dfrac{a_n}{p^n} \] 
+	converges to a real number $x$ with $0 \le x \le 1$. If $p = 10$, this sequence is called the \textit{decimal} expansion of $x$. For $p=2$ it is called the \textit{binary} expansion; and for $p=3$, the \textit{ternary} expansion.
+	\item Prove Proposition 20.
+	\item Show that the assertion of the Bolzano-Weierstrass Theorem is equivalent to the Completeness Axiom for the real numbers. Show that the assertion of the Monotone Convergence Theorem is equivalent to the Completeness Axiom for the real numbers.
+\end{enumerate}
+
 \section{Continuous Real-Valued Functions of a Real Variable}
 
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{46}
+	\item Let $E$ be a closed set of real numbers and $f$ a real-valued function that is defined and continuous on $E$. Show that there is a function $g$ defined and continuous on all of $\mathbb{R}$ such that $f(x) = g(x)$ for each $x \in E$. (Hint: Take $g$ to be linear on each of the intervals of which $\mathbb{R} \setminus E$ is composed.)
+	\item Define the real-valued function $f$ on $\mathbb{R}$ by setting 
+	\[ 
+	f(x) =
+	\begin{cases} 
+		x & \text{if x irrational}\\
+		p \sin \dfrac{1}{q} & \text{if } x = \dfrac{p}{q} \text{ in lowest terms.} \\
+	\end{cases}
+	\]
+	At what points is $f$ continuous?
+	\item Let $f$ and $g$ be continuous real-valued functions with a common domain $E$.
+	\begin{enumerate}[label=(\roman*),align=left]
+        \item Show that the sum, $f+g$, and product, $fg$, are also continuous functions.
+        \item If $h$ is a continuous function with image contained in $E$, show that the composition $f \circ h$ is continuous.
+        \item Let max$\{f,g\}$ be the function defined by max$\{f,g\}(x)$ = max$\{f(x),g(x)\}$, for $x \in E$. Show that max$\{f,g\}$ is continuous.
+        \item Show that $|f|$ is continuous.
+    \end{enumerate}
+	\item Show that a Lipschitz function is uniformly continuous but there are uniformly continuous functions that are not Lipschitz.
+	\item A continuous function $\phi$ on $[a,b]$ is called \textbf{piecewise linear} provided there is a partition $a=x_0<x_1< \cdots <x_n = b$ of $[a,b]$ for which $\phi$ is linear on each interval $[x_i, x_{i+1}]$. Let $f$ be a continuous function on $[a,b]$ and $\epsilon$ a positive number. 
+	Show that there is a piecewise linear function $\phi$ on $[a,b]$ with $|f(x)-\phi (x)| < \epsilon$ for all $x \in [a,b]$.
+	\item Show that a nonempty set $E$ of real numbers is closed and bounded if and only if every continuous real-valued function on $E$ takes a maximum value.
+	\item Show that a set $E$ of real numbers is closed and bounded iff every open cover of $E$ has a finite subcover.
+	\item Show that a nonempty set $E$ of real numbers is an interval iff every continuous real-valued function on $E$ has an interval as its image.
+	\item Show that a monotone function on an open interval is continuous iff its image is an interval. 
+	\item Let $f$ be a real-valued function defined on $\mathbb{R}$. Show that the set of points at which $f$ is continuous is a $G_\delta$ set.
+	\item Let $\{ f_n\}$ be a sequence of continuous functions defined on $\mathbb{R}$. Show that the set of points $x$ at which the sequence $\{f_n(x)\}$ converges to a real number is the intersection of a countable collection of $F_\sigma$ sets.
+	\item Let $f$ be a continuous real-valued function on $\mathbb{R}$. Show that the inverse image with respect to $f$ of an open set is open, of a closed set is closed, and of a Borel set is Borel.
+	\item A sequence $\{f_n\}$ of real-valued functions defined on a set $E$ is said to converge uniformly on $E$ to a function $f$ iff given $\epsilon >0$, there is an $N$ such that for all $x \in E$ and all $n \ge N$, we have $|f_n(x) - f(x)| < \epsilon$. Let $\{f_n\}$ be a sequence of continuous functions defined on a set $E$. Prove that if $\{f_n\}$ converges uniformly to $f$ on $E$, then $f$ is continuous on $E$. 
+\end{enumerate}
+
 \chapter{Lebesgue Measure}
+
+\section{Introduction}
+In this chapter we construct a collection of sets called \textbf{Lebesgue measurable sets}, and a set function of this collection called \textbf{Lebesgue measure}, denoted by $m$. The collection of Lebesgue measurable sets is a $\sigma$-algebra which contains all open sets and all closed sets. The set function $m$ possesses the following three properties:
+\begin{namedthm*}{The measure of an interval is its length}
+Each nonempty interval $I$ is Lebesgue measurable and 
+\[
+m(I) = \ell(I).
+\]
+\end{namedthm*}
+\begin{namedthm*}{Measure is translation invariant}
+If $E$ is Lebesgue measurable and $y$ is any number then the translate of $E$ by $y$, $E+y = \{x+y \ |\ x \in E\}$, also is Lebesgue measurable and
+\[
+m(E+y) = m(E).
+\]
+\end{namedthm*}
+\begin{namedthm*}{Measure is countably additive over countable disjoint unions of sets}
+IF $\{E_k\}_{k=1}^\infty$ is a countable disjoint collection of Lebesgue measurable sets, then
+\[
+m(\bigcup_{k=1}^\infty E_k) = \sum_{k=1}^\infty m(E_k).
+\]
+\end{namedthm*}
+It is not possible to construct a set function that possesses the above three properties and is defined for all sets of real numbers (See Vitali sets).
+We first construct a set function called \textbf{outer measure}, denoted by $m^*$, such that: 
+\begin{enumerate}[label=(\roman*),align=left]
+	\item the outer measure of an interval is its length,
+	\item outer measure is translation invariant,
+	\item outer measure is countably subadditive.
+\end{enumerate}
+Then the Lebesgue measure $m$ is the restriction of $m^*$ to the Lebesgue measurable sets.
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+In the first three problems, let $m$ be a set function defined for all sets in a $\sigma$-algebra $\mathcal{A}$ with values in $[0,\infty]$. Assume $m$ is countably additive over countable disjoint collections of sets in $\mathcal{A}$.
+\begin{enumerate}
+	\setcounter{enumi}{0}
+	\item Prove that if $A$ and $B$ are two sets in $\mathcal{A}$ with $A \subseteq B$, then $m(A) \le m(B)$. This property is called \textit{monotonicity}.
+	\item Prove that if there is a set $A$ in the collection $\mathcal{A}$ for which $m(A) < \infty$, then $m(\emptyset) = 0$.
+	\item Let $\{E_k\}_{k=1}^\infty$ be a countable collection of sets in $\mathcal{A}$. Prove that $m(\bigcup_{k=1}^\infty E_k) \le \sum_{k=1}^\infty m(E_k).$
+	\item A set function $c$, defined on all subsets of $\mathbb{R}$, is defined as follows.
+	Define $c(E)$ to be $\infty$ if $E$ has infinitely many members and $c(E)$ to be equal to the number of elements in $E$ if $E$ is finite; define $c(\emptyset)=0$. Show that $c$ is a countably additive and translation invariant set function. This set function is called the \textbf{counting measure}.
+\end{enumerate}
+
+
+\section{Lebesgue Outer Measure}
+\section{The $\sigma$-Algebra of Lebesgue Measurable Sets}
+\section{Outer and Inner Approximation of Lebesgue Measurable Sets}
+\section{Countable Additivity, Continuity, and the Borel-Cantelli Lemma}
+\section{Nonmeasurable Sets}
+\section{The Cantor Set and the Cantor-Lebesgue Function}
+
 \chapter{Lebesgue Measurable Functions}
 \chapter{Lebesgue Integration}
 \chapter{Lebesgue Integration: Further Topics}
