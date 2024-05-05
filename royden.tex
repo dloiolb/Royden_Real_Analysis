@@ -47,6 +47,8 @@
 
 %\newmdtheoremenv{theo}{Theorem}
 
+% https://tex.stackexchange.com/questions/43536/writing-steps-in-an-equation
+
 
 \usepackage[T1]{fontenc}
 \usepackage{geometry}
@@ -97,10 +99,104 @@
 \addcontentsline{toc}{chapter}{Preliminaries on Sets, Mappings, and Relations}
 \setcounter{chapter}{0}
 
+\begin{flushleft}
 
+\begin{namedthm*}{Definition}
+A relation $R$ on a set $X$ is called an \textbf{equivalence relation} provided:
+\begin{enumerate}[label=(\roman*),align=left]
+	\item $xRx$ for all $x \in X$ (reflexive),
+	\item $xRy$ implies $yRx$ for all $x,y \in X$ (symmetric),
+	\item $xRy$ and $yRz$ imply $xRz$ for all $x,y,z \in X$ (transitive).
+\end{enumerate}
+\end{namedthm*}
+\bigskip
+
+\begin{namedthm*}{Partial Ordering on a set $X$}
+A relation $R$ on a nonempty set $X$ is called a \textbf{partial ordering} provided:
+\begin{enumerate}[label=(\roman*),align=left]
+	\item $xRx$ for all $x \in X$ (reflexive),
+	\item $xRy$ and $yRx$ imply $x=y$ for all $x,y \in X$ (antisymmetric),
+	\item $xRy$ and $yRz$ imply $xRz$ for all $x,y,z \in X$ (transitive).
+\end{enumerate}
+A subset $E$ of $X$ is \textbf{totally ordered} provided either $xRy$ or $yRx$ for all $x,y \in E$.
+A member $x$ of $X$ is said to be an \textbf{upper bound} for a subset $E$ of $X$ provided that 
+\[ yRx \text{ for all } y \in E.\]
+A member $x$ of $X$ is said to be \textbf{maximal} provided that 
+\[ xRy \text{ implies that } y =x \text{ for } y \in X.\]
+\end{namedthm*}
+\medskip
+
+\begin{namedthm*}{Strict Partial Ordering on a set $X$}
+A relation $R$ on a nonempty set $X$ is called a \textbf{strict partial ordering} provided:
+\begin{enumerate}[label=(\roman*),align=left]
+	\item not $xRx$ for all $x \in X$ (irreflexive),
+	\item $xRy$ implies not $yRx$ for all $x,y \in X$ (asymmetric),
+	\item $xRy$ and $yRz$ imply $xRz$ for all $x,y,z \in X$ (transitive).
+\end{enumerate}
+A subset $E$ of $X$ is \textbf{strictly totally ordered} provided either $xRy$ or $yRx$ if $x\neq y$ for all $x,y \in E$.\par
+\end{namedthm*}
+
+
+\begin{namedthm*}{Zorn's Lemma}
+	Let $X$ be a partially ordered set for which every totally ordered subset has an upper bound. Then $X$ has a maximal member.
+\end{namedthm*}
+
+\begin{namedthm*}{Every vector space has a basis}
+\end{namedthm*}
+\begin{proof}
+Let V be any vector space, and let L be the collection of all linearly independent subsets of V. 
+L is nonempty as the singleton sets are linearly independent. 
+Define a partial order on L in the form $C \subseteq C'$ for $C,C' \in L$.
+For any chain (a totally ordered subset of a partially ordered set) $\mathcal{C}$ of $L$, where $\mathcal{C}$ consists of the sets $C_1 \subseteq C_2 \subseteq \cdots$, we can construct a linearly independent upper bound $C' = \bigcup_{C \in \mathcal{C}} C$ of $\mathcal{C}$.
+By Zorn's Lemma, L has a maximal element, say M.
+This collection $M$ is a basis for $V$. To show this, suppose by contradiction that there exists a vector $v \in V$ s.t. $v \notin \text{ Span}\{M\}$.
+Then $v \cup M$ is linearly independent and $M \subseteq v \cup M$, a contradiction to the fact that $M$ is maximal.
+\end{proof}
+
+\end{flushleft}
 
 \chapter{The Real Numbers: Sets, Sequences, and Functions}
-\minitoc
+\begin{flushleft}
+
+\textbf{The field axioms}\par
+Consider $a,b,c \in \mathbb{R}$:
+\begin{enumerate}
+	\item Closure of Addition: $a+b \in \mathbb{R}$.
+	\item Associativity of Addition: $(a+b)+c = a+(b+c)$.
+	\item Additive Identity: $0+a=a+0=a$.
+	\item Additive Inverse: $(-a)+a=a+(-a)=0$.
+	\item Commutativity of Addition: $a+b=b+a$.
+	\item Closure of Multiplication: $ab \in \mathbb{R}$.
+	\item Associativity of Multiplication: $(ab)c = a(bc)$.
+	\item Distributive Property: $ a(b+c)=ab+ac$.
+	\item Commutativity of Multiplication: $ab=ba$.
+	\item Multiplicative Identity: $1a=a1=a$.
+	\item No Zero Divisors: $ab=0 \implies a=0 \text{ or } b=0$.
+	\item Multiplicative Inverse: $a^{-1}a=aa^{-1}=1$.
+	\item Nontriviality: $1 \neq 0$.
+\end{enumerate}
+\medskip
+
+\textbf{The positivity axioms}\par
+The set of \textbf{positive numbers}, $\mathcal{P}$, has the following two properties:
+\begin{itemize}
+    \item [P1] If $a$ and $b$ are positive, then $ab$ and $a+b$ are both positive.
+    \item [P2] For a real number $a$, exactly one of the three is true: $a$ is positive, $-a$ is positive, $a=0$.	
+\end{itemize}
+
+We call a nonempty set $I$ of real numbers an \textbf{interval} provided for any two points in $I$, all the points that lie between these two points also lie in $I$.
+That is, $\forall x,y \in I, \lambda x + (1-\lambda)y \in I \text{ for } \lambda \in [0,1]$.
+\medskip
+
+\textbf{The completeness axiom}\par
+A nonempty set $E$ of real numbers is said to be \textbf{bounded above} provided there is a real number $b$ such that $x \le b$ for all $x\in E$: the number $b$ is called an \textbf{upper bound} for $E$.
+We can similarly define a set being \textbf{bounded below} and having a \textbf{lower bound}. A set that is bounded above need not have a largest member.
+\begin{namedthm*}{The Completeness Axiom}
+Let $E$ be a nonempty set of real numbers that is bounded above. The among the set of upper bounds for $E$ there is a smallest, or least, upper bound, called the \textbf{supremum} of $E$.
+Also, any nonempty set $E$ that is bounded below has a greatest lower bound, called the \textbf{infimum} of $E$.	
+\end{namedthm*}
+
+\end{flushleft}
 
 \section{The Field, Positivity, and Completeness Axioms}
 \begin{center}
@@ -108,7 +204,19 @@
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{0}
-	\item For $a\neq 0$ and $a\neq 0$, show that $(ab)^{-1} = a^{-1}b^{-1}$.
+	\item For $a\neq 0$ and $a\neq 0$, show that $(ab)^{-1} = b^{-1}a^{-1}$.\par
+
+		\begin{align*}
+			(ab)(ab)^{-1} & = 1 && \tag*{by multiplicative inverse}\\
+			a(b(ab)^{-1}) & = 1 && \tag*{by associativity of multiplication} \\
+			a^{-1}a(b(ab)^{-1}) & = a^{-1}1 \\
+			1(b(ab)^{-1}) & = a^{-1}1 && \tag*{by multiplicative inverse} \\
+			b(ab)^{-1} & = a^{-1} && \tag*{by multiplicative identity} \\
+			b^{-1}b(ab)^{-1} & = b^{-1}a^{-1} \\
+			1(ab)^{-1} & = b^{-1}a^{-1} && \tag*{by multiplicative inverse} \\
+			(ab)^{-1} & = b^{-1}a^{-1} && \tag*{by multiplicative identity} \\
+		\end{align*}
+
 	\item Verify the following:
 	\begin{enumerate}[label=(\roman*),align=left]
         \item For each real number $a\neq 0$, $a^2>0$. In particular, $1>0$ since $1 \neq 0$ and $1=1^2$.
@@ -116,7 +224,7 @@
         \item If $a>b$, then \[ ac >bc \text{ if } c>0 \text{ and } ac < bc \text{ if } c<0. \]
     \end{enumerate}
 	\item For a nonempty set of real numbers $E$, show that $\inf E = \sup E$ iff $E$ consists of a single point.
-	\item Let $a$ and $b$ be real numnbers.
+	\item Let $a$ and $b$ be real numbers.
 	\begin{enumerate}[label=(\roman*),align=left]
         \item Show that if $ab = 0$, then $a=0$ or $b=0$.
         \item Verify that $a^2 -b^2 = (a-b)(a+b)$ and conclude from part (i) that if $a^2 = b^2$, then $a=b$ or $a=-b$.
