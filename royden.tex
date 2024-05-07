@@ -147,7 +147,7 @@ A subset $E$ of $X$ is \textbf{strictly totally ordered} provided either $xRy$ o
 Let V be any vector space, and let L be the collection of all linearly independent subsets of V. 
 L is nonempty as the singleton sets are linearly independent. 
 Define a partial order on L in the form $C \subseteq C'$ for $C,C' \in L$.
-For any chain (a totally ordered subset of a partially ordered set) $\mathcal{C}$ of $L$, where $\mathcal{C}$ consists of the sets $C_1 \subseteq C_2 \subseteq \cdots$, we can construct a linearly independent upper bound $C' = \bigcup_{C \in \mathcal{C}} C$ of $\mathcal{C}$.
+For any chain (a totally ordered subset of a partially ordered set) $\mathcal{C}$ of $L$, where $\mathcal{C}$ consists of the sets $C_1 \subseteq C_2 \subseteq \cdots$, we can construct a linearly independent set $C' = \bigcup_{C \in \mathcal{C}} C$ that is an upper bound of $\mathcal{C}$.
 By Zorn's Lemma, L has a maximal element, say M.
 This collection $M$ is a basis for $V$. To show this, suppose by contradiction that there exists a vector $v \in V$ s.t. $v \notin \text{ Span}\{M\}$.
 Then $v \cup M$ is linearly independent and $M \subseteq v \cup M$, a contradiction to the fact that $M$ is maximal.
@@ -156,6 +156,9 @@ Then $v \cup M$ is linearly independent and $M \subseteq v \cup M$, a contradict
 \end{flushleft}
 
 \chapter{The Real Numbers: Sets, Sequences, and Functions}
+
+\section{The Field, Positivity, and Completeness Axioms}
+
 \begin{flushleft}
 
 \textbf{The field axioms}\par
@@ -192,19 +195,23 @@ That is, $\forall x,y \in I, \lambda x + (1-\lambda)y \in I \text{ for } \lambda
 A nonempty set $E$ of real numbers is said to be \textbf{bounded above} provided there is a real number $b$ such that $x \le b$ for all $x\in E$: the number $b$ is called an \textbf{upper bound} for $E$.
 We can similarly define a set being \textbf{bounded below} and having a \textbf{lower bound}. A set that is bounded above need not have a largest member.
 \begin{namedthm*}{The Completeness Axiom}
-Let $E$ be a nonempty set of real numbers that is bounded above. The among the set of upper bounds for $E$ there is a smallest, or least, upper bound, called the \textbf{supremum} of $E$.
-Also, any nonempty set $E$ that is bounded below has a greatest lower bound, called the \textbf{infimum} of $E$.	
+Let $E$ be a nonempty set of real numbers that is bounded above. The among the set of upper bounds for $E$ there is a smallest, or least, upper bound.
+(This least upper bound is called the \textbf{supremum} of $E$. Also, it can be shown that any nonempty set $E$ that is bounded below has a greatest lower bound, called the \textbf{infimum} of $E$).	
 \end{namedthm*}
+
+\medskip
+\textbf{The extended real numbers}\par
+The extended real numbers: $\mathbb{R} \cup \{-\infty,\infty\}$\par
+Every set of real numbers has a supremum and infimum that belongs to the extended real numbers.
 
 \end{flushleft}
 
-\section{The Field, Positivity, and Completeness Axioms}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{0}
-	\item For $a\neq 0$ and $a\neq 0$, show that $(ab)^{-1} = b^{-1}a^{-1}$.\par
+	\item For $a\neq 0$ and $a\neq 0$, show that $(ab)^{-1} = a^{-1}b^{-1}$.\par
 
 		\begin{align*}
 			(ab)(ab)^{-1} & = 1 && \tag*{by multiplicative inverse}\\
@@ -215,47 +222,212 @@ Also, any nonempty set $E$ that is bounded below has a greatest lower bound, cal
 			b^{-1}b(ab)^{-1} & = b^{-1}a^{-1} \\
 			1(ab)^{-1} & = b^{-1}a^{-1} && \tag*{by multiplicative inverse} \\
 			(ab)^{-1} & = b^{-1}a^{-1} && \tag*{by multiplicative identity} \\
+			(ab)^{-1} & = a^{-1}b^{-1} && \tag*{by commutativity of multiplication} \\
 		\end{align*}
 
 	\item Verify the following:
 	\begin{enumerate}[label=(\roman*),align=left]
-        \item For each real number $a\neq 0$, $a^2>0$. In particular, $1>0$ since $1 \neq 0$ and $1=1^2$.
-        \item For each positive number $a$, its multiplicative inverse  $a^{-1}$ also is positive.
+        \item For each real number $a\neq 0$, $a^2>0$. In particular, $1>0$ since $1 \neq 0$ and $1=1^2$.\par
+        By positivity axiom P2, since $a\neq 0$, either $a$ is positive or $-a$ is positive.\par
+		In the case $a$ is positive, $a^2$ is positive by positivity axiom P1.\par
+		In the case $-a$ is positive, $(-a)(-a)$ is positive by P1.
+		\begin{align*}
+			(-a)(-a) & = (-a)(-a) + a(0) && \tag*{by additive identity}\\
+			& = (-a)(-a) + a(-a+a) && \tag*{by additive inverse}\\
+			& = (-a)(-a) + a(-a) + a(a) && \tag*{by distributive property} \\
+			& = (-a + a)(-a) + a^2 && \tag*{by distributive property} \\
+			& = 0(-a) + a^2 &&\tag*{by additive inverse} \\
+			& = a^2 &&\tag*{by additive identity}
+		\end{align*}
+		Therefore $a^2$ is positive by equality.
+        \item For each positive number $a$, its multiplicative inverse  $a^{-1}$ also is positive.\par
+        The multiplication of two positive numbers is positive by positivity axiom P1.\par
+		The multiplication of two non-positive numbers is positive: by reformulating the previous result from (i), we can see $0 < (-a)(-b) = ab$ for $a,b \neq 0$. \par
+		The multiplication of a positive number and a non-positive number is not positive. 
+		To see this, suppose $a$ is positive and $b$ is not positive, but $ab$ is positive. By P1 and P2, $a(-b)$ is also positive.
+		By P1, $ab + a(-b)$ is positive. However,
+		\[
+		ab + a(-b) = a(b-b) = a(0) = 0.
+		\]
+		This is a contradiction to P2. Therefore $ab$ is not positive.
+		\par
+		The result from (i) shows that $1$ is positive. By multiplicative inverse, $aa^{-1} = 1 > 0$. Therefore $a^{-1}$ must be positive because $a$ is positive.
         \item If $a>b$, then \[ ac >bc \text{ if } c>0 \text{ and } ac < bc \text{ if } c<0. \]
+        Proof that $a(-1)=-a$ for a real number $a$:
+		\[a+(-1)a = 1a+(-1)a = (1+-1)a = 0a = 0.\]		
+		$a>b$ implies that $a-b$ is positive.\par
+		If $c$ is positive, then $(a-b)c = ac-bc$ is positive, and $ac>bc$.\par
+		If $c$ is not positive, then $(a-b)c = ac-bc$ is not positive, and $-(ac-bc) = bc-ac$ is positive, so $bc>ac$.\par
     \end{enumerate}
-	\item For a nonempty set of real numbers $E$, show that $\inf E = \sup E$ iff $E$ consists of a single point.
+	\item For a nonempty set of real numbers $E$, show that $\inf E = \sup E$ iff $E$ consists of a single point.\par
+	$(\implies)$ Suppose $\inf E = \sup E$.\par
+	Then $\inf E \le x \le \sup E$ for all $x\in E$. But this implies $x = \inf E = \sup E$ for all $x\in E$, so $E$ consists of the single point $x$.\par
+	$(\impliedby)$ Suppose $E={x}$ is a singleton set.\par
+	Clearly $x$ is an upper bound and a lower bound for $E$, as $x\le x$. 
+	By completeness of the reals, there exists $\sup E$ and $\inf E$ s.t. $x \le \inf E \le x \le \sup E \le x$, as $\inf E$ is the greatest lower bound, and $\sup E$ is the least upper bound.
+	Therefore $\inf E = \sup E$.
 	\item Let $a$ and $b$ be real numbers.
 	\begin{enumerate}[label=(\roman*),align=left]
-        \item Show that if $ab = 0$, then $a=0$ or $b=0$.
-        \item Verify that $a^2 -b^2 = (a-b)(a+b)$ and conclude from part (i) that if $a^2 = b^2$, then $a=b$ or $a=-b$.
-        \item Let $c$ be a positive real number. Define $E = \{ x \in \mathbb{R} \ |\  x^2 < c\}$. Verify that $E$ is nonempty and bounded above. 
-		Define $x_0 = \sup E$. Show that $x_0^2 = c$. Use part (ii) to show that there is a unique $x>0$ for which $x^2=c$. It is denoted by $\sqrt{c}$.
+        \item Show that if $ab = 0$, then $a=0$ or $b=0$.\par
+        Contrapositive: Let $a\neq0$ and $b\neq0$. In 2.(ii), it was shown that the multiplication of two nonzero numbers is either positive or not positive. Therefore $ab\neq 0$.
+        \item Verify that $a^2 -b^2 = (a-b)(a+b)$ and conclude from part (i) that if $a^2 = b^2$, then $a=b$ or $a=-b$.\par
+        \begin{align*}
+			(a-b)(a+b) & = (a-b)(a) + (a-b)(b) && \tag*{by distributive property}\\
+			& = (a)(a)+(-b)(a) + (a)(b)+(-b)(b) && \tag*{by distributive property}\\
+			& = (a)(a)+(-b+b)(a) +(-b)(b) && \tag*{by distributive property}\\
+			& = (a)(a) +(-b)(b) && \tag*{by additive inverse}\\
+			& = a^2 - b^2 
+		\end{align*}
+		Suppose $a^2=b^2$. Then $(a-b)(a+b)=a^2-b^2=0$, and by (i), $(a-b)=0 \implies a=b$ or $(a+b)=0 \implies a=-b$.
+        \item Let $c$ be a positive real number. Define $E = \{ x \in \mathbb{R} \ |\  x^2 < c\}$. Verify that $E$ is nonempty and bounded above.
+		Define $x_0 = \sup E$. Show that $x_0^2 = c$. Use part (ii) to show that there is a unique $x>0$ for which $x^2=c$. It is denoted by $\sqrt{c}$.\par
+		We can consider $0\in \mathbb{R}$. $0^2=0<c$, so $0\in E$ and $E$ is nonempty. Also, $c+1$ is a real number and an upper bound for $E$; thus by the completeness axiom, $E$ has a supremum, say $x_0$.
+		We can see that for any upper bound $b$ of $E$, $x \le x_0 \le b$ for all $x \in E$. Then $x^2 \le x_0^2 \le b^2$ implies $x_0^2=c$, else $x_0$ is not the supremum. \par
+		Suppose there exists $x_1,x_2 > 0$ such that $x_1^2 = c$ and $x_2^2 = c$. This implies $x_1^2 = x_2^2$, and by part (ii), $x_1 = x_2$ or $x_1 = -x_2$. Because $x_1,x_2$ are positive, $x_1 = x_2$.
     \end{enumerate}
 	\item Let $a,b,c$ be real numbers s.t. $a\neq 0$ and consider the quadratic equation \[ ax^2+bx+c=0, x \in \mathbb{R}.\]
 	\begin{enumerate}[label=(\roman*),align=left]
-        \item Suppose $b^2 - 4ac >0$. Use the Field Axioms and the preceding problem to complete the square and thereby show that this equation has exactly tqo solutions given by
-		\[  x = \dfrac{-b + \sqrt{b^2-4ac}}{2a} \text{  and  } x = \dfrac{-b - \sqrt{b^2-4ac}}{2a}. \]
+        \item Suppose $b^2 - 4ac >0$. Use the Field Axioms and the preceding problem to complete the square and thereby show that this equation has exactly two solutions given by
+		\[  x = \dfrac{-b + \sqrt{b^2-4ac}}{2a} \ \text{and}\  x = \dfrac{-b - \sqrt{b^2-4ac}}{2a}. \]
+		\begin{align*}
+			ax^2+bx+c & = 0 \\
+			4a(ax^2+bx+c) & = 4a(0) \\
+			4a^2x^2+4abx+4ac & = 0 && \tag*{by distributive property}\\
+			4a^2x^2+4abx+4ac+b^2-b^2 & = 0 && \tag*{by additive inverse}\\
+			4a^2x^2+4abx+b^2 & = b^2-4ac \\
+			(2ax+b)^2 & = b^2-4ac 
+		\end{align*}
+		By 4(iii), because $b^2 - 4ac >0$, there is a unique $y>0$ for which $y^2 = b^2-4ac$. It is denoted by $y = \sqrt{b^2-4ac}$.\par
+		By 4(ii), $(2ax+b)^2 = b^2-4ac = y^2$ implies $(2ax+b) = \sqrt{b^2-4ac} = y$ or $(2ax+b) = -\sqrt{b^2-4ac} = -y.$\par
+		\begin{align*}
+			2ax+b & = \pm \sqrt{b^2-4ac} \\
+			2ax & = -b \pm \sqrt{b^2-4ac} \\
+			x & = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}.
+		\end{align*}
 	\end{enumerate}
 	\item Use the Completeness Axiom to show that every nonempty set of real numbers that is bounded below has an infimum and that
-	\[\inf E =\sup \{-x \ |\ x \in E.\]
+	\[\inf E =-\sup \{-x \ |\ x \in E\}.\]
+	Let $E$ be a set that is bounded below; that is, there exists $l\in \mathbb{R}$ such that $l \le x$ for all $x\in E$.
+	Then $-l \ge -x$ for all $x \in E$, and $-l$ is an upper bound for $-E=\{-x \ | \ x\in E\}$. 
+	Therefore the set $-E$ is bounded above, and by the completeness axiom, there exists a least upper bound $c= \sup (-E)$.
+	Then for any upper bound $u$ of $-E$, $u \ge c \ge -x$ for all $x \in E.$
+	Then $-u$ is a lower bound of $E$, and $-u \le c \le x$ for all $x \in E$, and $c$ is the greatest lower bound and thus infimum of $E$.
 	\item For real numbers $a$ and $b$, verify the following:
 	\begin{enumerate}[label=(\roman*),align=left]
-		\item $|ab| = |a||b|.$
-		\item $|a+b| \le |a|+|b|.$
+		\item $|ab| = |a||b|.$\par
+		We have 
+		\[ 
+		|ab| =
+		\begin{cases} 
+			ab & \text{ if } ab \ge 0, \\
+			-(ab) & \text{ if } ab < 0.
+		\end{cases}
+		\]
+		The case where either $a$ or $b$ are zero is trivial.
+		In problem 2(ii), it was shown that $ab>0$ if $a,b$ are the same sign, and $ab<0$ if $a,b$ are opposite signs.\par
+		Case $a,b>0$: Then $ab>0$ so $|ab| = ab$, and $|a| = a$ and $|b|=b$ so $|a||b| = ab$.\par
+		Case $a,b<0$: Then $ab>0$ so $|ab| = ab$, and $|a| = -a$ and $|b|=-b$ so $|a||b| = (-a)(-b)=ab$.\par
+		Case $a<0,b>0$: Then $ab<0$ so $|ab| = -(ab) = (-1)ab$, and $|a| = -a = (-1)a$ and $|b|=b$ so $|a||b| = (-1)ab$.
+		\item $|a+b| \le |a|+|b|.$\par
+		The case where both $a,b=0$ is trivial.\par
+		Case $a,b>0$: Then $a+b > 0 $, so $|a+b| = a+b$ and $|a|+|b| = a+ b$.\par
+		Case $a>0,b=0$: Then $a+b = a+0=a > 0 $, so $|a+b| = a$ and $|a|+|b| = a+ 0 = a$.\par
+		Case $a<0,b=0$: Then $a+b = a +0=a<0 $, so $|a+b| = -a$ and $|a|+|b| = -a +0 = -a$.\par
+		Case $a,b<0$: Then $a+b < 0 $, so $|a+b| = -(a+b) = -a-b$ and $|a|+|b| = -a- b$.\par
+		That is, equality holds except for the case where $a,b$ are nonzero opposite signs:\par
+		Case $a>0,b<0$: $|a+b| \in \{a+b, -(a+b)\}$.\par
+		$b<0<-b \implies a+b<a<a-b$, and $-a<0<a \implies -(a+b)=-a-b<-b<a-b$.\par
+		$|a|+|b| = a- b$, so $|a+b| < |a|+|b|$.
 		\item For $\epsilon >0,$
 		\[ |x-a| < \epsilon \text{  iff  } a - \epsilon < x < a + \epsilon.\]
+		We have
+		\[ 
+		|x-a| =
+		\begin{cases} 
+			x-a & \text{ if } x-a \ge 0, \\
+			-(x-a) & \text{ if } x-a < 0.
+		\end{cases}
+		\]
+		$(\implies)$ Suppose $|x-a| < \epsilon$.\par
+		Then $x-a < \epsilon$ and $a-x < \epsilon$.\par
+		Then $x< a+\epsilon$ and $a-\epsilon<x$.\par
+		$(\impliedby)$ Suppose $a - \epsilon < x < a + \epsilon$.\par
+		Then
+		\begin{align*}
+		a - \epsilon-a &< x-a < a + \epsilon-a \\
+		- \epsilon &< x-a < \epsilon
+		\end{align*}
+		So $x-a < \epsilon$ and $- \epsilon < x-a \implies -(x-a)< \epsilon$, so $|x-a| < \epsilon$.
 	\end{enumerate}
 \end{enumerate}
 
 \section{The Natural and Rational Numbers}
+\begin{flushleft}
+
+\begin{namedthm*}{Definition}
+	A set $E$ of real numbers is said to be \textbf{inductive} provided it contains 1 and if the number $x$ belongs to $E$, the number $x+1$ also belongs to $E$.
+\end{namedthm*}
+
+The set of \textbf{natural numbers}, denoted by $\mathbb{N}$, is defined to be the intersection of all inductive subsets of $\mathbb{R}$. 
+
+\begin{namedthm*}{Theorem 1}
+	Every nonempty set of natural numbers has a smallest member.
+\end{namedthm*}
+\begin{proof}
+	Let $E$ be a nonempty set of natural numbers. Since the set $\{x\in \mathbb{R}\ |\ x \ge 1 \}$ is an inductive set, by definition of intersection, $\mathbb{N} \subseteq \{x\in \mathbb{R}\ |\ x \ge 1 \}$, and the natural numbers are bounded below by $1$.
+	Therefore $E$ is bounded below by $1$. By the Completeness Axiom, $E$ has an infimum; let $c=\inf E$.
+	Since $c+1$ is not a lower bound for $E$, there is an $m \in E$ for which $m < c+1$.
+	We claim that $m$ is the smallest member of $E$. Otherwise, there is an $n\in E$ for which $n<m$. Since $n \in E$, $c\le n$. Thus $c \le n < m < c+1$ and therefore $m-n<1$.
+	Therefore the natural number $m$ belongs to the interval $(n,n+1)$. However, an induction argument shows that $(n, n+1) \cap \mathbb{N} = \emptyset$ (Problem 8). 
+	This is a contradiction to $m \in E$. Therefore $m$ is the smallest member of $E$.
+\end{proof}
+
+\begin{namedthm*}{Archimedean Property}
+	For each pair of positive real numbers $a$ and $b$, there is a natural number $n$ for which $na>b$. This can be reformulated: for each positive real number $\epsilon$, there is a natural number $n$ for which $\dfrac{1}{n} < \epsilon$.
+\end{namedthm*}
+
+The set of \textbf{integers}, denoted $\mathbb{Z}$, is defined to be the set of numbers consisting of the natural numbers, their negatives, and zero.
+
+\begin{namedthm*}{Definition}
+A set $E$ of real numbers is said to be \textbf{dense} in $\mathbb{R}$ provided that between any two real numbers there lies a member of $E$.	
+\end{namedthm*}
+
+\begin{namedthm*}{Theorem 2}
+The rational numbers are dense in $\mathbb{R}$.	
+\end{namedthm*}
+\begin{proof}
+Let $a,b \in \mathbb{R}$ with $a<b$.\par
+Case $a>0$:\par
+By the Archimedean Property, for $(b-a)>0$, there exists $q \in \mathbb{N}$ for which $\dfrac{1}{q} < b-a$. \par
+Again by the Archimedean Property, for $b,\dfrac{1}{q}>0$, there exists $n \in \mathbb{N}$ for which $n(\dfrac{1}{q})>b$.\par
+Therefore the set $S=\{n \in \mathbb{N} \ |\ \dfrac{n}{q} \ge b \}$ is nonempty. Because $S$ is a set of natural numbers, by Theorem 1, $S$ has a smallest member $p$.
+Noticing $\dfrac{1}{q} < b-a < b$, we see that $1 \notin S$ and $p>1$. Therefore $p-1$ is a natural number (Problem 9).
+Because $p$ is the smallest member of $S$, $p-1 \notin S$ and $\dfrac{(p-1)}{q} < b$.
+Also, 
+\[
+a = b-(b-a) < \dfrac{p}{q} - (\dfrac{1}{q}) = \dfrac{(p-1)}{q}.
+\]
+Therefore the rational number $\dfrac{(p-1)}{q}$ lies between $a$ and $b$.\par
+Case $a<0$:\par
+By the Archimedean Property, for $1,-a>0$, there exists $n \in \mathbb{N}$ for which $n(1) > -a$, which implies $n+a>0$, and $b>a$ implies $n+b>n+a>0$.
+Then we can use the first case to show that there exists a rational number $r$ such that $n+a<r<n+b$. Therefore the rational number $r-n$ lies between $a$ and $b$.
+\end{proof}
+
+\end{flushleft}
 
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{7}
-	\item Use an induction argument to show that for each natural number $n$, the interval $(n, n+1)$ fails to contain any natural number.
-	\item Use an induction argument to show that if $n>1$ is a natural number, then $n-1$ also is a natural number. The use another induction argument to show that if $m$ and $n$ are natural numbers with $n>m$, then $n-m$ is a natural number.
+	\item Use an induction argument to show that for each natural number $n$, the interval $(n, n+1)$ fails to contain any natural number.\par
+	Let $P(n)$ be the assertion that $(n, n+1) \cap \mathbb{N} = \emptyset$.\par
+	$P(1)$: $(1, 2)=\{x\ |\ 1<x<2\}$,so $1$ is a lower bound\par
+	Suppose $P(k)$ is true for some natural number $k$.\par
+	$P(k+1)$: $(k+1, (k+1)+1)$
+	\item Use an induction argument to show that if $n>1$ is a natural number, then $n-1$ also is a natural number. The use another induction argument to show that if $m$ and $n$ are natural numbers with $n>m$, then $n-m$ is a natural number.\par
+	Let $P(n)$ be the assertion that $(n, n+1) \cap \mathbb{N} = \emptyset$.\par
+	$P(1)$: $(1, 2)$
 	\item Show that for any real number $r$, there is exactly one integer in the interval $[r,r+1)$.
 	\item Show that ay nonempty set of integers that is bounded above has a largest member.
 	\item Show that the irrational numbers are dense in $\mathbb{R}$.
@@ -427,8 +599,10 @@ Then the Lebesgue measure $m$ is the restriction of $m^*$ to the Lebesgue measur
 In the first three problems, let $m$ be a set function defined for all sets in a $\sigma$-algebra $\mathcal{A}$ with values in $[0,\infty]$. Assume $m$ is countably additive over countable disjoint collections of sets in $\mathcal{A}$.
 \begin{enumerate}
 	\setcounter{enumi}{0}
-	\item Prove that if $A$ and $B$ are two sets in $\mathcal{A}$ with $A \subseteq B$, then $m(A) \le m(B)$. This property is called \textit{monotonicity}.
-	\item Prove that if there is a set $A$ in the collection $\mathcal{A}$ for which $m(A) < \infty$, then $m(\emptyset) = 0$.
+	\item Prove that if $A$ and $B$ are two sets in $\mathcal{A}$ with $A \subseteq B$, then $m(A) \le m(B)$. This property is called \textit{monotonicity}.\par
+	$A \subseteq B \implies B = A \cup (B \cap A^c),$ where $A \cap (B \cap A^c) = \emptyset$. The set $(B \cap A^c)$ is measurable because $A^c$ is measurable and countable intersection is measurable, so $m(B) = m(A \cup (B \cap A^c)) = 	m(A) + m(B \cap A^c)$ by countable additivity, and thus $m(B) \ge m(A)$.
+	\item Prove that if there is a set $A$ in the collection $\mathcal{A}$ for which $m(A) < \infty$, then $m(\emptyset) = 0$.\par
+	
 	\item Let $\{E_k\}_{k=1}^\infty$ be a countable collection of sets in $\mathcal{A}$. Prove that $m(\bigcup_{k=1}^\infty E_k) \le \sum_{k=1}^\infty m(E_k).$
 	\item A set function $c$, defined on all subsets of $\mathbb{R}$, is defined as follows.
 	Define $c(E)$ to be $\infty$ if $E$ has infinitely many members and $c(E)$ to be equal to the number of elements in $E$ if $E$ is finite; define $c(\emptyset)=0$. Show that $c$ is a countably additive and translation invariant set function. This set function is called the \textbf{counting measure}.
@@ -436,6 +610,22 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 
 
 \section{Lebesgue Outer Measure}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{4}
+	\item By using properties of outer measure, prove that the interval $[0,1]$ is not countable.
+	\item Let $A$ be the set of irrational numbers in the interval $[0,1]$. Prove that $m^*(A)=1$.
+	\item A set of real numbers is said to be a $G_\delta$ set provided it is the intersection of a countable collection of open sets.
+	Show that for any bounded set $E$, there is a $G_\delta$ set $G$ for which
+	\[E\subseteq G \ \text{and}\ m^*(G)=m^*(E).\] 
+\end{enumerate}
+
+
+
+
 \section{The $\sigma$-Algebra of Lebesgue Measurable Sets}
 \section{Outer and Inner Approximation of Lebesgue Measurable Sets}
 \section{Countable Additivity, Continuity, and the Borel-Cantelli Lemma}
