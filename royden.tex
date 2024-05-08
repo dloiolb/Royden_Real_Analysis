@@ -387,6 +387,12 @@ The set of \textbf{natural numbers}, denoted by $\mathbb{N}$, is defined to be t
 \end{namedthm*}
 
 The set of \textbf{integers}, denoted $\mathbb{Z}$, is defined to be the set of numbers consisting of the natural numbers, their negatives, and zero.
+\par
+\medskip
+Consider the number $2$. From problem 4(iii), there is a unique $x>0$ for which $x^2=2$. It is denoted by $\sqrt{2}$. This number is not rational.
+Suppose that $x$ is rational: then there exist $p,q \in \mathbb{Z}$ such that $(\dfrac{p}{q})^2=2$. Then $p^2=2q^2$. 
+By the unique prime factorizations of $p$ and $q$, $p^2$ is divisible by $2^{2k}$ for some $k \in \mathbb{Z}_{\ge 0}$, while $2q^2$ is divisible by $2 \cdot 2^{2j} = 2^{2j+1}$ for some $j \in \mathbb{Z}_{\ge 0}$.
+$2^{2k} \neq 2^{2j+1}$ for any combinations of $k,j$ so $p^2=2q^2$ is not possible, and $\sqrt{2}$ is not rational.
 
 \begin{namedthm*}{Definition}
 A set $E$ of real numbers is said to be \textbf{dense} in $\mathbb{R}$ provided that between any two real numbers there lies a member of $E$.	
@@ -421,42 +427,243 @@ Then we can use the first case to show that there exists a rational number $r$ s
 \begin{enumerate}
 	\setcounter{enumi}{7}
 	\item Use an induction argument to show that for each natural number $n$, the interval $(n, n+1)$ fails to contain any natural number.\par
-	Let $P(n)$ be the assertion that $(n, n+1) \cap \mathbb{N} = \emptyset$.\par
-	$P(1)$: $(1, 2)=\{x\ |\ 1<x<2\}$,so $1$ is a lower bound\par
+	For $n \in \mathbb{N}$, let $P(n)$ be the assertion that $(n, n+1) \cap \mathbb{N} = \emptyset$.\par
+	$P(1)$: $(1, 2)=\{x\ |\ 1<x<2\}$. Suppose there exists a natural number $q \in (1, 2)$. Then $q>1$ and by problem 9, $q-1$ is a natural number. 
+	However, $1<q<2 \implies 0<q-1<1$, which is a contradiction to the fact that the natural numbers are bounded below by $1$ (Theorem 1). Therefore there are no natural numbers in $(1, 2)$.\par
 	Suppose $P(k)$ is true for some natural number $k$.\par
-	$P(k+1)$: $(k+1, (k+1)+1)$
+	$P(k+1)$: Suppose there exists a natural number $p \in (k+1, (k+1)+1)$; that is, $k+1<p<k+2$.\par
+	Case $p=1$: then $k+1<1<k+2$. but $k \in \mathbb{N}$ so $k+1 >1$. Thus $p=1$ is not possible.\par
+	Case $p>1$: then by problem 9, $p-1 \in \mathbb{N}$, so $k+1<p<k+2 \implies k<p-1<k+1$. This is a contradiction to $P(k)$, the assumption that there are no natural numbers between $(k,k+1)$.
+	Therefore $P(k+1)$ is true.
 	\item Use an induction argument to show that if $n>1$ is a natural number, then $n-1$ also is a natural number. The use another induction argument to show that if $m$ and $n$ are natural numbers with $n>m$, then $n-m$ is a natural number.\par
-	Let $P(n)$ be the assertion that $(n, n+1) \cap \mathbb{N} = \emptyset$.\par
-	$P(1)$: $(1, 2)$
-	\item Show that for any real number $r$, there is exactly one integer in the interval $[r,r+1)$.
-	\item Show that ay nonempty set of integers that is bounded above has a largest member.
-	\item Show that the irrational numbers are dense in $\mathbb{R}$.
-	\item Show that each real number is the supremum of a set of rational numbers and also the supremum of a set of irrational numbers.
-	\item Show that if $r>0$, then, for each natural number $n$, $(1+r)^n \ge 1+n \cdot r$.
+	For $n \in \mathbb{N}$, let $P(n)$ be the assertion that $n=1$ or $n-1 \in \mathbb{N}$.\par
+	$P(1)$: $1=1$, true.\par
+	Suppose $P(k)$ is true for some $k \in \mathbb{N}$.\par
+	$P(k+1)$: $(k+1)-1 = k \in \mathbb{N}$, true.\par
+	\medskip
+	For $n \in \mathbb{N}$, let $Q(n)$ be the assertion that for all $m \in \mathbb{N}$ such that $n>m$, then $n-m \in \mathbb{N}$.\par
+	$Q(1)$: true trivially, because there are no natural numbers less than $1$.\par
+	Suppose $Q(k)$ is true for some $k \in \mathbb{N}$; that is, for all $m \in \mathbb{N}$ such that $k>m$, then $k-m \in \mathbb{N}.$\par
+	$Q(k+1)$: For all the $m$ from $Q(k)$, we have $(k+1)>k>m$.\par
+	We want to show that $(k+1)-m \in \mathbb{N}$.\par
+	This is clearly true for $m=1$ because $(k+1)-1 = k \in \mathbb{N}$. 
+	Otherwise, $m>1$, so by $P(m)$, $m-1 \in \mathbb{N}$ and $(k+1)-m = k -(m-1)$.
+	$Q(k)$ is true tells us that because $(m-1) \in \mathbb{N}$ and $k>m>m-1$, then $k-(m-1) \in \mathbb{N}$.
+	Therefore $Q(k+1)$ is true.
+	\item Show that for any real number $r$, there is exactly one integer in the interval $[r,r+1)$.\par
+	This is trivial if $r \in \mathbb{Z}$.\par
+	Consider the smallest integer $p$ less than $[r,r+1)$.
+	Then $p<r<r+1$ (and $r<p+1$, because $r=p+1 \implies r \in \mathbb{Z}$ and $r>p+1 \implies p$ is not the smallest integer less than $[r,r+1)$), therefore $r<p+1<r+1$. Because the integers are inductive, $p+1 \in \mathbb{Z}$.\par
+	To show that there is not more than one integer between $[r,r+1)$:
+	let $q$ be a natural number such that $r \le q < r+1$. Then $q-1 < r \le q$ and $q< r+1 \le q+1$. 
+	From problem 8, we see that there are no integers between $(q-1,q)$ and $(q,q+1)$, 
+	so there is only one integer in $(q-1,q)\cup q \cup (q,q+1) \supseteq [r,r+1)$.
+	\item Show that any nonempty set of integers that is bounded above has a largest member.\par
+	Let $E$ be a nonempty set of integers that is bounded above. By the completeness axiom, there exists $c = \sup E$. 
+	That is, $x\le c$ for all $x \in E$. Then $c-1 < z \le c$ for some $z \in E$ because $c-1$ is not an upper bound of $E$.
+	Suppose $c$ is not in $E$. Then $c-1 < z < c$. 
+	This implies that $c-1 < z < w \le c$ for some $w \in E$ because $z$ is not an upper bound of E.
+	But then there exists two integers in the interval $(c-1,c]$, which is a contradiction to problem 10.
+	Therefore $c$ is an element of $E$, and it is the largest member.
+	\item Show that the irrational numbers are dense in $\mathbb{R}$.\par
+	Choose any two real numbers $a,b$ and any irrational number $z$. Then $\dfrac{a}{z},\dfrac{b}{z}$ are real numbers. 
+	By density of the rationals in $\mathbb{R}$, there exists a rational $r$ such that $\dfrac{a}{z}<r<\dfrac{b}{z}$. This implies $a<rz<b$, where $rz$ is an irrational number.\par
+	Proof that $rz$ is irrational:\par
+	Let $r = \dfrac{p}{q}$ and suppose that $rz$ is rational; then $rz = \dfrac{m}{n}$.
+	\begin{align*}
+		\dfrac{p}{q}z &= \dfrac{m}{n}\\
+		z &=\dfrac{m}{n} \dfrac{q}{p}\\
+		z &= \dfrac{mq}{np}
+	\end{align*}
+	Then $z$ is rational, a contradiction.
+	\item Show that each real number is the supremum of a set of rational numbers and also the supremum of a set of irrational numbers.\par
+	Choose any real number $a$. Let $S=\{ r \in \mathbb{Q}\ |\ r\le a\}$.
+	Then $a$ is an upper bound for this set. To show that $a$ is the supremum, suppose by contradiction that it is not.
+	Then there exists $c \in \mathbb{R}$ such that $r \le c < a$. 
+	However, the rational numbers are dense in $\mathbb{R}$, so there exists a rational between $c$ and $a$, a contradiction to the assumption that $c$ is an upper bound to $S$. 
+	\par
+	The same argument can easily be shown for the irrational numbers.
+	\item Show that if $r>0$, then, for each natural number $n$, $(1+r)^n \ge 1+n \cdot r$.\par
+	Let $r>0$.\par
+	For $n \in \mathbb{N}$, let $P(n)$ be the assertion that $(1+r)^n \ge 1+n \cdot r$.\par
+	$P(1)$: $(1+r)^1 = 1+1 \cdot r$, true.\par
+	Suppose $P(k)$ is true for some $k \in \mathbb{N}$. Then $(1+r)^k \ge 1+k \cdot r$. \par
+	$P(k+1)$:\par
+	$(1+r)^{k+1} = (1+r)^k(1+r) \ge (1+kr)(1+r) = 1+ kr + r +kr^2 > 1+ kr + r = 1+(k+1) \cdot r$.
 	\item Use induction arguments to prove that for every natural number $n$,
 	\begin{enumerate}[label=(\roman*),align=left]
         \item \[ \sum_{j=1}^n j^2 = \dfrac{n(n+1)(2n+1)}{6}, \]
+        $P(1)$: $\sum_{j=1}^1 j^2 = 1 = \dfrac{1(1+1)(2+1)}{6}$.\par
+		Suppose $P(k)$ is true for $k \in \mathbb{N}$.\par
+		$P(k+1)$: 
+		\begin{align*}
+			\sum_{j=1}^{k+1} j^2 &= \sum_{j=1}^{k} j^2 + (k+1)^2 \\
+			&= \dfrac{k(k+1)(2k+1)}{6} + (k+1)^2\\
+			& = \dfrac{k(2k^2+k+2k+1)}{6} + \dfrac{6(k^2+2k+1)}{6} \\
+			& = \dfrac{(2k^3+k^2+2k^2+k)+(6k^2+12k+6)}{6} \\
+			&= \dfrac{2k^3+9k^2+13k+6}{6} \\
+			&= \dfrac{(k+1)(2k^2+7k+6)}{6} \\
+			&= \dfrac{(k+1)(k+2)(2(k+1)+1)}{6}.
+		\end{align*}
         \item \[ 1^3 + 2^3 + \cdots + n^3 = (1+2+\cdots +n)^2, \]
+        $P(1)$: $a^3 = 1 = (1)^3$.\par
+		Suppose $P(k)$ is true for $k \in \mathbb{N}$.\par
+		$P(k+1)$: 
+		\begin{align*}
+			1^3 + 2^3 + \cdots + (k+1)^3 &= 1^3 + 2^3 + \cdots + k^3 + (k+1)^3 \\
+			&= (1+2+\cdots +k)^2 + (k+1)^3 \\
+			&= \biggl (\dfrac{k(k+1)}{2} \biggr)^2 + (k+1)^3 \\
+			&= \dfrac{k^2(k+1)^2}{4} + \dfrac{4(k+1)^3}{4} \\
+			&= \dfrac{k^2(k+1)^2+(4k+4)(k+1)^2}{4} \\
+			&= \dfrac{(k^2+4k+4)(k+1)^2}{4} \\
+			&= \dfrac{(k+2)^2(k+1)^2}{2^2} \\
+			&= \biggl (\dfrac{(k+2)(k+1)}{2} \biggr )^2 \\
+			&= \biggl (\dfrac{((k+1)+1)(k+1)}{2} \biggr )^2 \\
+			&= \biggl (1+2+ \cdots + (k+1) \biggr )^2.
+		\end{align*}
         \item \[ 1+r+\cdots +r^n = \dfrac{1-r^{n+1}}{1-r} \text{ if } r \neq 1.\]
+        $P(1)$: $1+r^1 = \dfrac{(1+r)(1-r)}{1-r} = \dfrac{1-r^2}{1-r}$.\par
+		Suppose $P(k)$ is true for $k \in \mathbb{N}$.\par
+		$P(k+1)$: 
+		\begin{align*}
+			1+r+\cdots +r^{k+1} &= 1+r+\cdots + r^k +r^{k+1} \\
+			&= \dfrac{1-r^{k+1}}{1-r} +r^{k+1} \\
+			&= \dfrac{1-r^{k+1}}{1-r} +\dfrac{(1-r)r^{k+1}}{1-r} \\
+			&= \dfrac{1-r^{k+1} + r^{k+1} - r^{(k+1)+1} }{1-r} \\
+			&= \dfrac{1 - r^{(k+1)+1} }{1-r}.
+		\end{align*}
     \end{enumerate}
 \end{enumerate}
 
 \section{Countable and Uncountable Sets}
+
+\begin{flushleft}
+
+Two sets $A$ and $B$ are \textbf{equipotent} provided there exists a bijection between them.\par
+A set $E$ is \textbf{countable} if it is equipotent to a set of natural numbers.\par
+For a countably infinite set $X$, we say that $\{x_n \ |\ n \in \mathbb{N} \}$ is an \textbf{enumeration} of $X$ provided
+\[
+	X = \{x_n \ |\ n \in \mathbb{N} \} \ \text{ and }\ x_n \neq x_m \ \text{ if }\ n \neq m. 
+\]
+\par
+\medskip
+\begin{namedthm*}{Theorem 3}
+	A subset of a countable set is countable. In particular, every set of natural numbers is countable.
+\end{namedthm*}
+\begin{namedthm*}{Corollary 4}
+	The following sets are countably infinite:
+	\begin{enumerate}[label=(\roman*),align=left]
+		\item For each natural numbers $n$, the Cartesian product $\mathbb{N}^n = \mathbb{N} \times \cdots \times \mathbb{N}$.
+		\item The set of natural numbers $\mathbb{Q}$.
+	\end{enumerate}
+\end{namedthm*}
+\par
+\medskip
+The rationals are countable: 
+$\mathbb{Q} = \{0,\dfrac{1}{1},-\dfrac{1}{1},\dfrac{1}{2},-\dfrac{1}{2},\dfrac{2}{1},-\dfrac{2}{1}, \dfrac{3}{1}, -\dfrac{3}{1},\dfrac{1}{3},-\dfrac{1}{3},\dfrac{1}{4},-\dfrac{1}{4},\dfrac{2}{3},-\dfrac{2}{3},\cdots \}$.
+\par
+\medskip
+\begin{namedthm*}{Corollary 6}
+The union of a countable collection of countable sets is countable.
+\end{namedthm*}
+An interval of real numbers is called degenerate if it is empty or contains a single member.
+\begin{namedthm*}{Theorem 7}
+A nondegenerate interval of real numbers is uncountable.	
+\end{namedthm*}
+\begin{proof}
+Let $I$ be a nondegenerate interval of real numbers. Clearly $I$ is not finite. Suppose $I$ is countably infinite.
+Let $\{x_n \ |\ n \in \mathbb{N} \}$ be an enumeration of $I$. 
+For each $n \in \mathbb{N}$, choose a nondegenerate compact subinterval $[a_n,b_n] \subseteq I$ such that $x_n \notin [a_n,b_n]$. 
+Let the set of such intervals $\{[a_n,b_n]\}_{n=1}^\infty$ be descending: $[a_{n+1},b_{n+1}] \subseteq [a_n,b_n]$ (That is, $a_n \le a_{n+1}<b_{n+1}\le b_n$.)
+Now, the nonempty set $E = \{a_n \ |\ n \in \mathbb{N} \}$ is bounded above by $b_1$.
+Then the Completeness Axiom implies that $E$ has a supremum, say $x^* = \sup E$. 
+Then for each $n$, $a_n \le x^* \le b_n$ because $x^*$ is the supremum of $E$ and each $b_n$ is an upper bound for $E$.
+Therefore $x^*$ belongs to $[a_n,b_n]$ for each $n$.
+But then $x^*$ is an element of $I$ and thus has an index $n_0 \in \mathbb{N}$ such that $x^* = x_{n_0}$. But $x^* \in [a_{n_0},b_{n_0}]$, a contradiction.
+Therefore $I$ is not countable.
+\end{proof}
+
+\end{flushleft}
 
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{15}
-	\item Show that the set $\mathbb{Z}$ of integers is countable.
-	\item Show that a set $A$ is countable iff there is an injective mapping of $A$ to $\mathbb{N}$.
-	\item Use an induction argument to complete the proof of part (i) of Corollary 4.
-	\item Prove Corollary 6 in the case of a finite family of countable sets.
-	\item Let both $f:A \to B$ and $g:B \to C$ be injective and surjective. Show that the composition $g \circ f:A \to B$ and the inverse $f^{-1}:B \to A$ are also injective and surjective.
-	\item Use an induction argument to establish the pigeonhole principle.
-	\item Show that $2^{\mathbb{N}}$, the collection of all sets of natural numbers, is uncountable.
+	\item Show that the set $\mathbb{Z}$ of integers is countable.\par
+	There exists a bijection $\phi: \mathbb{Z} \to \mathbb{N}$ with
+	\[ 
+		\phi(x) =
+		\begin{cases} 
+			2x & \text{ if } x > 0, \\
+			-2x+1 & \text{ if } x \le 0.
+		\end{cases}
+	\]
+	\begin{align*}
+		\mathbb{Z} &= \{0,1,-1,2,-2,3,-3,4,-4, \cdots\} \\
+		\mathbb{N} &= \{1,2,3,4,5,6,7,8,9, \cdots\}
+	\end{align*}
+	\item Show that a set $A$ is countable iff there is an injective mapping of $A$ to $\mathbb{N}$.\par
+	$(\implies)$ Suppose $A$ is countable.\par
+	Then either $A$ is equipotent to $\mathbb{N}$, or there is an $n \in \mathbb{N}$ such that $A$ is equipotent to $\{1,2, \cdots, n \}$.
+	In the case $A$ is countably infinite, we have a bijection with $\mathbb{N}$ and thus an injection. In the case $A$ is finite, we have an injection with a subset of $\mathbb{N}$, and thus an injection with $\mathbb{N}$
+	(injection: $f(a)=f(b) \implies a=b$ for $a,b \in A$).
+	\par
+	$(\impliedby)$ Suppose there is an injective mapping of $A$ to $\mathbb{N}$.\par
+	Then there is a bijection from $A$ to some subset $B$ of $\mathbb{N}$.
+	By Theorem 3, every subset of natural numbers is countable, and because $A$ is equipotent to this countable set $B$, then $A$ is countable.
+	\item Use an induction argument to complete the proof of part (i) of Corollary 4.\par
+	(Not an induction argument)\par
+	Consider the function $f:\mathbb{N}^2 \to \mathbb{N}$, where $f(m,n) = 2^m3^n$. 
+	By the Fundamental Theorem of Arithmetic, $2^m3^n = 2^{m'}3^{n'} \implies m=m',n=n'$.
+	Then clearly $f$ is an injection. By problem 17, we see that $\mathbb{N}^2$ is countable.
+	\par
+	For any $k\in \mathbb{N}$ we can construct a function $f:\mathbb{N}^k \to \mathbb{N}$, where we have $n$ primes such that $f(m_1,m_2, \cdots, m_k) = p_1^{m_1}p_2^{m_2} \cdots p_k^{m_k}$.
+	By the fundamental theorem of arithmetic, this is an injection and thus $\mathbb{N}^k$ is countable.
+	\item Prove Corollary 6 in the case of a finite family of countable sets.\par
+	Let $\{S_n\}_{n=1}^k$ be a finite family of countable sets.
+	Then each set $S_n$ is countable, and we can enumerate as follows: $S_n = \{s_{nm} \ | \ m \in \mathbb{N} \}$.
+	Then because there is only a finite number of countable sets, we can construct a function $f: \bigcup_{n=1}^k S_n \to \mathbb{N}$ seeing that 
+	\[
+	\bigcup_{n=1}^k S_n = \{s_{11},s_{21},s_{31},\cdots, s_{k1}, s_{12}, s_{22},s_{32},\cdots,s_{k2},s_{13}, \cdots \}.
+	\]
+	\item Let both $f:A \to B$ and $g:B \to C$ be injective and surjective. Show that the composition $g \circ f:A \to B$ and the inverse $f^{-1}:B \to A$ are also injective and surjective.\par
+	$g \circ f$:\par
+	By surjectivity of $g$, for all $c \in C$, there exists a $b \in B$ such that $g(b)=c$.
+	Then by surjectivity of $f$, there exists an $a \in A$ such that $f(a)=b$.\par
+	Therefore for any $c \in C$:
+	\begin{align*}
+		c & = g(b) && \text{ for some $b \in B$}\\
+		& = g(f(a))&& \text{ for some $a \in A$}\\
+		& =g \circ f (a)
+	\end{align*}
+	Therefore $g \circ f$ is surjective.\par
+	By injectivity of $g$, $g(b)=g(b') \implies b = b'$.\par
+	By injectivity of $f$, $f(a)=f(a') \implies a = a'$.
+	\begin{align*}
+		g \circ f (a) & = g \circ f (a')\\
+		g(f(a)) & = g(f(a')) \\
+		f(a) & = f(a')&& \text{ by injectivity of $g$}\\
+		a & = a'&& \text{ by injectivity of $f$}
+	\end{align*}
+	Therefore $g \circ f$ is injective.
+	\par
+	$f^{-1}$:\par
+	Because $f$ is a function from $A$ to $B$, $f(a) \subseteq B$ is defined for all $a \in A$.
+	That is, for all $a \in A$, there exists a $b \in B$ such that $f^{-1}(b) = a$.
+	Thus $f^{-1}$ is surjective.\par
+	Because $f$ is a function, for each $a \in A$, $f(a)=b$ and $f(a)=b'$ imply $b=b'$. That is, $f^{-1}(b)=f^{-1}(b') \implies b=b'$.
+	Thus $f^{-1}$ is injective.   
+	\item Use an induction argument to establish the pigeonhole principle.\par
+	For $n \in \mathbb{N}$, let $P(n)$ be the assertion that for any $m \in \mathbb{N}$, the set $\{1,2, \cdots, n\}$ is not equipotent to the set $\{1,2, \cdots, n+m\}$.\par
+	$P(1)$: We have the sets $A=\{1\}$ and $B=\{1,2, \cdots, 1+m\}$, for $m \in \mathbb{N}$.
+	In the case $m=1$, $B=\{1,1+1\}=\{1,2\}$, and clearly $A$ is not equipotent to $B$. Clearly $A$ is also not equipotent to $B$ for any other natural number $m>1$.\par
+	Suppose $P(k)$ is true for some $k \in \mathbb{N}$. Then $\{1,2, \cdots, k\}$ is not equipotent to the set $\{1,2, \cdots, k+m\}$, for any $m \in \mathbb{N}$.\par
+	$P(k+1)$: Then clearly $\{1,2, \cdots, k+1\}$ is not equipotent to the set $\{1,2, \cdots, (k+1), \cdots, (k+1)+m\}$, for any $m \in \mathbb{N}$.
+	\item Show that $2^{\mathbb{N}}$, the collection of all sets of natural numbers, is uncountable.\par
+	(Cantor's Theorem: for a set $A$, any function $f:A\to \mathcal{P}(A)$ is not surjective.)
 	\item Show that the Cartesian product of a finite collection of countable sets is countable. Use the preceding theorem to show that $\mathbb{N}^{\mathbb{N}}$, the collection of all mappings of $\mathbb{N}$ into $\mathbb{N}$, is not countable.
-	\item Show that a degenerate interval of real numbers fails to be finite.
+	\item Show that a nondegenerate interval of real numbers fails to be finite.
 	\item Show that any two nondegenerate intervals of real numbers are equipotent.
 	\item Is the set $\mathbb{R} \times \mathbb{R}$ equipotent to $\mathbb{R}$?
 \end{enumerate}
