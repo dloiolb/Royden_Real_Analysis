@@ -696,6 +696,33 @@ Therefore $I$ is not countable.
 
 \section{Open Sets, Closed Sets, and Borel Sets of Real Numbers}
 
+\begin{namedthm*}{The Heine-Borel Theorem}
+Let $F$ be a closed and bounded set of real numbers. Then every open cover of $F$ has a finite subcover. 	
+\end{namedthm*}
+\begin{proof}
+	Let $F$ be the closed, bounded interval $[a,b]$. Let $\mathcal{F}$ be an open cover of $[a,b]$. 
+	Define $E$ to be the set of numbers $x \in [a.b]$ with the property that the interval $[a,x]$ can be covered by a finite number of the sets of $\mathcal{F}$.
+	Since $a\in [a,b] \subseteq \mathcal{F}$ implies that $a$ is in one of the sets $\mathcal{O}' \subseteq \mathcal{F}$ by definition of union, $\mathcal{O}'$ is a finite subcover of $[a,a]=\{a\}$, and thus $a \in E$ and $E$ is nonempty.
+	Since $E \subseteq [a,b] = \{x\ |\ a \le x \le b\}$, $E$ is bounded above by $b$, so by the completeness of $\mathbb{R}$, $E$ has a supremum $c = \sup E$.
+	Because $c \le b$, clearly $c$ belongs to $[a,b]$, and this implies that there is an $\mathcal{O} \subseteq \mathcal{F}$ that contains $c$.
+	Since $\mathcal{O}$ is open, there is an $\epsilon >0$ such that that the interval $(c- \epsilon, c+ \epsilon) \subseteq \mathcal{O}$.
+	Now $c-\epsilon$ is not an upper bound for $E$, and so there must be an $x \in E$ with $c-\epsilon < x$. Because $x \in E$, there exists a finite collection $\{ \mathcal{O}_1, \cdots, \mathcal{O}_k \}$ of sets in $\mathcal{F}$ that covers $[a,x]$.
+	Then clearly the finite collection $\{ \mathcal{O}_1, \cdots, \mathcal{O}_k, \mathcal{O} \}$ covers the interval $[a,c+ \epsilon)$.
+	Therefore $c=b$, otherwise there exists a number $c +\tfrac{1}{2}\epsilon$ that has a finite subcover and $c < c +\tfrac{1}{2}\epsilon$ implies that $c$ is not an upper bound for $E$.
+	Thus $[a,b] \in E$ and $[a,b]$ can be covered by a finite number of sets of $\mathcal{F}$.
+\end{proof}
+
+\begin{namedthm*}{The Heine-Borel Theorem $(\impliedby)$}
+	Let $F$ be a real set such that every open cover of $F$ has a finite subcover. Then $F$ is closed and bounded.
+\end{namedthm*}
+\begin{proof}
+	Let $K$ be a compact subset of a metric space $X$. Proving that $X \setminus K$ is open will show that $K$ is closed.
+	Consider any $p \in X \setminus K$. For a $k \in K$, let $O_k$ and $I_k$ be neighborhoods of $p$ and $k$ respectively, with radius less than $\tfrac{1}{2} d(p,q)$.
+	Because $K$ is compact, there are finitely many points $k_1, \cdots, k_n$ in $K$ such that $K \subseteq I_{k_1} \cup \cdots \cup I_{k_n}$.
+	Let $O = O_{k_1} \cap \cdots \cap O_{k_n}$ so that $O$ is an open neighborhood of $p$ that does not intersect $K$.
+	Then $O \subseteq X \setminus K$ and $X\setminus K$ is open. Therefore $K$ is closed. 
+\end{proof}
+
 \begin{namedthm*}{The Nested Set Theorem}
 Let $\{F_n\}_{n=1}^\infty$ be a descending countable collection of nonempty closed sets of real numbers for which $F_1$ is bounded.
 Then
@@ -730,20 +757,53 @@ This is a contradiction to the assumption that $F_N$ is a nonempty subset of $F_
 	Let $A= \mathbb{Q}$ and $B = \mathbb{Q}^c$. Then $\mathbb{Q} \cap \mathbb{Q}^c = \emptyset$ and $\overline A= \mathbb{R}$ and $\overline B = \mathbb{R}$ so $\mathbb{R} \cap \mathbb{R}= \mathbb{R} \neq \emptyset$.\par
 	\item A point $x$ is called an \textbf{accumulation point} of a set $E$ provided it is a point of closure of $E \setminus \{ x\}.$
 	\begin{enumerate}[label=(\roman*),align=left]
-        \item Show that the set $E'$ of accumulation points of $E$ is a closed set.
-        \item Show that $\overline E = E \cup E'.$
+        \item Show that the set $E'$ of accumulation points of $E$ is a closed set.\par
+        Then for $x \in E'$, every open interval that contains $x$ also contains a point in $E \setminus \{x\}$.\par
+		Suppose $E'$ is not closed. 
+		Then there exists an element $y \notin E'$ such that every open interval that contains $y$ also contains a point $x \in E'$.
+		Then every open interval that contains $x$ contains a point $z \in E \setminus \{x\}$... 
+		It can be shown that $y \in E'$ and so $E'$ contains all its points of closure and is thus closed.
+        \item Show that $\overline E = E \cup E'.$\par
+        $E$ includes all the isolated points not included in $E'$. 
     \end{enumerate}
-	\item A point $x$ is called an \textbf{ isolated point} of a set $E$ provided there is an $r>0$ for which $(x-r,x+r)\cap E = \{x\}.$ Show that if a set $E$ consists of isolated points, then it is countable.
+	\item A point $x$ is called an \textbf{ isolated point} of a set $E$ provided there is an $r>0$ for which $(x-r,x+r)\cap E = \{x\}.$ Show that if a set $E$ consists of isolated points, then it is countable.\par
+	Each singleton set $\{x\}$ can be enumerated.
 	\item A point $x$ is called an \textbf{interior point} of a set $E$ if there is an $r>0$ such that the open interval $(x-r,x+r)$ is contained in $E$. The set of interior points of $E$ is called the \textbf{interior} of $E$ denoted by int $E$. Show that
 	\begin{enumerate}[label=(\roman*),align=left]
-        \item $E$ is open iff $E = \text{ int } E$.
+        \item $E$ is open iff $E = \text{ int } E$.\par
+        $(\implies)$ Suppose $E$ is open.\par
+		Then clearly every point of $E$ is an interior point.
+		\par
+		$(\impliedby)$ Suppose $E = \text{ int } E$.\par
+		Then every point has an open neighborhood contained in $E$, so $E$ is open.
         \item $E$ is dense iff $ \text{ int } (\mathbb{R} \setminus E)= \emptyset$.
     \end{enumerate}
-	\item Show that the nested set theorem is false if $F_1$ is unbounded.
-	\item Show that the assertion of the Heine-Borel Theorem is equivalent to the Completeness Axiom for the real numbers. Show that the assertion of the Nested Set Theorem is equivalent to the Completeness Axiom for the real numbers.
-	\item Show that the collection of Borel sets is the smallest $\sigma$-algebra that contains the closed sets.
-	\item Show that the collection of Borel sets is the smallest $\sigma$-algebra that contains the intervals of the form $[a,b)$, where $a<b.$
-	\item Show that each open set is an $F_{\sigma}$ set.
+	\item Show that the nested set theorem is false if $F_1$ is unbounded.\par
+	The nested set theorem works because the compactness of $F_1$ allows us to reach a contradiction to the fact that the intersection is empty (see the proof above).\par
+	Consider
+	\[
+	\bigcap_{n=1}^\infty [n, \infty) = \emptyset.
+	\]
+	This intersection is empty because for any $x$, there exists an $n \in \mathbb{N}$ such that $x < n$ and thus $x \notin [n,\infty)$.
+	\item Show that the assertion of the Heine-Borel Theorem is equivalent to the Completeness Axiom for the real numbers. Show that the assertion of the Nested Set Theorem is equivalent to the Completeness Axiom for the real numbers.\par
+	The Heine-Borel Theorem States that Closed and bounded sets are compact; that is, every open cover of a closed and bounded set has a finite subcover.
+	If a set $E$ is bounded, then for any open cover $E \subseteq \mathcal{F}$ there exists a finite open subcover $\mathcal{O} \subseteq \mathcal{F}$. 
+	We can consider the intersection of all such $\mathcal{O}$ so that $E \subseteq \bigcap_{\mathcal{O} \subseteq \mathcal{F}} \mathcal{O} \subseteq \mathcal{O}$, and this intersection is the supremum. 
+	\par
+	Clearly the descending sets from the nested set theorem are closed and bounded, so the Heine-Borel Theorem discussed above can be used to imply the Completeness Axiom.
+	\item Show that the collection of Borel sets is the smallest $\sigma$-algebra that contains the closed sets.\par
+	The Borel sets is defined to be the smallest $\sigma$-algebra that contains all the open sets of real numbers.
+	Any sigma-algebra that contains the closed sets contains the open sets by the complement property of a sigma-algebra, so the Borel sets is the smallest sigma-algebra that contains the closed sets as well. 
+	\item Show that the collection of Borel sets is the smallest $\sigma$-algebra that contains the intervals of the form $[a,b)$, where $a<b.$\par
+	Any interval $[a,b)$ can be written in the form
+	\[
+	[a,b) = \bigcup_{n=1}^\infty [a,b-\tfrac{1}{n}]	
+	\] 
+	\item Show that each open set is an $F_{\sigma}$ set.\par
+	Any open set $(a,b)$ can be written in the form
+	\[
+		(a,b) = \bigcup_{n=1}^\infty [a+\tfrac{1}{n},b-\tfrac{1}{n}].	
+	\] 
 \end{enumerate}
 
 \section{Sequences of Real Numbers}
