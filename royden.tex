@@ -661,11 +661,37 @@ Therefore $I$ is not countable.
 	Suppose $P(k)$ is true for some $k \in \mathbb{N}$. Then $\{1,2, \cdots, k\}$ is not equipotent to the set $\{1,2, \cdots, k+m\}$, for any $m \in \mathbb{N}$.\par
 	$P(k+1)$: Then clearly $\{1,2, \cdots, k+1\}$ is not equipotent to the set $\{1,2, \cdots, (k+1), \cdots, (k+1)+m\}$, for any $m \in \mathbb{N}$.
 	\item Show that $2^{\mathbb{N}}$, the collection of all sets of natural numbers, is uncountable.\par
-	(Cantor's Theorem: for a set $A$, any function $f:A\to \mathcal{P}(A)$ is not surjective.)
-	\item Show that the Cartesian product of a finite collection of countable sets is countable. Use the preceding theorem to show that $\mathbb{N}^{\mathbb{N}}$, the collection of all mappings of $\mathbb{N}$ into $\mathbb{N}$, is not countable.
-	\item Show that a nondegenerate interval of real numbers fails to be finite.
-	\item Show that any two nondegenerate intervals of real numbers are equipotent.
-	\item Is the set $\mathbb{R} \times \mathbb{R}$ equipotent to $\mathbb{R}$?
+	(Cantor's Theorem: for a set $A$, any function $f:A\to \mathcal{P}(A)$ is not surjective.)\par
+	Let $f:\mathbb{N}\to \mathcal{P}(\mathbb{N})$ be any map. Let $E = \{n \in \mathbb{N}\ | \ n \notin f(n) \}$. 
+	Then $E$ is a subset of the naturals that is not in the image of $f$, so $f$ is not surjective. 
+	Therefore there is no bijection between $\mathbb{N}$ and  $\mathcal{P}(\mathbb{N})$.
+	\item Show that the Cartesian product of a finite collection of countable sets is countable. Use the preceding theorem to show that $\mathbb{N}^{\mathbb{N}}$, the collection of all mappings of $\mathbb{N}$ into $\mathbb{N}$, is not countable.\par
+	In problem 18, we showed that for any $k \in \mathbb{N}$, the set $\mathbb{N}^k = \mathbb{N} \times \mathbb{N} \times \cdots \times \mathbb{N}$ is countable. 
+	It is then trivial to see that the Cartesian product of any finite collection of countable sets $S_1 \times S_2 \times \cdots \times S_k$ is countable.\par
+	Notation:
+	\[
+		0=\emptyset, 1= \{0\}, 2=\{0,1\}, 3 = \{0,1,2\}, \cdots
+	\]
+	We can let $2^{\mathbb{N}}= \{0,1\}^{\mathbb{N}}$ be the set of functions $f:\mathbb{N} \to \{0,1\}$.\par
+	Then, for any subset $A \subseteq \mathbb{N}$, there exists a function $f \in \{0,1\}^{\mathbb{N}}$ such that 
+	\[
+		f(x) =
+	\begin{cases}
+		1 & \text{if } x \in A,\\
+		0 & \text{if } x \notin A,
+	\end{cases}	
+	\]
+	and we have a bijection between the elements of $\{0,1\}^{\mathbb{N}}$ and the subsets of $\mathbb{N}$ ("Two sets that are equipotent are, from a set-theoretic point of view, indistinguishable").
+	Therefore $2^{\mathbb{N}}= \{0,1\}^{\mathbb{N}}$ can be used to represent the collection of subsets of $\mathbb{N}$.\par
+	Now, because the set of functions $f:\mathbb{N} \to \{0,1\}$ is uncountable, then clearly the set of functions $f:\mathbb{N} \to \mathbb{N} \supseteq \{0,1\}$ is uncountable (including zero in the naturals for notation convenience).
+	\item Show that a nondegenerate interval of real numbers fails to be finite.\par
+	Theorem 7 tells us that a nondegenerate interval of real numbers is uncountable, and thus, finite.	
+	\item Show that any two nondegenerate intervals of real numbers are equipotent.\par
+	We can prove this by showing that any interval is equipotent to the interval $(0,1)$.\par
+	For any bounded interval $(a,b),(a,b],[a,b),[a,b]$, there exists a bijection to $(0,1),(0,1],[0,1),[0,1]$ respectively,
+	of the form $f(x) = \dfrac{1}{b-a}(x-a)$.\par
+	\item Is the set $\mathbb{R} \times \mathbb{R}$ equipotent to $\mathbb{R}$?\par
+	yes (Schr\"oder-Bernstein theorem	)
 \end{enumerate}
 
 \section{Open Sets, Closed Sets, and Borel Sets of Real Numbers}
@@ -691,9 +717,17 @@ This is a contradiction to the assumption that $F_N$ is a nonempty subset of $F_
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{26}
-	\item Is the set of rational numbers open or closed?
-	\item What are the sets of real numbers that are both open and closed?
-	\item Find two sets $A$ and $B$ such that $A \cap B = \emptyset$ and $\overline A \cap \overline B \neq \emptyset.$
+	\item Is the set of rational numbers open or closed?\par
+	The set of rationals is neither open nor closed.
+	The rationals is not open because the irrationals are dense in the rationals; that is, between any two rationals there is an irrational.
+	The rationals is not closed because it does not contain all its limit points; a sequence of rationals can be constructed that converges to an irrational.
+	(Thus we see that the irrationals is neither open nor closed as well.)
+	\item What are the sets of real numbers that are both open and closed?\par
+	It is clear that $\mathbb{R}$ is open, and $\emptyset$ is open (vacuously).
+	Then because the complement of an open set is closed, $\mathbb{R}$ and $\emptyset$ are both closed as well.
+	\item Find two sets $A$ and $B$ such that $A \cap B = \emptyset$ and $\overline A \cap \overline B \neq \emptyset.$\par
+	Let $A= (4,5)$ and $B = (5,20)$. Then $(4,5) \cap (5,20) = \emptyset$ and $\overline A= [4,5]$ and $\overline B = [5,20]$ so $[4,5] \cap [5,20]= \{5\} \neq \emptyset$.\par
+	Let $A= \mathbb{Q}$ and $B = \mathbb{Q}^c$. Then $\mathbb{Q} \cap \mathbb{Q}^c = \emptyset$ and $\overline A= \mathbb{R}$ and $\overline B = \mathbb{R}$ so $\mathbb{R} \cap \mathbb{R}= \mathbb{R} \neq \emptyset$.\par
 	\item A point $x$ is called an \textbf{accumulation point} of a set $E$ provided it is a point of closure of $E \setminus \{ x\}.$
 	\begin{enumerate}[label=(\roman*),align=left]
         \item Show that the set $E'$ of accumulation points of $E$ is a closed set.
