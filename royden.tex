@@ -974,7 +974,12 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 	\item Let $A$ be the set of irrational numbers in the interval $[0,1]$. Prove that $m^*(A)=1$.
 	\item A set of real numbers is said to be a $G_\delta$ set provided it is the intersection of a countable collection of open sets.
 	Show that for any bounded set $E$, there is a $G_\delta$ set $G$ for which
-	\[E\subseteq G \ \text{and}\ m^*(G)=m^*(E).\] 
+	\[E\subseteq G \ \text{and}\ m^*(G)=m^*(E).\]
+	\item Let $B$ be the set of rational numbers in the interval $[0,1]$, and let $\{I_k\}_{k=1}^n$ be a finite collection of open intervals that covers $B$.
+	Prove that $\textstyle \sum_{k=1}^n m^*(I_k) \ge 1$.
+	\item Prove that if $m^*(A)=0$, then $m^*(A\cup B) = m^*(B)$.
+	\item Let $A$ and $B$ be bounded sets for which there is an $\alpha >0$ such that $|a-b| \ge \alpha$ for all $a \in A, b \in B$.
+	Prove that $m^*(A \cup B) = m^*(a)+m^*(B)$.
 \end{enumerate}
 
 
@@ -991,6 +996,46 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \chapter{Lebesgue Integration: Further Topics}
 \chapter{Differentiation and Integration}
 \chapter{The $L^p$ Spaces: Completeness and Approximation}
+
+\section{Normed Linear Spaces}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{0}
+	\item For $f$ in $C[a,b]$, Define
+	\[
+	\| f \|_1 = \int_a^b |f|.	
+	\]
+	Show that this is a norm on $C[a,b]$.
+	Also show that there is no number $c \ge 0$ for which
+	\[
+	\| f \|_{\max}	\le c \| f \|_1 \text{ for all $f$ in $C[a,b]$},
+	\]
+	but there is a $c \ge 0$ for which 
+	\[
+	\| f \|_1	\le c \| f \|_{\max} \text{ for all $f$ in $C[a,b]$}.
+	\]
+	\item Let $X$ be the family of all polynomials with real coefficients defined on $\mathbb{R}$.
+	Show that this is a linear space. For a polynomial $p$, define $\| p\|$ to be the sum of the absolute values of the coefficients of $p$.
+	Is this a norm?
+	\item For $f$ in $L^1[a,b]$, define $\|f\| = \smallint_a^b x^2 |f(x)|dx$.
+	Show that this is a norm on $L^1[a,b]$.
+	\item For $f$ in $L^\infty[a,b]$, show that 
+	\[
+	\| f\|_\infty = \min \biggl \{ M \ \biggl |\ m \{x \in [a,b]\ |\ |f(x)| > M \} =0 \biggr \},
+	\] 
+	and if, furthermore, $f$ is continuous on $[a,b]$, that
+	\[
+	\| f \|_{\infty} = \| f \|_{\max}.	
+	\]
+	\item Show that $\ell^\infty$ and $\ell^1$ are normed linear spaces.
+\end{enumerate}
+
+\section{The Inequalities of Young, H\"older, and Minkowski}
+\section{$L^p$ is Complete: The Riesz-Fischer Theorem}
+\section{Approximation and Separability}
+
 \chapter{The $L^p$ Spaces: Duality and Weak Convergence}
 
 \setcounter{chapter}{0}
