@@ -1,30 +1,30 @@
-Exercise Completion: 1.1-1.4
+Exercise Completion: 1.1-1.4<br />
 
-PART I: Lebesgue Integration for Functions of a Single Real Variable
-Chapter 1: 37/59
-Chapter 2: 0/43
-Chapter 3: 0/31
-Chapter 4: 0/51
-Chapter 5: 0/17
-Chapter 6: 0/71
-Chapter 7: 0/51
-Chapter 8: 0/45
+PART I: Lebesgue Integration for Functions of a Single Real Variable<br />
+Chapter 1: 37/59<br />
+Chapter 2: 0/43<br />
+Chapter 3: 0/31<br />
+Chapter 4: 0/51<br />
+Chapter 5: 0/17<br />
+Chapter 6: 0/71<br />
+Chapter 7: 0/51<br />
+Chapter 8: 0/45<br />
 
-PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces
-Chapter 9: 0/78
-Chapter 10: 0/44
-Chapter 11: 0/56
-Chapter 12: 0/36
-Chapter 13: 0/40
-Chapter 14: 0/70
-Chapter 15: 0/18
-Chapter 16: 0/66
+PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces<br />
+Chapter 9: 0/78<br />
+Chapter 10: 0/44<br />
+Chapter 11: 0/56<br />
+Chapter 12: 0/36<br />
+Chapter 13: 0/40<br />
+Chapter 14: 0/70<br />
+Chapter 15: 0/18<br />
+Chapter 16: 0/66<br />
 
-PART III: Measure and Integration: General Theory
-Chapter 17: 0/36
-Chapter 18: 0/67
-Chapter 19: 0/22
-Chapter 20: 0/55
-Chapter 21: 0/61
-Chapter 22: 0/31
+PART III: Measure and Integration: General Theory<br />
+Chapter 17: 0/36<br />
+Chapter 18: 0/67<br />
+Chapter 19: 0/22<br />
+Chapter 20: 0/55<br />
+Chapter 21: 0/61<br />
+Chapter 22: 0/31<br />
 
