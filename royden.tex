@@ -94,6 +94,9 @@
 \clearpage\pagenumbering{arabic}
 %\pagenumbering{arabic}
 
+
+\include{chapters/test}
+
 \setcounter{chapter}{0}
 \chapter*{I LEBESGUE INTEGRATION FOR FUNCTIONS OF A SINGLE REAL VARIABLE}
 \addcontentsline{toc}{chapter}{I LEBESGUE INTEGRATION FOR FUNCTIONS OF A SINGLE REAL VARIABLE}
@@ -160,767 +163,9 @@ Then $v \cup M$ is linearly independent and $M \subseteq v \cup M$, a contradict
 
 \end{flushleft}
 
-\chapter{The Real Numbers: Sets, Sequences, and Functions}
+\include{chapters/chapter01}
 
-\section{The Field, Positivity, and Completeness Axioms}
-
-\begin{flushleft}
-
-\textbf{The field axioms}\par
-Consider $a,b,c \in \mathbb{R}$:
-\begin{enumerate}
-	\item Closure of Addition: $a+b \in \mathbb{R}$.
-	\item Associativity of Addition: $(a+b)+c = a+(b+c)$.
-	\item Additive Identity: $0+a=a+0=a$.
-	\item Additive Inverse: $(-a)+a=a+(-a)=0$.
-	\item Commutativity of Addition: $a+b=b+a$.
-	\item Closure of Multiplication: $ab \in \mathbb{R}$.
-	\item Associativity of Multiplication: $(ab)c = a(bc)$.
-	\item Distributive Property: $ a(b+c)=ab+ac$.
-	\item Commutativity of Multiplication: $ab=ba$.
-	\item Multiplicative Identity: $1a=a1=a$.
-	\item No Zero Divisors: $ab=0 \implies a=0 \text{ or } b=0$.
-	\item Multiplicative Inverse: $a^{-1}a=aa^{-1}=1$.
-	\item Nontriviality: $1 \neq 0$.
-\end{enumerate}
-\medskip
-
-\textbf{The positivity axioms}\par
-The set of \textbf{positive numbers}, $\mathcal{P}$, has the following two properties:
-\begin{itemize}
-    \item [P1] If $a$ and $b$ are positive, then $ab$ and $a+b$ are both positive.
-    \item [P2] For a real number $a$, exactly one of the three is true: $a$ is positive, $-a$ is positive, $a=0$.	
-\end{itemize}
-
-We call a nonempty set $I$ of real numbers an \textbf{interval} provided for any two points in $I$, all the points that lie between these two points also lie in $I$.
-That is, $\forall x,y \in I, \lambda x + (1-\lambda)y \in I \text{ for } \lambda \in [0,1]$.
-\medskip
-
-\textbf{The completeness axiom}\par
-A nonempty set $E$ of real numbers is said to be \textbf{bounded above} provided there is a real number $b$ such that $x \le b$ for all $x\in E$: the number $b$ is called an \textbf{upper bound} for $E$.
-We can similarly define a set being \textbf{bounded below} and having a \textbf{lower bound}. A set that is bounded above need not have a largest member.
-\begin{namedthm*}{The Completeness Axiom}
-Let $E$ be a nonempty set of real numbers that is bounded above. The among the set of upper bounds for $E$ there is a smallest, or least, upper bound.
-(This least upper bound is called the \textbf{supremum} of $E$. Also, it can be shown that any nonempty set $E$ that is bounded below has a greatest lower bound, called the \textbf{infimum} of $E$).	
-\end{namedthm*}
-
-\medskip
-\textbf{The extended real numbers}\par
-The extended real numbers: $\mathbb{R} \cup \{-\infty,\infty\}$\par
-Every set of real numbers has a supremum and infimum that belongs to the extended real numbers.
-
-\end{flushleft}
-
-\begin{center}
-	\textbf{PROBLEMS}
-\end{center}
-\begin{enumerate}
-	\setcounter{enumi}{0}
-	\item For $a\neq 0$ and $a\neq 0$, show that $(ab)^{-1} = a^{-1}b^{-1}$.\par
-
-		\begin{align*}
-			(ab)(ab)^{-1} & = 1 && \tag*{by multiplicative inverse}\\
-			a(b(ab)^{-1}) & = 1 && \tag*{by associativity of multiplication} \\
-			a^{-1}a(b(ab)^{-1}) & = a^{-1}1 \\
-			1(b(ab)^{-1}) & = a^{-1}1 && \tag*{by multiplicative inverse} \\
-			b(ab)^{-1} & = a^{-1} && \tag*{by multiplicative identity} \\
-			b^{-1}b(ab)^{-1} & = b^{-1}a^{-1} \\
-			1(ab)^{-1} & = b^{-1}a^{-1} && \tag*{by multiplicative inverse} \\
-			(ab)^{-1} & = b^{-1}a^{-1} && \tag*{by multiplicative identity} \\
-			(ab)^{-1} & = a^{-1}b^{-1} && \tag*{by commutativity of multiplication} \\
-		\end{align*}
-
-	\item Verify the following:
-	\begin{enumerate}[label=(\roman*),align=left]
-        \item For each real number $a\neq 0$, $a^2>0$. In particular, $1>0$ since $1 \neq 0$ and $1=1^2$.\par
-        By positivity axiom P2, since $a\neq 0$, either $a$ is positive or $-a$ is positive.\par
-		In the case $a$ is positive, $a^2$ is positive by positivity axiom P1.\par
-		In the case $-a$ is positive, $(-a)(-a)$ is positive by P1.
-		\begin{align*}
-			(-a)(-a) & = (-a)(-a) + a(0) && \tag*{by additive identity}\\
-			& = (-a)(-a) + a(-a+a) && \tag*{by additive inverse}\\
-			& = (-a)(-a) + a(-a) + a(a) && \tag*{by distributive property} \\
-			& = (-a + a)(-a) + a^2 && \tag*{by distributive property} \\
-			& = 0(-a) + a^2 &&\tag*{by additive inverse} \\
-			& = a^2 &&\tag*{by additive identity}
-		\end{align*}
-		Therefore $a^2$ is positive by equality.
-        \item For each positive number $a$, its multiplicative inverse  $a^{-1}$ also is positive.\par
-        The multiplication of two positive numbers is positive by positivity axiom P1.\par
-		The multiplication of two non-positive numbers is positive: by reformulating the previous result from (i), we can see $0 < (-a)(-b) = ab$ for $a,b \neq 0$. \par
-		The multiplication of a positive number and a non-positive number is not positive. 
-		To see this, suppose $a$ is positive and $b$ is not positive, but $ab$ is positive. By P1 and P2, $a(-b)$ is also positive.
-		By P1, $ab + a(-b)$ is positive. However,
-		\[
-		ab + a(-b) = a(b-b) = a(0) = 0.
-		\]
-		This is a contradiction to P2. Therefore $ab$ is not positive.
-		\par
-		The result from (i) shows that $1$ is positive. By multiplicative inverse, $aa^{-1} = 1 > 0$. Therefore $a^{-1}$ must be positive because $a$ is positive.
-        \item If $a>b$, then \[ ac >bc \text{ if } c>0 \text{ and } ac < bc \text{ if } c<0. \]
-        Proof that $a(-1)=-a$ for a real number $a$:
-		\[a+(-1)a = 1a+(-1)a = (1+-1)a = 0a = 0.\]		
-		$a>b$ implies that $a-b$ is positive.\par
-		If $c$ is positive, then $(a-b)c = ac-bc$ is positive, and $ac>bc$.\par
-		If $c$ is not positive, then $(a-b)c = ac-bc$ is not positive, and $-(ac-bc) = bc-ac$ is positive, so $bc>ac$.\par
-    \end{enumerate}
-	\item For a nonempty set of real numbers $E$, show that $\inf E = \sup E$ iff $E$ consists of a single point.\par
-	$(\implies)$ Suppose $\inf E = \sup E$.\par
-	Then $\inf E \le x \le \sup E$ for all $x\in E$. But this implies $x = \inf E = \sup E$ for all $x\in E$, so $E$ consists of the single point $x$.\par
-	$(\impliedby)$ Suppose $E={x}$ is a singleton set.\par
-	Clearly $x$ is an upper bound and a lower bound for $E$, as $x\le x$. 
-	By completeness of the reals, there exists $\sup E$ and $\inf E$ s.t. $x \le \inf E \le x \le \sup E \le x$, as $\inf E$ is the greatest lower bound, and $\sup E$ is the least upper bound.
-	Therefore $\inf E = \sup E$.
-	\item Let $a$ and $b$ be real numbers.
-	\begin{enumerate}[label=(\roman*),align=left]
-        \item Show that if $ab = 0$, then $a=0$ or $b=0$.\par
-        Contrapositive: Let $a\neq0$ and $b\neq0$. In 2.(ii), it was shown that the multiplication of two nonzero numbers is either positive or not positive. Therefore $ab\neq 0$.
-        \item Verify that $a^2 -b^2 = (a-b)(a+b)$ and conclude from part (i) that if $a^2 = b^2$, then $a=b$ or $a=-b$.\par
-        \begin{align*}
-			(a-b)(a+b) & = (a-b)(a) + (a-b)(b) && \tag*{by distributive property}\\
-			& = (a)(a)+(-b)(a) + (a)(b)+(-b)(b) && \tag*{by distributive property}\\
-			& = (a)(a)+(-b+b)(a) +(-b)(b) && \tag*{by distributive property}\\
-			& = (a)(a) +(-b)(b) && \tag*{by additive inverse}\\
-			& = a^2 - b^2 
-		\end{align*}
-		Suppose $a^2=b^2$. Then $(a-b)(a+b)=a^2-b^2=0$, and by (i), $(a-b)=0 \implies a=b$ or $(a+b)=0 \implies a=-b$.
-        \item Let $c$ be a positive real number. Define $E = \{ x \in \mathbb{R} \ |\  x^2 < c\}$. Verify that $E$ is nonempty and bounded above.
-		Define $x_0 = \sup E$. Show that $x_0^2 = c$. Use part (ii) to show that there is a unique $x>0$ for which $x^2=c$. It is denoted by $\sqrt{c}$.\par
-		We can consider $0\in \mathbb{R}$. $0^2=0<c$, so $0\in E$ and $E$ is nonempty. Also, $c+1$ is a real number and an upper bound for $E$; thus by the completeness axiom, $E$ has a supremum, say $x_0$.
-		We can see that for any upper bound $b$ of $E$, $x \le x_0 \le b$ for all $x \in E$. Then $x^2 \le x_0^2 \le b^2$ implies $x_0^2=c$, else $x_0$ is not the supremum. \par
-		Suppose there exists $x_1,x_2 > 0$ such that $x_1^2 = c$ and $x_2^2 = c$. This implies $x_1^2 = x_2^2$, and by part (ii), $x_1 = x_2$ or $x_1 = -x_2$. Because $x_1,x_2$ are positive, $x_1 = x_2$.
-    \end{enumerate}
-	\item Let $a,b,c$ be real numbers s.t. $a\neq 0$ and consider the quadratic equation \[ ax^2+bx+c=0, x \in \mathbb{R}.\]
-	\begin{enumerate}[label=(\roman*),align=left]
-        \item Suppose $b^2 - 4ac >0$. Use the Field Axioms and the preceding problem to complete the square and thereby show that this equation has exactly two solutions given by
-		\[  x = \dfrac{-b + \sqrt{b^2-4ac}}{2a} \ \text{and}\  x = \dfrac{-b - \sqrt{b^2-4ac}}{2a}. \]
-		\begin{align*}
-			ax^2+bx+c & = 0 \\
-			4a(ax^2+bx+c) & = 4a(0) \\
-			4a^2x^2+4abx+4ac & = 0 && \tag*{by distributive property}\\
-			4a^2x^2+4abx+4ac+b^2-b^2 & = 0 && \tag*{by additive inverse}\\
-			4a^2x^2+4abx+b^2 & = b^2-4ac \\
-			(2ax+b)^2 & = b^2-4ac 
-		\end{align*}
-		By 4(iii), because $b^2 - 4ac >0$, there is a unique $y>0$ for which $y^2 = b^2-4ac$. It is denoted by $y = \sqrt{b^2-4ac}$.\par
-		By 4(ii), $(2ax+b)^2 = b^2-4ac = y^2$ implies $(2ax+b) = \sqrt{b^2-4ac} = y$ or $(2ax+b) = -\sqrt{b^2-4ac} = -y.$\par
-		\begin{align*}
-			2ax+b & = \pm \sqrt{b^2-4ac} \\
-			2ax & = -b \pm \sqrt{b^2-4ac} \\
-			x & = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}.
-		\end{align*}
-	\end{enumerate}
-	\item Use the Completeness Axiom to show that every nonempty set of real numbers that is bounded below has an infimum and that
-	\[\inf E =-\sup \{-x \ |\ x \in E\}.\]
-	Let $E$ be a set that is bounded below; that is, there exists $l\in \mathbb{R}$ such that $l \le x$ for all $x\in E$.
-	Then $-l \ge -x$ for all $x \in E$, and $-l$ is an upper bound for $-E=\{-x \ | \ x\in E\}$. 
-	Therefore the set $-E$ is bounded above, and by the completeness axiom, there exists a least upper bound $c= \sup (-E)$.
-	Then for any upper bound $u$ of $-E$, $u \ge c \ge -x$ for all $x \in E.$
-	Then $-u$ is a lower bound of $E$, and $-u \le c \le x$ for all $x \in E$, and $c$ is the greatest lower bound and thus infimum of $E$.
-	\item For real numbers $a$ and $b$, verify the following:
-	\begin{enumerate}[label=(\roman*),align=left]
-		\item $|ab| = |a||b|.$\par
-		We have 
-		\[ 
-		|ab| =
-		\begin{cases} 
-			ab & \text{ if } ab \ge 0, \\
-			-(ab) & \text{ if } ab < 0.
-		\end{cases}
-		\]
-		The case where either $a$ or $b$ are zero is trivial.
-		In problem 2(ii), it was shown that $ab>0$ if $a,b$ are the same sign, and $ab<0$ if $a,b$ are opposite signs.\par
-		Case $a,b>0$: Then $ab>0$ so $|ab| = ab$, and $|a| = a$ and $|b|=b$ so $|a||b| = ab$.\par
-		Case $a,b<0$: Then $ab>0$ so $|ab| = ab$, and $|a| = -a$ and $|b|=-b$ so $|a||b| = (-a)(-b)=ab$.\par
-		Case $a<0,b>0$: Then $ab<0$ so $|ab| = -(ab) = (-1)ab$, and $|a| = -a = (-1)a$ and $|b|=b$ so $|a||b| = (-1)ab$.
-		\item $|a+b| \le |a|+|b|.$\par
-		The case where both $a,b=0$ is trivial.\par
-		Case $a,b>0$: Then $a+b > 0 $, so $|a+b| = a+b$ and $|a|+|b| = a+ b$.\par
-		Case $a>0,b=0$: Then $a+b = a+0=a > 0 $, so $|a+b| = a$ and $|a|+|b| = a+ 0 = a$.\par
-		Case $a<0,b=0$: Then $a+b = a +0=a<0 $, so $|a+b| = -a$ and $|a|+|b| = -a +0 = -a$.\par
-		Case $a,b<0$: Then $a+b < 0 $, so $|a+b| = -(a+b) = -a-b$ and $|a|+|b| = -a- b$.\par
-		That is, equality holds except for the case where $a,b$ are nonzero opposite signs:\par
-		Case $a>0,b<0$: $|a+b| \in \{a+b, -(a+b)\}$.\par
-		$b<0<-b \implies a+b<a<a-b$, and $-a<0<a \implies -(a+b)=-a-b<-b<a-b$.\par
-		$|a|+|b| = a- b$, so $|a+b| < |a|+|b|$.
-		\item For $\epsilon >0,$
-		\[ |x-a| < \epsilon \text{  iff  } a - \epsilon < x < a + \epsilon.\]
-		We have
-		\[ 
-		|x-a| =
-		\begin{cases} 
-			x-a & \text{ if } x-a \ge 0, \\
-			-(x-a) & \text{ if } x-a < 0.
-		\end{cases}
-		\]
-		$(\implies)$ Suppose $|x-a| < \epsilon$.\par
-		Then $x-a < \epsilon$ and $a-x < \epsilon$.\par
-		Then $x< a+\epsilon$ and $a-\epsilon<x$.\par
-		$(\impliedby)$ Suppose $a - \epsilon < x < a + \epsilon$.\par
-		Then
-		\begin{align*}
-		a - \epsilon-a &< x-a < a + \epsilon-a \\
-		- \epsilon &< x-a < \epsilon
-		\end{align*}
-		So $x-a < \epsilon$ and $- \epsilon < x-a \implies -(x-a)< \epsilon$, so $|x-a| < \epsilon$.
-	\end{enumerate}
-\end{enumerate}
-
-\section{The Natural and Rational Numbers}
-\begin{flushleft}
-
-\begin{namedthm*}{Definition}
-	A set $E$ of real numbers is said to be \textbf{inductive} provided it contains 1 and if the number $x$ belongs to $E$, the number $x+1$ also belongs to $E$.
-\end{namedthm*}
-
-The set of \textbf{natural numbers}, denoted by $\mathbb{N}$, is defined to be the intersection of all inductive subsets of $\mathbb{R}$. 
-
-\begin{namedthm*}{Theorem 1}
-	Every nonempty set of natural numbers has a smallest member.
-\end{namedthm*}
-\begin{proof}
-	Let $E$ be a nonempty set of natural numbers. Since the set $\{x\in \mathbb{R}\ |\ x \ge 1 \}$ is an inductive set, by definition of intersection, $\mathbb{N} \subseteq \{x\in \mathbb{R}\ |\ x \ge 1 \}$, and the natural numbers are bounded below by $1$.
-	Therefore $E$ is bounded below by $1$. By the Completeness Axiom, $E$ has an infimum; let $c=\inf E$.
-	Since $c+1$ is not a lower bound for $E$, there is an $m \in E$ for which $m < c+1$.
-	We claim that $m$ is the smallest member of $E$. Otherwise, there is an $n\in E$ for which $n<m$. Since $n \in E$, $c\le n$. Thus $c \le n < m < c+1$ and therefore $m-n<1$.
-	Therefore the natural number $m$ belongs to the interval $(n,n+1)$. However, an induction argument shows that $(n, n+1) \cap \mathbb{N} = \emptyset$ (Problem 8). 
-	This is a contradiction to $m \in E$. Therefore $m$ is the smallest member of $E$.
-\end{proof}
-
-\begin{namedthm*}{Archimedean Property}
-	For each pair of positive real numbers $a$ and $b$, there is a natural number $n$ for which $na>b$. This can be reformulated: for each positive real number $\epsilon$, there is a natural number $n$ for which $\dfrac{1}{n} < \epsilon$.
-\end{namedthm*}
-
-The set of \textbf{integers}, denoted $\mathbb{Z}$, is defined to be the set of numbers consisting of the natural numbers, their negatives, and zero.
-\par
-\medskip
-Consider the number $2$. From problem 4(iii), there is a unique $x>0$ for which $x^2=2$. It is denoted by $\sqrt{2}$. This number is not rational.
-Suppose that $x$ is rational: then there exist $p,q \in \mathbb{Z}$ such that $(\dfrac{p}{q})^2=2$. Then $p^2=2q^2$. 
-By the unique prime factorizations of $p$ and $q$, $p^2$ is divisible by $2^{2k}$ for some $k \in \mathbb{Z}_{\ge 0}$, while $2q^2$ is divisible by $2 \cdot 2^{2j} = 2^{2j+1}$ for some $j \in \mathbb{Z}_{\ge 0}$.
-$2^{2k} \neq 2^{2j+1}$ for any combinations of $k,j$ so $p^2=2q^2$ is not possible, and $\sqrt{2}$ is not rational.
-
-\begin{namedthm*}{Definition}
-A set $E$ of real numbers is said to be \textbf{dense} in $\mathbb{R}$ provided that between any two real numbers there lies a member of $E$.	
-\end{namedthm*}
-
-\begin{namedthm*}{Theorem 2}
-The rational numbers are dense in $\mathbb{R}$.	
-\end{namedthm*}
-\begin{proof}
-Let $a,b \in \mathbb{R}$ with $a<b$.\par
-Case $a>0$:\par
-By the Archimedean Property, for $(b-a)>0$, there exists $q \in \mathbb{N}$ for which $\dfrac{1}{q} < b-a$. \par
-Again by the Archimedean Property, for $b,\dfrac{1}{q}>0$, there exists $n \in \mathbb{N}$ for which $n(\dfrac{1}{q})>b$.\par
-Therefore the set $S=\{n \in \mathbb{N} \ |\ \dfrac{n}{q} \ge b \}$ is nonempty. Because $S$ is a set of natural numbers, by Theorem 1, $S$ has a smallest member $p$.
-Noticing $\dfrac{1}{q} < b-a < b$, we see that $1 \notin S$ and $p>1$. Therefore $p-1$ is a natural number (Problem 9).
-Because $p$ is the smallest member of $S$, $p-1 \notin S$ and $\dfrac{(p-1)}{q} < b$.
-Also, 
-\[
-a = b-(b-a) < \dfrac{p}{q} - (\dfrac{1}{q}) = \dfrac{(p-1)}{q}.
-\]
-Therefore the rational number $\dfrac{(p-1)}{q}$ lies between $a$ and $b$.\par
-Case $a<0$:\par
-By the Archimedean Property, for $1,-a>0$, there exists $n \in \mathbb{N}$ for which $n(1) > -a$, which implies $n+a>0$, and $b>a$ implies $n+b>n+a>0$.
-Then we can use the first case to show that there exists a rational number $r$ such that $n+a<r<n+b$. Therefore the rational number $r-n$ lies between $a$ and $b$.
-\end{proof}
-
-\end{flushleft}
-
-\begin{center}
-	\textbf{PROBLEMS}
-\end{center}
-\begin{enumerate}
-	\setcounter{enumi}{7}
-	\item Use an induction argument to show that for each natural number $n$, the interval $(n, n+1)$ fails to contain any natural number.\par
-	For $n \in \mathbb{N}$, let $P(n)$ be the assertion that $(n, n+1) \cap \mathbb{N} = \emptyset$.\par
-	$P(1)$: $(1, 2)=\{x\ |\ 1<x<2\}$. Suppose there exists a natural number $q \in (1, 2)$. Then $q>1$ and by problem 9, $q-1$ is a natural number. 
-	However, $1<q<2 \implies 0<q-1<1$, which is a contradiction to the fact that the natural numbers are bounded below by $1$ (Theorem 1). Therefore there are no natural numbers in $(1, 2)$.\par
-	Suppose $P(k)$ is true for some natural number $k$.\par
-	$P(k+1)$: Suppose there exists a natural number $p \in (k+1, (k+1)+1)$; that is, $k+1<p<k+2$.\par
-	Case $p=1$: then $k+1<1<k+2$. but $k \in \mathbb{N}$ so $k+1 >1$. Thus $p=1$ is not possible.\par
-	Case $p>1$: then by problem 9, $p-1 \in \mathbb{N}$, so $k+1<p<k+2 \implies k<p-1<k+1$. This is a contradiction to $P(k)$, the assumption that there are no natural numbers between $(k,k+1)$.
-	Therefore $P(k+1)$ is true.
-	\item Use an induction argument to show that if $n>1$ is a natural number, then $n-1$ also is a natural number. The use another induction argument to show that if $m$ and $n$ are natural numbers with $n>m$, then $n-m$ is a natural number.\par
-	For $n \in \mathbb{N}$, let $P(n)$ be the assertion that $n=1$ or $n-1 \in \mathbb{N}$.\par
-	$P(1)$: $1=1$, true.\par
-	Suppose $P(k)$ is true for some $k \in \mathbb{N}$.\par
-	$P(k+1)$: $(k+1)-1 = k \in \mathbb{N}$, true.\par
-	\medskip
-	For $n \in \mathbb{N}$, let $Q(n)$ be the assertion that for all $m \in \mathbb{N}$ such that $n>m$, then $n-m \in \mathbb{N}$.\par
-	$Q(1)$: true trivially, because there are no natural numbers less than $1$.\par
-	Suppose $Q(k)$ is true for some $k \in \mathbb{N}$; that is, for all $m \in \mathbb{N}$ such that $k>m$, then $k-m \in \mathbb{N}.$\par
-	$Q(k+1)$: For all the $m$ from $Q(k)$, we have $(k+1)>k>m$.\par
-	We want to show that $(k+1)-m \in \mathbb{N}$.\par
-	This is clearly true for $m=1$ because $(k+1)-1 = k \in \mathbb{N}$. 
-	Otherwise, $m>1$, so by $P(m)$, $m-1 \in \mathbb{N}$ and $(k+1)-m = k -(m-1)$.
-	$Q(k)$ is true tells us that because $(m-1) \in \mathbb{N}$ and $k>m>m-1$, then $k-(m-1) \in \mathbb{N}$.
-	Therefore $Q(k+1)$ is true.
-	\item Show that for any real number $r$, there is exactly one integer in the interval $[r,r+1)$.\par
-	This is trivial if $r \in \mathbb{Z}$.\par
-	Consider the smallest integer $p$ less than $[r,r+1)$.
-	Then $p<r<r+1$ (and $r<p+1$, because $r=p+1 \implies r \in \mathbb{Z}$ and $r>p+1 \implies p$ is not the smallest integer less than $[r,r+1)$), therefore $r<p+1<r+1$. Because the integers are inductive, $p+1 \in \mathbb{Z}$.\par
-	To show that there is not more than one integer between $[r,r+1)$:
-	let $q$ be a natural number such that $r \le q < r+1$. Then $q-1 < r \le q$ and $q< r+1 \le q+1$. 
-	From problem 8, we see that there are no integers between $(q-1,q)$ and $(q,q+1)$, 
-	so there is only one integer in $(q-1,q)\cup q \cup (q,q+1) \supseteq [r,r+1)$.
-	\item Show that any nonempty set of integers that is bounded above has a largest member.\par
-	Let $E$ be a nonempty set of integers that is bounded above. By the completeness axiom, there exists $c = \sup E$. 
-	That is, $x\le c$ for all $x \in E$. Then $c-1 < z \le c$ for some $z \in E$ because $c-1$ is not an upper bound of $E$.
-	Suppose $c$ is not in $E$. Then $c-1 < z < c$. 
-	This implies that $c-1 < z < w \le c$ for some $w \in E$ because $z$ is not an upper bound of E.
-	But then there exists two integers in the interval $(c-1,c]$, which is a contradiction to problem 10.
-	Therefore $c$ is an element of $E$, and it is the largest member.
-	\item Show that the irrational numbers are dense in $\mathbb{R}$.\par
-	Choose any two real numbers $a,b$ and any irrational number $z$. Then $\dfrac{a}{z},\dfrac{b}{z}$ are real numbers. 
-	By density of the rationals in $\mathbb{R}$, there exists a rational $r$ such that $\dfrac{a}{z}<r<\dfrac{b}{z}$. This implies $a<rz<b$, where $rz$ is an irrational number.\par
-	Proof that $rz$ is irrational:\par
-	Let $r = \dfrac{p}{q}$ and suppose that $rz$ is rational; then $rz = \dfrac{m}{n}$.
-	\begin{align*}
-		\dfrac{p}{q}z &= \dfrac{m}{n}\\
-		z &=\dfrac{m}{n} \dfrac{q}{p}\\
-		z &= \dfrac{mq}{np}
-	\end{align*}
-	Then $z$ is rational, a contradiction.
-	\item Show that each real number is the supremum of a set of rational numbers and also the supremum of a set of irrational numbers.\par
-	Choose any real number $a$. Let $S=\{ r \in \mathbb{Q}\ |\ r\le a\}$.
-	Then $a$ is an upper bound for this set. To show that $a$ is the supremum, suppose by contradiction that it is not.
-	Then there exists $c \in \mathbb{R}$ such that $r \le c < a$. 
-	However, the rational numbers are dense in $\mathbb{R}$, so there exists a rational between $c$ and $a$, a contradiction to the assumption that $c$ is an upper bound to $S$. 
-	\par
-	The same argument can easily be shown for the irrational numbers.
-	\item Show that if $r>0$, then, for each natural number $n$, $(1+r)^n \ge 1+n \cdot r$.\par
-	Let $r>0$.\par
-	For $n \in \mathbb{N}$, let $P(n)$ be the assertion that $(1+r)^n \ge 1+n \cdot r$.\par
-	$P(1)$: $(1+r)^1 = 1+1 \cdot r$, true.\par
-	Suppose $P(k)$ is true for some $k \in \mathbb{N}$. Then $(1+r)^k \ge 1+k \cdot r$. \par
-	$P(k+1)$:\par
-	$(1+r)^{k+1} = (1+r)^k(1+r) \ge (1+kr)(1+r) = 1+ kr + r +kr^2 > 1+ kr + r = 1+(k+1) \cdot r$.
-	\item Use induction arguments to prove that for every natural number $n$,
-	\begin{enumerate}[label=(\roman*),align=left]
-        \item \[ \sum_{j=1}^n j^2 = \dfrac{n(n+1)(2n+1)}{6}, \]
-        $P(1)$: $\sum_{j=1}^1 j^2 = 1 = \dfrac{1(1+1)(2+1)}{6}$.\par
-		Suppose $P(k)$ is true for $k \in \mathbb{N}$.\par
-		$P(k+1)$: 
-		\begin{align*}
-			\sum_{j=1}^{k+1} j^2 &= \sum_{j=1}^{k} j^2 + (k+1)^2 \\
-			&= \dfrac{k(k+1)(2k+1)}{6} + (k+1)^2\\
-			& = \dfrac{k(2k^2+k+2k+1)}{6} + \dfrac{6(k^2+2k+1)}{6} \\
-			& = \dfrac{(2k^3+k^2+2k^2+k)+(6k^2+12k+6)}{6} \\
-			&= \dfrac{2k^3+9k^2+13k+6}{6} \\
-			&= \dfrac{(k+1)(2k^2+7k+6)}{6} \\
-			&= \dfrac{(k+1)(k+2)(2(k+1)+1)}{6}.
-		\end{align*}
-        \item \[ 1^3 + 2^3 + \cdots + n^3 = (1+2+\cdots +n)^2, \]
-        $P(1)$: $a^3 = 1 = (1)^3$.\par
-		Suppose $P(k)$ is true for $k \in \mathbb{N}$.\par
-		$P(k+1)$: 
-		\begin{align*}
-			1^3 + 2^3 + \cdots + (k+1)^3 &= 1^3 + 2^3 + \cdots + k^3 + (k+1)^3 \\
-			&= (1+2+\cdots +k)^2 + (k+1)^3 \\
-			&= \biggl (\dfrac{k(k+1)}{2} \biggr)^2 + (k+1)^3 \\
-			&= \dfrac{k^2(k+1)^2}{4} + \dfrac{4(k+1)^3}{4} \\
-			&= \dfrac{k^2(k+1)^2+(4k+4)(k+1)^2}{4} \\
-			&= \dfrac{(k^2+4k+4)(k+1)^2}{4} \\
-			&= \dfrac{(k+2)^2(k+1)^2}{2^2} \\
-			&= \biggl (\dfrac{(k+2)(k+1)}{2} \biggr )^2 \\
-			&= \biggl (\dfrac{((k+1)+1)(k+1)}{2} \biggr )^2 \\
-			&= \biggl (1+2+ \cdots + (k+1) \biggr )^2.
-		\end{align*}
-        \item \[ 1+r+\cdots +r^n = \dfrac{1-r^{n+1}}{1-r} \text{ if } r \neq 1.\]
-        $P(1)$: $1+r^1 = \dfrac{(1+r)(1-r)}{1-r} = \dfrac{1-r^2}{1-r}$.\par
-		Suppose $P(k)$ is true for $k \in \mathbb{N}$.\par
-		$P(k+1)$: 
-		\begin{align*}
-			1+r+\cdots +r^{k+1} &= 1+r+\cdots + r^k +r^{k+1} \\
-			&= \dfrac{1-r^{k+1}}{1-r} +r^{k+1} \\
-			&= \dfrac{1-r^{k+1}}{1-r} +\dfrac{(1-r)r^{k+1}}{1-r} \\
-			&= \dfrac{1-r^{k+1} + r^{k+1} - r^{(k+1)+1} }{1-r} \\
-			&= \dfrac{1 - r^{(k+1)+1} }{1-r}.
-		\end{align*}
-    \end{enumerate}
-\end{enumerate}
-
-\section{Countable and Uncountable Sets}
-
-\begin{flushleft}
-
-Two sets $A$ and $B$ are \textbf{equipotent} provided there exists a bijection between them.\par
-A set $E$ is \textbf{countable} if it is equipotent to a set of natural numbers.\par
-For a countably infinite set $X$, we say that $\{x_n \ |\ n \in \mathbb{N} \}$ is an \textbf{enumeration} of $X$ provided
-\[
-	X = \{x_n \ |\ n \in \mathbb{N} \} \ \text{ and }\ x_n \neq x_m \ \text{ if }\ n \neq m. 
-\]
-\par
-\medskip
-\begin{namedthm*}{Theorem 3}
-	A subset of a countable set is countable. In particular, every set of natural numbers is countable.
-\end{namedthm*}
-\begin{namedthm*}{Corollary 4}
-	The following sets are countably infinite:
-	\begin{enumerate}[label=(\roman*),align=left]
-		\item For each natural numbers $n$, the Cartesian product $\mathbb{N}^n = \mathbb{N} \times \cdots \times \mathbb{N}$.
-		\item The set of natural numbers $\mathbb{Q}$.
-	\end{enumerate}
-\end{namedthm*}
-\par
-\medskip
-The rationals are countable: 
-$\mathbb{Q} = \{0,\dfrac{1}{1},-\dfrac{1}{1},\dfrac{1}{2},-\dfrac{1}{2},\dfrac{2}{1},-\dfrac{2}{1}, \dfrac{3}{1}, -\dfrac{3}{1},\dfrac{1}{3},-\dfrac{1}{3},\dfrac{1}{4},-\dfrac{1}{4},\dfrac{2}{3},-\dfrac{2}{3},\cdots \}$.
-\par
-\medskip
-\begin{namedthm*}{Corollary 6}
-The union of a countable collection of countable sets is countable.
-\end{namedthm*}
-An interval of real numbers is called degenerate if it is empty or contains a single member.
-\begin{namedthm*}{Theorem 7}
-A nondegenerate interval of real numbers is uncountable.	
-\end{namedthm*}
-\begin{proof}
-Let $I$ be a nondegenerate interval of real numbers. Clearly $I$ is not finite. Suppose $I$ is countably infinite.
-Let $\{x_n \ |\ n \in \mathbb{N} \}$ be an enumeration of $I$. 
-For each $n \in \mathbb{N}$, choose a nondegenerate compact subinterval $[a_n,b_n] \subseteq I$ such that $x_n \notin [a_n,b_n]$. 
-Let the set of such intervals $\{[a_n,b_n]\}_{n=1}^\infty$ be descending: $[a_{n+1},b_{n+1}] \subseteq [a_n,b_n]$ (That is, $a_n \le a_{n+1}<b_{n+1}\le b_n$.)
-Now, the nonempty set $E = \{a_n \ |\ n \in \mathbb{N} \}$ is bounded above by $b_1$.
-Then the Completeness Axiom implies that $E$ has a supremum, say $x^* = \sup E$. 
-Then for each $n$, $a_n \le x^* \le b_n$ because $x^*$ is the supremum of $E$ and each $b_n$ is an upper bound for $E$.
-Therefore $x^*$ belongs to $[a_n,b_n]$ for each $n$.
-But then $x^*$ is an element of $I$ and thus has an index $n_0 \in \mathbb{N}$ such that $x^* = x_{n_0}$. But $x^* \in [a_{n_0},b_{n_0}]$, a contradiction.
-Therefore $I$ is not countable.
-\end{proof}
-
-\end{flushleft}
-
-\begin{center}
-	\textbf{PROBLEMS}
-\end{center}
-\begin{enumerate}
-	\setcounter{enumi}{15}
-	\item Show that the set $\mathbb{Z}$ of integers is countable.\par
-	There exists a bijection $\phi: \mathbb{Z} \to \mathbb{N}$ with
-	\[ 
-		\phi(x) =
-		\begin{cases} 
-			2x & \text{ if } x > 0, \\
-			-2x+1 & \text{ if } x \le 0.
-		\end{cases}
-	\]
-	\begin{align*}
-		\mathbb{Z} &= \{0,1,-1,2,-2,3,-3,4,-4, \cdots\} \\
-		\mathbb{N} &= \{1,2,3,4,5,6,7,8,9, \cdots\}
-	\end{align*}
-	\item Show that a set $A$ is countable iff there is an injective mapping of $A$ to $\mathbb{N}$.\par
-	$(\implies)$ Suppose $A$ is countable.\par
-	Then either $A$ is equipotent to $\mathbb{N}$, or there is an $n \in \mathbb{N}$ such that $A$ is equipotent to $\{1,2, \cdots, n \}$.
-	In the case $A$ is countably infinite, we have a bijection with $\mathbb{N}$ and thus an injection. In the case $A$ is finite, we have an injection with a subset of $\mathbb{N}$, and thus an injection with $\mathbb{N}$
-	(injection: $f(a)=f(b) \implies a=b$ for $a,b \in A$).
-	\par
-	$(\impliedby)$ Suppose there is an injective mapping of $A$ to $\mathbb{N}$.\par
-	Then there is a bijection from $A$ to some subset $B$ of $\mathbb{N}$.
-	By Theorem 3, every subset of natural numbers is countable, and because $A$ is equipotent to this countable set $B$, then $A$ is countable.
-	\item Use an induction argument to complete the proof of part (i) of Corollary 4.\par
-	(Not an induction argument)\par
-	Consider the function $f:\mathbb{N}^2 \to \mathbb{N}$, where $f(m,n) = 2^m3^n$. 
-	By the Fundamental Theorem of Arithmetic, $2^m3^n = 2^{m'}3^{n'} \implies m=m',n=n'$.
-	Then clearly $f$ is an injection. By problem 17, we see that $\mathbb{N}^2$ is countable.
-	\par
-	For any $k\in \mathbb{N}$ we can construct a function $f:\mathbb{N}^k \to \mathbb{N}$, where we have $n$ primes such that $f(m_1,m_2, \cdots, m_k) = p_1^{m_1}p_2^{m_2} \cdots p_k^{m_k}$.
-	By the fundamental theorem of arithmetic, this is an injection and thus $\mathbb{N}^k$ is countable.
-	\item Prove Corollary 6 in the case of a finite family of countable sets.\par
-	Let $\{S_n\}_{n=1}^k$ be a finite family of countable sets.
-	Then each set $S_n$ is countable, and we can enumerate as follows: $S_n = \{s_{nm} \ | \ m \in \mathbb{N} \}$.
-	Then because there is only a finite number of countable sets, we can construct a function $f: \bigcup_{n=1}^k S_n \to \mathbb{N}$ seeing that 
-	\[
-	\bigcup_{n=1}^k S_n = \{s_{11},s_{21},s_{31},\cdots, s_{k1}, s_{12}, s_{22},s_{32},\cdots,s_{k2},s_{13}, \cdots \}.
-	\]
-	\item Let both $f:A \to B$ and $g:B \to C$ be injective and surjective. Show that the composition $g \circ f:A \to B$ and the inverse $f^{-1}:B \to A$ are also injective and surjective.\par
-	$g \circ f$:\par
-	By surjectivity of $g$, for all $c \in C$, there exists a $b \in B$ such that $g(b)=c$.
-	Then by surjectivity of $f$, there exists an $a \in A$ such that $f(a)=b$.\par
-	Therefore for any $c \in C$:
-	\begin{align*}
-		c & = g(b) && \text{ for some $b \in B$}\\
-		& = g(f(a))&& \text{ for some $a \in A$}\\
-		& =g \circ f (a)
-	\end{align*}
-	Therefore $g \circ f$ is surjective.\par
-	By injectivity of $g$, $g(b)=g(b') \implies b = b'$.\par
-	By injectivity of $f$, $f(a)=f(a') \implies a = a'$.
-	\begin{align*}
-		g \circ f (a) & = g \circ f (a')\\
-		g(f(a)) & = g(f(a')) \\
-		f(a) & = f(a')&& \text{ by injectivity of $g$}\\
-		a & = a'&& \text{ by injectivity of $f$}
-	\end{align*}
-	Therefore $g \circ f$ is injective.
-	\par
-	$f^{-1}$:\par
-	Because $f$ is a function from $A$ to $B$, $f(a) \subseteq B$ is defined for all $a \in A$.
-	That is, for all $a \in A$, there exists a $b \in B$ such that $f^{-1}(b) = a$.
-	Thus $f^{-1}$ is surjective.\par
-	Because $f$ is a function, for each $a \in A$, $f(a)=b$ and $f(a)=b'$ imply $b=b'$. That is, $f^{-1}(b)=f^{-1}(b') \implies b=b'$.
-	Thus $f^{-1}$ is injective.   
-	\item Use an induction argument to establish the pigeonhole principle.\par
-	For $n \in \mathbb{N}$, let $P(n)$ be the assertion that for any $m \in \mathbb{N}$, the set $\{1,2, \cdots, n\}$ is not equipotent to the set $\{1,2, \cdots, n+m\}$.\par
-	$P(1)$: We have the sets $A=\{1\}$ and $B=\{1,2, \cdots, 1+m\}$, for $m \in \mathbb{N}$.
-	In the case $m=1$, $B=\{1,1+1\}=\{1,2\}$, and clearly $A$ is not equipotent to $B$. Clearly $A$ is also not equipotent to $B$ for any other natural number $m>1$.\par
-	Suppose $P(k)$ is true for some $k \in \mathbb{N}$. Then $\{1,2, \cdots, k\}$ is not equipotent to the set $\{1,2, \cdots, k+m\}$, for any $m \in \mathbb{N}$.\par
-	$P(k+1)$: Then clearly $\{1,2, \cdots, k+1\}$ is not equipotent to the set $\{1,2, \cdots, (k+1), \cdots, (k+1)+m\}$, for any $m \in \mathbb{N}$.
-	\item Show that $2^{\mathbb{N}}$, the collection of all sets of natural numbers, is uncountable.\par
-	(Cantor's Theorem: for a set $A$, any function $f:A\to \mathcal{P}(A)$ is not surjective.)\par
-	Let $f:\mathbb{N}\to \mathcal{P}(\mathbb{N})$ be any map. Let $E = \{n \in \mathbb{N}\ | \ n \notin f(n) \}$. 
-	Then $E$ is a subset of the naturals that is not in the image of $f$, so $f$ is not surjective. 
-	Therefore there is no bijection between $\mathbb{N}$ and  $\mathcal{P}(\mathbb{N})$.
-	\item Show that the Cartesian product of a finite collection of countable sets is countable. Use the preceding theorem to show that $\mathbb{N}^{\mathbb{N}}$, the collection of all mappings of $\mathbb{N}$ into $\mathbb{N}$, is not countable.\par
-	In problem 18, we showed that for any $k \in \mathbb{N}$, the set $\mathbb{N}^k = \mathbb{N} \times \mathbb{N} \times \cdots \times \mathbb{N}$ is countable. 
-	It is then trivial to see that the Cartesian product of any finite collection of countable sets $S_1 \times S_2 \times \cdots \times S_k$ is countable.\par
-	Notation:
-	\[
-		0=\emptyset, 1= \{0\}, 2=\{0,1\}, 3 = \{0,1,2\}, \cdots
-	\]
-	We can let $2^{\mathbb{N}}= \{0,1\}^{\mathbb{N}}$ be the set of functions $f:\mathbb{N} \to \{0,1\}$.\par
-	Then, for any subset $A \subseteq \mathbb{N}$, there exists a function $f \in \{0,1\}^{\mathbb{N}}$ such that 
-	\[
-		f(x) =
-	\begin{cases}
-		1 & \text{if } x \in A,\\
-		0 & \text{if } x \notin A,
-	\end{cases}	
-	\]
-	and we have a bijection between the elements of $\{0,1\}^{\mathbb{N}}$ and the subsets of $\mathbb{N}$ ("Two sets that are equipotent are, from a set-theoretic point of view, indistinguishable").
-	Therefore $2^{\mathbb{N}}= \{0,1\}^{\mathbb{N}}$ can be used to represent the collection of subsets of $\mathbb{N}$.\par
-	Now, because the set of functions $f:\mathbb{N} \to \{0,1\}$ is uncountable, then clearly the set of functions $f:\mathbb{N} \to \mathbb{N} \supseteq \{0,1\}$ is uncountable (including zero in the naturals for notation convenience).
-	\item Show that a nondegenerate interval of real numbers fails to be finite.\par
-	Theorem 7 tells us that a nondegenerate interval of real numbers is uncountable, and thus, finite.	
-	\item Show that any two nondegenerate intervals of real numbers are equipotent.\par
-	We can prove this by showing that any interval is equipotent to the interval $(0,1)$.\par
-	For any bounded interval $(a,b),(a,b],[a,b),[a,b]$, there exists a bijection to $(0,1),(0,1],[0,1),[0,1]$ respectively,
-	of the form $f(x) = \dfrac{1}{b-a}(x-a)$.\par
-	\item Is the set $\mathbb{R} \times \mathbb{R}$ equipotent to $\mathbb{R}$?\par
-	yes (Schr\"oder-Bernstein theorem	)
-\end{enumerate}
-
-\section{Open Sets, Closed Sets, and Borel Sets of Real Numbers}
-
-\begin{namedthm*}{The Heine-Borel Theorem}
-Let $F$ be a closed and bounded set of real numbers. Then every open cover of $F$ has a finite subcover. 	
-\end{namedthm*}
-\begin{proof}
-	Let $F$ be the closed, bounded interval $[a,b]$. Let $\mathcal{F}$ be an open cover of $[a,b]$. 
-	Define $E$ to be the set of numbers $x \in [a.b]$ with the property that the interval $[a,x]$ can be covered by a finite number of the sets of $\mathcal{F}$.
-	Since $a\in [a,b] \subseteq \mathcal{F}$ implies that $a$ is in one of the sets $\mathcal{O}' \subseteq \mathcal{F}$ by definition of union, $\mathcal{O}'$ is a finite subcover of $[a,a]=\{a\}$, and thus $a \in E$ and $E$ is nonempty.
-	Since $E \subseteq [a,b] = \{x\ |\ a \le x \le b\}$, $E$ is bounded above by $b$, so by the completeness of $\mathbb{R}$, $E$ has a supremum $c = \sup E$.
-	Because $c \le b$, clearly $c$ belongs to $[a,b]$, and this implies that there is an $\mathcal{O} \subseteq \mathcal{F}$ that contains $c$.
-	Since $\mathcal{O}$ is open, there is an $\epsilon >0$ such that that the interval $(c- \epsilon, c+ \epsilon) \subseteq \mathcal{O}$.
-	Now $c-\epsilon$ is not an upper bound for $E$, and so there must be an $x \in E$ with $c-\epsilon < x$. Because $x \in E$, there exists a finite collection $\{ \mathcal{O}_1, \cdots, \mathcal{O}_k \}$ of sets in $\mathcal{F}$ that covers $[a,x]$.
-	Then clearly the finite collection $\{ \mathcal{O}_1, \cdots, \mathcal{O}_k, \mathcal{O} \}$ covers the interval $[a,c+ \epsilon)$.
-	Therefore $c=b$, otherwise there exists a number $c +\tfrac{1}{2}\epsilon$ that has a finite subcover and $c < c +\tfrac{1}{2}\epsilon$ implies that $c$ is not an upper bound for $E$.
-	Thus $[a,b] \in E$ and $[a,b]$ can be covered by a finite number of sets of $\mathcal{F}$.
-\end{proof}
-
-\begin{namedthm*}{The Heine-Borel Theorem $(\impliedby)$}
-	Let $F$ be a real set such that every open cover of $F$ has a finite subcover. Then $F$ is closed and bounded.
-\end{namedthm*}
-\begin{proof}
-	Let $K$ be a compact subset of a metric space $X$. Proving that $X \setminus K$ is open will show that $K$ is closed.
-	Consider any $p \in X \setminus K$. For a $k \in K$, let $O_k$ and $I_k$ be neighborhoods of $p$ and $k$ respectively, with radius less than $\tfrac{1}{2} d(p,q)$.
-	Because $K$ is compact, there are finitely many points $k_1, \cdots, k_n$ in $K$ such that $K \subseteq I_{k_1} \cup \cdots \cup I_{k_n}$.
-	Let $O = O_{k_1} \cap \cdots \cap O_{k_n}$ so that $O$ is an open neighborhood of $p$ that does not intersect $K$.
-	Then $O \subseteq X \setminus K$ and $X\setminus K$ is open. Therefore $K$ is closed. 
-\end{proof}
-
-\begin{namedthm*}{The Nested Set Theorem}
-Let $\{F_n\}_{n=1}^\infty$ be a descending countable collection of nonempty closed sets of real numbers for which $F_1$ is bounded.
-Then
-\[
-    \bigcap_{n=1}^\infty F_n \neq \emptyset.
-\]
-\end{namedthm*}
-\begin{proof} 
-By contradiction, suppose that $\bigcap_{n=1}^\infty F_n = \emptyset$. 
-Then $\bigcup_{n=1}^\infty F_n^c = (\bigcap_{n=1}^\infty F_n)^c  = \emptyset^c = \mathbb{R}$, and we have an open cover of $\mathbb{R}$ and thus an open cover of $F_1 \subseteq \mathbb{R}$. 
-By the Heine-Borel Theorem, there exists an $N \in \mathbb {N}$ such that $F_1 \subseteq \bigcup_{n=1}^N F_n^c$.  
-Because $\{F_n\}$ is descending, $F_n \supseteq F_{n+1}$ for any $n \ge 1$. 
-This implies $F_{n}^c \subseteq F_{n+1}^c$, and thus $F_1 \subseteq \bigcup_{n=1}^N F_n^c = F_N^c = \mathbb{R}\setminus F_N$.
-This is a contradiction to the assumption that $F_N$ is a nonempty subset of $F_1$.
-\end{proof}
-
-\begin{center}
-	\textbf{PROBLEMS}
-\end{center}
-\begin{enumerate}
-	\setcounter{enumi}{26}
-	\item Is the set of rational numbers open or closed?\par
-	The set of rationals is neither open nor closed.
-	The rationals is not open because the irrationals are dense in the rationals; that is, between any two rationals there is an irrational.
-	The rationals is not closed because it does not contain all its limit points; a sequence of rationals can be constructed that converges to an irrational.
-	(Thus we see that the irrationals is neither open nor closed as well.)
-	\item What are the sets of real numbers that are both open and closed?\par
-	It is clear that $\mathbb{R}$ is open, and $\emptyset$ is open (vacuously).
-	Then because the complement of an open set is closed, $\mathbb{R}$ and $\emptyset$ are both closed as well.
-	\item Find two sets $A$ and $B$ such that $A \cap B = \emptyset$ and $\overline A \cap \overline B \neq \emptyset.$\par
-	Let $A= (4,5)$ and $B = (5,20)$. Then $(4,5) \cap (5,20) = \emptyset$ and $\overline A= [4,5]$ and $\overline B = [5,20]$ so $[4,5] \cap [5,20]= \{5\} \neq \emptyset$.\par
-	Let $A= \mathbb{Q}$ and $B = \mathbb{Q}^c$. Then $\mathbb{Q} \cap \mathbb{Q}^c = \emptyset$ and $\overline A= \mathbb{R}$ and $\overline B = \mathbb{R}$ so $\mathbb{R} \cap \mathbb{R}= \mathbb{R} \neq \emptyset$.\par
-	\item A point $x$ is called an \textbf{accumulation point} of a set $E$ provided it is a point of closure of $E \setminus \{ x\}.$
-	\begin{enumerate}[label=(\roman*),align=left]
-        \item Show that the set $E'$ of accumulation points of $E$ is a closed set.\par
-        Then for $x \in E'$, every open interval that contains $x$ also contains a point in $E \setminus \{x\}$.\par
-		Suppose $E'$ is not closed. 
-		Then there exists an element $y \notin E'$ such that every open interval that contains $y$ also contains a point $x \in E'$.
-		Then every open interval that contains $x$ contains a point $z \in E \setminus \{x\}$... 
-		It can be shown that $y \in E'$ and so $E'$ contains all its points of closure and is thus closed.
-        \item Show that $\overline E = E \cup E'.$\par
-        $E$ includes all the isolated points not included in $E'$. 
-    \end{enumerate}
-	\item A point $x$ is called an \textbf{ isolated point} of a set $E$ provided there is an $r>0$ for which $(x-r,x+r)\cap E = \{x\}.$ Show that if a set $E$ consists of isolated points, then it is countable.\par
-	Each singleton set $\{x\}$ can be enumerated.
-	\item A point $x$ is called an \textbf{interior point} of a set $E$ if there is an $r>0$ such that the open interval $(x-r,x+r)$ is contained in $E$. The set of interior points of $E$ is called the \textbf{interior} of $E$ denoted by int $E$. Show that
-	\begin{enumerate}[label=(\roman*),align=left]
-        \item $E$ is open iff $E = \text{ int } E$.\par
-        $(\implies)$ Suppose $E$ is open.\par
-		Then clearly every point of $E$ is an interior point.
-		\par
-		$(\impliedby)$ Suppose $E = \text{ int } E$.\par
-		Then every point has an open neighborhood contained in $E$, so $E$ is open.
-        \item $E$ is dense iff $ \text{ int } (\mathbb{R} \setminus E)= \emptyset$.
-    \end{enumerate}
-	\item Show that the nested set theorem is false if $F_1$ is unbounded.\par
-	The nested set theorem works because the compactness of $F_1$ allows us to reach a contradiction to the fact that the intersection is empty (see the proof above).\par
-	Consider
-	\[
-	\bigcap_{n=1}^\infty [n, \infty) = \emptyset.
-	\]
-	This intersection is empty because for any $x$, there exists an $n \in \mathbb{N}$ such that $x < n$ and thus $x \notin [n,\infty)$.
-	\item Show that the assertion of the Heine-Borel Theorem is equivalent to the Completeness Axiom for the real numbers. Show that the assertion of the Nested Set Theorem is equivalent to the Completeness Axiom for the real numbers.\par
-	The Heine-Borel Theorem States that Closed and bounded sets are compact; that is, every open cover of a closed and bounded set has a finite subcover.
-	If a set $E$ is bounded, then for any open cover $E \subseteq \mathcal{F}$ there exists a finite open subcover $\mathcal{O} \subseteq \mathcal{F}$. 
-	We can consider the intersection of all such $\mathcal{O}$ so that $E \subseteq \bigcap_{\mathcal{O} \subseteq \mathcal{F}} \mathcal{O} \subseteq \mathcal{O}$, and this intersection is the supremum. 
-	\par
-	Clearly the descending sets from the nested set theorem are closed and bounded, so the Heine-Borel Theorem discussed above can be used to imply the Completeness Axiom.
-	\item Show that the collection of Borel sets is the smallest $\sigma$-algebra that contains the closed sets.\par
-	The Borel sets is defined to be the smallest $\sigma$-algebra that contains all the open sets of real numbers.
-	Any sigma-algebra that contains the closed sets contains the open sets by the complement property of a sigma-algebra, so the Borel sets is the smallest sigma-algebra that contains the closed sets as well. 
-	\item Show that the collection of Borel sets is the smallest $\sigma$-algebra that contains the intervals of the form $[a,b)$, where $a<b.$\par
-	Any interval $[a,b)$ can be written in the form
-	\[
-	[a,b) = \bigcup_{n=1}^\infty [a,b-\tfrac{1}{n}]	
-	\] 
-	\item Show that each open set is an $F_{\sigma}$ set.\par
-	Any open set $(a,b)$ can be written in the form
-	\[
-		(a,b) = \bigcup_{n=1}^\infty [a+\tfrac{1}{n},b-\tfrac{1}{n}].	
-	\] 
-\end{enumerate}
-
-\section{Sequences of Real Numbers}
-
-\begin{namedthm*}{Proposition 14}
-Let the sequence of real numbers $\{a_n\}$ converge to the real number $a$. 
-Then the limit is unique, the sequence is bounded, and, for a real number $c$, 
-\[
-\text{if } a_n \le c \text{ for all } n, \text{ then } a\le c.	
-\]	
-\end{namedthm*}
-\begin{proof}
-	Suppose there exist $a$ and $b$ such that $\{a_n\}\to a$ and $\{a_n\}\to b$.
-	Then For any $\epsilon >0$, there exists the index $N = \max \{N_a,N_b\}$ such that for all $n \ge N \ge N_a,N_b$, then $|a-a_n| < \epsilon$ and $|b-a_n| < \epsilon$.
-	By the triangle inequality, $|a-b| \le |a-a_n| + |a_n-b| < \epsilon + \epsilon = 2 \epsilon = \epsilon ' $.
-	Therefore $a=b$, and the limit is unique. \par
-	Consider $\epsilon =1$. Then there exists an index $N \in \mathbb{N}$ such that for all $n \ge N$, $|a_n-a| < 1$.
-	Also, $|a_n|-|a| \le |a_n-a| <1\implies |a_n| < |a| +1$.
-	Let $M = \max \{|a_1|, |a_2|, \cdots, |a_N|, |a|+1 \}$. The maximum exists because this is a finite set of real numbers (totally ordered).
-	Considering any $n \in \mathbb{N}$, if $n \ge N$, then $|a_n-a| <1\implies |a_n| < |a| +1 \le M$, and if $n<N$, then $|a_n| \le \max \{|a_1|, |a_2|, \cdots, |a_N|, |a|+1 \} =M$, so $M$ is a bound for this sequence.
-	\par
-	Suppose that for all $n$, $a_n \le c$ but $a>c$. 
-	Then $a_n \le c < a$ for all $n$, and $0 \le c-a_n <a-a_n$.
-	Choosing $\epsilon = c-a_n$, there exists an index such that $|a-a_n| < c-a_n$. But this is a contradiction. 
-	Therefore $a \le c$.
-\end{proof}
-
-\begin{flushleft}
-
-\begin{namedthm*}{Theorem 15}[the Monotone Convergence Criterion for Real Sequences]
-	A monotone sequence of real numbers converges iff it is bounded.
-\end{namedthm*}
-\begin{proof}
-	$(\implies)$ Suppose a monotone sequence converges.\par
-	By the above proposition, it is bounded.\par
-	$(\impliedby)$ Suppose a monotone sequence $\{a_n\}$ is bounded.\par
-	By the Completeness Axiom, there exists a supremum say $a$ such that $a_n \le a$ for all $n$.
-	Consider any $\epsilon >0$. Now, $a-\epsilon$ is not an upper bound, and because the sequence is increasing, there exists an index $N$ for which $a_n \ge a_N > a-\epsilon$ for all $n \ge N$.
-	Then $\epsilon > a-a_n$ and the sequence converges to $a$. The proof is the same for a decreasing sequence. 
-\end{proof}
-
-\begin{namedthm*}{Theorem 16}[The Bolzano-Weierstrass Theorem]
-Every bounded sequence of real numbers has a convergent subsequence.	
-\end{namedthm*}
-\begin{proof}
-	Let $a_n$ be a bounded sequence of real numbers. Choose $M>0$ s.t. $|a_n| \le M$ for all $n$. 
-	Define $E_n = \overline{\{a_j \ |\ j \ge n\}}$. Then we also have $E_n \subseteq [-M,M]$ and $E_n$ is closed since it is the closure of a set.
-	Therefore $\{E_n\}$ is a descending sequence of nonempty closed bounded subsets of real numbers. 
-	The Nested Set Theorem tells us that $\bigcap_{n=1}^\infty E_n \neq \emptyset$, so there exists $a \in \bigcap_{n=1}^\infty E_n$.
-	For each natural number $k$, $a$ is a point of closure of $\{a_j \ |\ j \ge k\}$.
-	Thus for infinitely many indices $j \ge n$, $a_j$ belongs to $(a-\tfrac{1}{k},a+\tfrac{1}{k})$.
-	By induction, choose a strictly increasing subsequence of natural numbers $n_k$ such that $|a-a_{n_k}|< \tfrac{1}{k}$ for all $k$.
-	From the Archimedean Property of the reals, the subsequence $\{ a_{n_k} \}$ converges to $a$.
-\end{proof}
-
-\end{flushleft}
-
-\begin{center}
-	\textbf{PROBLEMS}
-\end{center}
-\begin{enumerate}
-	\setcounter{enumi}{37}
-	\item We call an extended real number a \textbf{cluster point} of a sequence $\{ a_n\}$ if a subsequence converges to this extended real number. Show that $\lim \inf \{a_n\}$ is the smallest cluster point of $\{a_n\}$ and $\lim \sup \{a_n\}$ is the largest cluster point of $\{a_n\}$.
-	\item Prove proposition 19.
-	\item Show that a sequence $\{a_n\}$ is convergent to an extended real number iff there is exactly one extended real number that is a cluster point of the sequence.
-	\item Show that $\lim \inf a_n \le \lim \sup a_n$.
-	\item Prove that if, for all $n$, $a_n \ge 0$ and $b_n \ge 0 $, then \[ \lim \sup [a_n \cdot b_n] \le (\lim \sup a_n) \cdot (\lim \sup b_n),\] provided the product on the right is not of the form $0 \cdot \infty.$
-	\item Show that every real sequence has a monotone subsequence. Use this to provide another proof of the Bolzano-Weierstrass Theorem.
-	\item Let $p$ be a natural number greater than 1, and $x$ a real number $0 \le x \le 1.$ Show that there is a sequence $\{a_n\}$ of integers with $0 \le a_n < p$ for each $n$ such that \[ x = \sum_{n=1}^\infty\dfrac{a_n}{p^n} \] 
-	and that this sequence is unique except when $x$ is of the form $q/p^n$, $0<q<p^n$, in which case there are exactly two such sequences. Show that, conversely, if $\{a_n\}$ is any sequence of integers with $0\le a_n < p$, the series \[ x = \sum_{n=1}^\infty\dfrac{a_n}{p^n} \] 
-	converges to a real number $x$ with $0 \le x \le 1$. If $p = 10$, this sequence is called the \textit{decimal} expansion of $x$. For $p=2$ it is called the \textit{binary} expansion; and for $p=3$, the \textit{ternary} expansion.
-	\item Prove Proposition 20.
-	\item Show that the assertion of the Bolzano-Weierstrass Theorem is equivalent to the Completeness Axiom for the real numbers. Show that the assertion of the Monotone Convergence Theorem is equivalent to the Completeness Axiom for the real numbers.
-\end{enumerate}
-
-\section{Continuous Real-Valued Functions of a Real Variable}
-
-\begin{center}
-	\textbf{PROBLEMS}
-\end{center}
-\begin{enumerate}
-	\setcounter{enumi}{46}
-	\item Let $E$ be a closed set of real numbers and $f$ a real-valued function that is defined and continuous on $E$. Show that there is a function $g$ defined and continuous on all of $\mathbb{R}$ such that $f(x) = g(x)$ for each $x \in E$. (Hint: Take $g$ to be linear on each of the intervals of which $\mathbb{R} \setminus E$ is composed.)
-	\item Define the real-valued function $f$ on $\mathbb{R}$ by setting 
-	\[ 
-	f(x) =
-	\begin{cases} 
-		x & \text{if x irrational}\\
-		p \sin \dfrac{1}{q} & \text{if } x = \dfrac{p}{q} \text{ in lowest terms.} \\
-	\end{cases}
-	\]
-	At what points is $f$ continuous?
-	\item Let $f$ and $g$ be continuous real-valued functions with a common domain $E$.
-	\begin{enumerate}[label=(\roman*),align=left]
-        \item Show that the sum, $f+g$, and product, $fg$, are also continuous functions.
-        \item If $h$ is a continuous function with image contained in $E$, show that the composition $f \circ h$ is continuous.
-        \item Let max$\{f,g\}$ be the function defined by max$\{f,g\}(x)$ = max$\{f(x),g(x)\}$, for $x \in E$. Show that max$\{f,g\}$ is continuous.
-        \item Show that $|f|$ is continuous.
-    \end{enumerate}
-	\item Show that a Lipschitz function is uniformly continuous but there are uniformly continuous functions that are not Lipschitz.
-	\item A continuous function $\phi$ on $[a,b]$ is called \textbf{piecewise linear} provided there is a partition $a=x_0<x_1< \cdots <x_n = b$ of $[a,b]$ for which $\phi$ is linear on each interval $[x_i, x_{i+1}]$. Let $f$ be a continuous function on $[a,b]$ and $\epsilon$ a positive number. 
-	Show that there is a piecewise linear function $\phi$ on $[a,b]$ with $|f(x)-\phi (x)| < \epsilon$ for all $x \in [a,b]$.
-	\item Show that a nonempty set $E$ of real numbers is closed and bounded if and only if every continuous real-valued function on $E$ takes a maximum value.
-	\item Show that a set $E$ of real numbers is closed and bounded iff every open cover of $E$ has a finite subcover.
-	\item Show that a nonempty set $E$ of real numbers is an interval iff every continuous real-valued function on $E$ has an interval as its image.
-	\item Show that a monotone function on an open interval is continuous iff its image is an interval. 
-	\item Let $f$ be a real-valued function defined on $\mathbb{R}$. Show that the set of points at which $f$ is continuous is a $G_\delta$ set.
-	\item Let $\{ f_n\}$ be a sequence of continuous functions defined on $\mathbb{R}$. Show that the set of points $x$ at which the sequence $\{f_n(x)\}$ converges to a real number is the intersection of a countable collection of $F_\sigma$ sets.
-	\item Let $f$ be a continuous real-valued function on $\mathbb{R}$. Show that the inverse image with respect to $f$ of an open set is open, of a closed set is closed, and of a Borel set is Borel.
-	\item A sequence $\{f_n\}$ of real-valued functions defined on a set $E$ is said to converge uniformly on $E$ to a function $f$ iff given $\epsilon >0$, there is an $N$ such that for all $x \in E$ and all $n \ge N$, we have $|f_n(x) - f(x)| < \epsilon$. Let $\{f_n\}$ be a sequence of continuous functions defined on a set $E$. Prove that if $\{f_n\}$ converges uniformly to $f$ on $E$, then $f$ is continuous on $E$. 
-\end{enumerate}
-
+% Chapter 2
 \chapter{Lebesgue Measure}
 
 \section{Introduction}
@@ -996,12 +241,14 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{Nonmeasurable Sets}
 \section{The Cantor Set and the Cantor-Lebesgue Function}
 
+% Chapter 3
 \chapter{Lebesgue Measurable Functions}
 
 \section{Sums, Products, and Compositions}
 \section{Sequential Pointwise Limits and Simple Approximation}
 \section{Littlewood's Three Principles, Ergoff's Theorem, and Lusin's Theorem}
 
+% Chapter 4
 \chapter{Lebesgue Integration}
 
 \section{The Riemann Integral}
@@ -1011,12 +258,14 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{Countable Additivity and Continuity of Integration}
 \section{Uniform Integrability: The Vitali Convergence Theorem}
 
+% Chapter 5
 \chapter{Lebesgue Integration: Further Topics}
 
 \section{Uniform Integrability and Tightness: A General Vitali Convergence Theorem}
 \section{Convergence in Measure}
 \section{Characterizations of Riemann and Lebesgue Integrability}
 
+% Chapter 6
 \chapter{Differentiation and Integration}
 
 \section{Continuity of Monotone Functions}
@@ -1026,6 +275,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{Integrating Derivatives: Differentiating Indefinite Integrals}
 \section{Convex Functions}
 
+% Chapter 7
 \chapter{The $L^p$ Spaces: Completeness and Approximation}
 
 \section{Normed Linear Spaces}
@@ -1067,6 +317,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{$L^p$ is Complete: The Riesz-Fischer Theorem}
 \section{Approximation and Separability}
 
+% Chapter 8
 \chapter{The $L^p$ Spaces: Duality and Weak Convergence}
 
 \section{The Riesz Representation for the Dual of $L^p,a\le p\le \infty$}
@@ -1079,6 +330,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \addcontentsline{toc}{chapter}{II ABSTRACT SPACES: METRIC, TOPOLOGICAL, BANACH, AND HILBERT SPACES}
 \setcounter{chapter}{8}
 
+% Chapter 9
 \chapter{Metric Spaces: General Properties}
 
 \section{Examples of Metric Spaces}
@@ -1088,12 +340,14 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{Compact Metric Spaces}
 \section{Separable Metric Spaces}
 
+% Chapter 10
 \chapter{Metric Spaces: Three Fundamental Theorems}
 
 \section{The Arzel\'a-Ascoli Theorem}
 \section{The Baire Category Theorem}
 \section{The Banach Contraction Principle}
 
+% Chapter 11
 \chapter{Topological Spaces: General Properties}
 
 \section{Open Sets, Closed Sets, Bases, and Subbases}
@@ -1103,12 +357,14 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{Compact Topological Spaces}
 \section{Connected Topological Spaces}
 
+% Chapter 12
 \chapter{Topological Spaces: Three Fundamental Theorems}
 
 \section{Urysohn's Lemma and the Tietze Extension Theorem}
 \section{The Tychonoff Product Theorem}
 \section{Thye Stone-Weierstrass Theorem}
 
+% Chapter 13
 \chapter{Continuous Linear Operators Between Banach Spaces}
 
 \section{Normed Linear Spaces}
@@ -1117,6 +373,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{The Open Mapping and Closed Graph Theorems}\
 \section{The Uniform Boundedness Principle}
 
+% Chapter 14
 \chapter{Duality for Normed Linear Spaces}
 
 \section{Linear Functionals, Bounded Linear Functionals, and Weak Topologies}
@@ -1126,6 +383,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{The Separation of Convex Sets and Mazur's Theorem}
 \section{The Krein-Milman Theorem}
 
+% Chapter 15
 \chapter{Compactness Regained: The Weak Topology}
 
 \section{Alaoglu's Extension of Helley's Theorem}
@@ -1133,6 +391,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{Compactness and Weak Sequential Compactness: The Eberlein-\v Smulian Theorem}
 \section{Metrizability of Weak Topologies}
 
+% Chapter 16
 \chapter{Continuous Linear Operators on Hilbert Spaces}
 
 \section{The Inner Product and Orthogonality}
@@ -1148,6 +407,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \addcontentsline{toc}{chapter}{III MEASURE AND INTEGRATION: GENERAL THEORY}
 \setcounter{chapter}{16}
 
+% Chapter 17
 \chapter{General Measure Spaces: Their Properties and Construction}
 
 \section{Measures and Measurable Sets}
@@ -1172,6 +432,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{The Construction of Outer Measures}
 \section{The Cath\'eodory-Hahn Theorem: The Extension of a Premeasure to a Measure}
 
+% Chapter 18
 \chapter{Integration Over General Measure Spaces}
 
 \section{Measurable Functions}
@@ -1180,6 +441,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{The Radon-Nikodym Theorem}
 \section{The Nikodym Metric Space: The Vitali-Hahn-Saks Theorem}
 
+% Chapter 19
 \chapter{General $L^p$ spaces: Completeness, Duality, and Weak Convergence}
 
 \section{The Completeness of $L^p(X,\mu),1\le p \le \infty$}
@@ -1188,6 +450,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{Weak Sequential Compactness in $L^p(X,\mu),1< p < \infty$}
 \section{Weak Sequential Compactness in $L^1(X,\mu)$: The Dunford-Pettis Theorem}
 
+% Chapter 20
 \chapter{The Construction of Particular Measures}
 
 \section{Product Measures: The Theorems of Fubini and Tonelli}
@@ -1195,6 +458,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{Cumulative Distribution Functions and Borel Measures on $\mathbb{R}$}
 \section{Carath\'eodory Outer Measures and Hausdorff Measures on a Metric Space}
 
+% Chapter 21
 \chapter{Measure and Topology}
 
 \section{Locally Compact Topological Spaces}
@@ -1204,6 +468,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 \section{The Riesz Representation Theorem for the Dual of $C(X)$}
 \section{Regularity Properties of Baire Measures}
 
+% Chapter 22
 \chapter{Invariant Measures}
 
 \section{Topological Groups: The General Linear Group}
