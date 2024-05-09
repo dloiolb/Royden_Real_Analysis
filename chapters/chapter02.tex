@@ -1,0 +1,75 @@
+% Chapter 2
+\chapter{Lebesgue Measure}
+
+\section{Introduction}
+In this chapter we construct a collection of sets called \textbf{Lebesgue measurable sets}, and a set function of this collection called \textbf{Lebesgue measure}, denoted by $m$. The collection of Lebesgue measurable sets is a $\sigma$-algebra which contains all open sets and all closed sets. The set function $m$ possesses the following three properties:
+\begin{namedthm*}{The measure of an interval is its length}
+Each nonempty interval $I$ is Lebesgue measurable and 
+\[
+m(I) = \ell(I).
+\]
+\end{namedthm*}
+\begin{namedthm*}{Measure is translation invariant}
+If $E$ is Lebesgue measurable and $y$ is any number then the translate of $E$ by $y$, $E+y = \{x+y \ |\ x \in E\}$, also is Lebesgue measurable and
+\[
+m(E+y) = m(E).
+\]
+\end{namedthm*}
+\begin{namedthm*}{Measure is countably additive over countable disjoint unions of sets}
+IF $\{E_k\}_{k=1}^\infty$ is a countable disjoint collection of Lebesgue measurable sets, then
+\[
+m(\bigcup_{k=1}^\infty E_k) = \sum_{k=1}^\infty m(E_k).
+\]
+\end{namedthm*}
+It is not possible to construct a set function that possesses the above three properties and is defined for all sets of real numbers (See Vitali sets).
+We first construct a set function called \textbf{outer measure}, denoted by $m^*$, such that: 
+\begin{enumerate}[label=(\roman*),align=left]
+	\item the outer measure of an interval is its length,
+	\item outer measure is translation invariant,
+	\item outer measure is countably subadditive.
+\end{enumerate}
+Then the Lebesgue measure $m$ is the restriction of $m^*$ to the Lebesgue measurable sets.
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+In the first three problems, let $m$ be a set function defined for all sets in a $\sigma$-algebra $\mathcal{A}$ with values in $[0,\infty]$. Assume $m$ is countably additive over countable disjoint collections of sets in $\mathcal{A}$.
+\begin{enumerate}
+	\setcounter{enumi}{0}
+	\item Prove that if $A$ and $B$ are two sets in $\mathcal{A}$ with $A \subseteq B$, then $m(A) \le m(B)$. This property is called \textit{monotonicity}.\par
+	$A \subseteq B \implies B = A \cup (B \cap A^c),$ where $A \cap (B \cap A^c) = \emptyset$. The set $(B \cap A^c)$ is measurable because $A^c$ is measurable and countable intersection is measurable, so $m(B) = m(A \cup (B \cap A^c)) = 	m(A) + m(B \cap A^c)$ by countable additivity, and thus $m(B) \ge m(A)$.
+	\item Prove that if there is a set $A$ in the collection $\mathcal{A}$ for which $m(A) < \infty$, then $m(\emptyset) = 0$.\par
+	
+	\item Let $\{E_k\}_{k=1}^\infty$ be a countable collection of sets in $\mathcal{A}$. Prove that $m(\bigcup_{k=1}^\infty E_k) \le \sum_{k=1}^\infty m(E_k).$
+	\item A set function $c$, defined on all subsets of $\mathbb{R}$, is defined as follows.
+	Define $c(E)$ to be $\infty$ if $E$ has infinitely many members and $c(E)$ to be equal to the number of elements in $E$ if $E$ is finite; define $c(\emptyset)=0$. Show that $c$ is a countably additive and translation invariant set function. This set function is called the \textbf{counting measure}.
+\end{enumerate}
+
+
+\section{Lebesgue Outer Measure}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{4}
+	\item By using properties of outer measure, prove that the interval $[0,1]$ is not countable.
+	\item Let $A$ be the set of irrational numbers in the interval $[0,1]$. Prove that $m^*(A)=1$.
+	\item A set of real numbers is said to be a $G_\delta$ set provided it is the intersection of a countable collection of open sets.
+	Show that for any bounded set $E$, there is a $G_\delta$ set $G$ for which
+	\[E\subseteq G \ \text{and}\ m^*(G)=m^*(E).\]
+	\item Let $B$ be the set of rational numbers in the interval $[0,1]$, and let $\{I_k\}_{k=1}^n$ be a finite collection of open intervals that covers $B$.
+	Prove that $\textstyle \sum_{k=1}^n m^*(I_k) \ge 1$.
+	\item Prove that if $m^*(A)=0$, then $m^*(A\cup B) = m^*(B)$.
+	\item Let $A$ and $B$ be bounded sets for which there is an $\alpha >0$ such that $|a-b| \ge \alpha$ for all $a \in A, b \in B$.
+	Prove that $m^*(A \cup B) = m^*(a)+m^*(B)$.
+\end{enumerate}
+
+
+
+
+\section{The $\sigma$-Algebra of Lebesgue Measurable Sets}
+\section{Outer and Inner Approximation of Lebesgue Measurable Sets}
+\section{Countable Additivity, Continuity, and the Borel-Cantelli Lemma}
+\section{Nonmeasurable Sets}
+\section{The Cantor Set and the Cantor-Lebesgue Function}

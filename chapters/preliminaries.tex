@@ -1,0 +1,60 @@
+\setcounter{chapter}{0}
+\chapter*{Preliminaries on Sets, Mappings, and Relations}
+\addcontentsline{toc}{chapter}{Preliminaries on Sets, Mappings, and Relations}
+\setcounter{chapter}{0}
+
+\begin{flushleft}
+
+\begin{namedthm*}{Definition}
+A relation $R$ on a set $X$ is called an \textbf{equivalence relation} provided:
+\begin{enumerate}[label=(\roman*),align=left]
+	\item $xRx$ for all $x \in X$ (reflexive),
+	\item $xRy$ implies $yRx$ for all $x,y \in X$ (symmetric),
+	\item $xRy$ and $yRz$ imply $xRz$ for all $x,y,z \in X$ (transitive).
+\end{enumerate}
+\end{namedthm*}
+\bigskip
+
+\begin{namedthm*}{Partial Ordering on a set $X$}
+A relation $R$ on a nonempty set $X$ is called a \textbf{partial ordering} provided:
+\begin{enumerate}[label=(\roman*),align=left]
+	\item $xRx$ for all $x \in X$ (reflexive),
+	\item $xRy$ and $yRx$ imply $x=y$ for all $x,y \in X$ (antisymmetric),
+	\item $xRy$ and $yRz$ imply $xRz$ for all $x,y,z \in X$ (transitive).
+\end{enumerate}
+A subset $E$ of $X$ is \textbf{totally ordered} provided either $xRy$ or $yRx$ for all $x,y \in E$.
+A member $x$ of $X$ is said to be an \textbf{upper bound} for a subset $E$ of $X$ provided that 
+\[ yRx \text{ for all } y \in E.\]
+A member $x$ of $X$ is said to be \textbf{maximal} provided that 
+\[ xRy \text{ implies that } y =x \text{ for } y \in X.\]
+\end{namedthm*}
+\medskip
+
+\begin{namedthm*}{Strict Partial Ordering on a set $X$}
+A relation $R$ on a nonempty set $X$ is called a \textbf{strict partial ordering} provided:
+\begin{enumerate}[label=(\roman*),align=left]
+	\item not $xRx$ for all $x \in X$ (irreflexive),
+	\item $xRy$ implies not $yRx$ for all $x,y \in X$ (asymmetric),
+	\item $xRy$ and $yRz$ imply $xRz$ for all $x,y,z \in X$ (transitive).
+\end{enumerate}
+A subset $E$ of $X$ is \textbf{strictly totally ordered} provided either $xRy$ or $yRx$ if $x\neq y$ for all $x,y \in E$.\par
+\end{namedthm*}
+
+
+\begin{namedthm*}{Zorn's Lemma}
+	Let $X$ be a partially ordered set for which every totally ordered subset has an upper bound. Then $X$ has a maximal member.
+\end{namedthm*}
+
+\begin{namedthm*}{Every vector space has a basis}
+\end{namedthm*}
+\begin{proof}
+Let V be any vector space, and let L be the collection of all linearly independent subsets of V. 
+L is nonempty as the singleton sets are linearly independent. 
+Define a partial order on L in the form $C \subseteq C'$ for $C,C' \in L$.
+For any chain (a totally ordered subset of a partially ordered set) $\mathcal{C}$ of $L$, where $\mathcal{C}$ consists of the sets $C_1 \subseteq C_2 \subseteq \cdots$, we can construct a linearly independent set $C' = \bigcup_{C \in \mathcal{C}} C$ that is an upper bound of $\mathcal{C}$.
+By Zorn's Lemma, L has a maximal element, say M.
+This collection $M$ is a basis for $V$. To show this, suppose by contradiction that there exists a vector $v \in V$ s.t. $v \notin \text{ Span}\{M\}$.
+Then $v \cup M$ is linearly independent and $M \subseteq v \cup M$, a contradiction to the fact that $M$ is maximal.
+\end{proof}
+
+\end{flushleft}

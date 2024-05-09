@@ -94,152 +94,37 @@
 \clearpage\pagenumbering{arabic}
 %\pagenumbering{arabic}
 
-
-\include{chapters/test}
-
 \setcounter{chapter}{0}
 \chapter*{I LEBESGUE INTEGRATION FOR FUNCTIONS OF A SINGLE REAL VARIABLE}
 \addcontentsline{toc}{chapter}{I LEBESGUE INTEGRATION FOR FUNCTIONS OF A SINGLE REAL VARIABLE}
 \setcounter{chapter}{0}
 
-\setcounter{chapter}{0}
-\chapter*{Preliminaries on Sets, Mappings, and Relations}
-\addcontentsline{toc}{chapter}{Preliminaries on Sets, Mappings, and Relations}
-\setcounter{chapter}{0}
-
-\begin{flushleft}
-
-\begin{namedthm*}{Definition}
-A relation $R$ on a set $X$ is called an \textbf{equivalence relation} provided:
-\begin{enumerate}[label=(\roman*),align=left]
-	\item $xRx$ for all $x \in X$ (reflexive),
-	\item $xRy$ implies $yRx$ for all $x,y \in X$ (symmetric),
-	\item $xRy$ and $yRz$ imply $xRz$ for all $x,y,z \in X$ (transitive).
-\end{enumerate}
-\end{namedthm*}
-\bigskip
-
-\begin{namedthm*}{Partial Ordering on a set $X$}
-A relation $R$ on a nonempty set $X$ is called a \textbf{partial ordering} provided:
-\begin{enumerate}[label=(\roman*),align=left]
-	\item $xRx$ for all $x \in X$ (reflexive),
-	\item $xRy$ and $yRx$ imply $x=y$ for all $x,y \in X$ (antisymmetric),
-	\item $xRy$ and $yRz$ imply $xRz$ for all $x,y,z \in X$ (transitive).
-\end{enumerate}
-A subset $E$ of $X$ is \textbf{totally ordered} provided either $xRy$ or $yRx$ for all $x,y \in E$.
-A member $x$ of $X$ is said to be an \textbf{upper bound} for a subset $E$ of $X$ provided that 
-\[ yRx \text{ for all } y \in E.\]
-A member $x$ of $X$ is said to be \textbf{maximal} provided that 
-\[ xRy \text{ implies that } y =x \text{ for } y \in X.\]
-\end{namedthm*}
-\medskip
-
-\begin{namedthm*}{Strict Partial Ordering on a set $X$}
-A relation $R$ on a nonempty set $X$ is called a \textbf{strict partial ordering} provided:
-\begin{enumerate}[label=(\roman*),align=left]
-	\item not $xRx$ for all $x \in X$ (irreflexive),
-	\item $xRy$ implies not $yRx$ for all $x,y \in X$ (asymmetric),
-	\item $xRy$ and $yRz$ imply $xRz$ for all $x,y,z \in X$ (transitive).
-\end{enumerate}
-A subset $E$ of $X$ is \textbf{strictly totally ordered} provided either $xRy$ or $yRx$ if $x\neq y$ for all $x,y \in E$.\par
-\end{namedthm*}
-
-
-\begin{namedthm*}{Zorn's Lemma}
-	Let $X$ be a partially ordered set for which every totally ordered subset has an upper bound. Then $X$ has a maximal member.
-\end{namedthm*}
-
-\begin{namedthm*}{Every vector space has a basis}
-\end{namedthm*}
-\begin{proof}
-Let V be any vector space, and let L be the collection of all linearly independent subsets of V. 
-L is nonempty as the singleton sets are linearly independent. 
-Define a partial order on L in the form $C \subseteq C'$ for $C,C' \in L$.
-For any chain (a totally ordered subset of a partially ordered set) $\mathcal{C}$ of $L$, where $\mathcal{C}$ consists of the sets $C_1 \subseteq C_2 \subseteq \cdots$, we can construct a linearly independent set $C' = \bigcup_{C \in \mathcal{C}} C$ that is an upper bound of $\mathcal{C}$.
-By Zorn's Lemma, L has a maximal element, say M.
-This collection $M$ is a basis for $V$. To show this, suppose by contradiction that there exists a vector $v \in V$ s.t. $v \notin \text{ Span}\{M\}$.
-Then $v \cup M$ is linearly independent and $M \subseteq v \cup M$, a contradiction to the fact that $M$ is maximal.
-\end{proof}
-
-\end{flushleft}
+\include{chapters/preliminaries}
 
 \include{chapters/chapter01}
+\include{chapters/chapter02}
+\include{chapters/chapter03}
+\include{chapters/chapter04}
+\include{chapters/chapter05}
+\include{chapters/chapter06}
+\include{chapters/chapter07}
+\include{chapters/chapter08}
 
-% Chapter 2
-\chapter{Lebesgue Measure}
+\include{chapters/chapter09}
+\include{chapters/chapter10}
+\include{chapters/chapter11}
+\include{chapters/chapter12}
+\include{chapters/chapter13}
+\include{chapters/chapter14}
+\include{chapters/chapter15}
+\include{chapters/chapter16}
 
-\section{Introduction}
-In this chapter we construct a collection of sets called \textbf{Lebesgue measurable sets}, and a set function of this collection called \textbf{Lebesgue measure}, denoted by $m$. The collection of Lebesgue measurable sets is a $\sigma$-algebra which contains all open sets and all closed sets. The set function $m$ possesses the following three properties:
-\begin{namedthm*}{The measure of an interval is its length}
-Each nonempty interval $I$ is Lebesgue measurable and 
-\[
-m(I) = \ell(I).
-\]
-\end{namedthm*}
-\begin{namedthm*}{Measure is translation invariant}
-If $E$ is Lebesgue measurable and $y$ is any number then the translate of $E$ by $y$, $E+y = \{x+y \ |\ x \in E\}$, also is Lebesgue measurable and
-\[
-m(E+y) = m(E).
-\]
-\end{namedthm*}
-\begin{namedthm*}{Measure is countably additive over countable disjoint unions of sets}
-IF $\{E_k\}_{k=1}^\infty$ is a countable disjoint collection of Lebesgue measurable sets, then
-\[
-m(\bigcup_{k=1}^\infty E_k) = \sum_{k=1}^\infty m(E_k).
-\]
-\end{namedthm*}
-It is not possible to construct a set function that possesses the above three properties and is defined for all sets of real numbers (See Vitali sets).
-We first construct a set function called \textbf{outer measure}, denoted by $m^*$, such that: 
-\begin{enumerate}[label=(\roman*),align=left]
-	\item the outer measure of an interval is its length,
-	\item outer measure is translation invariant,
-	\item outer measure is countably subadditive.
-\end{enumerate}
-Then the Lebesgue measure $m$ is the restriction of $m^*$ to the Lebesgue measurable sets.
-
-\begin{center}
-	\textbf{PROBLEMS}
-\end{center}
-In the first three problems, let $m$ be a set function defined for all sets in a $\sigma$-algebra $\mathcal{A}$ with values in $[0,\infty]$. Assume $m$ is countably additive over countable disjoint collections of sets in $\mathcal{A}$.
-\begin{enumerate}
-	\setcounter{enumi}{0}
-	\item Prove that if $A$ and $B$ are two sets in $\mathcal{A}$ with $A \subseteq B$, then $m(A) \le m(B)$. This property is called \textit{monotonicity}.\par
-	$A \subseteq B \implies B = A \cup (B \cap A^c),$ where $A \cap (B \cap A^c) = \emptyset$. The set $(B \cap A^c)$ is measurable because $A^c$ is measurable and countable intersection is measurable, so $m(B) = m(A \cup (B \cap A^c)) = 	m(A) + m(B \cap A^c)$ by countable additivity, and thus $m(B) \ge m(A)$.
-	\item Prove that if there is a set $A$ in the collection $\mathcal{A}$ for which $m(A) < \infty$, then $m(\emptyset) = 0$.\par
-	
-	\item Let $\{E_k\}_{k=1}^\infty$ be a countable collection of sets in $\mathcal{A}$. Prove that $m(\bigcup_{k=1}^\infty E_k) \le \sum_{k=1}^\infty m(E_k).$
-	\item A set function $c$, defined on all subsets of $\mathbb{R}$, is defined as follows.
-	Define $c(E)$ to be $\infty$ if $E$ has infinitely many members and $c(E)$ to be equal to the number of elements in $E$ if $E$ is finite; define $c(\emptyset)=0$. Show that $c$ is a countably additive and translation invariant set function. This set function is called the \textbf{counting measure}.
-\end{enumerate}
-
-
-\section{Lebesgue Outer Measure}
-
-\begin{center}
-	\textbf{PROBLEMS}
-\end{center}
-\begin{enumerate}
-	\setcounter{enumi}{4}
-	\item By using properties of outer measure, prove that the interval $[0,1]$ is not countable.
-	\item Let $A$ be the set of irrational numbers in the interval $[0,1]$. Prove that $m^*(A)=1$.
-	\item A set of real numbers is said to be a $G_\delta$ set provided it is the intersection of a countable collection of open sets.
-	Show that for any bounded set $E$, there is a $G_\delta$ set $G$ for which
-	\[E\subseteq G \ \text{and}\ m^*(G)=m^*(E).\]
-	\item Let $B$ be the set of rational numbers in the interval $[0,1]$, and let $\{I_k\}_{k=1}^n$ be a finite collection of open intervals that covers $B$.
-	Prove that $\textstyle \sum_{k=1}^n m^*(I_k) \ge 1$.
-	\item Prove that if $m^*(A)=0$, then $m^*(A\cup B) = m^*(B)$.
-	\item Let $A$ and $B$ be bounded sets for which there is an $\alpha >0$ such that $|a-b| \ge \alpha$ for all $a \in A, b \in B$.
-	Prove that $m^*(A \cup B) = m^*(a)+m^*(B)$.
-\end{enumerate}
-
-
-
-
-\section{The $\sigma$-Algebra of Lebesgue Measurable Sets}
-\section{Outer and Inner Approximation of Lebesgue Measurable Sets}
-\section{Countable Additivity, Continuity, and the Borel-Cantelli Lemma}
-\section{Nonmeasurable Sets}
-\section{The Cantor Set and the Cantor-Lebesgue Function}
+\include{chapters/chapter17}
+\include{chapters/chapter18}
+\include{chapters/chapter19}
+\include{chapters/chapter20}
+\include{chapters/chapter21}
+\include{chapters/chapter22}
 
 % Chapter 3
 \chapter{Lebesgue Measurable Functions}
