@@ -808,6 +808,59 @@ This is a contradiction to the assumption that $F_N$ is a nonempty subset of $F_
 
 \section{Sequences of Real Numbers}
 
+\begin{namedthm*}{Proposition 14}
+Let the sequence of real numbers $\{a_n\}$ converge to the real number $a$. 
+Then the limit is unique, the sequence is bounded, and, for a real number $c$, 
+\[
+\text{if } a_n \le c \text{ for all } n, \text{ then } a\le c.	
+\]	
+\end{namedthm*}
+\begin{proof}
+	Suppose there exist $a$ and $b$ such that $\{a_n\}\to a$ and $\{a_n\}\to b$.
+	Then For any $\epsilon >0$, there exists the index $N = \max \{N_a,N_b\}$ such that for all $n \ge N \ge N_a,N_b$, then $|a-a_n| < \epsilon$ and $|b-a_n| < \epsilon$.
+	By the triangle inequality, $|a-b| \le |a-a_n| + |a_n-b| < \epsilon + \epsilon = 2 \epsilon = \epsilon ' $.
+	Therefore $a=b$, and the limit is unique. \par
+	Consider $\epsilon =1$. Then there exists an index $N \in \mathbb{N}$ such that for all $n \ge N$, $|a_n-a| < 1$.
+	Also, $|a_n|-|a| \le |a_n-a| <1\implies |a_n| < |a| +1$.
+	Let $M = \max \{|a_1|, |a_2|, \cdots, |a_N|, |a|+1 \}$. The maximum exists because this is a finite set of real numbers (totally ordered).
+	Considering any $n \in \mathbb{N}$, if $n \ge N$, then $|a_n-a| <1\implies |a_n| < |a| +1 \le M$, and if $n<N$, then $|a_n| \le \max \{|a_1|, |a_2|, \cdots, |a_N|, |a|+1 \} =M$, so $M$ is a bound for this sequence.
+	\par
+	Suppose that for all $n$, $a_n \le c$ but $a>c$. 
+	Then $a_n \le c < a$ for all $n$, and $0 \le c-a_n <a-a_n$.
+	Choosing $\epsilon = c-a_n$, there exists an index such that $|a-a_n| < c-a_n$. But this is a contradiction. 
+	Therefore $a \le c$.
+\end{proof}
+
+\begin{flushleft}
+
+\begin{namedthm*}{Theorem 15}[the Monotone Convergence Criterion for Real Sequences]
+	A monotone sequence of real numbers converges iff it is bounded.
+\end{namedthm*}
+\begin{proof}
+	$(\implies)$ Suppose a monotone sequence converges.\par
+	By the above proposition, it is bounded.\par
+	$(\impliedby)$ Suppose a monotone sequence $\{a_n\}$ is bounded.\par
+	By the Completeness Axiom, there exists a supremum say $a$ such that $a_n \le a$ for all $n$.
+	Consider any $\epsilon >0$. Now, $a-\epsilon$ is not an upper bound, and because the sequence is increasing, there exists an index $N$ for which $a_n \ge a_N > a-\epsilon$ for all $n \ge N$.
+	Then $\epsilon > a-a_n$ and the sequence converges to $a$. The proof is the same for a decreasing sequence. 
+\end{proof}
+
+\begin{namedthm*}{Theorem 16}[The Bolzano-Weierstrass Theorem]
+Every bounded sequence of real numbers has a convergent subsequence.	
+\end{namedthm*}
+\begin{proof}
+	Let $a_n$ be a bounded sequence of real numbers. Choose $M>0$ s.t. $|a_n| \le M$ for all $n$. 
+	Define $E_n = \overline{\{a_j \ |\ j \ge n\}}$. Then we also have $E_n \subseteq [-M,M]$ and $E_n$ is closed since it is the closure of a set.
+	Therefore $\{E_n\}$ is a descending sequence of nonempty closed bounded subsets of real numbers. 
+	The Nested Set Theorem tells us that $\bigcap_{n=1}^\infty E_n \neq \emptyset$, so there exists $a \in \bigcap_{n=1}^\infty E_n$.
+	For each natural number $k$, $a$ is a point of closure of $\{a_j \ |\ j \ge k\}$.
+	Thus for infinitely many indices $j \ge n$, $a_j$ belongs to $(a-\tfrac{1}{k},a+\tfrac{1}{k})$.
+	By induction, choose a strictly increasing subsequence of natural numbers $n_k$ such that $|a-a_{n_k}|< \tfrac{1}{k}$ for all $k$.
+	From the Archimedean Property of the reals, the subsequence $\{ a_{n_k} \}$ converges to $a$.
+\end{proof}
+
+\end{flushleft}
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
