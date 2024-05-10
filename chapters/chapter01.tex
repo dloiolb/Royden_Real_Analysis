@@ -811,11 +811,29 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 	\item Show that $\lim \inf a_n \le \lim \sup a_n$.\par
 	For any natural number $n$, we have $\inf \{ a_k\ |\ k \ge n\} \le a_k \le \sup \{ a_k\ |\ k \ge n\}$ for all $k \ge n$.
 	Taking the limit with respect to n clearly proves the statement.
-	\item Prove that if, for all $n$, $a_n \ge 0$ and $b_n \ge 0 $, then \[ \lim \sup [a_n \cdot b_n] \le (\lim \sup a_n) \cdot (\lim \sup b_n),\] provided the product on the right is not of the form $0 \cdot \infty.$
-	\item Show that every real sequence has a monotone subsequence. Use this to provide another proof of the Bolzano-Weierstrass Theorem.
+	\item Prove that if, for all $n$, $a_n \ge 0$ and $b_n \ge 0 $, then \[ \lim \sup [a_n \cdot b_n] \le (\lim \sup a_n) \cdot (\lim \sup b_n),\] provided the product on the right is not of the form $0 \cdot \infty.$\par
+	For any natural number $n$, we can see that 
+	\[
+	\{a_k \cdot b_k \ |\ k\ge n\} \subseteq \{a_i \cdot b_j \ |\ i,j\ge n\}.	
+	\]
+	Then this clearly implies
+	\begin{align*}
+	\sup\{a_k \cdot b_k \ |\ k\ge n\} &\le \sup\{a_i \cdot b_j \ |\ i,j\ge n\}\\
+	&=\sup\{a_i\ |\ i\ge n\}\cdot\sup\{b_j\ |\ j\ge n\}.	
+	\end{align*}
+	Taking the limit on both sides proves the inequality.
+	\item Show that every real sequence has a monotone subsequence. Use this to provide another proof of the Bolzano-Weierstrass Theorem.\par
+	Let $\{a_n\}$ be any sequence of real numbers.
+	Supposing that there exist no monotone subsequences of $\{a_n\}$, then there are only finitely many indices $n$ for which $a_n \le a_{n+1}$, and only finitely many indices $n$ for which $a_n \ge a_{n+1}$.
+	Clearly we see a contradiction so there must exist a monotone subsequence.
+	\par
+	Now, in the case that $\{a_n\}$ is bounded, then the monotone subsequence $\{a_{n_k}\}$ is also bounded.
+	By Theorem 15, $\{a_{n_k}\}$ converges.
+	Thus $\{a_n\}$ has a convergent subsequence. 
 	\item Let $p$ be a natural number greater than 1, and $x$ a real number $0 \le x \le 1.$ Show that there is a sequence $\{a_n\}$ of integers with $0 \le a_n < p$ for each $n$ such that \[ x = \sum_{n=1}^\infty\dfrac{a_n}{p^n} \] 
 	and that this sequence is unique except when $x$ is of the form $q/p^n$, $0<q<p^n$, in which case there are exactly two such sequences. Show that, conversely, if $\{a_n\}$ is any sequence of integers with $0\le a_n < p$, the series \[ x = \sum_{n=1}^\infty\dfrac{a_n}{p^n} \] 
-	converges to a real number $x$ with $0 \le x \le 1$. If $p = 10$, this sequence is called the \textit{decimal} expansion of $x$. For $p=2$ it is called the \textit{binary} expansion; and for $p=3$, the \textit{ternary} expansion.
+	converges to a real number $x$ with $0 \le x \le 1$. If $p = 10$, this sequence is called the \textit{decimal} expansion of $x$. For $p=2$ it is called the \textit{binary} expansion; and for $p=3$, the \textit{ternary} expansion.\par
+	
 	\item Prove Proposition 20.
 	\item Show that the assertion of the Bolzano-Weierstrass Theorem is equivalent to the Completeness Axiom for the real numbers. Show that the assertion of the Monotone Convergence Theorem is equivalent to the Completeness Axiom for the real numbers.
 \end{enumerate}
