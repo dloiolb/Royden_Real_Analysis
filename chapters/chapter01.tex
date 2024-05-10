@@ -703,6 +703,81 @@ Every bounded sequence of real numbers has a convergent subsequence.
 	From the Archimedean Property of the reals, the subsequence $\{ a_{n_k} \}$ converges to $a$.
 \end{proof}
 
+\begin{namedthm*}{Proposition 19}
+Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
+\begin{enumerate}[label=(\roman*),align=left]
+	\item $\lim \sup \{a_n \}=\ell \in \mathbb{R}$ iff for each $\epsilon >0$, there are infinitely many indices $n$ for which $a_n > l-\epsilon $ and only finitely many indices $n$ for which $a_n < l-\epsilon $.\par
+	$(\implies)$ Suppose $\lim \sup \{a_n \}=\ell \in \mathbb{R}$.\par
+	Then by problem 38, $\ell$ is a cluster point of the sequence. This means that for all $\epsilon > 0$, there exists a subsequence $\{a_{n_k} \}$ such that $ \ell - a_{n_k} < \epsilon$ for all $n_k$ greater than some index, and thus $ \ell - \epsilon < a_{n_k} $ for infinitely many indices $n_k$.\par
+	Suppose by contradiction that for $\epsilon >0$, there are infinitely many indices $n$ for which $a_n < l-\epsilon $.
+	That is, no matter how large the epsilon we choose, there exists a subsequence $\{a_{n_k} \}$ such that $\epsilon < l-a_{n_k} $ for all $n_k$ after a certain index.
+	This implies that $\{a_n\}$ is not bounded, so by Proposition 14, the sequence does not converge to a real number.
+	This is a contradiction to $\ell \in \mathbb{R}$.
+	\par
+	$(\impliedby)$ Suppose for $\epsilon >0$, there are infinitely many indices $n$ for which $a_n > l-\epsilon $ and only finitely many indices $n$ for which $a_n < l-\epsilon $.\par
+	Then choosing specific indices $n_k$, there exists a subsequence $\{a_{n_k} \}$ such that $\ell - a_{n_k} <\epsilon $ for all $n_k$, and this implies the subsequence converges to $\ell$.
+	If we suppose that $\ell \neq \lim \sup \{a_n \}$, then there exists some $\delta >0$ such that $\ell > \ell - \delta = \lim \sup \{a_n \}$.\par
+	Now, $\ell - \delta = \lim \sup \{a_n \} = \lim_{n \to \infty} \sup \{ a_k\ |\ k \ge n\}$.
+	That means for any $n$, $a_k \le \ell - \delta$ for $k \ge n$.
+	However, this is a contradiction to the fact that there are only finitely many such indices $k$ for which this is true.
+	Therefore $\ell = \lim \sup \{a_n \}$.
+	\item $\lim \sup \{a_n \}=\infty$ iff $\{a_n \}$ is not bounded above.\par
+	$(\implies)$ Suppose $\lim \sup \{a_n \}=\infty$.\par
+	This implies that $\infty = \lim \sup \{a_n \}$ is a cluster point and there exists a subsequence that converges to infinity.
+	Therefore $\{a_n \}$ is not bounded above.\par
+	$(\impliedby)$ Suppose $\{a_n \}$ is not bounded above.\par
+	By Proposition 4, $\{a_n \}$ does not converge to a real number.
+	Also,$\{a_n \}$ is not bounded above implies that for any real number $c$, there exists an index such that $a_n > c$.
+	Then the only upper bound of this sequence is $\infty$ and thus $\lim \sup \{a_n \}=\infty$.
+	\item 
+	\[
+		\lim \sup \{a_n \}= -\lim \inf \{-a_n \}. 	
+	\]
+	Definitions of limsup and liminf:\par
+	$\lim \sup \{a_n \} = \lim_{n \to \infty} [\sup \{ a_k\ |\ k \ge n\}]$
+	$\implies$ for any $n \in \mathbb{N}$, $\sup \{ a_k\ |\ k \ge n\} \ge a_k$ for $k \ge n$.\par
+	$\lim \inf \{a_n \} = \lim_{n \to \infty} [\inf \{ a_k\ |\ k \ge n\}]$.
+	$\implies$ for any $n \in \mathbb{N}$, $\inf \{ a_k\ |\ k \ge n\} \le a_k$ for $k \ge n$.\par
+	Now we have\par
+	$\lim \inf \{-a_n \} = \lim_{n \to \infty} [\inf \{ -a_k\ |\ k \ge n\}]$.\par
+	$\implies$ for any $n \in \mathbb{N}$, $\inf \{ -a_k\ |\ k \ge n\} \le -a_k$ for $k \ge n$.\par
+	$\implies$ for any $n \in \mathbb{N}$, $-\inf \{ -a_k\ |\ k \ge n\} \ge a_k$ for $k \ge n$, the definition of limsup.\par
+	\item A sequence of real numbers $\{ a_n\}$ converges to an extended real number $a$ iff 
+	\[
+		\lim \inf \{a_n \}= \lim \sup \{a_n \} = a.
+	\]
+	$(\implies)$ Suppose a sequence of real numbers $\{ a_n\}$ converges to an extended real number $a$.\par
+	Clearly $\lim \inf \{a_n \} \le a \le \lim \sup \{a_n \} $.\par
+	If $\lim \inf \{a_n \} < a < \sup \{a_n \} $, then we reach a contradiction to the infimum and supremum respectively.\par
+	Therefore $\lim \inf \{a_n \} = a = \lim \sup \{a_n \} $.
+	\par
+	$(\impliedby)$ Suppose $\lim \inf \{a_n \}= \lim \sup \{a_n \} = a$.\par
+	Then for any $n \in \mathbb{N}$, $\inf \{ a_k\ |\ k \ge n\} \le a_k \le \sup \{ a_k\ |\ k \ge n\}$ for $k \ge n$, which implies
+	\[a= \lim \inf \{a_n \} = \lim_{n \to \infty} \inf \{ a_k\ |\ k \ge n\} \le \lim_{n \to \infty} a_k \le \lim_{n \to \infty} \sup \{ a_k\ |\ k \ge n\}= \lim \sup \{a_n \} = a\]
+	Clearly $\{ a_n\}$ converges to $a$.
+	\item If $a_n \le b_n$ for all $n$, then
+	\[
+		\lim \sup \{a_n \} \le \lim \sup \{b_n \}.	
+	\]
+	For any $n \in \mathbb{N}$, $a_k \le \sup \{ a_k\ |\ k \ge n\}$ and $b_k \le \sup \{ b_k\ |\ k \ge n\} $ for all $k \ge n$.\par
+	If we suppose $\lim \sup \{a_n \} > \lim \sup \{b_n \}$, then there exists a natural number $n$ such that $\sup \{ a_k\ |\ k \ge n\} > \sup \{ b_k\ |\ k \ge n\} \ge b_k \ge a_k$ for all $k \ge n$.
+	However, by problem 38, we see that $\lim \sup \{a_n \}$ is a cluster point of $\{a_n \}$, and we reach a contradiction. (or contradiction to def of supremum?)
+\end{enumerate}	
+\end{namedthm*}
+
+\begin{namedthm*}{Proposition 20}
+	Let $\{a_n \}$ be a sequence of real numbers.
+	\begin{enumerate}[label=(\roman*),align=left]
+		\item The series $\textstyle \sum_{k=1}^\infty a_k$ is summable iff for each $\epsilon >0$, there is an index $N$ for which
+		\[
+			\biggl | \sum_{k=n}^{n+m} a_k \biggr | < \epsilon \text{ for } n \ge N \text{ and any natural number } m.	
+		\]
+		\item If the series $\sum_{k=1}^\infty |a_k|$ is summable, then $\sum_{k=1}^\infty a_k$ is also summable.
+		\item If each term $a_k$ is nonnegative, then the series $\sum_{k=1}^\infty a_k$ is summable iff the sequence of partial sums is bounded.
+	\end{enumerate}	
+\end{namedthm*}
+
+
 \end{flushleft}
 
 \begin{center}
@@ -710,10 +785,32 @@ Every bounded sequence of real numbers has a convergent subsequence.
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{37}
-	\item We call an extended real number a \textbf{cluster point} of a sequence $\{ a_n\}$ if a subsequence converges to this extended real number. Show that $\lim \inf \{a_n\}$ is the smallest cluster point of $\{a_n\}$ and $\lim \sup \{a_n\}$ is the largest cluster point of $\{a_n\}$.
-	\item Prove proposition 19.
-	\item Show that a sequence $\{a_n\}$ is convergent to an extended real number iff there is exactly one extended real number that is a cluster point of the sequence.
-	\item Show that $\lim \inf a_n \le \lim \sup a_n$.
+	\item We call an extended real number a \textbf{cluster point} of a sequence $\{ a_n\}$ if a subsequence converges to this extended real number. Show that $\lim \inf \{a_n\}$ is the smallest cluster point of $\{a_n\}$ and $\lim \sup \{a_n\}$ is the largest cluster point of $\{a_n\}$.\par
+	Let $s = \lim \sup \{a_n\} = \lim_{n \to \infty} \sup \{ a_k\ |\ k \ge n\}$.
+	Suppose there exists a subsequence $\{ a_{n_k} \}$ that converges to an extended real number $a$.
+	Fix $\epsilon >0$. Then there exists an index $M$ such that $|a-a_{n_m}| < \epsilon$ when $n_m \ge M$, and $a_{n_m} \le \sup \{ a_k\ |\ k \ge M\}$.\par
+	Then $\lim_{M \to \infty} a_{n_m} \le \lim_{M \to \infty} \sup \{ a_k\ |\ k \ge M\} \implies a \le s$.\par
+	Therefore $\lim \sup \{a_n\}$ is the largest cluster point of $\{a_n\}$.
+	($\lim \sup \{a_n\}$ is itself a cluster point else we reach a contradiction to the supremum.)
+	The same method can be used to prove $\lim \inf \{a_n\}$.
+	\item Prove proposition 19.\par
+	See above for proof.
+	\item Show that a sequence $\{a_n\}$ is convergent to an extended real number iff there is exactly one extended real number that is a cluster point of the sequence.\par
+	$(\implies)$ Suppose $\{a_n\}$ is convergent to an extended real number $a$.\par
+	By Proposition 19(iv), we have $\lim \inf \{a_n \}= \lim \sup \{a_n \} = a$, so clearly any cluster point is equal to $a$.
+	\par
+	$(\impliedby)$ Suppose there is exactly one extended real number $a$ that is a cluster point of $\{a_n\}$.\par
+	Then there exists a subsequence that converges to $a$.
+	Suppose that $\{a_n\}$ does not converge to $a$.
+	Then there exists an $\epsilon > 0$ such that there are infinitely many indices $n$ for which $a-a_n > \epsilon$.
+	Collect these indices to construct a subsequence $\{a_{n_k}\}$.
+	In the case that $\{a_{n_k}\}$ is bounded, there exists another subsequence of $\{a_{n_k}\}$ that converges to a real number $b \neq a$. 
+	But this is also a subsequence of the original sequence $\{a_n\}$, which implies $\{a_n\}$ has two cluster points $a$ and $b$, a contradiction.
+	In the case that $\{a_{n_k}\}$ is unbounded, then for any real number $c$, there exists an index $n$ such that $|a_n| >c$.
+	Then we can construct a subsequence that converges to $+\infty \neq a$ or $-\infty \neq a$, which is again a contradiction to the fact that $\{a_n\}$ has only one cluster point.
+	\item Show that $\lim \inf a_n \le \lim \sup a_n$.\par
+	For any natural number $n$, we have $\inf \{ a_k\ |\ k \ge n\} \le a_k \le \sup \{ a_k\ |\ k \ge n\}$ for all $k \ge n$.
+	Taking the limit with respect to n clearly proves the statement.
 	\item Prove that if, for all $n$, $a_n \ge 0$ and $b_n \ge 0 $, then \[ \lim \sup [a_n \cdot b_n] \le (\lim \sup a_n) \cdot (\lim \sup b_n),\] provided the product on the right is not of the form $0 \cdot \infty.$
 	\item Show that every real sequence has a monotone subsequence. Use this to provide another proof of the Bolzano-Weierstrass Theorem.
 	\item Let $p$ be a natural number greater than 1, and $x$ a real number $0 \le x \le 1.$ Show that there is a sequence $\{a_n\}$ of integers with $0 \le a_n < p$ for each $n$ such that \[ x = \sum_{n=1}^\infty\dfrac{a_n}{p^n} \] 
