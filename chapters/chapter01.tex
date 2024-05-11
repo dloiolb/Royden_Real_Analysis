@@ -833,7 +833,56 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 	\item Let $p$ be a natural number greater than 1, and $x$ a real number $0 \le x \le 1.$ Show that there is a sequence $\{a_n\}$ of integers with $0 \le a_n < p$ for each $n$ such that \[ x = \sum_{n=1}^\infty\dfrac{a_n}{p^n} \] 
 	and that this sequence is unique except when $x$ is of the form $q/p^n$, $0<q<p^n$, in which case there are exactly two such sequences. Show that, conversely, if $\{a_n\}$ is any sequence of integers with $0\le a_n < p$, the series \[ x = \sum_{n=1}^\infty\dfrac{a_n}{p^n} \] 
 	converges to a real number $x$ with $0 \le x \le 1$. If $p = 10$, this sequence is called the \textit{decimal} expansion of $x$. For $p=2$ it is called the \textit{binary} expansion; and for $p=3$, the \textit{ternary} expansion.\par
-	
+
+	For each $m \in \mathbb{N}$, we can construct a partial sum:
+	\[
+		\sum_{n=1}^{m} \frac{a_n}{p^n} = \sum_{n=1}^{m-1} \frac{a_n}{p^n} + \frac{a_m}{p^m}	
+	\]
+	We choose each $a_m$ in the following way:\par
+	(The $\sum_{n=1}^{m-1} \frac{a_n}{p^n}$ is a fixed value found from the previous iteration, so for each step, we are simply choosing the best $a_m$).
+	\par
+	Case $\sum_{n=1}^{m-1} \frac{a_n}{p^n} + \frac{a_m}{p^m} = x$ for some $a_m \in \{0,1,\cdots,p\}$:
+	Then set $a_k=0$ for all $k \ge m$, and the equality is clear.\par
+	Else: Choose $a_m \in \{0,1,\cdots,p\}$ such that:
+	\[
+		\sum_{n=1}^{m-1} \frac{a_n}{p^n} + \frac{a_m}{p^m} < x <  \sum_{n=1}^{m-1} \frac{a_n}{p^n} + \frac{a_m+1}{p^m}.	
+	\]
+	\par
+	In this way we can construct a monotone sequence (of partial sums) that is bounded above by $x$:
+	\[
+	\sum_{n=1}^k \frac{a_n}{p^n} \le \sum_{n=1}^{k+1} \frac{a_n}{p^n} \le x \text{ for all }k \in \mathbb{N}.
+	\]
+	By showing that $x$ is the supremum, we can apply Theorem 15 to show that this sequence of partial sums converges to its supremum:
+	\[
+	\lim_{k\to\infty}\sum_{n=1}^k\frac{a_n}{p^n} = \sum_{n=1}^\infty\frac{a_n}{p^n} = x.
+	\]
+	Suppose that $x$ is not the supremum. 
+	Then there exists an $\epsilon > 0$ such that $\sum_{n=1}^k \frac{a_n}{p^n} \le x-\epsilon < x$ for all $k$.
+	Now, by the Archimedean Property, there exists a natural number $m$ such that $\frac{1}{m} < \epsilon$; therefore $0 < \epsilon-\frac{1}{m}$.
+	Now, because $p>1$, there exists a natural number $l$ such that $m<p^l$, so $0<\frac{1}{p^l}<\frac{1}{m}$ and thus $x-(\epsilon-\frac{1}{p^l})<x-(\epsilon-\frac{1}{m})<x$.\par
+	Then for all natural numbers $k$,
+	\[
+		\sum_{n=1}^k \frac{a_n}{p^n} \le x-\epsilon< x-\epsilon+\frac{1}{p^l}<x-\epsilon+\frac{1}{m}< x.
+	\]
+	However, there exists the natural number $l$ such that
+	\begin{align*}
+		\sum_{n=1}^l \frac{a_n}{p^n} = \sum_{n=1}^{l-1} \frac{a_n}{p^n} + \frac{a_l}{p^l}&\le x-\epsilon < x-\epsilon+\frac{1}{p^l}< x\\
+		\sum_{n=1}^{l-1} \frac{a_n}{p^n} + \frac{a_l+1}{p^l}& \le x-\epsilon +\frac{1}{p^l}<x.
+	\end{align*}
+	This is a contradiction to our choice of $a_l$ so that 
+	\[
+		\sum_{n=1}^{l-1} \frac{a_n}{p^n} + \frac{a_l}{p^l} < x <  \sum_{n=1}^{l-1} \frac{a_n}{p^n} + \frac{a_l+1}{p^l}.	
+	\]
+	Therefore $x$ is the supremum, and the series $\sum_{n=1}^\infty\dfrac{a_n}{p^n}$ is summable to $x$.\par
+	In the case that $x$ is of the form $q/p^n$, the obvious solution would be to set $a_n =q$ (assuming $q$ is an integer), and all other $a_k=0$.
+	The second solution would be to use the method described above.\par
+	For the converse,  $0\le a_n \le p-1$ implies that 
+	\[
+		\sum_{n=1}^\infty\dfrac{a_n}{p^n} \le \sum_{n=1}^\infty\dfrac{p-1}{p^n}=(p-1)\sum_{n=1}^\infty\dfrac{1}{p^n}
+	\]
+	Showing that $(p-1)\sum_{n=1}^\infty\dfrac{1}{p^n} <1$ implies that $\sum_{n=1}^k\dfrac{a_n}{p^n}$ is a bounded, monotone sequence of partial sums, and therefore it converges to a number in $[0,1]$.\par
+	\par
+	Ex: $x=.547$; decimal expansion: \[x=\frac{5}{10^1}+\frac{4}{10^2}+\frac{7}{10^3}+\frac{0}{10^4}+\frac{0}{10^5}+\cdots=.5+.04+.007+0+0+\cdots\]
 	\item Prove Proposition 20.
 	\item Show that the assertion of the Bolzano-Weierstrass Theorem is equivalent to the Completeness Axiom for the real numbers. Show that the assertion of the Monotone Convergence Theorem is equivalent to the Completeness Axiom for the real numbers.
 \end{enumerate}
