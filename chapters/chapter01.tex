@@ -538,7 +538,12 @@ Therefore $I$ is not countable.
 	yes (Schr\"oder-Bernstein theorem	)
 \end{enumerate}
 
+% 1.4
 \section{Open Sets, Closed Sets, and Borel Sets of Real Numbers}
+
+\begin{namedthm*}{Proposition 9}
+	Every nonempty open set is the union of a countable, disjoint collection of open intervals.	
+\end{namedthm*}
 
 \begin{namedthm*}{The Heine-Borel Theorem}
 Let $F$ be a closed and bounded set of real numbers. Then every open cover of $F$ has a finite subcover. 	
@@ -772,8 +777,43 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 		\[
 			\biggl | \sum_{k=n}^{n+m} a_k \biggr | < \epsilon \text{ for } n \ge N \text{ and any natural number } m.	
 		\]
-		\item If the series $\sum_{k=1}^\infty |a_k|$ is summable, then $\sum_{k=1}^\infty a_k$ is also summable.
-		\item If each term $a_k$ is nonnegative, then the series $\sum_{k=1}^\infty a_k$ is summable iff the sequence of partial sums is bounded.
+		$(\implies)$ Suppose the series $\textstyle \sum_{k=1}^\infty a_k$ is summable.\par
+		That is, there exists an $s$ such that $\{\textstyle \sum_{k=1}^n a_k\}$ converges to $s$.
+		Convergent sequences are Cauchy, so for any $\epsilon>0$, there exists and index $N$ such that for all $n+m\ge n-1\ge N$,
+		\begin{align*}
+			\biggl| \sum_{k=1}^{n+m} a_k - \sum_{k=1}^{n-1} a_k\biggr| &< \epsilon\\
+			\biggl|\sum_{k=1}^{n-1} a_k + \sum_{k=n}^{n+m} a_k - \sum_{k=1}^{n-1} a_k\biggr| &< \epsilon\\
+			\biggl|\sum_{k=n}^{n+m} a_k\biggr| &< \epsilon.
+		\end{align*}
+		\par
+		$(\impliedby)$ Suppose that for each $\epsilon >0$, there is an index $N$ for which
+		\[
+			\biggl | \sum_{k=n}^{n+m} a_k \biggr | < \epsilon \text{ for } n \ge N \text{ and any natural number } m.	
+		\]
+		Then
+		\begin{align*}
+			\biggl | \sum_{k=n}^{n+m} a_k +\sum_{k=1}^{n-1} a_k - \sum_{k=1}^{n-1} a_k \biggr | &< \epsilon\\
+			\biggl | \sum_{k=1}^{n+m} a_k - \sum_{k=1}^{n-1} a_k\biggr | &< \epsilon
+		\end{align*}
+		Without loss of generality, we can suppose that $n-1 \ge N$, and because $m$ is a natural number, $n+m>n-1\ge N$.
+		Clearly this describes a Cauchy Sequence, and because the real numbers is complete, this sequence converges and thus the series is summable.
+		\item If the series $\sum_{k=1}^\infty |a_k|$ is summable, then $\sum_{k=1}^\infty a_k$ is also summable.\par
+		By subadditivity of absolute value, we can show that for each $\epsilon >0$, there is an index $N$ for which
+		\[
+			\biggl | \sum_{k=n}^{n+m} a_k \biggr |\le \biggl | \sum_{k=n}^{n+m} |a_k| \biggr | < \epsilon \text{ for } n \ge N \text{ and any natural number } m.	
+		\]
+		\item If each term $a_k$ is nonnegative, then the series $\sum_{k=1}^\infty a_k$ is summable iff the sequence of partial sums is bounded.\par
+		Let $\{a_k\}$ be a sequence of nonnegative numbers.\par
+		$(\implies)$ Suppose the series $\sum_{k=1}^\infty a_k$ is summable.\par
+		Then the sequence of partial sums converges to a real number.
+		By Proposition 14, the sequence of partial sums is  bounded.
+		\par
+		$(\impliedby)$ Suppose the sequence of partial sums is bounded.\par
+		Because each $a_k$ is positive, the sequence of partial sums is positive monotonic:
+		\[
+			\sum_{k=1}^n a_k < \sum_{k=1}^n a_k + a_{n+1} = \sum_{k=1}^{n+1} a_k.
+		\]
+		Therefore by Theorem 15, the sequence of partial sums converges; that is, the series is summable.
 	\end{enumerate}	
 \end{namedthm*}
 
@@ -883,18 +923,109 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 	Showing that $(p-1)\sum_{n=1}^\infty\dfrac{1}{p^n} <1$ implies that $\sum_{n=1}^k\dfrac{a_n}{p^n}$ is a bounded, monotone sequence of partial sums, and therefore it converges to a number in $[0,1]$.\par
 	\par
 	Ex: $x=.547$; decimal expansion: \[x=\frac{5}{10^1}+\frac{4}{10^2}+\frac{7}{10^3}+\frac{0}{10^4}+\frac{0}{10^5}+\cdots=.5+.04+.007+0+0+\cdots\]
-	\item Prove Proposition 20.
-	\item Show that the assertion of the Bolzano-Weierstrass Theorem is equivalent to the Completeness Axiom for the real numbers. Show that the assertion of the Monotone Convergence Theorem is equivalent to the Completeness Axiom for the real numbers.
+	\item Prove Proposition 20.\par
+	See above.
+	\item Show that the assertion of the Bolzano-Weierstrass Theorem is equivalent to the Completeness Axiom for the real numbers. Show that the assertion of the Monotone Convergence Theorem is equivalent to the Completeness Axiom for the real numbers.\par
+	The Bolzano-Weierstrass Theorem asserts that every bounded sequence of real numbers has a convergent subsequence.\par
+	The Completeness Axiom asserts that every nonempty set of real numbers that is bounded above has a supremum.\par
+	The Monotone Convergence Theorem asserts that a monotone sequence of real numbers converges iff it is bounded.
 \end{enumerate}
 
 \section{Continuous Real-Valued Functions of a Real Variable}
+\begin{flushleft}
 
+\begin{namedthm*}{Proposition 21}
+	A real-valued function $f$ defined on a set $E$ of real numbers is continuous at the point $x_*\in E$ iff 
+	whenever a sequence $\{x_n\}$ in $E$ converges to $x_*$, its image sequence $\{f(x_n)\}$ converges to $f(x_*)$.
+\end{namedthm*}
+\begin{proof}
+	Let $f$ be a real-valued function defined on a set $E$.\par
+		$(\implies)$ Suppose that $f$ is continuous at the point $x_*\in E$.\par
+		Then for all $\epsilon>0$, there exists a $\delta>0$ such that 
+		\[
+			\text{if } x'\in E\text{ and }|x-x'|<\delta,\text{ then }|f(x)-f(x')|<\epsilon.
+		\]
+		Suppose that a sequence $\{x_n\}$ in $E$ converges to $x_*$. 
+		Then for any $\delta>0$, there exists an index $N$ such that when $n\ge N$, $|x_*-x_n|<\delta$.
+		Then by continuity of $f$, $|f(x_*)-f(x_n)|<\epsilon$, and thus the image sequence converges.\par
+		$(\impliedby)$ Suppose that whenever a sequence $\{x_n\}$ in $E$ converges to $x_*$, its image sequence $\{f(x_n)\}$ converges to $f(x_*)$.\par
+		That is, for any $\delta>0$, there exists an index $N$ such that $|x_*-x_n|<\delta$ whenever $n\ge N$, 
+		and this implies that for any $\epsilon>0$, there exists an index $M$ such that $|f(x_*)-f(x_n)|<\epsilon$ whenever $n\ge M$.
+		Thus continuity is clear.
+\end{proof}
+
+\begin{namedthm*}{Proposition 22}
+	Let $f$ be a real-valued function defined on a set $E$ of real numbers.
+	Then $f$ is continuous on $E$ iff for each open set $\mathcal{O}$,
+	\[
+	f^{-1}(\mathcal{O})=E \cup \mathcal{U}\text{ where }\mathcal{U}\text{ is an open set.}	
+	\]
+\end{namedthm*}
+
+\begin{namedthm*}{The Extreme Value Theorem}
+	A continuous real-valued function on a nonempty, closed, bounded set of real numbers takes a minimum and a maximum value.	
+\end{namedthm*}
+\begin{proof}
+	Let $f$ be a continuous real-valued function on a nonempty, closed, bounded set $E$ of real numbers.
+	Suppose by contradiction that $f$ is not bounded.
+	Then for any $n \in \mathbb{N}$, there exists $x_n \in E$ such that $f(x_n) > n$.
+	With this we can construct a sequence $\{x_n\}$ in $E$. Because $E$ is bounded, $\{x_n\}$ is bounded, and so by the Bolzano Weierstrass Theorem, there exists a convergent subsequence $\{x_{n_k}\}$.
+	Because $f$ is continuous, $\{x_{n_k}\}$ is convergent implies $\{f(x_{n_k})\}$ is convergent.
+	However, for each element in the image sequence, $f(x_{n_k})>n_k$, and $\{f(x_{n_k})\}$ is unbounded, thus it cannot converge, and we reach a contradiction.\par
+	Because $f$ is bounded, then it has a supremum $s$ such that $f(x) \le s$ for all $x \in E$.
+	Suppose that $f$ does not have a maximum. Then there is no $x \in E$ such that $f(x)=s$.
+	Then $f(x) < s \implies f(x) \in (-\infty,s)$ for all $x \in E$.
+	(We can use the fact that $(-\infty,s)$ is open $\implies f^{-1}(-\infty,s)$ is open):
+	Then we reach a contradiction because $E$ is closed. The same proof can be used for the minimum.
+\end{proof}
+
+\begin{namedthm*}{The Intermediate Value Theorem}
+	Let $f$ be a continuous real-valued function on the closed, bounded interval $[a,b]$ for which $f(a)<c<f(b)$.
+	The there is a point $x_0$ in $[a,b]$ at which $f(x_0)=c$.
+\end{namedthm*}
+
+\begin{namedthm*}{Theorem 23}
+	A continuous real-valued function on a closed, bounded set of real numbers is uniformly continuous.
+\end{namedthm*}
+\begin{proof}
+	Let $E$ be a closed, bounded set of real numbers, and let $f$ be a continuous real-valued function on $E$.\par
+	Fix some $\epsilon>0$.\par
+	By the continuity of $f$, for all $x\in E$, there exists $\delta_x>0$ such that for $y\in E$ satisfying $|x-y|< 2\delta_x$, then $|f(x)-f(y)|< \frac{\epsilon}{2}$.
+	Then we can construct an open cover of $E$ consisting of the open balls $\mathbb{B}(x,\delta_x)$ for all $x \in E$.\par
+	Because $E$ is compact, there exists a finite subcover $\{\mathbb{B}(x_1,\delta_1),\cdots,\mathbb{B}(x_n,\delta_1)\}$.\par
+	Let $\delta_* = \min\{\delta_1,\cdots,\delta_n\}$.\par
+	Consider $x,y\in E$ such that $|x-y|<\delta_*$.\par
+	Because $y \in E \subseteq \{\mathbb{B}(x_1,\delta_1),\cdots,\mathbb{B}(x_n,\delta_1)\}$, there exists an index $j\in \{1,\cdots,n\}$ such that $y \in \mathbb{B}(x_j,\delta_j)$; therefore
+	\[
+		|x_j-y|<\delta_j <2\delta_j.
+	\]
+	By continuity of $f$, $|f(x_j)-f(y)|<\frac{\epsilon}{2}$. (A)\par
+	By the triangle inequality,
+	\[
+		|x-x_j|\le |x-y| + |y-x_j| <\delta_* + \delta_j \le 2\delta_j.
+	\]
+	By continuity of $f$, $|f(x)-f(x_j)|<\frac{\epsilon}{2}$. (B)\par
+	By the triangle inequality using (A) and (B):
+	\[
+		|f(x)-f(y)| \le |f(x)-f(x_j)| +|f(x_j)-f(y)| < \frac{\epsilon}{2}+\frac{\epsilon}{2} = \epsilon.
+	\]
+\end{proof}
+
+\end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{46}
-	\item Let $E$ be a closed set of real numbers and $f$ a real-valued function that is defined and continuous on $E$. Show that there is a function $g$ defined and continuous on all of $\mathbb{R}$ such that $f(x) = g(x)$ for each $x \in E$. (Hint: Take $g$ to be linear on each of the intervals of which $\mathbb{R} \setminus E$ is composed.)
+	\item Let $E$ be a closed set of real numbers and $f$ a real-valued function that is defined and continuous on $E$. Show that there is a function $g$ defined and continuous on all of $\mathbb{R}$ such that $f(x) = g(x)$ for each $x \in E$. (Hint: Take $g$ to be linear on each of the intervals of which $\mathbb{R} \setminus E$ is composed.)\par
+	Because $E$ is closed, then $\mathbb{R} \setminus E$ is open. 
+	In the case that $E = \mathbb{R}$, then  $\mathbb{R} \setminus E = \emptyset$ and the conclusion is trivial. 
+	Else $\mathbb{R} \setminus E$ is nonempty. By proposition 9, $\mathbb{R} \setminus E$ is the union of a countable, disjoint collection of open intervals.	
+	In the case that $(-\infty,a)$ [or $(a,\infty)$] is in $\mathbb{R} \setminus E$, then $a \in E$ and $f(a)$ is defined.
+	Simply let $g(x)=f(a)$ be the constant function on $(-\infty,a)$ [or $(a,\infty)$].
+	In the case that $(a,b) \in \mathbb{R} \setminus E$, then $a,b\in E$ and $f(a)$,$f(b)$ are defined.
+	Let $g(x)=\frac{f(b)-f(a)}{b-a}(x)$ on $(a,b)$.
+	Also let $g(x)=f(x)$ whenever $x\in E$. Then we see that $g$ is continuous.
 	\item Define the real-valued function $f$ on $\mathbb{R}$ by setting 
 	\[ 
 	f(x) =
@@ -903,19 +1034,99 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 		p \sin \dfrac{1}{q} & \text{if } x = \dfrac{p}{q} \text{ in lowest terms.} \\
 	\end{cases}
 	\]
-	At what points is $f$ continuous?
+	At what points is $f$ continuous?\par
+	See Thomae's Function for something similar.\par
+	$f$ should be discontinuous at each rational number and continuous at each irrational number.
 	\item Let $f$ and $g$ be continuous real-valued functions with a common domain $E$.
 	\begin{enumerate}[label=(\roman*),align=left]
-        \item Show that the sum, $f+g$, and product, $fg$, are also continuous functions.
-        \item If $h$ is a continuous function with image contained in $E$, show that the composition $f \circ h$ is continuous.
-        \item Let max$\{f,g\}$ be the function defined by max$\{f,g\}(x)$ = max$\{f(x),g(x)\}$, for $x \in E$. Show that max$\{f,g\}$ is continuous.
-        \item Show that $|f|$ is continuous.
+        \item Show that the sum, $f+g$, and product, $fg$, are also continuous functions.\par
+        Suppose $\{x_n\}\in E$ converges to $x\in E$.
+        Then $\{f(x_n)\}$ converges to $f(x)$ and $\{g(x_n)\}$ converges to $g(x)$ by continuity of $f,g$.
+		\par
+		That is, for any $\epsilon>0$, there exists a $0<\delta\le \delta_f,\delta_g$ such that
+		$|f(x_n)-f(x)|<\frac{\epsilon}{2}$ and $|g(x_n)-g(x)|<\frac{\epsilon}{2}$ whenever $|x_n-x|<\delta$.
+		By the triangle inequality,
+		\begin{align*}
+			|(f+g)(x_n)-(f+g)(x))| &= |(f(x_n)+g(x_n))-(f(x)+g(x))| \\
+			&\le |f(x_n)-f(x)|+|g(x_n)+g(x)| \\
+			&< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+		\end{align*}
+        \par
+		Fix any $\epsilon>0$. By continuity of $f,g$, there exists a $0<\delta\le \delta_f,\delta_g$ such that
+		$|f(y)-f(x)|<\frac{\epsilon}{2|g(x)|}$ and $|g(y)-g(x)|<\frac{\epsilon}{2|f(y)|}$ whenever $|y-x|<\delta$.
+		\begin{align*}
+			|fg(y)-fg(x)| &= |f(y)g(y)-f(x)g(x)|\\
+			&=|f(y)g(y)-f(y)g(x)+f(y)g(x)-f(x)g(x)|\\
+			&=|f(y)(g(y)-g(x))+g(x)(f(y)-f(x))|\\
+			&\le|f(y)(g(y)-g(x))|+|g(x)(f(y)-f(x))|\\
+			&=|f(y)||g(y)-g(x)|+|g(x)||f(y)-f(x)|\\
+			&<|f(y)|\frac{\epsilon}{2|f(y)|}+|g(x)|\frac{\epsilon}{2|g(x)|}\\
+			&=\epsilon
+		\end{align*}
+        (This one is a bit janky).
+        \item If $h$ is a continuous function with image contained in $E$, show that the composition $f \circ h$ is continuous.\par
+        Suppose $\{x_n\}\in E$ converges to $x\in E$.
+		Then $\{h(x_n)\}\in E$ converges to $h(x)\in E$ by continuity of $h$.
+		Then $\{f\circ h(x_n)\}=\{f(h(x_n))\}$ converges to $f\circ h(x) = f(h(x))$ by continuity of $f$.
+		Therefore the composition is continuous.
+        \item Let max$\{f,g\}$ be the function defined by max$\{f,g\}(x)$ = max$\{f(x),g(x)\}$, for $x \in E$. Show that max$\{f,g\}$ is continuous.\par
+        Fix $\epsilon>0$. By continuity of $f,g$, there exists a $0<\delta\le\delta_f,\delta_g$ s.t. whenever $|x-y|<\delta$, then $|f(x)-f(y)|<\frac{\epsilon}{2}$ and $|g(x)-g(y)|<\frac{\epsilon}{2}$.
+		\par
+		We can write
+		\[
+			\max\{f(x),g(x)\} = \frac{f(x)+g(x)}{2}+\frac{|f(x)-g(x)|}{2}.
+		\]
+		This is by the identity:
+		\begin{align*}
+		\max(x,y)+\min(x,y)&=x+y\\
+		\max(x,y)-\min(x,y)&=|x-y|\\
+		\max(x,y)&=\frac{1}{2}(x+y+|x-y|)\\
+		\min(x,y)&=\frac{1}{2}(x+y-|x-y|)
+		\end{align*}
+		Now, $|\max\{f(x),g(x)\}-\max\{f(y),g(y)\}|$ is equal to
+		\begin{align*}
+			\biggl | \frac{f(x)+g(x)}{2}+\frac{|f(x)-g(x)|}{2} - (\frac{f(y)+g(y)}{2}+\frac{|f(y)-g(y)|}{2}) \biggr | \\
+			= \biggl | \frac{f(x)-f(y)+g(x)-g(y)+|f(x)-g(x)|-|f(y)-g(y)|}{2} \biggr |\\
+			\le \frac{|f(x)-f(y)|+|g(x)-g(y)|+ |\ |f(x)-g(x)|-|f(y)-g(y)|\ |}{2} \\
+			\le \frac{|f(x)-f(y)|+|g(x)-g(y)|+ |f(x)-g(x)-f(y)+g(y)|}{2} \\
+			\le \frac{|f(x)-f(y)|+|g(x)-g(y)|+ |f(x)-f(y)|+|g(y)+g(x)|}{2} \\
+			< \frac{\frac{\epsilon}{2}+\frac{\epsilon}{2}+ \frac{\epsilon}{2}+\frac{\epsilon}{2}}{2} \\
+			=\epsilon.
+		\end{align*}
+        \item Show that $|f|$ is continuous.\par
+        For any $\epsilon>0$, there exists a delta such that whenever $|x-y|<\delta$,
+        \begin{align*}
+			|\ |f(x)|-|f(y)|\ |\le|f(x)-f(y)| <\epsilon.
+		\end{align*}
     \end{enumerate}
-	\item Show that a Lipschitz function is uniformly continuous but there are uniformly continuous functions that are not Lipschitz.
+	\item Show that a Lipschitz function is uniformly continuous but there are uniformly continuous functions that are not Lipschitz.\par
+	Lipschitz: there exists $L\ge0$ s.t. for all $x,x'$:
+	\[
+		|f(x)-f(x')|\le L|x-x'|
+	\]
+	Fixing any $\epsilon>0$, whenever $|x-x'|\le\delta$, we have
+	\[
+		|f(x)-f(x')|\le L|x-x'|<L\delta,
+	\]
+	so we can set $\delta=\dfrac{\epsilon}{L}$.
+	The $\delta$ is the same for any values of $x$, so $f$ is uniformly continuous.\par
+	The function $\sqrt{x}$ is uniformly continuous but not Lipschitz.
 	\item A continuous function $\phi$ on $[a,b]$ is called \textbf{piecewise linear} provided there is a partition $a=x_0<x_1< \cdots <x_n = b$ of $[a,b]$ for which $\phi$ is linear on each interval $[x_i, x_{i+1}]$. Let $f$ be a continuous function on $[a,b]$ and $\epsilon$ a positive number. 
-	Show that there is a piecewise linear function $\phi$ on $[a,b]$ with $|f(x)-\phi (x)| < \epsilon$ for all $x \in [a,b]$.
+	Show that there is a piecewise linear function $\phi$ on $[a,b]$ with $|f(x)-\phi (x)| < \epsilon$ for all $x \in [a,b]$.\\
+	Start with $f(x_0)$, and choose $x_1$ so that $f(x_1)=f(x_0)\pm \epsilon$.\\
+	Define $\phi(x) = \frac{f(x_1)-f(x_0)}{x_1-x_0}$(x) on $[x_0,x_1]$.\\
+	Repeat this process to choose each interval:\\
+	Start with $f(x_i)$, and choose $x_{i+1}$ so that $f(x_{i+1})=f(x_i)\pm \epsilon$.\\
+	Define $\phi(x) = \frac{f(x_{i+1})-f(x_i)}{x_{i+1}-x_i}$(x) on $[x_i,x_{i+1}]$.\\
+	
 	\item Show that a nonempty set $E$ of real numbers is closed and bounded if and only if every continuous real-valued function on $E$ takes a maximum value.
-	\item Show that a set $E$ of real numbers is closed and bounded iff every open cover of $E$ has a finite subcover.
+	\item Show that a set $E$ of real numbers is closed and bounded iff every open cover of $E$ has a finite subcover.\par
+	Let $E$ be a set of real numbers.\par
+	$(\implies)$ Suppose $E$ is closed and bounded.\par
+	By the Heine-Borel Theorem, every open cover of $E$ has a finite subcover.
+	\par
+	$(\impliedby)$ Suppose every open cover of $E$ has a finite subcover.\par
+	See the proof in 1.4 after the Heine-Borel Theorem.
 	\item Show that a nonempty set $E$ of real numbers is an interval iff every continuous real-valued function on $E$ has an interval as its image.
 	\item Show that a monotone function on an open interval is continuous iff its image is an interval. 
 	\item Let $f$ be a real-valued function defined on $\mathbb{R}$. Show that the set of points at which $f$ is continuous is a $G_\delta$ set.
