@@ -1153,18 +1153,25 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 	$(\impliedby)$ Suppose every continuous real-valued function on $E$ has an interval as its image.\\
 	Suppose $E$ is not an interval.
 	Then there exist two points $x,y\in E$ such that $x<a<y$ but $a \notin E$.
-	Because $x,y\in E$, $f(x)$ and $f(y)$ are defined, so without loss of generality, $[f(x),f(y)]$ is in the image of $f$.
-	
+	\\Let $f$ be a continuous real-valued function on $E$, and without loss of generality, let $f$ be monotonically increasing.
+	Because $x,y\in E$, then $f(x)$,$f(y)$ are defined, so $[f(x),f(y)]$ is in the image of $f$.
+	\\Define two disjoint collections of subsets of E: $I_{<a}=\{I\subseteq E\ |\ x<a \ \forall x \in I\}$ and $I_{>a}=\{I\subseteq E\ |\ x>a \ \forall x \in I\}$, so that $I_{<a}\cap I_{>a}=\emptyset$.
+	These collections are nonempty because $\{x\}\in I_{<a}$ and $\{y\}\in I_{>a}$.
+	Consider $\bigcup I_{<a}\subseteq E$, the union of all elements of $I_{<a}$, and $\bigcup I_{>a}\subseteq E$, the union of all elements of $I_{>a}$.
+	By monotonicity of $f$, $f(\bigcup I_{<a})<f(\bigcup I_{>a})$, so $[f(x),f(y)]\not\subseteq f(\bigcup I_{<a})\bigcup f(\bigcup I_{>a})=f(E)$, a contradiction.
 	\item Show that a monotone function on an open interval is continuous iff its image is an interval.\\
-	Let $f$ be a monotone function on an open interval $E$.\\
+	Let $f$ be a monotone function on an open interval $E=(a,b)$.\\
 	$(\implies)$ Suppose $f$ is continuous.\\
 	Then by Problem 54, $E$ is an interval implies that the continuous real-valued function $f$ has an interval as its image.\\
 	$(\impliedby)$ Suppose the image of $f$ is an interval.\\
-	(Assume monotonically increasing; the proof for monotonically decreasing works the same way.)\\
-	Then for any $f(x)<c<f(y)$, by the Intermediate Value Theorem and monotonicity, $x<x_0<y$, with $f(x_0)=c$ for some $x_0$.
-
+	Let $x_0$ be a point in the open interval $E$, so that $f(x_0)$ is defined. 
+	For any sequence $\{x_n\}$ in $E\cap(x_0,\infty)$ that converges to $x_0$, then $\{f(x_n)\}$ converges to $f(x_0^+)$.\\
+	Similarly, for any sequence $\{x_n\}$ in $E\cap(-\infty,x_0)$ that converges to $x_0$, then $\{f(x_n)\}$ converges to$f(x_0^-)$.\\
+	Then $f(x_0^-)=f(x_0)= f(x_0^+)$ by monotonicity.
+	\\(messy)
 	\item Let $f$ be a real-valued function defined on $\mathbb{R}$. Show that the set of points at which $f$ is continuous is a $G_\delta$ set.\\
-	A $G_\delta$ set is a set that is a countable intersection of open sets.
+	A $G_\delta$ set is a set that is a countable intersection of open sets.\\
+	$f$ is continuous at a point $x$ if for any open set in the image containing $f(x)$, the inverse image is an open set containing $x$.
 	\item Let $\{ f_n\}$ be a sequence of continuous functions defined on $\mathbb{R}$. Show that the set of points $x$ at which the sequence $\{f_n(x)\}$ converges to a real number is the intersection of a countable collection of $F_\sigma$ sets.\\
 	An $F_\sigma$ set is a set that is a countable union of closed sets.
 	\item Let $f$ be a continuous real-valued function on $\mathbb{R}$. Show that the inverse image with respect to $f$ of an open set is open, of a closed set is closed, and of a Borel set is Borel.\\
