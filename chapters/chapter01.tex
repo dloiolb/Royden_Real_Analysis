@@ -958,7 +958,7 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 	Let $f$ be a real-valued function defined on a set $E$ of real numbers.
 	Then $f$ is continuous on $E$ iff for each open set $\mathcal{O}$,
 	\[
-	f^{-1}(\mathcal{O})=E \cup \mathcal{U}\text{ where }\mathcal{U}\text{ is an open set.}	
+	f^{-1}(\mathcal{O})=E \cap \mathcal{U}\text{ where }\mathcal{U}\text{ is an open set.}	
 	\]
 \end{namedthm*}
 
@@ -981,7 +981,7 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 
 \begin{namedthm*}{The Intermediate Value Theorem}
 	Let $f$ be a continuous real-valued function on the closed, bounded interval $[a,b]$ for which $f(a)<c<f(b)$.
-	The there is a point $x_0$ in $[a,b]$ at which $f(x_0)=c$.
+	The there is a point $x_0$ in $(a,b)$ at which $f(x_0)=c$.
 \end{namedthm*}
 
 \begin{namedthm*}{Theorem 23}
@@ -1021,10 +1021,13 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 	Because $E$ is closed, then $\mathbb{R} \setminus E$ is open. 
 	In the case that $E = \mathbb{R}$, then  $\mathbb{R} \setminus E = \emptyset$ and the conclusion is trivial. 
 	Else $\mathbb{R} \setminus E$ is nonempty. By proposition 9, $\mathbb{R} \setminus E$ is the union of a countable, disjoint collection of open intervals.	
-	In the case that $(-\infty,a)$ [or $(a,\infty)$] is in $\mathbb{R} \setminus E$, then $a \in E$ and $f(a)$ is defined.
+	\\In the case that $(-\infty,a)$ [or $(a,\infty)$] is in $\mathbb{R} \setminus E$, then $a \in E$ and $f(a)$ is defined.
 	Simply let $g(x)=f(a)$ be the constant function on $(-\infty,a)$ [or $(a,\infty)$].
-	In the case that $(a,b) \in \mathbb{R} \setminus E$, then $a,b\in E$ and $f(a)$,$f(b)$ are defined.
-	Let $g(x)=\frac{f(b)-f(a)}{b-a}(x)$ on $(a,b)$.
+	\\In the case that $(a,b) \in \mathbb{R} \setminus E$, then $a,b\in E$ and $f(a)$,$f(b)$ are defined.
+	Let 
+	\[
+		g(x)=\frac{f(b)-f(a)}{b-a}(x-a)+f(a)\text{ on } (a,b).
+	\]
 	Also let $g(x)=f(x)$ whenever $x\in E$. Then we see that $g$ is continuous.
 	\item Define the real-valued function $f$ on $\mathbb{R}$ by setting 
 	\[ 
@@ -1094,7 +1097,7 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 			=\epsilon.
 		\end{align*}
         \item Show that $|f|$ is continuous.\par
-        For any $\epsilon>0$, there exists a delta such that whenever $|x-y|<\delta$,
+        For any $\epsilon>0$, there exists a delta such that whenever $|x-y|<\delta$, by the reverse triangle inequality:
         \begin{align*}
 			|\ |f(x)|-|f(y)|\ |\le|f(x)-f(y)| <\epsilon.
 		\end{align*}
@@ -1114,12 +1117,22 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 	\item A continuous function $\phi$ on $[a,b]$ is called \textbf{piecewise linear} provided there is a partition $a=x_0<x_1< \cdots <x_n = b$ of $[a,b]$ for which $\phi$ is linear on each interval $[x_i, x_{i+1}]$. Let $f$ be a continuous function on $[a,b]$ and $\epsilon$ a positive number. 
 	Show that there is a piecewise linear function $\phi$ on $[a,b]$ with $|f(x)-\phi (x)| < \epsilon$ for all $x \in [a,b]$.\\
 	Start with $f(x_0)$, and choose $x_1$ so that $f(x_1)=f(x_0)\pm \epsilon$.\\
-	Define $\phi(x) = \frac{f(x_1)-f(x_0)}{x_1-x_0}$(x) on $[x_0,x_1]$.\\
+	Define $\phi(x) = \frac{f(x_1)-f(x_0)}{x_1-x_0}(x-x_0)+f(x_0)$ on $[x_0,x_1]$.\\
 	Repeat this process to choose each interval:\\
 	Start with $f(x_i)$, and choose $x_{i+1}$ so that $f(x_{i+1})=f(x_i)\pm \epsilon$.\\
-	Define $\phi(x) = \frac{f(x_{i+1})-f(x_i)}{x_{i+1}-x_i}$(x) on $[x_i,x_{i+1}]$.\\
-	
-	\item Show that a nonempty set $E$ of real numbers is closed and bounded if and only if every continuous real-valued function on $E$ takes a maximum value.
+	Define $\phi(x) = \frac{f(x_{i+1})-f(x_i)}{x_{i+1}-x_i}(x-x_i)+f(x_i)$ on $[x_i,x_{i+1}]$.\\
+	Then we see that $f$ and $\phi$ are always within $\epsilon$ of each other, and $\phi$ is continuous and piecewise linear.
+	\item Show that a nonempty set $E$ of real numbers is closed and bounded if and only if every continuous real-valued function on $E$ takes a maximum value.\\
+	Let $E$ be a nonempty set of real numbers.\\
+	$(\implies)$ Suppose $E$ is closed and bounded.\\
+	By the Extreme Value Theorem, every continuous real-valued function on $E$ takes a maximum (and minimum) value.\\
+	$(\impliedby)$ Suppose every continuous real-valued function on $E$ takes a maximum value.\\
+	Suppose that $E$ is not closed.
+	The continuous real-valued function $f(x)=\frac{1}{x}$ on the open set $E=(0,1)$ does not take on a maximum value. Contradiction.\\
+	Suppose $E$ is not bounded. 
+	The continuous real-valued function $f(x)=x^2$ on the unbounded set $E=[0,\infty)$ does not take on a maximum value. Contradiction.\\
+	Therefore $E$ must be closed and bounded.
+	(Not the right way to do this...)
 	\item Show that a set $E$ of real numbers is closed and bounded iff every open cover of $E$ has a finite subcover.\par
 	Let $E$ be a set of real numbers.\par
 	$(\implies)$ Suppose $E$ is closed and bounded.\par
@@ -1127,10 +1140,50 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 	\par
 	$(\impliedby)$ Suppose every open cover of $E$ has a finite subcover.\par
 	See the proof in 1.4 after the Heine-Borel Theorem.
-	\item Show that a nonempty set $E$ of real numbers is an interval iff every continuous real-valued function on $E$ has an interval as its image.
-	\item Show that a monotone function on an open interval is continuous iff its image is an interval. 
-	\item Let $f$ be a real-valued function defined on $\mathbb{R}$. Show that the set of points at which $f$ is continuous is a $G_\delta$ set.
-	\item Let $\{ f_n\}$ be a sequence of continuous functions defined on $\mathbb{R}$. Show that the set of points $x$ at which the sequence $\{f_n(x)\}$ converges to a real number is the intersection of a countable collection of $F_\sigma$ sets.
-	\item Let $f$ be a continuous real-valued function on $\mathbb{R}$. Show that the inverse image with respect to $f$ of an open set is open, of a closed set is closed, and of a Borel set is Borel.
-	\item A sequence $\{f_n\}$ of real-valued functions defined on a set $E$ is said to converge uniformly on $E$ to a function $f$ iff given $\epsilon >0$, there is an $N$ such that for all $x \in E$ and all $n \ge N$, we have $|f_n(x) - f(x)| < \epsilon$. Let $\{f_n\}$ be a sequence of continuous functions defined on a set $E$. Prove that if $\{f_n\}$ converges uniformly to $f$ on $E$, then $f$ is continuous on $E$. 
+	\item Show that a nonempty set $E$ of real numbers is an interval iff every continuous real-valued function on $E$ has an interval as its image.\\
+	Let $E$ be a nonempty set of real numbers.\\
+	$(\implies)$ Suppose $E$ is an interval.\\
+	Then for any two points $x,y\in E$, the set $[x,y]$ is in $E$.
+	Let $f$ be a continuous real-valued function on $E$.
+	Now, we have $f(x),f(y)$ in the image of $f$.
+	Suppose, without loss of generality, that $f(x)<f(y)$.
+	By the Intermediate Value Theorem, for any $c$ such that $f(x)<c<f(y)$, there exists $x_0\in(x,y)\subseteq E$ such that $f(x_0)=c$.
+	That is, for any two points in the image of $f$, every point between them is also in the image of $f$.
+	Therefore the image of $f$ is an interval.\\
+	$(\impliedby)$ Suppose every continuous real-valued function on $E$ has an interval as its image.\\
+	Suppose $E$ is not an interval.
+	Then there exist two points $x,y\in E$ such that $x<a<y$ but $a \notin E$.
+	Because $x,y\in E$, $f(x)$ and $f(y)$ are defined, so without loss of generality, $[f(x),f(y)]$ is in the image of $f$.
+	
+	\item Show that a monotone function on an open interval is continuous iff its image is an interval.\\
+	Let $f$ be a monotone function on an open interval $E$.\\
+	$(\implies)$ Suppose $f$ is continuous.\\
+	Then by Problem 54, $E$ is an interval implies that the continuous real-valued function $f$ has an interval as its image.\\
+	$(\impliedby)$ Suppose the image of $f$ is an interval.\\
+	(Assume monotonically increasing; the proof for monotonically decreasing works the same way.)\\
+	Then for any $f(x)<c<f(y)$, by the Intermediate Value Theorem and monotonicity, $x<x_0<y$, with $f(x_0)=c$ for some $x_0$.
+
+	\item Let $f$ be a real-valued function defined on $\mathbb{R}$. Show that the set of points at which $f$ is continuous is a $G_\delta$ set.\\
+	A $G_\delta$ set is a set that is a countable intersection of open sets.
+	\item Let $\{ f_n\}$ be a sequence of continuous functions defined on $\mathbb{R}$. Show that the set of points $x$ at which the sequence $\{f_n(x)\}$ converges to a real number is the intersection of a countable collection of $F_\sigma$ sets.\\
+	An $F_\sigma$ set is a set that is a countable union of closed sets.
+	\item Let $f$ be a continuous real-valued function on $\mathbb{R}$. Show that the inverse image with respect to $f$ of an open set is open, of a closed set is closed, and of a Borel set is Borel.\\
+	The inverse image of an open set is open (See prop 22).\\
+	Suppose that the inverse image of a closed set is not closed.
+	That is, let $B$ be a closed set of real numbers and let $f^{-1}(B)=\{x\in\mathbb{R}\ |\ f(x)\in B\}$ not be closed. 
+	Then there exists a sequence $x_n\in f^{-1}(B)$ that converges to $x \notin f^{-1}(B)$.
+	However, by continuity of $f$, $f(x_n)\in B$ converges to $f(x)\notin B$.
+	This implies that $B$ does not contain all its limit points, and thus $B$ is not closed, a contradiction.
+	Therefore $f^{-1}(B)$ must be closed.
+	\item A sequence $\{f_n\}$ of real-valued functions defined on a set $E$ is said to converge uniformly on $E$ to a function $f$ iff given $\epsilon >0$, there is an $N$ such that for all $x \in E$ and all $n \ge N$, we have $|f_n(x) - f(x)| < \epsilon$. Let $\{f_n\}$ be a sequence of continuous functions defined on a set $E$. Prove that if $\{f_n\}$ converges uniformly to $f$ on $E$, then $f$ is continuous on $E$.\\
+	We want to show that uniform convergence preserves continuity.\\
+	Fix $\epsilon>0$.\\
+	By uniform convergence of $\{f_n\}$, there exists an index $N$ such that $|f(x)-f_n(x)|<\frac{\epsilon}{3}$ for all $x\in E$ and all $n\ge N$.\\
+	By continuity of each $f_n$, for all $x\in E$, there exists a $\delta>0$ such that $|f_n(x)-f_n(y)|<\frac{\epsilon}{3}$ whenever $|x-y|<\delta$.\\
+	Therefore we have:
+	\begin{align*}
+		|f(x)-f(y)|&\le|f(x)-f_n(x)|+|f_n(x)-f_n(y)|+|f_n(y)-f(y)|\\
+		&<\frac{\epsilon}{3}+\frac{\epsilon}{3}+\frac{\epsilon}{3}\\
+		&=\epsilon.
+	\end{align*}
 \end{enumerate}
