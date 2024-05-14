@@ -1,6 +1,7 @@
 % Chapter 2
 \chapter{Lebesgue Measure}
 
+% 2.1
 \section{Introduction}
 In this chapter we construct a collection of sets called \textbf{Lebesgue measurable sets}, and a set function of this collection called \textbf{Lebesgue measure}, denoted by $m$. The collection of Lebesgue measurable sets is a $\sigma$-algebra which contains all open sets and all closed sets. The set function $m$ possesses the following three properties:
 \begin{namedthm*}{The measure of an interval is its length}
@@ -16,7 +17,7 @@ m(E+y) = m(E).
 \]
 \end{namedthm*}
 \begin{namedthm*}{Measure is countably additive over countable disjoint unions of sets}
-IF $\{E_k\}_{k=1}^\infty$ is a countable disjoint collection of Lebesgue measurable sets, then
+If $\{E_k\}_{k=1}^\infty$ is a countable disjoint collection of Lebesgue measurable sets, then
 \[
 m(\bigcup_{k=1}^\infty E_k) = \sum_{k=1}^\infty m(E_k).
 \]
@@ -39,13 +40,38 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 	\item Prove that if $A$ and $B$ are two sets in $\mathcal{A}$ with $A \subseteq B$, then $m(A) \le m(B)$. This property is called \textit{monotonicity}.\par
 	$A \subseteq B \implies B = A \cup (B \cap A^c),$ where $A \cap (B \cap A^c) = \emptyset$. The set $(B \cap A^c)$ is measurable because $A^c$ is measurable and countable intersection is measurable, so $m(B) = m(A \cup (B \cap A^c)) = 	m(A) + m(B \cap A^c)$ by countable additivity, and thus $m(B) \ge m(A)$.
 	\item Prove that if there is a set $A$ in the collection $\mathcal{A}$ for which $m(A) < \infty$, then $m(\emptyset) = 0$.\par
-	
+	We have $A\cap\emptyset = \emptyset$ and $A\cup\emptyset = A$. 
+    \begin{align*}
+        m(A)&=m(A\cup\emptyset)\\
+        m(A)&=m(A)+m(\emptyset)&&\text{ by disjoint additivity}\\
+        0&=m(\emptyset).
+    \end{align*}
 	\item Let $\{E_k\}_{k=1}^\infty$ be a countable collection of sets in $\mathcal{A}$. Prove that $m(\bigcup_{k=1}^\infty E_k) \le \sum_{k=1}^\infty m(E_k).$
-	\item A set function $c$, defined on all subsets of $\mathbb{R}$, is defined as follows.
-	Define $c(E)$ to be $\infty$ if $E$ has infinitely many members and $c(E)$ to be equal to the number of elements in $E$ if $E$ is finite; define $c(\emptyset)=0$. Show that $c$ is a countably additive and translation invariant set function. This set function is called the \textbf{counting measure}.
+    For any two measurable sets $A,B$, we have $A\cup B=(A\setminus B)\cup(B)$.
+    By disjoint additivity,
+    \[
+        m(A\cup B) = m(A\setminus B)+m(B)
+    \]
+    Now, by problem 1, $(A\setminus B)\subseteq A$ implies that $m(A\setminus B)\le m(A)$.
+    Therefore
+    \[
+        m(A\cup B) \le m(A)+m(B).
+    \]
+    \item A set function $c$, defined on all subsets of $\mathbb{R}$, is defined as follows.
+	Define $c(E)$ to be $\infty$ if $E$ has infinitely many members and $c(E)$ to be equal to the number of elements in $E$ if $E$ is finite; define $c(\emptyset)=0$. Show that $c$ is a countably additive and translation invariant set function. This set function is called the \textbf{counting measure}.\\
+    Suppose $E=\{x_1,\cdots,x_n\}$.\\
+    Then $m(E)=n$. For any real number $y$, $y+E = \{y+x_1,\cdots,y+x_n\}$, so $m(y+E)=n$.\\
+    Suppose $E$ has infinitely many members.\\
+    Then $y+E$ has infinitely members as well, so $m(E)=m(y+E)=\infty$.\\
+    Let $\{E_k\}_{k=1}^\infty$ be a disjoint collection of sets of real numbers.
+    In the case that there exists an $E_k$ with infinitely many members, then the countable additivity is clear.
+    \\In the case that all sets $E_k$ are finite, for any two sets $E_i,E_j$:\\
+    $E_i = \{x_1,\cdots,x_n\}$\\
+    $E_j = \{y_1,\cdots,y_m\}$\\  
+    Then $E_i\cup E_j = \{x_1,\cdots,x_n,y_1,\cdots,y_m\}$ and $m(E_i\cup E_j)=n+m=m(E_i) +m(E_j)$.
 \end{enumerate}
 
-
+% 2.2
 \section{Lebesgue Outer Measure}
 
 \begin{center}
@@ -67,9 +93,61 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 
 
 
-
+% 2.3
 \section{The $\sigma$-Algebra of Lebesgue Measurable Sets}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{10}
+	\item Prove that if a $\sigma$-algebra of subsets of $\mathbb{R}$ contains intervals of the form $(a,\infty)$, then it contains all intervals.\\
+	\item Show that every interval is a Borel set.
+	\item Show that 
+	\begin{enumerate}[label=(\roman*),align=left]
+        \item the translate of an $F_\sigma$ set is also $F_\sigma$,
+        \item the translate of a $G_\delta$ set is also $G_\delta$,
+        \item the translate of a set of measure zero also has measure zero.
+    \end{enumerate}
+    \item Show that if a set $E$ has positive outer measure, then there is a bounded subset of $E$ that also has positive outer measure.
+    \item Show that if $E$ has finite measure and $\epsilon>0$, then $E$ is the disjoint union of a finite number of measurable sets, each of which has measure at most $\epsilon$.
+\end{enumerate}
+
+% 2.4
 \section{Outer and Inner Approximation of Lebesgue Measurable Sets}
+
+\begin{namedthm*}{Theorem 11}
+	Let $E$ be any set of real numbers. Then each of the following four assertions is equivalent to the measurability of $E$.\\
+	(Outer Approximation by Open Sets and $G_\delta$ sets)
+	\begin{enumerate}[label=(\roman*),align=left]
+        \item For each $\epsilon>0$, there is an open set $\mathcal{O}$ containing $E$ for which $m^*(\mathcal{O}\setminus E)<\epsilon$.
+        \item There is a $G_\delta$ set $G$ containing $E$ for which $m^*(G\setminus E)=0$. 
+    \end{enumerate}
+	(Inner Approximation by Closed Sets and $F_\sigma$ sets)
+	\begin{enumerate}[label=(\roman*),align=left]
+        \setcounter{enumi}{2}
+		\item For each $\epsilon>0$, there is a closed set $F$ contained in $E$ for which $m^*(E\setminus F)<\epsilon$.
+        \item There is a $F_\sigma$ set $F$ contained in $E$ for which $m^*(E\setminus F)=0$.
+    \end{enumerate}
+\end{namedthm*}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{15}
+	\item Complete the proof of Theorem 11 by showing that measurability is equivalent to (iii) and also equivalent to (iv).
+	\item Show that a set $E$ is measurable iff for each $\epsilon>0$, there is a closed set $F$ and open set $\mathcal{O}$ for which $F\subseteq E\subseteq \mathcal{O}$ and $m^*(\mathcal{O}\setminus F)<\epsilon$.
+	\item Let $E$ have finite outer measure. Show that there is a $G_\delta$ set $G\supseteq E$ with $m(G)=m^*(E)$.
+	Show that $E$ is measurable iff there is an $F_\sigma$ set $F \subseteq E$ with $m(F)=m^*(E)$. 
+	\item Let $E$ have finite outer measure.
+\end{enumerate}
+
+% 2.5
 \section{Countable Additivity, Continuity, and the Borel-Cantelli Lemma}
+
+% 2.6
 \section{Nonmeasurable Sets}
+
+% 2.7
 \section{The Cantor Set and the Cantor-Lebesgue Function}

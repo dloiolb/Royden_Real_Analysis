@@ -1,7 +1,84 @@
 % Chapter 7
 \chapter{The $L^p$ Spaces: Completeness and Approximation}
 
+% 7.1
 \section{Normed Linear Spaces}
+\begin{flushleft}
+	
+	Throughout this chapter $E$ denotes a measurable set of real numbers.
+	Define $\mathcal{F}$ to be the collection of all measurable extended real-valued functions on $E$ that are finite a.e. on $E$.
+	We can say that two functions $f,g\in\mathcal{F}$ are equivalent, denoted by $f\cong g$, provided
+	\[
+	f(x)=g(x)\text{ for almost all }x\in E.	
+	\]
+	This is an equivalence relation and induces a partition of $\mathcal{F}$ into a disjoint collection of equivalence classes, denoted by $\mathcal{F}/\cong$, which is a linear space.
+	There is a natural family $\{L^p(E)\}_{1\le p\le\infty}$ of subspaces of $\mathcal{F}/\cong$.
+	\\
+	For $1\le p<\infty$, define $L^p(E)$ to be the collection of equivalence class $[f]$ for which 
+	\[
+	\int_E|f|^p<\infty.	
+	\]
+	Then if $f\cong g$, then $\int_E|f|^p=\int_E|g|^p$.
+	Showing that $L^p(E)$ is closed under linear combinations will prove that $L^p(E)$ is a linear subspace.
+	To do this, let $c=\max\{|a|,|b|\}$ so that
+	\[
+	|a+b|\le|a|+|b|\le 2c,
+	\]
+	which implies
+	\[
+	|a+b|^p\le 2^pc^p\le2^p(|a|^p+|b|^p).	
+	\]
+	This inequality, together with the linearity and monotonicity of integration tells us that 
+	\[
+		\int_E|\alpha f+\beta g|^p \le 2^p(|\alpha|^p\int_E|f|^p+|\beta|^p\int_E| g|^p)<\infty.
+	\]
+	That is, for $[f],[g]\in L^p(E)$, then $\alpha[f]+\beta[g]\in L^p(E)$.\\
+	We call a function $f\in\mathcal{F}$ \textbf{essentially bounded} provided there is some $M\ge 0$, called an \textbf{essential upper bound} for $f$, for which
+	\[
+	|f(x)|\le M\text{ for almost all }x\in E.	
+	\]
+	Then we can define $L^\infty(E)$ to be the collection of equivalence classes $[f]$ for which $f$ is essentially bounded. 
+	Clearly $L^\infty(E)$ is a linear subspace because
+	\[
+	|\alpha f(x)+\beta g(x)|\le|\alpha| |f(x)|+|\beta|| g(x)|\le |\alpha| M + |\beta|M' = M'' \text{ a.e. on $E$}
+	\]
+	To state that a function $f$ in $L^p[a,b]$ is continuous means that there is a continuous function that agrees with $f$ a.e. on $[a,b]$.
+	There is only one such continuous function and it is often convenient to consider this unique continuous function as the representative of $[f]$.\\
+	It is useful to consider real-valued functions that have as their domain linear spaces of functions: such functions are called \textbf{functionals}.
+
+	\begin{namedthm*}{Definition}
+		Let $X$ be a linear space.
+		A real-valued functional $\|\cdot\|$  on $X$ is called a \textbf{norm} provided for each $f$ and $g$ in $X$ and each real number $\alpha$,\\
+		(The Triangle Inequality)
+		\[
+			\|f+g\|\le\|f\|+\|g\|,
+		\]
+		(Positive Homogeneity)
+		\[
+			\|\alpha f\|=|\alpha|\|f\|,	
+		\]
+		(Nonnegativity)
+		\[
+			\|f\|\ge 0\text{ and }\|f\|=0 \iff f=0.
+		\]
+	\end{namedthm*}
+	A \textbf{normed linear space} is a linear space together with a norm.
+	If $X$ is a linear space normed by $\|\cdot\|$ we say that a function $f$ in $X$ is a \textbf{unit function} provided $\|f\|=1$.
+	For any $f\in X,f\neq 0$, the function $\frac{f}{\|f\|}$ is a unit function: it is a scalar multiple of $f$ which we call the \textbf{normalization} of $f$.
+
+	\begin{namedthm*}{Example}[The Normed Linear Space $L^1(E)$]
+		For a function $f$ in $L^1(E)$, define
+		\[
+		\|f\|_1=\int_E|f|.	
+		\]
+		Then $\|\cdot\|$ is a norm on $L^1(E)$.
+	\end{namedthm*}
+
+	\begin{namedthm*}{Example}[The Normed Linear Space $L^\infty(E)$]
+		
+	\end{namedthm*}
+
+\end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -36,6 +113,11 @@
 	\item Show that $\ell^\infty$ and $\ell^1$ are normed linear spaces.
 \end{enumerate}
 
+% 7.2
 \section{The Inequalities of Young, H\"older, and Minkowski}
+
+% 7.3
 \section{$L^p$ is Complete: The Riesz-Fischer Theorem}
+
+% 7.4
 \section{Approximation and Separability}
