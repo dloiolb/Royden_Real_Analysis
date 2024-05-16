@@ -120,6 +120,17 @@
 		\[
 		\sum_{k=1}^\infty|a_k|^p<\infty .	
 		\]
+		Let $a,b \in \ell^p$, and let $\alpha , \beta$ be real numbers.
+		Then we have that $\sum_{k=1}^\infty|a_k|^p<\infty$ and $\sum_{k=1}^\infty|b_k|^p<\infty$.
+		Using the inequality $|a+b|^p\le2^p(|a|^p+|b|^p)$, we have
+		\begin{align*}
+			\sum_{k=1}^\infty|\alpha a_k + \beta b_k|^p &\le \sum_{k=1}^\infty[2^p(|\alpha a_k|^p + |\beta b_k|^p)]\\ 
+			&=\sum_{k=1}^\infty2^p|\alpha|^p |a_k|^p+\sum_{k=1}^\infty2^p|\beta|^p| b_k|^p\\
+			&=2^p|\alpha|^p\sum_{k=1}^\infty |a_k|^p+2^p|\beta|^p\sum_{k=1}^\infty| b_k|^p\\
+			&< 2^p|\alpha|^p\infty+2^p|\beta|^p\infty\\
+			&=\infty.
+		\end{align*}
+		Thus $\ell^p$ is a linear space.\\
 		We define $\ell^\infty$ to be the linear space of real bounded sequences: that is, for any $\{a_k\}$ in $\ell^\infty$, there exists a real number $M$ for which $|a_k|\le M$ for all $k$.
 		We can define the following norms:
 		\\For $\{a_k\}\in\ell^1$:
@@ -274,14 +285,54 @@
 	\] 
 	\\
 	That is, the sup norm is the smallest real number $M$ such that $|f(x)|>M$ only on a set of measure zero.
-	
+	In an above example, we showed that $\|f\|_\infty$ is the smallest essential upper bound for $f$.
+	That is, $|f|\le\|f\|_\infty$ a.e. on $E$ (That is, the inequality is true for $E\setminus E_0$, where $m(E_0)=0$.)
 	\\
 	and if, furthermore, $f$ is continuous on $[a,b]$, that
 	\[
 	\| f \|_{\infty} = \| f \|_{\max}.	
 	\]
-	
-	\item Show that $\ell^\infty$ and $\ell^1$ are normed linear spaces.
+	If $f$ is continuous, then there are no jump discontinuities ($f$ is continuous at $x_0$ iff $f(x_0^-)=f(x_0)=f(x_0^+)$).
+	Then $|f|\le\|f\|_\infty$ everywhere on $E$.
+	\item Show that $\ell^\infty$ and $\ell^1$ are normed linear spaces.\\
+	$\ell^\infty$:\\
+	Let $a,b \in \ell^\infty$, and let $\alpha , \beta$ be real numbers.\\
+	Then for some real numbers $M,N$, we have that $|a_k|\le M$ and $|b_k|\le N$ for all $k$.
+	\begin{align*}
+		\alpha a + \beta b &= \alpha (a_1,a_2,\cdots)+ \beta (b_1,b_2,\cdots)\\		
+		&= (\alpha a_1,\alpha a_2,\cdots)+ (\beta b_1,\beta b_2,\cdots)\\
+		&= (\alpha a_1+\beta b_1,\alpha a_2+\beta b_2,\cdots)
+	\end{align*}
+	Then $|\alpha a_k+\beta b_k|\le \alpha M + \beta N$ for all $k$, and $\ell^\infty$ is a linear space.\\
+	To show that $\|a\|_\infty = \sup_{1\le k<\infty}|a_k|$ is a norm:
+	\[
+		\|a+b\|_\infty = \sup_{1\le k<\infty}|a_k+b_k|\le \sup_{1\le i<\infty}|a_i| + \sup_{1\le j<\infty}|b_j| = \|a\|_\infty + \|b\|_\infty,
+	\]
+	\[
+		\|\alpha a\|_\infty = \sup_{1\le k<\infty}|\alpha a_k| = \sup_{1\le k<\infty}|\alpha|| a_k|= |\alpha|\sup_{1\le k<\infty}| a_k|=|\alpha|\|a\|_\infty, 
+	\]
+	\[
+		0 \le \sup_{1\le k<\infty}| a_k| = \|a\|_\infty,\text{ and }\sup_{1\le k<\infty}| a_k|=0\text{ iff }a_k=0\text{ for all }k.	
+	\]
+	\\
+	$\ell^1$:\\
+	Let $a,b \in \ell^1$, and let $\alpha , \beta$ be real numbers.\\
+	Then we have that $\sum_{k=1}^\infty|a_k|<\infty$ and $\sum_{k=1}^\infty|b_k|<\infty$.\\
+	By the triangle inequality for real numbers, we have
+	\[
+		\sum_{k=1}^\infty |\alpha a_k + \beta b_k| \le\sum_{k=1}^\infty[ |\alpha|| a_k| + | \beta ||b_k|]= |\alpha|\sum_{k=1}^\infty | a_k| + |\beta |\sum_{k=1}^\infty |b_k| <|\alpha|\infty+|\beta|\infty = \infty.
+	\]
+	Therefore $\ell^1$ is a linear space.\\
+	To show that $\|a\|_1 = \sum_{k=1}^\infty|a_k|$ is a norm:
+	\[
+		\|a+b\|_1 = \sum_{k=1}^\infty|a_k+b_k|\le\sum_{k=1}^\infty[|a_k|+|b_k|]=\sum_{k=1}^\infty|a_k|+\sum_{k=1}^\infty|b_k|<\infty +\infty = \infty,
+	\]
+	\[
+		\|\alpha a\|_1 = \sum_{k=1}^\infty|\alpha a_k| = \sum_{k=1}^\infty|\alpha|| a_k|=|\alpha|\sum_{k=1}^\infty| a_k|=|\alpha|\|a\|_1, 
+	\]
+	\[
+		0 \le | a_k| \implies 0 \le \sum_{k=1}^\infty |a_k| = \|a\|_1,\text{ and }\sum_{k=1}^\infty| a_k|=0\text{ iff }a_k=0\text{ for all }k.	
+	\]
 \end{enumerate}
 
 % 7.2

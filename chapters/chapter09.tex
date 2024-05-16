@@ -1,9 +1,98 @@
 % Chapter 9
 \chapter{Metric Spaces: General Properties}
 
+% 9.1
 \section{Examples of Metric Spaces}
+\begin{flushleft}
+
+"The object of the present chapter is to study general spaces called metric spaces for which the notion of distance between two points is fundamental."
+
+\begin{namedthm*}{Definition}
+    Let $X$ be a nonempty set. A function $\rho:X\times X\to\mathbb{R}$ is called a \textbf{metric} provided for all $x,y,z\in X$,
+    \begin{enumerate}[label=(\roman*),align=right]
+        \item $\rho(x,y)\ge0$,
+        \item $\rho(x,y)=0$ iff $x=y$,
+        \item $\rho(x,y)=\rho(y,x)$,
+        \item $\rho(x,y)\le\rho(x,z)+\rho(z,y)$.
+    \end{enumerate}
+    A nonempty set together with a metric on the set is called a \textbf{metric space}, often denoted by $(X,\rho)$.
+\end{namedthm*}
+
+An example of a metric space is the set $\mathbb{R}$ of all real numbers with the metric $\rho(x,y) = |x-y|$. 
+
+\end{flushleft}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{0}
+	\item Show that two metrics $\rho$ and $\tau$ on the same set $X$ are equivalent iff there is a $c>0$ such that for all $u,v\in X$,
+	\[
+        \frac{1}{c}\tau(u,v)\le\rho(u,v)\le c\tau(u,v).    
+    \]
+    \item Show that the following define equivalent metrics on $\mathbb{R}^n$:
+    \begin{align*}
+        \rho^*(x,y) &= |x_1-y_1| + \cdots + |x_n-y_n|;\\
+        \rho^+(x,y) &= \max\{|x_1-y_1|, \cdots,|x_n-y_n|\}.
+    \end{align*}
+    \item Find a metric on $\mathbb{R}^n$ that fails to be equivalent to either of those defined in the preceding problem.
+    \item For a closed, bounded interval $[a,b]$, consider the set $X=C[a,b]$ of continuous real-valued functions on $[a,b]$.
+    Show that the metric induced by the maximum norm and that induced by the $L^1[a,b]$ norm are not equivalent.
+    \item \textit{The Nikodym Metric}. Let $E$ be a Lebesgue measurable set of real numbers of finite measure, $X$ the set of measurable subsets of $E$, and $m$ Lebesgue measure.
+    For $A,B\in X$, define $\rho(A,B)=m(A\Delta B)$, where $A\Delta B = [A\setminus B]\cup[B\setminus A]$, the symmetric difference of $A$ and $B$.
+    Show that this is a pseudometric on $X$.
+    Define two measurable sets to be equivalent provided their symmetric difference has measure zero.
+    Show that $\rho$ induces a metric on the collection of equivalence classes.
+    Finally, show that for $A,B\in X$, 
+    \[
+    \rho(A,B)=\int_E|\chi_A-\chi_B|,    
+    \]
+    where $\chi_A$ and $\chi_B$ are the characteristic functions of $A$ and $B$, respectively.
+    \item Show that for $a,b,c\ge0$,
+    \[
+    \text{if }a\le b+c,\text{ then }\frac{a}{1+a}\le\frac{b}{1+b}+\frac{c}{1+c}.
+    \]
+    \item Let $E$ be a Lebesgue measurable set of real numbers that has finite measure and $X$ the set of Lebesgue measurable real-valued functions on $E$.
+    For $f,g\in X$, define
+    \[
+    \rho(f,g)=\int_E\frac{|f-g|}{1+|f-g|}.    
+    \]
+    Use the preceding problem to show that this is a pseudometric on $X$. 
+    Define two measurable functions to be equivalent provided they are equal a.e. on $E$.
+    Show that $\rho$ induces a metric on the collection of equivalence classes.
+    \item For $0<p<1$, show that 
+    \[
+    (a+b)^p\le a^p+b^p\text{ for all }a,b\ge0.    
+    \]\
+    \item For $E$ a Lebesgue measurable set of real numbers, $0<p<1$, and $g,h$ Lebesgue measurable functions on $E$ that have integrable $p^{th}$ powers, define
+    \[
+    \rho_p(h,g)=\int_E|g-h|^p.    
+    \]  
+    Use the preceding problem to show that this is a pseudometric on the collection of Lebesgue measurable functions on $E$ that have integrable $p^{th}$ powers.
+    Define two such functions to be equivalent provided they are equal a.e. on $E$. 
+    Show that $\rho_p(\cdot,\cdot)$ induces a metric on the collection of equivalence classes.
+    \item Let $\{(X_n,\rho_n)\}_{n=1}^\infty$ be a countable collection of metric spaces.
+    Use problem 6 to show that $\rho_*$ defines a metric on the Cartesian product $\prod_{n=1}^\infty X_n$, where for points $x = \{x_n\}$ and $y= \{y_n\}$ in $\prod_{n=1}^\infty X_n$,
+    \[
+    \rho_*(x,y)=\sum_{n=1}^\infty\frac{1}{2^n}\cdot\frac{\rho_n(x_n,y_n)}{1+\rho_n(x_n,y_n)}.    
+    \]
+    \item Let $(X,\rho)$ be a metric space and $A$ any set for which there is a one-to-one (injective) mapping $f$ of $A$ onto (surjective?) the set $X$ (bijection?).
+    Show that there is a unique metric on $A$ for which $f$ is an isometry of metric spaces.
+    (This is the sense in which an isometry amounts merely to a relabeling of the points in a space.)
+    \item Show that the triangle inequality for Euclidean space $\mathbb{R}^n$ follows from the triangle inequality for $L^2[0,1]$.
+\end{enumerate}
+
+% 9.2
 \section{Open Sets, Closed Sets, and Convergent Sequences}
+
+% 9.3
 \section{Continuous Mappings Between Metric Spaces}
+
+% 9.4
 \section{Complete Metric Spaces}
+
+% 9.5
 \section{Compact Metric Spaces}
+
+% 9.6
 \section{Separable Metric Spaces}
