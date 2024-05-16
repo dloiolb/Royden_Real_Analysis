@@ -1,9 +1,56 @@
 % Chapter 6
 \chapter{Differentiation and Integration}
 
+% 6.1
 \section{Continuity of Monotone Functions}
+
+% 6.2
 \section{Differentiability of Monotone Functions: Lebesgue's Theorem}
+
+% 6.3
 \section{Functions of Bounded Variation: Jordan's Theorem}
+
+% 6.4
 \section{Absolutely Continuous Functions}
+
+% 6.5
 \section{Integrating Derivatives: Differentiating Indefinite Integrals}
+
+% 6.6
 \section{Convex Functions}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{60}
+	\item Show that a real-valued function $\varphi$ on $(a,b)$ is convex iff for points $x_1,\cdots,x_n$ in $(a,b)$ and nonnegative numbers $\lambda_1,\cdots,\lambda_n$ such that $\sum_{k=1}^n \lambda_k=1$,
+	\[
+        \varphi \biggr ( \sum_{k=1}^n \lambda_k x_k \biggl ) \le \sum_{k=1}^n \lambda_k \varphi(x_k).   
+    \]
+    Use this to directly prove Jensen's Inequality for $f$ a simple function.
+    \item Show that a continuous function on $(a,b)$ is convex iff
+    \[
+        \varphi(\frac{x_1+x_2}{2})\le\frac{\varphi(x_1)+\varphi(x_2)}{2}\text{ for all }x_1,x_2\in (a,b).  
+    \]
+    \item A function on a general interval $I$ is said to be convex provided it is continuous on $I$ and (38) holds for all $x_1,x_2\in I$.
+    Is a convex function on a closed, bounded interval $[a,b]$ necessarily Lipschitz on $[a,b]$?
+    \item Let $\varphi$ have a second derivative at each point in $(a,b)$.
+    Show that $\varphi$ is convex iff $\varphi''$ is nonnegative.
+    \item Suppose $a\ge 0$ and $b\ge 0$.
+    Show that the function $\varphi(t)=(a+bt)^p$ is convex on $[0,\infty)$ for $1\le p < \infty$.
+    \item For what functions $\varphi$ is Jensen's Inequality always an equality?
+    \item State and prove a version of Jensen's Inequality on a general closed, bounded interval $[a,b]$.
+    \item Let $f$ be integrable over $[0,1]$. Show that 
+    \[
+    \exp\biggl [\int_0^1f(x)dx\biggr ] \le \int_0^1 \exp(f(x))dx.   
+    \]
+    \item Let $\{\alpha_n\}$ be a sequence of nonnegative numbers whose sum is $1$ and $\{\zeta_n\}$ is a sequence of positive numbers. Show that
+    \[
+    \prod_{n=1}^\infty \zeta_n^{\alpha_n} \le \sum_{n=1}^\infty \alpha_n \zeta_n. 
+    \]
+    \item Let $g$ be a positive measurable function on $[0,1]$. Show that $\log(\int_0^1g(x)dx) \ge\int_0^1\log(g(x))dx$ whenever each side is defined.
+    \item (Nemytskii) Let $\varphi$ be a continuous function on $\mathbb{R}$.
+    Show that if there are constants for which (43) holds, then $\varphi\circ f$ is integrable over $[0,1]$ whenever $f$ is.
+    Then show that if $\varphi\circ f$ is integrable over $[0,1]$ whenever $f$ is, then there are constants $c_1$ and $c_2$ for which (43) holds.
+\end{enumerate}
