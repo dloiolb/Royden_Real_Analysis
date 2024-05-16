@@ -71,7 +71,8 @@
 		\[
 		\|f\|_1=\int_E|f|.	
 		\]
-		Then $\|\cdot\|$ is a norm on $L^1(E)$.
+		Then $\|\cdot\|$ is a norm on $L^1(E)$.\\
+
 	\end{namedthm*}
 
 	\begin{namedthm*}{Example}[The Normed Linear Space $L^\infty(E)$]
@@ -88,18 +89,92 @@
 	\[
 	\| f \|_1 = \int_a^b |f|.	
 	\]
-	Show that this is a norm on $C[a,b]$.
+	Show that this is a norm on $C[a,b]$.\\\\
+	Let $f,g\in C[a,b]$. For each $x\in [a.b]$, we have the inequality $|f(x)+g(x)|\le|f(x)|+|g(x)|$, so by monotonicity and linearity of integration,
+	\[
+	\|f+g\|_1=\int_a^b|f(x)+g(x)| \le \int_a^b[|f(x)|+|g(x)|] = \int_a^b|f(x)| +\int_a^b|g(x)| = \|f\|_1+\|g\|_1.	
+	\]
+	Therefore subadditivity holds.\\
+	Also, by linearity of integration, we have
+	\[
+	\|\alpha f\|_1 = \int_a^b|\alpha f| = \int_a^b|\alpha| |f|=|\alpha|\int_a^b| f| = |\alpha|\|f\|_1.	
+	\]
+	Therefore absolute homogeneity holds.\\
+	Finally, by definition of absolute value, $0 \le |f(x)|$ for all $x\in [a,b]$, and by monotonicity of integration,
+	\[
+	0=\int_a^b 0 \le \int_a^b |f| = \|f\|_1.	
+	\] 
+	Clearly $\int_a^b |f| = 0$ iff $f\equiv 0$ on $[a,b]$.
+	Therefore positive definiteness holds.\\
+	Thus $\|\cdot\|_1$ is a norm on $C[a,b]$.\\
 	Also show that there is no number $c \ge 0$ for which
 	\[
 	\| f \|_{\max}	\le c \| f \|_1 \text{ for all $f$ in $C[a,b]$},
 	\]
+	\\
+	Consider the interval $[a,b]=[0,1]$.
+	For any $c>0$ we choose, there exists an $n\in \mathbb{N}$ such that $n> c$, with the continuous function $f_n:[0,1]\to \mathbb{R}$ defined as
+	\[ 
+		f_n(x) =
+		\begin{cases} 
+			n^2x& \text{ if } x \in [0,\frac{1}{n}], \\
+			-n^2(x-\frac{1}{n})+n & \text{ if } x \in (\frac{1}{n},\frac{2}{n}],\\
+			0& \text{ if } x \in (\frac{2}{n},1].
+		\end{cases}
+	\]
+	(This is a triangle-shaped function that reaches its peak $n$ at $x=\frac{1}{n}$.)\\
+	Now, for any $n$, we have $\|f_n\|_1 = \int_0^1|f_n|=1$, and $\|f_n\|_{\max} = n$.\\
+	Then $\| f \|_{\max}=n > c =  c \| f \|_1$.\\
+	\\
 	but there is a $c \ge 0$ for which 
 	\[
 	\| f \|_1	\le c \| f \|_{\max} \text{ for all $f$ in $C[a,b]$}.
 	\]
+	\\
+	We can see that for any $f$ in $C[a,b]$, by monotonicity of the integral, 
+	\begin{align*}
+	\|f\|_1 &= \int_a^b|f(x)|\\ 
+	&\le \int_a^b\max_{x\in [a,b]}|f(x)|\\
+	&=\max_{x\in [a,b]}|f(x)| \int_a^b1\\
+	&= \max_{x\in [a,b]}|f(x)| \cdot m([a,b]) \\
+	&= \|f\|_{\max} \cdot m([a,b]).
+	\end{align*}
+	Therefore $\|f\|_1\le m([a,b])\|f\|_{\max}$ for all $f\in C[a,b]$.
 	\item Let $X$ be the family of all polynomials with real coefficients defined on $\mathbb{R}$.
 	Show that this is a linear space. For a polynomial $p$, define $\| p\|$ to be the sum of the absolute values of the coefficients of $p$.
-	Is this a norm?
+	Is this a norm?\\
+	For any two polynomials $p,q\in X$, there exists natural numbers $n,m$ (suppose without loss of generality that $n\le m$) such that
+	\begin{align*}
+	p(x) &= a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}+a_nx^n+\cdots+0x^m	\\
+	q(x) &= b_0+b_1x+b_2x^2+\cdots+b_{n-1}x^{n-1}+b_nx^n+\cdots+b_mx^m	
+	\end{align*}
+	Now, considering any scalars $\alpha,\beta \in \mathbb{R}$, we have
+	\begin{align*}
+		\alpha p(x) + \beta q(x) &= \alpha (a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}+a_nx^n)\\
+		&+ \beta (b_0+b_1x+b_2x^2+\cdots+b_{m-1}x^{m-1}+b_mx^m)\\
+		&=(\alpha a_0)+(\alpha a_1)x+(\alpha a_2)x^2+\cdots+(\alpha a_{n-1})x^{n-1}+(\alpha a_n)x^n\\
+		&+ (\beta b_0)+(\beta b_1)x+(\beta b_2)x^2+\cdots+(\beta b_{n-1})x^{n-1}+(\beta b_n)x^n+\cdots+(\beta b_m)x^m\\
+		&=(\alpha a_0+\beta b_0)+(\alpha a_1+\beta b_1)x+\cdots+(\alpha a_n+\beta b_n)x^n+\cdots+(\beta b_m)x^m
+	\end{align*}
+	This is also a polynomial, so $X$ is a linear space.\\
+	Now, for any polynomial
+	\[
+		p(x) = a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}+a_nx^n,	
+	\]
+	we can define $\|p\| = |a_0|+|a_1|+|a_2|+\cdots+|a_n| = \sum_{i=0}^n|a_i|$.\\
+	The triangle inequality is clear because 
+	\[
+		\|p+q\| = \sum_{i=0}^{m}|a_i+b_i|\le\sum_{i=0}^{m}[|a_i|+|b_i|]=\sum_{i=0}^{m}|a_i|+\sum_{i=0}^{m}|b_i|=\|p\|+\|q\|.
+	\]
+	Absolute homogeneity is clear because
+	\[
+		\|\alpha p\| = \sum_{i=0}^n|\alpha a_i|= \sum_{i=0}^n|\alpha|| a_i|=|\alpha|\sum_{i=0}^n| a_i|=|\alpha|\|p\|.
+	\]
+	Finally, positive definiteness is clear because
+	\[
+		0 \le |a_i| \implies 0\le \sum_{i=0}^n| a_i|=\|p\|,
+	\]
+	And $\|p\|=0$ if and only if $p(x)= 0+0x+0x^2+\cdots0x^n=0$.
 	\item For $f$ in $L^1[a,b]$, define $\|f\| = \smallint_a^b x^2 |f(x)|dx$.
 	Show that this is a norm on $L^1[a,b]$.
 	\item For $f$ in $L^\infty[a,b]$, show that 
