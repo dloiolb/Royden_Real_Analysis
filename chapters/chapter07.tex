@@ -72,11 +72,73 @@
 		\|f\|_1=\int_E|f|.	
 		\]
 		Then $\|\cdot\|$ is a norm on $L^1(E)$.\\
-
+		For $f,g\in L^1(E)\subseteq \mathcal{F}$, since $f$ and $g$ are finite a.e. on $E$, the triangle inequality for real numbers tells us that
+		\[
+		|f+g|\le|f|+|g|\text{ a.e. on }E.	
+		\]
+		Then by the monotonicity and linearity of integration, we have subadditivity:
+		\[
+			\|f+g\|_1=\int_E|f+g| \le \int_E[|f|+|g|] = \int_E|f| +\int_E|g| = \|f\|_1+\|g\|_1.	
+		\]
+		By the linearity of integration, clearly we have absolute homogeneity:
+		\[
+			\|\alpha f\|_1 = \int_E|\alpha f| = \int_E|\alpha| |f|=|\alpha|\int_E| f| = |\alpha|\|f\|_1.	
+		\]
+		Clearly $\|f\|$ is nonnegative. Finally, if $f\in L^1(E)$ and $\|f\|_1=0$, then $f=0$ a.e. on $E$. 
+		Therefore $[f]$ is the zero element of the linear space $L^1(E)\subseteq \mathcal{F}/\cong$, that is $f=0$.
 	\end{namedthm*}
 
 	\begin{namedthm*}{Example}[The Normed Linear Space $L^\infty(E)$]
-		
+		For a function $f$ in $L^\infty(E)$, define $\|f\|_\infty$ to be the infimum of the essential upper bounds for $f$.
+		\[
+			\|f\|_\infty = \inf\{M\ :\ |f(x)|\le M\text{ a.e. on }E\}.
+		\]
+		We call $\|f\|_\infty$ the \textbf{essential supremum} of $f$ and claim that $\|\cdot\|_\infty$ is a norm on $L^\infty(E)$.
+		\\Nonnegativity and positive homogeneity are clear. 
+		\\To show that the triangle inequality holds, we see that for each natural number $n$, there is a subset $E_n$ of $E$ for which
+		\[
+		|f|\le \|f\|_\infty + \frac{1}{n}\text{ on }E\setminus E_n\text{ and }m(E_n)=0.	
+		\]
+		This is true because $\|f\|_\infty$ is the infimum, the greatest lower bound, so $\|f\|_\infty + \frac{1}{n}$ is not a lower bound and thus there exists a real number $M$ in the set of upper bounds a.e. of $f$ for which $\|f\|_\infty\le M < \|f\|_\infty + \frac{1}{n}$ a.e. on $E$, and so $|f|\le M < \|f\|_\infty + \frac{1}{n}$ a.e. on $E$.
+		\\Accepting that the union of sets of measure zero is also measure zero, we can let $E_\infty = \bigcup_{n=1}^\infty E_n$, and so 
+		\[
+		|f|\le \|f\|_\infty \text{ on }E\setminus E_\infty\text{ and }m(E_n\infty)=0.	
+		\]
+		Thus we have that $|f|\le \|f\|_\infty$ a.e. on $E$; i.e., ess. sup$f$ is the smallest essential upper bound for $f$.
+		\\Now, for $f,g\in L^\infty(E)$, 
+		\[
+			|f+g|\le|f|+|g|\le\|f\|_\infty+\|g\|_\infty\text{ a.e. on }E.
+		\]
+		Therefore $\|f\|_\infty+\|g\|_\infty$ is an essential bound for $f+g$ and thus the smallest essential upper bound, $\|f+g\|_\infty$, is such that
+		\[
+		\|f+g\|_\infty \le \|f\|_\infty+\|g\|_\infty.	
+		\]
+	\end{namedthm*}
+
+	\begin{namedthm*}{Example}[The Normed Linear Spaces $\ell^1$ and $\ell^\infty$]
+		For $1\le p<\infty$, define $\ell^p$ to be the collection of real sequences $a=(a_1,a_2,\cdots)$ for which 
+		\[
+		\sum_{k=1}^\infty|a_k|^p<\infty .	
+		\]
+		We define $\ell^\infty$ to be the linear space of real bounded sequences: that is, for any $\{a_k\}$ in $\ell^\infty$, there exists a real number $M$ for which $|a_k|\le M$ for all $k$.
+		We can define the following norms:
+		\\For $\{a_k\}\in\ell^1$:
+		\[
+			\|\{a_k\}\|_1 = \sum_{k=1}^\infty|a_k|
+		\]
+		For $\{a_k\}\in\ell^\infty$:
+		\[
+			\|\{a_k\}\|_\infty = \sup_{1\le k<\infty}|a_k|
+		\]
+	\end{namedthm*}
+
+	\begin{namedthm*}{Example}[The Normed Linear Space $C\lbrack a,b\rbrack$]
+		Let $[a,b]$ be a closed, bounded interval. 
+		The the linear space of continuous real-valued functions on $[a,b]$ is denoted by $C[a,b]$. 
+		Since a continuous function on a compact set takes on a maximum value (ch1 problem 52), we can Define
+		\[
+		\|f\|_{\max}=\max_{x\in [a,b]}|f(x)|.	
+		\]		
 	\end{namedthm*}
 
 \end{flushleft}
@@ -182,15 +244,43 @@
 	\]
 	And $\|p\|=0$ if and only if $p(x)= 0+0x+0x^2+\cdots0x^n=0$.
 	\item For $f$ in $L^1[a,b]$, define $\|f\| = \smallint_a^b x^2 |f(x)|dx$.
-	Show that this is a norm on $L^1[a,b]$.
+	Show that this is a norm on $L^1[a,b]$.\\
+	For $f\in L^1[a,b]$, then $f$ is measurable and finite a.e. on $[a,b]$, and $\int_a^b|f(x)|dx<\infty$.\\
+	Let $f,g\in L^1[a,b]$, and let $\alpha$ be a real number.\\
+	Because the triangle inequality holds a.e. on $[a,b]$, by monotonicity and linearity of the integral, we have
+	\begin{align*}
+	\|f+g\|&=\int_a^b x^2 |f(x)+g(x)|dx\\
+	&\le\int_a^b x^2 [|f(x)|+|g(x)|]dx\\
+	&=\int_a^b [x^2 |f(x)|+x^2|g(x)|]dx\\
+	&=\int_a^b x^2 |f(x)|dx+\int_a^b x^2 |g(x)|dx\\
+	&= \|f\|+\|g\|.	
+	\end{align*}
+	Therefore $\|\cdot\|$ is subadditive.\\
+	By linearity of the integral, we have
+	\[
+	\|\alpha f\| = \int_a^bx^2|\alpha f(x)|dx = \int_a^bx^2|\alpha| |f(x)|dx=|\alpha |\int_a^bx^2 |f(x)|dx	=|\alpha |\|f\|.
+	\]
+	Therefore $\|\cdot\|$ satisfies absolute homogeneity.\\
+	We can use the fact that $0\le x^2$ and $0\le |f(x)|$ implies $0\le x^2|f(x)|$.
+	By monotonicity of the integral, we have
+	\[
+	0=\int_a^b0dx \le \int_a^bx^2|f(x)|dx = \|f\|.
+	\]
+	Clearly $\|f\|=0$ if and only if $f=0$ a.e. on $[a,b]$ because $x^2\cdot 0 = 0$.\\
+	Therefore $\|\cdot \|$ satisfies positive definiteness.
 	\item For $f$ in $L^\infty[a,b]$, show that 
 	\[
 	\| f\|_\infty = \min \biggl \{ M \ \biggl |\ m \{x \in [a,b]\ |\ |f(x)| > M \} =0 \biggr \},
 	\] 
+	\\
+	That is, the sup norm is the smallest real number $M$ such that $|f(x)|>M$ only on a set of measure zero.
+	
+	\\
 	and if, furthermore, $f$ is continuous on $[a,b]$, that
 	\[
 	\| f \|_{\infty} = \| f \|_{\max}.	
 	\]
+	
 	\item Show that $\ell^\infty$ and $\ell^1$ are normed linear spaces.
 \end{enumerate}
 
