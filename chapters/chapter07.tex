@@ -117,9 +117,15 @@
 	\[ 
 		f_n(x) =
 		\begin{cases} 
-			n^2x& \text{ if } x \in [0,\frac{1}{n}], \\
-			-n^2(x-\frac{1}{n})+n & \text{ if } x \in (\frac{1}{n},\frac{2}{n}],\\
-			0& \text{ if } x \in (\frac{2}{n},1].
+			\frac{n-0}{1/n-0}x& \text{ if } x \in [0,\frac{1}{n}]\\
+			\frac{0-n}{2/n-1/n}(x-\frac{1}{n})+n & \text{ if } x \in (\frac{1}{n},\frac{2}{n}]\\
+			0& \text{ if } x \in (\frac{2}{n},1]
+		\end{cases}
+		=
+		\begin{cases} 
+			n^2x& \text{ if } x \in [0,\frac{1}{n}]\\
+			-n^2(x-\frac{1}{n})+n & \text{ if } x \in (\frac{1}{n},\frac{2}{n}]\\
+			0& \text{ if } x \in (\frac{2}{n},1]
 		\end{cases}
 	\]
 	(This is a triangle-shaped function that reaches its peak $n$ at $x=\frac{1}{n}$.)\\
@@ -156,10 +162,10 @@
 		&+ (\beta b_0)+(\beta b_1)x+(\beta b_2)x^2+\cdots+(\beta b_{n-1})x^{n-1}+(\beta b_n)x^n+\cdots+(\beta b_m)x^m\\
 		&=(\alpha a_0+\beta b_0)+(\alpha a_1+\beta b_1)x+\cdots+(\alpha a_n+\beta b_n)x^n+\cdots+(\beta b_m)x^m
 	\end{align*}
-	This is also a polynomial, so $X$ is a linear space.\\
+	This is also a polynomial, as for each $i$, we have $(\alpha a_i+\beta b_i) \in \mathbb{R}$, so $X$ is a linear space.\\
 	Now, for any polynomial
 	\[
-		p(x) = a_0+a_1x+a_2x^2+\cdots+a_{n-1}x^{n-1}+a_nx^n,	
+		p(x) = a_0+a_1x+a_2x^2+\cdots+a_nx^n,	
 	\]
 	we can define $\|p\| = |a_0|+|a_1|+|a_2|+\cdots+|a_n| = \sum_{i=0}^n|a_i|$.\\
 	The triangle inequality is clear because 
