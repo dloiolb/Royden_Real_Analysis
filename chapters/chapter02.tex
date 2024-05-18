@@ -3,7 +3,9 @@
 
 % 2.1
 \section{Introduction}
-In this chapter we construct a collection of sets called \textbf{Lebesgue measurable sets}, and a set function of this collection called \textbf{Lebesgue measure}, denoted by $m$. The collection of Lebesgue measurable sets is a $\sigma$-algebra which contains all open sets and all closed sets. The set function $m$ possesses the following three properties:
+In this chapter we construct a collection of sets called \textbf{Lebesgue measurable sets}, and a set function of this collection called \textbf{Lebesgue measure}, denoted by $m$. 
+(A \textit{set function} is a function that associates an extended real number to each set in a collection of sets.)
+The collection of Lebesgue measurable sets is a $\sigma$-algebra which contains all open sets and all closed sets. The set function $m$ possesses the following three properties:
 \begin{namedthm*}{The measure of an interval is its length}
 Each nonempty interval $I$ is Lebesgue measurable and 
 \[
@@ -104,7 +106,7 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 	\item Prove that if a $\sigma$-algebra of subsets of $\mathbb{R}$ contains intervals of the form $(a,\infty)$, then it contains all intervals.\\
 	\item Show that every interval is a Borel set.
 	\item Show that 
-	\begin{enumerate}[label=(\roman*),align=left]
+	\begin{enumerate}[label=(\roman*),align=left]                                                                                                         
         \item the translate of an $F_\sigma$ set is also $F_\sigma$,
         \item the translate of a $G_\delta$ set is also $G_\delta$,
         \item the translate of a set of measure zero also has measure zero.
@@ -141,13 +143,88 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 	\item Let $E$ have finite outer measure. Show that there is a $G_\delta$ set $G\supseteq E$ with $m(G)=m^*(E)$.
 	Show that $E$ is measurable iff there is an $F_\sigma$ set $F \subseteq E$ with $m(F)=m^*(E)$. 
 	\item Let $E$ have finite outer measure.
+	Show that if $E$ is not measurable, then there is an open set $\mathcal{O}$ containing $E$ that has finite outer measure and for which \[m^*(\mathcal{O}\setminus E)>m^*(\mathcal{O})-m^*(E)\].
+	\item (Lebesgue). Let $E$ have finite outer measure. Show that $E$ is measurable iff for each open, bounded interval $(a,b)$,
+	\[
+		b-a=m*((a,b)\cap E)+m^*((a,b)\setminus E).
+	\]
+	\item Use property (ii) of Theorem 11 as the primitive definition of a measurable set and prove that the union of two measurable sets is measurable. Then do the same for property (iv).
+	\item For any set $A$, define $m^{**}(A)\in[0,\infty]$ by 
+	\[
+		m^{**}(A)=\inf\{m^*(\mathcal{O})\ |\ \mathcal{O}\supseteq A, \mathcal{O}\text{ open.}\}	
+	\]
+	How is this set function $m^{**}$ related to outer measure $m^*$?
+	\item For any set $A$, define $m^{***}(A)\in[0,\infty]$ by
+	\[
+		m^{***}(A)=\sup\{m^*(F)\ |\ F\subseteq A, F\text{ closed.}\}	
+	\]
+	How is this set function $m^{***}$ related to outer measure $m^*$?
 \end{enumerate}
 
 % 2.5
 \section{Countable Additivity, Continuity, and the Borel-Cantelli Lemma}
 
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{23}
+	\item Show that if $E_1$ and $E_2$ are measurable, then
+	\[
+		m(E_1\cup E_2)+m(E_1\cap E_2) = m(E_1)+m(E_2).	
+	\]
+	\item Show that the assumption that $m(B_1)<\infty$ is necessary in part (ii) of the theorem regarding continuity of measure.
+	\item Let $\{E_k\}_{k=1}^\infty$ be a countable disjoint collection of measurable sets. Prove that for any set $A$, 
+	\[
+		m^*(A\cap\sum_{k=1}^\infty E_k)=\sum_{k=1}^\infty m^*(A\cap E_k).	
+	\]
+	\item Let $\mathcal{M}'$ be any $\sigma$-algebra of subsets of $\mathbb{R}$ and $m'$ a set function on $\mathcal{M}'$ which takes values in $[0,\infty]$, is countably additive, and such that $m'(\emptyset)=0$.
+	\begin{enumerate}[label=(\roman*),align=left]
+		\item Show that $m'$ is finitely additive, monotone, countably monotone, and possesses the excision property.
+		\item Show that $m'$ possesses the same continuity properties as Lebesgue measure.
+	\end{enumerate}
+	\item Show that continuity of measure together with finite additivity of measure implies countable additivity of measure.
+\end{enumerate}
+
 % 2.6
 \section{Nonmeasurable Sets}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{28}
+	\item 
+	\begin{enumerate}[label=(\roman*),align=left]
+		\item Show that rational equivalence defines an equivalence relation on any set.
+		\item Explicitly find a choice set for the rational equivalence relation on $\mathbb{Q}$.
+		\item Define two numbers to be irrationally equivalent provided their difference is irrational or zero. Is this an equivalence relation on $\mathbb{R}$? Is this an equivalence relation on $\mathbb{Q}$?
+	\end{enumerate}
+	\item Show that any choice set for the rational equivalence relation on a set of positive outer measure must be countably infinite.
+	\item Justify the assertion in the proof of Vitali's Theorem that it suffices to consider the case that $E$ is bounded.
+	\item Does Lemma 16 remain true if $\Lambda$ is allowed to be finite or to be uncountably infinite? Does it remain true if $\Lambda$ is allowed to be unbounded?
+	\item Let $E$ be a nonmeasurable set of finite outer measure. Show that there is a $G_\delta$ set $G$ that contains $E$ for which
+	\[
+		m^*(E)=m^*(G),\text{ while }m^*(G\setminus E)>0.
+	\]
+\end{enumerate}
 
 % 2.7
 \section{The Cantor Set and the Cantor-Lebesgue Function}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{33}
+	\item Show that there is a continuous, strictly increasing function on the interval $[0,1]$ that maps a set of positive measure onto a set of measure zero.
+	\item Let $f$ be an increasing function on the open interval $I$. For $x_0\in I$ show that $f$ is continuous at $x_0$ iff there are sequences $\{a_n\}$ and $\{b_n\}$ in $I$ such that for each $n$, $a_n<x_0<b_n$, and $\lim_{n\to\infty}[f(b_n)-f(a_n)]=0$.
+	\item Let $f$ be a continuous function defined on $E$. Is it true that $f^{-1}(A)$ is always measurable if $A$ is measurable?
+	\item Let the function $f:[a,b]\to\mathbb{R}$ be Lipschitz; that is, there is a constant $c\ge0$ such that for all $u,v\in[a,b]$, $|f(u)-f(v)|\le c|u-v|$.
+	Show that $f$ maps a set of measure zero onto a set of measure zero. Show that $f$ maps a $F_\sigma$ set onto an $F_\sigma$ set. Conclude that $f$ maps a measurable set to a measurable set.
+	\item Let $F$ be the subset of $[0,1]$ constructed in the same manner as the Cantor set except that each of the intervals removed at the $n$th deletion stage has length $\alpha 3^{-n}$ with $0<\alpha<1$.
+	Show that $F$ is a closed set, $[0,1]\setminus F$ is dense in $[0,1]$, and $m(F)=1-\alpha$. Such a set $F$ is called a generalized Cantor set.
+	\item Show that there is an open set of real numbers that, contrary to intuition, has a boundary of positive measure. (Hint: consider the complement of the generalized Cantor set of the preceding problem.)
+	\item A subset $A$ of $\mathbb{R}$ is said to be \textbf{nowhere dense} in $\mathbb{R}$ provided that every open set $\mathcal{O}$ has a non-empty open subset that is disjoint from $A$. Show that the Cantor set is nowhere dense in $\mathbb{R}$.
+	\item Show that a strictly increasing function that is defined on an interval has a continuous inverse.
+	\item Let $f$ be a continuous function and $B$ be a Borel set. Show that $f^{-1}(B)$ is a Borel set. (Hint: the collection of sets $E$ for which $f^{-1}(E)$ is Borel is a $\sigma$-algebra containing the open sets.)
+	\item Use the preceding two problems to show that a continuous strictly increasing function that is defined on an interval maps Borel sets to Borel sets.
+\end{enumerate}	

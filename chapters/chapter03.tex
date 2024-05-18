@@ -10,11 +10,94 @@
 	\setcounter{enumi}{0}
 	\item Suppose $f$ and $g$ are continuous functions on $[a,b]$. Show that if $f=g$ a.e. on $[a,b]$, then, in fact, $f=g$ on $[a,b]$.
     Is a similar assertion true if $[a,b]$ is replaced by a general measurable set $E$?
-    \item Let
+    \item Let $D$ and $E$ be measurable sets and $f$ a function with domain $D\cup E$. We proved that $f$ is measurable on $D\cup E$ iff its restrictions to $D$ and $E$ are measurable.
+    Is the same true if "measurable" is replaced by "continuous"?
+    \item Suppose a function $f$ has a measurable domain and is continuous except at a finite number of points.
+    Is $f$ necessarily measurable?
+    \item Suppose $f$ is a real-valued function on $\mathbb{R}$ such that $f^{-1}(c)$ is measurable for each number $c$. Is $f$ necessarily measurable?
+    \item Suppose the function $f$ is defined on a measurable set $E$ and $\{x\in E\ |\ f(x)>c\}$ is a measurable set for each rational number $c$. Is $f$ necessarily a measurable function?
+    \item Let $f$ be a function with measurable domain $D$. Show that $f$ is measurable iff the function $g$ defined on $\mathbb{R}$ by $g(x)=f(x)$ for $x\in D$ and $g(x)=0$ for $x\notin D$ is measurable.
+    \item Let the function $f$ be defined on a measurable set $E$. Show that $f$ is measurable iff for each borel set $A$, $f^{-1}(A)$ is measurable. (Hint: the collection of sets $A$ that have the property that $f^{-1}(A)$ is measurable is a $\sigma$-algebra.)
+    \item (Borel measurability) A function $f$ is said to be \textbf{Borel measurable} provided its domain $E$ is a Borel set and for each $c$, the set $\{x\in E\ |\ f(x)>c\}$ is a Borel set.
+    Verify that Proposition 1 and Theorem 6 remain valid if we replace "(Lebesgue) measurable set" by "Borel set".
+    Show that:
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item every Borel measurable function is Lebesgue measurable
+        \item if $f$ is Borel measurable and $B$ is a Borel set, then $f^{-1}(B)$ is a Borel set
+        \item if $f$ and $g$ are Borel measurable, so is $f\circ g$, 
+        \item if $f$ is Borel measurable and $g$ is Lebesgue measurable, then $f\circ g$ is Lebesgue measurable.
+    \end{enumerate}
+    \item Let $\{f_n\}$ be a sequence of measurable functions defined on a measurable set $E$.
+    Define $E_0$ to be the set of points of $x$ in $E$ at which $\{f_n(x)\}$ converges. Is the set $E_0$ measurable?
+    \item Suppose $f$ and $g$ are real-valued functions defined on all of $\mathbb{R}$, $f$ is measurable, and $g$ is continuous.
+    Is the composition $f\circ g$ necessarily measurable?
+    \item Let $f$ be a measurable function and $g$ be a one-to-one function from $\mathbb{R}$ onto $\mathbb{R}$ which has a Lipschitz inverse. Show that the composition $f\circ g$ is measurable. (Hint: examine Problem 37 in Chapter 2.)
 \end{enumerate}
 
 % 3.2
 \section{Sequential Pointwise Limits and Simple Approximation}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{11}
+    \item Let $f$ be a bounded measurable function on $E$. Show that there are sequences of simple functions on $E$, $\{\varphi_n\}$ and $\{\psi_n\}$, such that $\{\varphi_n\}$ is increasing and $\{\psi_n\}$ is decreasing and each of these sequences converges to $f$ uniformly on $E$.
+    \item A real-valued measurable function is said to be \textit{semisimple} provided it takes only a countable number of values. Let $f$ be any measurable function on $E$.
+    Show that there is a sequence of semisimple functions $\{f_n\}$ on $E$ that converges to $f$ uniformly on $E$.
+    \item Let $f$ be a measurable function on $E$ that is finite a.e. on $E$ and $m(E)<\infty$.
+    For each $\epsilon>0$, show that there is a measurable set $F$ contained in $E$ such that $f$ is bounded on $F$ and $m(E\setminus F)<\epsilon$.
+    \item Let $f$ be a measurable function on $E$ that if finite a.e. on $E$ and $m(E)<\infty$. Show that for each $\epsilon>0$, there is a measurable set $F$ contained in $E$ and a sequence $\{\varphi_n\}$ of simple functions on $E$ such that $\{\varphi_n\}\to f$ uniformly on $F$ and $m(E\setminus F)<\epsilon$. (Hint: see the preceding problem.)
+    \item Let $I$ be a closed, bounded interval and $E$ a measurable subset of $I$. Let $\epsilon>0$.
+    Show that there is a step function $h$ on $I$ and a measurable subset $F$ of $I$ for which 
+    \[
+        h=\chi_E\text{ on }F\text{ and }m(I\setminus F)<\epsilon.    
+    \]
+    (Hint: use Theorem 12 of Chapter 2.)
+    \item Let $I$ be a closed, bounded interval and $\psi$ a simple function defined on $I$. Let $\epsilon>0$.
+    Show that there is a step function $h$ on $I$ and a measurable subset $F$ of $I$ for which 
+    \[
+        h=\psi\text{ on }F\text{ and }m(I\setminus F)<\epsilon.    
+    \] 
+    (Hint: use the fact that a simple function is a linear combination of characteristic functions and the preceding problem.)
+    \item Let $I$ be a closed, bounded interval and $f$ a bounded measurable function defined on $I$. Let $\epsilon>0$.
+    Show that there is a step function $h$ on $I$ and a measurable subset $F$ of $I$ for which 
+    \[
+        |h-f|<\epsilon\text{ on }F\text{ and }m(I\setminus F)<\epsilon.    
+    \]
+    \item Show that the sum and product of two simple functions are simple as are the max and the min.
+    \item Let $A,B$ be any sets. Show that
+    \begin{align*}
+        \chi_{A\cap B}&=\chi_A\cdot\chi_B\\
+        \chi_{A\cup B}&=\chi_A+\chi_B-\chi_A\cdot\chi_B\\
+        \chi_{A^c}&=1-\chi_A\\
+    \end{align*}
+    \item For a sequence $\{f_n\}$ of measurable functions with common domain $E$, show that each of the following functions is measurable:
+    \begin{itemize}
+        \item $\inf\{f_n\}$
+        \item $\sup\{f_n\}$
+        \item $\lim\inf\{f_n\}$
+        \item $\lim\sup\{f_n\}$
+    \end{itemize}
+    \item (Dini's Theorem) Let $\{f_n\}$ be an increasing sequence of continuous functions on $[a,b]$ which converges pointwise on $[a,b]$ to the continuous function $f$ on $[a,b]$.
+    Show that the convergence is uniform on $[a,b]$. (Hint: let $\epsilon>0$. For each natural number $n$, define $E_n=\{x\in[a,b]\ |\ f(x)-f_n(x)<\epsilon\}$. Show that $\{E_n\}$ is an open cover of $[a,b]$ and use the Heine-Borel Theorem.)
+    \item Express a measurable function as the difference of nonnegative measurable functions and thereby prove the general Simple Approximation Theorem based on the special case of a nonnegative measurable function.
+    \item Let $I$ be an interval and $f:I\to\mathbb{R}$ be increasing. Show that $f$ is measurable by first showing that, for each natural number $n$, the strictly increasing function $x\mapsto f(x)+x/n$ is measurable, and then taking pointwise limits.
+\end{enumerate}
 
 % 3.3
 \section{Littlewood's Three Principles, Ergoff's Theorem, and Lusin's Theorem`'}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{24}
+    \item Suppose $f$ is a function that is continuous on a closed set $F$ of real numbers. Show that $f$ has a continuous extension to all of $\mathbb{R}$. This is a special case of the forthcoming Tietze Extension Theorem.
+    (Hint: express $\mathbb{R}\setminus F$ as the union of a countable disjoint collection of open intervals and define $f$ to be linear on the closure of each of these intervals.)
+    \item For the function $f$ and the set $F$ in the statement of Lusin's Theorem, show that the restriction of $f$ to $F$ is a continuous function.
+    Must there be any points at which $f$, considered as a function of $E$, is continuous?
+    \item Show that the conclusion of Egoroff's Theorem can fail if we drop the assumption that the domain has finite measure.
+    \item Show that Egoroff's Theorem continues to hold if the convergence is pointwise a.e. and $f$ is finite a.e.
+    \item Prove the extension of Lusin's Theorem to the case that $E$ has finite measure.
+    \item Prove the extension of Lusin's Theorem to the case that $f$ is not necessarily real-valued, but is finite a.e.
+    \item Let $\{f_n\}$ be a sequence of measurable functions on $E$ that converges to the real-valued $f$ pointwise on $E$. Show that $E=\bigcup_{k=1}^\infty E_k$, where for each index $k$, $E_k$ is measurable, and $\{f_n\}$ converges uniformly to $f$ on each $E_k$ if $k>1$, and $m(E_1)=0$.  
+\end{enumerate}
