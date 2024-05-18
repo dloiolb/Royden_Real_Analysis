@@ -171,5 +171,39 @@
         \item There is a continuous function $g$ on $\mathbb{R}$ which vanishes outside a bounded set and $\int_{\mathbb{R}}|f-g|<\epsilon$.
     \end{enumerate}
     \item Let $f$ be integrable over $E$. Define $\hat f$ to be the extension of $f$ to all of $\mathbb{R}$ obtained by setting $\hat f \equiv 0$ outside of $E$. 
-    Show that $\hat f$ is integrable over $\mathbb{R}$ and 
+    Show that $\hat f$ is integrable over $\mathbb{R}$ and $\int_Ef=\int_{\mathbb{R}}\hat f$.
+    Use this and part (i) and (iii) of the preceding problem to show that for $\epsilon>0$, there is a simple function $\eta$ on $E$ and a continuous function $g$ on $E$ for which $\in_E|f-\eta|<\epsilon$ and $\in_E|f-g|<\epsilon$.
+    \item (Riemann-Lebesgue) Let $f$ be integrable over $(-\infty,\infty)$. Show That
+    \[
+        \lim_{n\to\infty}\int_{-\infty}^\infty f(x) \cos nxdx=0.    
+    \]
+    (Hint: first show this for $f$ is a step function that vanishes outside a closed, bounded interval and then use the approximation property (ii) of Problem 44.)
+    \item Let $f$ be integrable over $(-\infty,\infty)$.
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item Show that for each $t$,
+        \[
+            \int_{-\infty}^\infty f(x)dx=\int_{-\infty}^\infty f(x+t)dx.  
+        \]
+        \item Let $g$ be a bounded measurable function on $\mathbb{R}$. Show that 
+        \[
+            \lim_{t\to0}\int_{-\infty}^\infty g(x)\cdot[f(x)-f(x+t)]=0.
+        \] 
+        (Hint: first show this, using uniform continuity of $f$ on $\mathbb{R}$, if $f$ is continuous and vanishes outside a bounded set. Then use the approximation property (iii) of Problem 44.)
+    \end{enumerate}
+    \item Let $f$ be integrable over $E$ and let $g$ be a bounded measurable function on $E$. Show that $f\cdot g$ is integrable over $E$.
+    \item Let $f$ be integrable over $\mathbb{R}$. Show that the following four assertions are equivalent:
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item $f=0$ a.e. on $\mathbb{R}$.
+        \item $\int_{\mathbb{R}}fg=0$ for every bounded measurable function $g$ on $\mathbb{R}$.
+        \item $\int_Af=0$ for every measurable set $A$.
+        \item $\int_{\mathcal{O}}f=0$ for every open set $\mathcal{O}$.
+    \end{enumerate}
+    \item Let $\mathcal{F}$ be a family of functions, each of which is integrable over $E$. Show that $\mathcal{F}$ is uniformly integrable over $E$ iff for each $\epsilon>0$, there is a $\delta>0$ such that for each $f\in\mathcal{F}$,
+    \[
+        \text{if }A\subseteq E\text{ is measurable and }m(A)<\delta,\text{ then }\biggl |\int_Af\biggr |<\epsilon.
+    \]
+    \item Let $\mathcal{F}$ be a family of functions, each of which is integrable over $E$. Show that $\mathcal{F}$ is uniformly integrable over $E$ iff for each $\epsilon>0$, there is a $\delta>0$ such that for each $f\in\mathcal{F}$,
+    \[
+        \text{if }\mathcal{U}\text{ is open and }m(E\cap\mathcal{U})<\delta,\text{ then }\int_{E\cap\mathcal{U}}|f|<\epsilon.
+    \]
 \end{enumerate}

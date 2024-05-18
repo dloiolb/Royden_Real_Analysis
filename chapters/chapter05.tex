@@ -1,7 +1,67 @@
 % Chapter 5
 \chapter{Lebesgue Integration: Further Topics}
 
+% 5.1
 \section{Uniform Integrability and Tightness: A General Vitali Convergence Theorem}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{0}
+    \item Let $\{f_n\}_{k=1}^n$ be a finite family of functions, each of which is integrable over $E$.
+    Show that $\{f_n\}_{k=1}^n$ is uniformly integrable and tight over $E$.
+    \item Prove Corollary 2.
+    \item Let the sequences of functions $\{h_n\}$ and $\{g_n\}$ be uniformly integrable and tight over $E$.
+    Show that for any $\alpha$ and $\beta$, $\{\alpha f_n +\beta g_n\}$ is also uniformly integrable and tight over $E$.
+    \item Let $\{f_n\}$ be a sequence of measurable functions on $E$. Show that f$\{f_n\}$ is uniformly integrable and tight over $E$ iff for each $\epsilon>0$, there is a measurable subset $E_0$ of $E$ that has finite measure and a $\delta>0$ such that for each measurable subset $A$ of $E$ and index $n$,
+    \[
+        \text{if }m(A\cap E_0)<\delta,\text{ then }\int_A|f_n|<\epsilon.  
+    \]
+    \item Let $\{f_n\}$ be a sequence of measurable functions on $\mathbb{R}$. Show that f$\{f_n\}$ is uniformly integrable and tight over $\mathbb{R}$ iff for each $\epsilon>0$, there are positive numbers $r$ and $\delta$ such that for each open subset $\mathcal{O}$ of $\mathbb{R}$ and index $n$
+    \[
+        \text{if }m(\mathcal{O}\cap(-r,r))<\delta,\text{ then }\int_{\mathcal{O}}|f_n|<\epsilon.  
+    \]
+\end{enumerate}
+
+% 5.2
 \section{Convergence in Measure}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{5}
+    \item Let $\{f_n\}\to f$ in measure on $E$ and let $g$ be a measurable function on $E$ that is finite a.e. on $E$. 
+    Show that $\{f_n\}\to g$ in measure on $E$ iff $f=g$ a.e. on $E$.
+    \item Let $E$ have finite measure, let $\{f_n\}\to f$ in measure on $E$ and let $g$ be a measurable function on $E$ that is finite a.e. on $E$.
+    Prove that $\{f_n\cdot g\}\to f\cdot g$ in measure, and use this to show that $\{f_n^2\}\to f^2$ in measure.
+    Infer from this that if $\{g_n\}\to g$ in measure, then $\{f_n\cdot g_n\}\to f\cdot g$ in measure.
+    \item Show that Fatou's Lemma, the Monotone Convergence Theorem, the Lebesgue Dominated Convergence Theorem, and the Vitali Convergence Theorem remain valid if "pointwise convergence a.e." is replaced by "convergence in measure".
+    \item Show that Proposition 3 does not necessarily hold for sets $E$ of infinite measure.
+    \item Show that linear combinations of sequences that converge in measure on a set of finite measure also converge in measure.
+    \item Assume $E$ has finite measure. Let $\{f_n\}$ be a sequence of measurable functions on $E$ and let $f$ be a measurable function on $E$ for which $f$ and each $f_n$ is finite a.e. on $E$.
+    Prove that $\{f_n\}\to f$ in measure on $E$ iff every subsequence of $\{f_n\}$ has in turn a further subsequence that converges to $f$ pointwise a.e. on $E$.
+    \item Show that a sequence $\{a_j\}$ of real numbers converges to a real number if $|a_{j+1}-a_j|\le\frac{1}{2^j}$ for all $j$ by showing that the sequence $\{a_j\}$ must be Cauchy.
+    \item A sequence $\{f_n\}$ of measurable functions on $E$ is said to be \textbf{Cauchy in measure} provided that given $\eta>0$ and $\epsilon>0$, there is an index $N$ such that for all $m,n\ge N$, 
+    \[
+        m\{x\in E\ |\ |f_n(x)-f_m(x)|\ge\eta\}<\epsilon.  
+    \]
+    Show that if $\{f_n\}$ is Cauchy in measure, then there is a measurable function $f$ on $E$ to which the sequence $\{f_n\}$ converges in measure.
+    (Hint: choose a strictly increasing sequence of natural numbers $\{n_j\}$ such that for each index $j$, if $E_j=\{x\in E\ |\ |f_{n_{j+1}}(x)-f_{n_j}(x)|>\frac{1}{2^j}\}$, then $m(E_j)<\frac{1}{2^j}$. Now use the Borel-Cantelli Lemma and the preceding problem.)
+    \item Assume $m(E)<\infty$. For two measurable functions $g$ and $h$ on $E$, Define
+    \[
+        \rho(g,h)=\int_E\frac{|g-h|}{1+|g-h|}.
+    \]
+    Show that $\{f_n\}\to f$ in measure on $E$ iff $\lim_{n\to\infty}\rho(f_n,f)=0$.
+\end{enumerate}
+
+% 5.3
 \section{Characterizations of Riemann and Lebesgue Integrability}
-`'
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{14}
+    \item Let $f$ and $g$ be bounded functions that are Riemann integrable over $[a,b]$. Show that the product $fg$ is also Riemann integrable over $[a,b]$.
+    \item Let $f$ be a bounded function on $[a,b]$ whose set of discontinuities has measure zero. Show that $f$ is measurable. Then show that the same holds without the assumption of boundedness.
+    \item Let $f$ be a function on $[0,1]$ that is continuous on $(0,1]$. Show that it is possible for the sequence $\{\int_{[1/n,1]}f\}$ to converge and yet $f$ is not Lebesgue integrable over $[0,1]$. Can this happen if $f$ is nonnegative?
+\end{enumerate}
