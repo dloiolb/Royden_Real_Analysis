@@ -9,20 +9,167 @@
 \begin{enumerate}
 	\setcounter{enumi}{0}
     \item Show that, in the above Dirichlet function example, $\{f_n\}$ fails to converge to $f$ uniformly on $[0,1]$.
-    \item 
+    \item A partition $P'$ of $[a,b]$ is called a refinement of a partition $P$ provided each partition point of $P$ is also a partition point of $P'$.
+    For a bounded function $f$ on $[a,b]$, show that under refinement lower Darboux sums increase and upper Darboux sums decrease.
+    \item Use the preceding problem to show that for a bounded function on a closed, bounded interval, each lower Darboux sum is no greater than each upper Darboux sum.
+    From this conclude that the lower Riemann integral is no greater than the upper Riemann integral.
+    \item Suppose the bounded function $f$ on $[a,b]$ is Riemann integrable over $[a,b]$.
+    Show that there is a sequence $\{P_n\}$ of partitions of $[a,b]$ for which $\lim_{n\to\infty}[U(f,P_n)-L(f,P_n)]=0$.
+    \item Let $f$ be a bounded function on $[a,b]$. Suppose there is a sequence $\{P_n\}$ of partitions of $[a,b]$ for which $\lim_{n\to\infty}[U(f,P_n)-L(f,P_n)]=0$. Show that $f$ is Riemann integrable over $[a,b]$.
+    \item Use the preceding problem to show that since a continuous function $f$ on a closed, bounded interval $[a,b]$ is uniformly continuous on $[a,b]$, it is Riemann integrable over $[a,b]$.
+    \item Let $f$ be an increasing real-valued function on $[0,1]$. For a natural number $n$, define $P_n$ to be the partition of $[0,1]$ into $n$ subintervals of length $1/n$. 
+    Show that $U(f,P_n)-L(f,P_n)\le 1/n[f(1)-f(0)]$. Use Problem 5 to show that $f$ is Riemann integrable over $[0,1]$.
+    \item Let $\{f_n\}$ be a sequence of bounded functions that converges uniformly to $f$ on the closed, bounded interval $[a,b]$. 
+    If each $f_n$ is Riemann integrable over $[a,b]$, show that $f$ also is Riemann integrable over $[a,b]$. Is it true that
+    \[
+        \lim_{n\to\infty}\int_a^bf_n=\int_a^bf?  
+    \]
 \end{enumerate}
 
 % 4.2
 \section{The Lebesgue Integral of a Bounded Measurable Function over a Set of Finite Measure}
+\begin{flushleft}
+    
+\begin{namedthm*}{Remark}
+    Prior to the proof of the Bounded Convergence Theorem, no use was made of the countable additivity of the Lebesgue measure on the real line.
+    Only finite additivity was used, and it was used just once, in the proof of Lemma 1. Bur for the proof of the Bounded Convergence Theorem we used Egoroff's Theorem.
+    Egoroff's Theorem needed the continuity of Lebesgue measure, a consequence of countable additivity of Lebesgue measure.    
+\end{namedthm*}
+
+\end{flushleft}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{8}
+    \item Let $E$ have measure zero. Show that if $f$ is a bounded function on $E$, then $f$ is measurable and $\int_Ef=0$.
+    \item Let $f$ be a bounded measurable function on a set of finite measure $E$. For a measurable subset $A$ of $E$, show that $\int_Af=\int_Ef\cdot\chi_A$.
+    \item Does the Bounded Convergence Theorem hold for the Riemann integral?
+    \item Let $f$ be a bounded measurable function on a set of finite measure $E$. Assume $g$ is bounded and $f=g$ a.e. on $E$. Show that $\int_Ef=\int_Eg$.
+    \item Does the Bounded Convergence Theorem hold if $m(E)<\infty$ but we drop the assumption that the sequence $\{|f_n|\}$ is uniformly bounded on $E$?
+    \item Show that Proposition 8 is a special case of the Bounded Convergence Theorem.
+    \item Verify the assertions in the last Remark of this section.
+    \item Let $f$ be a nonnegative bounded measurable function on a set of finite measure $E$. Assume $\int_Ef=0$. Show that $f=0$ a.e. on $E$.
+\end{enumerate}
 
 % 4.3
 \section{The Lebesgue Integral of a Measurable Nonnegative Function}
 
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{16}
+    \item Let $E$ be a set of measure zero and define $f\equiv\infty$ on $E$. Show that $\int_Ef=0$.
+    \item Show that the integral of a bounded measurable function of finite support is properly defined.
+    \item For a number $\alpha$, define $f(x)=x^\alpha$ for $0<x\le1$, and $f(0)=0$. Compute $\int_0^1f$.
+    \item Let $\{f_n\}$ be a sequence of nonnegative measurable functions that converges to $f$ pointwise on $E$.
+    Let $M\ge0$ be such that $\int_Ef_n\le M$ for all $n$. Show that $\int_Ef\le M$. Verify that this property is equivalent to the statement of Fatou's Lemma.
+    \item Let the function $f$ be nonnegative and integrable over $E$ and $\epsilon>0$. Show there is a simple function $\eta$ on $E$ that has finite support, $0\le\eta\le f$ on $E$ and $\int_E|f-\eta|<\epsilon$.
+    If $E$ is a closed, bounded interval, show there is a step function $h$ on $E$ that has finite support and $\int_E|f-h|<\epsilon$.
+    \item Let $\{f_n\}$ be a sequence of nonnegative measurable functions on $\mathbb{R}$ that converges pointwise on $\mathbb{R}$ to $f$ and $f$ be integrable over $\mathbb{R}$. Show that
+    \[
+        \text{if }\int_{\mathbb{R}}f=\lim_{n\to\infty}\int_{\mathbb{R}}f_n,\text{ then }\int_Ef=\lim_{n\to\infty}\int_Ef_n\text{ for any measurable set }E.    
+    \]
+    \item Let $\{a_n\}$ be a sequence of nonnegative real numbers. Define the function $f$ on $E=[1,\infty)$ by setting $f(x)=a_n$ if $n\le x<n+1$. Show that $\int_Ef=\sum_{n=1}^\infty a_n$.
+    \item Let $f$ be a nonnegative measurable function on $E$.
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item Show there is an increasing sequence $\{\varphi_n\}$ of nonnegative simple functions on $E$, each of finite support, which converges pointwise on $E$ to $f$.
+        \item Show that $\int_Ef=\sup\{\int_E\varphi\ |\ \varphi\text{ simple, of finite support and }0\le\varphi\le f\text{ on }E\}$.
+    \end{enumerate}
+    \item Let $\{f_n\}$ be a sequence of nonnegative measurable functions on $E$ that converges pointwise on $E$ to $f$. Suppose $f_n\le f$ on $E$ for each $n$. Show that
+    \[
+        \lim_{n\to\infty}\int_Ef_n=\int_Ef.
+    \]
+    \item Show that the Monotone Convergence Theorem may not hold for decreasing sequences of functions.
+    \item Prove the following generalization of Fatou's Lemma: If $\{f_n\}$ is a sequence of nonnegative measurable functions on $E$, then 
+    \[
+    \int_E\lim\inf f_n\le\lim\inf\int_Ef_n.     
+    \]
+\end{enumerate}
+    
 % 4.4
 \section{The General Lebesgue Integral}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{27}
+    \item Let $f$ be integrable over $E$ and let $C$ be a measurable subset of $E$. Show that $\int_Cf=\int_Ef\cdot\chi_C$.
+    \item For a measurable function $f$ on $[1,\infty)$ which is bounded on bounded sets, define $a_n=\int_n^{n+1}f$ for each natural number $n$.
+    Is it true that $f$ is integrable over $[1,\infty)$ iff the series $\sum_{n=1}^\infty a_n$ converges?
+    Is it true that $f$ is integrable over $[1,\infty)$ iff the series $\sum_{n=1}^\infty a_n$ converges absolutely?
+    \item Let $g$ be a nonnegative integrable function over $E$ and suppose $\{f_n\}$ is a sequence of measurable functions on $E$ such that for each $n$, $|f_n|\le g$ a.e. on $E$. Show that
+    \[
+        \int_E\lim\inf f_n \le \lim\inf\int_E f_n \le \lim\sup\int_E f_n \le \int_E\lim\sup f_n.
+    \]
+    \item Let $f$ be a measurable function on $E$ which can be expressed as $f=g+h$ on $E$, where $g$ is finite and integrable over $E$ and $h$ is nonnegative on $E$.
+    Define $\int_Ef=\int_Eg+\int_Eh$. Show that this is properly defined in the sense that it is independent of the particular choice of finite integrable function $g$ and nonnegative function $h$ whose sum is $f$.
+    \item Prove the General Lebesgue Dominated Convergence Theorem by following the proof of the Lebesgue Dominated Convergence Theorem, but replacing the sequences $\{g-f_n\}$ and $\{g+f_n\}$, respectively, by $\{g_n-f_n\}$ and $\{g_n+f_n\}$.
+    \item Let $\{f_n\}$ be a sequence of integrable functions on $E$ for which $f_n\to f$ a.e. on $E$ and $f$ is integrable over $E$. Show that $\int_E|f-f_n|\to0$ iff $\lim_{n\to\infty}\int_E|f_n|=\int_E|f|$.
+    (Hint: use the General Lebesgue Dominated Convergence Theorem.)
+    \item Let $f$ be a nonnegative measurable function on $\mathbb{R}$. Show that 
+    \[
+        \lim_{n\to\infty}\int_{-n}^nf=\int_{\mathbb{R}}f.
+    \]   
+    \item Let $f$ be a real-valued function of two variables $(x,y)$ that is defined on the square $Q=\{(x,y)\ |\ 0\le x\le 1,0\le y\le 1\}$ and is a measurable function of $x$ for each fixed value of $y$.
+    Suppose for each fixed value of $x$, $\lim_{y\to0}f(x,y)=f(x)$ and that for all $y$, we have $|f(x,y)|\le g(x)$, where $g$ is integrable over $[0,1]$. Show that
+    \[
+    \lim_{y\to0}\int_0^1f(x,y)dx=\int_0^1f(x)dx.    
+    \] 
+    Also show that if the function $f(x,y)$ is continuous in $y$ for each $x$, then 
+    \[
+        h(y)=\int_0^1f(x,y)dx  
+    \]
+    is a continuous function of $y$.
+    \item Let $f$ be a real-valued function of two variables $(x,y)$ that is defined on the square $Q=\{(x,y)\ |\ 0\le x\le 1,0\le y\le 1\}$ and is a measurable function of $x$ for each fixed value of $y$.
+    For each $(x,y)\in Q$ let the partial derivative $\partial f/\partial y$ exist. Suppose there is a function $g$ that is integrable over $[0,1]$ and such that 
+    \[
+        \biggl | \frac{\partial f}{\partial y}(x,y) \biggr | \le g(x)\text{ for all }(x,y)\in Q.
+    \]
+    Prove that 
+    \[
+        \frac{d}{dy}\biggl[\int_0^1f(x,y)dx\biggr]=\int_0^1\frac{\partial f}{\partial y}(x,y)dx\text{ for all }y\in [0,1].
+    \]
+\end{enumerate}
 
 % 4.5
 \section{Countable Additivity and Continuity of Integration}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{36}
+    \item Let $f$ be an integrable function on $E$. Show that for each $\epsilon>0$, there is a natural number $N$ for which if $n\ge N$, then $|int_{E_n}f|<\epsilon$ where $E_n=\{x\in E\ |\ |x|\ge n\}$.
+    \item For each of the two functions $f$ on $[1,\infty)$ defined below, show that $\lim_{n\to\infty}\int_1^nf$ exists while $f$ is not integrable over $[1,\infty)$. Does this contradict the continuity of integration?
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item Define $f(x)=\frac{(-1)^n}{n}$, for $n\le x < n+1$.
+        \item Define $f(x) = \frac{(\sin x)}{x}$ for $1\le x<\infty$.
+    \end{enumerate}
+    \item Prove the theorem regarding the continuity of integration.
+\end{enumerate}
 
 % 4.6
 \section{Uniform Integrability: The Vitali Convergence Theorem}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{39}
+    \item Let $f$ be integrable over $\mathbb{R}$. Show that the function $F$ defined by 
+    \[
+        F(x) = \int_{-\infty}^xf\text{ for all }x\in\mathbb{R}
+    \]
+    is properly defined and continuous. Is it necessarily Lipschitz?
+    \item Show that Proposition 25 is false if $E=\mathbb{R}$.
+    \item Show that Theorem 26 is false without the assumption that the $h_n$'s are nonnegative.
+    \item Let the sequences of functions $\{h_n\}$ and $\{g_n\}$ be uniformly integrable over $E$. Show that for any $\alpha$ and $\beta$, the sequence of linear combinations $\{\alpha f_n + \beta g_n\}$ also is uniformly integrable over $E$.
+    \item Let $f$ be integrable over $\mathbb{R}$ and let $\epsilon>0$. Establish the following three approximation properties. 
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item There is a simple function $\eta$ on $\mathbb{R}$ which has finite support and $\int_{\mathbb{R}}|f-\eta|<\epsilon$. (Hint: first verify this if $f$ is nonnegative.)
+        \item There is a step function $s$ on $\mathbb{R}$ which vanishes outside a closed, bounded interval and $\int_{\mathbb{R}}|f-s|<\epsilon$. (Hint: apply part (i) and Problem 18 of Chapter 3.)
+        \item There is a continuous function $g$ on $\mathbb{R}$ which vanishes outside a bounded set and $\int_{\mathbb{R}}|f-g|<\epsilon$.
+    \end{enumerate}
+    \item Let $f$ be integrable over $E$. Define $\hat f$ to be the extension of $f$ to all of $\mathbb{R}$ obtained by setting $\hat f \equiv 0$ outside of $E$. 
+    Show that $\hat f$ is integrable over $\mathbb{R}$ and 
+\end{enumerate}
