@@ -18,7 +18,7 @@
     A nonempty set together with a metric on the set is called a \textbf{metric space}, often denoted by $(X,\rho)$.
 \end{namedthm*}
 
-An example of a metric space is the set $\mathbb{R}$ of all real numbers with the metric $\rho(x,y) = |x-y|$. \\
+An example of a metric space is the set $\mathbb{R}$ of all real numbers with the metric $\rho(x,y) = |x-y|$. \par\medskip
 
 A linear space with a norm is called a normed linear space.
 A norm $\|\cdot\|$ on a linear space $X$ induces a metric $\rho$ on $X$ by defining
@@ -36,9 +36,132 @@ To show this, let $x,y\in X$. Because $X$ is a linear space, $x-y \in X$, and $\
 Three prominent examples of normed linear spaces:
 the Euclidean spaces $\mathbb{R}^n$, 
 the $L^p(E)$ spaces,
-$C[a,b]$.
+$C[a,b]$.\\
 
+For a natural number $n$, consider the linear space $\mathbb{R}^n$, whose points are $n$-tuples of real numbers.
+For $x=(x_1,\cdots,c_n)\in\mathbb{R}^n$, the Euclidean norm $\|x\|$ is defined by
+\[
+    \|x\|=[x_1^2+\cdots+x_n^2]^{1/2}.    
+\]
+\par\medskip
 
+\textit{The Discrete Metric}
+For any nonempty set $X$, the discrete metric $\rho$ is defined by setting $\rho(x,y)=0$ if $x=y$ and $\rho(x,y)=1$ if $x\neq y$.
+\begin{enumerate}[label=(\roman*),align=right]
+    \item $\rho(x,y)\in\{0,1\}\implies\rho(x,y)\ge0$.
+    \item $\rho(x,y)=0\iff x=y$ by definition.
+    \item By symmetry of the equality relation,
+    \[
+    \rho(x,y)=
+    \begin{cases}
+        1 &x=y\\
+        0 &x\neq y
+    \end{cases}    
+    =
+    \begin{cases}
+        1 &y=x\\
+        0 &y\neq x
+    \end{cases}  
+    = \rho(y,x)
+    \]
+    \item In the case $x\neq y$, the triangle inequality is trivial.\\
+    In the case $x=y$,\\
+    if $x=z$, then by transitivity, $z=y$ and\\$\rho(x,y)=0,\rho(x,z)=0,\rho(z,y)=0$, and the triangle inequality is obvious: $0\le0$.\\
+    if $x\neq z$, then by transitivity, $z\neq y$ and\\$\rho(x,y)=0,\rho(x,z)=1,\rho(z,y)=1 \implies \rho(x,y)=0\le2=\rho(x,z)+\rho(z,y)$.
+\end{enumerate}
+\par\medskip
+
+\textit{Metric Subspaces}
+For a metric space $(X,\rho)$, let $Y$ be a nonempty subset of $X$. 
+Then the restriction of $\rho$ to $Y \times Y$ defines a metric on $Y$ and we call such a metric space a metric \textbf{subspace}.
+Therefore every nonempty subset of Euclidean space, of and $L^p(E)$ space, $1\le p\le\infty$, and of $C[a,b]$ is a metric space.
+\par\medskip
+
+\textit{Metric Products}
+For metric spaces $(X_1,\rho_1)$ and $(X_2,\rho_2)$, we define the \textbf{product metric} $\tau$ on the Cartesian product $X_1 \times X_2$ by setting, for $(x_1,x_2),(y_1,y_2)\in X_1 \times X_2$,
+\[
+    \tau((x_1,x_2),(y_1,y_2))= \{[\rho(x_1,y_1)]^2+[\rho(x_2,y_2)]^2\}^{1/2}.
+\]
+To see that this is a metric:
+\begin{enumerate}[label=(\roman*),align=right]
+    \item By metric property (i) of $\rho_1,\rho_2$, we have
+    \begin{align*}
+        \lbrack\rho_1(x_1,y_1)\rbrack^2\ge0\text{ and }\lbrack\rho_2(x_2,y_2)\rbrack^2\ge0
+        &\iff \{\lbrack\rho_1(x_1,y_1)\rbrack^2+\lbrack\rho_2(x_2,y_2)\rbrack^2\}^{1/2}\ge0\\
+        &\iff \tau((x_1,x_2),(y_1,y_2))\ge0
+    \end{align*}
+    \item By metric property (ii) of $\rho_1,\rho_2$, we have
+    \begin{align*} 
+        \tau((x_1,x_2),(y_1,y_2))&=\{\lbrack\rho_1 (x_1,y_1)\rbrack^2+\lbrack\rho_2 (x_2,y_2)\rbrack^2\}^{1/2}=0\\
+        &\iff \lbrack\rho_1 (x_1,y_1)\rbrack^2=0\text{ and }\lbrack\rho_2 (x_2,y_2)\rbrack^2=0\\
+        &\iff x_1=y_1\text{ and }x_2=y_2\\
+        &\iff (x_1,x_2)=(y_1,y_2).
+    \end{align*}
+    \item By metric property (iii) (symmetry) of $\rho_1,\rho_2$, we have
+    \begin{align*}
+        \tau((x_1,x_2),(y_1,y_2)) &=\{\lbrack\rho_1 (x_1,y_1)\rbrack^2+\lbrack\rho_2 (x_2,y_2)\rbrack^2\}^{1/2}\\
+        &=\{\lbrack\rho_1 (y_1,x_1)\rbrack^2+\lbrack\rho_2 (y_2,x_2)\rbrack^2\}^{1/2}\\
+        &= \tau((y_1,y_2),(x_1,x_2)).
+    \end{align*}
+    \item We must first prove an inequality $\star$. Because $x^2\ge0$ for any real number $x$, we have
+    \begin{align*}
+        0&\le\lbrack\rho_1(x_1,z_1)\rho_2(z_2,y_2)-\rho_2(x_2,z_2)\rho_1(z_1,y_1)\rbrack^2\\
+        0&\le\rho_1(x_1,z_1)^2\rho_2(z_2,y_2)^2+\rho_2(x_2,z_2)^2\rho_1(z_1,y_1)^2\\&\phantom{\le+{}}-2\rho_1(x_1,z_1)\rho_1(z_1,y_1)\rho_2(x_2,z_2)\rho_2(z_2,y_2)\\
+        2\rho_1(x_1,z_1)\rho_1(z_1,y_1)\rho_2(x_2,z_2)\rho_2(z_2,y_2)&\le\rho_1(x_1,z_1)^2\rho_2(z_2,y_2)^2+\rho_2(x_2,z_2)^2\rho_1(z_1,y_1)^2\\
+    \end{align*}
+    Adding $\rho_1(x_1,z_1)^2\rho_1(z_1,y_1)^2 + \rho_2(x_2,z_2)^2\rho_2(z_2,y_2)^2$ to both sides, we have
+    \begin{align*}
+        \rho_1(x_1,z_1)^2\rho_1(z_1,y_1)^2 + \rho_2(x_2,z_2)^2\rho_2(z_2,y_2)^2+ 2\rho_1(x_1,z_1)\rho_1(z_1,y_1)\rho_2(x_2,z_2)\rho_2(z_2,y_2)\\
+        \le\rho_1(x_1,z_1)^2\rho_1(z_1,y_1)^2 + \rho_2(x_2,z_2)^2\rho_2(z_2,y_2)^2+\rho_1(x_1,z_1)^2\rho_2(z_2,y_2)^2+\rho_2(x_2,z_2)^2\rho_1(z_1,y_1)^2\\
+    \end{align*}
+    Therefore we end up with the inequality: $\star$
+    \begin{align*}
+        \lbrack\rho_1(x_1,z_1)\rho_1(z_1,y_1) + \rho_2(x_2,z_2)\rho_2(z_2,y_2)\rbrack^2&\le\lbrack\rho_1(x_1,z_1)^2+\rho_2(x_2,z_2)^2\rbrack\lbrack\rho_1(z_1,y_1)^2+\rho_2(z_2,y_2)^2\rbrack\\
+        \rho_1(x_1,z_1)\rho_1(z_1,y_1) + \rho_2(x_2,z_2)\rho_2(z_2,y_2)&\le\sqrt{\lbrack\rho_1(x_1,z_1)^2+\rho_2(x_2,z_2)^2\rbrack\lbrack\rho_1(z_1,y_1)^2+\rho_2(z_2,y_2)^2\rbrack}\\
+        2\rho_1(x_1,z_1)\rho_1(z_1,y_1) + 2\rho_2(x_2,z_2)\rho_2(z_2,y_2)&\le2\sqrt{\rho_1(x_1,z_1)^2+\rho_2(x_2,z_2)^2}\sqrt{\rho_1(z_1,y_1)^2+\rho_2(z_2,y_2)^2}&&\star\\
+    \end{align*}
+    Now, to prove the triangle inequality of the product metric, we use the metric property (iv) (triangle inequality) of $\rho_1,\rho_2$:
+    \begin{align*}
+        &\rho(x_1,y_1)^2+\rho(x_2,y_2)^2\\
+        &\le\lbrack\rho(x_1,z_1)+\rho(z_1,y_1)\rbrack^2+\lbrack\rho(x_2,z_2)+\rho(z_2,y_2)\rbrack^2\\
+        &=\rho(x_1,z_1)^2+\rho(z_1,y_1)^2+2\rho(x_1,z_1)\rho(z_1,y_1)+\rho(x_2,z_2)^2+\rho(z_2,y_2)^2+2\rho(x_2,z_2)\rho(z_2,y_2)\\
+        &\le\rho(x_1,z_1)^2+\rho(z_1,y_1)^2+\rho(x_2,z_2)^2+\rho(z_2,y_2)^2+2\sqrt{\rho_1(x_1,z_1)^2+\rho_2(x_2,z_2)^2}\sqrt{\rho_1(z_1,y_1)^2+\rho_2(z_2,y_2)^2}&&\star\\
+        &=\biggl\lbrack\sqrt{\rho_1(x_1,z_1)^2+\rho_2(x_2,z_2)^2}+\sqrt{\rho_1(z_1,y_1)^2+\rho_2(z_2,y_2)^2}\biggr\rbrack^2
+    \end{align*}
+    Therefore we have
+    \[
+        \sqrt{\rho(x_1,y_1)^2+\rho(x_2,y_2)^2}\le\sqrt{\rho_1(x_1,z_1)^2+\rho_2(x_2,z_2)^2}+\sqrt{\rho_1(z_1,y_1)^2+\rho_2(z_2,y_2)^2}
+    \]
+    and thus
+    \[
+        \tau((x_1,x_2),(y_1,y_2)) \le \tau((x_1,x_2),(z_1,z_2))+\tau((z_1,z_2),(y_1,y_2)).
+    \]
+\end{enumerate}
+This construction extends to countable products (problem 10).
+\par\medskip
+
+\begin{namedthm*}{Definition}
+    Two metrics $\rho$ and $\sigma$ on a set $X$ are said to be \textbf{equivalent} provided there are positive numbers $c_1,c_2$ such that for all $x_1,x_2\in X$,
+    \[
+    c_1\cdot \sigma(x_1,x_2)\le\rho(x_1,x_2)\le c_2\cdot\sigma(x_1,x_2).    
+    \]    
+\end{namedthm*}
+
+\begin{namedthm*}{Definition}
+    A mapping $f$ from a metric space $(X,\rho)$ to a metric space $(Y,\sigma)$ is said to be an \textbf{isometry} provided it maps $X$ onto $Y$ and for all $x_1,x_2\in X$,
+    \[
+    \sigma(f(x_1),f(x_2))=\rho(x_1,x_2).    
+    \]
+\end{namedthm*}
+
+Two metric spaces are called \textbf{isometric} provided there is an isometry from one onto the other.
+To be isometric is an equivalence relation among metric spaces.
+From the viewpoint of metric spaces, two isometric metric spaces are exactly the same, an isometry amounting merely to a relabeling of the points.
+\par\medskip
+In the definition of a metric $\rho$ on a set $X$ it is often convenient to relax the condition that $\rho(x,y)=0$ if and only if $x=y$.
+When we allow the possibility that $\rho(x,y)=0$ for some $x\neq y$, we call $\rho$ a \textbf{pseudometric} and $(X,\rho)$ a pseudometric space.
+On such a space, define the relation $x\cong y$ provided $\rho(x,y)=0$.
+This is an equivalence relation that separates $X$ into a disjoint collection of equivalence classes $X/\cong$.  
 
 \end{flushleft}
 \begin{center}
@@ -50,14 +173,71 @@ $C[a,b]$.
 	\[
         \frac{1}{c}\tau(u,v)\le\rho(u,v)\le c\tau(u,v).    
     \]
+    Let $\rho$ and $\tau$ be two metrics on the same set $X$.\\
+    $(\implies)$ Suppose $\rho$ and $\tau$ are equivalent.\\
+    Then there exist $c_1,c_2>0$ such that for all $u,v\in X$,
+    \[
+    c_1\cdot \tau(u,v)\le\rho(u,v)\le c_2\cdot\tau(u,v).    
+    \]
+    By the Archimedean Property of $\mathbb{R}$, for the positive real number $c_1$, there exists a natural number $n$ for which $\frac{1}{n}<c_1$.\\
+    Let $c=\max\{n,c_2\}$ so that $n\le c \implies \frac{1}{c}\le\frac{1}{n}<c_1$ and also $c_2\le c$, so we have
+    \[
+        \frac{1}{c}\cdot \tau(u,v)<c_1\cdot \tau(u,v)\le\rho(u,v)\le c_2\cdot\tau(u,v) \le c\tau(u,v).
+    \]
+    \\
+    $(\impliedby)$ Suppose that there is a $c>0$ such that for all $u,v\in X$,
+	\[
+        \frac{1}{c}\tau(u,v)\le\rho(u,v)\le c\tau(u,v).    
+    \]
+    We showed that for a positive number $c$, its multiplicative inverse $\frac{1}{c}$ is also positive [ch1, 2(ii)], and so we have $\frac{1}{c},c>0$ such that for all $u,v\in X$,
+    \[
+        (\frac{1}{c})\tau(u,v)\le\rho(u,v)\le c\tau(u,v).    
+    \]
+    Therefore $\rho$ and $\tau$ are equivalent.
     \item Show that the following define equivalent metrics on $\mathbb{R}^n$:
     \begin{align*}
         \rho^*(x,y) &= |x_1-y_1| + \cdots + |x_n-y_n|;\\
         \rho^+(x,y) &= \max\{|x_1-y_1|, \cdots,|x_n-y_n|\}.
     \end{align*}
-    \item Find a metric on $\mathbb{R}^n$ that fails to be equivalent to either of those defined in the preceding problem.
+    For some $j\in\{1,\cdots,n\}$, we have $|x_j-y_j|=\max\{|x_1-y_1|, \cdots,|x_n-y_n|\}$.\\
+    Then 
+    \begin{align*}
+        \rho^+(x,y) &= |x_j-y_j|\\
+        &= 0+\cdots +|x_j-y_j|+\cdots+0\\
+        &\le |x_1-y_1| + \cdots|x_j-y_j|+\cdots + |x_n-y_n|\\
+        &= \rho^*(x,y).
+    \end{align*}
+    Also,
+    \begin{align*}
+        \rho^*(x,y) &= |x_1-y_1| + \cdots|x_j-y_j|+\cdots + |x_n-y_n|\\
+        &\le |x_j-y_j| + \cdots|x_j-y_j|+\cdots + |x_j-y_j|\\
+        &= n|x_j-y_j|\\
+        &=n\rho^+(x,y).
+    \end{align*}
+    Therefore we have $1,n>0$ such that for all $x,y\in \mathbb{R}^n$,
+    \[
+        \rho^+(x,y)\le\rho^*(x,y)\le n\rho^+(x,y).
+    \]
+    \item Find a metric on $\mathbb{R}^n$ that fails to be equivalent to either of those defined in the preceding problem.\\
+    Let 
+    \[
+    \rho(x,y)=
+    \begin{cases}
+        \min\{|x-y|,1\}&\text{if $x,y$ are both rational or $x,y$ are both irrational}\\
+        1&\text{else}
+    \end{cases}    
+    \]
     \item For a closed, bounded interval $[a,b]$, consider the set $X=C[a,b]$ of continuous real-valued functions on $[a,b]$.
-    Show that the metric induced by the maximum norm and that induced by the $L^1[a,b]$ norm are not equivalent.
+    Show that the metric induced by the maximum norm and that induced by the $L^1[a,b]$ norm are not equivalent.\\
+    From Chapter 7 Problem 1, we proved that there is no number $c \ge 0$ for which
+	\[
+	\| f \|_{\max}	\le c \| f \|_1 \text{ for all $f$ in $C[a,b]$}.
+	\]
+    Therefore there exists no $c_1,c_2>0$ such that for all $f,g$ in $C[a,b]$,
+    \[
+        c_1\| f-g \|_1 \le \| f-g \|_{\max}	\le c_2 \| f-g \|_1,
+	\]
+    and the metrics induced by the norms $\| \cdot \|_{\max}$ and $\| \cdot \|_1$ are not equivalent.
     \item \textit{The Nikodym Metric}. Let $E$ be a Lebesgue measurable set of real numbers of finite measure, $X$ the set of measurable subsets of $E$, and $m$ Lebesgue measure.
     For $A,B\in X$, define $\rho(A,B)=m(A\Delta B)$, where $A\Delta B = [A\setminus B]\cup[B\setminus A]$, the symmetric difference of $A$ and $B$.
     Show that this is a pseudometric on $X$.
