@@ -168,11 +168,8 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	Also, we have 
 	\begin{align*}
 		[0,1]&=([0,1]\cap\mathbb{Q}^c)\cup([0,1]\cap\mathbb{Q})\\
-		[0,1]&=A\cup([0,1]\cap\mathbb{Q})
-	\end{align*}
-	Then $[0,1]\subseteq A\cup([0,1]\cap\mathbb{Q})$.\\
-	Taking the outer measure,
-	\begin{align*}
+		[0,1]&=A\cup([0,1]\cap\mathbb{Q})\\
+		[0,1]&\subseteq A\cup([0,1]\cap\mathbb{Q})&&A=B\implies A\subseteq B\text{ and }A\supseteq B\\
 		m^*([0,1])&\le m^*(A\cup (m^*([0,1]\cap\mathbb{Q}))&&\text{by monotonicity}\\
 		m^*([0,1])&\le m^*(A)+m^*([0,1]\cap\mathbb{Q})&&\text{by countable subadditvity}\\
 		m^*([0,1])&\le m^*(A)+0&&\text{countable set has outer measure zero}\\
@@ -182,18 +179,62 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\item A set of real numbers is said to be a $G_\delta$ set provided it is the intersection of a countable collection of open sets.
 	Show that for any bounded set $E$, there is a $G_\delta$ set $G$ for which
 	\[E\subseteq G \ \text{and}\ m^*(G)=m^*(E).\]
-	Suppose $E$ is a bounded set of real numbers. 
+	Suppose $E$ is a bounded set of real numbers.\\
+	Then there exists a real number $M$ for which $|x|\le M$ for all $x\in E$; that is, $E\subseteq[-M,M]$.
+	By monotonicity of outer measure, $m^*(E)\le m^*([-M,M])=2M<\infty$, and the outer measure of $E$ is finite.\\
+	Now, because outer measure is defined as $m^*(E)=\inf\{\sum_{k=1}^\infty\ell(I_k)\ |\ E\subseteq\bigcup_{k=1}^\infty I_k\}$, we have that $m^*(E)$ is the greatest lower bound, so for a natural number $n$, $m^*(E)+\frac{1}{n}$ is not a lower bound.
+	That is, there exists a countable sequence of open sets $\{(I_n)_k\}_{k=1}^\infty$ such that $E\subseteq\bigcup_{k=1}^\infty (I_n)_k$ and 
+	\begin{equation}
+		m^*(E)\le\sum_{k=1}^\infty\ell((I_n)_k)<m^*(E)+\frac{1}{n}.\tag{1}
+	\end{equation}
+	Now, for each natural number $n$, we can define the open set
+	\begin{equation}
+		\mathcal{O}_n:=\bigcup_{k=1}^\infty (I_n)_k.\tag{2}
+	\end{equation}
+	Also define the countable intersection of open sets; i.e., a $G_\delta$ set:
+	\[
+		\mathcal{O}:=\bigcap_{n=1}^\infty\mathcal{O}_n.
+	\]
+	Then because we have $E\subseteq\mathcal{O}_n$ for every $n$, this implies $E\subseteq\bigcap_{n=1}^\infty\mathcal{O}_n=\mathcal{O}$.
+	\begin{align*}
+		m^*(E)&\le m^*(\mathcal{O})&&\text{by monotonicity of outer measure: }E\subseteq\mathcal{O}\\
+		&\le m^*(\mathcal{O}_n)&&\text{by monotonicity of outer measure: }\mathcal{O}=\bigcap_{n=1}^\infty\mathcal{O}_n\subseteq\mathcal{O}_n\\
+		&=m^*(\bigcup_{k=1}^\infty (I_n)_k)&&\text{by (2)}\\
+		&\le\sum_{k=1}^\infty\ell((I_n)_k)&&\text{by countable subadditivity of outer measure}\\
+		&<m^*(E)+\frac{1}{n}.&&\text{by (1)}
+	\end{align*}
+	Therefore for any natural number $n$,
+	\[
+		m^*(E)\le m^*(\mathcal{O})<m^*(E)+\frac{1}{n}.	
+	\]
+	Taking the limit as $n\to\infty$, we get that $m^*(E)= m^*(\mathcal{O})$.\\
+	Therefore there exists a $G_\delta$ set $\mathcal{O}$ such that $E\subseteq \mathcal{O}$ and $m^*(E)= m^*(\mathcal{O})$.
 	\item Let $B$ be the set of rational numbers in the interval $[0,1]$, and let $\{I_k\}_{k=1}^n$ be a finite collection of open intervals that covers $B$.
 	Prove that $\textstyle \sum_{k=1}^n m^*(I_k) \ge 1$.\\
 	The rational numbers are dense in the reals; that is, between any two real numbers, there exists a rational number.
 	Therefore, the rational numbers are also dense in the real subset $[0,1]$: between any two numbers in $[0,1]$, there exists a rational number. \\
-	Suppose that $\sum_{k=1}^n m^*(I_k) < 1$.
-	Then by countable subadditivity of outer measure,
+	In the case that $[0,1]\subseteq \bigcup_{k=1}^nI_k$, the inequality is clear by monotonicity and subadditivity: 
 	\[
-		m^*(\bigcup_{k=1}^n I_k)\le\sum_{k=1}^n m^*(I_k) < 1,
+		1=m^*([0,1])\le m^*(\bigcup_{k=1}^nI_k)\le\sum_{k=1}^nm^*(I_k).
 	\]
-	and it is not possible that $[0,1]\subseteq\bigcup_{k=1}^n I_k$ by monotonicity of outer measure: $1=m^*([0,1])\le m^*(\bigcup_{k=1}^n I_k)$.\\
-
+	In the case that $[0,1]\not \subseteq \bigcup_{k=1}^nI_k$, then \[(\bigcup_{k=1}^nI_k)^c\cap[0,1]=(\bigcap_{k=1}^nI_k^c)\cap[0,1]=\bigcap_{k=1}^n(I_k^c\cap[0,1])\neq\emptyset.\]
+	\\We want to show that $\bigcap_{k=1}^nI_k^c\cap[0,1]$ is countable so that $m^*(\bigcap_{k=1}^nI_k^c\cap[0,1])=0$.\\
+	Because each $I_k^c\cap[0,1]$ is a closed interval (of irrational numbers), the intersection is also a closed interval (nonempty by assumption); that is, $\bigcap_{k=1}^n(I_k^c\cap[0,1])=[a,b]$ for some $a\le b$.
+	Suppose by contradiction that $\bigcap_{k=1}^n(I_k^c\cap[0,1])$ is not countable. 
+	Then we have that $a<b$.
+	However, by density of the rationals, there exists a rational between $[a,b]$, leading to a contradiction.
+	\\Therefore $\bigcap_{k=1}^n(I_k^c\cap[0,1])=\{x\}$, where $x\in\mathbb{Q}^c$, and $\bigcap_{k=1}^n(I_k^c\cap[0,1])$ is countable.
+	\\Now we can write
+	\begin{align*}
+		[0,1]&=(\bigcup_{k=1}^nI_k\cap[0,1])\cup(\bigcap_{k=1}^nI_k^c\cap[0,1])\\
+		[0,1]&\subseteq(\bigcup_{k=1}^nI_k\cap[0,1])\cup(\bigcap_{k=1}^nI_k^c\cap[0,1])&&A=B\implies A\subseteq B\text{ and }A\supseteq B\\
+		m^*([0,1])&\le m^*((\bigcup_{k=1}^nI_k\cap[0,1])\cup(\bigcap_{k=1}^nI_k^c\cap[0,1]))&&\text{by monotonicity}\\
+		m^*([0,1])&\le m^*(\bigcup_{k=1}^nI_k\cap[0,1])+m^*(\bigcap_{k=1}^nI_k^c\cap[0,1])&&\text{by countable subadditivity}\\
+		m^*([0,1])&\le m^*(\bigcup_{k=1}^nI_k\cap[0,1])+0&&\text{the outer measure of a countable set is zero}\\
+		1&\le m^*(\bigcup_{k=1}^nI_k\cap[0,1])\\
+		1&\le m^*(\bigcup_{k=1}^nI_k)&&\text{by monotonicity: }\bigcup_{k=1}^nI_k\cap[0,1]\subseteq[0,1]\\
+		1&\le\sum_{k=1}^nm^*(I_k).&&\text{by countable subadditivity}
+	\end{align*}
 	\item Prove that if $m^*(A)=0$, then $m^*(A\cup B) = m^*(B)$.
 	\begin{align*}
 		m^*(A\cup B)&\le m^*(A)+m^*(B)&&\text{by countable subadditivity}\\
@@ -209,7 +250,30 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	By countable subadditivity of outer measure, $m^*(A \cup B) \le m^*(A)+m^*(B)$.\\
 	We can see that $A$ and $B$ are disjoint: Suppose by contradiction that $A,B$ are not disjoint. Then there exists a real number $x$ such that $x\in A$ and $x\in B$.
 	But then $|x-x|=0<\alpha$, a contradiction.\\
-
+	Let $\epsilon$ such that $\alpha/2>\epsilon>0$. By definition of outer measure and infimum, there exists a countable sequence of open sets $\{I_k\}_{k=1}^\infty$ such that $(A\cup B)\subseteq\bigcup_{k=1}^\infty I_k$ and 
+	\begin{equation}
+		m^*(A\cup B)\le\sum_{k=1}^\infty\ell(I_k)<m^*(A\cup B)+\epsilon.\tag{1}	
+	\end{equation}
+	Now, each $I_k$ is such that $A\cap I_k\neq\emptyset$ or $B\cap I_k\neq\emptyset$, but not both.\\
+	To see this, suppose by contradiction that there exists an $I_k$ such that $A\cap I_k\neq\emptyset$ and $B\cap I_k\neq\emptyset$.
+	Then there exists $a,b\in I_k$ such that $a\in A$ and $b\in B$.
+	Without loss of generality, suppose that these are the closest two elements of $A$ and $B$, and suppose $a<b$. Then the interval $(a,b)$ contains no elements of $A$ or $B$, and $m^*(b-a)\ge\alpha>\alpha/2$.
+	This is a contradiction to the fact that $\sum_{k=1}^\infty\ell(I_k)$ is within $\alpha/2$ of $m^*(A\cup B)$.\\
+	We can then separate $\{I_k\}_{k=1}^\infty$ into two subsequences $\{(I_A)_i\}_{i=1}^\infty$ and $\{(I_B)_j\}_{j=1}^\infty$ such that $A\subseteq\bigcup_{i=1}^\infty (I_A)_i$ and $B\subseteq\bigcup_{j=1}^\infty (I_B)_j$.
+	Then because the sum is uniquely defined independently of the order of terms, $\sum_{k=1}^\infty\ell(I_k)=\sum_{i=1}^\infty\ell((I_A)_i)+\sum_{j=1}^\infty\ell((I_B)_j)$.\\
+	Therefore we can write
+	\begin{align*}
+		m^*(A \cup B)&\le m^*(A)+m^*(B)&&\text{by countable subadditivity of outer measure}\\
+		&\le m^*(\bigcup_{i=1}^\infty (I_A)_i)+m^*(\bigcup_{j=1}^\infty (I_B)_j)&&\text{by monotonicity of outer measure}\\
+		&\le \sum_{i=1}^\infty\ell((I_A)_i)+\sum_{j=1}^\infty\ell((I_B)_j)&&\text{by countable subadditivity of outer measure}\\
+		&=\sum_{k=1}^\infty\ell(I_k)&&\text{rearranging the sum}\\
+		&<m^*(A\cup B)+\epsilon&&\text{by (1)}
+	\end{align*}
+	Therefore for any $\epsilon$,
+	\[
+		m^*(A \cup B)\le m^*(A)+m^*(B)<m^*(A\cup B)+\epsilon,
+	\]
+	thus $m^*(A \cup B) = m^*(A)+m^*(B)$.
 \end{enumerate}
 
 
