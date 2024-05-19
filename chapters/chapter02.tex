@@ -27,10 +27,21 @@ m(\bigcup_{k=1}^\infty E_k) = \sum_{k=1}^\infty m(E_k).
 It is not possible to construct a set function that possesses the above three properties and is defined for all sets of real numbers (See Vitali sets).
 We first construct a set function called \textbf{outer measure}, denoted by $m^*$, such that: 
 \begin{enumerate}[label=(\roman*),align=left]
-	\item the outer measure of an interval is its length,
-	\item outer measure is translation invariant,
-	\item outer measure is countably subadditive.
+	\item the outer measure of an interval is its length:
+	\[
+		m^*(I)=\ell(I).
+	\]
+	\item outer measure is translation invariant:
+	\[
+		m^*(A+y)=m^*(A).
+	\]
+	\item outer measure is countably subadditive:
+	\[
+		m(\bigcup_{k=1}^\infty E_k) \le \sum_{k=1}^\infty m(E_k).
+	\]
 \end{enumerate}
+Outer measure is defined for all sets of real numbers.
+However, outer measure fails to be countably additive: there exists $A,B$ disjoint s.t. $m^*(A\cup B)<m^*(A)+m^*(B)$.\\
 Then the Lebesgue measure $m$ is the restriction of $m^*$ to the Lebesgue measurable sets.
 
 \begin{center}
@@ -75,22 +86,130 @@ In the first three problems, let $m$ be a set function defined for all sets in a
 
 % 2.2
 \section{Lebesgue Outer Measure}
+\begin{flushleft}
 
+Let $I$ be a nonempty interval of real numbers. We define its length:
+\[
+	\ell(I)=
+	\begin{cases}
+		\infty&\text{if $I$ is unbounded}\\
+		b-a&\text{endpoints $a,b$}
+	\end{cases}	
+\]
+For a set $A$ of real numbers, consider the countable collections $\{I_k\}_{k=1}^\infty$ of nonempty open, bounded intervals that cover $A$; that is, collections for which $A\subseteq\bigcup_{k=1}^\infty I_k$.
+For each such collection, consider the sum of the lengths of the intervals in the collection. Since the lengths are positive numbers, each sum is uniquely defined independently of the order of the terms.
+We define the \textbf{outer measure} of $A$, $m^*(A)$, to be the infimum of all such sums, that is
+\[
+	m^*(A)=\inf\biggl\{\sum_{k=1}^\infty\ell(I_k)\ \biggl|\ A\subseteq\bigcup_{k=1}^\infty I_k\biggr\}.
+\]
+It follows immediately from the definition of outer measure that $m^*(\emptyset)=0$.
+Moreover, since any cover of a set $B$ is also a cover of any subset of $B$, outer measure is \textbf{monotone} in the sense that
+\[
+	A\subseteq B\implies m^*(A)\le m^*(B).	
+\]
+Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\le m^*(A)$.
+\begin{namedthm*}{Example}
+	A countable set $C$ has outer measure zero.\\
+	Because $C$ is countable, enumerate $C$ such that $C=\{c_k\}_{k=1}^\infty$.
+	Fix $\epsilon>0$. 
+	For each $k\in\mathbb{N}$, define an open interval $I_k= (c_k-\frac{\epsilon}{2^{k+1}},c_k+\frac{\epsilon}{2^{k+1}})$.
+	Then $C\subseteq\bigcup_{k=1}^\infty I_k$.
+	Therefore we have, by definition of infimum,
+	\[
+	0\le m^*(C)\le\sum_{k=1}^\infty\ell(I_k)=\sum_{k=1}^\infty\frac{2\epsilon}{2^{k+1}} = \sum_{k=1}^\infty\frac{\epsilon}{2^k}=\epsilon.
+	\]
+	This inequality holds for each $\epsilon>0$; thus $m^*(C)=0$.
+\end{namedthm*}
+\begin{namedthm*}{Lemma}
+	$\sum_{k=1}^\infty\frac{1}{2^k}=1$.
+\end{namedthm*}
+\begin{proof}
+	To show that $\sum_{k=1}^n\frac{1}{2^k}=1-\frac{1}{2^n}$ (induction).\\
+	Let $P(n)$ be the assertion that $\sum_{k=1}^n\frac{1}{2^k}=1-\frac{1}{2^n}$ for $n\in\mathbb{N}$.\\
+	$P(1)$:
+	\begin{align*}
+		\sum_{k=1}^1\frac{1}{2^k}=\frac{1}{2}=1-\frac{1}{2^1}.
+	\end{align*}
+	$P(2)$:
+	\begin{align*}
+		\sum_{k=1}^2\frac{1}{2^k}=\frac{1}{2}+\frac{1}{4}=\frac{3}{4}=1-\frac{1}{2^2}.
+	\end{align*}
+	Suppose $P(m)$ is true for $m\ge1$; that is, $\sum_{k=1}^m\frac{1}{2^k}=1-\frac{1}{2^m}$.\\
+	$P(m+1)$:
+	\begin{align*}
+		\sum_{k=1}^{m+1}\frac{1}{2^k}&=\sum_{k=1}^m\frac{1}{2^k}+\frac{1}{2^{m+1}}\\
+		&=1-\frac{1}{2^m}+\frac{1}{2^{m+1}}\\
+		&=1-\frac{2}{2^{m+1}}+\frac{1}{2^{m+1}}\\
+		&=1-\frac{1}{2^{m+1}}.
+	\end{align*}
+	Therefore $P(m)$ is true for all $m\ge1$.
+	\[
+		\sum_{k=1}^\infty\frac{1}{2^k}=\lim_{n\to\infty}\sum_{k=1}^n\frac{1}{2^k}=\lim_{n\to\infty}(1-\frac{1}{2^n})=1.
+	\]
+	\\(An alternate proof would be to see that we have a sequence of partial sums that is monotonic with $1$ as the supremum. Then the sequence of partial sums converges to $1$ and the series is summable to $1$.)
+\end{proof}
+
+\end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{4}
-	\item By using properties of outer measure, prove that the interval $[0,1]$ is not countable.
-	\item Let $A$ be the set of irrational numbers in the interval $[0,1]$. Prove that $m^*(A)=1$.
+	\item By using properties of outer measure, prove that the interval $[0,1]$ is not countable.\\
+	Suppose that the interval $[0,1]$ is countable. By an example above, we showed that a countable set has outer measure zero, so $m^*([0,1])=0$.
+	Also, the outer measure of an interval is its length. Then $m^*([0,1])=1$, and we reach a contradiction.
+	\item Let $A$ be the set of irrational numbers in the interval $[0,1]$. Prove that $m^*(A)=1$.\\
+	Let $A=[0,1]\cap\mathbb{Q}^c$.\\
+	Then $A\subseteq[0,1]$, so by monotonicity of outer measure, 
+	\begin{align*}
+		m^*(A)&\le m^*([0,1])\\
+		m^*(A)&\le 1.
+	\end{align*}
+	Also, we have 
+	\begin{align*}
+		[0,1]&=([0,1]\cap\mathbb{Q}^c)\cup([0,1]\cap\mathbb{Q})\\
+		[0,1]&=A\cup([0,1]\cap\mathbb{Q})
+	\end{align*}
+	Then $[0,1]\subseteq A\cup([0,1]\cap\mathbb{Q})$.\\
+	Taking the outer measure,
+	\begin{align*}
+		m^*([0,1])&\le m^*(A\cup (m^*([0,1]\cap\mathbb{Q}))&&\text{by monotonicity}\\
+		m^*([0,1])&\le m^*(A)+m^*([0,1]\cap\mathbb{Q})&&\text{by countable subadditvity}\\
+		m^*([0,1])&\le m^*(A)+0&&\text{countable set has outer measure zero}\\
+		1&\le m^*(A).&&\text{outer measure of interval is length}
+	\end{align*}
+	Then $m^*(A)\le 1$ and $1\le m^*(A)$ imply that $m^*(A)=1$.
 	\item A set of real numbers is said to be a $G_\delta$ set provided it is the intersection of a countable collection of open sets.
 	Show that for any bounded set $E$, there is a $G_\delta$ set $G$ for which
 	\[E\subseteq G \ \text{and}\ m^*(G)=m^*(E).\]
+	Suppose $E$ is a bounded set of real numbers. 
 	\item Let $B$ be the set of rational numbers in the interval $[0,1]$, and let $\{I_k\}_{k=1}^n$ be a finite collection of open intervals that covers $B$.
-	Prove that $\textstyle \sum_{k=1}^n m^*(I_k) \ge 1$.
+	Prove that $\textstyle \sum_{k=1}^n m^*(I_k) \ge 1$.\\
+	The rational numbers are dense in the reals; that is, between any two real numbers, there exists a rational number.
+	Therefore, the rational numbers are also dense in the real subset $[0,1]$: between any two numbers in $[0,1]$, there exists a rational number. \\
+	Suppose that $\sum_{k=1}^n m^*(I_k) < 1$.
+	Then by countable subadditivity of outer measure,
+	\[
+		m^*(\bigcup_{k=1}^n I_k)\le\sum_{k=1}^n m^*(I_k) < 1,
+	\]
+	and it is not possible that $[0,1]\subseteq\bigcup_{k=1}^n I_k$ by monotonicity of outer measure: $1=m^*([0,1])\le m^*(\bigcup_{k=1}^n I_k)$.\\
+
 	\item Prove that if $m^*(A)=0$, then $m^*(A\cup B) = m^*(B)$.
+	\begin{align*}
+		m^*(A\cup B)&\le m^*(A)+m^*(B)&&\text{by countable subadditivity}\\
+		m^*(A\cup B)&\le m^*(B)&&\text{because }m^*(A)=0.
+	\end{align*}
+	Also, we have $B\subseteq A\cup B$, so by monotonicity of outer measure,
+	\begin{align*}
+		m^*(B)&\le m^*(A\cup B).
+	\end{align*}
+	Then $m^*(A\cup B)\le m^*(B)$ and $m^*(B)\le m^*(A\cup B)$ imply that $m^*(A\cup B) = m^*(B)$.
 	\item Let $A$ and $B$ be bounded sets for which there is an $\alpha >0$ such that $|a-b| \ge \alpha$ for all $a \in A, b \in B$.
-	Prove that $m^*(A \cup B) = m^*(a)+m^*(B)$.
+	Prove that $m^*(A \cup B) = m^*(A)+m^*(B)$.\\
+	By countable subadditivity of outer measure, $m^*(A \cup B) \le m^*(A)+m^*(B)$.\\
+	We can see that $A$ and $B$ are disjoint: Suppose by contradiction that $A,B$ are not disjoint. Then there exists a real number $x$ such that $x\in A$ and $x\in B$.
+	But then $|x-x|=0<\alpha$, a contradiction.\\
+
 \end{enumerate}
 
 

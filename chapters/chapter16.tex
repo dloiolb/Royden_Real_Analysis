@@ -6,18 +6,101 @@
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
+In the following problems, $H$ is a Hilbert space.
 \begin{enumerate}
 	\setcounter{enumi}{0}
+    \item Let $[a,b]$ be a closed, bounded interval of real numbers. Show that the $L^2[a,b]$ inner product is also an inner product on $C[a,b]$. Is $C[a,b]$ considered as an inner product space with the $L^2[a,b]$ inner product, a Hilbert space?
+    \item Show that the maximum norm on $C[a,b]$ is not induced by an inner product and neither is the usual norm on $\ell^1$.
+    \item Let $H_1$ and $H_2$ be Hilbert spaces. Show that the Cartesian product $H_1\times H_2$ is also a Hilbert space with an inner product with respect to which $H_1\times\{0\}=[\{0\}\times H_2]^\perp$.
+    \item Show that if $S$ is a subset of an inner product space $H$, then $S^\perp$ is a closed subspace of $H$.
+    \item Let $S$ be a subset of $H$. Show that $S=(S^\perp)^\perp$ iff $S$ is a closed subspace of $H$.
+    \item (Polarization Identity) Show that for any two vectors $u,v\in X$,
+    \[
+        \langle u,v \rangle = \frac{1}{4}[\|u+v\|^2-\|u-v\|^2].
+    \]
+    \item (Jordan-von Neumann) Let $X$ be a linear space normed bu $\|\cdot\|$. Use the polarization identity to show that a norm $\|\cdot\|$ is induced by an inner product iff the parallelogram identity holds.
+    \item Let $V$ be a closed subspace of $H$ and $P$ a projection of $H$ onto $V$. Show that $P$ is the orthogonal projection of $H$ onto $V$ iff (4) holds.
+    \item Let $T$ belong to $\mathcal{L}(H)$. Show that $T$ is an isometry iff
+    \[
+        \langle T(u),T(v)\rangle=\langle u,v\rangle\text{ for all }u,v\in H.
+    \]
+    Let $V$ be a finite dimensional subspace of $H$ and $\varphi_1,\cdots,\varphi_n$ a basis for $V$ consisting of unit vectors, each pair of which is orthogonal. Show that the orthogonal projection $P$ of $H$ onto $V$ is given by 
+    \[
+        P(h)=\sum_{k=1}^n\langle h,\varphi_k\rangle\varphi_k\text{ for all }h\in V.
+    \]
+    \item For $h$ a vector in $H$, show that the function $u\mapsto\langle h,u\rangle$ belongs to $H^*$.
+    \item For any vector $h\in H$, show that there is a bounded linear functional $\psi\in H^*$ for which 
+    \[
+        \|\psi\|=1\text{ and }\psi(h)=\|h\|.  
+    \]
+    \item Let $V$ be a closed subspace of $H$ and $P$ the orthogonal projection of $H$ onto $V$.
+    For any normed linear space $X$ and $T\in\mathcal{L}(V,X)$, show that $T\circ P$ belongs to $\mathcal{L}(H,X)$, and is an extension of $T:V\to X$ for which $\|T\circ P\|=\|T\|$.
+    \item Prove the Hyperplane Separation Theorem for $H$, considered as a locally convex topological vector space with respect to the strong topology, by directly using Proposition 2.
+    \item Use Proposition 2 to prove the Krein-Milman Lemma in a Hilbert space.
 \end{enumerate}
 
 % 16.2
 \section{The Dual Space and Weak Sequential Convergence}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+In the following problems, $H$ is a Hilbert space.
+\begin{enumerate}
+	\setcounter{enumi}{15}
+    \item Show that neither $\ell^1,\ell^\infty,L^1[a,b]$ nor $L^\infty[a,b]$ is Hilbertable.
+    \item Prove Proposition 7.
+    \item Let $H$ be an inner product space. Show that since $H$ is a dense subset of a Banach space $X$ whose norm restricts to the norm induced by the inner product on $H$, the inner product on $H$ extends to $X$ and induces the norm on $X$.
+    Thus inner product spaces have Hilbert space completions.
+\end{enumerate}
 
 % 16.3
 \section{Bessel's Inequality and Orthonormal Bases}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+In the following problems, $H$ is a Hilbert space.
+\begin{enumerate}
+	\setcounter{enumi}{18}
+    \item Show that an orthonormal subset of a separable Hilbert space $H$ must be countable.
+    \item Let $\{\varphi_k\}$ be an orthonormal sequence in a Hilbert space $H$. Show that $\{\varphi_k\}$ converges weakly to $0$ in $H$.
+    \item Let $\{\varphi_k\}$ be an orthonormal basis for the separable Hilbert space $H$. Show that $\{u_n\}\to u$ in $H$ iff $\{u_n\}$ is bounded and, for each $k$, $\lim_{n\to\infty}\langle u_n,\varphi_k\rangle=\langle u,\varphi_k\rangle$.
+    \item Show that any two infinite dimensional separable Hilbert spaces are isometrically isomorphic and that any such isomorphism preserves the inner product.
+    \item Let $H$ be a Hilbert space and $V$ a closed separable subspace of $H$ for which $\{\varphi_k\}$ is an orthonormal basis.
+    Show that the orthogonal projection of $H$ onto $V$, $P$, is given By
+    \[
+        P(h)=\sum_{k=1}^\infty \langle \varphi_k,h\rangle\varphi_k\text{ for all }h\in H.  
+    \] 
+    \item (Parseval's Indentities) Let $\{\varphi_k\}$ be an orthonormal basis for a Hilbert space $H$. Verify that
+    \[
+        \|h\|^2=\sum_{k=1}^\infty\langle \varphi_k,h\rangle^2\text{ for all }h\in H.
+    \]
+    Also verify that
+    \[
+        \langle u,v\rangle =  \sum_{k=1}^\infty a_k \cdot b_k\text{ for all }u,v\in H,
+    \]
+    where, for each natural number $k$, $a_k=\langle u,\varphi_k\rangle$ and $b_k=\langle v,\varphi_k\rangle$.
+    \item Verify the assertions in the example of the orthonormal basis for $L^2[0,2\pi]$.
+    \item Use Proposition 10 and the Stone-Weierstrass Theorem to show that for each $f\in L^2[-\pi,\pi]$,
+    \[
+        f(x)=a_0/2+\sum_{k=1}^\infty[a_k\cdot\cos kx+b_k\cdot\sin kx],  
+    \]
+    where the convergence is in $L^2[-\pi,\pi]$ and each 
+    \[
+        a_k=\frac{1}{\pi}\int_{-\pi}^\pi f(x)\cos kxdx\text{ and }b_k=\frac{1}{\pi}\int_{-\pi}^\pi f(x)\sin kxdx.
+    \]
+\end{enumerate}
 
 % 16.4
 \section{Adjoints and Symmetry for Linear Operators}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+In the following problems, $H$ is a Hilbert space.
+\begin{enumerate}
+	\setcounter{enumi}{26}
+    \item Verify (12).
+    \item Let $T$ and $S$ belong to $\mathcal{L}(H)$ and be symmetric. \dots
+\end{enumerate}
 
 % 16.5
 \section{Compact Operators}
