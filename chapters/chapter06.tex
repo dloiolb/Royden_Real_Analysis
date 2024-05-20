@@ -21,17 +21,270 @@
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{4}
-    \item A
+    \item Show that the Vitali Covering Lemma does not extend to the case in which the covering collection has degenerate closed intervals.
+    \item Show that the Vitali Covering Lemma does extend to the case in which the covering collection consists of nondegenerate general intervals.
+    \item let $f$ be continuous on $\mathbb{R}$. Is there an open interval on which $f$ is monotone?
+    \item Let $I$ and $J$ be closed, bounded intervals and $\gamma>0$ be such that $\ell(I)>\gamma\cdot\ell(J)$.
+    Assume $I\cap J\neq\emptyset$. Show that if $\gamma\ge 1/2$, then $J\subseteq 5*I$, where $5*I$ denotes the interval with the same center as $I$ and five times its length.
+    Is the same true if $0<\gamma<1/2$?
+    \item Show that a set $E$ of real numbers has measure zero iff there is a countable collection of open intervals $\{I_k\}_{k=1}^\infty$ for which each point in $E$ belongs to infinitely many of the $I_k's$ and $\sum_{k=1}^\infty\ell(I_k)<\infty$.
+    \item (Riesz-Nagy) Let $E$ be a set of measure zero contained in the open interval $(a,b)$.
+    According to the preceding problem, there is a countable collection of open intervals contained in $(a,b)$, $\{(c_k,d_k)\}_{k=1}^\infty$, for which each point in $E$ belongs to infinitely many intervals in the collection and $\sum_{k=1}^\infty(d_k-c_k)<\infty$.
+    Define
+    \[
+        f(x)=\sum_{k=1}^\infty\ell((c_k,d_k)\cap(-\infty,x))\text{ for all }x\text{ in }(a,b).
+    \]
+    Show that $f$ is increasing and fails to be differentiable at each point in $E$.
+    \item For real numbers $\alpha<\beta$ and $\gamma>0$, show that if $g$ is integrable over $[\alpha+\gamma,\beta+\gamma]$, Then
+    \[
+        \int_{\alpha}^{\beta}g(t+\gamma)dt=\int_{\alpha+\gamma}^{\beta+\gamma}g(t)dt.  
+    \]
+    Prove this change of variables formula by successively considering simple functions, bounded measurable functions, nonnegative integrable functions, and general integrable functions.
+    Use it to prove (14).
+    \item Compute the upper and lower derivatives of the characteristic function of the rationals.
+    \item Let $E$ be a set of finite outer measure and $\mathcal{F}$ a collection of closed, bounded intervals that cover $E$ in the sense of Vitali.
+    Show that there is a countable disjoint collection $\{I_k\}_{k=1}^\infty$ of intervals in $\mathcal{F}$ for which
+    \[
+        m^*\biggl[E\setminus\bigcup_{k=1}^\infty I_k\biggr]=0.    
+    \]
+    \item Use the Vitali Covering Lemma to show that the union of any collection (countable or uncountable) of closed, bounded, nondegenerate intervals is measurable.
+    \item Define $f$ on $\mathbb{R}$ by
+    \[
+        f(x)=
+        \begin{cases}
+            x\sin(1/x)&x\neq0\\
+            0&x=0
+        \end{cases}    
+    \]
+    Find the upper and lower derivatives of $f$ at $x=0$.
+    \item Let $g$ be integrable over $[a,b]$. Define the antiderivative of $g$ of $g$ to be the function $f$ defined on $[a,b]$ by
+    \[
+        f(x)=\int_a^xg\text{ for all }x\in[a,b].    
+    \]
+    Show that $f$ is differentiable almost everywhere on $(a,b)$.
+    \item Let $f$ be an increasing bounded function on the open, bounded interval $(a,b)$. Verify (18).
+    \item Show that if $f$ is defined on $(a,b)$ and $c\in(a,b)$ is a local minimizer for $f$, then $\underline{D}f(c)\le0\le\overline{D}f(c)$.
+    \item Let $f$ be continuous on $[a,b]$ with $\underline{D}f\ge0$ on $(a,b)$. Show that $f$ is increasing on $[a,b]$.
+    (Hint: first show this for a function $g$ for which $\underline{D}g\ge\epsilon>0$ on $(a,b)$. Apply this to the function $g(x)=f(x)+\epsilon x$.)
+    \item Let $f$ and $g$ be real-valued functions on $(a,b)$. Show That
+    \[
+        \underline{D}f+\underline{D}g\le\underline{D}(f+g)\le\overline{D}(f+g)\le \overline{D}(f)+\overline{D}(g)\text{ on }(a,b).
+    \]
+    \item Let $f$ be defined on $[a,b]$ and $g$ a continuous function on $[\alpha,\beta]$ that is differentiable at $\gamma\in(\alpha,\beta)$ with $g(\gamma)=c\in(a,b)$. Verify the following.
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item If $g'(\gamma)>0$, then $\overline{D}(f\circ g)(\gamma)=\overline{D}f(c)\cdot g'(\gamma)$.
+        \item If $g'(\gamma)=0$ and the upper and lower derivatives of $f$ at $c$ are finite, then $\overline{D}(f\circ g)(\gamma)=0$.
+    \end{enumerate}
+    \item Show that a strictly increasing function that is defined on an interval is measurable and then use this to show that a monotone function that is defined on an interval is measurable.
+    \item Show that a continuous function $f$ on $[a,b]$ is Lipschitz if its upper and lower derivatives are bounded on $(a,b)$.
+    \item Show that for $f$ defined in the last remark of this section, $f'$ is not integrable over $[0,1]$.
 \end{enumerate}
 
 % 6.3
 \section{Functions of Bounded Variation: Jordan's Theorem}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{24}
+    \item Suppose $f$ is continuous on $[0,1]$. Must there be a nondegenerate closed subinterval $[a,b]$ of $[0,1]$ for which the restriction of $f$ to $[a,b]$ is of bounded variation?
+    \item Let $f$ be the Dirichlet function, the characteristic function of the rationals in $[0,1]$. Is $f$ of bounded variation on $[0,1]$?
+    \item Define $f(x)=\sin x$ on $[0,2\pi]$. Find two increasing functions $h$ and $g$ for which $f=h-g$ on $[0,2\pi]$.
+    \item Let $f$ be a step function on $[a,b]$. Find a formula for its total variation.
+    \item
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item Define
+        \[
+            f(x)=
+            \begin{cases}
+                x^2\cos(1/x^2)&x\neq0,x\in[-1,1]\\
+                0&x=0
+            \end{cases}  
+        \]
+        Is $f$ of bounded variation on $[-1,1]$?
+        \item Define
+        \[
+            g(x)=
+            \begin{cases}
+                x^2\cos(1/x)&x\neq0,x\in[-1,1]\\
+                0&x=0
+            \end{cases}  
+        \]
+        Is $g$ of bounded variation on $[-1,1]$?
+    \end{enumerate}
+    \item Show that the linear combination of two functions of bounded variation is also of bounded variation.
+    Is the product of two such functions also of bounded variation?
+    \item Let $P$ be a partition of $[a,b]$ that is a refinement of the partition $P'$. For a real-valued function $f$ on $[a,b]$, show that $V(f,P')\le V(f,P)$.
+    \item Assume $f$ is of bounded variation on $[a,b]$. Show that there is a sequence of partitions $\{P_n\}$ of $[a,b]$ for which the sequence $\{V(f,P_n)\}$ is increasing and converges to $TV(f)$.
+    \item Let $\{f_n\}$ be a sequence of real-valued functions on $[a,b]$ that converges pointwise on $[a,b]$ to the real-valued function $f$. Show that 
+    \[
+        TV(f)\le\lim\inf TV(f_n).  
+    \]
+    \item Let $f$ and $g$ be of bounded variation on $[a,b]$. Show that 
+    \[
+        TV(f+g)\le TV(f)+TV(g)\text{ and }TV(\alpha f)=|\alpha|TV(f).
+    \]
+    \item For $\alpha$ and $\beta$ positive numbers, define the function $f$ on $[0,1]$ by
+    \[
+        f(x)=
+        \begin{cases}
+            x^\alpha\sin(1/x^\beta)&\text{for }0<x\le1\\
+            0&\text{for }x=0
+        \end{cases}    
+    \]
+    Show that if $\alpha>\beta$, then $f$ is of bounded variation on $[0,1]$, by showing that $f'$ is integrable over $[0,1]$. Then show that if $\alpha\le\beta$, then $f$ is not of bounded variation on $[0,1]$.
+    \item Let $f$ fail to be of bounded variation on $[0,1]$. Show that there is a point $x_0$ in $[0,1]$ such that there are subintervals of $[0,1]$ that contain $x_0$ and have arbitrarily small length on which $f$ fails to be of bounded variation.
+\end{enumerate}
 
 % 6.4
 \section{Absolutely Continuous Functions}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{36}
+    \item Let $f$ be a continuous function on $[0,1]$ that is absolutely continuous on $[\epsilon,1]$ for each $0<\epsilon<1$.
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item Show that $f$ may not be absolutely continuous on $[0,1]$.
+        \item Show that $f$ is absolutely continuous on $[0,1]$ if it is increasing.
+        \item Show that the function $f$ on $[0,1]$, defined by $f(x)=\sqrt(x)$ for $0\le x\le1$, is absolutely continuous, but not Lipschitz, on $[0,1]$.
+    \end{enumerate}
+    \item Show that $f$ is absolutely continuous on $[a,b]$ iff for each $\epsilon>0$, there is a $\delta>0$ such that for every countable disjoint collection $\{(a_k,b_k)\}_{k=1}^\infty$ of open intervals in $(a,b)$,
+    \[
+        \sum_{k=1}^\infty|f(b_k)-f(a_k)|<\epsilon\text{ if }\sum_{k=1}^\infty[b_k-a_k]<\delta.  
+    \]
+    \item Use the preceding problem to show that if $f$ is continuous and increasing on $[a,b]$, then $f$ is absolutely continuous on $[a,b]$ iff for each $\epsilon$, there is a $\delta>0$ such that for a measurable subset $E$ of $[a,b]$,
+    \[
+        m^*(f(E))<\epsilon\text{ if }m(E)<\delta.  
+    \]
+    \item Use the preceding problem to show that an increasing absolutely continuous function $f$ on $[a,b]$ maps sets of measure zero onto sets of measure zero.
+    Conclude that the Cantor-Lebesgue function $\varphi$ is not absolutely continuous on $[0,1]$ since the function $\psi$, defined by $\psi(x)=x+\varphi(x)$ for $0\le x\le1$, maps the Cantor set to a set of measure 1 (page 52).
+    \item Let $f$ be an increasing absolutely continuous function on $[a,b]$. Use (i) and (ii) below to conclude that $f$ maps measurable sets to measurable sets.
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item Infer from the continuity of $f$ and the compactness of $[a,b]$ that $f$ maps closed sets to closed sets and therefore maps $F_\sigma$ sets to $F_\sigma$ sets.
+        \item The preceding problem tells us that $f$ maps sets of measure zero to sets of measure zero. 
+    \end{enumerate}
+    \item Show that both the sum and product of absolutely continuous functions are absolutely continuous.
+    \item Define the functions $f$ and $g$ on $[-1,1]$ by $f(x)=x^{\frac{1}{3}}$ for $-1\le x\le 1$ and
+    \[
+        g(x)=
+        \begin{cases}
+            x^2\cos(\pi/2x)&\text{if }x\neq0,x\in[-1,1]\\
+            0&\text{if }x=0
+        \end{cases}  
+    \]
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item Show that both $f$ and $g$ are absolutely continuous on $[-1,1]$.
+        \item For the partition $P_n=\{-1,0,1/2n,1/[2n-1],\cdots,1/3,1/2,1\}$ of $[-1,1]$, examine $V(f\circ g,P_n)$.
+        \item Show that $f\circ g$ fails to be of bounded variation, and hence also fails to be absolutely continuous, on $[-1,1]$. 
+    \end{enumerate}
+    \item Let $f$ be Lipschitz on $\mathbb{R}$ and $g$ be absolutely continuous on $[a,b]$. Show that the composition $f \circ g$ is absolutely continuous on $[a,b]$.
+    \item Let $f$ be absolutely continuous on $\mathbb{R}$ and $g$ be absolutely continuous and strictly monotone on $[a,b]$. Show that the composition $f\circ g$ is absolutely continuous on $[a,b]$.
+    \item Verify the assertions made in the final remark of this section.
+    \item Show that a function $f$ is absolutely continuous on $[a,b]$ iff for each $\epsilon>0$, there is a $\delta>0$ such that for every finite disjoint collection $\{(a_k,b_k)\}_{k=1}^n$ of open intervals in $(a,b)$,
+    \[
+        \biggl|\sum_{k=1}^n[f(b_k)-f(a_k)]\biggr|<\epsilon\text{ if }\sum_{k=1}^n[b_k-a_k]<\delta.  
+    \]
+\end{enumerate}
 
 % 6.5
 \section{Integrating Derivatives: Differentiating Indefinite Integrals}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{47}
+    \item The Cantor-Lebesgue function $\varphi$ is continuous and increasing on $[0,1]$. Conclude from Theorem 10 that $\varphi$ is not absolutely continuous on $[0,1]$.
+    Compare this reasoning with that proposed in Problem 40.
+    \item Let $f$ be continuous on $[a,b]$ and differentiable almost everywhere on $(a,b)$. Show that 
+    \[
+        \int_a^bf'=f(b)-f(a)  
+    \]
+    if and only if 
+    \[
+        \int_a^b[\lim_{n\to\infty}\text{Diff}_{1/n}f]=\lim_{n\to\infty}[\int_a^b\text{Diff}_{1/n}f].
+    \]
+    \item Let $f$ be continuous on $[a,b]$ and differentiable almost everywhere on $(a,b)$. Show that if $\{\text{Diff}_{1/n}f\}$ is uniformly integrable over $[a,b]$, then
+    \[
+        \int_a^bf'=f(b)-f(a).  
+    \]
+    \item Let $f$ be continuous on $[a,b]$ and differentiable almost everywhere on $(a,b)$. Suppose there is a nonnegative function $g$ that is integrable over $[a,b]$ and 
+    \[
+        |\text{Diff}_{1/n}f|\le g\text{ a.e. on }[a,b]\text{ for all }n.  
+    \]
+    Show that 
+    \[
+        \int_a^bf'=f(b)-f(a).  
+    \]
+    \item Let $f$ and $g$ be absolutely continuous on $[a,b]$. Show that
+    \[
+        \int_a^bf\cdot g'=f(b)g(b)-f(a)g(a)-\int_a^bf'\cdot g.  
+    \] 
+    \item Let the function $f$ be absolutely continuous on $[a,b]$. Show that $f$ is Lipschitz on $[a,b]$ iff there is a $c>0$ for which $|f'|\le c$ a.e. on $[a,b]$.
+    \item 
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item Let $f$ be a singular increasing function on $[a,b]$. Use the Vitali Covering Lemma to show that $f$ has the following property: Given $\epsilon>0,\delta>0$, there is a finite disjoint collection $\{(a_k,b_k)\}_{k=1}^n$ of open intervals in $(a,b)$ for which
+        \[
+            \sum_{k=1}^n[b_k-a_k]<\delta\text{ and }\sum_{k=1}^n[f(b_k)-f(a_k)]>f(b)-f(a)-\epsilon.  
+        \]
+        \item Let $f$ be an increasing function on $[a,b]$ with the property described in part (i). Show that $f$ is singular.
+        \item Let $\{f_n\}$ be a sequence of singular increasing functions on $[a,b]$ for which the series $\sum_{n=1}^\infty f_n(x)$ converges to a finite value for each $x\in[a,b]$. Define 
+        \[
+            f(c)=\sum_{n=1}^\infty f_n(x)\text{ for }x\in[a,b].  
+        \]
+        Show that $f$ is also singular.
+    \end{enumerate}
+    \item Let $f$ be of bounded variation on $[a,b]$, and define $v(x)=TV(f_{[a,x]})$ for all $x\in[a,b]$.
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item Show that $|f'|\le v'$ a.e. on $[a,b]$, and infer from this that 
+        \[
+            \int_a^b|f'|\le TV(f).  
+        \]
+        \item Show that the above is an equality iff $f$ is absolutely continuous on $[a,b]$.
+        \item Compare parts (i) and (ii) with Corollaries 4 and 12, respectively.
+    \end{enumerate}
+    \item Let $g$ be strictly increasing and absolutely continuous on $[a,b]$.
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item Show that for any open subset $\mathcal{O}$ of $(a,b)$,
+        \[
+            m(g(\mathcal{O}))=\int_{\mathcal{O}}g'(x)dx.  
+        \]
+        \item Show that for any $G_\delta$ subset $E$ of $(a,b)$,
+        \[
+            m(g(E))=\int_Eg'(x)dx.  
+        \]
+        \item Show that for any subset $E$ of $[a,b]$ that has measure 0, its image $g(E)$ also has measure 0, so that
+        \[
+            m(g(E))=0=\int_{E}g'(x)dx.  
+        \]
+        \item Show that for any measurable subset $A$ of $[a,b]$,
+        \[
+            m(g(A))=\int_{A}g'(x)dx.  
+        \]
+        \item Let $c=g(a)$ and $d=g(b)$. Show that for any simple function $\varphi$ on $[c,d]$,
+        \[
+            \int_c^d\varphi(y)dy=\int_a^b\varphi(g(x))g'(x)dx.
+        \]
+        \item Show that for any nonnegative integrable function $f$ over $[c,d]$,
+        \[
+            \int_c^df(y)dy=\int_a^bf(g(x))g'(x)dx.
+        \]
+        \item Show that part (i) follows from (vi) in the case that $f$ is the characteristic function of $g(\mathcal{O})$ and the composition is defined.
+    \end{enumerate}
+    \item Is the change of variables formula in part (vi) of the preceding problem true if we just assume $g$ is increasing, not necessarily strictly?
+    \item Construct an absolutely continuous strictly increasing function $f$ on $[0,1]$ for which $f'=0$ on a set of positive measure.
+    (Hint: Let $E$ be the relative complement in $[0,1]$ of a generalized Cantor set of positive measure and $f$ the indefinite integral of $\chi_E$. See Problem 39 of Chapter 2 for the construction of such a Cantor set.)
+    \item For a nonnegative integrable function $f$ over $[c,d]$, and a strictly increasing absolutely continuous function $g$ on $[a,b]$ such that $g([a,b])\subseteq [c,d]$, is it possible to justify the change of variables formula
+    \[
+        \int_{g(a)}^{g(b)}f(y)dy=\int_a^bf(g(x))g'(x)dx  
+    \]
+    by showing that
+    \[
+        \frac{d}{dx}\biggl[\int_{g(a)}^{g(x)}f(s)ds-\int_a^xf(g(t))g'(t)dt\biggr]=0\text{ for almost all }x\in(a,b)?  
+    \]\
+    \item Let $f$ be absolutely continuous and singular on $[a,b]$. Show that $f$ is constant. Also show that the Lebesgue decomposition of a function of bounded variation is unique if the singular function is required to vanish a t $x=a$.
+\end{enumerate}
 
 % 6.6
 \section{Convex Functions}
