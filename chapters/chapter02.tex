@@ -183,7 +183,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	Then there exists a real number $M$ for which $|x|\le M$ for all $x\in E$; that is, $E\subseteq[-M,M]$.
 	By monotonicity of outer measure, $m^*(E)\le m^*([-M,M])=2M<\infty$, and the outer measure of $E$ is finite.\\
 	Now, because outer measure is defined as $m^*(E)=\inf\{\sum_{k=1}^\infty\ell(I_k)\ |\ E\subseteq\bigcup_{k=1}^\infty I_k\}$, we have that $m^*(E)$ is the greatest lower bound, so for a natural number $n$, $m^*(E)+\frac{1}{n}$ is not a lower bound.
-	That is, there exists a countable sequence of open sets $\{(I_n)_k\}_{k=1}^\infty$ such that $E\subseteq\bigcup_{k=1}^\infty (I_n)_k$ and 
+	That is, there exists a countable sequence of open intervals $\{(I_n)_k\}_{k=1}^\infty$ such that $E\subseteq\bigcup_{k=1}^\infty (I_n)_k$ and 
 	\begin{equation}
 		m^*(E)\le\sum_{k=1}^\infty\ell((I_n)_k)<m^*(E)+\frac{1}{n}.\tag{1}
 	\end{equation}
@@ -250,7 +250,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	By countable subadditivity of outer measure, $m^*(A \cup B) \le m^*(A)+m^*(B)$.\\
 	We can see that $A$ and $B$ are disjoint: Suppose by contradiction that $A,B$ are not disjoint. Then there exists a real number $x$ such that $x\in A$ and $x\in B$.
 	But then $|x-x|=0<\alpha$, a contradiction.\\
-	Let $\epsilon$ such that $\alpha/2>\epsilon>0$. By definition of outer measure and infimum, there exists a countable sequence of open sets $\{I_k\}_{k=1}^\infty$ such that $(A\cup B)\subseteq\bigcup_{k=1}^\infty I_k$ and 
+	Let $\epsilon$ such that $\alpha/2>\epsilon>0$. By definition of outer measure and infimum, there exists a countable sequence of open intervals $\{I_k\}_{k=1}^\infty$ such that $(A\cup B)\subseteq\bigcup_{k=1}^\infty I_k$ and 
 	\begin{equation}
 		m^*(A\cup B)\le\sum_{k=1}^\infty\ell(I_k)<m^*(A\cup B)+\epsilon.\tag{1}	
 	\end{equation}
@@ -309,7 +309,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 		m^*(A)&=m^*([A\cap E]\cup[A\cap E^c])&&\text{by set properties}\\
 		m^*(A)&\le m^*(A\cap E)+m^*(A\cap E^c).&&\text{by subadditivity of outer measure}\\
 	\end{align*}
-	Therefore to show that $E$ is measurable, it suffices to show the other inequality 
+	Therefore to show that $E$ is measurable, it suffices to show the other inequality:
 	\begin{equation}
 		m^*(A)\ge m^*(A\cap E)+m^*(A\cap E^c).\tag{2}
 	\end{equation}
@@ -375,7 +375,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 		Now, $S$ is nonempty because $\mathcal{C}\in\mathcal{P}(X)$ and by Lemma 1, $\mathcal{P}(X)$ is a $\sigma$-algebra of $X$; therefore $\mathcal{P}(X)\in S$.\\
 		Consider $\bigcap S$, the intersection of all the elements of $S$.\\
 		\begin{enumerate}
-			\item $\bigcap S$ is a $\sigma$-algebra by Lemma 2,
+			\item By Lemma 2, $\bigcap S$ is a $\sigma$-algebra,
 			\item $\mathcal{C}\in\mathcal{F},\forall\mathcal{F}\in S\implies\mathcal{C}\in\bigcap S$, so $\bigcap S$ is a $\sigma$-algebra that contains $\mathcal{C}$,
 			\item  $\bigcap S\subseteq \mathcal{F}$ for any $\mathcal{F}\in S$ by def of intersection, so $\bigcap S$ is the smallest $\sigma$-algebra containing $\mathcal{C}$.
 		\end{enumerate}
@@ -385,7 +385,20 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 		The translate of a measurable set is measurable.		
 	\end{namedthm*}
 	\begin{proof}
-		
+		Let $E$ be measurable, let $A$ be any set, and let $y$ be any real number.
+		\\First we need to see that 
+		\begin{align*}
+			(A\cap [E+y])-y&=\{x:x\in A,\text{ and }x\in E+y\}-y=\{x:x\in A-y\text{ and }x\in E\}=[A-y]\cap E\\
+			(A\cap [E+y]^c)-y&=\{x:x\in A,\text{ and }x\notin E+y\}-y=\{x:x\in A-y\text{ and }x\notin E\}=[A-y]\cap E^c
+		\end{align*}
+		Now, we have
+		\begin{align*}
+			m^*(A)&=m^*(A-y)&&\text{outer measure is translation invariant}\\
+			&=m^*([A-y]\cap E)+m^*([A-y]\cap E^c)&&\text{because $E$ is measurable}\\
+			&=m^*(A\cap [E+y]-y)+m^*(A\cap [E+y]^c-y)&&\text{by above}\\
+			&=m^*(A\cap [E+y])+m^*(A\cap [E+y]^c).&&\text{outer measure is translation invariant}
+		\end{align*}
+		Therefore $E+y$ is measurable.
 	\end{proof}
 
 \end{flushleft}
@@ -424,26 +437,118 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\item Show that 
 	\begin{enumerate}[label=(\roman*),align=left]                                                                                                         
         \item the translate of an $F_\sigma$ set is also $F_\sigma$,\\
-        Let $F$ be an $F_\sigma$ set, that is, $F=\bigcup_{n=1}^\infty F_n$, $F_n$ closed. \\
+        Let $F$ be an $F_\sigma$ set, that is, $F=\bigcup_{n=1}^\infty F_n$, with $F_n$ closed. \\
 		For any real number $y$,
-        \[
-			F+y=\bigcup_{n=1}^\infty F_n+y
-		\]
+        \begin{align*}
+			F+y&=(\bigcup_{n=1}^\infty F_n)+y\\
+			&=\{x:x\in F_n\text{ for some }n\}+y\\
+			&=\{x:x\in F_n+y\text{ for some }n\}\\
+			&=\bigcup_{n=1}^\infty (F_n+y)
+		\end{align*}
+		The translate of any closed set is closed, so this is still an $F_\sigma$ set.
         \item the translate of a $G_\delta$ set is also $G_\delta$,\\
-        Let $\mathcal{O}$ be a $G_\delta$ set, that is, $\mathcal{O}=\bigcap_{n=1}^\infty \mathcal{O}_n$, $\mathcal{O}_n$ open.\\
+        Let $\mathcal{O}$ be a $G_\delta$ set, that is, $\mathcal{O}=\bigcap_{n=1}^\infty \mathcal{O}_n$, with $\mathcal{O}_n$ open.\\
         For any real number $y$,
+		\begin{align*}
+			\mathcal{O}+y&=(\bigcap_{n=1}^\infty \mathcal{O}_n)+y\\
+			&=\{x:x\in \mathcal{O}_n\text{ for all }n\}+y\\
+			&=\{x:x\in \mathcal{O}_n+y\text{ for all }n\}\\
+			&=\bigcap_{n=1}^\infty (\mathcal{O}_n+y)
+		\end{align*}
+		The translate of any open set is open, so this is still a $G_\delta$ set.
+        \item the translate of a set of measure zero also has measure zero.\\
+        Let $E$ be a set of measure zero. That is, $m^*(E)=0$.\\
+		For any $\epsilon>0$, by definition of infimum, there exists a countable collection of open intervals $\{I_k\}_{k=1}^\infty$ such that  
 		\[
-			\mathcal{O}+y=\bigcap_{n=1}^\infty \mathcal{O}_n+y
+		m^*(E)\le\sum_{k=1}^\infty \ell(I_k) <m^*(E)+\epsilon,
 		\]
-        \item the translate of a set of measure zero also has measure zero.
+		Thus because the outer measure is zero, 
+		\[
+			\sum_{k=1}^\infty \ell(I_k) <\epsilon.
+		\]
+		Now, for any real number $y$,
+		\[
+			E+y \subseteq (\bigcup_{k=1}^\infty I_k)+y=\bigcup_{k=1}^\infty (I_k+y).
+		\]
+		By monotonicity of outer measure, 
+		\[
+			m^*(E+y)\le \sum_{k=1}^\infty\ell(I_k+y)=\sum_{k=1}^\infty\ell(I_k)<\epsilon.
+		\]
+		Therefore $m^*(E+y)=0$.
     \end{enumerate}
-    \item Show that if a set $E$ has positive outer measure, then there is a bounded subset of $E$ that also has positive outer measure.
-    \item Show that if $E$ has finite measure and $\epsilon>0$, then $E$ is the disjoint union of a finite number of measurable sets, each of which has measure at most $\epsilon$.
+    \item Show that if a set $E$ has positive outer measure, then there is a bounded subset of $E$ that also has positive outer measure.\\
+    Suppose $E$ has positive outer measure.\\
+	If $E$ is bounded, then clearly $E$ itself is a bounded subset of $E$ with positive outer measure.\\
+	If $E$ is unbounded:\\
+	First, we can partition the real numbers:
+	\[
+		\mathbb{R}=\bigcup_{n\in\mathbb{Z}}[n,n+1)	
+	\]
+	Then we have that 
+	\[
+		E=E\cap \mathbb{R}=E\cap(\bigcup_{n\in\mathbb{Z}}[n,n+1))=\bigcup_{n\in\mathbb{Z}}E\cap[n,n+1).
+	\]
+	By countable subadditivity of outer measure,
+	\begin{align*}
+		0<m^*(E)=m^*(\bigcup_{n\in\mathbb{Z}}E\cap[n,n+1))\le\sum_{n\in\mathbb{Z}}m^*(E\cap[n,n+1))
+	\end{align*}
+	Then there exists an $n\in \mathbb{Z}$ such that $m^*(E\cap[n,n+1))>0$, else we reach a contradiction.
+	Therefore we have $E\cap[n,n+1)\subseteq E$ that is bounded and has positive outer measure.
+    \item Show that if $E$ has finite measure and $\epsilon>0$, then $E$ is the disjoint union of a finite number of measurable sets, each of which has measure at most $\epsilon$.\\
+    (We are letting $E$ be a measurable set because we are talking about measure specifically, not outer measure.)\\
+	If $E$ is countable, then $E$ has measure zero and $E$ itself is the measurable set whose measure is less than any $\epsilon$: $m(E)=0<\epsilon$.
+	In fact, if $E$ has measure zero then the conclusion is trivial.\\
+	Suppose $E$ has positive measure.\\
+	Fix $\epsilon>0$.\\
+	In the case that $E$ is not bounded, there exists an $M$ such that 
+	\[
+		m(E\setminus[-M,M])<\epsilon.\ (\star)
+	\]
+	$(\star)$: To prove this we can partition $\mathbb{R}$: 
+	\[
+		\mathbb{R}=\bigcup_{n=0}^\infty\biggl([-(n+1),-n)\cup(n,n+1]\biggr)=\bigcup_{n=0}^\infty I_n.
+	\]
+	That is, $I_0=[-1,1],I_1=[-2,-1)\cup(1,2],I_2=[-3,-2)\cup(2,3],\cdots$\\
+	Therefore $E=E\cap\mathbb{R}=E\cap(\bigcup_{n=0}^\infty I_n)=\bigcup_{n=0}^\infty (E\cap I_n)$.\\
+	By countable additivity of measure, and the fact that $E$ has finite measure,
+	\[
+		m(E)=m(\bigcup_{n=0}^\infty (E\cap I_n))=\sum_{n=0}^\infty m(E\cap I_n)<\infty.
+	\]
+	Thus we have a sequence of partial sums that converges so there exists an index $M$ such that 
+	\[
+		\sum_{n=M}^\infty m(E\cap I_n)=\biggl|\sum_{n=0}^\infty m(E\cap I_n)-\sum_{n=0}^{M-1} m(E\cap I_n)\biggr|<\epsilon.
+	\]
+	We see that $m(E\setminus[-M,M]) = m(\bigcup_{n=M}^\infty (E\cap I_n))=\sum_{n=M}^\infty m(E\cap I_n)<\epsilon$.
+	\\
+	Therefore $E=(E\cap[-M,M])\cup(E\cap[-M,M]^c))$, a disjoint union, and $m(E\cap[-M,M]^c)<\epsilon$, so we need only worry now about $E\cap[-M,M]$.\\
+	Else if $E$ is bounded, then there exists an $M$ such that $E\subseteq[-M,M]$, and $E=E\cap[-M,M]$.\\
+    Now, for this $\epsilon$, we can partition the real numbers into a countable collection of disjoint measurable intervals $I_k$ of the form $[x,x+\epsilon)$.\\
+	When we choose a natural number $l$ such that $\frac{2M}{\epsilon}<l$, we get $M<-M+l\epsilon$ so that 
+	\[
+		E\cap[-M,M]\subseteq [-M,M]\subseteq\bigcup_{k=1}^l[-M+(k-1)\epsilon,-M+k\epsilon)=\bigcup_{k=1}^l I_k.
+	\]
+	Then 
+	\[
+		E\cap[-M,M]=E \cap (\bigcup_{k=1}^l I_k) = \bigcup_{k=1}^l (E \cap I_k).
+	\]
+	Thus $E$ is the union of a finite number of disjoint measurable sets, each of which has measure at most $\epsilon$.\\
+	(If $E$ is not bounded, $E=(\bigcup_{k=1}^l (E \cap I_k))\cup(E\setminus[-M,M])$, which still satisfies the conclusion.)
 \end{enumerate}
 
 % 2.4
 \section{Outer and Inner Approximation of Lebesgue Measurable Sets}
+\begin{flushleft}
+	
+	Measurable sets possess the following \textbf{excision property}: If $A$ is a measurable set of finite outer measure that is contained in $B$, then 
+	\[
+		m^*(B\setminus A)=m^*(B)-m^*(A).	
+	\]
+	This holds because
+	\[
+		m^*(B)=m^*(B\cap A)+m^*(B\cap A^c)=m^*(A)+m^*(B\cap A^c).	
+	\]
 
+\end{flushleft}
 \begin{namedthm*}{Theorem 11}
 	Let $E$ be any set of real numbers. Then each of the following four assertions is equivalent to the measurability of $E$.\\
 	(Outer Approximation by Open Sets and $G_\delta$ sets)
@@ -458,22 +563,161 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
         \item There is a $F_\sigma$ set $F$ contained in $E$ for which $m^*(E\setminus F)=0$.
     \end{enumerate}
 \end{namedthm*}
+\begin{proof}
+	($E$ is measurable $\implies$ (i)):\\
+	Assume $E$ is measurable and fix $\epsilon>0$.\\
+	Case: $m^*(E)<\infty$:\\
+	By definition of outer measure and infimum, there exists a countable collection of intervals $\{I_k\}_{k=1}^\infty$ such that $E\subseteq\bigcup_{k=1}^\infty I_k$ and
+	\[
+		m^*(E)\le\sum_{k=1}^\infty\ell(I_k)<m^*(E)+\epsilon.	
+	\]
+	Defining $\mathcal{O}=\bigcup_{k=1}^\infty I_k$, we see that $\mathcal{O}$ is an open set containing $E$.
+	By subadditivity of outer measure,
+	\begin{align*}
+		m^*(\mathcal{O})=m^*(\bigcup_{k=1}^\infty I_k)\le\sum_{k=1}^\infty\ell(I_k)<m^*(E)+\epsilon,
+	\end{align*}
+	so that 
+	\begin{align*}
+		m^*(\mathcal{O})-m^*(E)<\epsilon.
+	\end{align*}
+	Because $E$ is measurable, has finite outer measure, and is contained in $\mathcal{O}$, we have the excision property:
+	\[
+		m^*(\mathcal{O}\setminus E)=m^*(\mathcal{O})-m^*(E)<\epsilon.
+	\]
+	Case: $m^*(E)=\infty$:\\
+	Then $E$ may be expressed as the disjoint union of a countable collection $\{E_k\}_{k=1}^\infty$ of measurable sets, each of which has finite outer measure
+	(See Problems 14 and 15 for an example of partitioning $\mathbb{R}$).
+	Now, for each index $k$, because each $E_k$ is measurable and has finite outer measure, we showed above that there exists an open set $\mathcal{O}_k$ containing $E_k$ for which $m^*(\mathcal{O}_k\setminus E_k)<\epsilon/2^k$.
+	The set $\mathcal{O}=\bigcup_{k=1}^\infty \mathcal{O}_k$ is open, it contains $E$ (because $E=\bigcup_{k=1}^\infty E_k \subseteq \bigcup_{k=1}^\infty \mathcal{O}_k =\mathcal{O}$), and we have $E\supseteq E_k \implies E^c\subseteq E_k^c$, so that
+	\[
+		\mathcal{O}\setminus E=\mathcal{O}\cap E^c = (\bigcup_{k=1}^\infty \mathcal{O}_k)\cap E^c = \bigcup_{k=1}^\infty (\mathcal{O}_k\cap E^c)\subseteq\bigcup_{k=1}^\infty (\mathcal{O}_k\cap E_k^c)=\bigcup_{k=1}^\infty (\mathcal{O}_k\setminus E_k).
+	\]
+	Therefore by monotonicity and subadditivity of outer measure,
+	\[
+		m^*(\mathcal{O}\setminus E)	\le m^*(\bigcup_{k=1}^\infty (\mathcal{O}_k\setminus E_k))\le\sum_{k=1}^\infty m^*(\mathcal{O}_k\setminus E_k)<\sum_{k=1}^\infty\epsilon/2^k=\epsilon.
+	\]
+	Thus property (i) holds for $E$.\\
+	((i) $\implies$ (ii)):\\
+	Now, assume property (i) holds for $E$. 
+	Then for each natural number $k$, there exists an open set $\mathcal{O}_k$ that contains $E$ for which $m^*(\mathcal{O}_k\setminus E)<1/k$.
+	\\Define $G=\bigcap_{k=1}^\infty\mathcal{O}_k$ so that $E\subseteq\mathcal{O}_k$ for all $k\implies E\subseteq\bigcap_{k=1}^\infty\mathcal{O}_k=G$.
+	Then $G$ is a $G_\delta$ set that contains $E$.\\
+	Then because for all $k$, $G\subseteq\mathcal{O}_k\implies G\setminus E\subseteq\mathcal{O}_k\setminus E$, by monotonicity of outer measure,
+	\[
+		m^*(G\setminus E)\subseteq m^*(\mathcal{O}_k\setminus E)<1/k.
+	\]
+	Thus $m^*(G\setminus E)=0$, and (ii) holds.\\
+	((ii) $\implies$ $E$ is measurable):\\
+	Assume property (ii) holds for $E$.\\
+	We can write
+	\begin{align*}
+		E&=G\cap E\\
+		&=\emptyset\cup(G\cap E)\\
+		&=(G\cap G^c)\cup(G\cap E)\\
+		&=G\cap (G^c\cup E)\\
+		&=G\cap (G\cap E^c)^c\\
+		&=G\cap (G\setminus E)^c.
+	\end{align*}
+	Now, $m^*(G\setminus E)=0$, and any set of measure zero is measurable, so $G\setminus E$ is measurable and also $(G\setminus E)^c$ is measurable by complement.
+	Also, $G$ is a $G_\delta$ set, and all $G_\delta$ sets are measurable. Finally, the intersection of measurable sets is measurable so $G\cap (G\setminus E)^c$ is measurable.
+	Thus $E$ is measurable.
+\end{proof}
 
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{15}
-	\item Complete the proof of Theorem 11 by showing that measurability is equivalent to (iii) and also equivalent to (iv).
-	\item Show that a set $E$ is measurable iff for each $\epsilon>0$, there is a closed set $F$ and open set $\mathcal{O}$ for which $F\subseteq E\subseteq \mathcal{O}$ and $m^*(\mathcal{O}\setminus F)<\epsilon$.
+	\item Complete the proof of Theorem 11 by showing that measurability is equivalent to (iii) and also equivalent to (iv).\\
+	($E$ is measurable $\implies$ (iii)):\\
+	Fix $\epsilon>0$.
+	Suppose $E$ is measurable. Then $E^c$ is also measurable.
+	Also, stating that $E^c$ is measurable is equivalent to property (i), that is, there exists an open set $\mathcal{O}$ containing $E^c$ such that $m^*(\mathcal{O}\setminus E^c)<\epsilon$.\\
+	Then because $\mathcal{O}$ is open, we can define the closed set $F=\mathcal{O}^c$, and we have that 
+	\[
+		\mathcal{O}\setminus E^c = \mathcal{O}\cap E = F^c\cap E = E\setminus F,
+	\]
+	and $E^c\subseteq \mathcal{O}\implies E\supseteq \mathcal{O}^c=F$.
+	Therefore $F$ is a closed set contained in $E$ for which $m^*(E\setminus F)=m^*(\mathcal{O}\setminus E^c)<\epsilon$, and (iii) holds.\\
+	((iii) $\implies$ (iv)):\\
+	Suppose that property (iii) holds for $E$.
+	Then for each natural number $k$, there exists a closed set $F_k$ contained in $E$ for which $m^*(E\setminus F_k)<1/k$.
+	\\Then defining $F=\bigcup_{k=1}^\infty F_n$, we have that $F_k\subseteq E,\forall k\implies F=\bigcup_{k=1}^\infty F_k \subseteq E$.
+	Then $F$ is an $F_\sigma$ set that is contained in $E$.
+	Then $F\supseteq F_k\implies F^c\subseteq F_k^c$ and thus $E\cap F^c\subseteq E\cap F_k^c$ and $E\setminus F\subseteq E\setminus F_k$.
+	By monotonicity of outer measure, for all $k$, we have 
+	\[
+		m^*(E\setminus F)\le m^*(E\setminus F_k)<1/k.	
+	\]
+	Therefore $m^*(E\setminus F)=0$, and (iv) holds.\\
+	((iv) $\implies$ $E$ is measurable):\\
+	Suppose that property (iv) holds for $E$.\\
+	We can write
+	\begin{align*}
+		E&=E\cap\mathbb{R}\\
+		&=[F\cup E]\cap[F\cup F^c]\\
+		&=F\cup [E\cap F^c]\\
+		&=F\cup [E\setminus F].
+	\end{align*}
+	Now, $m^*(E\setminus F)=0$ implies $E\setminus F$ is measurable because all sets of measure zero are measurable.
+	Also, $F$ is an $F_\sigma$ set, which is measurable. Therefore $F\cup [E\setminus F]$, the intersection of measurable sets, is measurable.
+	Thus $E$ is measurable.
+	\item Show that a set $E$ is measurable iff for each $\epsilon>0$, there is a closed set $F$ and open set $\mathcal{O}$ for which $F\subseteq E\subseteq \mathcal{O}$ and $m^*(\mathcal{O}\setminus F)<\epsilon$.\\
+	Let $E$ be a set, and let $\epsilon>0$.\\
+	(This case we assuming $E$ has finite measure to assume excision, maybe proof not complete)\\
+	$(\implies)$ Suppose $E$ is measurable.\\
+	Then by Theorem 11 (i), (iii), there is an open set $\mathcal{O}$ containing $E$ for which $m^*(\mathcal{O}\setminus E)<\epsilon/2$, and a closed set $F$ contained in $E$ for which $m^*(E\setminus F)<\epsilon/2$.
+	That is, $F\subseteq E\subseteq \mathcal{O}$.\\
+	By excision, $m^*(E\setminus F)=m^*(E)-m^*(F)$, and we can write
+	\begin{align*}
+		m^*(E)-m^*(F)&<\epsilon/2\\
+		m^*(E)&<m^*(F)+\epsilon/2\\
+		-m^*(E)&>-m^*(F)-\epsilon/2
+	\end{align*}
+	Also by excision, we have  $m^*(\mathcal{O}\setminus E)=m^*(\mathcal{O})-m^*(E)$, and 
+	\[
+		m^*(\mathcal{O})-m^*(F)-\epsilon/2<m^*(\mathcal{O})-m^*(E)<\epsilon/2
+	\]
+	Therefore $m^*(\mathcal{O}\setminus F)=m^*(\mathcal{O})-m^*(F)<\epsilon$.\\
+	$(\impliedby)$ Suppose there is a closed set $F$ and open set $\mathcal{O}$ for which $F\subseteq E\subseteq \mathcal{O}$ and $m^*(\mathcal{O}\setminus F)<\epsilon$.\\
+	By excision and monotonicity of outer measure, we have that 
+	\[
+		m^*(E\setminus F)=m^*(E)-m^*(F)\le m^*(\mathcal{O})-m^*(F)=m^*(\mathcal{O}\setminus F)<\epsilon.
+	\]
+	Therefore we have a closed set $F$ contained in $E$ for which $m^*(E\setminus F)<\epsilon$, i.e., proposition (iii), which implies that $E$ is measurable.
 	\item Let $E$ have finite outer measure. Show that there is a $G_\delta$ set $G\supseteq E$ with $m(G)=m^*(E)$.
-	Show that $E$ is measurable iff there is an $F_\sigma$ set $F \subseteq E$ with $m(F)=m^*(E)$. 
+	Show that $E$ is measurable iff there is an $F_\sigma$ set $F \subseteq E$ with $m(F)=m^*(E)$.\\
+	Let $E$ be a set with finite outer measure.\\
+	$(\implies)$ Suppose that $E$ is measurable.\\
+	By Theorem 11 (iv), there is an $F_\sigma$ set $F$ contained in $E$ for which $m^*(E\setminus F)=0$. Because $E$ has finite outer measure, then $F$ has finite outer measure by monotonicity of outer measure.
+	Then by excision, we have $m^*(E)-m^*(F)=m^*(E\setminus F)=0$, which implies $m^*(E)=m^*(F)$.\\
+	$(\impliedby)$ Suppose there is an $F_\sigma$ set $F \subseteq E$ with $m(F)=m^*(E)$.\\
+	Then $0=m^*(E)-m^*(F)$. Because $E$ has finite outer measure, then $F$ has finite outer measure by monotonicity of outer measure.
+	Therefore by excision we have $0=m^*(E)-m^*(F)=m^*(E\setminus F)$ and Theorem 11 (iv) holds, which implies that $E$ is measurable.
 	\item Let $E$ have finite outer measure.
-	Show that if $E$ is not measurable, then there is an open set $\mathcal{O}$ containing $E$ that has finite outer measure and for which \[m^*(\mathcal{O}\setminus E)>m^*(\mathcal{O})-m^*(E)\].
+	Show that if $E$ is not measurable, then there is an open set $\mathcal{O}$ containing $E$ that has finite outer measure and for which 
+	\[m^*(\mathcal{O}\setminus E)>m^*(\mathcal{O})-m^*(E).\]
+	Suppose $E$ is not measurable. Because every set of infinite outer measure is measurable, $E$ must be of finite outer measure.
+	Because $E$ is not measurable, there exists a set $A$ such that 
+	\[
+		m^*(A)>m^(A\cap E)+m^*(A\cap E^c).
+	\]
 	\item (Lebesgue). Let $E$ have finite outer measure. Show that $E$ is measurable iff for each open, bounded interval $(a,b)$,
 	\[
 		b-a=m^*((a,b)\cap E)+m^*((a,b)\setminus E).
 	\]
+	Let $E$ be a set of finite outer measure.\\
+	$(\implies)$ Suppose that $E$ is measurable.\\
+	Then for any interval $(a,b)$, we have 
+	\[
+		b-a=\ell((a,b))=m^*((a,b))=m^*((a,b)\cap E)+m^*((a,b)\cap E^c)=m^*((a,b)\cap E)+m^*((a,b)\setminus E).
+	\]
+	$(\impliedby)$ Suppose that for each open, bounded interval $(a,b)$, we have $b-a=m^*((a,b)\cap E)+m^*((a,b)\setminus E)$.\\
+	Then we have
+	\[
+		m^*((a,b))=\ell((a,b))=b-a=m^*((a,b)\cap E)+m^*((a,b)\setminus E)=m^*((a,b)\cap E)+m^*((a,b)\cap E^c).
+	\]
+	(This is only proved for any open interval; measurability of $E$ implies this is true for any set)
 	\item Use property (ii) of Theorem 11 as the primitive definition of a measurable set and prove that the union of two measurable sets is measurable. Then do the same for property (iv).
 	\item For any set $A$, define $m^{**}(A)\in[0,\infty]$ by 
 	\[
@@ -499,6 +743,19 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\[
 		m(E_1\cup E_2)+m(E_1\cap E_2) = m(E_1)+m(E_2).	
 	\]
+	\begin{align*}
+		m(E_1\cup E_2)+m(E_1\cap E_2)&=m([E_1\cup E_2]\cap E_1)+m([E_1\cup E_2]\cap E_1^c)+m(E_1\cap E_2)\\
+		&=m(E_1)+m([E_1\cap E_1^c]\cup[E_2\cap E_1^c])+m(E_1\cap E_2)\\
+		&=m(E_1)+m(\emptyset\cup[E_2\cap E_1^c])+m(E_1\cap E_2)\\
+		&=m(E_1)+m(E_2\cap E_1^c)+m(E_1\cap E_2)\\
+		&=m(E_1)+m([E_2\cap E_1^c]\cup[E_1\cap E_2])\\
+		&=m(E_1)+m([E_2\cup(E_1\cap E_2)]\cap [E_1^c\cup(E_1\cap E_2)])\\
+		&=m(E_1)+m(E_2\cap [E_1^c\cup(E_1\cap E_2)])\\
+		&=m(E_1)+m(E_2\cap [E_1^c\cup E_1]\cap [E_1^c\cup E_2])\\
+		&=m(E_1)+m(E_2\cap \mathbb{R} \cap [E_1^c\cup E_2])\\
+		&=m(E_1)+m(E_2\cap [E_1^c\cup E_2])\\
+		&=m(E_1)+m(E_2).
+	\end{align*}
 	\item Show that the assumption that $m(B_1)<\infty$ is necessary in part (ii) of the theorem regarding continuity of measure.
 	\item Let $\{E_k\}_{k=1}^\infty$ be a countable disjoint collection of measurable sets. Prove that for any set $A$, 
 	\[
