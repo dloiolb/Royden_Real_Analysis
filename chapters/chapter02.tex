@@ -597,7 +597,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 		m^*(\mathcal{O}\setminus E)	\le m^*(\bigcup_{k=1}^\infty (\mathcal{O}_k\setminus E_k))\le\sum_{k=1}^\infty m^*(\mathcal{O}_k\setminus E_k)<\sum_{k=1}^\infty\epsilon/2^k=\epsilon.
 	\]
 	Thus property (i) holds for $E$.\\
-	((i) $\implies$ (ii)):\\
+	\\((i) $\implies$ (ii)):\\
 	Now, assume property (i) holds for $E$. 
 	Then for each natural number $k$, there exists an open set $\mathcal{O}_k$ that contains $E$ for which $m^*(\mathcal{O}_k\setminus E)<1/k$.
 	\\Define $G=\bigcap_{k=1}^\infty\mathcal{O}_k$ so that $E\subseteq\mathcal{O}_k$ for all $k\implies E\subseteq\bigcap_{k=1}^\infty\mathcal{O}_k=G$.
@@ -607,7 +607,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 		m^*(G\setminus E)\subseteq m^*(\mathcal{O}_k\setminus E)<1/k.
 	\]
 	Thus $m^*(G\setminus E)=0$, and (ii) holds.\\
-	((ii) $\implies$ $E$ is measurable):\\
+	\\((ii) $\implies$ $E$ is measurable):\\
 	Assume property (ii) holds for $E$.\\
 	We can write
 	\begin{align*}
@@ -639,7 +639,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\]
 	and $E^c\subseteq \mathcal{O}\implies E\supseteq \mathcal{O}^c=F$.
 	Therefore $F$ is a closed set contained in $E$ for which $m^*(E\setminus F)=m^*(\mathcal{O}\setminus E^c)<\epsilon$, and (iii) holds.\\
-	((iii) $\implies$ (iv)):\\
+	\\((iii) $\implies$ (iv)):\\
 	Suppose that property (iii) holds for $E$.
 	Then for each natural number $k$, there exists a closed set $F_k$ contained in $E$ for which $m^*(E\setminus F_k)<1/k$.
 	\\Then defining $F=\bigcup_{k=1}^\infty F_n$, we have that $F_k\subseteq E,\forall k\implies F=\bigcup_{k=1}^\infty F_k \subseteq E$.
@@ -650,7 +650,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 		m^*(E\setminus F)\le m^*(E\setminus F_k)<1/k.	
 	\]
 	Therefore $m^*(E\setminus F)=0$, and (iv) holds.\\
-	((iv) $\implies$ $E$ is measurable):\\
+	\\((iv) $\implies$ $E$ is measurable):\\
 	Suppose that property (iv) holds for $E$.\\
 	We can write
 	\begin{align*}
@@ -688,6 +688,19 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\item Let $E$ have finite outer measure. Show that there is a $G_\delta$ set $G\supseteq E$ with $m(G)=m^*(E)$.
 	Show that $E$ is measurable iff there is an $F_\sigma$ set $F \subseteq E$ with $m(F)=m^*(E)$.\\
 	Let $E$ be a set with finite outer measure.\\
+	Then for each natural number $k$, by definition of infimum, there exists a countable collection of open intervals $\{(I_k)_n\}_{n=1}^\infty$ whose union contains $E$ for which 
+	\[
+		\sum_{n=1}^\infty \ell((I_k)_n) <m^*(E)+1/k.
+	\]
+	Now, $\mathcal{O}_k=\bigcup_{n=1}^\infty (I_k)_n$ is an open set, and we can define $G=\bigcap_{k=1}^\infty\mathcal{O}_k$ so that $E\subseteq\mathcal{O}_k$ for all $k\implies E\subseteq\bigcap_{k=1}^\infty\mathcal{O}_k=G$.
+	Then $G$ is a $G_\delta$ set that contains $E$. Because $G\subseteq\mathcal{O}_k$ for all $k$, by monotonicity,
+	\[
+		m^*(G)\le m^*(\mathcal{O}_k)=m^*(\bigcup_{n=1}^\infty (I_k)_n)\le\sum_{n=1}^\infty \ell((I_k)_n) <m^*(E)+1/k.
+	\]
+	Then we have $m^*(G)<m^*(E)+1/k$ for any natural number $k$, which implies $m^*(G)\le m^*(E)$. \\
+	Also, by monotonicity, $E\subseteq G\implies m^*(E)\le m^*(G)$.\\
+	Therefore $m^*(G)=m^*(E)$.\\
+	\\Let $E$ be a set with finite outer measure.\\
 	$(\implies)$ Suppose that $E$ is measurable.\\
 	By Theorem 11 (iv), there is an $F_\sigma$ set $F$ contained in $E$ for which $m^*(E\setminus F)=0$. Because $E$ has finite outer measure, then $F$ has finite outer measure by monotonicity of outer measure.
 	Then by excision, we have $m^*(E)-m^*(F)=m^*(E\setminus F)=0$, which implies $m^*(E)=m^*(F)$.\\
@@ -697,11 +710,20 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\item Let $E$ have finite outer measure.
 	Show that if $E$ is not measurable, then there is an open set $\mathcal{O}$ containing $E$ that has finite outer measure and for which 
 	\[m^*(\mathcal{O}\setminus E)>m^*(\mathcal{O})-m^*(E).\]
-	Suppose $E$ is not measurable. Because every set of infinite outer measure is measurable, $E$ must be of finite outer measure.
-	Because $E$ is not measurable, there exists a set $A$ such that 
+	Suppose $E$ is not measurable. 
+	However, suppose by contradiction that for all open sets $\mathcal{O}$ containing $E$ that have finite outer measure, we have $m^*(\mathcal{O}\setminus E) \le m^*(\mathcal{O})-m^*(E)$.
+	\\Let $\epsilon>0$.
+	By definition of outer measure, there exists a countable collection of open intervals $\{I_k\}$ whose union contains $E$ and 
 	\[
-		m^*(A)>m^(A\cap E)+m^*(A\cap E^c).
+		\sum_{k=1}^\infty \ell(I_k)<m^*(E)+\epsilon.
 	\]
+	We can define $\mathcal{O}:=\bigcup_{k=1}^\infty I_k$, which is an open set that contains $E$, and by subadditivity of outer measure, we have that
+	\[
+		m^*(\mathcal{O})=m^*(\bigcup_{k=1}^\infty I_k)\le\sum_{k=1}^\infty \ell(I_k)<m^*(E)+\epsilon
+	\]
+	Therefore $m^*(\mathcal{O})-m^*(E)<\epsilon$, and $\mathcal{O}$ has finite outer measure.\\
+	By assumption, we have that $m^*(\mathcal{O}\setminus E) \le m^*(\mathcal{O})-m^*(E)<\epsilon$.
+	However, this means that we have an open set $\mathcal{O}$ containing $E$ for which $m^*(\mathcal{O}\setminus E) <\epsilon$, Theorem 11 (i), which is equivalent to saying that $E$ is measurable, which is a contradiction.
 	\item (Lebesgue). Let $E$ have finite outer measure. Show that $E$ is measurable iff for each open, bounded interval $(a,b)$,
 	\[
 		b-a=m^*((a,b)\cap E)+m^*((a,b)\setminus E).
@@ -718,17 +740,108 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 		m^*((a,b))=\ell((a,b))=b-a=m^*((a,b)\cap E)+m^*((a,b)\setminus E)=m^*((a,b)\cap E)+m^*((a,b)\cap E^c).
 	\]
 	(This is only proved for any open interval; measurability of $E$ implies this is true for any set)
-	\item Use property (ii) of Theorem 11 as the primitive definition of a measurable set and prove that the union of two measurable sets is measurable. Then do the same for property (iv).
+	\item Use property (ii) of Theorem 11 as the primitive definition of a measurable set and prove that the union of two measurable sets is measurable. Then do the same for property (iv).\\
+	\\(ii) Let $E$ be any set of real numbers. Define $E$ to be measurable if there is a $G_\delta$ set $G$ containing $E$ for which $m^*(G\setminus E)=0$.\\
+	Let $A$ and $B$ be two measurable sets under this definition.
+	Then there exist $G_\delta$ sets $G_A,G_B$ containing $A,B$ respectively for which $m^*(G_A\setminus A)=0$ and $m^*(G_B\setminus B)=0$.\\
+	Now, by definition of $G_\delta$ set:
+	\begin{align*}
+		G_A &= \bigcap_{k=1}^\infty \mathcal{O}_k,\text{ for }\mathcal{O}_k\text{ open}\\
+		G_B &= \bigcap_{n=1}^\infty \mathcal{U}_n,\text{ for }\mathcal{U}_n\text{ open}
+	\end{align*}
+	Therefore 
+	\begin{align*}
+		G_A\cup G_B&=(\bigcap_{k=1}^\infty \mathcal{O}_k)\cup(\bigcap_{n=1}^\infty \mathcal{U}_n)\\
+		&=\bigcap_{k=1}^\infty (\mathcal{O}_k\cup(\bigcap_{n=1}^\infty \mathcal{U}_n)\\
+		&=\bigcap_{k=1}^\infty (\bigcap_{n=1}^\infty(\mathcal{O}_k\cup \mathcal{U}_n))
+	\end{align*}
+	For each $k,n$ pair, $\mathcal{O}_k\cup \mathcal{U}_n$ is an open set, so $G_A\cup G_B$ is a countable intersection of open sets and thus a $G_\delta$ set.
+	Also, $G_A\supseteq A$ and $G_B\supseteq B$ imply that $G_A\cup G_B\supseteq A\cup B$, so $G_A\cup G_B$ is a $G_\delta$ set that contains $A\cup B$.\\
+	We can write
+	\begin{align*}
+		(G_A\cup G_B)\setminus(A\cup B)&=(G_A\cup G_B)\cap(A\cup B)^c\\
+		&=(G_A\cup G_B)\cap(A^c\cap B^c)\\
+		&=[G_A\cap(A^c\cap B^c)]\cup[G_B\cap(A^c\cap B^c)]\\
+		&=[G_A\cap A^c\cap B^c]\cup[G_B\cap B^c\cap A^c]\\
+		&\subseteq[G_A\cap A^c]\cup[G_B\cap B^c]\\
+		&\subseteq[G_A\setminus A]\cup[G_B\setminus B].\\
+	\end{align*}
+	By monotonicity of outer measure and subadditivity, 
+	\begin{align*}
+		m^*((G_A\cup G_b)\setminus(A\cup B))&\le m^*([G_A\setminus A]\cup[G_B\setminus B])\\
+		&\le m^*(G_A\setminus A)+m^*(G_B\setminus B)\\
+		&=0.
+	\end{align*}
+	Therefore $A\cup B$ is measurable.\\
+	\\(iv) Let $E$ be any set of real numbers. Define $E$ to be measurable if there is an $F_\sigma$ set $F$ contained in $E$ for which $m^*(E\setminus F)=0$.\\
+	Let $A$ and $B$ be two measurable sets under this definition.
+	Then there exist $F_\sigma$ sets $F_A,F_B$ contained in $A,B$ respectively for which $m^*(A\setminus F_A)=0$ and $m^*(B\setminus F_B)=0$.\\
+	Now, by definition of $F_\sigma$ set:
+	\begin{align*}
+		F_A &= \bigcup_{k=1}^\infty I_k,\text{ for }I_k\text{ closed}\\
+		F_B &= \bigcup_{n=1}^\infty J_n,\text{ for }J_n\text{ closed}
+	\end{align*}
+	Therefore 
+	\begin{align*}
+		F_A\cup F_B&=(\bigcup_{k=1}^\infty I_k)\cup(\bigcup_{n=1}^\infty J_n),
+	\end{align*}
+	which is clearly a countable union of closed sets, so $F_A\cup F_B$ is an $F_\sigma$ set.
+	Also, $F_A\subseteq A$ and $F_B\subseteq B$ imply that $F_A\cup F_B\subseteq A\cup B$, so $F_A\cup F_B$ is an $F_\sigma$ set that is contained in $A\cup B$.\\
+	We can write
+	\begin{align*}
+		(A\cup B)\setminus(F_A\cup F_B)&=(A\cup B)\cap(F_A\cup F_B)^c\\
+		&=(A\cup B)\cap(F_A^c\cap F_B^c)\\
+		&=[A\cap(F_A^c\cap F_B^c)]\cup[B\cap(F_A^c\cap F_B^c)]\\
+		&=[A\cap F_A^c\cap F_B^c]\cup[B\cap F_B^c\cap F_A^c]\\
+		&\subseteq[A\cap F_A^c]\cup[B\cap F_B^c]\\
+		&\subseteq[A\setminus F_A]\cup[B\setminus F_B].\\
+	\end{align*}
+	By monotonicity of outer measure and subadditivity, 
+	\begin{align*}
+		m^*((A\cup b)\setminus(F_A\cup F_B))&\le m^*([A\setminus F_A]\cup[B\setminus F_B])\\
+		&\le m^*(A\setminus F_A)+m^*(B\setminus F_B)\\
+		&=0.
+	\end{align*}
+	Therefore $A\cup B$ is measurable.\\
 	\item For any set $A$, define $m^{**}(A)\in[0,\infty]$ by 
 	\[
 		m^{**}(A)=\inf\{m^*(\mathcal{O})\ |\ \mathcal{O}\supseteq A, \mathcal{O}\text{ open.}\}	
 	\]
-	How is this set function $m^{**}$ related to outer measure $m^*$?
+	How is this set function $m^{**}$ related to outer measure $m^*$?\\
+	\\Consider any open set $\mathcal{O}$ such that $A\subseteq\mathcal{O}$.
+	By monotonicity of outer measure, $m^*(A)\le m^*(\mathcal{O})$, and therefore $m^*(A)$ is a lower bound to the set $\{m^*(\mathcal{O})\ |\ \mathcal{O}\supseteq A, \mathcal{O}\text{ open.}\}$.
+	Because $m^{**}$ is defined as the greatest lower bound, we get
+	\[
+		m^*(A)\le m^{**}(A).
+	\]
+	Now, if $m^*(A)=\infty$, then trivially we have
+	\[
+		m^*(A)\ge m^{**}(A),
+	\]
+	which implies $m^*(A)= m^{**}(A)$.\\
+	Thus we consider the case where $m^*(A)<\infty$.\\
+	Then for any $\epsilon>0$, by definition of infimum, there exists a countable collection of open intervals $\{I_n\}_{n=1}^\infty$ whose union contains $A$ for which 
+	\[
+		\sum_{n=1}^\infty \ell(I_n) <m^*(A)+\epsilon.
+	\]
+	Now, $\mathcal{O}=\bigcup_{n=1}^\infty I_n$ is an open set that contains $A$, so by definition of $m^{**}$,
+	\[
+		m^{**}(A)\le m^*(\mathcal{O})=m^*(\bigcup_{n=1}^\infty I_n)\le\sum_{n=1}^\infty \ell(I_n) <m^*(A)+\epsilon.
+	\]
+	Then $m^{**}(A)<m^*(A)+\epsilon$ implies $m^{**}(A)\le m^*(A)$.\\
+	Therefore $m^*(A)= m^{**}(A)$.
 	\item For any set $A$, define $m^{***}(A)\in[0,\infty]$ by
 	\[
 		m^{***}(A)=\sup\{m^*(F)\ |\ F\subseteq A, F\text{ closed.}\}	
 	\]
-	How is this set function $m^{***}$ related to outer measure $m^*$?
+	How is this set function $m^{***}$ related to outer measure $m^*$?\\
+	\\Consider any closed set $F$ such that $F\subseteq A$.
+	By monotonicity of outer measure, $m^*(F)\le m^*(A)$, and therefore $m^*(A)$ is an upper bound to the set $\{m^*(F)\ |\ F\subseteq A, F\text{ closed.}\}$.
+	Because $m^{**}$ is defined as the least upper bound, we get
+	\[
+		m^{***}(A)\le m^*(A).
+	\]
+	(In addition, if $A$ is measurable, then $m^{***}(A)= m^*(A)$.)
 \end{enumerate}
 
 % 2.5
