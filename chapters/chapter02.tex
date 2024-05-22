@@ -768,7 +768,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\end{align*}
 	By monotonicity of outer measure and subadditivity, 
 	\begin{align*}
-		m^*((G_A\cup G_b)\setminus(A\cup B))&\le m^*([G_A\setminus A]\cup[G_B\setminus B])\\
+		m^*((G_A\cup G_B)\setminus(A\cup B))&\le m^*([G_A\setminus A]\cup[G_B\setminus B])\\
 		&\le m^*(G_A\setminus A)+m^*(G_B\setminus B)\\
 		&=0.
 	\end{align*}
@@ -846,7 +846,83 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 
 % 2.5
 \section{Countable Additivity, Continuity, and the Borel-Cantelli Lemma}
-
+\begin{flushleft}
+	\begin{namedthm*}{Theorem 15}[the Continuity of Measure]
+		Lebesgue measure possesses the following continuity properties:
+		\begin{enumerate}[label=(\roman*),align=left]
+			\item If $\{A_k\}_{k=1}^\infty$ is an ascending collection of measurable sets, then
+			\[
+				m\biggl(\bigcup_{k=1}^\infty A_k\biggr)=\lim_{k\to\infty}m(A_k).
+			\]
+			\item If $\{B_k\}_{k=1}^\infty$ is a descending collection of measurable sets and $m(B_1)<\infty$, then
+			\[
+				m\biggl(\bigcap_{k=1}^\infty B_k\biggr)=\lim_{k\to\infty}m(B_k).
+			\]
+		\end{enumerate}
+	\end{namedthm*}
+	\begin{proof}
+		Let $\{A_k\}_{k=1}^\infty$ be ascending and measurable.\\
+		If there exists an index $k$ such that $m(A_k)>\infty$, then by monotonicity of measure, $m(\bigcup_{k=1}^\infty A_k)=\infty$.
+		Also, because this collection is ascending, we have $A_k\subseteq A_n$ whenever $k\le n$; therefore by monotonicity, $\infty=m(A_k)\le m(A_n)$ for all $n$ such that $k\le n$, and thus (i) holds.\\
+		Therefore it remains to prove the case that $m(A_k)<\infty$ for all $k$.\\
+		Define $A_0=\emptyset$, and define $C_k=A_k\setminus A_{k-1}$. Then $\{C_k\}_{k=1}^\infty$ is disjoint and $\bigcup_{k=1}^\infty C_k=\bigcup_{k=1}^\infty A_k$.
+		Now we can write
+		\begin{align*}
+			m(\bigcup_{k=1}^\infty A_k)&=m(\bigcup_{k=1}^\infty C_k)\\
+			&=\sum_{k=1}^\infty m(C_k)&&\text{countable (disjoint) monotonicity}\\
+			&=\sum_{k=1}^\infty m(A_k\setminus A_{k-1})\\
+			&=\sum_{k=1}^\infty [m(A_k)-m(A_{k-1})]&&\text{by excision: }m(A_{k-1})<\infty\\
+			&=\lim_{n\to\infty}\sum_{k=1}^n [m(A_k)-m(A_{k-1})]\\
+			&=\lim_{n\to\infty}m(A_n)-m(A_0)&&\text{by telescoping}\\
+			&=\lim_{n\to\infty}m(A_n).&&\text{because }A_0=\emptyset
+		\end{align*}
+		\\Let $\{B_k\}_{k=1}^\infty$ be descending and measurable.\\
+		Define $D_k=B_1\setminus B_k=B_1\cap B_k^c$.\\
+		Then because $\{B_k\}_{k=1}^\infty$ is descending, 
+		\[
+			B_k\supseteq B_{k+1}\implies B_1\cap B_k^c\subseteq B_1\cap B_{k+1}^c\implies D_k\subseteq D_{k+1},
+		\]
+		and $\{D_k\}_{k=1}^\infty$ is ascending.\\
+		Now we have
+		\[
+			\bigcup_{k=1}^\infty D_k=\bigcup_{k=1}^\infty [B_1\cap B_k^c]=B_1\cap[\bigcup_{k=1}^\infty  B_k^c]=(B_1\cap[\bigcap_{k=1}^\infty  B_k]^c=B_1\setminus[\bigcap_{k=1}^\infty  B_k].
+		\]
+		Then by part (i), we can write
+		\begin{align*}
+			m(\bigcup_{k=1}^\infty D_k)&=\lim_{k\to\infty}m(D_k)\\
+			m(B_1\setminus[\bigcap_{k=1}^\infty  B_k])&=\lim_{k\to\infty}m(B_1\setminus B_k)\\
+			m(B_1)-m(\bigcap_{k=1}^\infty  B_k)&=\lim_{k\to\infty}[m(B_1)-m( B_k)]\\
+			m(B_1)-m(\bigcap_{k=1}^\infty  B_k)&=m(B_1)-\lim_{k\to\infty}[m( B_k)]\\
+			m(\bigcap_{k=1}^\infty  B_k)&=\lim_{k\to\infty}[m( B_k)].
+		\end{align*}
+	\end{proof}
+	\begin{namedthm*}{The Borel-Cantelli Lemma}
+		Let $\{E_k\}_{k=1}^\infty$ be a countable collection of measurable sets for which $\sum_{k=1}^\infty m(E_k)<\infty$.
+		Then almost all $x\in\mathbb{R}$ belong to at most finitely many of the $E_k$'s.
+	\end{namedthm*}
+	\begin{proof}
+		By countable subadditivity, for each $n$,
+		\[
+			m(\bigcup_{k=n}^\infty E_k)\le\sum_{k=n}^\infty m(E_k)<\infty.
+		\]
+		Because $\sum_{k=1}^\infty m(E_k)<\infty$, we have a sequence of partial sums such that for any $\epsilon>0$, there exists an index n for which 
+		\[
+			\sum_{k=n}^\infty m(E_k)=|\sum_{k=1}^\infty m(E_k)-\sum_{k=1}^{n-1} m(E_k)|<\epsilon.
+		\] 
+		Therefore there exists an $n$ such that $|\sum_{k=n}^\infty m(E_k)-0|<\epsilon$, and $\lim_{n\to\infty}\sum_{k=n}^\infty m(E_k)=0$.\\
+		By continuity of measure (ii),
+		\[
+			m(\bigcap_{n=1}^\infty[\bigcup_{k=1}^\infty E_k])=\lim_{n\to\infty}m(\bigcup_{k=1}^\infty E_k)\le\lim_{n\to\infty}\sum_{k=n}^\infty m(E_k)=0.
+		\]
+		Therefore almost all $x\in\mathbb{R}$ fail to belong to $\bigcap_{n=1}^\infty[\bigcup_{k=1}^\infty E_k]$ and therefore belong to at most finitely many $E_k$'s.
+	\end{proof}
+	Let $\{A_k\}_{k=1}^\infty$ be a countable collection of sets that belong to a $\sigma$-algebra $\mathcal{A}$. Since $\mathcal{A}$ is closed w.r.t. countable unions and intersections, the following two sets belong to $\mathcal{A}$:
+	\begin{align*}
+		\lim\sup\{A_k\}_{k=1}^\infty&=\bigcap_{n=1}^\infty[\bigcup_{k=1}^\infty A_k]\\
+		\lim\inf\{A_k\}_{k=1}^\infty&=\bigcup_{n=1}^\infty[\bigcap_{k=1}^\infty A_k]
+	\end{align*}
+	The set $\lim\sup\{A_k\}_{k=1}^\infty$ is the set of points that belong to $A_n$ for countably infinitely many indices $n$ while the set $\lim\inf\{A_k\}_{k=1}^\infty$ is the set of points that belong to $A_n$ except for at most finitely many indices $n$.
+\end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -869,17 +945,55 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 		&=m(E_1)+m(E_2\cap [E_1^c\cup E_2])\\
 		&=m(E_1)+m(E_2).
 	\end{align*}
-	\item Show that the assumption that $m(B_1)<\infty$ is necessary in part (ii) of the theorem regarding continuity of measure.
+	\item Show that the assumption that $m(B_1)<\infty$ is necessary in part (ii) of the theorem regarding continuity of measure.\\
+	In the proof of (ii), we get to the point 
+	\[
+		m(B_1)-m(\bigcap_{k=1}^\infty  B_k)=m(B_1)-\lim_{k\to\infty}[m( B_k)].
+	\]
+	If $m(B_1)=\infty$, then we have
+	\[
+		\infty-m(\bigcap_{k=1}^\infty  B_k)=\infty-\lim_{k\to\infty}[m( B_k)],
+	\]
+	and we cannot reach the conclusion we want because $\infty-\infty$ is not defined.
 	\item Let $\{E_k\}_{k=1}^\infty$ be a countable disjoint collection of measurable sets. Prove that for any set $A$, 
 	\[
-		m^*(A\cap\sum_{k=1}^\infty E_k)=\sum_{k=1}^\infty m^*(A\cap E_k).	
+		m^*(A\cap\bigcup_{k=1}^\infty E_k)=\sum_{k=1}^\infty m^*(A\cap E_k).	
 	\]
+	We have by countable subadditivity:
+	\begin{align*}
+		m^*(A\cap\bigcup_{k=1}^\infty E_k)&=m^*(\bigcup_{k=1}^\infty (A\cap E_k))\le\sum_{k=1}^\infty m^*(A\cap E_k).
+	\end{align*}
+	Now, for any $n$, we have $A\cap\bigcup_{k=1}^\infty E_k\supseteq A\cap\bigcup_{k=1}^n E_k$, so by monotonicity and Proposition 6,
+	\begin{align*}
+		m^*(A\cap\bigcup_{k=1}^\infty E_k)&\ge m^*(A\cap\bigcup_{k=1}^n E_k)=\sum_{k=1}^n m^*(A\cap E_k)
+	\end{align*}
+	The left hand side is independent of $n$, so taking the limit as $n\to\infty$, we get
+	\begin{align*}
+		m^*(A\cap\bigcup_{k=1}^\infty E_k)&\ge \sum_{k=1}^\infty m^*(A\cap E_k).
+	\end{align*}
 	\item Let $\mathcal{M}'$ be any $\sigma$-algebra of subsets of $\mathbb{R}$ and $m'$ a set function on $\mathcal{M}'$ which takes values in $[0,\infty]$, is countably additive, and such that $m'(\emptyset)=0$.
 	\begin{enumerate}[label=(\roman*),align=left]
-		\item Show that $m'$ is finitely additive, monotone, countably monotone, and possesses the excision property.
-		\item Show that $m'$ possesses the same continuity properties as Lebesgue measure.
+		\item Show that $m'$ is finitely additive, monotone, countably monotone, and possesses the excision property.\\
+		Countable additivity implies that for any disjoint collection of measurable sets $\{E_k\}_{k=1}^\infty$, we have $m'(\bigcup_{k=1}^\infty E_k)=\sum_{k=1}^\infty m'(E_k)$.\\
+		Now, any finite disjoint collection $\{E_k\}_{k=1}^n$ can be extended to the infinite disjoint collection $\{E_k'\}_{k=1}^\infty$, where $E_k'=E_k$ for $k\in\{1,\cdots,n\}$, and $E_k'=\emptyset$ for $k>n$.
+		Clearly from this we have finite additivity.\\
+		In Problem 1 of this chapter, it was shown that a countably additive set function possesses the monotonicity property.
+		Thus $m'$ is monotone. It can clearly be shown that $m'$ is also countably monotone.\\
+		To see excision, simply use countable additivity to see that for measurable sets $A,B$ such that $A\subseteq B$, we have
+		\[
+			m'(B) = m'([B\cap A]\cup[B\cap A^c])=m'(B\cap A)+m'(B\cap A^c)=m'(A)+m'(B\setminus A).
+		\]
+		\item Show that $m'$ possesses the same continuity properties as Lebesgue measure.\\
+		Check Theorem 15 and the Borel-Cantelli Lemma above.
 	\end{enumerate}
-	\item Show that continuity of measure together with finite additivity of measure implies countable additivity of measure.
+	\item Show that continuity of measure together with finite additivity of measure implies countable additivity of measure.\\
+	Let $\{E_k\}_{k=1}^\infty$ be a disjoint collection of measurable sets. (if any $E_k$ has infinite measure, countable additivity is clear, so we need only consider sets of finite measure for all $E_k$.)\\
+	Finite additivity implies that for the disjoint collection of measurable sets $\{E_k\}_{k=1}^n$, we have $m(\bigcup_{k=1}^n E_k)=\sum_{k=1}^n m(E_k)$.\\
+	We can define $F_n=\bigcup_{k=1}^n E_k$ so that continuity of measure implies that for the ascending collection $\{F_n\}_{n=1}^\infty$ of measurable sets, we have $m(\bigcup_{n=1}^\infty F_n)=\lim_{n\to\infty}m(F_n)$.\\
+	Therefore we can write
+	\[
+		m(\bigcup_{n=1}^\infty E_n)=m(\bigcup_{n=1}^\infty F_n)=\lim_{n\to\infty}m(F_n)=\lim_{n\to\infty}m(\bigcup_{k=1}^n E_k)=\lim_{n\to\infty}\sum_{k=1}^n m(E_k)=\sum_{k=1}^\infty m(E_k).
+	\]
 \end{enumerate}
 
 % 2.6

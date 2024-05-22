@@ -1,11 +1,11 @@
-Exercise Completion: (58/1048)<br />
+Exercise Completion: (94/1048)<br />
 1.1-1.6<br />
 2.3<br />
 7.1<br />
 
-PART I: Lebesgue Integration for Functions of a Single Real Variable (79/368)<br />
+PART I: Lebesgue Integration for Functions of a Single Real Variable (90/368)<br />
 Chapter 01: 59/59*<br />
-Chapter 02: 22/43*<br />
+Chapter 02: 26/43*<br />
 Chapter 03: 0/31*<br />
 Chapter 04: 0/51*<br />
 Chapter 05: 0/17*<br />
@@ -13,7 +13,7 @@ Chapter 06: 0/71*<br />
 Chapter 07: 5/51<br />
 Chapter 08: 0/45<br />
 
-PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (0/408)<br />
+PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (4/408)<br />
 Chapter 09: 4/78<br />
 Chapter 10: 0/44<br />
 Chapter 11: 0/56<br />
