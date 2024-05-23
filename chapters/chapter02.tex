@@ -798,7 +798,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\end{align*}
 	By monotonicity of outer measure and subadditivity, 
 	\begin{align*}
-		m^*((A\cup b)\setminus(F_A\cup F_B))&\le m^*([A\setminus F_A]\cup[B\setminus F_B])\\
+		m^*((A\cup B)\setminus(F_A\cup F_B))&\le m^*([A\setminus F_A]\cup[B\setminus F_B])\\
 		&\le m^*(A\setminus F_A)+m^*(B\setminus F_B)\\
 		&=0.
 	\end{align*}
@@ -998,6 +998,78 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 
 % 2.6
 \section{Nonmeasurable Sets}
+\begin{flushleft}
+	Consider the subgroup under addition $\mathbb{Q}\subseteq\mathbb{R}$.
+	Now, $\mathbb{Q}$ is a normal subgroup, and we have the quotient group $\mathbb{R}/\mathbb{Q}$, with the (disjoint) cosets written as $r+\mathbb{Q}$ where $r\in\mathbb{R}$.
+	A Vitali set $V\subseteq[0,1]$ is defined to be a set such that for all $r\in\mathbb{R}$, there exists exactly one unique $v\in V$ such that $v-r\in\mathbb{Q}$.
+	Every Vitali set is uncountable, and $v-u\notin\mathbb{Q}$ for $u,v\in V$, $u\neq v$.
+	\begin{namedthm*}{Theorem}
+		A Vitali set is non-measurable.
+	\end{namedthm*}
+	\begin{proof}
+		Suppose by contradiction that a Vitali set V is measurable.\\
+		Let $\{q_k\}_{k=1}^\infty$ be an enumeration of the rational numbers in $[-1,1]$:\\
+		recall that $\mathbb{Q}$ looks like
+		\[
+			\mathbb{Q} = \{0,\frac{1}{1},-\frac{1}{1},\frac{1}{2},-\frac{1}{2},\frac{2}{1},-\frac{2}{1}, \frac{3}{1}, -\frac{3}{1},\frac{1}{3},-\frac{1}{3},\frac{1}{4},-\frac{1}{4},\frac{2}{3},-\frac{2}{3},\cdots \},
+		\]
+		therefore
+		\[
+			\{q_k\}_{k=1}^\infty= \{0,\frac{1}{1},-\frac{1}{1},\frac{1}{2},-\frac{1}{2},\frac{1}{3},-\frac{1}{3},\frac{1}{4},-\frac{1}{4},\frac{2}{3},-\frac{2}{3},\cdots \}.
+		\]
+		For each natural number $k$, let $V_k=V+q_k=\{v+q_k:v\in V\}$.\\
+		First we will show the following:
+		\begin{enumerate}[label=(\roman*),align=left]
+			\item $V_i\cap V_j=\emptyset$ for $i\neq j$
+			\item $[0,1]\subseteq\bigcup_{k=1}^\infty V_k \subseteq [-1,2]$
+		\end{enumerate}
+		(i) Suppose by contradiction that $V_i\cap V_j=\emptyset$ for some $i\neq j$.\\
+		That is, there exists $x\in V_i,y\in V_j$ such that $x=y$.\\
+		Also, there exists $v,u\in V$ such that $x=v+q_i$ and $y=u+q_j$.\\
+		By equality, we have $v+q_i=u+q_j$.\\
+		In the case that $v=u$, we get $q_i=q_j$, a contradiction.\\
+		In the case that $v\neq u$, we can write $v-u=q_j-q_i\in\mathbb{Q}$, a contradiction.\\\medskip
+		(ii) For any real $r\in[0,1]$, there exists a $v\in V\subseteq[0,1]$ such that $r-v\in\mathbb{Q}$.\\
+		We can see that
+		\begin{align*}
+			\max(r-v)&=1-0=1,\\
+			\min(r-v)&=0-1=-1.
+		\end{align*}
+		which implies $r-v=q_i\in[-1,1]\cap\mathbb{Q}$ for some $i$, and thus $r=v+q_i\in V_i$.\\
+		In short, we can write this as
+		\[
+			r\in[0,1]\implies r\in V_i\text{ for some }i\implies r\in\bigcup_{k=1}^\infty V_k\implies[0,1]\subseteq\bigcup_{k=1}^\infty V_k. 
+		\]
+		Now, $V_k=V+q_k,V\subseteq[0,1],q_k\in[-1,1]$, therefore
+		\begin{align*}
+			\max(v+q_k)&=1+1=2,\\
+			\min(v+q_k)&=0-1=-1.
+		\end{align*}
+		Therefore $V_k\subseteq[-1,2]$ for all $k$, and thus $\bigcup_{k=1}^\infty V_k\subseteq[-1,2]$.\\\medskip
+		Then we can write
+		\begin{align*}
+			m^*([0,1])&\le m^*(\bigcup_{k=1}^\infty V_k) \le m^*([-1,2])&&\text{by monotonicity of outer measure}\\
+			1&\le\sum_{k=1}^\infty m^*(V_k)\le 3&&\text{countable additivity (measurability of $V$) }\star\\
+			1&\le\sum_{k=1}^\infty m^*(V+q_k)\le 3\\
+			1&\le\sum_{k=1}^\infty m^*(V)\le 3&&\text{by translation invariance of outer measure}\\
+		\end{align*}
+		However, $m^*(V)\ge0$ is a constant, so $\sum_{k=1}^\infty m^*(V)=0$ or $\sum_{k=1}^\infty m^*(V)=\infty$, neither of which is in $[1,3]$, and we reach a contradiction.
+	\end{proof}
+	For any nonempty set $E$ of real numbers, we define two points in $E$ to be \textbf{rationally equivalent} provided their difference belongs to $\mathbb{Q}$. By a \textbf{choice set} for the rational equivalence relation on $E$ we mean a set $\mathcal{C}_E$ consisting of exactly one member of each equivalence class.
+	A choice set $\mathcal{C}_E$ is characterized by the following two properties:
+	\begin{enumerate}
+		\item the difference of two points in $\mathcal{C}_E$ is not rational;
+		\item for each point $x$ in $E$, there is a point $c$ in $\mathcal{C}_E$ for which $x=c+q$, $q\in\mathbb{Q}$.
+	\end{enumerate}
+	The first property can be reformulated as
+	\[
+		\text{For any set }\Lambda\subseteq\mathbb{Q},\{\lambda+\mathcal{C}_E\}_{\lambda\in\Lambda}\text{ is disjoint}.
+	\]
+	We also have that 
+	\[
+		E\subseteq\bigcup_{\lambda\in\mathbb{Q}}(\lambda+\mathcal{C}_E).
+	\]
+\end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -1005,17 +1077,67 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\setcounter{enumi}{28}
 	\item 
 	\begin{enumerate}[label=(\roman*),align=left]
-		\item Show that rational equivalence defines an equivalence relation on any set.
-		\item Explicitly find a choice set for the rational equivalence relation on $\mathbb{Q}$.
-		\item Define two numbers to be irrationally equivalent provided their difference is irrational or zero. Is this an equivalence relation on $\mathbb{R}$? Is this an equivalence relation on $\mathbb{Q}$?
+		\item Show that rational equivalence defines an equivalence relation on any set.\\
+		Let $X$ be any set and define $x\sim y$ when $x-y\in\mathbb{Q}$ for $x,y\in X$.
+		\begin{enumerate}
+			\item $x-x=0\in\mathbb{Q}\iff x\sim x$ for all $x\in X$.
+			\item $x\sim y \iff x-y=q \in\mathbb{Q}\iff y-x=-q\in\mathbb{Q}\iff y\sim x$ for all $x,y\in X$.
+			\item $x\sim y,y\sim z \iff x-y=q\in\mathbb{Q},y-z=q'\in\mathbb{Q}\iff x-z=x-y+y-z=q+q'\in\mathbb{Q}\iff x\sim z$ for all $x,y,z\in X$.
+		\end{enumerate}
+		\item Explicitly find a choice set for the rational equivalence relation on $\mathbb{Q}$.\\
+		(For any nonempty set $E$ of real numbers, we define two points in $E$ to be \textbf{rationally equivalent} provided their difference belongs to $\mathbb{Q}$. By a \textbf{choice set} for the rational equivalence relation on $E$ we mean a set $\mathcal{C}_E$ consisting of exactly one member of each equivalence class.)
+		Therefore for the nonempty set $\mathbb{Q}$, we can choose a choice set $\mathcal{C}_{\mathbb{Q}}=\{q\}$ for any $q\in\mathbb{Q}$.
+		\item Define two numbers to be irrationally equivalent provided their difference is irrational or zero. Is this an equivalence relation on $\mathbb{R}$? Is this an equivalence relation on $\mathbb{Q}$?\\
+		\begin{enumerate}
+			\item $x-x=0\in\{\mathbb{Q}^c,0\}\iff x\sim x$ for all $x\in \mathbb{R}$.
+			\item $x\sim y \iff x-y=q \in\{\mathbb{Q}^c,0\}\iff y-x=-q\in\{\mathbb{Q}^c,0\}\iff y\sim x$ for all $x,y\in \mathbb{R}$.
+			\item $2-\pi\in\{\mathbb{Q}^c,0\},\pi-0\in\{\mathbb{Q}^c,0\}$ but $2-0\notin\{\mathbb{Q}^c,0\}$
+		\end{enumerate}
+		Not an equivalence relation on $\mathbb{R}$.\\
+		\begin{enumerate}
+			\item $x-x=0\in\{\mathbb{Q}^c,0\}\iff x\sim x$ for all $x\in \mathbb{Q}$.
+			\item $x\sim y \iff x-y=0 \in\{\mathbb{Q}^c,0\}\iff y-x=0\in\{\mathbb{Q}^c,0\}\iff y\sim x$ for all $x,y\in \mathbb{Q}$.
+			\item $x\sim y,y\sim z \iff x-y=0\in\{\mathbb{Q}^c,0\},y-z=0\in\{\mathbb{Q}^c,0\}\iff x-z=x-y+y-z=0+0\in\{\mathbb{Q}^c,0\}\iff x\sim z$ for all $x,y,z\in \mathbb{Q}$.
+		\end{enumerate}
+		An equivalence relation on $\mathbb{Q}$.
 	\end{enumerate}
-	\item Show that any choice set for the rational equivalence relation on a set of positive outer measure must be countably infinite.
-	\item Justify the assertion in the proof of Vitali's Theorem that it suffices to consider the case that $E$ is bounded.
-	\item Does Lemma 16 remain true if $\Lambda$ is allowed to be finite or to be uncountably infinite? Does it remain true if $\Lambda$ is allowed to be unbounded?
+	\item Show that any choice set for the rational equivalence relation on a set of positive outer measure must be uncountably infinite.\\
+	Let $E$ be a set of positive outer measure.
+	Suppose there exists a choice set $\mathcal{C}_E$ for the rational equivalence relation on $E$ such that $\mathcal{C}_E$ is countable. 
+	All countable sets have outer measure zero, so $m^*(\mathcal{C}_E)=0$.
+	Because we know $E\subseteq\bigcup_{\lambda\in\mathbb{Q}}(\lambda+\mathcal{C}_E)$, by monotonicity, subadditivity, and translation invariance of outer measure,
+	\[
+		m^*(E)\le m^*(\bigcup_{\lambda\in\mathbb{Q}}(\lambda+\mathcal{C}_E))\le\sum_{\lambda\in\mathbb{Q}}m^*(\lambda+\mathcal{C}_E)=\sum_{\lambda\in\mathbb{Q}}m^*(\mathcal{C}_E)=\sum_{\lambda\in\mathbb{Q}}0=0,
+	\]
+	and we have a contradiction to the fact that $m^*(E)>0$.
+	\item Justify the assertion in the proof of Vitali's Theorem that it suffices to consider the case that $E$ is bounded.\\
+	(Vitali: Any set of real numbers with positive outer measure contains a subset that fails to be measurable.)
+	By Problem 14, we showed that every set of positive outer measure $E$ contains a bounded subset $A\subseteq E$ of positive outer measure. Therefore if there exists a subset $S\subseteq A$ that fails to be measurable, then $S \subseteq A\subseteq E$ is a subset that fails to be measurable.
+	\item Does Lemma 16 remain true if $\Lambda$ is allowed to be finite or to be uncountably infinite? Does it remain true if $\Lambda$ is allowed to be unbounded?\\
+	(Lemma 16: Let $E$ be a bounded measurable set of real numbers. Suppose there is a bounded, countably infinite set of real numbers $\Lambda$ for which the collection of translates of $E$, $\{\lambda+E\}_{\lambda\in\Lambda}$, is disjoint. Then $m(E)=0$.)\\
+	Consider the case $\Lambda=\{1,2\}$ is finite, and $E=(0,1)$. Then $\{\lambda+E\}_{\lambda\in\Lambda=\{1,2\}}=\{1+(0,1),2+(0,1)\}=\{(1,2),(2,3)\}$, which is a disjoint collection. However, $m(E)=1\neq0$.\\
+	If $\Lambda$ is uncountably infinite and satisfies that the translates are disjoint, then we can choose a countable subset of $\Lambda$ and thus Lemma 16 remains true.\\
+	Consider the case $\Lambda=\{1,2,3,\cdots\}$ is unbounded, and $E=(0,1)$. Then the collection of translates of $E$, $\{(1,2),(2,3),(3,4),\cdots\}$ is disjoint but $m(E)=1\neq0$.
 	\item Let $E$ be a nonmeasurable set of finite outer measure. Show that there is a $G_\delta$ set $G$ that contains $E$ for which
 	\[
 		m^*(E)=m^*(G),\text{ while }m^*(G\setminus E)>0.
 	\]
+	This is a similar construction for the proof from Theorem 11 (i).\\
+	Let $E$ be a nonmeasurable set of finite outer measure.\\
+	By definition of outer measure and infimum, for any natural number $n$, there exists a countable collection of intervals $\{(I_n)_k\}_{k=1}^\infty$ such that $E\subseteq\bigcup_{k=1}^\infty (I_n)_k$ and
+	\[
+		m^*(E)\le\sum_{k=1}^\infty\ell((I_n)_k)<m^*(E)+1/n.	
+	\]
+	Defining $\mathcal{O}_n=\bigcup_{k=1}^\infty (I_n)_k$, we see that $\mathcal{O}_n$ is an open set containing $E$ for each $n$.
+	Further define $G=\bigcap_{n=1}^\infty\mathcal{O}_n$ so that $E\subseteq G\subseteq\mathcal{O}_n$ for any $n$ and $G$ is a $G_\delta$ set that contains $E$.\\
+	By subadditivity of outer measure,
+	\begin{align*}
+		m^*(G)\le m^*(\mathcal{O}_n)=m^*(\bigcup_{k=1}^\infty (I_n)_k)\le\sum_{k=1}^\infty\ell(I_k)<m^*(E)+1/n,
+	\end{align*}
+	so that $m^*(G)<m^*(E)+1/n\implies m^*(G)\le m^*(E)$.
+	By subadditivity, $E\subseteq G$ implies we also have $m^*(E)\le m^*(G)$, and so $m^*(E)=m^*(G)$.\\
+	Now, we know that the outer measure is nonnegative by monotonicity, so we have the inequality $m^*(G\setminus E)\ge0$.\\
+	By Theorem 11 (ii), $m^*(G\setminus E)=0\iff E$ is measurable, so we must have $m^*(G\setminus E)>0$.
 \end{enumerate}
 
 % 2.7
