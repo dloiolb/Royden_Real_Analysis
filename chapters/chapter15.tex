@@ -1,7 +1,74 @@
 % Chapter 15
 \chapter{Compactness Regained: The Weak Topology}
 
+% 15.1
 \section{Alaoglu's Extension of Helley's Theorem}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{0}
+    \item For $X$ a normed linear space with closed unit ball $B$, suppose the function $f:B\to[-1,1]$ has the property that whenever $u,v,u+v,\lambda u$ belong to $B$, $f(u+v)=f(u)+f(v)$ and $f(\lambda u)=\lambda f(u)$.
+    Show that $f$ is the restriction to $B$ of a linear functional on all of $X$ which belongs to the closed unit ball of $X^*$.
+    \item Let $X$ be a normed linear space and $K$ be a bounded convex weak-$*$ closed subset of $X^*$. Show that $K$ possesses an extreme point.
+    \item Show that any nonempty weakly open set in an infinite dimensional normed linear spae is unbounded with respect to the norm.
+    \item Use the Baire Category Theorem and the preceding problem to show that the weak topology on an infinite dimensional Banach space is not metrizable by a complete metric.
+    \item Is every Banach space isomorphic to the dual of a Banach space?
+\end{enumerate}
+
+% 15.2
 \section{Reflexivity and Weak Compactness: Kakutani's Theorem}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{5}
+    \item Show that every weakly compact subset of a normed linear space is bounded with respect to the norm.
+    \item Show that the closed unit ball $B^*$ of the dual $X^*$ of a Banach space $X$ has an extreme point.
+    \item Let $\mathcal{T}_1$ and $\mathcal{T}_2$ be two compact, Hausdorff topologies on a set $\mathcal{S}$ for which $\mathcal{T}_1\subseteq\mathcal{T}_2$. Show that $\mathcal{T}_1=\mathcal{T}_2$.
+    \item Let $X$ be a normed linear space containing the subspace $Y$. For $A\subseteq Y$, show that the weak topology on $A$ induced by $Y^*$ is the same as the topology $A$ inherits as a subspace of $X$ with its weak topology.
+    \item Argue as follows to show that q Banach space $X$ is reflexive iff its dual space $X^*$ is reflexive.
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item If $X$ is reflexive, show that the weak and weak-$*$ topologies on $B^*$ are the same, and infer from this that $X^*$ is reflexive.
+        \item If $X^*$ is reflexive, use part (i) and Proposition 15 of Chapter 14 to show that $X$ is reflexive.
+    \end{enumerate}
+    \item For $X$ a Banach space, by the preceding problem, if $X$ is reflexive, then so is $X^*$. Conclude that $X$ is not reflexive if there is a closed subspace of $X^*$ that is not reflexive.
+    Let $K$ be an infinite compact Hausdorff space and $\{x_n\}$ an enumeration of a countably infinite subset of $K$. Define the operator $T:l^1\to[C(K)]^*$ by
+    \[
+        [T(\{n_k\})](f)=\sum_{k=1}^\infty \eta_k\cdot f(x_k)\text{ for all }\{\eta_k\}\in l^1\text{ and }f\in C(k).
+    \]
+    Show that $T$ is an isometry and therefore, since $l^1$ is not reflexive, neither is $T(l^1)$ and therefore neither is $C(K)$. Use a dimension counting argument to show that $C(K)$ is reflexive if $K$ is a finite set.
+    \item If $Y$ is a linear subspace of a Banach space $X$, we define the \textit{annihilator} $Y^\perp$ to be the subspace of $X^*$ consisting of those $\psi\in X^*$ for which $\psi=0$ on $Y$.
+    If $Y$ is a subspace of $X^*$, we define $Y^0$ to be the subspace of vectors in $X$ for which $\psi(x)=0$ for all $\psi\in Y$.
+    \begin{enumerate}[label=(\roman*),align=left]
+        \item Show that $Y^\perp$ is a closed linear subspace of $X^*$.
+        \item Show that $(Y^\perp)^0=\overline Y$.
+        \item If $X$ is reflexive and $Y$ is a subspace of $X^*$, show that $Y^\perp=J(Y^0)$.
+    \end{enumerate}
+\end{enumerate}
+
+% 15.3
 \section{Compactness and Weak Sequential Compactness: The Eberlein-\v Smulian Theorem}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{12}
+    \item In a general topological space that is not metrizable a sequence may converge to more than one point. Show that this cannot occur for the $W$-weak topology on a normed linear space $X$, where $W$ is a subspace of $X^*$ that separates points in $X$.
+    \item Show that there is a bounded sequence in $L^\infty[0,1]$ that fails to have a weakly convergent subsequence. Show that the closed unit ball of $C[a,b]$ is not weakly compact.
+    \item Let $K$ be a compact metric space with infinitely many points. Show that there is a bounded sequence in $C(K)$ that fails to have a weakly convergent subsequence (see Problem 11), but every bounded sequence of continuous linear functionals on $C(K)$ has a subsequence that converges pointwise to a continuous linear functional on $C(K)$.
+\end{enumerate}
+
+% 15.4
 \section{Metrizability of Weak Topologies}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{15}
+    \item Show that the dual of an infinite dimensional normed linear space also is infinite dimensional.
+    \item Complete the last step of the proof of Theorem 10 by showing that the inequalities (12) imply that the metric $\rho$ induces the $W$-weak topology.
+    \item Let $X$ be a Banach space, $W$ a closed subspace of its dual $X^*$, and $\psi_0$ belong to $X^*\setminus W$.
+    Show that if either $W$ is finite dimensional or $X$ is reflexive, then there is a vector $x_0$ in $X$ for which $\psi_0(x_0)\neq0$ but $\psi(x_0)=0$ for all $\psi\in W$.
+    Exhibit an example of an infinite dimensional closed subspace $W$ of $X^*$ for which this separation property fails.
+\end{enumerate}

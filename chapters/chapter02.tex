@@ -1078,14 +1078,14 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\item 
 	\begin{enumerate}[label=(\roman*),align=left]
 		\item Show that rational equivalence defines an equivalence relation on any set.\\
-		Let $X$ be any set and define $x\sim y$ when $x-y\in\mathbb{Q}$ for $x,y\in X$.
+		\\Let $X$ be any set and define $x\sim y$ when $x-y\in\mathbb{Q}$ for $x,y\in X$.
 		\begin{enumerate}
 			\item $x-x=0\in\mathbb{Q}\iff x\sim x$ for all $x\in X$.
 			\item $x\sim y \iff x-y=q \in\mathbb{Q}\iff y-x=-q\in\mathbb{Q}\iff y\sim x$ for all $x,y\in X$.
 			\item $x\sim y,y\sim z \iff x-y=q\in\mathbb{Q},y-z=q'\in\mathbb{Q}\iff x-z=x-y+y-z=q+q'\in\mathbb{Q}\iff x\sim z$ for all $x,y,z\in X$.
 		\end{enumerate}
 		\item Explicitly find a choice set for the rational equivalence relation on $\mathbb{Q}$.\\
-		(For any nonempty set $E$ of real numbers, we define two points in $E$ to be \textbf{rationally equivalent} provided their difference belongs to $\mathbb{Q}$. By a \textbf{choice set} for the rational equivalence relation on $E$ we mean a set $\mathcal{C}_E$ consisting of exactly one member of each equivalence class.)
+		\\(For any nonempty set $E$ of real numbers, we define two points in $E$ to be \textbf{rationally equivalent} provided their difference belongs to $\mathbb{Q}$. By a \textbf{choice set} for the rational equivalence relation on $E$ we mean a set $\mathcal{C}_E$ consisting of exactly one member of each equivalence class.)
 		Therefore for the nonempty set $\mathbb{Q}$, we can choose a choice set $\mathcal{C}_{\mathbb{Q}}=\{q\}$ for any $q\in\mathbb{Q}$.
 		\item Define two numbers to be irrationally equivalent provided their difference is irrational or zero. Is this an equivalence relation on $\mathbb{R}$? Is this an equivalence relation on $\mathbb{Q}$?\\
 		\begin{enumerate}
@@ -1102,7 +1102,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 		An equivalence relation on $\mathbb{Q}$.
 	\end{enumerate}
 	\item Show that any choice set for the rational equivalence relation on a set of positive outer measure must be uncountably infinite.\\
-	Let $E$ be a set of positive outer measure.
+	\\Let $E$ be a set of positive outer measure.
 	Suppose there exists a choice set $\mathcal{C}_E$ for the rational equivalence relation on $E$ such that $\mathcal{C}_E$ is countable. 
 	All countable sets have outer measure zero, so $m^*(\mathcal{C}_E)=0$.
 	Because we know $E\subseteq\bigcup_{\lambda\in\mathbb{Q}}(\lambda+\mathcal{C}_E)$, by monotonicity, subadditivity, and translation invariance of outer measure,
@@ -1111,10 +1111,10 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\]
 	and we have a contradiction to the fact that $m^*(E)>0$.
 	\item Justify the assertion in the proof of Vitali's Theorem that it suffices to consider the case that $E$ is bounded.\\
-	(Vitali: Any set of real numbers with positive outer measure contains a subset that fails to be measurable.)
+	\\(Vitali: Any set of real numbers with positive outer measure contains a subset that fails to be measurable.)
 	By Problem 14, we showed that every set of positive outer measure $E$ contains a bounded subset $A\subseteq E$ of positive outer measure. Therefore if there exists a subset $S\subseteq A$ that fails to be measurable, then $S \subseteq A\subseteq E$ is a subset that fails to be measurable.
 	\item Does Lemma 16 remain true if $\Lambda$ is allowed to be finite or to be uncountably infinite? Does it remain true if $\Lambda$ is allowed to be unbounded?\\
-	(Lemma 16: Let $E$ be a bounded measurable set of real numbers. Suppose there is a bounded, countably infinite set of real numbers $\Lambda$ for which the collection of translates of $E$, $\{\lambda+E\}_{\lambda\in\Lambda}$, is disjoint. Then $m(E)=0$.)\\
+	\\(Lemma 16: Let $E$ be a bounded measurable set of real numbers. Suppose there is a bounded, countably infinite set of real numbers $\Lambda$ for which the collection of translates of $E$, $\{\lambda+E\}_{\lambda\in\Lambda}$, is disjoint. Then $m(E)=0$.)\\
 	Consider the case $\Lambda=\{1,2\}$ is finite, and $E=(0,1)$. Then $\{\lambda+E\}_{\lambda\in\Lambda=\{1,2\}}=\{1+(0,1),2+(0,1)\}=\{(1,2),(2,3)\}$, which is a disjoint collection. However, $m(E)=1\neq0$.\\
 	If $\Lambda$ is uncountably infinite and satisfies that the translates are disjoint, then we can choose a countable subset of $\Lambda$ and thus Lemma 16 remains true.\\
 	Consider the case $\Lambda=\{1,2,3,\cdots\}$ is unbounded, and $E=(0,1)$. Then the collection of translates of $E$, $\{(1,2),(2,3),(3,4),\cdots\}$ is disjoint but $m(E)=1\neq0$.
@@ -1147,11 +1147,47 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{33}
-	\item Show that there is a continuous, strictly increasing function on the interval $[0,1]$ that maps a set of positive measure onto a set of measure zero.
-	\item Let $f$ be an increasing function on the open interval $I$. For $x_0\in I$ show that $f$ is continuous at $x_0$ iff there are sequences $\{a_n\}$ and $\{b_n\}$ in $I$ such that for each $n$, $a_n<x_0<b_n$, and $\lim_{n\to\infty}[f(b_n)-f(a_n)]=0$.
-	\item Let $f$ be a continuous function defined on $E$. Is it true that $f^{-1}(A)$ is always measurable if $A$ is measurable?
+	\item Show that there is a continuous, strictly increasing function on the interval $[0,1]$ that maps a set of positive measure onto a set of measure zero.\\
+	\\The function $\psi:[0,1]\to[0,2]$ defined by $\psi(x)=\varphi(x)+x$ maps the Cantor set $C\subseteq[0,1]$ onto a measurable set of positive measure.
+	That is, $m(C)=0$ and $m(\psi(C))>0$.
+	We can consider the inverse function $\psi^{-1}:[0,2]\to[0,1]$ restricted to $[0,1]$: $\psi^{-1}|_{[0,1]}:[0,1]\to[0,1]$.
+	Now consider the set $C'=C\cap[0,1]$. This set $C'$ is a measurable subset of $C$, a measurable set of measure zero, so by monotonicity of measure, $m(C')=0$.
+	Then the function has $\psi^{-1}|_{[0,1]}(\psi(C'))=C'$, where $m(\psi(C'))>0$ and $m(C')=0$, thus mapping the set $\psi(C')$ of positive measure* onto the set $C'$ of measure zero.\\
+	(*We know that  $m(\psi(C))>0$, but not shown that $m(\psi(C'))>0$ where $C'\subseteq C$.)
+	\item Let $f$ be an increasing function on the open interval $I$. For $x_0\in I$ show that $f$ is continuous at $x_0$ iff there are sequences $\{a_n\}$ and $\{b_n\}$ in $I$ such that for each $n$, $a_n<x_0<b_n$, and $\lim_{n\to\infty}[f(b_n)-f(a_n)]=0$.\\
+	\\Let $f$ be an increasing function on the open interval $I$ and let $x_0\in I$.\\
+	$(\implies)$ Suppose that $f$ is continuous at $x_0$.\\
+	Because $I$ is open, there exists an index $N$ such that for all $n\ge N$, we have that $(x_0-1/n,x_0+1/n)\subseteq I$.
+	Then for each $n\ge N$ we can choose $a_n\in(x_0-1/n,x_0)$ and $b_n\in(x_0,x_0+1/n)$, and for $n<N$ let $a_n=a_N$ and $b_n=b_N$, so that $a_n<x_0<b_n$ for all $n$.
+	Now, we have
+	\begin{align*}
+		x_0-1/n<a_n<x_0&\implies x_0-a_n<1/n,\\
+		x_0<b_n<x_0+1/n&\implies b_n-x_0<1/n,
+	\end{align*}
+	therefore $\lim_{n\to\infty} a_n = x_0$ and $\lim_{n\to\infty} b_n = x_0$.
+	Because $f$ is continuous and increasing, for all $\epsilon>0$, there exists the number $1/n>0$ such that
+	\begin{align*}
+	x_0-a_n<1/n&\implies f(x_0)-f(a_n)<\epsilon,\\
+	b_n-x_0<1/n&\implies f(b_n)-f(x_0)<\epsilon.
+	\end{align*}
+	(therefore $\lim_{n\to\infty} f(a_n) = f(x_0)$ and $\lim_{n\to\infty} f(b_n) = f(x_0)$.) We can write
+	\[
+		[f(b_n)-f(a_n)]=f(x_0)-f(a_n)+f(b_n)-f(x_0) <\epsilon+\epsilon=\epsilon'
+	\]
+	and so $\lim_{n\to\infty}[f(b_n)-f(a_n)]=0$.\\
+	\\$(\impliedby)$ Suppose that there exist sequences $\{a_n\}$,$\{b_n\}$ such that $a_n<x_0<b_n$ and $\lim_{n\to\infty}[f(b_n)-f(a_n)]=0$.\\
+	That is, for any $\epsilon>0$, there exists an index $N$ such that $f(b_n)-f(a_n)<\epsilon$ for all $n\ge N$.
+	\\Then $f(b_n)<f(a_n)+\epsilon$ and $f(b_n)-\epsilon<f(a_n)$.\\
+	Because $f$ is increasing, we have \[f(b_n)-\epsilon<f(a_n)<f(x_0)<f(b_n)<f(a_n)+\epsilon.\]
+	Then $f(x_0)-f(a_n)<\epsilon$ and $f(b_n)-f(x_0)<\epsilon$, which implies $\lim_{n\to\infty} f(a_n) = f(x_0)$ and $\lim_{n\to\infty} f(b_n) = f(x_0)$.\\
+	By monotonicity of $f$, we also have \[b_n-\epsilon<a_n<x_0<b_n<a_n+\epsilon.\]
+	Then $x_0-a_n<\epsilon$ and $b_n-x_0<\epsilon$, which implies $\lim_{n\to\infty} a_n= x_0$ and $\lim_{n\to\infty} b_n = x_0$.\\
+	Now, clearly we see that for any $\epsilon>0$, we have $x_0-a_n<\epsilon\iff f(x_0)-f(a_n)<\epsilon$, and $b_n-x_0<\epsilon\iff f(b_n)-f(x_0)<\epsilon$, and continuity at $x_0$ follows.
+	\item Let $f$ be a continuous function defined on $E$. Is it true that $f^{-1}(A)$ is always measurable if $A$ is measurable?\\
+	\\No, the function $\psi:[0,1]\to[0,2]$ defined by $\psi(x)=\varphi(x)+x$ maps a measurable set $A$, subset of the Cantor set, onto a nonmeasurable set $\psi(A)$. Define $f=\psi^{-1}$ so that $f^{-1}(A)=(\psi^{-1})^{-1}(A)$ is not measurable but $A$ is measurable.
 	\item Let the function $f:[a,b]\to\mathbb{R}$ be Lipschitz; that is, there is a constant $c\ge0$ such that for all $u,v\in[a,b]$, $|f(u)-f(v)|\le c|u-v|$.
-	Show that $f$ maps a set of measure zero onto a set of measure zero. Show that $f$ maps a $F_\sigma$ set onto an $F_\sigma$ set. Conclude that $f$ maps a measurable set to a measurable set.
+	Show that $f$ maps a set of measure zero onto a set of measure zero. Show that $f$ maps a $F_\sigma$ set onto an $F_\sigma$ set. Conclude that $f$ maps a measurable set to a measurable set.\\
+	
 	\item Let $F$ be the subset of $[0,1]$ constructed in the same manner as the Cantor set except that each of the intervals removed at the $n$th deletion stage has length $\alpha 3^{-n}$ with $0<\alpha<1$.
 	Show that $F$ is a closed set, $[0,1]\setminus F$ is dense in $[0,1]$, and $m(F)=1-\alpha$. Such a set $F$ is called a generalized Cantor set.
 	\item Show that there is an open set of real numbers that, contrary to intuition, has a boundary of positive measure. (Hint: consider the complement of the generalized Cantor set of the preceding problem.)
