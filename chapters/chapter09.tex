@@ -252,6 +252,10 @@ This is an equivalence relation that separates $X$ into a disjoint collection of
     \[
     \text{if }a\le b+c,\text{ then }\frac{a}{1+a}\le\frac{b}{1+b}+\frac{c}{1+c}.
     \]
+    Because $a\le b+c$, we see that $\frac{1}{1+b+c}\le\frac{1}{1+a}$, and $-\frac{1}{1+a}\le-\frac{1}{1+b+c}$ so
+    \begin{align*}
+        \frac{a}{1+a}&=1-\frac{1}{1+a}\le1-\frac{1}{1+b+c}=\frac{b+c}{1+b+c}=\frac{b}{1+b+c}+\frac{c}{1+b+c}\le\frac{b}{1+b}+\frac{c}{1+c}.
+    \end{align*}
     \item Let $E$ be a Lebesgue measurable set of real numbers that has finite measure and $X$ the set of Lebesgue measurable real-valued functions on $E$.
     For $f,g\in X$, define
     \[
@@ -259,11 +263,28 @@ This is an equivalence relation that separates $X$ into a disjoint collection of
     \]
     Use the preceding problem to show that this is a pseudometric on $X$. 
     Define two measurable functions to be equivalent provided they are equal a.e. on $E$.
-    Show that $\rho$ induces a metric on the collection of equivalence classes.
+    Show that $\rho$ induces a metric on the collection of equivalence classes.\\
+    \\Let $f,g,h\in X$. 
+    \\Then for all $x\in E$, we have the triangle inequality $|f(x)-g(x)|\le|f(x)-h(x)|+|h(x)-g(x)|$.
+    By Problem 6 and monotonicity and linearity of integration, we have
+    \[
+        \int_E\frac{|f-g|}{1+|f-g|}\le\int_E\frac{|f-h|}{1+|f-h|}+\int_E\frac{|h-g|}{1+|h-g|},
+    \]
+    Therefore $\rho(f,g)\le\rho(f,h)+\rho(h,g)$ and (iv) holds.\\
+    Clearly $\rho(f,g)\ge0$ is true so (i) holds.\\
+    We also have $\rho(f,g)=\int_E\frac{|f-g|}{1+|f-g|}=\int_E\frac{|g-h|}{1+|g-h|}=\rho(g,f)$ so (iii) holds.\\
+    However, (ii) does not hold. We can consider two functions $f,g\in X$ such that $f=g$ on $E\setminus E_0$, where $m(E_0)=0$.
+    Then $ \rho(f,g)=\int_E\frac{|f-g|}{1+|f-g|}= \int_{E\setminus E_0}\frac{|f-f|}{1+|f-f|}=0$ but $f\neq g$.\\
+    If we consider defining the equivalence 
+    \[
+        f\cong g\text{ when }f=g \text{ on }E\setminus E_0\text{ where }m(E_0)=0,
+    \]
+    Then $\rho$ now induces a metric on the collection of equivalence classes $X/\cong$, because we now have $ \rho(f,g)=0\iff f\cong g$.
     \item For $0<p<1$, show that 
     \[
     (a+b)^p\le a^p+b^p\text{ for all }a,b\ge0.    
-    \]\
+    \]
+
     \item For $E$ a Lebesgue measurable set of real numbers, $0<p<1$, and $g,h$ Lebesgue measurable functions on $E$ that have integrable $p^{th}$ powers, define
     \[
     \rho_p(h,g)=\int_E|g-h|^p.    
