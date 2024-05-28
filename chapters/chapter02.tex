@@ -1159,7 +1159,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	$(\implies)$ Suppose that $f$ is continuous at $x_0$.\\
 	Because $I$ is open, there exists an index $N$ such that for all $n\ge N$, we have that $(x_0-1/n,x_0+1/n)\subseteq I$.
 	Then for each $n\ge N$ we can choose $a_n\in(x_0-1/n,x_0)$ and $b_n\in(x_0,x_0+1/n)$, and for $n<N$ let $a_n=a_N$ and $b_n=b_N$, so that $a_n<x_0<b_n$ for all $n$.
-	Now, we have
+	Now,we have
 	\begin{align*}
 		x_0-1/n<a_n<x_0&\implies x_0-a_n<1/n,\\
 		x_0<b_n<x_0+1/n&\implies b_n-x_0<1/n,
@@ -1187,12 +1187,113 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\\No, the function $\psi:[0,1]\to[0,2]$ defined by $\psi(x)=\varphi(x)+x$ maps a measurable set $A$, subset of the Cantor set, onto a nonmeasurable set $\psi(A)$. Define $f=\psi^{-1}$ so that $f^{-1}(A)=(\psi^{-1})^{-1}(A)$ is not measurable but $A$ is measurable.
 	\item Let the function $f:[a,b]\to\mathbb{R}$ be Lipschitz; that is, there is a constant $c\ge0$ such that for all $u,v\in[a,b]$, $|f(u)-f(v)|\le c|u-v|$.
 	Show that $f$ maps a set of measure zero onto a set of measure zero. Show that $f$ maps a $F_\sigma$ set onto an $F_\sigma$ set. Conclude that $f$ maps a measurable set to a measurable set.\\
-	
+	\\Let $f$ be a Lipschitz function on the interval $I$. Clearly $f$ is also continuous.\\
+	Let $E\subseteq I$ be a set of measure zero; that is, $m^*(E)=m(E)=0$.
+	By definition of infimum, for any $\epsilon>0$, there exists a countable collection of open intervals $\{I_k\}_{k=1}^\infty$, $I_k=(a_k,b_k)$, such that $E\subseteq\bigcup_{k=1}^\infty I_k$ and 
+	\[
+		0\le \sum_{k=1}^\infty \ell(I_k)<0+\frac{\epsilon}{c}.
+	\]
+	We also have that $E\subseteq\bigcup_{k=1}^\infty I_k\implies f(E)\subseteq f(\bigcup_{k=1}^\infty I_k)=\bigcup_{k=1}^\infty f(I_k)$.
+	\\Because $f$ is Lipschitz, 
+	\\Also, by Chapter 1 Problem 54, Because $I_k$ is an interval, the continuous real-valued function $f$ on $I_k$ has an interval as its image; that is, $f(I_k)$ is an interval.
+	Then there exists some $u_k,v_k\in(a,b)$ such that $f(I_k)=(f(u_k),f(v_k))$ and $m(f(I_k))=f(v_k)-f(u_k)$. Then because $f$ is Lipschitz, $|f(v_k)-f(u_k)|\le c|v_k-u_k|$ for all $k$.
+	\begin{align*}
+		m(f(E))&\le	m(\bigcup_{k=1}^\infty f(I_k))&&\text{ by monotonicity}\\
+		&\le \sum_{k=1}^\infty m(f(I_k))&&\text{ by subadditivity}\\
+		&=\sum_{k=1}^\infty m(f(v_k)-f(u_k))\\
+		&\le \sum_{k=1}^\infty c|v_k-u_k|&&\text{ because $f$ is Lipschitz}\\
+		&\le\sum_{k=1}^\infty c|b_k-a_k|&&\text{ because }(u_k,v_k)\subseteq(a,b)\\
+		&= \sum_{k=1}^\infty c\ell(I_k)\\
+		&<\epsilon.
+	\end{align*}
+	Therefore $m(f(E))=0$.\\
 	\item Let $F$ be the subset of $[0,1]$ constructed in the same manner as the Cantor set except that each of the intervals removed at the $n$th deletion stage has length $\alpha 3^{-n}$ with $0<\alpha<1$.
-	Show that $F$ is a closed set, $[0,1]\setminus F$ is dense in $[0,1]$, and $m(F)=1-\alpha$. Such a set $F$ is called a generalized Cantor set.
-	\item Show that there is an open set of real numbers that, contrary to intuition, has a boundary of positive measure. (Hint: consider the complement of the generalized Cantor set of the preceding problem.)
-	\item A subset $A$ of $\mathbb{R}$ is said to be \textbf{nowhere dense} in $\mathbb{R}$ provided that every open set $\mathcal{O}$ has a non-empty open subset that is disjoint from $A$. Show that the Cantor set is nowhere dense in $\mathbb{R}$.
-	\item Show that a strictly increasing function that is defined on an interval has a continuous inverse.
-	\item Let $f$ be a continuous function and $B$ be a Borel set. Show that $f^{-1}(B)$ is a Borel set. (Hint: the collection of sets $E$ for which $f^{-1}(E)$ is Borel is a $\sigma$-algebra containing the open sets.)
-	\item Use the preceding two problems to show that a continuous strictly increasing function that is defined on an interval maps Borel sets to Borel sets.
+	Show that $F$ is a closed set, $[0,1]\setminus F$ is dense in $[0,1]$, and $m(F)=1-\alpha$. Such a set $F$ is called a generalized Cantor set.\\
+	\\Define $F$ to be constructed in the same manner as the Cantor set, with 
+	\[
+		F=\bigcap_{k=1}^\infty F_k,	
+	\]
+	where $\{F_k\}_{k=1}^\infty$ is a descending sequence of closed sets, and each $F_k$ is a disjoint union of $2^k$ closed intervals, each of length $\alpha/3^k$.
+	\\It can clearly be seen that $F$ is a closed set because it is an intersection of closed sets.
+	\\Now, for any point $x\in[0,1]$, there exists an index $k$ such that $x\notin F_k$; that is, $x\in F_k^c$, which is an open set. Therefore we can construct sequences in $([0,1]\setminus F)\setminus\{x\}$ that converge to $x$.
+	\\Each $F_k$ is the disjoint union of $2^k$ closed intervals each of length $\alpha/3^k$, so at each step we remove $2^{k-1}$ open intervals of length $\alpha/3^k$:
+	\begin{align*}
+		m(F_1)&=1-\alpha/3\\
+		m(F_2)&=1-\alpha/3-2\alpha/3^2\\
+		m(F_3)&=1-\alpha/3-2\alpha/3^2-2^2\alpha/3^3\\
+		\vdots\\
+		m(F_n)&=1-\sum_{k=1}^n2^{k-1}\alpha/3^k
+	\end{align*}
+	Then by the continuity of measure, we have \[m(\bigcap_{k=1}^\infty F_k)=\lim_{n\to\infty}m(F_n)=\lim_{n\to\infty}(1-\sum_{k=1}^n2^{k-1}\alpha/3^k).\]
+	We can see that
+	\begin{align*}
+		\lim_{n\to\infty}\sum_{k=1}^n2^{k-1}\alpha/3^k&=\alpha/3\lim_{n\to\infty}\sum_{k=1}^n(\frac{2}{3})^{k-1}\\
+		&=\alpha/3\lim_{n\to\infty}\sum_{k=0}^{n-1}(\frac{2}{3})^{k}\\
+		&=\alpha/3\lim_{n\to\infty}\frac{1-(2/3)^n}{1-(2/3)}\\
+		&=\alpha/3\frac{1}{1-(2/3)}\\
+		&=\alpha/3(\frac{1}{1/3})\\
+		&=\alpha.
+	\end{align*}
+	Therefore $m(F)=m(\bigcap_{k=1}^\infty F_k)=1-\alpha$.
+	\item Show that there is an open set of real numbers that, contrary to intuition, has a boundary of positive measure. (Hint: consider the complement of the generalized Cantor set of the preceding problem.)\\
+	\\We have $F\cup(F^c\cap[0,1])=[0,1]$, and $m(F)=1-\alpha$, and $m(F^c\cap[0,1])=\alpha$...
+	\item A subset $A$ of $\mathbb{R}$ is said to be \textbf{nowhere dense} in $\mathbb{R}$ provided that every open set $\mathcal{O}$ has a non-empty open subset that is disjoint from $A$. Show that the Cantor set is nowhere dense in $\mathbb{R}$.\\
+	\\The Cantor set $C\subseteq[0,1$] is defined to be the countable intersection of sets $C_k$, where $C_k$ is the disjoint union of $2^k$ closed intervals of length $1/3^k$ each.
+	From Ch1 Proposition 9, we know that every open set is the countable disjoint union of open intervals. 
+	Therefore we need only prove Problem 40 for any open interval.
+	\\Consider any open interval $(a,b)\in\mathbb{R}$. 
+	\\In the case that there exists an index $k$ such that $(a,b)\in C_k^c$, then the proof is done:
+	\\Ex: $(a,b)=(3/18,4/18)$. Then for $k=2$, we have 
+	\[
+		C_2=[0,1/9]\cup[2/9,1/3]\cup[2/3,7/9]\cup[8/9,1],	
+	\]
+	so that
+	\[
+		(3/18,4/18)\subseteq C_2^c=(1/9,2/9)\cup(1/3,2/3)\cup(7/9,8/9)=(2/18,4/18)\cup(1/3,2/3)\cup(7/9,8/9).	
+	\] 
+	In the case that for all indices $k$ we have that $(a,b)\in C_k$, then simply choose an index far enough so that one of the "open middle third" removal generated from $C_k$ is a subset of $(a,b)$.
+	\\Ex: $(a,b)=(6/10,7/10)\ni 2/3$ and $2/3\in C$ so $(a,b)\cap C\neq\emptyset$. Then for $k=1$, we have
+	\[
+		(6/10,2/3)\subseteq(a,b)\text{ and } (6/10,2/3)\notin C_1=[0,1/3]\cup[2/3,1].
+	\]
+	Ex: $(a,b)=(2/3,20/27$. Then for $k=3$, we have
+	\[
+		C_3=[0,\frac{1}{27}]\cup[\frac{2}{27},\frac{1}{9}]\cup[\frac{2}{9},\frac{7}{27}]\cup[\frac{8}{27},\frac{1}{3}]\cup[\frac{2}{3},\frac{19}{27}]\cup[\frac{20}{27},\frac{7}{9}]\cup[\frac{8}{9},\frac{25}{27}]\cup[\frac{26}{27},1].
+	\]
+	so that
+	\[
+		(19/27,20/27)\subseteq(a,b)\text{ and } (19/27,20/27)\notin C_3.
+	\]
+	\item Show that a strictly increasing function that is defined on an interval has a continuous inverse.\\
+	\\Let $f$ be a strictly increasing function on the interval $I$. Then for $x,y\in I$ such that $x<y$, we have $f(x)<f(y)$.
+	\\Then $f$ is injective because 
+	\[
+		x\neq y\implies x<y\text{ or }x>y\implies f(x)<f(y)\text{ or }f(x)>f(y)\implies f(x)\neq f(y).
+	\]
+	Therefore the inverse $f^{-1}:im(f)\to I$ exists:
+	\[
+		f^{-1}(x)\neq f^{-1}(y)\implies f^{-1}(f(x))\neq f^{-1}(f(y))\implies x\neq y,
+	\]
+	that is, $f^{-1}$ is a function because $x=y\implies f^{-1}(x)= f^{-1}(y)$ for all $x,y\in im(f)$.\\
+	Let $x\in I$ such that $a_n,b_n\in I$ with $a_n < x < b_n$ and $\lim_{n\to\infty}a_n=x$, $\lim_{n\to\infty}b_n=x$. 
+	Then clearly, $\lim_{n\to\infty}[b_n-a_n]=0$.
+	Then because $f$ is strictly increasing, $f(a_n) < f(x) < f(b_n)$.\\
+	Now, we have the sequences $f(a_n)$ and $f(b_n)$ in $im(f)$ such that for each $n$, $f(a_n) < f(x) < f(b_n)$, and $\lim_{n\to\infty}[f^{-1}(f(b_n))-f^{-1}(f(a_n))]=\lim_{n\to\infty}[b_n-a_n]=0$. The results from Problem 35 tells us that $f^{-1}$ is continuous at $f(x)$.
+	\item Let $f$ be a continuous function and $B$ be a Borel set. Show that $f^{-1}(B)$ is a Borel set. (Hint: the collection of sets $E$ for which $f^{-1}(E)$ is Borel is a $\sigma$-algebra containing the open sets.)\\
+	\\Let $S=\{E\ |\ f^{-1}(E)\text{ is Borel}\}$.\\
+	To show that $S$ is a $\sigma$-algebra, know that the Borel sets is a $\sigma$-algebra.\\
+	Observe that:
+	\begin{enumerate}[label=(\roman*),align=left]
+		\item $f^{-1}(\emptyset)=\emptyset\implies\emptyset\in S$.
+		\item $E\in S\implies f^{-1}(E)\text{ is Borel }\implies f^{-1}(E)^c=f^{-1}(E^c)\text{ is Borel }\implies E^c\in S$.
+		\item $E_k\in S\implies f^{-1}(E_k)\text{ is Borel }\implies\bigcup_{k=1}^\infty f^{-1}(E_k)=f^{-1}(\bigcup_{k=1}^\infty E_k)\text{ is Borel }\implies \bigcup_{k=1}^\infty E_k\in S$.
+	\end{enumerate}
+	Also, any open set $\mathcal{O}$ is in $S$ because $f^{-1}(\mathcal{O})$ is open and thus Borel.
+	Thus $S$ is a $\sigma$-algebra containing the open sets; that is, the Borel $\sigma$-algebra is a subset of $S$.
+	Therefore for any Borel set $B$, $B\in S$ and thus $f^{-1}(B)$ is Borel.
+	\item Use the preceding two problems to show that a continuous strictly increasing function that is defined on an interval maps Borel sets to Borel sets.\\
+	\\Let $I$ be an interval and $f:I\to\mathbb{R}$ be a continuous strictly increasing function.
+	\\By Problem 41, we showed that $f^{-1}:im(f)\to I$ exists and is continuous.
+	\\Let $B\in I$ be any Borel set. 
+	By Problem 42, $(f^{-1})^{-1}(B)=f(B)$ is a Borel set.
 \end{enumerate}	

@@ -1186,7 +1186,13 @@ Let $\{a_n \}$ and $\{b_n \}$ be sequences of real numbers.
 	Then there exists a sequence $x_n\in f^{-1}(B)$ that converges to $x \notin f^{-1}(B)$.
 	However, by continuity of $f$, $f(x_n)\in B$ converges to $f(x)\notin B$.
 	This implies that $B$ does not contain all its limit points, and thus $B$ is not closed, a contradiction.
-	Therefore $f^{-1}(B)$ must be closed.
+	Therefore $f^{-1}(B)$ must be closed.\\
+	Another way:\\
+	We have, for any open set $\mathcal{O}\in\mathbb{R}$,
+	\[
+		\mathbb{R}=dom(f)=f^{-1}(\mathbb{R})=f^{-1}(\mathcal{O}\cup\mathcal{O}^c)=f^{-1}(\mathcal{O})\cup f^{-1}(\mathcal{O}^c).
+	\]
+	Because $f^{-1}(\mathcal{O})$ is open in $\mathbb{R}$, then $f^{-1}(\mathcal{O}^c)$ is closed in $\mathbb{R}$.   
 	\item A sequence $\{f_n\}$ of real-valued functions defined on a set $E$ is said to converge uniformly on $E$ to a function $f$ iff given $\epsilon >0$, there is an $N$ such that for all $x \in E$ and all $n \ge N$, we have $|f_n(x) - f(x)| < \epsilon$. Let $\{f_n\}$ be a sequence of continuous functions defined on a set $E$. Prove that if $\{f_n\}$ converges uniformly to $f$ on $E$, then $f$ is continuous on $E$.\\
 	We want to show that uniform convergence preserves continuity.\\
 	Fix $\epsilon>0$.\\
