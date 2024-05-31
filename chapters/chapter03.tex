@@ -282,6 +282,109 @@
 
 % 3.2
 \section{Sequential Pointwise Limits and Simple Approximation}
+\begin{flushleft}
+    \begin{namedthm*}{Definition}
+        For a sequence $\{f_n\}$ of functions with common domain $E$, a function $f$ on $E$, and a subset $A$ of $E$, we say that  
+        \begin{enumerate}[label=(\roman*),align=left]
+            \item The sequence $\{f_n\}$ converges to $f$ pointwise on $A$ provided
+            \[
+                \lim_{n\to\infty}f_n(x)=f(x)\text{ for all }x\in A.
+            \]
+            a.k.a.
+            \[
+                \forall x\in A, \forall\epsilon>0, \exists N_x\in\mathbb{N}:\forall n\ge N_x, |f_n(x)-f(x)|<\epsilon.
+            \]
+            \item The sequence $\{f_n\}$ converges to $f$ pointwise a.e. on $A$ provided it converges to $f$ pointwise on $A\setminus B$, where $m(B)=0$.
+            \item The sequence $\{f_n\}$ converges to $f$ uniformly on $A$ provided for each $\epsilon>0$, there is an index $N$ for which
+            \[
+                |f-f_n|<\epsilon\text{ on }A\text{ for all }n\ge N.    
+            \]
+            a.k.a.
+            \[
+                \forall\epsilon>0, \exists N\in\mathbb{N}:\forall n\ge N,\forall x\in A, |f_n(x)-f(x)|<\epsilon.
+            \]
+        \end{enumerate}
+    \end{namedthm*}
+
+    \begin{namedthm*}{Theorem}
+        Let $A\subseteq\mathbb{R}^n$ and suppose $\{f_i\}$ is a sequence of functions $f_i:A\to\mathbb{R}^m$ such that 
+        \begin{enumerate}[label=(\roman*),align=left]
+            \item $\{f_i\}\to f$ uniformly on $A$
+            \item Each $f_i$ is uniformly continuous on $A$.
+        \end{enumerate}
+        Then $f:A\to\mathbb{R}^m$ is uniformly continuous on $A$.
+    \end{namedthm*}
+    \begin{proof}
+        Fix $\epsilon>0$.\\
+        By (i), there exists an $N\in\mathbb{N}$ such that for all $n\ge N$, for all $x\in A$, $\|f_n(x)-f(x)\|<\epsilon/3$.
+        \\Now, fix $N$ and fix $k\ge N$.\\
+        By (ii), there exists a $\delta>0$ such that for all $x,y\in A$ with $\|x-y\|<\delta$, then $\|f_k(x)-f_k(y)\|<\epsilon/3$.
+        \\Therefore we have
+        \begin{align*}
+            \|f(x)-f(y)\|&=\|f(x)-f_k(x)+f_k(x)-f_k(y)+f_k(y)-f(y)\|\\
+            &\le\|f(x)-f_k(x)\|+\|f_k(x)-f_k(y)\|+\|f_k(y)-f(y)\|\\
+            &<\frac{\epsilon}{3}+\frac{\epsilon}{3}+\frac{\epsilon}{3}\\
+            &=\epsilon.
+        \end{align*}
+        Therefore for all $\epsilon>0$, there exists a $\delta>0$ such that for all $x,y \in A$ with $\|x-y\|<\delta$, then $\|f(x)-f(y)\|<\epsilon$.
+        Thus $f$ is uniformly continuous on $A$.\\
+        A similar proof can show this for a sequence of continuous functions converging uniformly to a continuous function.
+    \end{proof}
+
+    \begin{namedthm*}{Example}
+        Consider the sequence of continuous functions $\{f_n\}_{n=2}^\infty:[0,1]\to\mathbb{R}$, defined by
+        \[ 
+		f_n(x) =
+            \begin{cases} 
+                \frac{n-0}{1/n-0}x& \text{ if } x \in [0,\frac{1}{n}]\\
+                \frac{0-n}{2/n-1/n}(x-\frac{1}{n})+n & \text{ if } x \in (\frac{1}{n},\frac{2}{n}]\\
+                0& \text{ if } x \in (\frac{2}{n},1]
+            \end{cases}
+            =
+            \begin{cases} 
+                n^2x& \text{ if } x \in [0,\frac{1}{n}]\\
+                -n^2(x-\frac{1}{n})+n & \text{ if } x \in (\frac{1}{n},\frac{2}{n}]\\
+                0& \text{ if } x \in (\frac{2}{n},1]
+            \end{cases}
+	    \]
+        (Each $f_n$ is a triangle-shaped function that achieves its max $f(1/n)=n$ and base corners $f(0)=0$ and $f(2/n)=0$.)\\
+        In addition, consider the continuous function $f:[0,1]\to\mathbb{R}$ defined by $f(x)=0$ for all $x\in[0,1]$.\\
+        The sequence $\{f_n\}$ converges to $f$ pointwise but not uniformly on $[0,1]$.
+        \\To see this, for any $\epsilon>0$, and for any $x\in[0,1]$, there exists an index $N_x\in\mathbb{N}$ such that for all $n\ge N_x$, we have $\frac{2}{n}<x$, that is, $x\in(\frac{2}{n},1]$, and so $|f_n(x)-f(x)|=0-0=0<\epsilon$.\\
+        Therefore the sequence converges pointwise.\\
+        To see that the sequence does not converge uniformly, we see that there exists an $\epsilon=1>0$ such that for all indices $N$, there exists an $n\ge N$ and the point $1/n$ such that $|f_n(1/n)-f(1/n)|=n-0=n>1$.
+    \end{namedthm*}
+    The pointwise limit of continuous functions may not be continuous.\\
+    The pointwise limit of Riemann integrable functions may not be Riemann integrable.
+    \begin{namedthm*}{Proposition 9}
+        Let $\{f_n\}$ be a sequence of measurable functions on $E$ that converges pointwise a.e. on $E$ to the function $f$.
+        Then $f$ is measurable.
+    \end{namedthm*}
+
+    If $A$ is any set, the \textbf{characteristic function} of $A$, $\chi_A$, is the function on $\mathbb{R}$ defined by 
+    \[
+        \chi_A=
+        \begin{cases}
+            1&x\in A\\
+            0&x\notin A
+        \end{cases}  
+    \]
+    The function $\chi_A$ is measurable iff the set $A$ is measurable:\\
+    $(\implies)$ Suppose $\chi_A$ is measurable.\\
+    Then for the real number $c=0$, the set $\{x\in\mathbb{R}\ |\ \chi_A(x)>0\}=A$ is measurable.\\
+    $(\impliedby)$ Suppose the set $A$ is measurable.\\
+    Then for any real number $c$, we have
+    \[
+        \{x\in\mathbb{R}\ |\ \chi_A(x)\in(c,\infty)\}=
+        \begin{cases}
+            \emptyset&c\ge1\\
+            A& 1>c\ge0\\
+            \mathbb{R}&0>c\\
+        \end{cases}
+    \]
+    Each of the sets $\emptyset$, $A$, and $\mathbb{R}$ are measurable, so $\{x\in\mathbb{R}\ |\ \chi_A(x)\in(c,\infty)\}$ is a measurable set and thus $\chi_A$ is a measurable function.\\
+    Thus the existence of a nonmeasurable set $E$ implies the existence of a nonmeasurable function $\chi_E$.
+\end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -315,8 +418,114 @@
     \begin{align*}
         \chi_{A\cap B}&=\chi_A\cdot\chi_B\\
         \chi_{A\cup B}&=\chi_A+\chi_B-\chi_A\cdot\chi_B\\
-        \chi_{A^c}&=1-\chi_A\\
+        \chi_{A^c}&=1-\chi_A
     \end{align*}
+    \\We can use DeMorgan's laws to see that
+    \[
+        \chi_{A\cap B}=
+        \begin{cases}
+            1&x\in A\cap B\\
+            0&x\notin A\cap B
+        \end{cases}  
+        =
+        \begin{cases}
+            1&x\in A\cap B\\
+            0&x\in A^c\cup B^c
+        \end{cases}
+        =
+        \begin{cases}
+            1&x\in A \text{ and }x\in B\\
+            0&x\notin A\text{ or }x\notin B
+        \end{cases} 
+    \]
+    Then for any $x\in\mathbb{R}$, we have
+    \begin{center}
+        \begin{tabular}{|c c c c|} 
+        \hline
+        $\chi_A(x)$  & $\chi_B(x)$ & $\chi_{A\cap B}(x)$ & $\chi_A(x)\cdot\chi_B(x)$ \\ [0.5ex] 
+        \hline\hline
+        0 & 0 & 0 & $0\cdot0=0$  \\ 
+        \hline
+        0 & 1 & 0 & $0\cdot1=0$   \\
+        \hline
+        1 & 0 & 0 & $1\cdot0=0$   \\
+        \hline
+        1 & 1 & 1 & $1\cdot1=1$ \\[1ex] 
+        \hline
+        \end{tabular}
+    \end{center}
+    Similarly see that
+    \[
+        \chi_{A\cup B}=
+        \begin{cases}
+            1&x\in A\cup B\\
+            0&x\notin A\cup B
+        \end{cases}  
+        =
+        \begin{cases}
+            1&x\in A\cup B\\
+            0&x\in A^c\cap B^c
+        \end{cases}
+        =
+        \begin{cases}
+            1&x\in A \text{ or }x\in B\\
+            0&x\notin A\text{ and }x\notin B
+        \end{cases} 
+    \]
+    Then for any $x\in\mathbb{R}$, we have
+    \begin{center}
+        \begin{tabular}{|c c c c|} 
+        \hline
+        $\chi_A(x)$  & $\chi_B(x)$ & $\chi_{A\cup B}(x)$ & $\chi_A(x)+\chi_B(x)-\chi_A(x)\cdot\chi_B(x)$ \\ [0.5ex] 
+        \hline\hline
+        0 & 0 & 0 & $0+0-0\cdot0=0$   \\ 
+        \hline
+        0 & 1 & 1 & $0+1-0\cdot1=1$ \\
+        \hline
+        1 & 0 & 1 & $1+0-1\cdot0=1$  \\
+        \hline
+        1 & 1 & 1 & $1+1-1\cdot1=1$ \\[1ex] 
+        \hline
+        \end{tabular}
+    \end{center}
+    Finally see that
+    \[
+        \chi_{A^c}=
+        \begin{cases}
+            1&x\in A^c\\
+            0&x\notin A^c
+        \end{cases}  
+        =
+        \begin{cases}
+            1&x\notin A\\
+            0&x\in A
+        \end{cases} 
+        =
+        \begin{cases}
+            1-0&x\notin A\\
+            1-1&x\in A
+        \end{cases} 
+        =
+        1-
+        \begin{cases}
+            0&x\notin A\\
+            1&x\in A
+        \end{cases} 
+        =
+        1-\chi_A.
+    \]
+    That is, for any $x\in\mathbb{R}$, we have
+    \begin{center}
+        \begin{tabular}{|c c c|} 
+        \hline
+        $\chi_{A}(x)$ & $\chi_{A^c}(x)$ & 1-$\chi_{A}(x)$ \\ [0.5ex] 
+        \hline\hline
+        1 & 0 & $1-1=0$  \\ 
+        \hline
+        0 & 1 & $1-0=1$ \\[1ex] 
+        \hline
+        \end{tabular}
+    \end{center}
     \item For a sequence $\{f_n\}$ of measurable functions with common domain $E$, show that each of the following functions is measurable:
     \begin{itemize}
         \item $\inf\{f_n\}$
