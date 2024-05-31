@@ -3,6 +3,86 @@
 
 % 3.1
 \section{Sums, Products, and Compositions}
+\begin{flushleft}
+    \begin{namedthm*}{Proposition 1}
+        Let the function $f$ have a measurable domain $E$. Then the following statements are equivalent:
+        \begin{enumerate}[label=(\roman*),align=left]
+            \item For each real number $c$, the set $\{x\in E\ |\ f(x)>c\}$ is measurable.
+            \item For each real number $c$, the set $\{x\in E\ |\ f(x)\ge c\}$ is measurable.
+            \item For each real number $c$, the set $\{x\in E\ |\ f(x)<c\}$ is measurable.
+            \item For each real number $c$, the set $\{x\in E\ |\ f(x)\le c\}$ is measurable.
+        \end{enumerate}
+        Each of these properties implies that for each extended real number $c$,
+        \begin{center}
+            the set $\{x\in E\ |\ f(x)= c\}$ is measurable.
+        \end{center}
+    \end{namedthm*}
+
+    \begin{namedthm*}{Definition}
+        An extended real-valued function $f$ defined on $E$ is said to be \textbf{Lebesgue measurable}, or simply \textbf{measurable}, provided its domain $E$ is measurable and it satisfies one of the four statements of Proposition 1.        
+    \end{namedthm*}
+
+\begin{namedthm*}{Proposition 2}
+    Let the real-valued function $f$ be defined on a measurable set $E$.
+    Then the function $f$ is measurable iff for each open set $\mathcal{O}$, the inverse image of $\mathcal{O}$ under f, $f^{-1}(\mathcal{O})=\{x\in E\ |\ f(x)\in\mathcal{O}\}$, is a measurable set.
+\end{namedthm*}
+\begin{proof}
+    Let $f:E\to\mathbb{R}$, where $E$ is a measurable set.\\
+    $(\implies)$ Suppose that $f$ is measurable.\\
+    Let $\mathcal{O}$ be open. Then by Chapter 1, Proposition 9, $\mathcal{O}$ can be written as the countable disjoint union of open intervals: $\mathcal{O}=\bigcup_{k=1}^\infty I_k$.
+    We can construct these intervals in the following form:
+    \[
+        I_k=(a_k,b_k)=(-\infty,b_k)\cap(a_k,\infty)  
+    \] 
+    Therefore we see that
+    \begin{align*}
+        f^{-1}(\mathcal{O})&=f^{-1}(\bigcup_{k=1}^\infty I_k)\\
+        &=f^{-1}(\bigcup_{k=1}^\infty (-\infty,b_k)\cap(a_k,\infty))\\
+        &=\bigcup_{k=1}^\infty f^{-1}((-\infty,b_k)\cap(a_k,\infty))\\
+        &=\bigcup_{k=1}^\infty f^{-1}(-\infty,b_k)\cap f^{-1}(a_k,\infty).
+    \end{align*}
+    Because $f$ is measurable, we see that $f^{-1}((-\infty,b_k))$ and $f^{-1}((a_k,\infty))$ are measurable sets, and countable union and intersection of measurable sets is also a measurable set, so $f^{-1}(\mathcal{O})$ is a measurable set.
+    \\$(\impliedby)$ Suppose that for each open set $\mathcal{O}$, $f^{-1}(\mathcal{O})$ is a measurable set.\\
+    Because for any real number $c$, the interval of the form $(c,\infty)$ is an open set, and therefore we have that the set $f^{-1}((c,\infty))=\{x\in E\ |\ f(x)\in(c,\infty)\}=\{x\in E\ |\ f(x)>c\}$ is measurable, which implies that $f$ is measurable.
+\end{proof}
+
+\begin{namedthm*}{Proposition 5}
+    Let $f$ be an extended real-valued function on the measurable set $E$.
+    \begin{enumerate}[label=(\roman*),align=right]
+        \item If $f$ is measurable on $E$ and $f=g$ a.e. on $E$, then $g$ is measurable on $E$.
+        \item For a measurable subset $D$ of $E$, $f$ is measurable on $E$ iff the restrictions of $f$ to $D$ and $E\setminus D$ are measurable.
+    \end{enumerate}
+\end{namedthm*}
+\begin{proof}
+    Let $f$ be an extended real-valued function on the measurable set $E$.
+    \begin{enumerate}[label=(\roman*),align=right]
+        \item Let $f$ be measurable on $E$ and $f=g$ a.e. on $E$.\\
+        Define $A=\{x\in E\ |\ f(x)\neq g(x)\}\subseteq E$, so that $f=g$ on $E\setminus A$, and $m(A)=0$.
+        \begin{align*}
+            \{x\in E\ |\ g(x)>c\}&=(\{x\in E\ |\ g(x)>c\}\cap[E\cap A])\cup(\{x\in E\ |\ g(x)>c\}\cap[E\cap A^c])\\
+            &=\{x\in A\ |\ g(x)>c\}\cup(\{x\in E\ |\ f(x)>c\}\cap[E\setminus A]).
+        \end{align*}
+        Now, $\{x\in A\ |\ g(x)>c\}\subseteq A$, and because $m(A)=0$, $\{x\in A\ |\ g(x)>c\}$ is measurable and has measure zero.
+        The set $\{x\in E\ |\ f(x)>c\}$ is measurable because $f$ is measurable, and $E\cap A^c$ is measurable because $E$ and $A$ (and thus $A^c$) are measurable.
+        Thus $\{x\in E\ |\ g(x)>c\}$ is measurable because it is the finite union and intersection of measurable sets; therefore $g$ is measurable on $E$.
+        \item Let $D$ be a measurable subset of $E$.\\
+        $(\implies)$ Suppose $f$ is measurable on $E$.\\
+        Then for any real number $c$, we see that 
+        \begin{align*}
+            \{x\in D\ |\ f|_{D}(x)>c\}&=\{x\in E\ |\ f(x)>c\}\cap[E\cap D],\\
+            \{x\in E\setminus D\ |\ f|_{E\setminus D}(x)>c\}&=\{x\in E\ |\ f(x)>c\}\cap[E\setminus D],
+        \end{align*}
+        where both are measurable because they are each intersections of measurable sets. Therefore the restrictions $f|_{D}$ and $f|_{E\setminus D}$ are measurable.\\
+        $(\impliedby)$ Suppose the restrictions of $f$ to $D$ and $E\setminus D$ are measurable.\\
+        Then for any real number $c$,
+        \begin{align*}
+            \{x\in E\ |\ f(x)>c\}&=\{x\in D\ |\ f|_{D}(x)>c\}\cup\{x\in E\setminus D\ |\ f|_{E\setminus D}(x)>c\},
+        \end{align*}
+        which is measurable because it is a union of measurable sets.
+    \end{enumerate}
+\end{proof}
+
+\end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -10,7 +90,19 @@
 	\setcounter{enumi}{0}
 	\item Suppose $f$ and $g$ are continuous functions on $[a,b]$. Show that if $f=g$ a.e. on $[a,b]$, then, in fact, $f=g$ on $[a,b]$.
     Is a similar assertion true if $[a,b]$ is replaced by a general measurable set $E$?\\
-    \\hi
+    \\Let $f,g$ be continuous functions on $[a,b]$, where $f=g$ on $[a,b]\setminus E_0$, where $E_0$ is a subset of $[a,b]$ and $m(E_0)=0$.
+    \\Suppose that $E_0$ is nonempty.\\
+    Consider any point $x_0\in E_0\subseteq[a,b]$. For any $\epsilon>0$, there exists a $c\in(x_0-\epsilon,x_0+\epsilon)\cap[a,b]$ such that $f(c)=g(c)$, else we reach a contradiction because $m((x_0-\epsilon,x_0+\epsilon)\cap[a,b])\neq0$.
+    This means that we can construct a sequence $\{c_i\}_{i=1}^\infty$ that converges to $x_0$, where $f(c_i)=g(c_i)$ is defined for all $i$. 
+    However, because $\{c_i\}\to x_0$, by continuity of $f,g$, we have $\{f(c_i)\}\to f(x_0)$ and $\{g(c_i)\}\to g(x_0)$, and because $f(c_i)=g(c_i)$ for all $i$, the limit is unique; that is,
+    \[
+        |f(x_0)-g(x_0)|\le|f(x_0)-f(c_i)|+|f(c_i)-g(x_0)|<\epsilon,
+    \]
+    and $f(x_0)=g(x_0)$.
+    \\However, this is a contradiction to $f(x)\neq g(x)$ for all $x\in E_0$, and so $E_0=\emptyset$.\\
+    \\In the case that $[a,b]$ is replaced by a general measurable set $E$, the assertion is not true.
+    Consider the case where $E=\{a\}$, so that $f,g$ are continuous on $\{a\}$, and $f=g$ a.e. on $\{a\}$.
+    This only implies that $f=g$ on $E$ except for a set of measure zero. But $E$ is already of measure zero, so $f(a)\neq g(a)$ is possible, and $f\neq g$ on $E$.
     \item Let $D$ and $E$ be measurable sets and $f$ a function with domain $D\cup E$. We proved that $f$ is measurable on $D\cup E$ iff its restrictions to $D$ and $E$ are measurable.
     Is the same true if "measurable" is replaced by "continuous"?\\
     \\No; consider the function $f:[-1,1]\to\mathbb{R}$, where $[-1,1]=[-1,0)\cup[0,1]$, and we define
@@ -23,25 +115,169 @@
     \]
     Clearly we have a point of discontinuity at $x=0$, so $f$ is not continuous even though $f|_{[-1,0)}$ and $f|_{[0,1]}$ are continuous.
     \item Suppose a function $f$ has a measurable domain and is continuous except at a finite number of points.
-    Is $f$ necessarily measurable?
-    \item Suppose $f$ is a real-valued function on $\mathbb{R}$ such that $f^{-1}(c)$ is measurable for each number $c$. Is $f$ necessarily measurable?
-    \item Suppose the function $f$ is defined on a measurable set $E$ and $\{x\in E\ |\ f(x)>c\}$ is a measurable set for each rational number $c$. Is $f$ necessarily a measurable function?
-    \item Let $f$ be a function with measurable domain $D$. Show that $f$ is measurable iff the function $g$ defined on $\mathbb{R}$ by $g(x)=f(x)$ for $x\in D$ and $g(x)=0$ for $x\notin D$ is measurable.
-    \item Let the function $f$ be defined on a measurable set $E$. Show that $f$ is measurable iff for each borel set $A$, $f^{-1}(A)$ is measurable. (Hint: the collection of sets $A$ that have the property that $f^{-1}(A)$ is measurable is a $\sigma$-algebra.)
+    Is $f$ necessarily measurable?\\
+    \\Yes; let $f$ be a function on the measurable domain $E$, and suppose $f$ is continuous on $E\setminus E_0$, where $E_0=\{x_i\}_{i=1}^n \subseteq E$. Then $m(E_0)=0$ because countable sets are measurable and have measure zero.
+    \\Now, $f|_{E\setminus E_0}$ is continuous and therefore measurable (Proposition 3), and $f|_{E_0}$ is defined on a set of measure zero, so any subset $\{x\in E_0\ |\ f|_{E_0}(x)>c\}\subseteq E_0$ has measure zero and is thus measurable, and therefore $f|_{E_0}$ is a measurable function.
+    \\Recall Proposition 5 to see that for the measurable subset $E_0$ of $E$, $f$ is measurable because $f|_{E_0}$ and $f|_{E\setminus E_0}$ are both measurable functions.
+    \item Suppose $f$ is a real-valued function on $\mathbb{R}$ such that $f^{-1}(c)$ is measurable for each number $c$. Is $f$ necessarily measurable?\\
+    \\No; let $V\subseteq[0,1]$ be a Vitali set. Therefore $V$ is nonmeasurable (see Ch 2.6).
+    Consider the function $f:\mathbb{R}\to\mathbb{R}$, defined as
+    \[
+        f(x)=
+        \begin{cases}
+            -e^x&x\in V\\
+            e^x&x\notin V\\
+        \end{cases}    
+    \]
+    For any real number $c$, we have
+    \[
+        f^{-1}(c)=
+        \begin{cases}
+            \ln(-c)& c<0\\
+            \ln(c)& c>0\\
+            \emptyset& c=0
+        \end{cases}
+    \]
+    and so $f^{-1}(c)$ is a singleton set or is the empty set, which are measurable, so $f^{-1}(c)$ is measurable.\\
+    Now, we know that $e^x:\mathbb{R}\to\mathbb{R}_{>0}$ and so $e^x>0$ for any real number $x$.\\
+    Therefore $f(x)=-e^x<0$ only when $x\in V$.
+    However, the set $\{x\in\mathbb{R}\ |\ f(x)<0\}=V$ is not measurable, and so $f$ is not a measurable function.
+    \item Suppose the function $f$ is defined on a measurable set $E$ and $\{x\in E\ |\ f(x)>c\}$ is a measurable set for each rational number $c$. Is $f$ necessarily a measurable function?\\
+    \\Yes. Let $f:E\to\mathbb{R}$ with $E$ a measurable set, and let $\{x\in E\ |\ f(x)>c\}=\{x\in E\ |\ f(x)\in(c,\infty)\}$ be measurable for each $c\in\mathbb{Q}$.\\
+    Let $a$ be any real number. Then for any natural number $n$, there exists a rational number $c_n$ such that $a<c_n<a+\frac{1}{n}$, and therefore $\bigcup_{n=1}^\infty(c_n,\infty)=(a,\infty)$.
+    Therefore we have
+    \begin{align*}
+        \{x\in E\ |\ f(x)>a\} &= f^{-1}((a,\infty))\\
+        &=f^{-1}(\bigcup_{n=1}^\infty(c_n,\infty))\\
+        &=\bigcup_{n=1}^\infty f^{-1}((c_n,\infty))\\
+        &=\bigcup_{n=1}^\infty \{x\in E\ |\ f(x)>c_n\},
+    \end{align*}
+    which is a countable union of measurable sets, and therefore is also measurable.
+    \item Let $f$ be a function with measurable domain $D$. Show that $f$ is measurable iff the function $g$ defined on $\mathbb{R}$ by $g(x)=f(x)$ for $x\in D$ and $g(x)=0$ for $x\notin D$ is measurable.\\
+    \\Let $D\subseteq\mathbb{R}$ be a measurable set, let $f:D\to\mathbb{R}$, and let $g:\mathbb{R}\to\mathbb{R}$ be defined by
+    \[
+        g(x)=
+        \begin{cases}
+            f(x)&x\in D\\
+            0&x\notin D
+        \end{cases}
+    \]
+    $(\implies)$ Suppose that $f$ is measurable.\\
+    For any real number $c$,
+    \[
+        \{x\in \mathbb{R}\ |\ g(x)>c\}=
+        \begin{cases}
+            \{x\in D\ |\ f(x)>c\}&c\ge0\\
+            \{x\in D\ |\ f(x)>c\}\cup D^c&c<0\\
+        \end{cases}
+    \]
+    Both of the sets $\{x\in D\ |\ f(x)>c\}$ and $\{x\in D\ |\ f(x)>c\}\cap D^c$ are measurable, so $ \{x\in \mathbb{R}\ |\ g(x)>c\}$ is measurable and thus $g$ is a measurable function.\\
+    \\$(\impliedby)$ Suppose that $g$ is measurable.\\
+    Recall Proposition 5 (ii) to see that for the measurable subset $D$ of $\mathbb{R}$, $g$ is measurable on $\mathbb{R}$, which implies that the restrictions $g|_{D}$ and $g|_{\mathbb{R}\setminus D}$ are measurable.
+    Therefore for any real number $c$,
+    \begin{align*}
+        \{x\in D\ |\ f(x)>c\}&=\{x\in \mathbb{R}\ |\ g|_{D}(x)>c\}\cap D\text{ is measurable},
+    \end{align*}
+    and $f$ is measurable.
+    \item Let the function $f$ be defined on a measurable set $E$. Show that $f$ is measurable iff for each borel set $A$, $f^{-1}(A)$ is measurable. (Hint: the collection of sets $A$ that have the property that $f^{-1}(A)$ is measurable is a $\sigma$-algebra.)\\
+    \\Let $f:E\to\mathbb{R}$, where $E$ is a measurable set.\\
+    $(\implies$) Suppose that $f$ is measurable.\\
+    Let $\mathcal{M}=\{A\ |\ f^{-1}(A)\text{ is measurable}\}$.\\
+    To show that $\mathcal{M}$ is a $\sigma$-algebra, know that the measurable sets is a $\sigma$-algebra.\\
+	Observe that:
+	\begin{enumerate}[label=(\roman*),align=left]
+		\item $f^{-1}(\emptyset)=\emptyset\implies\emptyset\in \mathcal{M}$.
+		\item $A\in \mathcal{M}\implies f^{-1}(A)\text{ is measurable }\implies f^{-1}(A)^c=f^{-1}(A^c)\text{ is measurable }\implies A^c\in \mathcal{M}$.
+		\item $A_k\in \mathcal{M}\implies f^{-1}(A_k)\text{ is measurable }\implies\bigcup_{k=1}^\infty f^{-1}(A_k)=f^{-1}(\bigcup_{k=1}^\infty A_k)\text{ is measurable }\implies \bigcup_{k=1}^\infty A_k\in \mathcal{M}$.
+	\end{enumerate}
+    Then because $f$ is measurable, for any real number $a$, the set $f^{-1}((a,\infty))=\{x\in E\ |\ f(x)>a\}$ is measurable.
+    Now, $(a,\infty)\in\mathcal{M}$ because $f^{-1}((a,\infty))$ is measurable.
+    Because $(a,\infty)$ is a Borel set, all other Borel sets are in $\mathcal{M}$ because the Borel sets are a $\sigma$-algebra.\\
+    \\$(\impliedby$) Suppose that for each borel set $A$, the set $f^{-1}(A)=\{x\in E\ |\ f(x)\in A\}$ is measurable.\\
+    Every interval of the form $(a,\infty)$ is a borel set, so we have that for any real number $a$, the set $f^{-1}((a,\infty))=\{x\in E\ |\ f(x)>a\}$ is measurable. This is equivalent to the measurability of $f$.
     \item (Borel measurability) A function $f$ is said to be \textbf{Borel measurable} provided its domain $E$ is a Borel set and for each $c$, the set $\{x\in E\ |\ f(x)>c\}$ is a Borel set.
     Verify that Proposition 1 and Theorem 6 remain valid if we replace "(Lebesgue) measurable set" by "Borel set".
     Show that:
     \begin{enumerate}[label=(\roman*),align=left]
-        \item every Borel measurable function is Lebesgue measurable
-        \item if $f$ is Borel measurable and $B$ is a Borel set, then $f^{-1}(B)$ is a Borel set
-        \item if $f$ and $g$ are Borel measurable, so is $f\circ g$, 
-        \item if $f$ is Borel measurable and $g$ is Lebesgue measurable, then $f\circ g$ is Lebesgue measurable.
+        \item every Borel measurable function is Lebesgue measurable,\\
+        \\The Borel sets are a subset of the measurable sets.
+        Therefore for a Borel measurable function $f$, its domain $E$ is a Borel set (and thus a measurable set), and for each $c$, the set $\{x\in E\ |\ f(x)>c\}$ is a Borel set (and thus a measurable set).
+        Thus $f$ is a measurable function.
+        \item if $f$ is Borel measurable and $B$ is a Borel set, then $f^{-1}(B)$ is a Borel set,\\
+        \\Let $S=\{B\ |\ f^{-1}(B)\text{ is Borel}\}$.\\
+        To show that $S$ is a $\sigma$-algebra, know that the Borel sets is a $\sigma$-algebra.\\
+        Observe that:
+        \begin{enumerate}[label=(\roman*),align=left]
+            \item $f^{-1}(\emptyset)=\emptyset\implies\emptyset\in S$.
+            \item $B\in S\implies f^{-1}(B)\text{ is Borel }\implies f^{-1}(B)^c=f^{-1}(B^c)\text{ is Borel }\implies B^c\in S$.
+            \item $B_k\in S\implies f^{-1}(B_k)\text{ is Borel }\implies\bigcup_{k=1}^\infty f^{-1}(B_k)=f^{-1}(\bigcup_{k=1}^\infty B_k)\text{ is Borel }\implies \bigcup_{k=1}^\infty B_k\in S$.
+        \end{enumerate}
+        Now, because $f$ is Borel measurable, for any real number $a$, the set $f^{-1}((a,\infty))$ is a Borel set.
+        This implies $(a,\infty)\in S$.
+        Because $(a,\infty)$ is a Borel set, all other Borel sets are in $S$ because the Borel sets is a $\sigma$-algebra.
+        \item if $f$ and $g$ are Borel measurable, so is $f\circ g$,\\
+        \\Let $f,g$ be Borel measurable, with $g:E\to F$, and $f:F\to\mathbb{R}$, where $E,F$ are Borel sets. 
+        Then $f\circ g:E\to\mathbb{R}$ has a Borel set as its domain.\\
+        Recall that $\{x\ |\ f(x)>a\}=\{x\ |\ f(x)\in(a,\infty)\}=f^{-1}((a,\infty))$.
+        \begin{align*}
+            \{x\ |\ (f\circ g )(x)>a\}&=\{x\ |\ (f\circ g )(x)\in(a,\infty)\}\\
+            &=(f\circ g )^{-1}((a,\infty))\\
+            &=(g^{-1}\circ f^{-1})((a,\infty))\\
+            &=g^{-1}(f^{-1}((a,\infty)))\\
+            &=g^{-1}(B)&&\text{ where }B\text{ is Borel}\\
+            &=B'.&&\text{ where }B'\text{ is Borel}
+        \end{align*}
+        Therefore $f\circ g$ is Borel measurable.
+        \item if $f$ is Borel measurable and $g$ is Lebesgue measurable, then $f\circ g$ is Lebesgue measurable.\\
+        \\Let $f$ be Borel measurable, with $f:F\to\mathbb{R}$, and let $g$ be Lebesgue measurable, with $g:E\to F$, where $F$ is a Borel set and $E$ is a measurable set. 
+        Then $f\circ g:E\to\mathbb{R}$ has a measurable set as its domain.
+        \begin{align*}
+            \{x\ |\ (f\circ g )(x)>a\}&=\{x\ |\ (f\circ g )(x)\in(a,\infty)\}\\
+            &=(f\circ g )^{-1}((a,\infty))\\
+            &=(g^{-1}\circ f^{-1})((a,\infty))\\
+            &=g^{-1}(f^{-1}((a,\infty)))\\
+            &=g^{-1}(B)&&\text{ where }B\text{ is Borel}\\
+            &=B'.&&\text{ where }B'\text{ is measurable (Problem 7)}
+        \end{align*}
+        Therefore $f\circ g$ is Lebesgue measurable.
     \end{enumerate}
     \item Let $\{f_n\}$ be a sequence of measurable functions defined on a measurable set $E$.
-    Define $E_0$ to be the set of points of $x$ in $E$ at which $\{f_n(x)\}$ converges. Is the set $E_0$ measurable?
+    Define $E_0$ to be the set of points of $x$ in $E$ at which $\{f_n(x)\}$ converges. Is the set $E_0$ measurable?\\
+    \\Let $E_0=\{x\in E\ |\ \{f_n(x)\}\text{ converges}\}\subseteq \{x\in E\ |\ \{f_n(x)\}\text{ is Cauchy}\}$, because all convergent sequences are Cauchy.
+    \\Therefore $E_0=\{x\in E\ |\ \forall k\in\mathbb{N},\exists N\in\mathbb{N}\text{ such that }|f_n(x)-f_m(x)|<\frac{1}{k}\text{ for all }n,m\ge N\}$.
+    \\This is equivalent to writing 
+    \[
+        E_0=\bigcap_{k\in\mathbb{N}}\bigcup_{N\in\mathbb{N}}\bigcap_{n,m\ge N}\{x\in E\ |\ |f_n(x)-f_m(x)|<\frac{1}{k}\}.
+    \]
+    The functions $f_n$ and $f_m$ are measurable, so by Theorem 6, $f_n-f_m$ is also measurable.
+    The absolute value function $|\cdot|$ is continuous, so by Proposition 7, the composition $|\cdot|\circ(f_n-f_m)=|f_n-f_m|$ is a measurable function.
+    Therefore for the real number $\frac{1}{k}$, the set $\{x\in E\ |\ |f_n(x)-f_m(x)|<\frac{1}{k}\}$ is a measurable set.\\
+    Then $E_0$ is a countable union and intersection of measurable sets, so $E_0$ is measurable.
     \item Suppose $f$ and $g$ are real-valued functions defined on all of $\mathbb{R}$, $f$ is measurable, and $g$ is continuous.
-    Is the composition $f\circ g$ necessarily measurable?
-    \item Let $f$ be a measurable function and $g$ be a one-to-one function from $\mathbb{R}$ onto $\mathbb{R}$ which has a Lipschitz inverse. Show that the composition $f\circ g$ is measurable. (Hint: examine Problem 37 in Chapter 2.)
+    Is the composition $f\circ g$ necessarily measurable?\\
+    \\No; let $f$ be measurable, with $f:\mathbb{R}\to\mathbb{R}$, and let $g$ be continuous, with $g:\mathbb{R}\to \mathbb{R}$.
+        Then $f\circ g:\mathbb{R}\to\mathbb{R}$.
+        \begin{align*}
+            \{x\ |\ (f\circ g )(x)>a\}&=\{x\ |\ (f\circ g )(x)\in(a,\infty)\}\\
+            &=(f\circ g )^{-1}((a,\infty))\\
+            &=(g^{-1}\circ f^{-1})((a,\infty))\\
+            &=g^{-1}(f^{-1}((a,\infty)))\\
+            &=g^{-1}(A)&&\text{ where }A\text{ is measurable}
+        \end{align*}
+        Recall Chapter 2 Problem 36 to see that for a continuous function $g$, the set $g^{-1}(A)$ is not always measurable when $A$ is measurable.
+    \item Let $f$ be a measurable function and $g$ be a one-to-one function from $\mathbb{R}$ onto $\mathbb{R}$ which has a Lipschitz inverse. Show that the composition $f\circ g$ is measurable. (Hint: examine Problem 37 in Chapter 2.)\\
+    \\Let $f$ be measurable, with $f:\mathbb{R}\to\mathbb{R}$, and let $g$ be a bijection from $\mathbb{R}$ to $\mathbb{R}$, where $g^{-1}$ is Lipschitz.
+    From Chapter 2 Problem 37, we have that $g^{-1}$ maps a measurable set to a measurable set; that is, for the measurable set $A$, the set $g^{-1}(A)$ is measurable.
+    \\We have $f\circ g:\mathbb{R}\to\mathbb{R}$.
+    \begin{align*}
+        \{x\ |\ (f\circ g )(x)>a\}&=\{x\ |\ (f\circ g )(x)\in(a,\infty)\}\\
+        &=(f\circ g )^{-1}((a,\infty))\\
+        &=(g^{-1}\circ f^{-1})((a,\infty))\\
+        &=g^{-1}(f^{-1}((a,\infty)))\\
+        &=g^{-1}(A)&&\text{ where }A\text{ is measurable}\\
+        &=A'.&&\text{ where }A'\text{ is measurable (Chapter 2 Problem 37)}
+    \end{align*}
+    Therefore $f\circ g$ is measurable.
 \end{enumerate}
 
 % 3.2

@@ -284,7 +284,7 @@ This is an equivalence relation that separates $X$ into a disjoint collection of
     \[
     (a+b)^p\le a^p+b^p\text{ for all }a,b\ge0.    
     \]
-
+    
     \item For $E$ a Lebesgue measurable set of real numbers, $0<p<1$, and $g,h$ Lebesgue measurable functions on $E$ that have integrable $p^{th}$ powers, define
     \[
     \rho_p(h,g)=\int_E|g-h|^p.    
@@ -292,6 +292,18 @@ This is an equivalence relation that separates $X$ into a disjoint collection of
     Use the preceding problem to show that this is a pseudometric on the collection of Lebesgue measurable functions on $E$ that have integrable $p^{th}$ powers.
     Define two such functions to be equivalent provided they are equal a.e. on $E$. 
     Show that $\rho_p(\cdot,\cdot)$ induces a metric on the collection of equivalence classes.
+    \\Let $f,g,h:E\to\mathbb{R}$ such that $f,g,h$ are Lebesgue measurable and have integrable $p^{th}$ powers. 
+    \\For all $x\in E$, Problem 8 tells us that $|g(x)-h(x)|^p\le|g(x)-f(x)|^p+|f(x)-h(x)|^p$.
+    By monotonicity and linearity of integration, we have
+    \[
+        \int_E|g-h|^p\le\int_E|g-f|^p+\int_E|f-h|^p.
+    \]
+    Therefore $\rho_p(h,g)\le\rho_p(f,g)+\rho_p(h,f)$ and (iv) holds.\\
+    Clearly $\rho_p(h,g)\ge0$ is true so (i) holds.\\
+    We also have $\rho_p(h,g)=\int_E|g-h|^p=\int_E|h-g|^p=\rho_p(g,h)$ so (iii) holds.\\
+    However, (ii) does not hold. We can consider two functions $h,g$ that are equivalent a.e. on $E$ but not equal.
+    Then $ \rho_p(h,g)=\int_E|g-h|^p= \int_{E\setminus E_0}|g-h|^p=0$ with $m(E_0)=0$ but $h\neq g$.\\
+    If we define an equivalence when two functions are equal a.e. on $E$, then $\rho_p$ is a metric on the collection of such equivalence classes. 
     \item Let $\{(X_n,\rho_n)\}_{n=1}^\infty$ be a countable collection of metric spaces.
     Use problem 6 to show that $\rho_*$ defines a metric on the Cartesian product $\prod_{n=1}^\infty X_n$, where for points $x = \{x_n\}$ and $y= \{y_n\}$ in $\prod_{n=1}^\infty X_n$,
     \[
