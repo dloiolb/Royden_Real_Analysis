@@ -384,36 +384,277 @@
     \]
     Each of the sets $\emptyset$, $A$, and $\mathbb{R}$ are measurable, so $\{x\in\mathbb{R}\ |\ \chi_A(x)\in(c,\infty)\}$ is a measurable set and thus $\chi_A$ is a measurable function.\\
     Thus the existence of a nonmeasurable set $E$ implies the existence of a nonmeasurable function $\chi_E$.
+        \begin{namedthm*}{Definition}
+            A real-valued function $\varphi$ defined on a measurable set $E$ is called \textbf{simple} provided it is measurable and takes only a finite number of values.          
+        \end{namedthm*}
+        If $\varphi$ is simple, has domain $E$ and takes the distinct values $c_1,\cdots,c_n$, then
+        \[
+            \varphi=\sum_{k=1}^n c_k\cdot\chi_{E_k}\text{ on }E,\text{ where }E_k=\{x\in E\ |\ \varphi(x)=c_k\}.   
+        \]
+        (A linear combination of measurable functions)\\
+        A simple function is called a \textbf{step function} in the special case that the sets $E_k$ are intervals. 
+    \begin{namedthm*}{The Simple Approximation Lemma}
+        Let $f$ be a measurable real-valued function on $E$. 
+        Assume $f$ is bounded on $E$, that is, there is an $M\ge0$ for which $|f|\le M$ on $E$.
+        Then for each $\epsilon>0$, there are simple functions $\varphi_\epsilon$ and $\psi_\epsilon$ defined on $E$ which have the following approximation properties:
+        \[
+            \varphi_\epsilon\le f\le\psi_\epsilon\text{ and }0\le\psi_\epsilon-\varphi_\epsilon<\epsilon\text{ on }E.    
+        \]
+    \end{namedthm*}
+    \begin{proof}
+        Because $f$ is bounded, we have that $f(x)\subseteq[-M,M]$ for all $x\in E$.
+        \\Let $(c,d)$ be an open, bounded interval such that $f(E)\subseteq[-M,M]\subseteq(c,d)$, so that $(c,d)$ contains $f(E)$, the image of $E$ under $f$.
+        \\Also, choose $\{y_0,\cdots,y_n\}$ to be a partition of the closed, bounded interval $[c,d]$ such that $y_k-y_{k-1}<\epsilon$ for $1\le k\le n$:
+        \[
+            c=y_0<y_1<\cdots<y_{n-1}<y_n=d
+        \]
+        Define 
+        \[
+            I_k=[y_{k-1},y_k)\text{ and }E_k=f^{-1}(I_k)\text{ for }1\le k \le n.
+        \]
+        Because $f$ is a measurable function and each interval $I_k=[y_{k-1},y_k)$ is Borel, then each set $E_k=f^{-1}(I_k)$ is measurable (see Problem 7).
+        Because $E_k$ is measurable, then $\chi_{E_k}$ is a measurable function.
+        \\Then we can define the simple functions $\varphi_\epsilon$ and $\psi_\epsilon$ on $E$ by
+        \begin{align*}
+            \varphi_\epsilon&=\sum_{k=1}^n y_{k-1}\cdot\chi_{E_k}\\
+            \psi_\epsilon&=\sum_{k=1}^n y_k\cdot\chi_{E_k}
+        \end{align*}
+        Now, for any $x\in E$, because $f(E)\subseteq(c,d)$, and $\{[y_{k-1},y_k)\}_{k=1}^n$ is a partition that contains $(c,d)$, there exists a unique $k$, $1\le k\le n$, for which $f(x)\in[y_{k-1},y_k)$, and therefore
+        \[
+            \varphi_\epsilon(x)=y_{k-1}\le f(x)<y_k=\psi_\epsilon(x).    
+        \]
+        Also, for each $x\in E$, $\psi_\epsilon(x)-\varphi_\epsilon(x)=y_k-y_{k-1}<\epsilon$ for some $k$.
+    \end{proof}
+    \begin{namedthm*}{The Simple Approximation Theorem}
+        An extended real-valued function $f$ on a measurable set $E$ is measurable iff there is a sequence $\{\varphi_n\}$ of simple functions on $E$ which converges pointwise on $E$ to $f$ and has the property that
+        \[
+            |\varphi_n|\le|f|\text{ on }E\text{ for all }n.
+        \]
+        If $f$ is nonnegative, we may choose $\{\varphi_n\}$ to be increasing.
+    \end{namedthm*}
+    \begin{proof}
+        Let $f$ be an extended real-valued function on a measurable set $E$.\\
+        $(\impliedby)$ Suppose $\{\varphi_n\}$ is a sequence of simple (and thus measurable) functions on $E$ that converges pointwise on $E$ to $f$ (and has the property that $|\varphi_n|\le|f|$ on $E$ for all $n$).\\
+        Then by Proposition 9, $f$ is measurable.\\
+        $(\implies)$ Suppose $f$ is measurable.\\
+        We can assume $f\ge0$ on $E$ (See Problem 23 for the general case, as $f=f^+-f^-$ on $E$, a linear combination of two nonnegative measurable functions $f^+$ and $f^-$).
+        \\For a natural number $n$, define $E_n=\{x\in E\ |\ f(x)\le n\}$. Because $f$ is a measurable function, the set $E_n\subseteq E$ is measurable.
+        Then by Proposition 5 (ii), $f|_{E_n}$ is measurable.\\
+        Also, $f|_{E_n}$ is bounded because $0\le f|_{E_n}(x)\le n$ for $x\in E_n$.\\
+        Now, recall the Simple Approximation Lemma to see that for the measurable real-valued function $f|_{E_n}$ on $E_n$, where $f|_{E_n}$ is bounded on $E_n$, we have that for $\epsilon=1/n$, there exist simple functions $\varphi_n$ and $\psi_n$ defined on $E_n$ such that
+        \[
+            0\le\varphi_n\le f\le\psi_n\text{ on }E_n\text{ and }0\le\psi_n-\varphi_n<1/n\text{ on }E_n.    
+        \]
+        Then we can see that
+        \[
+            0\le\varphi_n\le f\text{ and }0\le f-\varphi_n\le\psi_n-\varphi_n<1/n\text{ on }E_n.    
+        \]
+        Now, $E=E_n\cup E_n^c= \{x\in E\ |\ f(x)\le n\}\cup\{x\in E\ |\ f(x)> n\}$ and $\varphi_n$ is defined on $E_n$. We can extend $\varphi_n$ to all of $E$ by setting $\varphi_n(x)=n$ on $E_n^c=\{x\in E\ |\ f(x)> n\}$.
+        Then $\varphi_n$ is a simple function defined on $E$ and $0\le \varphi_n\le f$ on $E$.
+        To see that $\{\varphi_n\}$ converges to $f$ pointwise on $E$:\\
+        Consider any $x\in E$.\\
+        Case $f(x)<\infty$:\\
+        Then there exists a natural number $N$ such that $f(x)\le N$.
+        Then for all $n\ge N$, We have that
+        \[
+            0\le f(x)-\varphi_n(x)<1/n,    
+        \]
+        and thus $\lim_{n\to\infty}\varphi_n(x)=f(x)$.\\
+        Case $f(x)=\infty$:\\
+        Then $\varphi_n(x)=n$ because $f(x)> n$ for all $n$, and $\lim_{n\to\infty}\varphi_n(x)=\infty=f(x)$.\\
+        By replacing each $\varphi_n$ with $\max\{\varphi_1,\cdots,\varphi_n\}$, we have $\{\varphi_n\}$ increasing.
+    \end{proof}
 \end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{11}
-    \item Let $f$ be a bounded measurable function on $E$. Show that there are sequences of simple functions on $E$, $\{\varphi_n\}$ and $\{\psi_n\}$, such that $\{\varphi_n\}$ is increasing and $\{\psi_n\}$ is decreasing and each of these sequences converges to $f$ uniformly on $E$.
+    \item Let $f$ be a bounded measurable function on $E$. Show that there are sequences of simple functions on $E$, $\{\varphi_n\}$ and $\{\psi_n\}$, such that $\{\varphi_n\}$ is increasing and $\{\psi_n\}$ is decreasing and each of these sequences converges to $f$ uniformly on $E$.\\
+    \\Let $f$ be a bounded measurable function on the measurable set $E$.
+    Because $f$ is bounded, there exists a real number $M$ such that $|f|\le M$ and thus $-M\le f\le M$.
+    Then for all natural numbers $n\ge M$, the set $E_n=\{x\in E\ |\ f(x)\le n\}=E$.
+    By the Simple Approximation Lemma, for $\epsilon=1/n$, there exist the simple function $\varphi_n$ and $\psi_n$ defined on $E_n=E$ such that 
+    \[
+            \varphi_n\le f\le\psi_n\text{ and }0\le\psi_n-\varphi_n<1/n\text{ on }E.    
+    \]
+    Then for each $n\ge M$, we have the sequences of functions $\{\varphi_n\}$ and $\{\psi_n\}$ such that
+    \begin{align*}
+        \varphi_n\le f&\text{ and }f-\varphi_n\le\psi_n-\varphi_n<1/n\text{ on }E,\\  
+        f\le\psi_n&\text{ and }\psi_n-f\le\psi_n-\varphi_n<1/n\text{ on }E.    
+    \end{align*}
+    We can replace each $\varphi_n$ with $\max\{\varphi_1,\cdots,\varphi_n\}$ and each $\psi_n$ with $\min\{\psi_1,\cdots,\psi_n\}$ so that the sequences are increasing and decreasing respectively.
+    The convergence is uniform because we showed that for any $\epsilon=1/n$, there exists the natural number $n$ such that for all $n'\ge n$, $f(x)-\varphi_{n'}(x)<1/n$ and $\psi_{n'}(x)-f(x)<1/n$ for all $x\in E$.
     \item A real-valued measurable function is said to be \textit{semisimple} provided it takes only a countable number of values. Let $f$ be any measurable function on $E$.
-    Show that there is a sequence of semisimple functions $\{f_n\}$ on $E$ that converges to $f$ uniformly on $E$.
+    Show that there is a sequence of semisimple functions $\{f_n\}$ on $E$ that converges to $f$ uniformly on $E$.\\
+    \\We can define $f_n(x)=\frac{1}{n}\lfloor nf(x)\rfloor$ (where the floor function $\lfloor x\rfloor$ returns the largest integer less than or equal to $x$).
+    Then because $f_n=\frac{\lfloor nf(x)\rfloor}{n}$ and $\lfloor nf(x)\rfloor$ and $n$ are integers, we have $f_n(E)\subseteq\mathbb{Q}$ which is countable.
+    Because the floor function rounds down to the nearest integer, we have
+    \[
+        |nf(x)-\lfloor nf(x)\rfloor|<1\text{ for all }x\in E,
+    \]
+    and therefore
+    \[
+        |f(x)-\frac{1}{n}\lfloor nf(x)\rfloor|<1/n\text{ for all }x\in E.
+    \]
     \item Let $f$ be a measurable function on $E$ that is finite a.e. on $E$ and $m(E)<\infty$.
-    For each $\epsilon>0$, show that there is a measurable set $F$ contained in $E$ such that $f$ is bounded on $F$ and $m(E\setminus F)<\epsilon$.
-    \item Let $f$ be a measurable function on $E$ that if finite a.e. on $E$ and $m(E)<\infty$. Show that for each $\epsilon>0$, there is a measurable set $F$ contained in $E$ and a sequence $\{\varphi_n\}$ of simple functions on $E$ such that $\{\varphi_n\}\to f$ uniformly on $F$ and $m(E\setminus F)<\epsilon$. (Hint: see the preceding problem.)
+    For each $\epsilon>0$, show that there is a measurable set $F$ contained in $E$ such that $f$ is bounded on $F$ and $m(E\setminus F)<\epsilon$.\\
+    \\For each natural number $n$, let $F_n=\{x\in E\ |\ f(x)>n\}$. 
+    Because $f$ is measurable, then each $F_n$ is a measurable set. 
+    Then $\{F_n\}$ is descending because 
+    \[
+        F_n=\{x\in E\ |\ f(x)>n\}\supseteq\{x\in E\ |\ f(x)>n+1>n\}=F_{n+1}.
+    \]
+    Also, $F_1\subseteq E$, so by monotonicity of measure, $m(F_1)\le m(E)<\infty$.
+    \\By the continuity of measure, for the descending collection of measurable sets $\{F_n\}$ for which $m(F_1)<\infty$, we have $m(\bigcap_{n=1}^\infty F_n)=\lim_{n\to\infty}m(F_n)$.
+    \\Now, 
+    \[
+        \bigcap_{n=1}^\infty F_n = \bigcap_{n=1}^\infty\{x\in E\ |\ f(x)>n\}=\{x\in E\ |\ f(x)=\infty\},
+    \]
+    Because $f$ is finite a.e. on $E$, we have 
+    \[
+        0=m(\{x\in E\ |\ f(x)=\infty\})=m(\bigcap_{n=1}^\infty F_n)=\lim_{n\to\infty}m(F_n).
+    \]
+    Then for any $\epsilon>0$, there exists an $N\in\mathbb{N}$ such that for all $n\ge N$, we have $m(F_n)<\epsilon$.
+    \\If we let $F=E\cap F_n^c=E\setminus F_n \subseteq E$, then $F=\{x\in E\ |\ f(x)\le n\}$, a measurable set, and 
+    \[
+        E\cap F^c=E\cap [E^c\cup F_n]=[E\cap E^c]\cup[E\cap F_n]=\emptyset\cup F_n=F_n,
+    \]
+    and thus we have
+    \[
+        m(E\setminus F)=m(E\cap F^c)=m(F_n)<\epsilon.
+    \]
+    \item Let $f$ be a measurable function on $E$ that if finite a.e. on $E$ and $m(E)<\infty$. 
+    Show that for each $\epsilon>0$, there is a measurable set $F$ contained in $E$ and a sequence $\{\varphi_n\}$ of simple functions on $E$ such that $\{\varphi_n\}\to f$ uniformly on $F$ and $m(E\setminus F)<\epsilon$. (Hint: see the preceding problem.)\\
+    \\Because $f$ is finite a.e. on $E$ and $m(E)<\infty$, by the previous problem, for any $\epsilon>0$, there exists a measurable set $F\subseteq E$ such that $f$ is bounded on $F$ and $m(E \setminus F)<\epsilon$.
+    Furthermore, because $f$ is bounded and measurable on $F$, by Problem 12, there exists a sequence of simple functions $\{\varphi_n\}$ on $F$ that converges uniformly to $f$ on $F$.
+    Each $\varphi_n$ can be extended to $E$ by setting $\varphi_n=n$ on $F^c$.
     \item Let $I$ be a closed, bounded interval and $E$ a measurable subset of $I$. Let $\epsilon>0$.
     Show that there is a step function $h$ on $I$ and a measurable subset $F$ of $I$ for which 
     \[
         h=\chi_E\text{ on }F\text{ and }m(I\setminus F)<\epsilon.    
     \]
-    (Hint: use Theorem 12 of Chapter 2.)
+    (Hint: use Theorem 12 of Chapter 2.)\\
+    \\Theorem 12 of Chapter 2 states:
+    \\Let $E$ be a measurable set of finite outer measure.
+    Then for each $\epsilon>0$, there is a finite disjoint collection of open intervals $\{I_k\}_{k=1}^n$ for which if $\mathcal{O}=\bigcup_{k=1}^n I_k$, then
+    \[
+        m^*(E\setminus\mathcal{O})+m^*(\mathcal{O}\setminus E)<\epsilon.    
+    \]
+    $\cdots$\\
+    Fix $\epsilon>0$.\\
+    Because $m(E)$ is finite, by definition of infimum, for $\epsilon>0$, there exists a countable collection of open intervals $\{I_k\}_{k=1}^\infty$ whose union $\mathcal{O}=\bigcup_{k=1}^\infty I_k$ covers $E$ and 
+    \[
+        m(E)\le \sum_{k=1}^\infty \ell(I_k)< m(E)+\epsilon/2,
+    \]
+    and $\sum_{k=1}^\infty\ell(I_k)$ is finite as well.
+    Because $E$ is a measurable subset of finite outer measure that is contained in $\mathcal{O}$, then we can use the excision property and subadditivity to see that
+    \begin{equation}
+        m(\mathcal{O}\setminus E)=m(\mathcal{O})-m(E)=m(\bigcup_{k=1}^\infty I_k)-m(E)\le\sum_{k=1}^\infty \ell(I_k)-m(E)< \epsilon/2,\tag{1}
+    \end{equation}
+    Because the series $\sum_{k=1}^\infty\ell(I_k)$ is finite, the sequence of partial sums $\sum_{k=1}^n\ell(I_k)$ converges to $\sum_{k=1}^\infty\ell(I_k)$, so that for $\epsilon/2$, there exists an index $N$ such that for all $n\ge N$, we have
+    \begin{align*}
+        \sum_{k=1}^\infty\ell(I_k)-\sum_{k=1}^n\ell(I_k) &<\epsilon/2\\
+        \sum_{k=n+1}^\infty\ell(I_k)+\sum_{k=1}^n\ell(I_k)-\sum_{k=1}^n\ell(I_k) &<\epsilon/2\\
+        \sum_{k=n+1}^\infty\ell(I_k)&<\epsilon/2,
+    \end{align*}
+    and then we can let $\mathcal{O}'=\bigcup_{k=1}^N I_k$ so that, because $E\cap(\mathcal{O}\setminus\mathcal{O}')\subseteq\mathcal{O}\setminus\mathcal{O}'$,
+    \[
+        m(E\cap(\mathcal{O}\setminus\mathcal{O}'))\le m(\mathcal{O}\setminus\mathcal{O}')=m(\bigcup_{k=1}^\infty I_k\setminus\bigcup_{k=1}^N I_k)=m(\bigcup_{k=N+1}^\infty I_k)\le\sum_{k=N+1}^\infty\ell(I_k)<\epsilon/2.
+    \]
+    Because $E\subseteq \mathcal{O}$, then $E\cap \mathcal{O}^c=\emptyset$, and we can derive
+    \begin{align*}
+        E\cap\mathcal{O}'&=[\emptyset\cup(E\cap\mathcal{O}')]\\
+        &=[(E\cap\mathcal{O}^c)\cup(E\cap\mathcal{O}')]\\
+        &=\emptyset\cup[(E\cap\mathcal{O}^c)\cup(E\cap\mathcal{O}')]\\
+        &=[E\cap E^c]\cup[E\cap(\mathcal{O}^c\cup\mathcal{O}')]\\
+        &=E\cap[E^c\cup(\mathcal{O}^c\cup\mathcal{O}')]\\
+        &=E\cap[E^c\cup(\mathcal{O}\cap\mathcal{O}'^c)^c]\\
+        &=E\cap[E\cap(\mathcal{O}\setminus\mathcal{O}')]^c\\
+        &=E\setminus[E\cap(\mathcal{O}\setminus\mathcal{O}')].
+    \end{align*}
+    And then we see that by excision,
+    \begin{equation}
+        m(E\cap\mathcal{O}')=m(E\setminus[E\cap(\mathcal{O}\setminus\mathcal{O}')])=m(E)-m(E\cap(\mathcal{O}\setminus\mathcal{O}'))>m(E)-\epsilon/2.\tag{2}
+    \end{equation}
+    We will let $F=(E\cap\mathcal{O}')\cup(I\setminus\mathcal{O})$ so that 
+    \begin{align*}
+        I\setminus F&=I\cap F^c\\
+        &=I\cap[(E\cap\mathcal{O}')\cup(I\setminus\mathcal{O})]^c\\
+        &=I\cap[(I^c\cup\mathcal{O})\cap(E\cap\mathcal{O}')^c]\\
+        &=[I\cap(I^c\cup\mathcal{O})]\cap(E\cap\mathcal{O}')^c\\
+        &=[(I\cap I^c)\cup(I\cap\mathcal{O})]\cap(E\cap\mathcal{O}')^c\\
+        &=[I\cap\mathcal{O}]\setminus(E\cap\mathcal{O}')\\
+        &\subseteq\mathcal{O}\setminus[E\cap\mathcal{O}'].
+    \end{align*}
+    Therefore we can write
+    \begin{align*}
+        m(I\setminus F)&\le m(\mathcal{O}\setminus[E\cap\mathcal{O}'])&&\text{by monotonicity}\\
+        &=m(\mathcal{O})-m(E\cap\mathcal{O}')&&\text{by excision}\\
+        &<m(\mathcal{O})-m(E)+\epsilon/2&&\text{by (2)}\\
+        &<\epsilon/2+\epsilon/2&&\text{by (1)}\\\
+        &<\epsilon.
+    \end{align*}
+    We can let $h=\sum_{k=1}^n \chi_{J_k}=\chi_{\mathcal{O}'}$, with $J_k=I_k\setminus\bigcup_{j=1}^{k-1}I_j$, where each $J_k$ is a finite union of disjoint intervals, and so $h$ is a step function.
+    Then $h=1$ on $E\cap\mathcal{O}'$ and $h=0$ on $I\setminus\mathcal{O}$, so that $h=\chi_E$ on $F$.
     \item Let $I$ be a closed, bounded interval and $\psi$ a simple function defined on $I$. Let $\epsilon>0$.
     Show that there is a step function $h$ on $I$ and a measurable subset $F$ of $I$ for which 
     \[
         h=\psi\text{ on }F\text{ and }m(I\setminus F)<\epsilon.    
     \] 
-    (Hint: use the fact that a simple function is a linear combination of characteristic functions and the preceding problem.)
+    (Hint: use the fact that a simple function is a linear combination of characteristic functions and the preceding problem.)\\
+    \\We have
+    \[
+        \psi=\sum_{k=1}^n c_k\cdot\chi_{E_k}\text{ on }I,\text{ where }E_k=\{x\in I\ |\ \psi(x)=c_k\}\text{ measurable}.  
+    \]
+    For each $k=1,\cdots,n$, we have that $I$ is a closed, bounded interval and $E_k$ a measurable subset of $I$.
+    For $\epsilon>0$, by the previous Problem 16, there is a step function $h_k$ on $I$ and a measurable subset $F_k$ of $I$ for which 
+    \[
+        h_k=\chi_{E_k}\text{ on }F_k\text{ and }m(I\setminus F_k)<\epsilon/n.    
+    \]
+    We can let $h=\sum_{k=1}^n c_k h_k$ and $F=\bigcap_{k=1}^n F_k$ so that $h=\psi$ on $F$ and $I\cap F^c=I\cap \bigcup_{k=1}^n F_k^c=\bigcup_{k=1}^n (I\cap F_k^c)$ which gives us
+    \[
+        m(I\setminus F)=m(I\cap F^c)=m(\bigcup_{k=1}^n (I\cap F_k^c))\le \sum_{k=1}^n m(I\cap F_k^c)=\sum_{k=1}^n m(I\setminus F_k)<\epsilon.
+    \]
     \item Let $I$ be a closed, bounded interval and $f$ a bounded measurable function defined on $I$. Let $\epsilon>0$.
     Show that there is a step function $h$ on $I$ and a measurable subset $F$ of $I$ for which 
     \[
         |h-f|<\epsilon\text{ on }F\text{ and }m(I\setminus F)<\epsilon.    
     \]
-    \item Show that the sum and product of two simple functions are simple as are the max and the min.
+    Because $f$ is bounded and measurable on $I$, by Problem 12, there exists a sequence of simple functions $\{\psi_n\}$ on $I$ that converges uniformly to $f$ on $I$.
+    Then for any $\epsilon$, we can choose $\psi\in\{\psi_n\}$ such that $|\psi-f|<\epsilon$.
+    By the previous Problem 17, there is a step function $h$ on $I$ and a measurable subset $F$ of $I$ for which 
+    \[
+        h=\psi\text{ on }F\text{ and }m(I\setminus F)<\epsilon.    
+    \] 
+    Therefore we have $|h-f|<\epsilon$.
+    \item Show that the sum and product of two simple functions are simple as are the max and the min.\\
+    \\Consider two simple functions $\varphi$ and $\psi$ on the measurable set $E$, with
+    \[
+        \varphi=\sum_{k=1}^n c_k\cdot\chi_{E_k}\text{ on }E,\text{ where }E_k=\{x\in E\ |\ \varphi(x)=c_k\}\text{ measurable}.  
+    \]
+    \[
+        \psi=\sum_{k'=1}^m c'_{k'}\cdot\chi_{E'_{k'}}\text{ on }E,\text{ where }E'_{k'}=\{x\in E\ |\ \psi(x)=c'_{k'}\}\text{ measurable}.  
+    \]
+    Then for any $x\in E$, there exists an $i\in \{1,\cdots,n\}$ and $j\in \{1,\cdots,m\}$ such that
+    \[
+        (\varphi+\psi)(x)= c_i+c'_j\text{ on }E_i\cap E'_j,
+    \]
+    The intersection of measurable sets $E_i\cap E'_j$ is also measurable, so the function $\chi_{E_i\cap E'_j}$ is measurable.\\ 
+    That is, we have the simple function
+    \[
+        \varphi+\psi=\sum_{k=1}^n \sum_{k'=1}^m (c_k+c_{k'})\cdot\chi_{E_k\cap E'_{k'}}\text{ on }E.
+    \]
+    Similarly for the product, we have
+    \[
+        \varphi\cdot\psi=\sum_{k=1}^n \sum_{k'=1}^m (c_k\cdot c_{k'})\cdot\chi_{E_k\cap E'_{k'}}\text{ on }E.
+    \]
+    We can recall Chapter 1 Problem 49 to see how we define max and min:
+    \begin{align*}
+        \max\{\varphi,\psi\}&=\frac{1}{2}(\varphi+\psi+|\varphi-\psi|),\\
+        \min\{\varphi,\psi\}&=\frac{1}{2}(\varphi+\psi-|\varphi-\psi|).
+    \end{align*}
+    Clearly scaling a simple function is simple, and the absolute value of a simple function is simple, and we showed that the sum of simple functions is simple, and therefore the max and min of simple functions is simple.
     \item Let $A,B$ be any sets. Show that
     \begin{align*}
         \chi_{A\cap B}&=\chi_A\cdot\chi_B\\
@@ -528,15 +769,92 @@
     \end{center}
     \item For a sequence $\{f_n\}$ of measurable functions with common domain $E$, show that each of the following functions is measurable:
     \begin{itemize}
-        \item $\inf\{f_n\}$
-        \item $\sup\{f_n\}$
+        \item $\inf\{f_n\}$\\
+        \\We have 
+        \[
+            \inf\{f_n\} = \{x\in E\ |\ \inf\{f_n\}> c\} = \bigcap_{n=1}^\infty\{x\in E\ |\ f_n(x)>c\}
+        \]
+        or
+        \[
+            \inf\{f_n\} = \{x\in E\ |\ \inf\{f_n\}< c\} = \bigcup_{n=1}^\infty\{x\in E\ |\ f_n(x)<c\}
+        \]
+        \item $\sup\{f_n\}$\\
+        \\Similarly,
+        \[
+            \sup\{f_n\} = \{x\in E\ |\ \sup\{f_n\}> c\} = \bigcup_{n=1}^\infty\{x\in E\ |\ f_n(x)>c\}
+        \]
+        or
+        \[
+            \sup\{f_n\} = \{x\in E\ |\ \sup\{f_n\}< c\} = \bigcap_{n=1}^\infty\{x\in E\ |\ f_n(x)<c\}
+        \]
         \item $\lim\inf\{f_n\}$
         \item $\lim\sup\{f_n\}$
     \end{itemize}
     \item (Dini's Theorem) Let $\{f_n\}$ be an increasing sequence of continuous functions on $[a,b]$ which converges pointwise on $[a,b]$ to the continuous function $f$ on $[a,b]$.
-    Show that the convergence is uniform on $[a,b]$. (Hint: let $\epsilon>0$. For each natural number $n$, define $E_n=\{x\in[a,b]\ |\ f(x)-f_n(x)<\epsilon\}$. Show that $\{E_n\}$ is an open cover of $[a,b]$ and use the Heine-Borel Theorem.)
-    \item Express a measurable function as the difference of nonnegative measurable functions and thereby prove the general Simple Approximation Theorem based on the special case of a nonnegative measurable function.
-    \item Let $I$ be an interval and $f:I\to\mathbb{R}$ be increasing. Show that $f$ is measurable by first showing that, for each natural number $n$, the strictly increasing function $x\mapsto f(x)+x/n$ is measurable, and then taking pointwise limits.
+    Show that the convergence is uniform on $[a,b]$. (Hint: let $\epsilon>0$. For each natural number $n$, define $E_n=\{x\in[a,b]\ |\ f(x)-f_n(x)<\epsilon\}$. Show that $\{E_n\}$ is an open cover of $[a,b]$ and use the Heine-Borel Theorem.)\\
+    \\Let $\epsilon>0$. For each natural number $n$, define 
+    \begin{align*}
+        E_n&=\{x\in[a,b]\ |\ f(x)-f_n(x)<\epsilon\}\\
+        &=\{x\in[a,b]\ |\ f(x)-f_n(x)\in(-\infty,\epsilon)\}\\
+        &=(f-f_n)^{-1}((-\infty,\epsilon)).
+    \end{align*}
+    The sum and product of continuous functions is continuous, so the function $f-f_n$ is continuous and therefore $E_n=(f-f_n)^{-1}((-\infty,\epsilon))$ is an open set.
+    \\Because $\{f_n\}$ converges pointwise to $f$ on $[a,b]$, for any $\epsilon>0$, for any $x\in[a,b]$, there exists an index $N_x\in\mathbb{N}$ such that for all $n\ge N_x$, we have $|f(x)-f_n(x)|<\epsilon$.
+    \\This means that for any $x\in[a,b]$, there exists an index $N_x\in\mathbb{N}$ such that $x\in\{x\in[a,b]\ |\ f(x)-f_{N_x}(x)<\epsilon\}=E_{N_x}$, and so $x\in\bigcup_{n\in\mathbb{N}} E_n$, which implies
+    \[
+        \forall x\in[a,b],\exists N_x\in\mathbb{N}\text{ s.t. }x\in\{x\in[a,b]\ |\ |f(x)-f_{N_x}(x)|<\epsilon\}=E_{N_x}\implies x\in\bigcup_{n\in\mathbb{N}} E_n,
+    \]
+    and by definition of subset, $[a,b]\subseteq \bigcup_{n\in\mathbb{N}} E_n$.
+    Now, $\{E_n\}$ is an open cover of $[a,b]$ because it is a union of open sets $E_n$ and it covers $[a,b]$.
+    Because $[a,b]$ is compact, there exists a finite subcover $\{E_{n_k}\}_{k=1}^m\subseteq\{E_n\}$. 
+    \\This means that for any $x\in[a,b]$, there exists the index $k\in\{1,\cdots,m\}$ such that $x\in E_{n_k}=\{x\in[a,b]\ |\ |f(x)-f_{n_k}(x)|<\epsilon\}$.
+    \\Then we can let $N_0=\max\{n_1,\cdots,n_m\}$.
+    \\Therefore for any $\epsilon>0$, there exists the index $N_0$ such that for all $n\ge N_0\ge n_i$, $i\in\{1,\cdots,m\}$,
+    \[
+        |f(x)-f_n(x)|<\epsilon\text{ for all }x\in[a,b].
+    \]
+    Thus we have uniform convergence.
+    \item Express a measurable function as the difference of nonnegative measurable functions and thereby prove the general Simple Approximation Theorem based on the special case of a nonnegative measurable function.\\
+    \\Let $f$ be a measurable function on $E$, and we have $f=f^+-f^-$ on $E$, a linear combination of the two nonnegative measurable functions $f^+=\max\{f,0\}\ge0$ and $f^-=\max\{-f,0\}\ge0$.
+    In our proof for the Simple Approximation Theorem, we proved the case for $f^+\ge0$ and $f^-\ge0$ that there exist sequences $\{\varphi^+_n\}$ and $\{\varphi^-_n\}$ of simple functions on $E$ that converge pointwise on $E$ to $f^+$ and $f^-$ respectively, and 
+    \begin{align*}
+        0\le\varphi^+_n&\le f^+\text{ on }E\text{ for all }n,\\
+        0\le\varphi^-_n&\le f^-\text{ on }E\text{ for all }n.
+    \end{align*}
+    then
+    \begin{align*}
+        0\ge-\varphi^-_n&\ge -f^-\text{ on }E\text{ for all }n,
+    \end{align*}
+    so that $-f^-\le-\varphi^-_n\le f^-\implies -\varphi^-_n \le |f^-|$.
+    \\We have the sets $E^+=\{x\in E\ |\ f(x)\ge0\}$ and $E^-=\{x\in E\ |\ f(x)\le0\}$, so that
+    \[
+        f(x)=|f(x)|=
+        \begin{cases}
+            0&\text{ if }x\in E^+\cap E^-\\
+            f^+(x)&\text{ if }x\in E^+\text{ only}\\
+            f^-(x)&\text{ if }x\in E^-\text{ only}
+        \end{cases}    
+    \]
+    The function $\varphi^+_n-\varphi^-_n$ is simple and
+    \[
+        0\le\varphi^+_n\le f^+=0, 0\le\varphi^-_n\le f^-=0\text{ on }E^+\cap E^-\implies\varphi^+_n,\varphi^-_n =0,
+    \]
+    and so we have
+    \[
+        (\varphi^+_n-\varphi^-_n)(x)=
+        \begin{cases}
+            0\le f(x)&\text{ if }x\in E^+\cap E^-\\
+            \varphi^+_n(x)\le f^+(x)&\text{ if }x\in E^+\text{ only}\\
+            -\varphi^-_n(x)\le f^-(x)&\text{ if }x\in E^-\text{ only}
+        \end{cases}    
+    \]
+    Then clearly $\varphi^+_n-\varphi^-_n$ converges pointwise to $f$ on $E$, and therefore we have
+    \begin{align*}
+        |\varphi^+_n-\varphi^-_n|&\le|f|\text{ on }E\text{ for all }n.
+    \end{align*}
+    \item Let $I$ be an interval and $f:I\to\mathbb{R}$ be increasing. Show that $f$ is measurable by first showing that, for each natural number $n$, the strictly increasing function $x\mapsto f(x)+x/n$ is measurable, and then taking pointwise limits.\\
+    \\Let $f_n(x)=f(x)+x/n$.
+    Because $f_n$ is a strictly increasing function defined on an interval, $f_n^{-1}$ is continuous (Chapter 2 Problem 41).
 \end{enumerate}
 
 % 3.3
