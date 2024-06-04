@@ -1,9 +1,10 @@
-Exercise Completion: (142/1048)<br />
+Exercise Completion: (143/1048)<br />
 1.1-1.6 Done<br />
 2.1-2.7 Done<br />
 3.1-3.3 Done<br />
 7.1<br />
 9.1<br />
+17.1<br />
 
 PART I: Lebesgue Integration for Functions of a Single Real Variable (138/368)<br />
 Chapter 01: 59/59*<br />
@@ -25,8 +26,8 @@ Chapter 14: 0/70<br />
 Chapter 15: 0/18*<br />
 Chapter 16: 0/66<br />
 
-PART III: Measure and Integration: General Theory (0/272)<br />
-Chapter 17: 0/36<br />
+PART III: Measure and Integration: General Theory (1/272)<br />
+Chapter 17: 1/36<br />
 Chapter 18: 0/67<br />
 Chapter 19: 0/22<br />
 Chapter 20: 0/55<br />

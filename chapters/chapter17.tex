@@ -1,8 +1,68 @@
 % Chapter 17
 \chapter{General Measure Spaces: Their Properties and Construction}
 
+% 17.1
 \section{Measures and Measurable Sets}
-
+\begin{flushleft}
+	\begin{namedthm*}{Definition}
+		By a \textbf{measurable space} we mean a couple $(X,\mathcal{M})$ consisting of a set $X$ and a $\sigma$-algebra $\mathcal{M}$ of subsets of $X$.
+		A subset $E$ of $X$ is called \textbf{measurable} (or measurable with respect to $\mathcal{M}$) provided $E$ belongs to $\mathcal{M}$.
+	\end{namedthm*}
+	\begin{namedthm*}{Definition}
+		By a \textbf{measure} $\mu$ on a measurable space $(X,\mathcal{M})$ we mean an extended real-valued nonnegative set function $\mu:\mathcal{M}\to[0,\infty]$ for which $\mu(\emptyset)=0$ and which is \textbf{countably additive} in the sense that for any countable disjoint collection $\{E_k\}_{k=1}^\infty$ of measurable sets,
+		\[
+			\mu\biggl(\bigcup_{k=1}^\infty E_k\biggr)=\sum_{k=1}^\infty\mu(E_k).	
+		\]
+	\end{namedthm*}
+	\begin{namedthm*}{Definition}
+		By a \textbf{measure space} $(X,\mathcal{M},\mu)$ we mean a measurable space $(X,\mathcal{M})$ together with a measure $\mu$ defined on $\mathcal{M}$.
+	\end{namedthm*}
+	\begin{namedthm*}{Proposition 1}
+		Let $(X,\mathcal{M},\mu)$ be a measure space.
+		\begin{enumerate}[\indent {}]
+			\item (Finite Additivity) For any finite disjoint collection $\{E_k\}_{k=1}^n$ of measurable sets,
+			\[
+				\mu\biggl(\bigcup_{k=1}^n E_k\biggr)=\sum_{k=1}^n\mu(E_k).	
+			\]
+			\item (Monotonicity) If $A$ and $B$ are measurable sets and $A\subseteq B$, then
+			\[
+				\mu(A)\le\mu(B).
+			\]
+			\item (Excision) If, moreover, $A\subseteq B$ and $\mu(A)<\infty$, then
+			\[
+				\mu(B\setminus A)=\mu(B)-\mu(A),
+			\]
+			so that if $\mu(A)=0$, then
+			\[
+				\mu(B\setminus A)=\mu(B).
+			\]
+			\item (Countable Monotonicity) For any countable collection $\{E_k\}_{k=1}^n$ of measurable sets that covers a measurable set $E$,
+			\[
+				\mu(E)\le\sum_{k=1}^\infty\mu(E_k).	
+			\]
+		\end{enumerate}
+	\end{namedthm*}
+	\begin{namedthm*}{Definition}
+		Let $(X,\mathcal{M},\mu)$ be a measure space. 
+		The measure $\mu$ is called \textbf{finite} provided $\mu(X)<\infty$. 
+		It is called \textbf{$\sigma$-finite} provided $X$ is the union of a countable collection of measurable sets, each of which has finite measure.
+		A measurable set $E$ is said to be of \textbf{finite measure} provided $\mu(E)<\infty$, and is said to be \textbf{$\sigma$-finite} provided $E$ is the union of a countable collection of measurable sets, each of which has finite measure.
+	\end{namedthm*}
+	\begin{namedthm*}{Definition}
+		A measure space $(X,\mathcal{M},\mu)$ is said to be \textbf{complete} provided $\mathcal{M}$ contains all subsets of sets of measure zero, that is, if $E$ belongs to $\mathcal{M}$ and $\mu(E)=0$, then every subset of $E$ also belongs to $\mathcal{M}$.
+	\end{namedthm*}
+	For example, the Lebesgue measure $m$ on the real line is complete. 
+	Moreover, in Chapter 2 Proposition 22, we showed that the Cantor set $C$, a Borel set that has Lebesgue measure zero, contains a Lebesgue measurable set that is not a Borel set.
+	Therefore the Lebesgue measure restricted to the Borel $\sigma$-algebra $\mathcal{B}$ is not complete because $C$ belongs to $\mathcal{B}$ and $m(C)=0$ but there exists a subset $A\subseteq C$ such that $A\notin\mathcal{B}$.\\
+	\medskip
+	The following proposition tells us that each measure space can be completed.
+	\begin{namedthm*}{Proposition 3}
+		Let $(X,\mathcal{M},\mu)$ be a measure space.
+		Define $\mathcal{M}_0$ to be the collection of subsets $E$ of $X$ of the form $E=A\cup B$ where $B\in\mathcal{M}$ and $A\subseteq C$ for some $C\in\mathcal{M}$ for which $\mu(C)=0$.
+		For such a set $E$ define $\mu_0(E)-\mu_0(B)$. 
+		Then $\mathcal{M}_0$ is a $\sigma$-algebra that contains $\mathcal{M}$, $\mu_0$ is a measure that extends $\mu$, and $(X,\mathcal{M}_0,\mu_0)$ (the \textbf{completion} of $(X,\mathcal{M},\mu)$) is a complete measure space.
+	\end{namedthm*}
+\end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -10,17 +70,64 @@
 	\setcounter{enumi}{0}
 	\item Let $f$ be a nonnegative Lebesgue measurable function on $\mathbb{R}$. 
 	For each Lebesgue measurable subset $E$ of $\mathbb{R}$, define $\mu(E) = \smallint_E f$, the Lebesgue integral of $f$ over $E$.
-	Show that $\mu$ is a measure on the $\sigma$-algebra of Lebesgue measurable subsets of $\mathbb{R}$.
+	Show that $\mu$ is a measure on the $\sigma$-algebra of Lebesgue measurable subsets of $\mathbb{R}$.\\
+	\\Because $f$ is nonnegative, by monotonicity of integration, for any Lebesgue measurable set $E$, 
+	\[
+		0\le f\implies 0=\int_E 0\le \int_E f=\mu(E).
+	\]
+	Check Chapter 4 Problem 28 to see that for $f$ Lebesgue integrable over $\mathbb{R}$ and $\emptyset$ a Lebesgue measurable subset of $\mathbb{R}$, we have that
+	\[
+		\mu(\emptyset)=\int_\emptyset f=\int_\mathbb{R} f\cdot\chi_\emptyset=\int_\mathbb{R} f\cdot\chi_\emptyset=\int_\mathbb{R} 0 = 0.
+	\]
+	Let $\{E_n\}_{n=1}^\infty$ be a disjoint countable collection of Lebesgue measurable sets so that each $\mu(E_n) = \smallint_{E_n} f$ is defined.
+	Then $E=\bigcup_{n=1}^\infty E_n$ is Lebesgue measurable, and $\mu(E) = \smallint_E f$ is defined.
+	\\Then by Chapter 4 Theorem 20,
+	\[
+		\mu(\bigcup_{n=1}^\infty E_n)=\mu(E)=\int_E f =\sum_{n=1}^\infty\int_{E_n}f=\sum_{n=1}^\infty\mu(E_n).
+	\]
+	Therefore $\mu$ is a measure on the $\sigma$-algebra of Lebesgue measurable sets. 
 	\item Let $\mathcal{M}$ be a $\sigma$-algebra of subsets of a set $X$ and the set function $\mu : \mathcal{M} \to [0,\infty)$ be finitely additive.
 	Prove that $\mu$ is a measure iff whenever $\{A_k\}_{k=1}^\infty$ is an ascending sequence of sets in $\mathcal{M}$, then
 	\[
 	\mu \biggl ( \bigcup_{k=1}^\infty A_k \biggr ) = \lim_{k \to \infty} \mu(A_k).	
 	\]
+	\\$(\implies)$ Suppose that $\mu$ is a measure.\\
+	Then by Continuity of Measure, 
+	\\$(\impliedby)$ Suppose that whenever $\{A_k\}_{k=1}^\infty$ is an ascending sequence of sets in $\mathcal{M}$, then $\mu ( \bigcup_{k=1}^\infty A_k ) = \lim_{k \to \infty} \mu(A_k)$.\\
+	hi
 	\item Let $\mathcal{M}$ be a $\sigma$-algebra of subsets of a set $X$. Formulate and establish a correspondent of the preceding problem for descending sequences of sets in $\mathcal{M}$.
 	\item 
 \end{enumerate}
 
+% 17.2
 \section{Signed Measures: The Hahn and Jordan Decompositions}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{11}
+	\item 
+\end{enumerate}
+
+% 17.3
 \section{The Cath\'eodory Measure Induced by an Outer Measure}
+
+% 17.4
 \section{The Construction of Outer Measures}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{17}
+	\item
+\end{enumerate}
+
+% 17.5
 \section{The Cath\'eodory-Hahn Theorem: The Extension of a Premeasure to a Measure}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{24}
+	\item
+\end{enumerate}
