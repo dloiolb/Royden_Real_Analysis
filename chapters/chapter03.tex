@@ -360,6 +360,24 @@
         Let $\{f_n\}$ be a sequence of measurable functions on $E$ that converges pointwise a.e. on $E$ to the function $f$.
         Then $f$ is measurable.
     \end{namedthm*}
+    \begin{proof}
+        Let $E_0$ be a subset of $E$ such that $\{f_n\}$ converges pointwise to $f$ on $E\setminus E_0$, with $m(E_0)=0$. 
+        Because $E_0$ has measure zero, then it is measurable; by Proposition 5, we have that $f$ is measurable iff the restrictions to $E_0$ and $E\setminus E_0$ are measurable.
+        By monotonicity of measure, the measure of the set $\{x\in E_0\ |\ f(x)<c\}$ is always zero and thus trivially measurable.
+        \\We want to show that $\{x\in E\setminus E_0\ |\ f(x)<c\}$ is measurable to use Proposition 5.
+        \\Now, for any point $x\in E\setminus E_0$, we have that
+        \[
+            f(x)<c\iff\exists n,k\in\mathbb{N}\text{ s.t. }f_j(x)<c-1/n\ \forall j\ge k.    
+        \]
+        To see why, suppose that $\forall n,k\in\mathbb{N}, \exists j\ge k\text{ s.t. } f_j(x)\ge c-1/n$.
+        \\In the case $f_j(x) > c-1/n$, we have $1/n+f_j(x)\ge c$ for all $n$, which implies that $f_j(x)\ge c>f$, a contradiction.
+        \\In the case $f_j(x) = c-1/n$, we have that for any $n$, for any indices $k$, there exists an index $j\ge k$ such that $c-f_j(x)=1/n$, but because $f<c$, the convergence $\{f_n\}\to f$ is not possible, a contradiction.
+        \\Then we can write 
+        \[
+            \{x\in E\setminus E_0\ |\ f(x)<c\}=\bigcup_{1\le n,k<\infty} \biggl[\bigcap_{j=k}^\infty\{x\in E\setminus E_0\ |\ f_j(x)<c-1/n\} \biggr],
+        \]
+        Which is a countable union and intersection of measurable sets, and thus is measurable.
+    \end{proof}
 
     If $A$ is any set, the \textbf{characteristic function} of $A$, $\chi_A$, is the function on $\mathbb{R}$ defined by 
     \[
@@ -853,24 +871,201 @@
         |\varphi^+_n-\varphi^-_n|&\le|f|\text{ on }E\text{ for all }n.
     \end{align*}
     \item Let $I$ be an interval and $f:I\to\mathbb{R}$ be increasing. Show that $f$ is measurable by first showing that, for each natural number $n$, the strictly increasing function $x\mapsto f(x)+x/n$ is measurable, and then taking pointwise limits.\\
-    \\Let $f_n(x)=f(x)+x/n$.
-    Because $f_n$ is a strictly increasing function defined on an interval, $f_n^{-1}$ is continuous (Chapter 2 Problem 41).
+    \\Let $f_n(x)=f(x)+x/n$.\\
+    Then each $f_n$ is strictly increasing; that is, for $x,y\in I$, we have $f_n(x)<f_n(y)\iff x<y$. 
+    This also tells us that each $f_n$ is injective because 
+    \[
+        x\neq y \implies x<y\text{ or }y<x \implies f_n(x)<f_n(y)\text{ or }f_n(y)<f_n(x)\implies f_n(x)\neq f_n(y).
+    \]
+    So for any element $x^*\in dom(f_n)$, we know that $f_n^{-1}(x^*)$ consists of a single element at most.
+    \\Now, for any two $x^*,y^*\in(a,\infty)$, by definition of interval, any point $z^*$ between them is also in $(a,\infty)$. 
+    \\We then have $x^*<z^*<y^* \iff f_n^{-1}(x^*)<f_n^{-1}(z^*)<f_n^{-1}(y^*)$, and so the set $f_n^{-1}((a,\infty))=\{x\in I\ |\ f_n(x)\in(a,\infty)\}$ is an interval for all $a$, and every interval is measurable, so $f_n$ is measurable.
+    \\To see that $\{f_n\}$ converges pointwise to $f$, let $\epsilon>0$ and consider $x\in I$. 
+    Then there exists an index $N$ such that for all $n\ge N$, 
+    \[
+        |f_n(x)-f(x)|=|x/n|<\epsilon.    
+    \]
+    Now, because $\{f_n\}$ is a sequence of measurable functions in $I$ that converges pointwise a.e. on $I$ to $f$, then by Proposition 9, $f$ is measurable.
 \end{enumerate}
 
 % 3.3
-\section{Littlewood's Three Principles, Ergoff's Theorem, and Lusin's Theorem`'}
+\section{Littlewood's Three Principles, Ergoff's Theorem, and Lusin's Theorem}
+\begin{flushleft}
+    \begin{namedthm*}{Egoroff's Theorem}
+        Assume $E$ has finite measure. Let $\{f_n\}$ be a sequence of measurable functions on $E$ that converges pointwise on $E$ to the real-valued function $f$.
+        Then for each $\epsilon>0$, there is a closed set $F$ contained in $E$ for which     
+        \[
+            \{f_n\}\to f\text{ uniformly on }F\text{ and }m(E\setminus F)<\epsilon.    
+        \]
+    \end{namedthm*}
+    \begin{namedthm*}{Lemma 10}
+        Under the assumptions of Egoroff's Theorem, for each $\eta>0$ and $\delta>0$, there is a measurable subset $A$ of $E$ and an index $N$ for which
+        \[
+            |f_n-f|<\eta\text{ on }A\text{ for all }n\ge N\text{ and }m(E\setminus A)<\delta.    
+        \]
+    \end{namedthm*}
+    \begin{proof}
+        First, we can see that because $\{f_n\}$ is a sequence of measurable functions on $E$ that converges pointwise on $E$ to $f$, by Proposition 9, $f$ is measurable.
+        Then by Theorem 6, the function $f_n-f$ is measurable.
+        Finally by Proposition 7, considering the continuous function $|\cdot|$ and the measurable function $f_n-f$, the composition $|f_n-f|$ is measurable.
+        \\This means that the set $\{x\in E\ |\ |f_n-f|<\eta\}$ is measurable.
+        \\Then we see that
+        \[
+            E_n=\{x\in E\ |\ |f_k-f|<\eta\text{ for all }k\ge n\}=\bigcap_{k=n}^\infty\{x\in E\ |\ |f_k-f|<\eta\},
+        \]
+        is also measurable.
+        \\Then $\{E_n\}$ is an ascending sequence of measurable sets because 
+        \[
+            E_n=\{x\in E\ |\ |f_n-f|<\eta\}\cap\biggl[\bigcap_{k={n+1}}^\infty\{x\in E\ |\ |f_k-f|<\eta\}\biggr]\subseteq \bigcap_{k={n+1}}^\infty\{x\in E\ |\ |f_k-f|<\eta\}=E_{n+1}.
+        \]
+        Also, $E=\bigcup_{n=1}^\infty E_n$, because $\{f_n\}$ converges pointwise to $f$ on $E$. 
+        \\That is, for $\eta>0$, for $x\in E$, there exists an index $N\in\mathbb{N}$ such that
+        \[
+            |f_k(x)-f(x)|<\eta\text{ for all }k\ge N,
+        \]
+        and thus $x\in E_N$.
+        \\Now, by continuity of measure, we have
+        \[
+            m(E)=m(\bigcup_{n=1}^\infty E_n)=\lim_{n\to\infty}m(E_n).
+        \]
+        Then because $m(E)<\infty$, there exists an index $N_0$ for which $m(E)-m(E_{N_0})<\delta$.
+        \\Define $A=E_{N_0}$ so we can use excision to see that
+        \[
+            m(E\setminus A)=m(E)-m(E_{N_0})<\delta,
+        \]
+        and 
+        \[
+            A=\{x\in E\ |\ |f_k-f|<\eta\text{ for all }k\ge N_0\}.
+        \]
+    \end{proof}
+    \begin{proof}
+        To prove Egoroff's Theorem:\\
+        Assume $E$ has finite measure. Let $\{f_n\}$ be a sequence of measurable functions on $E$ that converges pointwise on $E$ to the real-valued function $f$.
+        \\For each natural number $n$, we can let $\eta=1/n$ and $\delta=\epsilon/2^{n+1}$.
+        \\By Lemma 10, there exists a subset $A_n$ of $E$ and an index $N_n$ for which
+        \[
+            |f_k-f|<1/n\text{ on }A_n\text{ for all }k\ge N_n\text{ and }m(E\setminus A_n)<\epsilon/2^{n+1}.    
+        \]
+        We define 
+        \[
+            A=\bigcap_{n=1}^\infty A_n.
+        \]
+        Then we see that
+        \begin{align*}
+            m(E\setminus A)&=m(E\setminus \biggl[\bigcap_{n=1}^\infty A_n\biggr])\\
+            &=m(E\cap \biggl[\bigcup_{n=1}^\infty A_n^c\biggr])\\
+            &=m(\bigcup_{n=1}^\infty [E\cap A_n^c])\\
+            &\le \sum_{n=1}^\infty m(E\cap A_n^c)\\
+            &< \sum_{n=1}^\infty \epsilon/2^{n+1}\\
+            &= \frac{1}{2} \sum_{n=1}^\infty \epsilon/2^n\\
+            &=\epsilon/2.
+        \end{align*}
+        To see that $\{f_n\}$ converges uniformly to $f$ on $A$:
+        \\Let $\epsilon>0$. Then there exists an index $n_0$ such that $1/n_0<\epsilon$ and 
+        \[
+            |f_k-f|<1/n_0<\epsilon\text{ on }A\subseteq A_{n_0}\text{ for all }k\ge N_{n_0}.
+        \]
+        Finally we can use Chapter 2 Theorem 11 to choose a closed set $F$ contained in $A$ for which $m(A\setminus F)<\epsilon/2$.
+        Then we have
+        \begin{align*}
+            m(E\setminus F)&=m(E)-m(F)&&\text{by excision}\\
+            &= m(E)-m(A)+m(A)-m(F)\\
+            &=m(E\setminus A)+m(A\setminus F)&&\text{by excision}\\
+            &<\epsilon/2+\epsilon/2\\
+            &=\epsilon.
+        \end{align*}
+        Therefore $\{f_n\}\to f$ uniformly on $F$ and $m(E\setminus F)<\epsilon$.
+    \end{proof}
+    \begin{namedthm*}{Proposition 11}
+        Let $f$ be a simple function defined on $E$.
+        Then for each $\epsilon>0$, there is a continuous function $g$ on $\mathbb{R}$ and a closed set $F$ contained in $E$ for which
+        \[
+            f=g\text{ on }F\text{ and }m(E\setminus F)<\epsilon.    
+        \]
+    \end{namedthm*}
+    \begin{namedthm*}{Lusin's Theorem}
+        Let $f$ be a real-valued measurable function on $E$.
+        Then for each $\epsilon>0$, there is a continuous function $g$ on $\mathbb{R}$ and a closed set $F$ contained in $E$ for which 
+        \[
+            f=g\text{ on }F\text{ and }m(E\setminus F)<\epsilon.
+        \]
+    \end{namedthm*}
+    \begin{proof}
+        Consider the case that $m(E)<\infty$.
+        \\The Simple Approximation Theorem tells us that there exists a sequence of simple functions $\{f_n\}$ defined on $E$ that converges to $f$ pointwise on $E$.
+        \\By the previous Proposition 11, for each $n$, there exists a continuous function $g_n$ on $\mathbb{R}$ and a closed set $F_n$ contained in $E$ for which
+        \[
+            f_n=g_n\text{ on }F_n\text{ and }m(E\setminus F_n)<\epsilon/2^{n+1}.    
+        \]
+        Also, Egoroff's Theorem states that because $E$ has finite measure and that $\{f_n\}$ is a sequence of simple (measurable) function on $E$ that converges pointwise on $E$ to the real-valued function $f$, we have that there exists a closed set $F_0$ contained in $E$ such that
+        \[
+            \{f_n\}\to f\text{ uniformly on }F_0\text{ and }m(E\setminus F_0)<\epsilon/2.    
+        \]
+        We define $F=\bigcap_{n=0}^\infty F_n$, which is closed because it is an intersection of closed sets.
+        Then we see that
+        \begin{align*}
+            m(E\setminus F)&=m(E\cap\biggr[\bigcup_{n=0}^\infty F_n^c\biggl])\\
+            &=m(\bigcup_{n=0}^\infty [E\cap F_n^c])\\
+            &=m([E\cap F_0^c]\cup\bigcup_{n=1}^\infty [E\cap F_n^c])\\
+            &=m([E\setminus F_0]\cup\bigcup_{n=1}^\infty [E\setminus F_n])\\
+            &\le m([E\setminus F_0])+\sum_{n=1}^\infty m( E\setminus F_n)\\
+            &<\epsilon/2+\sum_{n=1}^\infty\epsilon/2^{n+1}\\
+            &=\epsilon.
+        \end{align*}
+        Each $f_n$ is continuous on $F$ since $F\subseteq F_n$ and $f_n=g_n$ on $F_n$.
+        \\Also, $\{f_n\}$ converges to $f$ uniformly on $F$ since $F\subseteq F_0$. 
+        \\Then we can use the fact that because $\{f_n\}$ is a sequence of continuous functions on $F$ that converges uniformly on $F$ to $f$, then $f$ is continuous on $F$ as well.
+        \\Finally see problem 25 to see that there exists a continuous function $g$ that extends $f$ to all of $\mathbb{R}$.
+        Then $f=g$ on $F$ and $m(E\setminus F)<\epsilon$.
+    \end{proof}
+\end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{24}
     \item Suppose $f$ is a function that is continuous on a closed set $F$ of real numbers. Show that $f$ has a continuous extension to all of $\mathbb{R}$. This is a special case of the forthcoming Tietze Extension Theorem.
-    (Hint: express $\mathbb{R}\setminus F$ as the union of a countable disjoint collection of open intervals and define $f$ to be linear on the closure of each of these intervals.)
+    (Hint: express $\mathbb{R}\setminus F$ as the union of a countable disjoint collection of open intervals and define $f$ to be linear on the closure of each of these intervals.)\\
+    \\(See Chapter 1 Problem 47.)
+    \\Let $f$ be a function that is continuous on the closed set $F$.
+    Consider the open set $F^c$.
+    By Chapter 1 Proposition 9, this open  $F^c$ is the union of a countable, disjoint collection of intervals.
+    \\In the case that $(-\infty,a)$ [or $(a,\infty)$] is in $F^c$, then $a \in F$ and $f(a)$ is defined.
+	Simply let $f(x)=f(a)$ be the constant function on $(-\infty,a)$ [or $(a,\infty)$].
+	\\In the case that $(a,b) \in F^c$, then $a,b\in F$ and $f(a)$,$f(b)$ are defined.
+	Let 
+	\[
+		f(x)=\frac{f(b)-f(a)}{b-a}(x-a)+f(a)\text{ on } (a,b).
+	\]
+    Then we see that the extension of $f$ is continuous on $\mathbb{R}$.
     \item For the function $f$ and the set $F$ in the statement of Lusin's Theorem, show that the restriction of $f$ to $F$ is a continuous function.
-    Must there be any points at which $f$, considered as a function of $E$, is continuous?
-    \item Show that the conclusion of Egoroff's Theorem can fail if we drop the assumption that the domain has finite measure.
-    \item Show that Egoroff's Theorem continues to hold if the convergence is pointwise a.e. and $f$ is finite a.e.
-    \item Prove the extension of Lusin's Theorem to the case that $E$ has finite measure.
-    \item Prove the extension of Lusin's Theorem to the case that $f$ is not necessarily real-valued, but is finite a.e.
-    \item Let $\{f_n\}$ be a sequence of measurable functions on $E$ that converges to the real-valued $f$ pointwise on $E$. Show that $E=\bigcup_{k=1}^\infty E_k$, where for each index $k$, $E_k$ is measurable, and $\{f_n\}$ converges uniformly to $f$ on each $E_k$ if $k>1$, and $m(E_1)=0$.  
+    Must there be any points at which $f$, considered as a function of $E$, is continuous?\\
+    \\See the proof for Lusin's Theorem; because $\{f_n\}$ is a sequence of continuous functions on $F$ that converges uniformly on $F$ to $f$, then $f$ is continuous on $F$ as well.
+    \item Show that the conclusion of Egoroff's Theorem can fail if we drop the assumption that the domain has finite measure.\\
+    \\Going back to the proof for Egoroff's Theorem, we see that we used the excision property:
+    \begin{align*}
+        m(E\setminus F)&=m(E)-m(F)&&\text{by excision}\\
+        &= m(E)-m(A)+m(A)-m(F)\\
+        &=m(E\setminus A)+m(A\setminus F)&&\text{by excision}\\
+        &<\epsilon/2+\epsilon/2\\
+        &=\epsilon.
+    \end{align*}
+    The excision property requires that
+    \begin{align*}
+        m(E\setminus F)&=m(E)-m(F)&&\text{if }m(F)<\infty\text{ and }F\subseteq E\\
+        m(E\setminus A)&=m(E)-m(A)&&\text{if }m(A)<\infty\text{ and }A\subseteq E\\
+        m(A\setminus F)&=m(A)-m(F)&&\text{if }m(F)<\infty\text{ and }F\subseteq A
+    \end{align*}
+    Specifically, we needed that $m(A),m(F)<\infty$. This was only possible because we assumed $m(E)<\infty$.
+    \item Show that Egoroff's Theorem continues to hold if the convergence is pointwise a.e. and $f$ is finite a.e.\\
+    \\In Lemma 10 on the way to proving Egoroff's Theorem, we used Proposition 9, which only requires the convergence to be pointwise a.e.
+    \\In Lemma 10 we also used Theorem 6, which only requires $f_n$ and $f$ to be finite a.e. 
+    \item Prove the extension of Lusin's Theorem to the case that $E$ has infinite measure.\\
+    \\We needed to assume that $E$ had finite measure because we used Egoroff's Theorem in the proof for Lusin's Theorem, which requires finite measure (Problem 27).
+    \item Prove the extension of Lusin's Theorem to the case that $f$ is not necessarily real-valued, but is finite a.e.\\
+    \\We needed to assume that $f$ was real valued because we used Egoroff's Theorem in the proof for Lusin's Theorem, which requires $f$ to be real-valued.
+    However, we showed that Egoroff's Theorem continues to hold if $f$ is finite a.e. (Problem 28).
+    \item Let $\{f_n\}$ be a sequence of measurable functions on $E$ that converges to the real-valued $f$ pointwise on $E$. 
+    Show that $E=\bigcup_{k=1}^\infty E_k$, where for each index $k$, $E_k$ is measurable, and $\{f_n\}$ converges uniformly to $f$ on each $E_k$ if $k>1$, and $m(E_1)=0$.\\
+    \\Use Egoroff's Theorem.
 \end{enumerate}
