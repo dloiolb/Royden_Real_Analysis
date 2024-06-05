@@ -59,7 +59,7 @@
 	\begin{namedthm*}{Proposition 3}
 		Let $(X,\mathcal{M},\mu)$ be a measure space.
 		Define $\mathcal{M}_0$ to be the collection of subsets $E$ of $X$ of the form $E=A\cup B$ where $B\in\mathcal{M}$ and $A\subseteq C$ for some $C\in\mathcal{M}$ for which $\mu(C)=0$.
-		For such a set $E$ define $\mu_0(E)-\mu_0(B)$. 
+		For such a set $E$ define $\mu_0(E)=\mu_0(B)$. 
 		Then $\mathcal{M}_0$ is a $\sigma$-algebra that contains $\mathcal{M}$, $\mu_0$ is a measure that extends $\mu$, and $(X,\mathcal{M}_0,\mu_0)$ (the \textbf{completion} of $(X,\mathcal{M},\mu)$) is a complete measure space.
 	\end{namedthm*}
 \end{flushleft}
@@ -92,11 +92,218 @@
 	\mu \biggl ( \bigcup_{k=1}^\infty A_k \biggr ) = \lim_{k \to \infty} \mu(A_k).	
 	\]
 	\\$(\implies)$ Suppose that $\mu$ is a measure.\\
-	Then by Continuity of Measure, 
+	Then by Continuity of Measure, the conclusion follows.\\
 	\\$(\impliedby)$ Suppose that whenever $\{A_k\}_{k=1}^\infty$ is an ascending sequence of sets in $\mathcal{M}$, then $\mu ( \bigcup_{k=1}^\infty A_k ) = \lim_{k \to \infty} \mu(A_k)$.\\
 	hi
-	\item Let $\mathcal{M}$ be a $\sigma$-algebra of subsets of a set $X$. Formulate and establish a correspondent of the preceding problem for descending sequences of sets in $\mathcal{M}$.
-	\item 
+	\item Let $\mathcal{M}$ be a $\sigma$-algebra of subsets of a set $X$. Formulate and establish a correspondent of the preceding problem for descending sequences of sets in $\mathcal{M}$.\\
+	\\Let $\mathcal{M}$ be a $\sigma$-algebra of subsets of a set $X$ and the set function $\mu : \mathcal{M} \to [0,\infty)$ be finitely additive.
+	Prove that $\mu$ is a measure iff whenever $\{A_k\}_{k=1}^\infty$ is a descending sequence of sets in $\mathcal{M}$ with $m(A_1)<\infty$, then
+	\[
+	\mu \biggl ( \bigcap_{k=1}^\infty A_k \biggr ) = \lim_{k \to \infty} \mu(A_k).	
+	\]
+	\\$(\implies)$ Suppose that $\mu$ is a measure.\\
+	Then by Continuity of Measure, the conclusion follows.\\
+	\\$(\impliedby)$ Suppose that whenever $\{A_k\}_{k=1}^\infty$ is a descending sequence of sets in $\mathcal{M}$ with $m(A_1)<\infty$, then $\mu ( \bigcap_{k=1}^\infty A_k ) = \lim_{k \to \infty} \mu(A_k)$.\\
+	hi
+	\item Let $\{(X_\lambda,\mathcal{M}_\lambda,\mu_\lambda)\}_{\lambda\in\Lambda}$ be a collection of measure spaces parametrized by the set $\Lambda$.
+	Assume the collection of sets $\{X_\lambda\}_{\lambda\in\Lambda}$ is disjoint.
+	Then we can form a new measure space (called their union) $(X,\mathcal{B},\mu)$ by letting $X=\bigcup_{\lambda\in\Lambda}X_\lambda$, letting $\mathcal{B}$ be the collection of subsets $B$ of $X$ such that $B\cap X_\lambda\in\mathcal{M}_\lambda$ for all $\lambda\in\Lambda$, and defining $\mu(B)=\sum_{\lambda\in\Lambda}\mu_\lambda[B\cap X_\lambda]$ for $B\in\mathcal{B}$.
+	\begin{enumerate}[label=(\roman*),align=left]   
+		\item Show that $\mathcal{B}$ is a $\sigma$-algebra.
+		\item Show that $\mu$ is a measure.
+		\item Show that $\mu$ is $\sigma$-finite iff all but a countable number pf the measures $\mu_\lambda$ have $\mu(X_\lambda)=0$ and the remainder are $\sigma$-finite. 
+	\end{enumerate}
+	\item Let $(X,\mathcal{M},\mu)$ be a measure space. The symmetric difference, $E_1\Delta E_2$, of two subsets $E_1$ and $E_2$ of $X$ is defined by
+	\[
+		E_1\Delta E_2=[E_1\setminus E_2]\cup[E_2\setminus E_1].
+	\]
+	\begin{enumerate}[label=(\roman*),align=left]   
+		\item Show that if $E_1$ and $E_2$ are measurable and $\mu(E_1\Delta E_2)=0$, then $\mu(E_1)=\mu(E_2)$.\\
+		\\We can see that
+		\begin{align*}
+			\mu(E_1\cup E_2)=\mu([E_1\Delta E_2]\cup[E_1\cap E_2])=\mu(E_1\Delta E_2)+\mu(E_1\cap E_2)=\mu(E_1\cap E_2).
+		\end{align*}
+		Then we also know that by monotonicity we have
+		\begin{align*}
+			E_1\cap E_2\subseteq E_1,E_2\subseteq E_1\cup E_2\implies\mu(E_1\cap E_2)\le\mu(E_1),\mu(E_2)\le\mu(E_1\cup E_2),
+		\end{align*}
+		and therefore $\mu(E_1)=\mu(E_2)$.
+		\item Show that if $\mu$ is complete and $E_1\in\mathcal{M}$, then $E_2\in\mathcal{M}$ if $\mu(E_1\Delta E_2)=0$.\\
+		\\Because $\mu(E_1\Delta E_2)=0$, then because $\mu$ is complete, the subsets $[E_1\setminus E_2]\subseteq E_1\Delta E_2$ and $[E_2\setminus E_1]\subseteq E_1\Delta E_2$ are measurable.
+		Therefore the set $[E_2\setminus E_1]\cup[E_1]\cap[E_1\setminus E_2]^c$ is also measurable, and
+		\begin{align*}
+			[E_2\setminus E_1]\cup[E_1]\cap[E_1\setminus E_2]^c&=[E_2\cup E_1]\cap[E_1^c\cup E_1]\cap[E_1^c\cup E_2]\\
+			&=[E_2\cup E_1]\cap[E_1^c\cup E_2]\\
+			&=([E_2\cup E_1]\cap E_1^c)\cup ([E_2\cup E_1]\cap E_2)\\
+			&=([E_2\cap E_1^c]\cup [E_1\cap E_1^c])\cup E_2\\
+			&=(E_2\cap E_1^c)\cup E_2\\
+			&=E_2,
+		\end{align*}
+		therefore $E_2=[E_2\setminus E_1]\cup[E_1]\cap[E_1\setminus E_2]^c$ is measurable.
+	\end{enumerate}
+	\item Let $(X,\mathcal{M},\mu)$ be a measure space and $X_0$ belong to $\mathcal{M}$.
+	Define $\mathcal{M}_0$ to be the collection of sets in $\mathcal{M}$ that are subsets of $X_0$ and $\mu_0$ the restriction of $\mu$ to $\mathcal{M}_0$.
+	Show that $(X_0,\mathcal{M}_0,\mu_0)$ is a measure space.\\
+	\\We want to show that $(X_0,\mathcal{M}_0)$ is a measurable space (i.e., that $\mathcal{M}_0$ is a $\sigma$-algebra of subsets of $X_0$) and that $\mu_0$ is a measure on $\mathcal{M}_0$.
+	\\To see that $\mathcal{M}_0$ is a $\sigma$-algebra:
+	\begin{enumerate}[label=(\roman*),align=left]   
+		\item $X_0\in\mathcal{M}_0$ because $X_0\in\mathcal{M}$ and $X_0\subseteq X_0$.
+		\item if $A\in\mathcal{M}_0$, then $A\in\mathcal{M}$ and $A\subseteq X_0$.\\
+		Then $X_0\cap A^c\in\mathcal{M}$ and $X_0\cap A^c\subseteq X_0$ imply that $X_0\cap A^c\in\mathcal{M}_0$.
+		\item if $A_i\in\mathcal{M}_0$, then $A_i\in\mathcal{M}$ and $A_i\subseteq X_0$ for all $i$.\\
+		Then $\bigcup_{i=1}^\infty A_i\in\mathcal{M}$ and $\bigcup_{i=1}^\infty A_i\subseteq X_0$ imply that $\bigcup_{i=1}^\infty A_i\in\mathcal{M}_0$.
+	\end{enumerate}
+	Therefore $(X_0,\mathcal{M}_0)$ is a measurable space.\\
+	Clearly $\mu_0$ is a measure on $\mathcal{M}_0$, because it inherits the properties of a measure from $\mu$.\\
+	Thus $(X_0,\mathcal{M}_0,\mu_0)$ is a measure space.
+	\item Let $(X,\mathcal{M})$ be a measurable space. Verify the following:
+	\begin{enumerate}[label=(\roman*),align=left]  
+		\item If $\mu$ and $\nu$ are measures defined on $\mathcal{M}$, then set set function $\lambda$ defined on $\mathcal{M}$ by $\lambda(E)=\mu(E)+\nu(E)$ also is a measure. We denote $\lambda$ by $\mu+\nu$.\\
+		\\Because $\mu(E)\ge 0$ and $\nu(E)\ge 0$ for any $E\in\mathcal{M}$, then $\lambda(E)=\mu(E)+\nu(E)\ge 0$.
+		\\Also, $\mu(\emptyset)= 0$ and $\nu(\emptyset)= 0$ imply that $\lambda(\emptyset)=\mu(\emptyset)+\nu(\emptyset)= 0$.
+		\\Finally, for any countable disjoint collection $\{E_k\}_{k=1}^\infty$ of measurable sets,
+		\begin{align*}
+			\lambda\left(\bigcup_{k=1}^\infty E_k\right)&=\mu\left(\bigcup_{k=1}^\infty E_k\right)+\nu\left(\bigcup_{k=1}^\infty E_k\right)\\
+			&=\sum_{k=1}^\infty\mu(E_k)+\sum_{k=1}^\infty\nu(E_k)\\
+			&=\sum_{k=1}^\infty[\mu(E_k)+\nu(E_k)]\\
+			&=\sum_{k=1}^\infty\lambda(E_k).
+		\end{align*}
+		Therefore $\lambda$ is a measure.
+		\item If $\mu$ and $\nu$ are measures on $\mathcal{M}$ and $\mu\ge\nu$, then there is a measure $\lambda$ on $\mathcal{M}$ for which $\mu=\nu+\lambda$.\\
+		\\In the case $\mu(E)<\infty$, then we also have $\nu(E)\le\mu(E)<\infty$, and we can let $\lambda = \mu-\nu$.
+		\\We clearly see that $\mu\ge\nu\implies\mu-\nu\ge0$ so that $\lambda(E)=\mu(E)-\nu(E)\ge 0$ for any $E\in\mathcal{M}$ (of finite measure under $\mu$).
+		\\Also, $\mu(\emptyset)= 0$ and $\nu(\emptyset)= 0$ imply that $\lambda(\emptyset)=\mu(\emptyset)-\nu(\emptyset)= 0$.
+		\\Finally, for any countable disjoint collection $\{E_k\}_{k=1}^\infty$ of measurable sets each of finite measure,
+		\begin{align*}
+			\lambda\left(\bigcup_{k=1}^\infty E_k\right)&=\mu\left(\bigcup_{k=1}^\infty E_k\right)-\nu\left(\bigcup_{k=1}^\infty E_k\right)\\
+			&=\sum_{k=1}^\infty\mu(E_k)-\sum_{k=1}^\infty\nu(E_k)\\
+			&=\sum_{k=1}^\infty[\mu(E_k)-\nu(E_k)]\\
+			&=\sum_{k=1}^\infty\lambda(E_k).
+		\end{align*}
+		\\In the case $\mu(E)=\infty$, we can let $\lambda(E) = \infty$ so that $\nu(E)+\lambda(E)=\mu(E)$.
+		\\Then $\lambda(E)=\infty\ge0$.
+		\\For any countable disjoint collection $\{E_k\}_{k=1}^\infty$ of measurable sets, supposing there exists an index $j$ such that $\mu(E_j)=\infty$, then we defined $\lambda(E_j) = \infty$ so that by monotonicity, we have
+		\begin{align*}
+			\infty=\lambda(E_j)\le\lambda\left(\bigcup_{k=1}^\infty E_k\right),
+		\end{align*}
+		so $\lambda\left(\bigcup_{k=1}^\infty E_k\right)=\infty=\sum_{k=1}^\infty\lambda(E_k)$.
+		\\Then we also have $\sum_{k=1}^\infty\mu(E_k)=\infty$ and 
+		\begin{align*}
+			\mu\left(\bigcup_{k=1}^\infty E_k\right)&=\mu\left(\bigcup_{k=1}^\infty E_k\right)+\lambda\left(\bigcup_{k=1}^\infty E_k\right)\\
+			&=\mu\left(\bigcup_{k=1}^\infty E_k\right)+\infty\\
+			&=\infty.
+		\end{align*}
+		In conclusion, we have defined
+		\[
+		\lambda(E)=
+		\begin{cases}
+			\mu(E)-\nu(E)&\text{if }\mu(E)<\infty\\\
+			\infty&\text{if }\mu(E)=\infty,
+		\end{cases}
+		\]
+		and we have proved that $\lambda$ is a measure.
+		\item If $\nu$ is $\sigma$-finite, the measure $\lambda$ in (ii) is unique.\\
+		\\Because $\nu$ is $\sigma$-finite, then $X$ is the union of a countable collection of measurable sets (may be taken to be disjoint), each of which has finite measure under $\nu$.
+		That is, $X=\bigcup_{k=1}^\infty X_k$, where $\nu(X_k)<\infty$.
+		Then for any $E\in\mathcal{M}$, we have 
+		\[
+			E=E\cap X = E\cap \bigcup_{k=1}^\infty X_k = \bigcup_{k=1}^\infty[E\cap X_k],
+		\]
+		where by monotonicity of measure we have $\nu(E\cap X_k)\le\nu(X_k)<\infty$, and thus any measurable set $E$ is also $\sigma$-finite when $\nu$ is $\sigma$-finite.
+		\\Now, suppose there exist measures $\lambda_1$ and $\lambda_2$ such that $\mu=\nu+\lambda_1$ and $\mu=\nu+\lambda_2$.
+		Then $\nu+\lambda_1=\nu+\lambda_2$ and thus $\nu-\nu=\lambda_2-\lambda_1$.
+		\\For any $E\in\mathcal{M}$ such that $\nu(E)<\infty$, then clearly $\lambda_1(E)=\lambda_2(E)$.
+		\\For any $E\in\mathcal{M}$ such that $\nu(E)=\infty$, $\nu(E)-\nu(E)=\infty-\infty$ is not defined. 
+		\\However, because $\nu$ is $\sigma$-finite, there exists a countable disjoint collection $\{E_k\}_{k=1}^\infty$ such that $E=\bigcup_{k=1}^\infty E_k$ and $\nu(E_k)<\infty$ for each $k$. 
+		Then we see that $\nu(E_k)-\nu(E_k)$ is defined for all $k$, and
+		\[
+			\nu(E)=\nu(\bigcup_{k=1}^\infty E_k)=\sum_{k=1}^\infty \nu(E_k)=\lim_{n\to\infty}\sum_{k=1}^n \nu(E_k).
+		\] 
+		Then we can write 
+		\begin{align*}
+			\lim_{n\to\infty}\sum_{k=1}^n \nu(E_k)-\lim_{n\to\infty}\sum_{k=1}^n \nu(E_k)&=\lambda_2(E)-\lambda_1(E)\\
+			\lim_{n\to\infty}\sum_{k=1}^n [\nu(E_k)-\nu(E_k)]&=\lambda_2(E)-\lambda_1(E)\\
+			\lim_{n\to\infty}\sum_{k=1}^n 0&=\lambda_2(E)-\lambda_1(E)\\
+			0&=\lambda_2(E)-\lambda_1(E).
+		\end{align*}
+		Therefore $\lambda_1(E)=\lambda_2(E)$, and the measure $\lambda$ is unique.
+		\item Show that in general the measure $\lambda$ need not be unique but that there is always a smallest such $\lambda$.\\
+		\\Suppose there exists a set $E\in\mathcal{M}$ such that $\mu(E)=\infty$ and $\nu(E)=\infty$. 
+		Then regardless of the number $\lambda(E)\in[0,\infty]$ we define $\lambda$ to be, we always have $\infty=\mu(E)=\nu(E)+\lambda(E)$.
+		Then $\lambda(E)=0$ is the smallest value that we can set $\lambda$ to be, and we can define the smallest $\lambda$ in the following way:
+		\[
+		\lambda(E)=
+		\begin{cases}
+			\mu(E)-\nu(E)&\text{if }\mu(E)<\infty\ (\text{ forces }\nu(E)<\infty)\\
+			\infty&\text{if }\mu(E)=\infty,\nu(E)<\infty\\
+			0&\text{if }\mu(E)=\infty,\nu(E)=\infty
+		\end{cases}
+		\]
+	\end{enumerate}
+	\item Let $(X,\mathcal{M},\mu)$ be a measure space.
+	The measure $\mu$ is said to be \textbf{semifinite} provided each measurable set of infinite measure contains measurable sets of arbitrarily large finite measure.
+	\begin{enumerate}[label=(\roman*),align=left]  
+		\item Show that each $\sigma$-finite measure is semifinite.
+		\item For $E\in\mathcal{M}$, define $\mu_1(E)=\sup\{\mu(F)\ |\ F\subseteq E,\mu(F)<\infty\}$. 
+		Show that $\mu_1$ is a semifinite measure: it is called the semifinite part of $\mu$.
+		\item Find a measure $\mu_2$ on $\mathcal{M}$ that only takes the values $0$ and $\infty$ and $\mu=\mu_1+\mu_2$.
+	\end{enumerate}
+	\item Prove Proposition 3; that is, show that $\mathcal{M}_0$ is a $\sigma$-algebra, $\mu_0$ is properly defined, and $(X,\mathcal{M}_0,\mu_0)$ is complete. In what sense is $\mathcal{M}_0$ minimal?
+	\item If $(X,\mathcal{M},\mu)$ is a measure space, we say that a subset $E$ of $X$ is \textbf{locally measurable} provided for each $B\in\mathcal{M}$ with $\mu(B)<\infty$, the intersection $E\cap B$ belongs to $\mathcal{M}$.
+	The measure $\mu$ is called \textbf{saturated} provided every locally measurable set is measurable.
+	\begin{enumerate}[label=(\roman*),align=left]  
+		\item Show that each $\sigma$-finite measure is saturated.\\
+		\\Suppose $\mu$ is $\sigma$-finite, then $X$ can be taken to be the union of a countable collection of measurable sets, each of which has finite measure under $\mu$.
+		\\That is, $X=\bigcup_{k=1}^\infty X_k$, where $\mu(X_k)<\infty$.
+		\\Then for any $E\in X$, we have 
+		\[
+			E=E\cap X = E\cap \bigcup_{k=1}^\infty X_k = \bigcup_{k=1}^\infty[E\cap X_k],
+		\]
+		In the case that $E$ is locally measurable, then each intersection $E\cap X_k$ is measurable.
+		Then the countable intersection of measurable sets $\bigcup_{k=1}^\infty[E\cap X_k]=E$ is measurable.
+		\\Thus when $\mu$ is $\sigma$-finite, every locally measurable set is measurable, and thus $\mu$ is saturated.
+		\item Show that the collection $\mathcal{C}$ of locally measurable sets is a $\sigma$-algebra.
+		\item Let $(X,\mathcal{M},\mu)$ be a measure space and $\mathcal{C}$ the $\sigma$-algebra of locally measurable sets.
+		For $E\in\mathcal{C}$, define $\overline\mu(E)=\mu(E)$ if $E\in\mathcal{M}$ and $\overline\mu(E)=\infty$ if $E\notin\mathcal{M}$.
+		Show that $(X,\mathcal{C},\overline\mu)$ is a saturated measure space.
+		\item If $\mu$ is semifinite and $E\in\mathcal{C}$, the set $\underline\mu(E)=\sup\{\mu(B)\ |\ B\in\mathcal{M},B\subseteq E\}$.
+		Show that $(X,\mathcal{C},\underline\mu)$ is a saturated measure space and that $\underline\mu$ is an extension of $\mu$.
+		Give an example to show that $\overline\mu$ and $\underline\mu$ may be different.
+	\end{enumerate}
+	\item Let $\mu$ and $\eta$ be measures on the measurable space $(X,\mathcal{M})$.
+	For $E\in\mathcal{M}$, define $\nu(E)=\max\{\mu(E),\eta(E)\}$. Is $\nu$ a measure on $(X,\mathcal{M})$?\\
+	\\We have $0\le\mu(E),\eta(E)\le\max\{\mu(E),\eta(E)\}$ for any $E\in\mathcal{M}$.
+	\\We have $\max\{\mu(E),\eta(E)\}\in[0,\infty]$ for any $E\in\mathcal{M}$.
+	\\Counterexample:
+	Let $E_1,E_2$ be nonempty disjoint measurable (singleton) sets such that
+	\[
+		\mu(E)=
+		\begin{cases}
+			1&E\supseteq E_1\\
+			0&E\not\supseteq E_1\\
+		\end{cases}
+		\ \text{ and }\ \eta(E)=
+		\begin{cases}
+			1&E\supseteq E_2\\
+			0&E\not\supseteq E_2\\
+		\end{cases}
+	\]
+	Then $\mu(E)\in\{0,1\}\ge0$, $\mu(\emptyset)=0$ because $\emptyset\not\supseteq E_1$, and for any countable disjoint collection $\{A_k\}_{k=1}^\infty$ of measurable sets,
+	in the case that for all $k$, $A_k\not\supseteq E_1$, then $\bigcup_{k=1}^\infty A_k\not\supseteq E_1$ and 
+	\[
+		\mu\biggl(\bigcup_{k=1}^\infty A_k\biggr)=\sum_{k=1}^\infty\mu(A_k)=0.
+	\]
+	In the case that there exists an index $j$ such that $A_j\supseteq E_1$, then $\bigcup_{k=1}^\infty A_k\supseteq E_1$, and because the sets are disjoint, $A_i\not\supseteq E_1$ for $i\neq j$.
+	\[
+		\mu\biggl(\bigcup_{k=1}^\infty A_k\biggr)=\sum_{k=1}^\infty\mu(A_k)=\sum_{k\in\mathbb{N}\setminus\{j\}}\mu(A_k)+\mu(A_j)=0+\mu(A_j)=1.
+	\]
+	Then $\eta$ can also be shown to be a measure in the exact same way.
+	\\Then we see that
+	\begin{align*}
+		\nu(E_1\cup E_2)&=\max\{\mu(E_1\cup E_2),\eta(E_1\cup E_2)\}=\max\{1,1\}=1,\\
+		\nu(E_1)+\nu(E_2)&=\max\{\mu(E_1),\eta(E_1)\}+\max\{\mu(E_2),\eta(E_2)\}=\max\{1,0\}+\max\{0,1\}=2.
+	\end{align*}
+	Thus $\nu$ is not a measure because it does not satisfy countable additivity.
 \end{enumerate}
 
 % 17.2
@@ -106,7 +313,27 @@
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{11}
-	\item 
+	\item In the above example, let $E$ be a Lebesgue measurable set such that $0<\nu(E)<\infty$.
+	Find a positive set $A$ contained i $E$ for which $\nu(A)>0$.
+	\item Let $\mu$ be a measure and $\mu_1$ an $\mu_2$ be mutually singular measures on a measurable space $(X,\mu)$ for which $\mu=\mu_1-\mu_2$.
+	Use this to establish the uniqueness assertion of the Jordan Decomposition Theorem.
+	\item Show that if $E$ is any measurable set, then
+	\[
+		-\nu^-(E)\le\nu(E)\le\nu^+(E)\text{ and }|\nu(E)|\le|\nu|(E).	
+	\]
+	\item Show that if $\nu_1$ and $\nu_2$ are any two finite signed measures, then so it $\alpha\nu_1+\beta\nu_2$, where $\alpha$ and $\beta$ are real numbers. Show that
+	\[
+		|\alpha\nu|=|\alpha||\nu|\text{ and }|\nu_1+\nu_2|\le|\nu_1|+|\nu_2|,
+	\]
+	where $\nu\le\mu$ means $\nu(E)\le\mu(E)$ for all measurable sets $E$.
+	\item Prove (4).
+	\item Let $\mu$ and $\nu$ be finite signed measures.
+	Define $\mu\land\nu=\frac{1}{2}(\mu+\nu-|\mu-\nu|)$ and $\mu\lor\nu=\mu+\nu-\mu\land\nu$.
+	\begin{enumerate}[label=(\roman*),align=left]  
+		\item Show that the signed measure $\mu\land\nu$ is smaller than $\mu$ and $\nu$ but larger than any other signed measure that is smaller than $\mu$ and $\nu$.
+		\item Show that the signed measure $\mu\lor\nu$ is larger than $\mu$ and $\nu$ but smaller than any other signed measure that is larger than $\mu$ and $\nu$.
+		\item If $\mu$ and $\nu$ are positive measures, show that they are mutually singular iff $\mu\land\nu=0$.
+	\end{enumerate}
 \end{enumerate}
 
 % 17.3
@@ -119,7 +346,24 @@
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{17}
-	\item
+	\item Let $\mu^*:2^X\to[0,\infty]$ be an outer measure.
+	Let $A\subseteq X, \{E_k\}_{k=1}^\infty$ be a disjoint countable collection of measurable sets and $E=\bigcup_{k=1}^\infty E_k$. Show that
+	\[
+		\mu^*(A\cap E)=\sum_{k=1}^\infty \mu^*(A\cap E_k).
+	\]
+	\item Show that any measure that is induced by an outer measure is complete.
+	\item Let $X$ be any set.
+	Define $\eta^*:2^X\to[0,\infty]$ by defining $\eta(\emptyset)=0$ and for $E\subseteq X,E\neq\emptyset$, defining $\eta(E)=\infty$.
+	Show that $\eta$ is an outer measure.
+	Also show that the set function that assigns $0$ to every subset of $X$ is an outer measure.
+	\item Let $X$ be a set, $\mathcal{S}=\{\emptyset,X\}$, and define $\mu(\emptyset)=0,\mu(X)=1$. 
+	Determine the outer measure $\mu^*$ induced by the set function $\mu:\mathcal{S}\to[0,\infty)$ and the $\sigma$-algebra of measurable sets.
+	\item On the collection $\mathcal{S}=\{\emptyset,[1,2]\}$ of subsets of $\mathbb{R}$, define the set function $\mu:\mathcal{S}\to[0,\infty)$ as follows: $\mu(\emptyset)=0,\mu([1,2])=1$. 
+	Determine the outer measure $\mu^*$ induced by $\mu$ and the $\sigma$-algebra of measurable sets.
+	\item On the collection $\mathcal{S}$ of all subsets of $\mathbb{R}$, define the set function $\mu:\mathcal{S}\to\mathbb{R}$ by setting $\mu(A)$ to be the number of integers in $A$.
+	Determine the outer measure $\mu^*$ induced by $\mu$ and the $\sigma$-algebra of measurable sets.
+	\item Let $\mathcal{S}$ be a collection of subsets of $X$ and $\mu:\mathcal{S}\to[0,\infty]$ a set function.
+	Is every set in $\mathcal{S}$ measurable with respect to the outer measure induced by $\mu$?
 \end{enumerate}
 
 % 17.5
@@ -129,5 +373,58 @@
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{24}
-	\item
+	\item Let $X$ be any set containing more than one point and $A$ a proper nonempty subset of $X$.
+	Define $\mathcal{S}=\{A,X\}$ and the set function $\mu:\mathcal{S}\to[0,\infty]$ by $\mu(A)=1$ and $\mu(X)=2$.
+	Show that $\mu:\mathcal{S}\to[0,\infty]$ is a premeasure.
+	Can $\mu$ be extended to a measure?
+	What are the subsets of $X$ that are measurable with respect to the outer measure $\mu^*$ induced by $\mu$?
+	\item Consider the collection $\mathcal{S}=\{\emptyset,[0,1],[0,3],[2,3]\}$ of subsets of $\mathbb{R}$ and define $\mu(\emptyset)=0,\mu([0,1])=1,\mu([0,3])=1,\mu([2,3])=1$.
+	Show that $\mu:\mathcal{S}\to[0,\infty]$ is a premeasure.
+	Can $\mu$ be extended to a measure?
+	What are the subsets of $\mathbb{R}$ that are measurable with respect to the outer measure $\mu^*$ induced by $\mu$?
+	\item Let $\mathbb{S}$ be a collection of subsets of a set $X$ and $\mu:\mathcal{S}\to[0,\infty]$ a set function.
+	Show that $\mu$ is countably monotone iff $\mu^*$ is an extension of $\mu$.
+	\item Show that a set function is a premeasure if it has an extension that is a measure.
+	\item Show that a set function on a $\sigma$-algebra is a measure iff it is a premeasure.
+	\item Let $\mathcal{S}$ be a collection of sets that is closed with respect to the formation of finite unions and finite intersections.
+	\begin{enumerate}[label=(\roman*),align=left]  
+		\item Show that $\mathcal{S}_\sigma$ is closed with respect to the formation of countable unions and finite intersections.
+		\item Show that each set in $\mathcal{S}_{\sigma\delta}$ is the intersection of a decreasing sequence of $\mathcal{S}_\sigma$ sets.
+	\end{enumerate}
+	\item Let $\mathcal{S}$ be a semialgebra of subsets of a set $X$ and $\mathcal{S}'$ the collection of unions of finite disjoint collections of sets in $\mathcal{S}$.
+	\begin{enumerate}[label=(\roman*),align=left]  
+		\item Show that $\mathcal{S}'$ is an algebra.
+		\item Show that $\mathcal{S}_\sigma=\mathcal{S}_\sigma'$ and therefore $\mathcal{S}_{\sigma\delta}=\mathcal{S}_{\sigma\delta}'$.
+		\item Let $\{E_k\}_{k=1}^\infty$ be a collection of sets in $\mathcal{S}'$. Show that we can express 
+		\[
+			\sum_{k=1}^\infty \mu'(E_k')\ge\sum_{k=1}^\infty \mu(E_k).
+		\]
+		\item Let $A$ belong to $\mathcal{S}_{\sigma\delta}'$. Show that $A$ is the intersection of a descending sequence $\{A_k\}_{k=1}^\infty$ of sets in $\mathcal{S}_\sigma$.
+	\end{enumerate}
+	\item Let $\mathbb{Q}$ be the set of rational numbers and and $\mathcal{S}$ the collection of all finite unions of intervals of the form $(a,b]\cap\mathbb{Q}$, where $a,b\in\mathbb{Q}$ and $a\le b$. 
+	Define $\mu((a,b])=\infty$ if $a<b$ and $\mu(\emptyset)=0$.
+	Show that $\mathcal{S}$ is closed with respect to the formation of relative complements and $\mu:\mathcal{S}\to[0,\infty]$ is a premeasure.
+	Then show that the extension of $\mu$ to the smallest $\sigma$-algebra containing $\mathcal{S}$ is not unique.
+	\item By a bounded interval of real numbers we mean a set of the form $[a,b],[a,b),(a,b]$, or $(a,b)$ for real numbers $a\le b$.
+	Thus we consider the empty-set and a set consisting of a single point to be a bounded interval.
+	Show that each of the following three collections of sets $\mathcal{S}$ is a semiring.
+	\begin{enumerate}[label=(\roman*),align=left]  
+		\item Let $\mathcal{S}$ be the collection of all bounded intervals of real numbers.
+		\item Let $\mathcal{S}$ be the collection of all subsets of $\mathbb{R}\times\mathbb{R}$ that are products of bounded intervals of real numbers.
+		\item Let $n$ be a natural number an $X$ be the $n$-fold Cartesian product of $\mathbb{R}$:
+		\[
+			X=\mathbb{R}\times\cdots\times\mathbb{R}=\mathbb{R}^n.
+		\]
+		Let $\mathcal{S}$ be the collection of all subsets of $X$ that are $n$-fold Cartesian products of bounded intervals of real numbers.
+	\end{enumerate}
+	\item If we start with an outer measure $\mu^*$ on $2^X$ and form the induced measure $\overline\mu$ on the $\mu^*$-measurable sets, we can view $\overline\mu$ as a set function and denote by $\mu^+$ the outer measure induced by $\overline\mu$.
+	\begin{enumerate}[label=(\roman*),align=left]  
+		\item Show that for each set $E\subset X$ we have $\mu^+(E)\ge\mu^*(E)$.
+		\item For a given set $E$, show that $\mu^+(E)=\mu^*(E)$ iff there is a $\mu^*$-measurable set $A\supseteq E$ with $\mu^*(A)=\mu^*(E)$.
+	\end{enumerate}
+	\item Let $\mathcal{S}$ be a $\sigma$-algebra of subsets of $X$ and $\mu:\mathcal{S}\to[0,\infty]$ a measure.
+	Let $\overline\mu:\mathcal{M}\to[0,\infty]$ be the measure induced by $\mu$ via the Carath\'eodory construction.
+	Show that $\mathcal{S}$ is a subcollection of $\mathcal{M}$ and it may be a proper subcollection.
+	\item Let $\mu$ be a finite premeasure on an algebra $\mathcal{S}$, and $\mu^*$ the induced outer measure.
+	Show that a subset $E$ of $X$ is $\mu^*$-measurable iff for each $\epsilon>0$ there is a set $A\in\mathcal{S}_\delta,A\subseteq E$, such that $\mu^*(E\setminus A)<\epsilon$.
 \end{enumerate}
