@@ -93,8 +93,15 @@
 	\]
 	\\$(\implies)$ Suppose that $\mu$ is a measure.\\
 	Then by Continuity of Measure, the conclusion follows.\\
-	\\$(\impliedby)$ Suppose that whenever $\{A_k\}_{k=1}^\infty$ is an ascending sequence of sets in $\mathcal{M}$, then $\mu ( \bigcup_{k=1}^\infty A_k ) = \lim_{k \to \infty} \mu(A_k)$.\\
-	hi
+	\\$(\impliedby)$ Suppose that whenever $\{A_k\}_{k=1}^\infty$ is an ascending sequence of sets in $\mathcal{M}$, then $\mu ( \bigcup_{k=1}^\infty A_k ) = \lim_{k \to \infty} \mu(A_k)$.
+	(See Chapter 2 Problem 28.)\\
+	Finite additivity of $\mu$ means that for any finite disjoint collection $\{E_k\}_{k=1}^n$ of measurable sets, we have $\mu(\bigcup_{k=1}^n E_k)=\sum_{k=1}^n\mu(E_k)$.
+	\\We define $F_n=\bigcup_{k=1}^n E_k$ so that $\{F_n\}_{n=1}^\infty$ is an ascending sequence of sets in $\mathcal{M}$, and thus $\mu ( \bigcup_{n=1}^\infty F_n ) = \lim_{n \to \infty} \mu(F_n)$.
+	\\Thus we see
+	\[
+		\mu(\bigcup_{n=1}^\infty E_n)=\mu(\bigcup_{n=1}^\infty F_n)=\lim_{n \to \infty} \mu(F_n)=\lim_{n \to \infty} \mu(\bigcup_{k=1}^n E_k)=\lim_{n \to \infty}\sum_{k=1}^n\mu(E_k)=\sum_{k=1}^\infty\mu(E_k),
+	\]
+	that is, $\mu$ satisfies countable additivity, and thus $\mu$ is a measure.
 	\item Let $\mathcal{M}$ be a $\sigma$-algebra of subsets of a set $X$. Formulate and establish a correspondent of the preceding problem for descending sequences of sets in $\mathcal{M}$.\\
 	\\Let $\mathcal{M}$ be a $\sigma$-algebra of subsets of a set $X$ and the set function $\mu : \mathcal{M} \to [0,\infty)$ be finitely additive.
 	Prove that $\mu$ is a measure iff whenever $\{A_k\}_{k=1}^\infty$ is a descending sequence of sets in $\mathcal{M}$ with $m(A_1)<\infty$, then
@@ -103,14 +110,47 @@
 	\]
 	\\$(\implies)$ Suppose that $\mu$ is a measure.\\
 	Then by Continuity of Measure, the conclusion follows.\\
-	\\$(\impliedby)$ Suppose that whenever $\{A_k\}_{k=1}^\infty$ is a descending sequence of sets in $\mathcal{M}$ with $m(A_1)<\infty$, then $\mu ( \bigcap_{k=1}^\infty A_k ) = \lim_{k \to \infty} \mu(A_k)$.\\
-	hi
+	\\$(\impliedby)$ Suppose that whenever $\{A_k\}_{k=1}^\infty$ is a descending sequence of sets in $\mathcal{M}$ with $\mu(A_1)<\infty$, then $\mu ( \bigcap_{k=1}^\infty A_k ) = \lim_{k \to \infty} \mu(A_k)$.\\
+	Finite additivity of $\mu$ means that for any finite disjoint collection $\{E_k\}_{k=1}^n$ of measurable sets, we have $\mu(\bigcup_{k=1}^n E_k)=\sum_{k=1}^n\mu(E_k)$.
+	\\We can consider $\{\bigcup_{k={n+1}}^\infty E_k\}_{n=1}^\infty$, a descending sequence of sets in $\mathcal{M}$ with $\mu(\bigcup_{k=2}^\infty E_k)<\infty$, and then because $\{E_k\}_{k=1}^n$ is disjoint,
+	\[
+		\mu ( \bigcap_{n=1}^\infty [\bigcup_{k={n+1}}^\infty E_k]) = \lim_{n \to \infty} \mu(\bigcup_{k={n+1}}^\infty E_k)=0.
+	\]
+	\\Thus we see
+	\begin{align*}
+		\mu(\bigcup_{k=1}^\infty E_k)&=\mu([\bigcup_{k=1}^n E_k]\cup[\bigcup_{k={n+1}}^\infty E_k])\\
+		&=\mu(\bigcup_{k=1}^n E_k)+\mu(\bigcup_{k={n+1}}^\infty E_k)&&\text{ by disjoint additivity}\\
+		&=\sum_{k=1}^n\mu( E_k)+\mu(\bigcup_{k={n+1}}^\infty E_k)&&\text{ by disjoint additivity}
+	\end{align*}
+	The left hand side is independent of $n$, so taking the limit, we have
+	\begin{align*}
+		\mu(\bigcup_{k=1}^\infty E_k)&=\lim_{n\to\infty}\sum_{k=1}^n\mu( E_k)+\lim_{n\to\infty}\mu(\bigcup_{k={n+1}}^\infty E_k)\\
+		&=\sum_{k=1}^\infty\mu( E_k)+0\\
+		&=\sum_{k=1}^\infty\mu( E_k),
+	\end{align*}
+	that is, $\mu$ satisfies countable additivity, and thus $\mu$ is a measure.
 	\item Let $\{(X_\lambda,\mathcal{M}_\lambda,\mu_\lambda)\}_{\lambda\in\Lambda}$ be a collection of measure spaces parametrized by the set $\Lambda$.
 	Assume the collection of sets $\{X_\lambda\}_{\lambda\in\Lambda}$ is disjoint.
 	Then we can form a new measure space (called their union) $(X,\mathcal{B},\mu)$ by letting $X=\bigcup_{\lambda\in\Lambda}X_\lambda$, letting $\mathcal{B}$ be the collection of subsets $B$ of $X$ such that $B\cap X_\lambda\in\mathcal{M}_\lambda$ for all $\lambda\in\Lambda$, and defining $\mu(B)=\sum_{\lambda\in\Lambda}\mu_\lambda[B\cap X_\lambda]$ for $B\in\mathcal{B}$.
 	\begin{enumerate}[label=(\roman*),align=left]   
-		\item Show that $\mathcal{B}$ is a $\sigma$-algebra.
-		\item Show that $\mu$ is a measure.
+		\item Show that $\mathcal{B}$ is a $\sigma$-algebra.\\
+		\\We have:
+		\begin{enumerate}[label=(\roman*),align=left]   
+			\item $X\in\mathcal{B}$ because $X\subseteq X$ such that for any $\lambda'\in\Lambda$,
+			\begin{align*}
+				X\cap X_{\lambda'}&= \bigcup_{\lambda\in\Lambda}X_\lambda\cap X_{\lambda'}= X_{\lambda'},
+			\end{align*}
+			where $X_{\lambda'}\in\mathcal{M}_{\lambda'}$ because $(X_{\lambda'},\mathcal{M}_{\lambda'},\mu_{\lambda'})$ is a measure space.
+			\item if $B\in\mathcal{B}$, then $B\subseteq X$ such that for any $\lambda'\in\Lambda$, $B\cap X_{\lambda'}\in\mathcal{M}_{\lambda'}$.\\
+			Then $B^c\subseteq X$ and because $ B\cap X_{\lambda'}\in\mathcal{M}_{\lambda'}$ and $X_{\lambda'}\in\mathcal{M}_{\lambda'}$,
+			\[
+				\mathcal{M}_{\lambda'}\ni[ B\cap X_{\lambda'}]^c\cap X_{\lambda'}=[B^c\cup X_{\lambda'}^c]\cap X_{\lambda'}=[B^c\cap X_{\lambda'}]\cup[X_{\lambda'}^c\cap X_{\lambda'}]=B^c\cap X_{\lambda'}.
+			\]
+			\item if $B_i\in\mathcal{B}$, then $B_i\in X$ such that for any $\lambda'\in\Lambda$, $B_i\cap X_{\lambda'}\in\mathcal{M}_{\lambda'}$ for all $i$.\\
+			Then $\bigcup_{i=1}^\infty B_i\in X$ and $[\bigcup_{i=1}^\infty B_i]\cap X_{\lambda'} =\bigcup_{i=1}^\infty [B_i\cap X_{\lambda'}]\in\mathcal{M}_{\lambda'}$.
+		\end{enumerate}
+		\item Show that $\mu$ is a measure.\\
+		\\
 		\item Show that $\mu$ is $\sigma$-finite iff all but a countable number pf the measures $\mu_\lambda$ have $\mu(X_\lambda)=0$ and the remainder are $\sigma$-finite. 
 	\end{enumerate}
 	\item Let $(X,\mathcal{M},\mu)$ be a measure space. The symmetric difference, $E_1\Delta E_2$, of two subsets $E_1$ and $E_2$ of $X$ is defined by
@@ -243,7 +283,8 @@
 	\item Let $(X,\mathcal{M},\mu)$ be a measure space.
 	The measure $\mu$ is said to be \textbf{semifinite} provided each measurable set of infinite measure contains measurable sets of arbitrarily large finite measure.
 	\begin{enumerate}[label=(\roman*),align=left]  
-		\item Show that each $\sigma$-finite measure is semifinite.
+		\item Show that each $\sigma$-finite measure is semifinite.\\
+		\\
 		\item For $E\in\mathcal{M}$, define $\mu_1(E)=\sup\{\mu(F)\ |\ F\subseteq E,\mu(F)<\infty\}$. 
 		Show that $\mu_1$ is a semifinite measure: it is called the semifinite part of $\mu$.
 		\item Find a measure $\mu_2$ on $\mathcal{M}$ that only takes the values $0$ and $\infty$ and $\mu=\mu_1+\mu_2$.
@@ -262,13 +303,64 @@
 		In the case that $E$ is locally measurable, then each intersection $E\cap X_k$ is measurable.
 		Then the countable intersection of measurable sets $\bigcup_{k=1}^\infty[E\cap X_k]=E$ is measurable.
 		\\Thus when $\mu$ is $\sigma$-finite, every locally measurable set is measurable, and thus $\mu$ is saturated.
-		\item Show that the collection $\mathcal{C}$ of locally measurable sets is a $\sigma$-algebra.
+		\item Show that the collection $\mathcal{C}$ of locally measurable sets is a $\sigma$-algebra.\\
+		\\We have
+		\begin{enumerate}[label=(\roman*),align=left]   
+			\item $X\in\mathcal{C}$ because for all $B\in\mathcal{M}$ with $\mu(B)<\infty$, then $X\cap B=B\in\mathcal{M}$.
+			\item if $E\in\mathcal{C}$, then for all $B\in\mathcal{M}$ with $\mu(B)<\infty$, then $E\cap B\in\mathcal{M}$.\\
+			Then we have the two measurable sets $E\cap B$ and $B$ so that $[E\cap B]^c\cap B$ is also measurable, and
+			\[
+				\mathcal{M}\ni[E\cap B]^c\cap B=[E^c\cup B^c]\cap B=[E^c\cap B]\cup[B^c\cap B]=E^c\cap B,
+			\]
+			and thus $E^c\in\mathcal{C}$. 
+			\item if $E_i\in\mathcal{C}$, then for all $B\in\mathcal{M}$ with $\mu(B)<\infty$, then $E_i\cap B\in\mathcal{M}$ for all $i$.\\
+			Then $\left[\bigcup_{i=1}^\infty E_i\right]\cap B=\bigcup_{i=1}^\infty [E_i\cap B]\in\mathcal{M}$ and thus $\bigcup_{i=1}^\infty E_i\in\mathcal{C}$.
+		\end{enumerate}
 		\item Let $(X,\mathcal{M},\mu)$ be a measure space and $\mathcal{C}$ the $\sigma$-algebra of locally measurable sets.
 		For $E\in\mathcal{C}$, define $\overline\mu(E)=\mu(E)$ if $E\in\mathcal{M}$ and $\overline\mu(E)=\infty$ if $E\notin\mathcal{M}$.
-		Show that $(X,\mathcal{C},\overline\mu)$ is a saturated measure space.
+		Show that $(X,\mathcal{C},\overline\mu)$ is a saturated measure space.\\
+		\\In (ii) we showed that $\mathcal{C}$ is a $\sigma$-algebra of subsets of $X$.\\
+		Therefore $(X,\mathcal{C})$ is a measurable space.\\
+		\\We have defined
+		\[
+			\overline\mu(E)=
+			\begin{cases}
+				\mu(E)&\text{ if }E\in\mathcal{M}\\
+				\infty&\text{ if }E\notin\mathcal{M}
+			\end{cases}	
+		\]
+		\\We have $\overline\mu(E)\in\{\mu(E),\infty\}\ge0$ for all $E\in\mathcal{C}$.
+		We have $\overline\mu(\emptyset)=\mu(\emptyset)=0$ because $\emptyset\in\mathcal{M}$ and $\emptyset\in\mathcal{C}$.
+		Finally, consider a countable disjoint collection of sets $\{E_k\}_{k=1}^\infty$ in $\mathcal{C}$.
+		\begin{enumerate}[label=(\roman*),align=left]  
+			\item If for all $k$ we have $E_k\in\mathcal{M}$, then $\mu(\bigcup_{k=1}^\infty E_k)$ is measurable, $\overline\mu(E_k)=\mu(E_k)$, and
+			\[
+				\overline\mu(\bigcup_{k=1}^\infty E_k)=\mu(\bigcup_{k=1}^\infty E_k)=\sum_{k=1}^\infty \mu(E_k)=\sum_{k=1}^\infty \overline\mu(E_k).
+			\]
+			\item If there exists an index $j$ such that $E_j\notin\mathcal{M}$, then $\overline\mu(E_j)=\infty$ and $\sum_{k=1}^\infty \overline\mu(E_k)=\infty$.
+		\end{enumerate}
+		Consider the case that $\bigcup_{k=1}^\infty E_k\in\mathcal{C}$ is measurable and $\mu(\bigcup_{k=1}^\infty E_k)<\infty$. 
+		\\Then because for any $j$, we have $E_j\in\mathcal{C}$, then $E_j=E_j\cap\bigcup_{k=1}^\infty E_k\in\mathcal{M}$.\\
+		Then (i) must hold.\\
+		\\Consider the case that $\bigcup_{k=1}^\infty E_k\in\mathcal{C}$ is measurable and $\mu(\bigcup_{k=1}^\infty E_k)=\infty$. \\
+		If (i) holds, then $\overline\mu(\bigcup_{k=1}^\infty E_k)=\sum_{k=1}^\infty\overline\mu(E_k)$.\\
+		If (ii) holds, then $\overline\mu(\bigcup_{k=1}^\infty E_k)=\mu(\bigcup_{k=1}^\infty E_k)=\infty=\sum_{k=1}^\infty \overline\mu(E_k)$.\\
+		\\Consider the case that $\bigcup_{k=1}^\infty E_k\in\mathcal{C}$ is not measurable. Then $\mu(\bigcup_{k=1}^\infty E_k)=\infty$. \\
+		Then (ii) must hold else we reach a contradiction to $\bigcup_{k=1}^\infty E_k\notin\mathcal{M}$.\\
+		\\Therefore $(X,\mathcal{C},\overline\mu)$ is a measure space.\\
+		\\We can use the definition of $\overline\mu$ to see that 
+		\[
+			B\in\mathcal{C}\text{ with }\overline\mu(B)<\infty\iff B\in\mathcal{M}\text{ with }\mu(B)<\infty.
+		\]
+		Consider a set $E\in X$ such that $E\cap B\in\mathcal{C}$.
+		\\Then by monotonicity, $\overline\mu(E\cap B)\le \overline\mu(B)<\infty$.
+		\\Because $\overline\mu(E\cap B)<\infty$, see the definition of $\overline\mu$ to see that $E\cap B\in\mathcal{M}$.
+		\\Then we see that $E\in\mathcal{C}$ because for each $B\in\mathcal{M}$ with $\mu(B)<\infty$, we have $E\cap B\in\mathcal{M}$.\\
+		\\Therefore $(X,\mathcal{C},\overline\mu)$ is a saturated measure space.
 		\item If $\mu$ is semifinite and $E\in\mathcal{C}$, the set $\underline\mu(E)=\sup\{\mu(B)\ |\ B\in\mathcal{M},B\subseteq E\}$.
 		Show that $(X,\mathcal{C},\underline\mu)$ is a saturated measure space and that $\underline\mu$ is an extension of $\mu$.
-		Give an example to show that $\overline\mu$ and $\underline\mu$ may be different.
+		Give an example to show that $\overline\mu$ and $\underline\mu$ may be different.\\
+		\\
 	\end{enumerate}
 	\item Let $\mu$ and $\eta$ be measures on the measurable space $(X,\mathcal{M})$.
 	For $E\in\mathcal{M}$, define $\nu(E)=\max\{\mu(E),\eta(E)\}$. Is $\nu$ a measure on $(X,\mathcal{M})$?\\
