@@ -59,7 +59,7 @@
 	\begin{namedthm*}{Proposition 3}
 		Let $(X,\mathcal{M},\mu)$ be a measure space.
 		Define $\mathcal{M}_0$ to be the collection of subsets $E$ of $X$ of the form $E=A\cup B$ where $B\in\mathcal{M}$ and $A\subseteq C$ for some $C\in\mathcal{M}$ for which $\mu(C)=0$.
-		For such a set $E$ define $\mu_0(E)=\mu_0(B)$. 
+		For such a set $E$ define $\mu_0(E)=\mu(B)$. 
 		Then $\mathcal{M}_0$ is a $\sigma$-algebra that contains $\mathcal{M}$, $\mu_0$ is a measure that extends $\mu$, and $(X,\mathcal{M}_0,\mu_0)$ (the \textbf{completion} of $(X,\mathcal{M},\mu)$) is a complete measure space.
 	\end{namedthm*}
 \end{flushleft}
@@ -150,8 +150,37 @@
 			Then $\bigcup_{i=1}^\infty B_i\in X$ and $[\bigcup_{i=1}^\infty B_i]\cap X_{\lambda'} =\bigcup_{i=1}^\infty [B_i\cap X_{\lambda'}]\in\mathcal{M}_{\lambda'}$.
 		\end{enumerate}
 		\item Show that $\mu$ is a measure.\\
-		\\
-		\item Show that $\mu$ is $\sigma$-finite iff all but a countable number pf the measures $\mu_\lambda$ have $\mu(X_\lambda)=0$ and the remainder are $\sigma$-finite. 
+		\\For $B\in\mathcal{B}$, we have $B\cap X_{\lambda'}\in\mathcal{M}_{\lambda'}$ for all $\lambda'\in\Lambda$, and so $\mu_{\lambda'}[B\cap X_{\lambda'}]$ is defined.
+		\\Then $\mu_{\lambda'}[B\cap X_{\lambda'}]\ge0$ for all $\lambda'\in\Lambda$, which implies $\mu(B)=\sum_{\lambda\in\Lambda}\mu_\lambda[B\cap X_\lambda]\ge0$.
+		\\Then because $\emptyset=X^c$ is in $\mathcal{B}$, then $\emptyset=\emptyset\cap X_{\lambda'}\in\mathcal{M}_{\lambda'}$ for all $\lambda'\in\Lambda$, and then $\mu(\emptyset)=\sum_{\lambda\in\Lambda}\mu_\lambda[\emptyset\cap X_\lambda]=\sum_{\lambda\in\Lambda}0=0$.
+		\\Finally, consider any countable disjoint collection $\{B_k\}_{k=1}^\infty$ in $\mathcal{B}$.
+		Then for any $\lambda'\in\Lambda$, the collection $\{B_k\cap X_{\lambda'}\}_{k=1}^\infty$ is disjoint so that 
+		\begin{align*}
+			\mu(\bigcup_{k=1}^\infty B_k)&= \sum_{\lambda\in\Lambda}\mu_\lambda[(\bigcup_{k=1}^\infty B_k)\cap X_\lambda]\\
+			&=\sum_{\lambda\in\Lambda}\mu_\lambda[\bigcup_{k=1}^\infty (B_k\cap X_\lambda)]\\
+			&=\sum_{\lambda\in\Lambda}\sum_{k=1}^\infty \mu_\lambda(B_k\cap X_\lambda)\\
+			&=\sum_{k=1}^\infty \sum_{\lambda\in\Lambda} \mu_\lambda(B_k\cap X_\lambda)\\
+			&=\sum_{k=1}^\infty \mu(B_k).
+		\end{align*}
+		Therefore $\mu$ is a measure.
+		\item Show that $\mu$ is $\sigma$-finite iff all but a countable number of the measures $\mu_\lambda$ have $\mu(X_\lambda)=0$ and the remainder are $\sigma$-finite.\\
+		\\$(\implies)$ Suppose $\mu$ is $\sigma$-finite.\\
+		Then $X$ can be written as the countable union of disjoint measurable sets, each of which has finite measure under $\mu$.
+		\\So we have $X=\bigcup_{k=1}^\infty A_k$, with $A_k\in\mathcal{B}$ s.t. $\sum_{\lambda\in\Lambda} \mu_\lambda(A_k\cap X_\lambda)=\mu(A_k)<\infty$.
+		\\Then all but a countable number of the measures $\mu_\lambda$ can be nonzero, and the remainder must be $\sigma$-finite.\\
+		\\$(\impliedby)$ Suppose all but a countable number of the measures $\mu_\lambda$ have $\mu(X_\lambda)=0$ and the remainder are $\sigma$-finite.\\
+		We can let $\Lambda*$ be the set of measures $\mu_\lambda$ such that $\mu(X_\lambda)=0$ for $\lambda\in\Lambda^*$, and let $\Lambda^{*c}$ be a countable collection.
+		Then we can write this as
+		\begin{align*}
+			\mu(X)&=\sum_{\lambda\in\Lambda} \mu_\lambda(X\cap X_\lambda)\\
+			&=\sum_{\lambda\in\Lambda} \mu_\lambda(X_\lambda)\\		
+			&=\sum_{\lambda\in\Lambda*} \mu_\lambda(X_\lambda)+\sum_{\lambda\notin\Lambda^*} \mu_\lambda(X_\lambda)\\	
+			&=\sum_{\lambda\in\Lambda*} 0+\sum_{k=1}^\infty \mu_{\lambda_{k}}(X_{\lambda_{k}})\\
+			&=\sum_{k=1}^\infty \mu_{\lambda_{k}}(X_{\lambda_{k}})\\
+			&=\sum_{k=1}^\infty \mu_{\lambda_{k}}(\bigcup_{i=1}^\infty A_{i\lambda_{k}})\\
+			&=\sum_{k=1}^\infty \sum_{i=1}^\infty \mu_{\lambda_{k}}( A_{i\lambda_{k}}),
+		\end{align*}
+		and thus $X$ can be written as a countable disjoint union of measurable sets, each of which has finite measure under $\mu$.
 	\end{enumerate}
 	\item Let $(X,\mathcal{M},\mu)$ be a measure space. The symmetric difference, $E_1\Delta E_2$, of two subsets $E_1$ and $E_2$ of $X$ is defined by
 	\[
@@ -284,12 +313,81 @@
 	The measure $\mu$ is said to be \textbf{semifinite} provided each measurable set of infinite measure contains measurable sets of arbitrarily large finite measure.
 	\begin{enumerate}[label=(\roman*),align=left]  
 		\item Show that each $\sigma$-finite measure is semifinite.\\
-		\\
+		\\If we suppose $\mu$ is $\sigma$-finite, then we can write any $E\in\mathcal{M}$ as the countable disjoint union of measurable sets of finite measure under $\mu$:
+		$E=\bigcup_{k=1}^\infty E_k$ with $\mu(E_k)<\infty$.
+		\\Consider any measurable set $E$ such that $\mu(E)=\infty$.
+		Then 
+		\[
+			\mu(E)=\mu(\bigcup_{k=1}^\infty E_k)=\sum_{k=1}^\infty \mu(E_k)=\infty.
+		\]
+		Then the sequence of partial sums $\sum_{k=1}^n \mu(E_k)$ converges to infinity.
+		That is, for any real number $x$, there exists an index $j$ such that $\sum_{k=1}^j \mu(E_k)>x$.
+		Because each $E_k$ is disjoint and measurable, we have that $E_x:=\bigcup_{k=1}^j E_k\in\mathcal{M}$, and we can write
+		\[
+			x<\sum_{k=1}^j \mu(E_k)=\mu(\bigcup_{k=1}^j E_k)=\mu(E_x)<\infty.
+		\]
+		That is, for any real number we choose, there exists a measurable set $E_x\subseteq E$ of finite measure that is larger than $x$.
+		\\Therefore $\mu$ is semifinite.
 		\item For $E\in\mathcal{M}$, define $\mu_1(E)=\sup\{\mu(F)\ |\ F\subseteq E,\mu(F)<\infty\}$. 
-		Show that $\mu_1$ is a semifinite measure: it is called the semifinite part of $\mu$.
-		\item Find a measure $\mu_2$ on $\mathcal{M}$ that only takes the values $0$ and $\infty$ and $\mu=\mu_1+\mu_2$.
+		Show that $\mu_1$ is a semifinite measure: it is called the semifinite part of $\mu$.\\
+		\\Consider any measurable set $E$ such that $\mu_1(E)=\infty$.
+		Then for any subset $F$ of $E$ such that $\mu(F)<\infty$, we have that $\mu_1(E)\ge\mu(F)=\mu_1(F)$ by definition of supremum.
+		(We have $\mu_1(F)=\mu(F)$ because $F$ is the largest subset of itself).
+		However, because $\mu_1$ is the least upper bound, for any real number $x$, there exists a subset $F_x$ of $E$ such that $x<\mu_1(F_x)\le\mu_1(E)$, else we reach a contradiction to the supremum.
+		Therefore for any real number $x$ we choose, there exists a measurable set $F_x\subseteq E$ of finite measure that is larger than $x$.  
+		\item Find a measure $\mu_2$ on $\mathcal{M}$ that only takes the values $0$ and $\infty$ and $\mu=\mu_1+\mu_2$.\\
+		\\We can define, for any $E\in\mathcal{M}$, 
+		\[
+			\mu_2(E)=
+			\begin{cases}
+				0&\text{if }\mu_1(E)<\infty\\
+				\infty&\text{if }\mu_1(E)=\infty
+			\end{cases}
+		\]
+		So that we have
+		\[
+			\mu(E)=
+			\begin{cases}
+				\mu_1(E)+\mu_2(E)=\mu(E)+0&\text{if }\mu_1(E)<\infty\\
+				\mu_1(E)+\mu_2(E)=\mu(E)+\infty&\text{if }\mu_1(E)=\infty
+			\end{cases}
+		\]
 	\end{enumerate}
-	\item Prove Proposition 3; that is, show that $\mathcal{M}_0$ is a $\sigma$-algebra, $\mu_0$ is properly defined, and $(X,\mathcal{M}_0,\mu_0)$ is complete. In what sense is $\mathcal{M}_0$ minimal?
+	\item Prove Proposition 3; that is, show that $\mathcal{M}_0$ is a $\sigma$-algebra, $\mu_0$ is properly defined, and $(X,\mathcal{M}_0,\mu_0)$ is complete. In what sense is $\mathcal{M}_0$ minimal?\\
+	\\We can see
+	\begin{enumerate}[label=(\roman*),align=left]
+		\item $X\in\mathcal{M}_0$ because $X\subseteq X$, and $X=\emptyset\cup X$ with $X\in\mathcal{M}$ and $\emptyset\subseteq\emptyset$ for $\emptyset\in\mathcal{M}$ where $\mu(\emptyset)=0$.
+		\item If $E\in\mathcal{M}_0$, then $E\subseteq X$, and $E=A\cup B$ with $B\in\mathcal{M}$ and $A\subseteq C$ for $C\in\mathcal{M}$ where $\mu(C)=0$.\\
+		Then $A\subseteq C\implies A^c\supseteq C^c$, and $A^c=[A^c\cap C]\cup[A^c\cap C^c]=[A^c\cap C]\cup C^c$.
+		\\Now, $X\cap E^c\subseteq X$.
+		\\We can write
+		\begin{align*}
+			E^c&=A^c\cap B^c\\
+			&=([A^c\cap C]\cup C^c)\cap B^c\\
+			&=([A^c\cap C]\cap B^c)\cup (C^c\cap B^c),
+		\end{align*}
+		Where $C^c\cap B^c\in\mathcal{M}$ and $[A^c\cap C]\cap B^c\subseteq C$ for $C\in\mathcal{M}$ where $\mu(C)=0$.
+		\\Therefore $E^c\in\mathcal{M}_0$.
+		\item If $E_k\in\mathcal{M}_0$, then $E_k\subseteq X$, and $E_k=A_k\cup B_k$ with $B_k\in\mathcal{M}$ and $A_k\subseteq C_k$ for $C_k\in\mathcal{M}$ where $\mu(C_k)=0$ for all $k$.\\
+		Then $\bigcup_{k=1}^\infty E_k\subseteq X$, and 
+		\[
+			\bigcup_{k=1}^\infty E_k=\bigcup_{k=1}^\infty [A_k\cup B_k]=[\bigcup_{k=1}^\infty A_k]\cup[\bigcup_{k=1}^\infty B_k],
+		\]
+		Where $\bigcup_{k=1}^\infty B_k\in\mathcal{M}$ and $A_k\subseteq C_k\implies\bigcup_{k=1}^\infty A_k\subseteq \bigcup_{k=1}^\infty C_k$ for $\bigcup_{k=1}^\infty C_k\in\mathcal{M}$ with $\mu(\bigcup_{k=1}^\infty C_k)\le\sum_{k=1}^\infty\mu(C_k)=\sum_{k=1}^\infty0=0$.
+		\\Thus $\bigcup_{k=1}^\infty E_k\in\mathcal{M}_0$.
+	\end{enumerate}
+	Thus $\mathcal{M}_0$ is a $\sigma$-algebra of subsets of $X$.\\
+	\\To see that $(X,\mathcal{M}_0,\mu_0)$ is complete, consider any set $E\in\mathcal{M}_0$ such that $\mu_0(E)=0$.
+	\[
+		E\in\mathcal{M}_0\implies E\subseteq X,E=A\cup B, B\in\mathcal{M}\text{ and }A\subseteq C\text{ with }C\in\mathcal{M}, \mu(C)=0.
+	\]
+	Then $A\subseteq C\implies A\cup B\subseteq C\cup B$, and $C,B\in\mathcal{M}\implies C\cup B\in\mathcal{M}$.
+	Thus $\mu(C\cup B)\le \mu(C)+\mu(B)=0$ is well-defined.
+	\\Consider any $D\subseteq E$.
+	\[
+		D\subseteq E\subseteq X,D=D\cup \emptyset, \emptyset\in\mathcal{M}\text{ and }D\subseteq A\cup B\subseteq C\cup B\text{ with }C\cup B\in\mathcal{M}, \mu(C\cup B)=0.
+	\]
+	Therefore $D\in \mathcal{M}_0$ and $(X,\mathcal{M}_0,\mu_0)$ is complete.
 	\item If $(X,\mathcal{M},\mu)$ is a measure space, we say that a subset $E$ of $X$ is \textbf{locally measurable} provided for each $B\in\mathcal{M}$ with $\mu(B)<\infty$, the intersection $E\cap B$ belongs to $\mathcal{M}$.
 	The measure $\mu$ is called \textbf{saturated} provided every locally measurable set is measurable.
 	\begin{enumerate}[label=(\roman*),align=left]  
