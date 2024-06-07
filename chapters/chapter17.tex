@@ -533,13 +533,31 @@
 
 % 17.2
 \section{Signed Measures: The Hahn and Jordan Decompositions}
+\begin{flushleft}
+	\begin{namedthm*}{Definition}
+		By a \textbf{signed measure} $\nu$ on the measurable space $(X,\mathcal{M})$ we mean an extended real-valued set function $\nu:\mathcal{M}\to[-\infty,\infty]$ that possesses the following properties:
+		\begin{enumerate}[label=(\roman*),align=left]  
+			\item $\nu$ assumes at most one of the values $+\infty,-\infty$.
+			\item $\nu(\emptyset)=0$.
+			\item For any countable collection $\{E_k\}_{k=1}^\infty$ of disjoint measurable sets,
+			\[
+				\nu\left(\bigcup_{k=1}^\infty E_k\right)=\sum_{k=1}^\infty\nu(E_k),
+			\]
+			where the series $\sum_{k=1}^\infty\nu(E_k)$ converges absolutely if $\nu(\bigcup_{k=1}^\infty E_k)$ is finite (convergence must hold for any rearrangement).
+		\end{enumerate}
+	\end{namedthm*}
+	Monotonicity for signed measures:
+	\[
+	A\subseteq B\text{ and }|\nu(B)|<\infty\implies|\nu(A)|<\infty.
+	\]
+\end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{11}
 	\item In the above example, let $E$ be a Lebesgue measurable set such that $0<\nu(E)<\infty$.
-	Find a positive set $A$ contained i $E$ for which $\nu(A)>0$.
+	Find a positive set $A$ contained in $E$ for which $\nu(A)>0$.
 	\item Let $\mu$ be a measure and $\mu_1$ an $\mu_2$ be mutually singular measures on a measurable space $(X,\mu)$ for which $\mu=\mu_1-\mu_2$.
 	Use this to establish the uniqueness assertion of the Jordan Decomposition Theorem.
 	\item Show that if $E$ is any measurable set, then

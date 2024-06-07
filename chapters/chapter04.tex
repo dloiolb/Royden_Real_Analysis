@@ -2,13 +2,86 @@
 \chapter{Lebesgue Integration}
 % 4.1
 \section{The Riemann Integral}
-
+\begin{flushleft}
+    In this chapter the Lebesgue integral is defined in four stages:
+    \begin{itemize}
+        \item define the integral for simple functions over a set of finite measure.
+        \item define the integral for bounded measurable functions $f$ over a set of finite measure, in terms of integrals of upper and lower approximations of $f$ by simple functions.
+        \item define the integral of a general nonnegative measurable function $f$ over $E$ to be the supremum of the integrals of lower approximations of $f$ by bounded measurable functions that vanish outside a set of finite measure;
+        the integral of such a function is nonnegative, but may be infinite.
+        \item define a general measurable function to be integrable over $E$ provided $\int_E |f|<\infty$.
+    \end{itemize}
+    Let $f$ be a bounded real-valued function defined on the closed, bounded interval $[a,b]$.
+    Let $P=\{x_0,x_1,\cdots,x_n\}$ be a partition of $[a,b]$, that is,
+    \[
+        a=x_0<x_1<\cdots<x_n=b.
+    \]
+    Define the \textbf{lower and upper Darboux sums} for $f$ with respect to $P$, respectively, by
+    \[
+        L(f,P)=\sum_{i=1}^n m_i\cdot (x_i-x_{i-1})
+    \]
+    and
+    \[
+        U(f,P)=\sum_{i=1}^n M_i\cdot (x_i-x_{i-1}),
+    \]
+    where, for $1\le i\le n$,
+    \[
+        m_i=\inf\{f(x)\ |\ x_{i-1}<x<x_i\}\text{ and }M_i=\sup\{f(x)\ |\ x_{i-1}<x<x_i\}.
+    \]
+    We then define the \textbf{lower and upper Riemann integrals} of $f$ over $[a,b]$, respectively, by
+    \[
+        (R)\underline\int_a^bf=\sup\biggl\{L(f,P)\ |\ P\text{ a partition of }[a,b]\biggr\}
+    \]
+    and
+    \[
+        (R)\overline\int_a^bf=\inf\biggl\{U(f,P)\ |\ P\text{ a partition of }[a,b]\biggr\}.
+    \]
+    If the upper and lower integrals are equal we say that $f$ is \textbf{Riemann integrable} over $[a,b]$ and call this common value the Riemann integral of $f$ over $[a,b]$:
+    \[
+        (R)\int_a^bf
+    \]
+    A real-valued function $\psi$ defined on $[a,b]$ is called a \textbf{step function} provided there is a partition $P=\{x_0,x_1,\cdots,x_n\}$ of $[a,b]$ and numbers $c_1,\cdots,c_n$ such that for $1\le i\le n$,
+    \[
+        \psi(x)=c_i\text{ if }x_{i-1}<x<x_i.
+    \]
+    Clearly a step function is Riemann integrable:
+    \[
+        \sum_{i=1}^n c_i\cdot (x_i-x_{i-1})=L(\psi,P)=U(\psi,P)=(R)\int_a^b\psi
+    \]
+    Then we can reformulate the definition of the lower and upper Riemann integrals:
+    \[
+        (R)\underline\int_a^bf=\sup\biggl\{(R)\int_a^b\varphi\ |\ \varphi\text{ a step function and }\varphi\le f\text{ on }[a,b]\biggr\}
+    \]
+    and
+    \[
+        (R)\overline\int_a^bf=\inf\biggl\{(R)\int_a^b\psi\ |\ \psi\text{ a step function and }\varphi\ge f\text{ on }[a,b]\biggr\}.
+    \]\\\bigskip
+    \textbf{Example (Dirichlet's Function)}
+    Define $f:[0,1]\to\mathbb{R}$ such that
+    \[
+        f(x)=
+        \begin{cases}
+            1&x\in\mathbb{Q}\\
+            0&x\notin\mathbb{Q}
+        \end{cases}    
+    \] 
+    ...
+    \[
+        f_n(x)=
+        \begin{cases}
+            1&x\in\{q_1,\cdots,q_n\}\\
+            0&\text{else}
+        \end{cases}
+    \]
+\end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{0}
-    \item Show that, in the above Dirichlet function example, $\{f_n\}$ fails to converge to $f$ uniformly on $[0,1]$.
+    \item Show that, in the above Dirichlet function example, $\{f_n\}$ fails to converge to $f$ uniformly on $[0,1]$.\\
+    \\Let $\epsilon=1/2$. Then for any natural number $n$ we choose, there exists $n+1\ge n$ and $q_{n+1}\in[0,1]\cap\mathbb{Q}$ such that $|f_n(q_{n+1})-f(q_{n+1})|=|0-1|=1>1/2$.
+    Therefore uniform convergence fails.
     \item A partition $P'$ of $[a,b]$ is called a refinement of a partition $P$ provided each partition point of $P$ is also a partition point of $P'$.
     For a bounded function $f$ on $[a,b]$, show that under refinement lower Darboux sums increase and upper Darboux sums decrease.
     \item Use the preceding problem to show that for a bounded function on a closed, bounded interval, each lower Darboux sum is no greater than each upper Darboux sum.
