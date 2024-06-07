@@ -146,8 +146,10 @@
 			\[
 				\mathcal{M}_{\lambda'}\ni[ B\cap X_{\lambda'}]^c\cap X_{\lambda'}=[B^c\cup X_{\lambda'}^c]\cap X_{\lambda'}=[B^c\cap X_{\lambda'}]\cup[X_{\lambda'}^c\cap X_{\lambda'}]=B^c\cap X_{\lambda'}.
 			\]
+			Therefore $B^c\in\mathcal{B}$.
 			\item if $B_i\in\mathcal{B}$, then $B_i\in X$ such that for any $\lambda'\in\Lambda$, $B_i\cap X_{\lambda'}\in\mathcal{M}_{\lambda'}$ for all $i$.\\
 			Then $\bigcup_{i=1}^\infty B_i\in X$ and $[\bigcup_{i=1}^\infty B_i]\cap X_{\lambda'} =\bigcup_{i=1}^\infty [B_i\cap X_{\lambda'}]\in\mathcal{M}_{\lambda'}$.
+			\\Therefore $\bigcup_{i=1}^\infty B_i\in\mathcal{B}$.
 		\end{enumerate}
 		\item Show that $\mu$ is a measure.\\
 		\\For $B\in\mathcal{B}$, we have $B\cap X_{\lambda'}\in\mathcal{M}_{\lambda'}$ for all $\lambda'\in\Lambda$, and so $\mu_{\lambda'}[B\cap X_{\lambda'}]$ is defined.
@@ -166,21 +168,38 @@
 		\item Show that $\mu$ is $\sigma$-finite iff all but a countable number of the measures $\mu_\lambda$ have $\mu(X_\lambda)=0$ and the remainder are $\sigma$-finite.\\
 		\\$(\implies)$ Suppose $\mu$ is $\sigma$-finite.\\
 		Then $X$ can be written as the countable union of disjoint measurable sets, each of which has finite measure under $\mu$.
-		\\So we have $X=\bigcup_{k=1}^\infty A_k$, with $A_k\in\mathcal{B}$ s.t. $\sum_{\lambda\in\Lambda} \mu_\lambda(A_k\cap X_\lambda)=\mu(A_k)<\infty$.
+		\\That is, we have $X=\bigcup_{k=1}^\infty A_k$, with $A_k\in\mathcal{B}$ s.t. $\mu(A_k)<\infty$ for each $k$.
+		\\So $A_k\in\mathcal{B}\implies A_k\cap X_\lambda\in\mathcal{M}_\lambda$ for each $\lambda$, and $\sum_{\lambda\in\Lambda} \mu_\lambda(A_k\cap X_\lambda)=\mu(A_k)<\infty\implies\mu_\lambda(A_k\cap X_\lambda)<\infty$ for each $\lambda$.
+		\\Then 
+		\[
+			\mu(X)=\mu(\bigcup_{k=1}^\infty A_k)=\sum_{k=1}^\infty\mu(A_k)=\sum_{k=1}^\infty\sum_{\lambda\in\Lambda} \mu_\lambda(A_k\cap X_\lambda)
+		\]
 		\\Then all but a countable number of the measures $\mu_\lambda$ can be nonzero, and the remainder must be $\sigma$-finite.\\
 		\\$(\impliedby)$ Suppose all but a countable number of the measures $\mu_\lambda$ have $\mu(X_\lambda)=0$ and the remainder are $\sigma$-finite.\\
-		We can let $\Lambda*$ be the set of measures $\mu_\lambda$ such that $\mu(X_\lambda)=0$ for $\lambda\in\Lambda^*$, and let $\Lambda^{*c}$ be a countable collection.
-		Then we can write this as
+		Let $\Lambda^*\subseteq\Lambda$ be the set of measures $\mu_\lambda$ such that $\mu_\lambda(X_\lambda)=0$.
+		\\Let $\Lambda^{*c}=\{\lambda_k\}_{k=1}^\infty\subseteq\Lambda$ be a countable collection such that each $\mu_{\lambda_k}$ is $\sigma$-finite.
+		\\By definition of $\sigma$-finite, for each $k$, we have $X_{\lambda_k}=\bigcup_{i=1}^\infty [A_{\lambda_k}]_i$, with $[A_{\lambda_k}]_i\in\mathcal{M}_{\lambda_k}$ s.t. $\mu_{\lambda_k}([A_{\lambda_k}]_i)<\infty$ for each $i$.
+		\\Then because the collection $\{X_\lambda\}_{\lambda\in\Lambda}$ is disjoint, then $[A_{\lambda_k}]_i\cap X_\lambda=([A_{\lambda_k}]_i\cap X_{\lambda_k})\cap X_\lambda=\emptyset$ for $\lambda\neq\lambda_k$.
+		\\Also $[A_{\lambda_k}]_i=[A_{\lambda_k}]_i\cap X_{\lambda_k}\in\mathcal{M}_{\lambda_k}$ so that $[A_{\lambda_k}]_i\in\mathcal{B}$ and $\mu([A_{\lambda_k}]_i)$ is defined.
+		\\Then we have for each $i$,
 		\begin{align*}
-			\mu(X)&=\sum_{\lambda\in\Lambda} \mu_\lambda(X\cap X_\lambda)\\
-			&=\sum_{\lambda\in\Lambda} \mu_\lambda(X_\lambda)\\		
+			\mu([A_{\lambda_k}]_i)&=\sum_{\lambda\in\Lambda} \mu_\lambda([A_{\lambda_k}]_i\cap X_\lambda)\\
+			&=\sum_{\lambda\neq\lambda_k} \mu_\lambda([A_{\lambda_k}]_i\cap X_\lambda)+\mu_{\lambda_k}([A_{\lambda_k}]_i\cap X_\lambda)\\
+			&=\sum_{\lambda\neq\lambda_k} 0+\mu_{\lambda_k}([A_{\lambda_k}]_i)\\
+			&=\mu_{\lambda_k}([A_{\lambda_k}]_i).
+		\end{align*}
+		Therefore $\mu_{\lambda_k}([A_{\lambda_k}]_i)=\mu([A_{\lambda_k}]_i)<\infty$.
+		\\Then we can write
+		\begin{align*}
+			\mu(X)&=\sum_{\lambda\in\Lambda} \mu_\lambda(X_\lambda)\\		
 			&=\sum_{\lambda\in\Lambda*} \mu_\lambda(X_\lambda)+\sum_{\lambda\notin\Lambda^*} \mu_\lambda(X_\lambda)\\	
 			&=\sum_{\lambda\in\Lambda*} 0+\sum_{k=1}^\infty \mu_{\lambda_{k}}(X_{\lambda_{k}})\\
-			&=\sum_{k=1}^\infty \mu_{\lambda_{k}}(X_{\lambda_{k}})\\
-			&=\sum_{k=1}^\infty \mu_{\lambda_{k}}(\bigcup_{i=1}^\infty A_{i\lambda_{k}})\\
-			&=\sum_{k=1}^\infty \sum_{i=1}^\infty \mu_{\lambda_{k}}( A_{i\lambda_{k}}),
+			&=\sum_{k=1}^\infty \mu_{\lambda_{k}}(\bigcup_{i=1}^\infty [A_{\lambda_k}]_i)\\
+			&=\sum_{k=1}^\infty \sum_{i=1}^\infty \mu_{\lambda_{k}}( [A_{\lambda_k}]_i)\\
+			&=\sum_{k=1}^\infty\sum_{i=1}^\infty \mu([A_{\lambda_k}]_i),
 		\end{align*}
-		and thus $X$ can be written as a countable disjoint union of measurable sets, each of which has finite measure under $\mu$.
+		and thus $X$ can be written as a countable disjoint union of measurable sets $[A_{\lambda_k}]_i$, each of which has finite measure under $\mu$.
+		\\Therefore $\mu$ is $\sigma$-finite.
 	\end{enumerate}
 	\item Let $(X,\mathcal{M},\mu)$ be a measure space. The symmetric difference, $E_1\Delta E_2$, of two subsets $E_1$ and $E_2$ of $X$ is defined by
 	\[
@@ -377,6 +396,16 @@
 		\\Thus $\bigcup_{k=1}^\infty E_k\in\mathcal{M}_0$.
 	\end{enumerate}
 	Thus $\mathcal{M}_0$ is a $\sigma$-algebra of subsets of $X$.\\
+	\\To see that $\mu_0$ is a measure on the measurable space $(X,\mathcal{M}_0)$:
+	\\For any $E\in\mathcal{M}_0$, we have $E=A\cup B,B\in\mathcal{M}$, so that $\mu_0(E)=\mu(B)\ge0$.
+	\\Then for $\emptyset\in\mathcal{M}_0$, we have $\emptyset=\emptyset\cup \emptyset,\emptyset\in\mathcal{M}$, so that $\mu_0(\emptyset)=\mu(\emptyset)=0$.
+	\\Finally, consider a disjoint collection $\{E_k\}_{k=1}^\infty$ of sets in $\mathcal{M}_0$.
+	\\See (iii) to see that $\bigcup_{k=1}^\infty E_k=[\bigcup_{k=1}^\infty A_k]\cup[\bigcup_{k=1}^\infty B_k]$, where $\{E_k\}_{k=1}^\infty$ disjoint implies $\{B_k\}_{k=1}^\infty$ disjoint and we have $\bigcup_{k=1}^\infty B_k\in\mathcal{M}$.
+	\\Then 
+	\[
+		\mu_0(\bigcup_{k=1}^\infty E_k)=\mu(\bigcup_{k=1}^\infty B_k)=\sum_{k=1}^\infty\mu(B_k)=\sum_{k=1}^\infty\mu_0(E_k).
+	\]
+	Therefore $(X,\mathcal{M}_0,\mu_0)$ is a measure space.\\
 	\\To see that $(X,\mathcal{M}_0,\mu_0)$ is complete, consider any set $E\in\mathcal{M}_0$ such that $\mu_0(E)=0$.
 	\[
 		E\in\mathcal{M}_0\implies E\subseteq X,E=A\cup B, B\in\mathcal{M}\text{ and }A\subseteq C\text{ with }C\in\mathcal{M}, \mu(C)=0.
@@ -450,7 +479,7 @@
 		\[
 			B\in\mathcal{C}\text{ with }\overline\mu(B)<\infty\iff B\in\mathcal{M}\text{ with }\mu(B)<\infty.
 		\]
-		Consider a set $E\in X$ such that $E\cap B\in\mathcal{C}$.
+		Consider a set $E\subseteq X$ such that $E\cap B\in\mathcal{C}$ for any such $B$.
 		\\Then by monotonicity, $\overline\mu(E\cap B)\le \overline\mu(B)<\infty$.
 		\\Because $\overline\mu(E\cap B)<\infty$, see the definition of $\overline\mu$ to see that $E\cap B\in\mathcal{M}$.
 		\\Then we see that $E\in\mathcal{C}$ because for each $B\in\mathcal{M}$ with $\mu(B)<\infty$, we have $E\cap B\in\mathcal{M}$.\\
@@ -458,7 +487,13 @@
 		\item If $\mu$ is semifinite and $E\in\mathcal{C}$, the set $\underline\mu(E)=\sup\{\mu(B)\ |\ B\in\mathcal{M},B\subseteq E\}$.
 		Show that $(X,\mathcal{C},\underline\mu)$ is a saturated measure space and that $\underline\mu$ is an extension of $\mu$.
 		Give an example to show that $\overline\mu$ and $\underline\mu$ may be different.\\
-		\\
+		\\We first want to show that $\underline\mu$ is a measure on the measurable space $(X,\mathcal{C})$:
+		\\For any $E\in\mathcal{C}$, we have $\underline\mu(E)\ge\mu(B)\ge0$ for $B\in\mathcal{M},B\subseteq E$.
+		\\For $\emptyset\in\mathcal{C}$, we have $\underline\mu(\emptyset)=\mu(\emptyset)=0$ because $\{\emptyset\}=\{B\in\mathcal{M}\ |\ B\subseteq\emptyset\}$.
+		\\Finally, for any disjoint collection $\{E_k\}_{k=1}^\infty$ in $\mathcal{C}$,\\
+		\\Therefore $(X,\mathcal{C},\underline\mu)$ is a measure space.\\
+		\\Consider any $E\subseteq X$ such that $E\cap B\in\mathcal{C}$ whenever $B\in\mathcal{C}$ with $\underline\mu(B)<\infty$.
+		\\Then $E\cap B\in\mathcal{C}$ implies that $[E\cap B]\cap B'\in\mathcal{M}$ whenever $B'\in\mathcal{M}$ with $\mu(B')<\infty$.
 	\end{enumerate}
 	\item Let $\mu$ and $\eta$ be measures on the measurable space $(X,\mathcal{M})$.
 	For $E\in\mathcal{M}$, define $\nu(E)=\max\{\mu(E),\eta(E)\}$. Is $\nu$ a measure on $(X,\mathcal{M})$?\\
