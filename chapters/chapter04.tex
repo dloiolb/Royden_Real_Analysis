@@ -84,7 +84,7 @@
             0&\text{else}
         \end{cases}
     \]
-    Each $f_n$ is a step function (See any partition of the form $0=q_1<\cdots<q_n<\cdots<q_2=1$) is Riemann integrable, and $\{f_n\}$ is an increasing sequence of Riemann integrable functions on $[0,1]$,
+    Each $f_n$ is a step function (See any partition of the form $0=q_1<\cdots<q_n<\cdots<q_2=1$) and thus is Riemann integrable, and $\{f_n\}$ is an increasing sequence of Riemann integrable functions on $[0,1]$,
     \[
         |f_n|\le1\text{ on }[0,1]\text{ for all }n,
     \]
@@ -293,10 +293,73 @@
 % 4.2
 \section{The Lebesgue Integral of a Bounded Measurable Function over a Set of Finite Measure}
 \begin{flushleft}
-    
+    Recall the definition of a simple function:
+    If $\psi$ is simple, has domain $E$ and takes the distinct values $a_1,\cdots,a_n$, then
+    \begin{equation}
+        \psi=\sum_{k=1}^n a_i\cdot\chi_{E_i}\text{ on }E,\text{ where }E_i=\psi^{-1}(a_i)=\{x\in E\ |\ \psi(x)=a_i\}.\tag{1}   
+    \end{equation}
+    The canonical representation is characterized by the $E_i$'s being disjoint and the $a_i$'s being distinct.
+    \begin{namedthm*}{Definition}
+        For a simple function $\psi$ defined on a set of finite measure $E$, we define the integral of $\psi$ over $E$ by
+        \[
+            \int_E\psi=\sum_{k=1}^n a_i\cdot m(E_i),
+        \]
+        where $\psi$ has the canonical representation given by (1).
+    \end{namedthm*}
+    Let $f$ be a bounded real-valued function defined on a set of finite measure $E$.
+    We define the \textbf{lower and upper Lebesgue integral}, respectively, of $f$ over $E$ to begin
+    \[
+        \sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple and }\varphi\le f\text{ on }E\biggr\},
+    \]
+    and
+    \[
+        \inf\biggl\{\int_E\psi\ |\ \psi\text{ simple and }\varphi\ge f\text{ on }E\biggr\}.
+    \]
+    \begin{namedthm*}{Definition}
+        A bounded function $f$ on a domain $E$ of finite measure is said to be \textbf{Lebesgue measurable} over $E$ provided its upper and lower Lebesgue integrals over $E$ are equal.
+        The common value of the upper and lower integrals is called the \textbf{Lebesgue integral}, or simply the integral, of $f$ over $E$ and is denoted by $\int_Ef$.
+    \end{namedthm*}
+    \begin{namedthm*}{Theorem 3}    
+        Let $f$ be a bounded function defined on the closed, bounded interval $[a,b]$.
+        If $f$ is Riemann integrable over $[a,b]$, then it is Lebesgue integrable over $[a,b]$ and the two integrals are equal.
+    \end{namedthm*}
+    \begin{proof}
+        Saying that $f$ is Riemann integrable means that
+        \[
+            \sup\biggl\{(R)\int_a^b\varphi\ |\ \varphi\text{ a step function and }\varphi\le f\text{ on }[a,b]\biggr\}=\inf\biggl\{(R)\int_a^b\psi\ |\ \psi\text{ a step function and }\varphi\ge f\text{ on }[a,b]\biggr\}.
+        \]
+        The Riemann integral over a closed, bounded interval of a step function agrees with the Lebesgue integral.
+        Therefore because all step functions are simple functions we have 
+        \[
+            \sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple and }\varphi\le f\text{ on }E\biggr\}=\inf\biggl\{\int_E\psi\ |\ \psi\text{ simple and }\varphi\ge f\text{ on }E\biggr\}.
+        \]
+        Therefore $f$ is Lebesgue integrable.
+        \\\bigskip
+        \textbf{Example} The Dirichlet function is a simple function because 
+        \[
+        f(x)=
+        \begin{cases}
+            1&x\in\mathbb{Q}\\
+            0&x\notin\mathbb{Q}
+        \end{cases}    
+        \] 
+        so that 
+        \[
+            f(x)=1\cdot\chi_{\mathbb{Q}\cap[0,1]}+0\cdot\chi_{\mathbb{Q}^c\cap[0,1]}=1\cdot\chi_{\mathbb{Q}\cap[0,1]}\text{ on }[0,1],
+        \]
+        where
+        \begin{align*}
+            \mathbb{Q}\cap[0,1]&=f^{-1}(1)=\{x\in [0,1]\ |\ f(x)=1\},\\
+            \mathbb{Q}^c\cap[0,1]&=f^{-1}(0)=\{x\in [0,1]\ |\ f(x)=0\}.
+        \end{align*}
+        Then $f$ is Lebesgue integrable (but not Riemann integrable) with
+        \[
+            \int_{[0,1]}f=1\cdot m(\mathbb{Q}\cap[0,1])+0\cdot m(\mathbb{Q}^c\cap[0,1])=1\cdot0+0\cdot1=0.
+        \]
+    \end{proof}
 \begin{namedthm*}{Remark}
     Prior to the proof of the Bounded Convergence Theorem, no use was made of the countable additivity of the Lebesgue measure on the real line.
-    Only finite additivity was used, and it was used just once, in the proof of Lemma 1. Bur for the proof of the Bounded Convergence Theorem we used Egoroff's Theorem.
+    Only finite additivity was used, and it was used just once, in the proof of Lemma 1. But for the proof of the Bounded Convergence Theorem we used Egoroff's Theorem.
     Egoroff's Theorem needed the continuity of Lebesgue measure, a consequence of countable additivity of Lebesgue measure.    
 \end{namedthm*}
 
