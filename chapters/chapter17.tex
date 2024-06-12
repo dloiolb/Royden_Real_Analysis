@@ -471,10 +471,10 @@
 		Then (i) must hold.\\
 		\\Consider the case that $\bigcup_{k=1}^\infty E_k\in\mathcal{C}$ is measurable and $\mu(\bigcup_{k=1}^\infty E_k)=\infty$. \\
 		If (i) holds, then $\overline\mu(\bigcup_{k=1}^\infty E_k)=\sum_{k=1}^\infty\overline\mu(E_k)$.\\
-		If (ii) holds, then $\overline\mu(\bigcup_{k=1}^\infty E_k)=\mu(\bigcup_{k=1}^\infty E_k)=\infty=\sum_{k=1}^\infty \overline\mu(E_k)$.\\
-		\\Consider the case that $\bigcup_{k=1}^\infty E_k\in\mathcal{C}$ is not measurable. Then $\mu(\bigcup_{k=1}^\infty E_k)=\infty$. \\
-		Then (ii) must hold else we reach a contradiction to $\bigcup_{k=1}^\infty E_k\notin\mathcal{M}$.\\
-		\\Therefore $(X,\mathcal{C},\overline\mu)$ is a measure space.\\
+		If (ii) holds, then $\overline\mu(\bigcup_{k=1}^\infty E_k)=\mu(\bigcup_{k=1}^\infty E_k)=\infty=\sum_{k=1}^\infty \overline\mu(E_k)$.\\\bigskip
+		Consider the case that $\bigcup_{k=1}^\infty E_k\in\mathcal{C}$ is not measurable. Then $\mu(\bigcup_{k=1}^\infty E_k)=\infty$. \\
+		Then (ii) must hold else we reach a contradiction to $\bigcup_{k=1}^\infty E_k\notin\mathcal{M}$.\\\bigskip
+		Therefore $(X,\mathcal{C},\overline\mu)$ is a measure space.\\
 		\\We can use the definition of $\overline\mu$ to see that 
 		\[
 			B\in\mathcal{C}\text{ with }\overline\mu(B)<\infty\iff B\in\mathcal{M}\text{ with }\mu(B)<\infty.
@@ -482,8 +482,8 @@
 		Consider a set $E\subseteq X$ such that $E\cap B\in\mathcal{C}$ for any such $B$.
 		\\Then by monotonicity, $\overline\mu(E\cap B)\le \overline\mu(B)<\infty$.
 		\\Because $\overline\mu(E\cap B)<\infty$, see the definition of $\overline\mu$ to see that $E\cap B\in\mathcal{M}$.
-		\\Then we see that $E\in\mathcal{C}$ because for each $B\in\mathcal{M}$ with $\mu(B)<\infty$, we have $E\cap B\in\mathcal{M}$.\\
-		\\Therefore $(X,\mathcal{C},\overline\mu)$ is a saturated measure space.
+		\\Then we see that $E\in\mathcal{C}$ because for each $B\in\mathcal{M}$ with $\mu(B)<\infty$, we have $E\cap B\in\mathcal{M}$.\\\bigskip
+		Therefore $(X,\mathcal{C},\overline\mu)$ is a saturated measure space.
 		\item If $\mu$ is semifinite and $E\in\mathcal{C}$, the set $\underline\mu(E)=\sup\{\mu(B)\ |\ B\in\mathcal{M},B\subseteq E\}$.
 		Show that $(X,\mathcal{C},\underline\mu)$ is a saturated measure space and that $\underline\mu$ is an extension of $\mu$.
 		Give an example to show that $\overline\mu$ and $\underline\mu$ may be different.\\
@@ -546,21 +546,18 @@
 			where the series $\sum_{k=1}^\infty\nu(E_k)$ converges absolutely if $\nu(\bigcup_{k=1}^\infty E_k)$ is finite (convergence must hold for any rearrangement).
 		\end{enumerate}
 	\end{namedthm*}
-	Monotonicity for signed measures:
+	A set $A$ is \textbf{positive} (with respect to $\nu$) provided that $A$ is measurable and for every measurable subset $E$ of $A$ we have $\nu(E)\ge0$.
+	The restriction of $\nu$ to the measurable subsets of a positive set is a measure.
+	(See Problem 6).
+	Similarly, a set $B$ is called \textbf{negative} (with respect to $\nu$) provided that $B$ is measurable and for every measurable subset $E$ of $B$ we have $\nu(E)\le0$.
+	The restriction of $-\nu$ to the measurable subsets of a negative set is a measure.
+	A measurable set is called \textbf{null} with respect to $\nu$ provided every measurable subset of it also has measure zero.
+	(Clearly a null set is both positive and negative.)
+	\\Monotonicity for signed measures:
 	\[
 	A\subseteq B\text{ and }|\nu(B)|<\infty\implies|\nu(A)|<\infty.
 	\]
-	\begin{namedthm*}{The Hahn Decomposition Theorem}
-		Let $\nu$ be a signed measure on the measurable space $(X,\mathcal{M})$.
-		Then there is a positive set $A$ for $\nu$ and a negative set $B$ for $\nu$ for which
-		\[
-			X=A\cup B\text{ and }A\cap B=\emptyset.	
-		\]
-	\end{namedthm*}
-	\begin{proof}
-		Without loss of generality assume $+\infty$ is the infinite value omitted by $\nu$.
-		(Otherwise let $A$ be the negative set and $B$ be the positive set. We need this to use Hahn's Lemma: $0<\nu(E)<\infty$.)
-		\\\bigskip It is not possible for a signed measure to take on both $\pm\infty$ at the same time.
+	It is not possible for a signed measure to take on both $\pm\infty$ at the same time.
 		\\To see this, suppose there exist two subsets $E_1,E_2$ of $X$ such that $\nu(E_1)=\infty$ and $\nu(E_2)=-\infty$.
 		\\If $-\infty<\nu(E_1\cap E_2)<\infty$, then 
 		\begin{align*}
@@ -578,7 +575,17 @@
 			\infty=(E_1)=\nu(E_1\cap E_2)+\nu(E_1\setminus E_2)=-\infty+\nu(E_1\setminus E_2),
 		\end{align*}
 		and we cannot find an $E_1\setminus E_2$ that satisfies this because $\infty-\infty$ is not defined.
-		\\\bigskip Let $\mathcal{P}$ be the collection of positive subsets of $X$.
+	\begin{namedthm*}{The Hahn Decomposition Theorem}
+		Let $\nu$ be a signed measure on the measurable space $(X,\mathcal{M})$.
+		Then there is a positive set $A$ for $\nu$ and a negative set $B$ for $\nu$ for which
+		\[
+			X=A\cup B\text{ and }A\cap B=\emptyset.	
+		\]
+	\end{namedthm*}
+	\begin{proof}
+		Without loss of generality assume $+\infty$ is the infinite value omitted by $\nu$.
+		(Otherwise let $A$ be the negative set and $B$ be the positive set. We need this to use Hahn's Lemma: $0<\nu(E)<\infty$.)
+		\\Let $\mathcal{P}$ be the collection of positive subsets of $X$.
 		Define $\lambda=\sup\{\nu(E)\ |\ \nu(E)\in\mathcal{P}\}$, and $\lambda\ge0$ and it is nonempty because $\emptyset\in\lambda$.
 		Then by definition of supremum, for each natural number $k$, there exists an element $A_k\in\lambda$ such that
 		\[
@@ -601,7 +608,64 @@
 		\]
 		a contradiction to the choice of $\lambda$ as the supremum.
 	\end{proof}
-
+	If $\{A,B\}$ is a Hahn decomposition for $\nu$, then we define two measures $\nu^+$ and $\nu^-$ (the positive and negative variations of $\nu$) with $\nu=\nu^+-\nu^-$ by setting
+	\[
+		\nu^+(E)=\nu(E\cap A)\text{ and }\nu^-(E)=-\nu(E\cap B).	
+	\]
+	(The disjoint sets $E\cap A$ and $E\cap B$ are positive and negative, respectively, because $A$ is positive (and thus all subsets are positive), and $B$ is negative (and thus all subsets are negative).) 
+	\\\bigskip Two measures $\nu_1$ and $\nu_2$ on $(X,\mathcal{M})$ are said to be \textbf{mutually singular} ($\nu_1\perp\nu_2$) if there are disjoint measurable sets $A,B$ with $X=A\cup B$ for which $\nu_1(A)=\nu_2(B)=0$.
+	\begin{namedthm*}{The Jordan Decomposition Theorem}
+		Let $\nu$ be a signed measure on the measurable space $(X,\mathcal{M})$. 
+		Then there are two mutually singular measures $\nu^+$ and $\nu^-$ on $(X,\mathcal{M})$ for which $\nu=\nu^+-\nu^-$.
+		Moreover, there is only one such pair of mutually singular measures.
+	\end{namedthm*}
+	\begin{proof}
+		Existence:
+		\\By the Hahn Decomposition Theorem, there exists a positive set $A$ and a negative set $B$ for which $X=A\cup B$ and $A\cap B=\emptyset$.
+		Then we can define $\nu^+$ and $\nu^-$ on $(X,\mathcal{M})$ such that
+		\begin{align*}
+			\nu^+(E)&=\nu(A\cap E)\text{ for all }E\in\mathcal{M}\\
+			\nu^-(E)&=-\nu(B\cap E)\text{ for all }E\in\mathcal{M}
+		\end{align*}
+		Clearly  $\nu^+$ and $\nu^-$ are measures because 
+			\begin{align*}
+				\nu^+(E)&\ge0&&\text{because }A\cap E\subseteq A,\text{ and }A\text{ is positive, so for any }C\subseteq A,\text{ then }\nu(C)\ge0\\
+				\nu^-(E)&\ge0&&\text{because }B\cap E\subseteq B,\text{ and }B\text{ is negative, so for any }C\subseteq B,\text{ then }\nu(C)\le0\implies-\nu(C)\ge0
+			\end{align*}
+			\begin{align*}
+				\nu^+(E)&=\nu(A\cap\emptyset)=\nu(\emptyset)=0\\
+				\nu^-(E)&=-\nu(B\cap\emptyset)=-\nu(\emptyset)=0
+			\end{align*}
+			For disjoint measurable collection $\{E_k\}_{k=1}^\infty$,
+			\begin{align*}
+				\nu^+(\bigcup_{k=1}^\infty E_k)&=\nu(A\cap\bigcup_{k=1}^\infty E_k)=\nu(\bigcup_{k=1}^\infty [A\cap E_k])=\sum_{k=1}^\infty\nu(A\cap E_k)=\sum_{k=1}^\infty\nu^+(E_k)\\
+				\nu^-(\bigcup_{k=1}^\infty E_k)&=-\nu(B\cap\bigcup_{k=1}^\infty E_k)=-\nu(\bigcup_{k=1}^\infty [B\cap E_k])=-\sum_{k=1}^\infty\nu(B\cap E_k)=\sum_{k=1}^\infty\nu^-(E_k)
+			\end{align*}
+		The measures $\nu^+$ and $\nu^-$ are mutually singular because $X=A\cup B$, $A\cap B=\emptyset$, and 
+		\begin{align*}
+			\nu^+(B)&=\nu(A\cap B)=\nu(\emptyset)=0\\
+			\nu^-(A)&=-\nu(B\cap A)=-\nu(\emptyset)=0
+		\end{align*}
+		\\Then for any measurable set $E$, we have $E=[E\cap A]\cup[E\cap B]$ so that 
+		\[
+			\nu(E)=\nu([E\cap A]\cup[E\cap B])=\nu(E\cap A)+\nu(E\cap B)=\nu^+(E)-\nu^-(E).
+		\]
+	\end{proof}
+	We define $|\nu|$ on $\mathcal{M}$ by
+	\[
+		|\nu|(E)=\nu^+(E)+\nu^-(E)\text{ for all }E\subseteq\mathcal{M}.
+	\]
+	In Problem 16, prove that 
+	\begin{equation*}
+		|\nu|(X)=\sup\sum_{k=1}^n|\nu(E_k)|,\tag{4}
+	\end{equation*}
+	where the supremum is taken over all finite disjoint collections $\{E_k\}_{k=1}^n$ of measurable subsets of $X$.
+	Fore this reason $|\nu|(X)$ is called the \textbf{total variation} of $\nu$ and denoted by $\|\nu\|_{var}$.
+	\\\bigskip
+	\textbf{Example}
+	Let $f:\mathbb{R}\to\mathbb{R}$ be a function that is Lebesgue integrable over $\mathbb{R}$.
+	For a Lebesgue measurable set $E$, define $\nu(E)=\int_E f dm$.
+	\\Then $\nu$ is a signed measure on the measurable space $(\mathbb{R},\mathcal{L})$
 \end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}

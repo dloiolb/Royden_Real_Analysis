@@ -4,13 +4,36 @@
 \section{The Riemann Integral}
 \begin{flushleft}
     In this chapter the Lebesgue integral is defined in four stages:
-    \begin{itemize}
-        \item define the integral for simple functions over a set of finite measure.
-        \item define the integral for bounded measurable functions $f$ over a set of finite measure, in terms of integrals of upper and lower approximations of $f$ by simple functions.
-        \item define the integral of a general nonnegative measurable function $f$ over $E$ to be the supremum of the integrals of lower approximations of $f$ by bounded measurable functions that vanish outside a set of finite measure;
-        the integral of such a function is nonnegative, but may be infinite.
-        \item define a general measurable function to be integrable over $E$ provided $\int_E |f|<\infty$.
-    \end{itemize}
+    \begin{enumerate}
+        \setcounter{enumi}{-1}
+        \item (define the Riemann integral for bounded functions on a closed, bounded interval):\\\bigskip
+        For a bounded real-valued function $f$ defined on the closed, bounded interval $[a,b]$, define the Riemann integral of $f$ over $[a,b]$ by
+        \[
+            (R)\int_a^bf=\sup\biggl\{(R)\int_a^b\varphi\ |\ \varphi\text{ step, }\varphi\le f\text{ on }[a,b]\biggr\}=\inf\biggl\{(R)\int_a^b\psi\ |\ \psi\text{ step, }\psi\ge f\text{ on }[a,b]\biggr\},
+        \]
+        where the Riemann integral of a step function is defined as
+        \[
+            (R)\int_E\psi=\sum_{k=1}^n c_k\cdot (c_k-c_{k-1}).
+        \]
+        \item define the (Lebesgue) integral for simple functions over a set of finite measure:\\\bigskip
+        For a (measurable) simple function $\psi$ defined on a set of finite measure $E$, we define the integral of $\psi$ over $E$ by
+        \[
+            \int_E\psi=\sum_{i=1}^n a_i\cdot m(E_i).
+        \]
+        \item define the (Lebesgue) integral for bounded measurable functions $f$ over a set of finite measure, in terms of integrals of upper and lower approximations of $f$ by simple functions.\\\bigskip
+        For a bounded measurable function $f$ defined on a set of finite measure $E$, we define the integral of $f$ over $E$ by
+        \[
+            \int_Ef=\sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple, }\varphi\le f\text{ on }E\biggr\}=\inf\biggl\{\int_E\psi\ |\ \psi\text{ simple, }\psi\ge f\text{ on }E\biggr\}.
+        \]
+        \item define the (Lebesgue) integral of a general nonnegative measurable function $f$ over $E$ to be the supremum of the integrals of lower approximations of $f$ by bounded measurable functions that vanish outside a set of finite measure;
+        the integral of such a function is nonnegative, but may be infinite.\\\bigskip
+        For a nonnegative measurable function $f$ on $E$, we define the integral of $f$ over $E$ by
+        \[
+            \int_Ef=\sup\biggl\{\int_Eh\ |\ h\text{ bounded, measurable, of finite support and }0\le h\le f\text{ on }E\biggr\}.
+        \]
+        \item define a general measurable function to be (Lebesgue) integrable over $E$ provided $\int_E |f|<\infty$.
+    \end{enumerate}
+    \bigskip \textbf{The Construction of the Riemann integral:}\\\bigskip
     Let $f$ be a bounded real-valued function defined on the closed, bounded interval $[a,b]$.
     Let $P=\{x_0,x_1,\cdots,x_n\}$ be a partition of $[a,b]$, that is,
     \[
@@ -72,7 +95,7 @@
     \]
     Therefore
     \[
-        (R)\underline\int_a^bf=0<1=(R)\overline\int_a^bf,
+        (R)\underline\int_0^1f=0<1=(R)\overline\int_0^1f,
     \]
     so $f$ is not Riemann integrable.
     \\Consider the enumeration of the rationals in $[0,1]$: $\{q_k\}_{k=1}^\infty$.
@@ -302,7 +325,7 @@
     \begin{namedthm*}{Definition}
         For a simple function $\psi$ defined on a set of finite measure $E$, we define the integral of $\psi$ over $E$ by
         \[
-            \int_E\psi=\sum_{k=1}^n a_i\cdot m(E_i),
+            \int_E\psi=\sum_{i=1}^n a_i\cdot m(E_i),
         \]
         where $\psi$ has the canonical representation given by (1).
     \end{namedthm*}
@@ -357,6 +380,164 @@
             \int_{[0,1]}f=1\cdot m(\mathbb{Q}\cap[0,1])+0\cdot m(\mathbb{Q}^c\cap[0,1])=1\cdot0+0\cdot1=0.
         \]
     \end{proof}
+    \begin{namedthm*}{Theorem 4}    
+        Let $f$ be a bounded measurable function on a set of finite measure $E$.
+        Then $f$ is integrable over $E$.
+    \end{namedthm*}
+    \begin{proof}
+        For each natural number $n$, by the Simple Approximation Lemma, for $\epsilon=1/n>0$, there are two simple functions $\varphi_n$ and $\psi_n$ on $E$ for which
+        \[
+            \varphi_n\le f\le\psi_n\text{ and }0\le\psi_n-\varphi_n\le1/n\text{ on }E.    
+        \]
+        By the monotonicity of the integral for simple functions,
+        \[
+            0\le\int_E[\psi_n-\varphi_n]\le1/n\cdot m(E).       
+        \]
+        Then by linearity of the integral for simple functions,
+        \[
+            0\le\int_E\psi_n-\int_E\varphi_n\le1/n\cdot m(E).       
+        \]
+        Then 
+        \begin{align*}
+            0&\le\inf\biggl\{\int_E\psi\ |\ \psi\text{ simple, }\psi\ge f\biggr\}-\sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple, }\varphi\le f\biggr\}\\
+            &\le\int_E\psi_n-\int_E\varphi_n\\
+            &\le1/n\cdot m(E).       
+        \end{align*}
+        Then $\inf\{\int_E\psi\ |\ \psi\text{ simple, }\psi\ge f\}=\sup\{\int_E\varphi\ |\ \varphi\text{ simple, }\varphi\ge f\}$ and thus $f$ is integrable over $E$.
+    \end{proof}
+    $\cdots$\\\bigskip
+    \begin{namedthm*}{Corollary 6}  
+        Let $f$ be a bounded measurable function on a set of finite measure $E$.
+        Suppose $A$ and $B$ are disjoint measurable subsets of $E$. 
+        Then
+        \[
+            \int_{A\cup B}f=\int_Af+\int_Bf.
+        \]   
+    \end{namedthm*}
+    \begin{proof}
+        Both $f\cdot\chi_A$ and $f\cdot\chi_B$ are bounded measurable functions on $E$.
+        Since $A$ and $B$ are disjoint, see Chapter 3 Problem 20 to see that
+        \[
+            f\cdot\chi_{A\cup B}=f\cdot(\chi_A+\chi_B+\chi_{A\cap B})=f\cdot(\chi_A+\chi_B+0)=f\cdot\chi_A+f\cdot\chi_B.    
+        \]
+        Furthermore, for any measurable subset $E_1$ of $E$ (see Problem 10),
+        \[
+            \int_{E_1}f=\int_{E}f\cdot\chi_{E_1}.    
+        \]
+        Therefore, by linearity of integration,
+        \[
+            \int_{A\cup B}f= \int_{E}f\cdot\chi_{A\cup B}=\int_{E}f\cdot\chi_{A}+\int_{E}f\cdot\chi_{B}=\int_Af+\int_Bf.
+        \]
+    \end{proof}
+    \begin{namedthm*}{Corollary 7}
+        Let $f$ be a bounded measurable function on a set of finite measure $E$.
+        Then
+        \[
+            \biggl|\int_Ef\biggr|\le\int_E|f|.
+        \]
+    \end{namedthm*}
+    \begin{proof}
+        The function $|f|$ is measurable (see Chapter 3 Proposition 7) and bounded: $|f|\le|f|$ on $E$, so that
+        \[
+            -|f|\le f\le|f|\text{ on }E.
+        \]
+        Therefore by linearity and monotonicity of integration,
+        \[
+            -\int_E|f|\le \int_Ef\le\int_E|f|,
+        \]
+        and therefore $|\int_Ef|\le\int_E|f|$.
+    \end{proof}
+    \begin{namedthm*}{Proposition 8}
+        Let $\{f_n\}$ be a sequence of bounded measurable functions on a set of finite measure $E$.
+        \[
+            \text{If }\{f_n\}\to f\text{ uniformly on }E,\text{ then }\lim_{n\to\infty}\int_Ef_n=\int_Ef.    
+        \]
+    \end{namedthm*}
+    \begin{proof}
+        Since the convergence is uniform and each $f_n$ is bounded, then the limit function $f$ is bounded.
+        The function $f$ is measurable since it is the pointwise limit of a sequence of measurable functions (see Chapter 3 Proposition 9).
+        \\Let $\epsilon>0$.
+        By uniform convergence, there exists an index $N$ such that 
+        \[
+            |f-f_n|<\frac{\epsilon}{m(E)}\text{ on $E$ for all }n\ge N. 
+        \]
+        Then
+        \begin{align*}
+            |\int_Ef-\int_Ef_n|&=|\int_E[f-f_n]|&&\text{linearity of integration}\\
+            &\le\int_E|f-f_n|&&\text{Corollary 7}\\
+            &<\int_E[\frac{\epsilon}{m(E)}]\cdot1&&\text{monotonicity of integration}\\
+            &=[\frac{\epsilon}{m(E)}]\cdot m(E)\\
+            &=\epsilon.
+        \end{align*}
+        Therefore $\lim_{n\to\infty}\int_Ef_n=\int_Ef$.
+    \end{proof}
+    Recall an example from Chapter 3.2:
+        \\Consider the sequence of continuous functions $\{f_n\}_{n=2}^\infty:[0,1]\to\mathbb{R}$, defined by
+        \[ 
+		f_n(x) =
+            \begin{cases} 
+                \frac{n-0}{1/n-0}x& \text{ if } x \in [0,\frac{1}{n}]\\
+                \frac{0-n}{2/n-1/n}(x-\frac{1}{n})+n & \text{ if } x \in (\frac{1}{n},\frac{2}{n}]\\
+                0& \text{ if } x \in (\frac{2}{n},1]
+            \end{cases}
+            =
+            \begin{cases} 
+                n^2x& \text{ if } x \in [0,\frac{1}{n}]\\
+                -n^2(x-\frac{1}{n})+n & \text{ if } x \in (\frac{1}{n},\frac{2}{n}]\\
+                0& \text{ if } x \in (\frac{2}{n},1]
+            \end{cases}
+	    \]
+        (Each $f_n$ is a triangle-shaped function that achieves its max $f(1/n)=n$ and base corners $f(0)=0$ and $f(2/n)=0$.)\\
+        In addition, consider the continuous function $f:[0,1]\to\mathbb{R}$ defined by $f(x)=0$ for all $x\in[0,1]$.\\\bigskip
+        The sequence $\{f_n\}$ converges to $f$ pointwise but not uniformly on $[0,1]$.
+        \\Thus we have
+        \[
+            \{f_n\}\to f\text{ pointwise on }[0,1],\text{ but }\lim_{n\to\infty}\int_0^1f_n=1\neq0=\int_0^1f.
+        \]
+    \begin{namedthm*}{The Bounded Convergence Theorem}
+        Let $\{f_n\}$ be a sequence of measurable functions on a set of finite measure $E$.
+        Suppose $\{f_n\}$ is uniformly pointwise bounded on $E$; that is, there is a number $M\ge0$ for which
+        \[
+            |f_n|\le M\text{ on }E\text{ for all }n.
+        \]
+        \[
+            \text{ If }\{f_n\}\to f\text{ pointwise on }E,\text{ then }\lim_{n\to\infty}\int_Ef_n=\int_Ef.   
+        \]
+    \end{namedthm*}
+    \begin{proof}
+        The pointwise limit of a sequence of measurable functions is measurable (Proposition 9).
+        Therefore $f$ is measurable.
+        Also, clearly $|f|\le M$ on $E$.
+        Let $A$ be any measurable subset of $E$ and $n$ a natural number.
+        \\Then
+        \begin{align*}
+            \int_Ef_n-\int_Ef&=\int_E[f_n-f]\\
+            &=\int_A[f_n-f]+\int_{E\setminus A}[f_n-f]&&\text{ Corollary 6}\\
+            &=\int_A[f_n-f]+\int_{E\setminus A}f_n+\int_{E\setminus A}(-f)\\
+            &\le\int_A[f_n-f]+\int_{E\setminus A}M+\int_{E\setminus A}M\\
+            &=\int_A[f_n-f]+2M\cdot m(E\setminus A)\\
+        \end{align*} 
+        And
+        \begin{align*}
+            |\int_Ef_n-\int_Ef|&\le|\int_A[f_n-f]+2M\cdot m(E\setminus A)|\\
+            &\le|\int_A[f_n-f]|+|2M\cdot m(E\setminus A)|\\
+            &\le\int_A|f_n-f|+2M\cdot m(E\setminus A)&&\text{ by Corollary 7}\\
+        \end{align*}
+        Now let $\epsilon>0$.
+        \\Because $E$ has finite measure and $\{f_n\}$ converges pointwise to $f$ on $E$, then by Egoroff's Theorem, there is a measurable subset $A$ of $E$ for which $\{f_n\}\to f$ uniformly on $A$ and $m(E\setminus A)<\epsilon/4M$.
+        Then by uniform convergence, there is an index $N$ for which 
+        \[
+            |f_n-f|<\frac{\epsilon}{2\cdot m(A)}\text{ on }A\text{ for all }n\ge N.
+        \]
+        Therefore
+        \begin{align*}
+            |\int_Ef_n-\int_Ef|&\le\int_A|f_n-f|+2M\cdot m(E\setminus A)\\
+            &<\int_A\frac{\epsilon}{2\cdot m(A)}+2M\cdot\epsilon/4M\\
+            &=\frac{\epsilon}{2\cdot m(A)}m(A)+\epsilon/2\\
+            &=\epsilon.
+        \end{align*}
+        Therefore the sequence of integrals $\{\int_Ef\}$ converges to $\int_Ef$.
+    \end{proof}
 \begin{namedthm*}{Remark}
     Prior to the proof of the Bounded Convergence Theorem, no use was made of the countable additivity of the Lebesgue measure on the real line.
     Only finite additivity was used, and it was used just once, in the proof of Lemma 1. But for the proof of the Bounded Convergence Theorem we used Egoroff's Theorem.
@@ -369,14 +550,146 @@
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{8}
-    \item Let $E$ have measure zero. Show that if $f$ is a bounded function on $E$, then $f$ is measurable and $\int_Ef=0$.
-    \item Let $f$ be a bounded measurable function on a set of finite measure $E$. For a measurable subset $A$ of $E$, show that $\int_Af=\int_Ef\cdot\chi_A$.
-    \item Does the Bounded Convergence Theorem hold for the Riemann integral?
-    \item Let $f$ be a bounded measurable function on a set of finite measure $E$. Assume $g$ is bounded and $f=g$ a.e. on $E$. Show that $\int_Ef=\int_Eg$.
-    \item Does the Bounded Convergence Theorem hold if $m(E)<\infty$ but we drop the assumption that the sequence $\{|f_n|\}$ is uniformly bounded on $E$?
-    \item Show that Proposition 8 is a special case of the Bounded Convergence Theorem.
-    \item Verify the assertions in the last Remark of this section.
-    \item Let $f$ be a nonnegative bounded measurable function on a set of finite measure $E$. Assume $\int_Ef=0$. Show that $f=0$ a.e. on $E$.
+    \item Let $E$ have measure zero. Show that if $f$ is a bounded function on $E$, then $f$ is measurable and $\int_Ef=0$.\\
+    \\First, consider any simple function $\psi$ defined on $E$, taking the values $a_1,\cdots,a_n$ on the subsets $E_1,\cdots,E_n$ of $E$.
+    \\For any $i\in\{1,\cdots,n\}$, by monotonicity of Lebesgue measure, $m(E_i)\le m(E)=0\implies m(E_i)=0$.
+    Therefore the integral of any simple function on $E$ is zero:
+    \[
+        \int_E\psi=\sum_{i=1}^n a_i\cdot m(E_i)=\sum_{i=1}^n a_i\cdot 0=0
+    \]
+    Thus for the bounded function $f$ on the set of finite measure $E$, we have
+    \[
+        \sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple, }\varphi\le f\text{ on }E\biggr\}=0=\inf\biggl\{\int_E\psi\ |\ \psi\text{ simple, }\psi\ge f\text{ on }E\biggr\},
+    \]
+    and $f$ is Lebesgue integrable with $\int_Ef=0$.\\
+    \\To see that $f$ is measurable, consider any sequence of simple (measurable) functions $\{\varphi_n\}$ on $E$.
+    This sequence trivially converges pointwise $a.e.$ on $E$ to the function $f$ because it converges pointwise on the set $\emptyset=E\setminus E$, where $E\subseteq E$ with $m(E)=0$.
+    Then by Chapter 3 Proposition 9, $f$ is measurable.\\
+    \\(A bounded function on a set of finite measure is Lebesgue integrable iff it is measurable;
+    \\$(\implies)$ Chapter 5 Theorem 7, 
+    \\$(\impliedby)$ Chapter 4 Theorem 4)
+    \item Let $f$ be a bounded measurable function on a set of finite measure $E$. For a measurable subset $A$ of $E$, show that $\int_Af=\int_Ef\cdot\chi_A$.\\
+    \\For any simple function $\psi$ on $E$, we have
+    \[
+        \psi=\sum_{k=1}^nc_k\cdot \chi_{E_k},
+    \]
+    Then for the measurable subset $A$ of $E$, the restriction of $\psi$ to $A$ is measurable and so
+    \[
+        \psi_{|_A}=\sum_{k=1}^nc_k\cdot \chi_{E_k\cap A},\text{ where }E_k\cap A=\{x\in E\ |\ \psi(x)=c_k\}\cap A =\{x\in A\ |\ \psi_{|_A}(x)=c_k\}
+    \]
+    Also, we consider the measurable function $\chi_A$ on $E$, and clearly the product $\psi\cdot\chi_A$ is measurable (and simple) so that
+    \[
+        \psi\cdot\chi_A=\sum_{k=1}^nc_k\cdot \chi_{E_k}\cdot\chi_{A}=\sum_{k=1}^nc_k\cdot \chi_{E_k\cap A},
+    \]
+    and therefore 
+    \[
+        \int_A\psi=\sum_{k=1}^n c_k\cdot m(E_k\cap A)=\int_E\psi\cdot\chi_A.
+    \]
+    Now, to show $\int_Af=\int_Ef\cdot\chi_A$ it is sufficient to see that $\int_Af\le\int_Ef\cdot\chi_A$ and $\int_Af\ge\int_Ef\cdot\chi_A$.\\ 
+    \\For any simple function $\varphi'$ on $E$ such that $\varphi'\le f$, we have $\varphi'\cdot\chi_A\le f\cdot\chi_A$ on $E$, and so
+    \[
+        \int_A\varphi'=\int_E\varphi'\cdot\chi_A\le\sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple, }\varphi\le f\cdot\chi_A\text{ on }E\biggr\}=\int_Ef\cdot\chi_A
+    \]
+    Then the supremum of all such $\varphi'$ shows that
+    \[
+        \int_Af=\sup\biggl\{\int_A\varphi'\ |\ \varphi'\text{ simple, }\varphi'\le f\text{ on }A\biggr\}\le\int_Ef\cdot\chi_A\tag{1}
+    \]
+    Again, for any simple function $\psi'$ on $E$ such that $\psi'\ge f$, we have $\psi'\cdot\chi_A\ge f\cdot\chi_A$ on $E$, and so
+    \[
+        \int_A\psi'=\int_E\psi'\cdot\chi_A\ge\inf\biggl\{\int_E\psi\ |\ \psi\text{ simple, }\psi\ge f\cdot\chi_A\text{ on }E\biggr\}=\int_Ef\cdot\chi_A
+    \]
+    Then the infimum of all such $\psi'$ shows that
+    \[
+        \int_Af=\inf\biggl\{\int_A\psi'\ |\ \psi'\text{ simple, }\psi'\ge f\text{ on }A\biggr\}\ge\int_Ef\cdot\chi_A\tag{2}
+    \]
+    Therefore by $(1)$ and $(2)$ we have $\int_Af=\int_Ef\cdot\chi_A$.
+    \item Does the Bounded Convergence Theorem hold for the Riemann integral?\\
+    \\No. Recall the Dirichlet function example. 
+    The sequence of measurable functions $\{f_n\}$ on the set of finite measure $[0,1]$ is uniformly bounded on $[0,1]$ as each $f_n\in\{0,1\}$ so that 
+    \[
+        |f_n|\le1\text{ on }[0,1]\text{ for all }n. 
+    \]
+    Then for the Dirichlet function $f$,
+    \[
+        \{f_n\}\to f\text{ pointwise on }[0,1],\text{ but }(R)\underline\int_0^1f=0<1=(R)\overline\int_0^1f,
+    \]
+    so that $f$ is not Riemann integrable and so $(R)\int_0^1f$ is not defined, and we cannot say anything about if $\lim_{n\to\infty}(R)\int_0^1f_n=(R)\int_0^1f$.
+    \item Let $f$ be a bounded measurable function on a set of finite measure $E$. Assume $g$ is bounded and $f=g$ a.e. on $E$. Show that $\int_Ef=\int_Eg$.\\
+    \\Because $f=g$ a.e. on $E$, then $f=g$ on $E\setminus E_0$, where $m(E_0)=0$.
+    Recall from Chapter 3 Proposition 5 $(i)$ that $f$ is measurable on $E$ and $f=g$ a.e. on $E$ implies that $g$ is measurable on $E$.
+    \\Then 
+    \begin{align*}
+        \int_Ef&=\int_{E\setminus E_0}f+\int_{E_0}f&&\text{Corollary 6}\\
+        &=\int_{E\setminus E_0}f&&\text{Problem 9: }\int_{E_0}f=0\\
+        &=\int_{E\setminus E_0}g&&\text{$f=g$ on $E\setminus E_0$}\\
+        &=\int_Eg-\int_{E_0}g&&\text{Corollary 6}\\
+        &=\int_Eg.&&\text{Problem 9: }\int_{E_0}g=0
+    \end{align*}
+    \item Does the Bounded Convergence Theorem hold if $m(E)<\infty$ but we drop the assumption that the sequence $\{|f_n|\}$ is uniformly bounded on $E$?\\ 
+    \\No, see the example of the sequence of continuous (and thus measurable) triangular functions $\{f_n\}$ on $E=[0,1]$ so that $m(E)=1<\infty$.
+    But $\{f_n\}=\{|f_n|\}$ is not uniformly bounded on $E$ because for every number $M\in\mathbb{N}$ we choose, there always exists the function $f_{N+1}$ with $f_{N+1}(\frac{1}{N+1})=N+1>N$.
+    \\Then for the function $f\equiv0$ on $[0,1]$,
+    \[
+        \{f_n\}\to f\text{ pointwise on }[0,1],\text{ but }\lim_{n\to\infty}\int_0^1f_n=1\neq0=\int_0^1f,
+    \]
+    and the Bounded Convergence Theorem does not hold.
+    \item Show that Proposition 8 is a special case of the Bounded Convergence Theorem.\\
+    \\We see that since the convergence is uniform, then for $\epsilon>0$, there exists an index $N$ such that for all $n\ge N$,
+    \[
+        |f|-|f_n|\le|f-f_n|<\epsilon\text{ on }E.\tag{1}
+    \]
+    Also, since each $f_n$ is bounded, we have 
+    \[
+        |f_n|\le M_n\text{ on }E.
+    \]
+    Therefore at the index $N$, we have for any $\epsilon>0$,
+    \[
+        |f|<|f_N|+\epsilon\le M_N+\epsilon,
+    \]
+    and thus $f$ is bounded: $|f|\le M_N$ on $E$.\\
+    \\To show that $\{f_n\}$ is uniformly bounded, we can set $\epsilon=1$ so that there exists an index $N'$ such that for all $n\ge N'$, by $(1)$, we have
+    \[
+        |f_n|<|f|+1\le M_N+1\text{ on }E.
+    \]
+    Then we have for all $n\in\mathbb{N}$,
+    \[
+        |f_n|\le\max\{M_1,\cdots,M_{N'},M_N+1\}\text{ on }E,
+    \]
+    and the sequence $\{f_n\}$ is uniformly bounded on $E$.\\
+    \\Then Proposition 8 is a special case of the Bounded Convergence Theorem because it requires $\{f_n\}$ to converge uniformly to $f$.
+    \item Verify the assertions in the last Remark of this section.\\
+    \\This is true; we have:
+    \begin{itemize}
+        \item Continuity of measure uses countable additivity of measure,
+        \item Lemma 10 uses continuity of measure,
+        \item Egoroff's Theorem uses Lemma 10,
+        \item Bounded Convergence Theorem uses Egoroff's Theorem.
+    \end{itemize}
+    \item Let $f$ be a nonnegative bounded measurable function on a set of finite measure $E$. Assume $\int_Ef=0$. Show that $f=0$ a.e. on $E$.\\
+    \\We can suppose by contradiction that $f=0$ on $E\setminus E_0$, but $m(E_0)\neq0$.
+    \\So $f>0$ on $E_0$, or in other words, 
+    \[
+        0<m(E_0)=m(\{x\in E\ |\ f(x)>0\})=m(\bigcup_{n=1}^\infty\{x\in E\ |\ f(x)\ge1/n\})=m(\bigcup_{n=1}^\infty E_n)\le \sum_{n=1}^\infty m(E_n).
+    \]
+    Then there must exist an index $k$ for which $m(E_k)\neq0$, else we have $0<m(E_0)\le\sum_{n=1}^\infty 0=0$ and reach a contradiction.
+    \\Thus we have that $f\ge 1/k$ on $E_k$, with $m(E_k)>0$.
+    \\Therefore it is possible to define the simple function $\varphi_k$ on $E$ such that $\varphi_n \le f$ on $E$:
+    \[
+        \varphi_k(x)=
+        \begin{cases}
+            1/k&x\in E_k\\
+            0&x\notin E_k
+        \end{cases}    
+    \]
+    where, because $1/k>0$ and $m(E_k)>0$, 
+    \[
+        \int_E\varphi_k=\frac{1}{k}\cdot m(E_k)+0\cdot m(E_k^c)=\frac{1}{k}\cdot m(E_k)>0.
+    \]
+    But then we have
+    \[
+        \int_E\varphi_k>0=\int_Ef=\sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple, }\varphi\le f\text{ on }E\biggr\},
+    \]
+    a contradiction to the supremum.
 \end{enumerate}
 
 % 4.3
