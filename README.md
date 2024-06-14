@@ -1,4 +1,4 @@
-Exercise Completion: (169/1048)<br />
+Exercise Completion: (171/1048)<br />
 1.1-1.6 Done<br />
 2.1-2.7 Done<br />
 3.1-3.3 Done<br />
@@ -7,11 +7,11 @@ Exercise Completion: (169/1048)<br />
 9.1<br />
 17.1<br />
 
-PART I: Lebesgue Integration for Functions of a Single Real Variable (152/368)<br />
+PART I: Lebesgue Integration for Functions of a Single Real Variable (154/368)<br />
 Chapter 01: 59/59*<br />
 Chapter 02: 43/43*<br />
 Chapter 03: 31/31*<br />
-Chapter 04: 16/51*<br />
+Chapter 04: 18/51*<br />
 Chapter 05: 0/17*<br />
 Chapter 06: 0/71*<br />
 Chapter 07: 5/51<br />

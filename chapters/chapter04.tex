@@ -694,14 +694,163 @@
 
 % 4.3
 \section{The Lebesgue Integral of a Measurable Nonnegative Function}
-
+\begin{flushleft}
+    A function $f$ on $E$ is said to be of finite support provided it vanishes outside a set of finite measure, that is, there exists a set $E_0$ such that $m(E_0)<\infty$ and $f\equiv0$ on $E\setminus E_0$.
+    Therefore $f=f\cdot\chi_{E_0}$ so that 
+    \[
+        \int_{E_0}f=\int_Ef\cdot\chi_{E_0}=\int_Ef.
+    \]
+    \begin{namedthm*}{Definition}
+        For a nonnegative measurable function $f$ on $E$, we define the integral of $f$ over $E$ by
+        \[
+            \int_Ef=\sup\biggl\{\int_Eh\ |\ h\text{ bounded, measurable, of finite support and }0\le h\le f\text{ on }E\biggr\}.
+        \]
+    \end{namedthm*}
+    \begin{namedthm*}{Chebyshev's Inequality}
+        Let $f$ be a nonnegative measurable function on $E$.
+        Then for any $\lambda>0$, 
+        \[
+            m\{x\in E\ |\ f(x)\ge\lambda\}\le\frac{1}{\lambda}\cdot\int_Ef.\tag{9}
+        \]
+    \end{namedthm*}
+    \begin{proof}
+        Define $E_\lambda=\{x\in E\ |\ f(x)\ge\lambda\}$. 
+        \\First suppose $m(E_\lambda)=\infty$.
+        \\Then for a natural number $n$, define $E_{\lambda,n}=E_\lambda\cap[-n,n]$ and $\psi_n=\lambda\cdot\chi_{E_{\lambda,n}}$.
+        Then $\psi_n$ is a bounded measurable function of finite support, 
+        \[
+            \lambda\cdot m(E_{\lambda,n})=\int_{E_{\lambda,n}}\lambda\cdot1=\int_E\lambda\cdot\chi_{E_{\lambda,n}}=\int_E\psi_n\text{ and }0\le\psi_n\le f\text{ on }E\text{ for all }n.
+        \]
+        From the continuity of measure, because $\{E_{\lambda,n}\}_{n=1}^\infty$ is ascending and $E_\lambda=\bigcup_{n=1}^\infty E_{\lambda,n}$,
+        \[
+            \infty=\lambda\cdot m(E_\lambda)=\lambda\cdot \lim_{n\to\infty}m(E_{\lambda,n})=\lim_{n\to\infty}\int_E\psi_n\le\int_Ef.
+        \]
+        Therefore the inequality $(9)$ holds since both sides equal $\infty$.
+        \\Now suppose $m(E_\lambda)<\infty$.
+        \\Define $h=\lambda\cdot\chi_{E_\lambda}$.
+        Then $h$ is a bounded measurable function of finite support, and $0\le h\le f$ on $E$.
+        Then 
+        \[
+            \lambda\cdot m(E_\lambda)=\int_{E_{\lambda}}\lambda\cdot1=\int_E\lambda\cdot\chi_{E_{\lambda}}=\int_Eh\le\int_Ef.
+        \]
+        Thus we have $m(E_\lambda)\le\frac{1}{\lambda}\int_Ef$.
+    \end{proof}
+    \begin{namedthm*}{Fatou's Lemma}
+        Let $\{f_n\}$ be a sequence of nonnegative measurable functions on $E$.
+        \[
+            \text{ If }\{f_n\}\to f\text{ pointwise a.e. on }E,\text{ then }\int_Ef\le\lim\inf\int_Ef_n.    
+        \]
+    \end{namedthm*}
+    \begin{proof}
+        Let $\{f_n\}$ converge pointwise on $E\setminus E_0$, where $m(E_0)=0$. 
+        We know that sets of measure zero do not contribute to the integral. 
+        That is,
+        \[
+            \int_Ef=\int_{E\setminus E_0}f+\int_{E_0}f=\int_{E\setminus E_0}f.
+        \]
+        Then by excising this set of measure zero, we can assume pointwise convergence on all of $E$ (use $E$ instead of $E\setminus E_0$ for ease of writing).
+        \\Then because each $f_n$ is nonnegative, we have $0\le f_n,\ \forall n\implies 0\le f$.
+        Also, because $\{f_n\}$ is a sequence of measurable functions that converges pointwise to $f$, then $f$ is also measurable.
+        \\Then to verify the inequality of Fatou's Lemma, by the definition of the integral of the nonnegative measurable function $f$, it is necessary and sufficient to show that if $h$ is any bounded measurable function of finite support for which $0\le h\le f$ on $E$, then
+        \[
+            \int_Eh\le\lim\inf\int_Ef_n.
+        \]
+        To see this, suppose that $\int_Eh\le\lim\inf\int_Ef_n$ holds for all such $h$, but $\int_Ef>\lim\inf\int_Ef_n$.
+        \\Let $L=\lim\inf\int_Ef_n$. Then because $\int_Ef=\sup\biggl\{\int_Eh \biggr\}$:
+        \\If $\int_Ef<\infty$, there must exist an $h^*$ (bounded, measurable, finite support, $0\le h^*\le f$) such that
+        \[
+            \int_Ef\ge\int_Eh^*>\int_Ef-\frac{\int_Ef-L}{2}>L.
+        \]
+        If $\int_Ef=\infty$, then $L<\int_Ef=\infty$, and for any real number $N\ge L$, there must exist an $h^*$ (bounded, measurable, finite support, $0\le h^*\le f$) such that
+        \[
+            \int_Eh^*>N\ge L.
+        \]
+        However, both are a contradiction to $\int_Eh^*\le L=\lim\inf\int_Ef_n$.
+        Therefore $\int_Ef\le\lim\inf\int_Ef_n$.
+        \\\bigskip Now, consider a function $h$ that is bounded, measurable, finite support, and $0\le h\le f$.
+        Then there exists $M\ge0$ for which $|h|\le M$ on $E$.
+        Let $E_0=\{x\in E\ |\ h(x)\neq0\}$, so because $h$ is of finite support, $m(E_0)<\infty$.
+        For $n\in\mathbb{N}$, define a function $h_n$ on $E$ by
+        \[
+            h_n=\min\{h,f_n\}\text{ on }E.    
+        \]
+        Then the function $h_n$ is measurable and
+        \[
+            0\le h_n\le M\text{ on }E_0\text{ and }h_n\equiv0\text{ on }E\setminus E_0\text{ (finite support)}.
+        \]
+        Also, for each $x$ in $E$, since $h(x)\le f(x)$ and $\{f_n(x)\}\to f(x)$, then $\{h_n(x)\}\to h(x)$.
+        \\Then we have a sequence of measurable functions $\{h_n\}$ on a set of finite measure $E_0$.
+        Also, there exists an $M$ such that $|h_n|\le M$ on $E_0$ for all $n$, and $\{h_n\}\to h$ pointwise on $E_0$. 
+        Thus by the Bounded Convergence Theorem, we have $\lim_{n\to\infty}\int_{E_0}h_n=\int_{E_0}h$, and so
+        \[
+            \lim_{n\to\infty}\int_{E}h_n=\lim_{n\to\infty}\int_{E_0}h_n=\int_{E_0}h=\int_Eh.
+        \]
+        However, for each $n$, we have $h_n\le f_n$ on $E$ and by monotonicity, $\int_Eh_n\le\int_Ef_n$.
+        Thus
+        \[
+            \int_Eh=\lim_{n\to\infty}\int_{E}h_n=\lim\inf\int_{E}h_n\le\lim\inf\int_{E}f_n.    
+        \]
+    \end{proof}
+    \begin{namedthm*}{The Monotone Convergence Theorem}
+        Let $\{f_n\}$ be an increasing sequence of nonnegative measurable functions on $E$.
+        \[
+            \text{If }\{f_n\}\to f\text{ pointwise a.e. on }E,\text{ then }\lim_{n\to\infty}\int_Ef_n=\int_Ef.
+        \]
+    \end{namedthm*}
+    \begin{proof}
+        By Fatou's Lemma, we have
+        \[
+            \int_Ef\le\lim\inf\int_Ef_n.  
+        \]
+        However, for each index $n$, because $\{f_n\}$ is increasing, we have $f_n\le f$ a.e. on $E$, and so $\int_Ef_n\le\int_Ef$.
+        Therefore
+        \[
+            \lim\sup\int_Ef_n\le\int_Ef.
+        \]
+        Hence, $\lim\sup\int_Ef_n\le\int_Ef\le\lim\inf\int_Ef_n$ implies that
+        \[
+            \int_Ef=\lim_{n\to\infty}\int_Ef_n.
+        \]
+    \end{proof}
+    \begin{namedthm*}{Corollary 12}
+        Let $\{u_n\}$ be a sequence of nonnegative measurable functions on $E$.
+        \[
+            \text{If }f=\sum_{n=1}^\infty u_n\text{ pointwise a.e. on }E,\text{ then }\int_Ef=\sum_{n=1}^\infty\int_Eu_n.
+        \]
+    \end{namedthm*}
+    \begin{proof}
+        Let $f_k=\sum_{n=1}^ku_n$ so that $\{f_k\}$ is an increasing sequence of nonnegative measurable functions on $E$, and
+        \[
+            f=\sum_{n=1}^\infty u_n=\lim_{k\to\infty}\sum_{n=1}^ku_n=\lim_{k\to\infty}f_k\text{ pointwise a.e. on }E.
+        \]
+        Then by the Monotone Convergence Theorem and the linearity of integration, we have
+        \[
+            \int_Ef=\lim_{k\to\infty}\int_Ef_k=\lim_{k\to\infty}\int_E\sum_{n=1}^ku_n=\lim_{k\to\infty}\sum_{n=1}^k\int_Eu_n=\sum_{n=1}^\infty\int_Eu_n.
+        \]
+    \end{proof}
+    \begin{namedthm*}{Definition}
+        A nonnegative measurable function $f$ on a measurable set $E$ is said to be \textbf{integrable} over $E$ provided
+        \[
+            \int_Ef<\infty.    
+        \]
+    \end{namedthm*}
+\end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{16}
-    \item Let $E$ be a set of measure zero and define $f\equiv\infty$ on $E$. Show that $\int_Ef=0$.
-    \item Show that the integral of a bounded measurable function of finite support is properly defined.
+    \item Let $E$ be a set of measure zero and define $f\equiv\infty$ on $E$. Show that $\int_Ef=0$.\\
+    \\(Recall Problem 9).
+    If we suppose there exists a simple function that does not have measure zero, then there must exist some subset of $E_i$ of $E$ such that $m(E_i)>0$. 
+    But this is a contradiction to the monotonicity of Lebesgue measure: $m(E_i)\le m(E)=0$.
+    Therefore it must be that $\sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple, }\varphi\le f\text{ on }E\biggr\}=0=\inf\biggl\{\int_E\psi\ |\ \psi\text{ simple, }\psi\ge f\text{ on }E\biggr\}$ and $\int_Ef=0$.
+    \item Show that the integral of a bounded measurable function of finite support is properly defined.\\
+    \\Let $f$ be a bounded measurable function of finite support. 
+    That is, $m(E_0)=m(\{x\in E\ |\ f(x)\neq0\})<\infty$ and $f=f\cdot\chi_{E_0}$ so that
+    \[
+        \int_Ef=\int_Ef\cdot\chi_{E_0}=\int_{E_0}f.
+    \]
     \item For a number $\alpha$, define $f(x)=x^\alpha$ for $0<x\le1$, and $f(0)=0$. Compute $\int_0^1f$.
     \item Let $\{f_n\}$ be a sequence of nonnegative measurable functions that converges to $f$ pointwise on $E$.
     Let $M\ge0$ be such that $\int_Ef_n\le M$ for all $n$. Show that $\int_Ef\le M$. Verify that this property is equivalent to the statement of Fatou's Lemma.
