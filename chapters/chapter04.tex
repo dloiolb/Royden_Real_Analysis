@@ -349,14 +349,32 @@
     \begin{proof}
         Saying that $f$ is Riemann integrable means that
         \[
-            \sup\biggl\{(R)\int_a^b\varphi\ |\ \varphi\text{ a step function and }\varphi\le f\text{ on }[a,b]\biggr\}=\inf\biggl\{(R)\int_a^b\psi\ |\ \psi\text{ a step function and }\varphi\ge f\text{ on }[a,b]\biggr\}.
+            (R)\int_Ef=\sup\biggl\{(R)\int_a^b\varphi\ |\ \varphi\text{ step and }\varphi\le f\text{ on }[a,b]\biggr\}=\inf\biggl\{(R)\int_a^b\psi\ |\ \psi\text{ step and }\varphi\ge f\text{ on }[a,b]\biggr\}.
         \]
         The Riemann integral over a closed, bounded interval of a step function agrees with the Lebesgue integral.
         Therefore because all step functions are simple functions we have 
-        \[
-            \sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple and }\varphi\le f\text{ on }E\biggr\}=\inf\biggl\{\int_E\psi\ |\ \psi\text{ simple and }\varphi\ge f\text{ on }E\biggr\}.
-        \]
-        Therefore $f$ is Lebesgue integrable.
+        \begin{align*}
+            \biggl\{(R)\int_a^b\varphi\ |\ \varphi\text{ step and }\varphi\le f\text{ on }[a,b]\biggr\}
+            &\subseteq \biggl\{\int_E\varphi\ |\ \varphi\text{ simple and }\varphi\le f\text{ on }E\biggr\}\\
+            \biggl\{(R)\int_a^b\psi\ |\ \psi\text{ step and }\varphi\ge f\text{ on }[a,b]\biggr\}
+            &\subseteq\biggl\{\int_E\psi\ |\ \psi\text{ simple and }\varphi\ge f\text{ on }E\biggr\}
+        \end{align*}
+        and thus
+        \begin{align*}
+            \sup\biggl\{(R)\int_a^b\varphi\ |\ \varphi\text{ step and }\varphi\le f\text{ on }[a,b]\biggr\}
+            &\le \sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple and }\varphi\le f\text{ on }E\biggr\}\\
+            \inf\biggl\{(R)\int_a^b\psi\ |\ \psi\text{ step and }\varphi\ge f\text{ on }[a,b]\biggr\}
+            &\ge\inf\biggl\{\int_E\psi\ |\ \psi\text{ simple and }\varphi\ge f\text{ on }E\biggr\}
+        \end{align*}
+        Thus we can write
+        \begin{align*}
+            (R)\int_Ef&= \sup\biggl\{(R)\int_a^b\varphi\ |\ \varphi\text{ step and }\varphi\le f\text{ on }[a,b]\biggr\}\\
+            &\le\sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple and }\varphi\le f\text{ on }E\biggr\}\\
+            &\le\inf\biggl\{\int_E\psi\ |\ \psi\text{ simple and }\varphi\ge f\text{ on }E\biggr\}\\
+            &\le\inf\biggl\{(R)\int_a^b\psi\ |\ \psi\text{ step and }\varphi\ge f\text{ on }[a,b]\biggr\}\\
+            &=(R)\int_Ef,
+        \end{align*}
+        and $f$ is Lebesgue integrable with $\int_Ef=(R)\int_Ef$.
         \\\bigskip
         \textbf{Example} The Dirichlet function is a simple function because 
         \[
@@ -505,35 +523,36 @@
         \]
     \end{namedthm*}
     \begin{proof}
-        The pointwise limit of a sequence of measurable functions is measurable (Proposition 9).
+        The pointwise limit of a sequence of measurable functions is measurable (Chapter 3 Proposition 9).
         Therefore $f$ is measurable.
         Also, clearly $|f|\le M$ on $E$.
         Let $A$ be any measurable subset of $E$ and $n$ a natural number.
         \\Then
         \begin{align*}
             \int_Ef_n-\int_Ef&=\int_E[f_n-f]\\
-            &=\int_A[f_n-f]+\int_{E\setminus A}[f_n-f]&&\text{ Corollary 6}\\
-            &=\int_A[f_n-f]+\int_{E\setminus A}f_n+\int_{E\setminus A}(-f)\\
-            &\le\int_A[f_n-f]+\int_{E\setminus A}M+\int_{E\setminus A}M\\
-            &=\int_A[f_n-f]+2M\cdot m(E\setminus A)\\
+            &=\int_A[f_n-f]+\int_{E\setminus A}[f_n-f]&&\text{Corollary 6}\\
+            &=\int_A[f_n-f]+\int_{E\setminus A}f_n+\int_{E\setminus A}(-f)&&\text{Linearity of integration}\\
+            &\le\int_A[f_n-f]+\int_{E\setminus A}M+\int_{E\setminus A}M&&\text{Monotonicity of integration: }|f_n|,|f|\le M\\
+            &=\int_A[f_n-f]+2M\cdot m(E\setminus A)&&\text{Integral of constant functions}\\
         \end{align*} 
-        And
+        And by the triangle inequality and Corollary 7,
         \begin{align*}
-            |\int_Ef_n-\int_Ef|&\le|\int_A[f_n-f]+2M\cdot m(E\setminus A)|\\
-            &\le|\int_A[f_n-f]|+|2M\cdot m(E\setminus A)|\\
-            &\le\int_A|f_n-f|+2M\cdot m(E\setminus A)&&\text{ by Corollary 7}\\
+            \left|\int_Ef_n-\int_Ef\right|
+            &\le|\int_A[f_n-f]|+|2M\cdot m(E\setminus A)|
+            \le\int_A|f_n-f|+2M\cdot m(E\setminus A)
         \end{align*}
         Now let $\epsilon>0$.
         \\Because $E$ has finite measure and $\{f_n\}$ converges pointwise to $f$ on $E$, then by Egoroff's Theorem, there is a measurable subset $A$ of $E$ for which $\{f_n\}\to f$ uniformly on $A$ and $m(E\setminus A)<\epsilon/4M$.
         Then by uniform convergence, there is an index $N$ for which 
         \[
-            |f_n-f|<\frac{\epsilon}{2\cdot m(A)}\text{ on }A\text{ for all }n\ge N.
+            |f_n-f|<\frac{\epsilon}{2\cdot m(E)}\text{ on }A\text{ for all }n\ge N.
         \]
-        Therefore
+        Therefore, because $A\subseteq E\implies m(A)\le m(E)<\infty\implies \frac{m(A)}{m(E)}\le1$, using monotonicity of integration,
         \begin{align*}
-            |\int_Ef_n-\int_Ef|&\le\int_A|f_n-f|+2M\cdot m(E\setminus A)\\
-            &<\int_A\frac{\epsilon}{2\cdot m(A)}+2M\cdot\epsilon/4M\\
-            &=\frac{\epsilon}{2\cdot m(A)}m(A)+\epsilon/2\\
+            \left|\int_Ef_n-\int_Ef\right|&\le\int_A|f_n-f|+2M\cdot m(E\setminus A)\\
+            &<\int_A\frac{\epsilon}{2\cdot m(E)}+2M\cdot\epsilon/4M\\
+            &=\frac{\epsilon}{2\cdot m(E)}m(A)+\epsilon/2\\
+            &\le\frac{\epsilon}{2}+\frac{\epsilon}{2}\\
             &=\epsilon.
         \end{align*}
         Therefore the sequence of integrals $\{\int_Ef\}$ converges to $\int_Ef$.
@@ -842,16 +861,109 @@
 	\setcounter{enumi}{16}
     \item Let $E$ be a set of measure zero and define $f\equiv\infty$ on $E$. Show that $\int_Ef=0$.\\
     \\(Recall Problem 9).
-    If we suppose there exists a simple function that does not have measure zero, then there must exist some subset of $E_i$ of $E$ such that $m(E_i)>0$. 
+    If we suppose there exists a simple function that does not have an integral of zero, then there must exist some subset of $E_i$ of $E$ such that $m(E_i)>0$. 
     But this is a contradiction to the monotonicity of Lebesgue measure: $m(E_i)\le m(E)=0$.
     Therefore it must be that $\sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple, }\varphi\le f\text{ on }E\biggr\}=0=\inf\biggl\{\int_E\psi\ |\ \psi\text{ simple, }\psi\ge f\text{ on }E\biggr\}$ and $\int_Ef=0$.
     \item Show that the integral of a bounded measurable function of finite support is properly defined.\\
-    \\Let $f$ be a bounded measurable function of finite support. 
-    That is, $m(E_0)=m(\{x\in E\ |\ f(x)\neq0\})<\infty$ and $f=f\cdot\chi_{E_0}$ so that
+    \\Let $f$ on $E$ be a bounded measurable function of finite support. 
+    \\That is, $m(E_0)=m(\{x\in E\ |\ f(x)\neq0\})<\infty$.
+    \\We want to show that
     \[
-        \int_Ef=\int_Ef\cdot\chi_{E_0}=\int_{E_0}f.
+        \int_Ef=\int_{E_0}f.
     \]
-    \item For a number $\alpha$, define $f(x)=x^\alpha$ for $0<x\le1$, and $f(0)=0$. Compute $\int_0^1f$.
+    First consider any simple function on $E_0$;
+    we can write
+    \[
+        \varphi=\sum_{k=1}^nc_k\cdot \chi_{E_k}\text{ and }\int_{E_0}\varphi=\sum_{k=1}^n c_k\cdot m(E_k),
+    \]
+    where $E_k=\{x\in E_0\ |\ \varphi(x)=c_k\}$.
+    \\Then extending $\varphi$ to $E$ by setting $\varphi(x)=0$ for $x\in E\setminus E_0$, see that
+    \[
+        \varphi=\sum_{k=1}^nc_k\cdot \chi_{E_k}+0\cdot\chi_{E\setminus E_0}\text{ and }\int_{E}\varphi=\sum_{k=1}^n c_k\cdot m(E_k) + 0\cdot m(E\setminus E_0). 
+    \]
+    However, $m(E\setminus E_0)=\infty$.
+    We can use the $\sigma$-finiteness (see Chapter 17.1) of the Lebesgue measure to partition $E\setminus E_0$ into a countable union of disjoint measurable sets, each of finite measure.
+    That is, $E\setminus E_0=\bigcup_{i=1}^\infty A_i$, where $m(A_i)<\infty$ for all $i$.
+    We see that
+    \begin{align*}
+        \int_{E}\varphi&=\sum_{k=1}^n c_k\cdot m(E_k) + 0\cdot m(E\setminus E_0)\\
+        &=\sum_{k=1}^n c_k\cdot m(E_k) + 0\cdot m(\bigcup_{i=1}^\infty A_i)\\
+        &=\sum_{k=1}^n c_k\cdot m(E_k) + 0\cdot \sum_{i=1}^\infty m(A_i)\\
+        &=\sum_{k=1}^n c_k\cdot m(E_k) + \sum_{i=1}^\infty 0\cdot m(A_i)\\
+        &=\sum_{k=1}^n c_k\cdot m(E_k)\\
+        &=\int_{E_0}\varphi.
+    \end{align*}
+    and therefore any simple function of finite support has $\int_{E}\varphi=\int_{E_0}\varphi$.\\
+    \\Now, for any simple functions $\varphi$ and $\psi$ on on $E_0$ such that $\varphi\le f_{|_{E_0}}$ and $\psi\ge f_{|_{E_0}}$, there exists the extension $\varphi(x),\psi(x)=0$ for $x\in E\setminus E_0$ so that $0=\varphi(x)\le f(x)=0$ and $0=f(x)\le\psi(x)=0$ on $x\in E\setminus E_0$ and $\varphi\le f$ and $f\le \psi$ on all of $E$.
+    \\Then because $\int_{E}\varphi=\int_{E_0}\varphi$ and $\int_{E}\psi=\int_{E_0}\psi$,
+    \begin{align*}
+        \biggl\{\int_{E}\varphi\ |\ \varphi\text{ simple, }\varphi\le f\text{ on }E\biggr\}\supseteq\biggl\{\int_{E_0}\varphi\ |\ \varphi\text{ simple, }\varphi\le f_{|_{E_0}}\text{ on }E_0\biggr\}\\
+        \biggl\{\int_{E}\psi\ |\ \psi\text{ simple, }\psi\ge f\text{ on }E\biggr\}\supseteq\biggl\{\int_{E_0}\psi\ |\ \psi\text{ simple, }\psi\ge f_{|_{E_0}}\text{ on }E_0\biggr\}
+    \end{align*}
+    Then because $\sup\biggl\{\int_{E}\varphi\ |\ \varphi\text{ simple, }\varphi\le f\text{ on }E\biggr\}\le\inf\biggl\{\int_{E}\psi\ |\ \psi\text{ simple, }\psi\ge f\text{ on }E\biggr\}$ and 
+    \begin{align*}
+        \sup\biggl\{\int_{E}\varphi\ |\ \varphi\text{ simple, }\varphi\le f\text{ on }E\biggr\}\ge\sup\biggl\{\int_{E_0}\varphi\ |\ \varphi\text{ simple, }\varphi\le f_{|_{E_0}}\text{ on }E_0\biggr\}=\int_{E_0}f_{|_{E_0}}\\
+        \inf\biggl\{\int_{E}\psi\ |\ \psi\text{ simple, }\psi\ge f\text{ on }E\biggr\}\le\inf\biggl\{\int_{E_0}\psi\ |\ \psi\text{ simple, }\psi\ge f_{|_{E_0}}\text{ on }E_0\biggr\}=\int_{E_0}f_{|_{E_0}}
+    \end{align*}
+    we have $\int_Ef=\int_{E_0}f_{|_{E_0}}$.
+    \item For a number $\alpha$, define $f(x)=x^\alpha$ for $0<x\le1$, and $f(0)=0$. Compute $\int_0^1f$.\\
+    \\Case $0\le\alpha$:
+    \\Then the function $f(x)=x^\alpha$ is positive monotone on $[0,1]$, that is, 
+    \[
+        0\le x\le1\implies 0=0^\alpha\le x^\alpha\le1^\alpha=1,
+    \]
+    and $f$ is bounded by $1$ on the closed bounded interval $[0,1]$.\\
+    \\Now we see that $f$ is Riemann integrable:
+    \\For each natural number $m$, consider the partition $P_m=\{0,\frac{1}{m},\frac{2}{m},\cdots,\frac{m-1}{m},1\}=\{x_0,x_1,\cdots,x_m\}$.
+    Then because $f$ is increasing, we have $f(x_{k-1})=\inf\{f(x)\ |\ x_{k-1}<x<x_k\}$ and $f(x_k)=\sup\{f(x)\ |\ x_{k-1}<x<x_k\}$, so that
+    \begin{align*}
+        L(f,P_m)&=\sum_{k=1}^m f(x_{k-1})\cdot\frac{1}{m}\\
+        &=\sum_{k=1}^{m-1} f(x_k)\cdot\frac{1}{m}+f(x_0)\cdot\frac{1}{m}\\
+        &=\sum_{k=1}^{m-1} f(x_k)\cdot\frac{1}{m}+0\cdot\frac{1}{m}\\
+        &=\sum_{k=1}^{m-1} f(x_k)\cdot\frac{1}{m}
+    \end{align*}
+    and
+    \begin{align*}
+        U(f,P_m)&=\sum_{k=1}^m f(x_k)\cdot\frac{1}{m}\\
+        &=\sum_{k=1}^{m-1} f(x_k)\cdot\frac{1}{m}+f(x_m)\cdot\frac{1}{m}\\
+        &=\sum_{k=1}^{m-1} f(x_k)\cdot\frac{1}{m}+1\cdot\frac{1}{m}
+    \end{align*}
+    Then clearly we get $\lim_{m\to\infty}[U(f,P_m)-L(f,P_m)]=0$, with 
+    \[
+        U(f,P_m)=\sum_{k=1}^{m} f(x_k)\cdot\frac{1}{m}=\sum_{k=1}^{m} (\frac{k}{m})^\alpha\cdot\frac{1}{m},
+    \]
+    and $\lim_{m\to\infty}\sum_{k=1}^{m} (\frac{k}{m})^\alpha\cdot\frac{1}{m}=\frac{1}{\alpha+1}$.
+    That is, we can see $\lim_{m\to\infty} \frac{\sum_{k=1}^{m}k^\alpha}{m^{\alpha+1}}-\frac{1}{\alpha+1}=0$.
+    % \begin{align*}
+    %     \frac{\sum_{k=1}^{m}k^\alpha}{m^{\alpha+1}}-\frac{1}{\alpha+1}
+    %     =\frac{1}{\alpha+1}\left(\frac{\sum_{k=1}^{m}k^\alpha(\alpha+1)}{m^{\alpha+1}}-1\right)
+    %     =\frac{1}{\alpha+1}\left(\frac{\sum_{k=1}^{m}[k^\alpha(\alpha+1)]-m^{\alpha+1}}{m^{\alpha+1}}\right)
+    % \end{align*}
+    \\(We can use integration to see:)
+    \[
+        \int_0^1x^\alpha = \left[\frac{x^{\alpha+1}}{\alpha+1}\right]_{x=0}^{x=1}=\left(\frac{1^{\alpha+1}}{\alpha+1}-\frac{0^{\alpha+1}}{\alpha+1}\right)=\left(\frac{1}{\alpha+1}\right).
+    \]
+    \\Case $-1<\alpha<0$:
+    \\For each natural number $n$, define $f_n$ on $[0,1]$ such that
+    \[
+        f_n(x)=
+        \begin{cases}
+            f(x)=x^\alpha&\text{if }x\in[1/n,1]\\
+            0&\text{if }x\in[0,1/n)
+        \end{cases}
+    \]
+    Then $\{f_n\}$ is an increasing sequence of nonnegative measurable functions on $[0,1]$, and $\{f_n\}\to f$ pointwise on $[0,1]$.
+    By the Monotone Convergence Theorem, $\lim_{n\to\infty}\int_0^1f_n=\int_0^1f$.\\
+    \\Now,  because $f(x)=x^\alpha=\frac{1}{x^{-\alpha}}$ is negative monotone on $(0,1]$, that is, for any $n\in\mathbb{N}$,
+    \[
+        1/n\le x\implies (1/n)^{-\alpha}\le x^{-\alpha}\implies\frac{1}{x^{-\alpha}}\le\frac{1}{(1/n)^{-\alpha}}\implies x^\alpha\le(1/n)^\alpha,
+    \] 
+    then $f_n$ is bounded by $(1/n)^\alpha$ on the closed bounded interval $[0,1]$.\\
+    \\Now we see that $f$ is Riemann integrable:
+    \\Case $\alpha\le-1$:
+    \\Consider the same sequence $\{f_n\}$ from the previous case. 
+    We can use the Monotone Convergence Theorem.
+    See again that $f_n$ is bounded by $(1/n)^\alpha$ on the closed bounded interval $[0,1]$, and is thus Riemann integrable.
     \item Let $\{f_n\}$ be a sequence of nonnegative measurable functions that converges to $f$ pointwise on $E$.
     Let $M\ge0$ be such that $\int_Ef_n\le M$ for all $n$. Show that $\int_Ef\le M$. Verify that this property is equivalent to the statement of Fatou's Lemma.
     \item Let the function $f$ be nonnegative and integrable over $E$ and $\epsilon>0$. Show there is a simple function $\eta$ on $E$ that has finite support, $0\le\eta\le f$ on $E$ and $\int_E|f-\eta|<\epsilon$.
