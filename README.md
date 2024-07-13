@@ -74,11 +74,8 @@ Chapter 22: 0/31
 ***Chapter 03: Lebesgue Measurable Functions***
 
 Littlewood's Three Principles:
-
 - Every measurable set is nearly a finite union of intervals
-
 - Every measurable function is nearly continuous
-
 - Every pointwise convergent sequence of measurable functions is nearly uniformly convergent.
 
 ***Chapter 04: Lebesgue Integration***
