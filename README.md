@@ -1,12 +1,19 @@
 # Exercise Completion
 
-Total Exercise Completion: (171/1048)
+Total Exercise Completion: (174/1048)
+
+Part 1:
 - 1.1-1.6 Done
 - 2.1-2.7 Done
 - 3.1-3.3 Done
-- 4.1-4.3
--  7.1
+- 4.1-4.3 
+- 7.1
+
+Part 2:
 - 9.1
+- 16.1
+
+Part 3:
 - 17.1
 
 ### PART I: Lebesgue Integration for Functions of a Single Real Variable (154/368)
@@ -19,7 +26,7 @@ Total Exercise Completion: (171/1048)
 - Chapter 07: 5/51
 - Chapter 08: 0/45
 
-### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (4/408)
+### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (7/408)
 - Chapter 09: 4/78
 - Chapter 10: 0/44
 - Chapter 11: 0/56
@@ -27,7 +34,7 @@ Total Exercise Completion: (171/1048)
 - Chapter 13: 0/40
 - Chapter 14: 0/70
 - Chapter 15: 0/18*
-- Chapter 16: 0/66
+- Chapter 16: 3/66*
 
 ### PART III: Measure and Integration: General Theory (11/272)
 - Chapter 17: 11/36*
@@ -76,9 +83,8 @@ Littlewood's Three Principles:
 
  #### Chapter 04: Lebesgue Integration
 
-
 With the sequence of measurable functions $\{f_n\}\to f$ pointwise a.e. on E (with E finite measure?) what additional conditions do we need to imply that $\lim_{n\to\infty}[\int_Ef_n]=\int_E[\lim_{n\to\infty}f_n]=\int_Ef?$
-- Bounded Convergence Theorem: additional condition: $|f_n|\le M$ for all $n$
+- Bounded Convergence Theorem: additional condition: $|f_n|\le M$ for all $n$ (proof uses Egoroff's Thm)
 
  #### Chapter 05: Lebesgue Integration: Further Topics
 

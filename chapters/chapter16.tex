@@ -3,6 +3,84 @@
 
 % 16.1
 \section{The Inner Product and Orthogonality}
+
+\begin{namedthm*}{Definition}
+    Let $H$ be a linear space.
+    A function $\langle\cdot,\cdot\rangle:H\times H\to\mathbb{R}$ is called an \textbf{inner product} on $H$ provided for all $x_1,x_2,x,y\in X$ and real numbers $\alpha,\beta$, it satisfies
+    \begin{enumerate}[(i)]
+        \item linearity in first argument: $\langle \alpha x_1+\beta x_2,y\rangle=\alpha\langle x_1,y\rangle+\beta\langle x_2,y\rangle$.
+        \item symmetry: $\langle x,y\rangle=\langle y,x\rangle$
+        \item positive definiteness: $\langle x,x\rangle>0$ if $x\neq0$
+    \end{enumerate}
+    A linear space $H$ together with an inner product on $H$ is called an \textbf{inner product space}.
+\end{namedthm*}
+Property (i) along with property (ii) reveals that the real inner product in linear in both arguments: this is called \textbf{bilinearity}.
+
+For two vectors $u=(u_1,\dots u_n)$ ad $u=(v_1,\dots v_n)$ in Euclidean space $\mathbb{R}^n$, the Euclidean inner product, $\langle u,v\rangle$, is defined by
+\[
+    \langle u,v\rangle=\sum_{k=1}^nu_kv_k.
+\]
+For two sequences $x=\{x_k\}$ ad $y=\{y_k\}$ in $\ell^2$, the $\ell^2$ inner product, $\langle x,y \rangle$, is defined by
+\[
+    \langle x,y\rangle=\sum_{k=1}^\infty x_ky_k.
+\]
+For a measurable set $E\subseteq\mathbb{R}$ and two functions $f$ and $g$ in $L^2(E)$, the $L^2$ inner product, $\langle f,g \rangle$, is defined by
+\[
+    \langle f,g\rangle=\int_Ef\cdot g.
+\]
+From the Cauchy-Schwarz (H\"older's) inequality, we infer that these inner products are properly defined (finite).
+\begin{namedthm*}{The Cauchy-Schwarz Inequality}
+    For any two vectors $u,v$ in an inner product space $H$,
+    \[
+        |\langle u,v\rangle|\le\|u\|\cdot\|v\|.
+    \]
+\end{namedthm*}
+\begin{namedthm*}{Proposition 1}
+    For a vector $h$ in an inner product space $H$, define
+    \[
+        \|h\|=\sqrt{\langle h,h\rangle}.
+    \]
+    Then $\|\cdot\|$ is a norm on $H$ called that norm induced by the inner product $\langle\cdot,\cdot\rangle$.
+\end{namedthm*}
+\begin{proof}
+    Let $h\in H$.
+    \begin{enumerate}[(i)]
+        \item By positive definiteness of the inner product, $\langle h,h\rangle>0\implies \sqrt{\langle h,h\rangle}>0$.
+        \\If $h=0$ then $\langle h,h\rangle=0\implies\sqrt{\langle h,h\rangle}=0$.
+        \item By bilinearity of the inner product, $\|\alpha h\|=\sqrt{\langle \alpha h,\alpha h\rangle}=\sqrt{\alpha^2\langle h,h\rangle}=|\alpha|\sqrt{\langle h,h\rangle} =|\alpha|\|h\|$.
+        \item Use the Cauchy-Schwarz inequality to see that 
+        \[
+            \|u+v\|^2=\langle u+v,u+v\rangle=\langle u,u\rangle+2\langle u,v\rangle+\langle v,v\rangle\le \|u\|+2\|u\|\|v\|+\|v\|=(\|u\|+\|v\|)^2.
+        \]
+    \end{enumerate}
+\end{proof}
+\begin{namedthm*}{The Parallelogram Identity}
+    For any two vectors $u,v$ in an inner product space $H$,
+    \[
+        \|u-v\|^2+\|u+v\|^2=2\|u\|^2+2\|v\|^2.
+    \]
+\end{namedthm*}
+To verify this we can simply add the following two equalities:
+\begin{align*}
+    \|u-v\|^2&=\|u\|^2-2\langle u,v\rangle+\|v\|^2,\\
+    \|u+v\|^2&=\|u\|^2+2\langle u,v\rangle+\|v\|^2.
+\end{align*}
+
+\begin{namedthm*}{Definition}
+    An inner product space $H$ is called a \textbf{Hilbert space} provided it is a Banach space with respect to the norm induced by the inner product.
+\end{namedthm*}
+The Riesz-Fischer Theorem tells us that for $E$ a measurable set of real numbers, $L^2(E)$ is a Hilbert space and, as a consequence, so is $\ell^2$.
+\begin{namedthm*}{Proposition 2}
+    Let $K$ be a nonempty, closed, convex subset of a Hilbert space $H$ and $h_0$ belong to $H\setminus K$.
+    Then there is exactly on vector $h_*\in K$ that is closest to $h_0$ in the sense that
+    \[
+        \|h_0-h_*\|=\text{dist}(h_0,K)=\underset{h\in K}{\inf}\|h_0-h\|.
+    \]
+\end{namedthm*}
+\begin{proof}
+    d
+\end{proof}
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -14,11 +92,20 @@ In the following problems, $H$ is a Hilbert space.
     \item Let $H_1$ and $H_2$ be Hilbert spaces. Show that the Cartesian product $H_1\times H_2$ is also a Hilbert space with an inner product with respect to which $H_1\times\{0\}=[\{0\}\times H_2]^\perp$.
     \item Show that if $S$ is a subset of an inner product space $H$, then $S^\perp$ is a closed subspace of $H$.
     \item Let $S$ be a subset of $H$. Show that $S=(S^\perp)^\perp$ iff $S$ is a closed subspace of $H$.
-    \item (Polarization Identity) Show that for any two vectors $u,v\in X$,
+    \item (Polarization Identity) Show that for any two vectors $u,v\in H$,
     \[
         \langle u,v \rangle = \frac{1}{4}[\|u+v\|^2-\|u-v\|^2].
     \]
-    \item (Jordan-von Neumann) Let $X$ be a linear space normed bu $\|\cdot\|$. Use the polarization identity to show that a norm $\|\cdot\|$ is induced by an inner product iff the parallelogram identity holds.
+    \\Recall the Parallelogram inequality and instead of adding, simply subtract the two inequalities:
+    \begin{align*}
+        \|u-v\|^2&=\|u\|^2-2\langle u,v\rangle+\|v\|^2,\\
+        \|u+v\|^2&=\|u\|^2+2\langle u,v\rangle+\|v\|^2,
+    \end{align*}
+    so that
+    \begin{align*}
+        \|u+v\|^2-\|u-v\|^2&=4\langle u,v\rangle.
+    \end{align*}
+    \item (Jordan-von Neumann) Let $X$ be a linear space normed by $\|\cdot\|$. Use the polarization identity to show that a norm $\|\cdot\|$ is induced by an inner product iff the parallelogram identity holds.
     \item Let $V$ be a closed subspace of $H$ and $P$ a projection of $H$ onto $V$. Show that $P$ is the orthogonal projection of $H$ onto $V$ iff (4) holds.
     \item Let $T$ belong to $\mathcal{L}(H)$. Show that $T$ is an isometry iff
     \[
@@ -28,11 +115,49 @@ In the following problems, $H$ is a Hilbert space.
     \[
         P(h)=\sum_{k=1}^n\langle h,\varphi_k\rangle\varphi_k\text{ for all }h\in V.
     \]
-    \item For $h$ a vector in $H$, show that the function $u\mapsto\langle h,u\rangle$ belongs to $H^*$.
+    \item For $h$ a vector in $H$, show that the function $u\mapsto\langle h,u\rangle$ belongs to $H^*$.\\
+    \\The aim is to show that the function $\varphi:H\to\mathbb{R}$ defined by $\varphi(u)=\langle h,u\rangle$ is bounded and linear (see Chapter 8, Proposition 1).
+    \\To see boundedness (continuity), use the Cauchy-Schwarz Inequality so that for any $u\in H$,
+    \[
+        \varphi(u)=\langle h,u\rangle\le\|h\|\cdot\|u\|<\infty.
+    \]
+    (Norms are defined to be \textbf{real-valued}; therefore the norm of any element in a linear space is a real number and thus finite: $\|h\|,\|u\|<\infty$)
+    \\To see linearity, simply use bilinearity of the inner product:
+    \[
+        \varphi(\alpha u+\beta v)=\langle h,\alpha u+\beta v\rangle=\alpha\langle h,u\rangle+\beta\langle h,v\rangle=\alpha\varphi(u)+\beta\varphi(v).
+    \]
     \item For any vector $h\in H$, show that there is a bounded linear functional $\psi\in H^*$ for which 
     \[
         \|\psi\|=1\text{ and }\psi(h)=\|h\|.  
     \]
+    \\For $h\in H$ $(h\neq0)$, let $\psi:H\to\mathbb{R}$ be defined by 
+    \[
+        \psi(u)=\langle \frac{h}{\|h\|},u\rangle\text{ for any }u\in H.
+    \]
+    By the previous Problem 10, we proved that $\psi\in H^*$.
+    \\Then 
+    \[
+        \psi(h)=\langle \frac{h}{\|h\|},h\rangle=\frac{1}{\|h\|}\langle h,h\rangle=\frac{1}{\|h\|}\|h\|^2=\|h\|.
+    \]
+    It remains to show $\|\psi\|_*=1$.
+    \\Recall Chapter 8.1 for the following:
+    \\We define the operator norm:
+    \[
+        \|\psi\|_*:=\inf\{M\mid|\psi(u)|\le M\|u\|\text{ for all }u\in H\},
+    \]
+    which implies the two: 
+    \begin{itemize}
+        \item $|\psi(u)|\le \|\psi\|_*\|u\|\text{ for all }u\in H$
+        \item $\|\psi\|_*=\sup\{\psi(u)\mid u\in H, \|u\|\le1\}$
+    \end{itemize}
+    Therefore
+    \[
+        \|h\|=|\psi(h)|\le \|\psi\|_*\|h\|\implies 1\le \|\psi\|_*\tag{\text{a}}
+    \]
+    \[
+        \|\psi\|_*=\underset{\|u\|\le1}{\underset{u\in H}{\sup}}\psi(u)=\underset{\|u\|\le1}{\underset{u\in H}{\sup}}\langle \frac{h}{\|h\|},u\rangle\le \|\frac{h}{\|h\|}\|\cdot\|u\|\le1\tag{\text{b}}
+    \]
+    Then (a) and (b) imply $\|\psi\|_*=1$.
     \item Let $V$ be a closed subspace of $H$ and $P$ the orthogonal projection of $H$ onto $V$.
     For any normed linear space $X$ and $T\in\mathcal{L}(V,X)$, show that $T\circ P$ belongs to $\mathcal{L}(H,X)$, and is an extension of $T:V\to X$ for which $\|T\circ P\|=\|T\|$.
     \item Prove the Hyperplane Separation Theorem for $H$, considered as a locally convex topological vector space with respect to the strong topology, by directly using Proposition 2.
@@ -99,14 +224,157 @@ In the following problems, $H$ is a Hilbert space.
 \begin{enumerate}
 	\setcounter{enumi}{26}
     \item Verify (12).
-    \item Let $T$ and $S$ belong to $\mathcal{L}(H)$ and be symmetric. \dots
+    \item Let $T$ and $S$ belong to $\mathcal{L}(H)$ and be symmetric. 
+    Show that $T=S$ iff $Q_T=Q_S$.
+    \item Show the symmetric operators are a closed subspace of $\mathcal{L}(H)$.
+    Also show that if $T$ and $S$ are symmetric, then so is the composition $S\circ T$ iff $T$ commutes with $S$ with respect to composition; that is, $S\circ T=T\circ S$.
+    \item (Helliger-Toplitz) Let $H$ be a Hilbert space and the linear operator $T:H\to H$ have the property that $\langle T(u),v\rangle=\langle u,T(v)\rangle$ for all $u,v\in H$.
+    Show that $T$ belongs to $\mathcal{L}(H)$.
+    \item Exhibit an operator $T\in\mathcal{L}(\mathbb{R}^2)$ for which $\|T\|>\sup_{\|u\|=1}|\langle T(u),u\rangle|$.
+    \item Let $S$ and $T$ in $\mathcal{L}(H)$ be symmetric.
+    Assume $S\ge T$ and $T\ge S$.
+    Prove that $T=S$.
+    \item Let $V$ be a closed nontrivial subspace of a Hilbert space $H$ and $P$ the orthogonal projection of $H$ onto $V$.
+    Show that $P=P^*$, $P\ge0$, and $\|P\|=1$.
+    \item Let $P\in\mathcal{L}(H)$ be a projection.
+    Show that $P$ is the orthogonal projection of $H$ onto $P(H)$ iff $P=P^*$.
+    \item Let $\{\varphi_k\}$ be an orthonormal basis for a Hilbert space $H$ and for each natural number $n$, define $P_n$ to be the orthogonal projection of $H$ onto the linear span of $\{\varphi_1,\dots,\varphi_n\}$.
+    Show that $P_n$ is symmetric and 
+    \[
+        0\le P_n\le P_{n+1}\le Id\text{ for all }n.
+    \]
+    Show that $\{P_n\}$ converges pointwise on $H$ to $Id$ but does not converge uniformly on the unit ball.
+    \item Show that if $T\in\mathcal{L}(H)$ is invertible, so is $T^*\circ T$ and therefore so is $T$.
+    \item (A General Cauchy-Schwarz Inequality) Let $T\in\mathcal{L}(H)$ be symmetric and nonnegative.
+    Show that for all $u,v\in H$,
+    \[
+        |\langle T(u),v\rangle|^2\le\langle T(u),u\rangle\cdot\langle T(v),v\rangle.
+    \] 
+    \item Use the preceding problem to show that if $S,T\in\mathcal{L}(H)$ are symmetric and $S\ge T$, then for each $u\in H$,
+    \[
+        \|S(u)-T(u)\|^4=\langle (S-T)(u),(S-T)(u)\rangle^2\le|\langle(S-T)(u),u\rangle||\langle(S-T)^2(u),(S-T)(u)\rangle|
+    \]
+    and thereby conclude that
+    \[
+        \|S(u)-T(u)\|^4\le|\langle S(u),u\rangle-\langle T(u),u\rangle|\cdot\|S-T\|^3\cdot\|u\|^2.
+    \]
+    \item (a Monotone Convergence Theorem for Symmetric Operators) A sequence $\{T_n\}$ of symmetric operators in $\mathcal{L}(H)$ is said to be monotone increasing provided $T_{n+1}\ge T_n$ for each $n$, and said to be bounded above provided there is a symmetric operator $S$ in $\mathcal{L}(H)$ such that $T_n\le S$ for all $n$.
+    \begin{enumerate}[(i)]
+        \item Use the preceding problem to show that a monotone increasing sequence $\{T_n\}$ of symmetric operators in $\mathcal{L}(H)$ converges pointwise to a symmetric operator in $\mathcal{L}(H)$ iff it is bounded above.
+        \item Show that a monotone increasing sequence $\{T_n\}$ of symmetric operators in $\mathcal{L}(H)$ is bounded above iff it is pointwise bounded; that is, for each $h\in H$, the sequence $\{T_n(h)\}$ is bounded.
+    \end{enumerate}
+    \item Let $S\in\mathcal{L}(H)$ be a symmetric operator for which $0\le S\le Id$.
+    Define a sequence $\{T_n\}$ in $\mathcal{L}(H)$ by letting $T_1=1/2(Id-S)$ and if $n$ is a natural number for which $T_n\in\mathcal{L}(H)$ has been defined, defining $T_{n+1}=1/2(Id-S+T_n^2)$.
+    \begin{enumerate}[(i)]
+        \item Show that for each natural umber $n$, $T_n$ and $T_{n+1}-T_n$ are polynomials in $Id-S$ with nonnegative coefficients.
+        \item Show that $\{T_n\}$ is a monotone increasing sequence of symmetric operators that is bounded above by $Id$.
+        \item Use the preceding problem to show that $\{T_n\}$ converges pointwise to a symmetric operator $T$ for which $0\le T\le Id$ and $T=1/2(Id-S+T^2)$.
+        \item Define $A=(Id-T)$. Show that $A^2=S$.
+    \end{enumerate}
+    \item (Square Roots of Nonnegative Symmetric Operators) Let $T\in\mathcal{L}(H)$ be a nonnegative symmetric operator.
+    A nonnegative symmetric operator $A\in\mathcal{L}(H)$ is called a square root of $T$ provided $A^2=T$.
+    Use the inductive construction in the preceding problem to show that $T$ has a square root $A$ which commutes with each operator in $\mathcal{L}(H)$ that commutes with $T$.
+    Show that the square root is unique: it is denoted by $\sqrt{T}$.
+    Finally, show that $T$ is invertible iff $\sqrt{T}$ is invertible.
+    \item An invertible operator $T\in\mathcal{L}(H)$ is said to be \textbf{orthogonal} provided $T^{-1}=T^*$.
+    Show that an invertible operator is orthogonal iff it is an isometry.
+    \item (Polar Decompositions) Let $T\in\mathcal{L}(H)$ be invertible.
+    Show that there is an orthogonal invertible operator $A\in\mathcal{L}(H)$ and a nonnegative symmetric invertible operator $B\in\mathcal{L}(H)$ such that $T=B\circ A$. 
+    (Hint: show that $TT^*$ is invertible and symmetric and let $B=\sqrt{T\circ T^*}$.)
 \end{enumerate}
 
 % 16.5
 \section{Compact Operators}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{43}
+    \item Show that if $H$ is infinite dimensional and $T\in\mathcal{L}(H)$ is invertible, then $T$ is not compact.
+    \item Prove Proposition 18.
+    \item Let $\mathcal{K}(H)$ denote the set of compact operators in $\mathcal{L}(H)$.
+    Show that $\mathcal{K}(H)$ is a linear subspace of $\mathcal{L}(H)$.
+    Moreover, show that for $K\in\mathcal{K}(H)$ and $T\in\mathcal{L}(H)$, both $K\circ T$ and $T\circ K$ belong to $\mathcal{K}(H)$.
+    \item Show that a linear operator $T:H\to H$ is continuous iff it maps weakly convergent sequences to weakly convergent sequences.
+    \item Show that $K\in\mathcal{L}(H)$ is compact iff whenever $\{u_n\}\to u$ in $H$ and $\{v_n\}\to v$ in $H$, then $\langle K(u_n),v_n\rangle\to\langle K(u),v\rangle$.
+    \item Let $\{P_n\}$ be a sequence of orthogonal projections in $\mathcal{L}(H)$ with the property that for natural numbers $n$ and $m$, $P_n(H)$ and $P_m(H)$ are orthogonal finite dimensional subspaces of $H$.
+    Let $\{\lambda_n\}$ be a bounded sequence of real numbers.
+    Show that 
+    \[
+        K=\sum_{n=1}^\infty\lambda_n\cdot P_n
+    \]
+    is a properly defined symmetric operator in $\mathcal{L}(H)$ that is compact iff $\{\lambda_n\}$ converges to $0$.
+    \item For $X$ a Banach space, define an operator $T\in\mathcal{L}(X)$ to be compact provided $T(B)$ has compact closure.
+    Show that Proposition 18 holds for a general Banach space and Proposition 19 holds for a reflexive Banach space.
+\end{enumerate}
 
 % 16.6
 \section{The Hilbert-Schmidt Theorem}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{50}
+    \item Let $H$ be a Hilbert space and $T\in\mathcal{L}(H)$ be compact and symmetric. Define
+    \[
+        \alpha=\underset{\|h\|=1}{\inf}\langle T(h),h\rangle\ \text{ and }\ \beta=\underset{\|h\|=1}{\sup}\langle T(h),h\rangle.
+    \]
+    Show that if $\alpha<0$, then $\alpha$ is an eigenvalue of $T$ and if $\beta>0$, then $\beta$ is an eigenvalue of $T$.
+    Exhibit an example where $\alpha=0$ and yet $\alpha$ is not an eigenvalue of $T$; that is, $T$ is one-to-one (injective).
+    \item Let $H$ be a Hilbert space and $K\in\mathcal{L}(H)$ be compact and symmetric.
+    Suppose
+    \[
+        \underset{\|h\|=1}{\sup}\langle K(h),h\rangle=\beta>0.
+    \] 
+    Let $\{h_n\}$ be a sequence of unit vectors for which $\lim_{n\to\infty}\langle K(h_n),h_n\rangle=\beta$.
+    Show that a subsequence of $\{h_n\}$ converges strongly to an eigenvector of $T$ with corresponding eigenvalue $\beta$.
+\end{enumerate}
 
 % 16.7
 \section{The Riesz-Schauder Theorem: Characterization of Fredholm Operators}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{52}
+    \item Let $K\in\mathcal{L}(H)$ be compact.
+    Show that $T=K^*K$ is compact and symmetric.
+    Then use the Hilbert-Schmidt Theorem to show that there is an orthonormal sequence $\{\varphi_k\}$ of $H$ such that $T(\varphi_k)-\lambda_k\varphi_k$ for all $k$ and $T(h)=0$ if $h$ is orthogonal to $\{\varphi_k\}_{k=0}^\infty$.
+    Conclude that if $h$ is orthogonal to $\{\varphi_k\}_{k=0}^\infty$, then
+    \[
+        \|K(h)\|^2\langle K(h),K(h)\rangle=\langle T(h),h\rangle=0.
+    \]
+    Define $H_0$ to be the closed linear span of $\{K^m(\varphi_k)\mid m\ge0,k\ge1\}$.
+    Show that $H_0$ is closed and separable, $K(H_0)\subseteq H_0$ and $K=0$ on $H_0^\perp$.
+    \item Let $\mathcal{K}(H)$ denote the set of compact operators in $\mathcal{L}(H)$.
+    Show that $\mathcal{K}(H)$ is a closed subspace of $\mathcal{L}(H)$ that has the set of operators of finite rank as a dense subspace.
+    Is $\mathcal{K}(H)$ an open subset of $\mathcal{L}(H)$?
+    \item Show that the composition in either order of a Fredholm operator of index $0$ with an invertible operator is also Fredholm of index $0$.
+    \item Show that the composition of two Fredholm operators of index $0$ is also Fredholm of index $0$.
+    \item Show that an operator $T\in\mathcal{L}(H)$ is Fredholm of index $0$ iff it is the perturbation of an invertible operator by an operator of finite rank.
+    \item Argue as follows to show that the collection of invertible operators in $\mathcal{L}(H)$ is an open subset of $\mathcal{L}(H)$.
+    \begin{enumerate}[(i)]
+        \item For $A\in\mathcal{L}(H)$ with $\|A\|<1$, use the completeness of $\mathcal{L}(H)$ to show that the so-called Neumann series $\sum_{n=0}^\infty A^n$ converges to an operator in $\mathcal{L}(H)$ that is the inverse of $Id-A$.
+        \item For a invertible operator $S\in\mathcal{L}(H)$ show that for any $T\in\mathcal{L}(H)$, $T=S[Id+S^{-1}(T-S)]$.
+        \item Use (i) and (ii) to show that if $S\in\mathcal{L}(H)$ is invertible then so is any $T\in\mathcal{L}(H)$ of which $\|S-T\|<1/\|S^{-1}\|$.
+    \end{enumerate}
+    \item Show that the set of operators in $\mathcal{L}(H)$ that are Fredholm of index $0$ is an open subset of $\mathcal{L}(H)$.
+    \item By following the orthogonal approximation sequence method used in the proof of Proposition 22, provide another proof of Proposition 14 in case $H$ is separable.
+    \item For $T\in\mathcal{L}(H)$, suppose that $\langle T(h),h\rangle\ge\|h\|^2$ for all $h\in H$.
+    Assume that $K\in\mathcal{L}(H)$ is compact and $T+K$ is one-to-one.
+    Show that $T+K$ is onto.
+    \item Let $K\in\mathcal{L}(H)$ be compact an $\mu\in\mathbb{R}$ have $|\mu|>\|K\|$.
+    Show that $\mu- K$ is invertible.
+    \item Let $S\in\mathcal{L}(H)$ have $\|S\|<1$,$K\in\mathcal{L}(H)$ be compact and $(Id+S+K)(H)=H$.
+    Show that $Id+S+K$ is one-to-one.
+    \item Let $\mathcal{G}L(H)$ denote the set of invertible operators in $\mathcal{L}(H)$.
+    \begin{enumerate}[(i)]
+        \item Show that under the operation of composition of operators, $\mathcal{G}L(H)$ is a group: it is called the general linear group of $H$.
+        \item An operator $T$ in $\mathcal{G}L(H)$ is said to be orthogonal, provided that $T^*=T^{-1}$.
+        Show that the set of orthogonal operators is a subgroup of $\mathcal{G}L(H)$: it is called the orthogonal group.
+    \end{enumerate} 
+    \item Let $H$ be a Hilbert space, $T\in\mathcal{L}(H)$ be Fredholm of index zero, and $K\in\mathcal{L}(H)$ be compact.
+    Show that $T+K$ is Fredholm of index zero.
+    \item Let $X_0$ be a finite codimensional subspace of a Banach space $X$.
+    Show that all finite dimensional linear complements of $X_0$ in $X$ have the same dimension.
+\end{enumerate}
