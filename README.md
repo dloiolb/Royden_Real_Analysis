@@ -1,22 +1,22 @@
 # Exercise Completion
 
-Total Exercise Completion: (174/1048)
+Total Exercise Completion: (175/1048)
 
 Part 1:
 - 1.1-1.6 Done
 - 2.1-2.7 Done
 - 3.1-3.3 Done
-- 4.1-4.3 
-- 7.1
+- 4.1-4.3~ 
+- 7.2~
 
 Part 2:
-- 9.1
-- 16.1
+- 9.1~
+- 16.1~
 
 Part 3:
-- 17.1
+- 17.2~
 
-### PART I: Lebesgue Integration for Functions of a Single Real Variable (154/368)
+### PART I: Lebesgue Integration for Functions of a Single Real Variable (156/368)
 - Chapter 01: 59/59*
 - Chapter 02: 43/43*
 - Chapter 03: 31/31*
@@ -26,7 +26,7 @@ Part 3:
 - Chapter 07: 5/51
 - Chapter 08: 0/45
 
-### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (7/408)
+### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (8/408)
 - Chapter 09: 4/78
 - Chapter 10: 0/44
 - Chapter 11: 0/56
@@ -34,7 +34,7 @@ Part 3:
 - Chapter 13: 0/40
 - Chapter 14: 0/70
 - Chapter 15: 0/18*
-- Chapter 16: 3/66*
+- Chapter 16: 4/66*
 
 ### PART III: Measure and Integration: General Theory (11/272)
 - Chapter 17: 11/36*
@@ -116,6 +116,8 @@ This chapter has Young, Hölder, Minkowski inequalities
  #### Chapter 15: Compactness Regained: The Weak Topology
 
  #### Chapter 16: Continuous Linear Operators on Hilbert Spaces
+
+ 16.1 Problems: Jordan-von Neumann Theorem
 
 
 ### PART III: Measure and Integration: General Theory

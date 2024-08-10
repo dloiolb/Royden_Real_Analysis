@@ -96,22 +96,150 @@ In the following problems, $H$ is a Hilbert space.
     \[
         \langle u,v \rangle = \frac{1}{4}[\|u+v\|^2-\|u-v\|^2].
     \]
-    \\Recall the Parallelogram inequality and instead of adding, simply subtract the two inequalities:
+    \\Recall the Parallelogram inequality and instead of adding, simply subtract the first inequality:
     \begin{align*}
-        \|u-v\|^2&=\|u\|^2-2\langle u,v\rangle+\|v\|^2,\\
+        -\|u-v\|^2&=-\|u\|^2+2\langle u,v\rangle-\|v\|^2,\\
         \|u+v\|^2&=\|u\|^2+2\langle u,v\rangle+\|v\|^2,
     \end{align*}
     so that
+    \[
+        \|u+v\|^2-\|u-v\|^2=4\langle u,v\rangle.
+    \]
+    \item (Jordan-von Neumann) Let $X$ be a linear space normed by $\|\cdot\|$. Use the polarization identity to show that a norm $\|\cdot\|$ is induced by an inner product iff the parallelogram identity holds.\\
+    \\Let $(X,\|\cdot\|)$ be a normed linear space.\\
+    \\$(\implies)$ Suppose that the norm is induced by some inner product $\langle \cdot,\cdot\rangle$ on $X$.
+    \\Then for any two vectors $u,v\in X$,
     \begin{align*}
-        \|u+v\|^2-\|u-v\|^2&=4\langle u,v\rangle.
+        \|u-v\|^2&=\langle u-v,u-v\rangle=\langle u,u\rangle+\langle u,-v\rangle+\langle -v,u\rangle+\langle -v,-v\rangle=\|u\|^2-2\langle u,v\rangle+\|v\|^2,\\
+        \|u+v\|^2&=\langle u+v,u+v\rangle=\langle u,u\rangle+\langle u,v\rangle+\langle v,u\rangle+\langle v,v\rangle=\|u\|^2+2\langle u,v\rangle+\|v\|^2,
     \end{align*}
-    \item (Jordan-von Neumann) Let $X$ be a linear space normed by $\|\cdot\|$. Use the polarization identity to show that a norm $\|\cdot\|$ is induced by an inner product iff the parallelogram identity holds.
+    and adding the two equalities shows that the parallelogram identity holds.\\
+    \\$(\impliedby)$ Suppose that the parallelogram identity holds.
+    \\Define the function $\langle\cdot,\cdot\rangle:X\times X\to\mathbb{R}$ by
+    \[
+        \langle u,v \rangle = \frac{1}{4}[\|u+v\|^2-\|u-v\|^2].
+    \]
+    \\The aim is to show that $\sqrt{\langle v,v\rangle}=\|v\|$ for $v\in X$, and that $\langle\cdot,\cdot\rangle$ is an inner product.
+    \\First see that
+    \[
+        \sqrt{\langle v,v \rangle} = \sqrt{\frac{1}{4}[\|v+v\|^2-\|v-v\|^2]}=\sqrt{\frac{2^2}{4}\|v\|^2}=\|v\|.\tag{1}
+    \]
+    (i) Bilinearity (additivity):
+    % \\For any $x,y,v\in X$, by the parallelogram identity,
+    % \begin{align*}
+    %     2\|x+v\|^2+2\|y\|^2&=\|(x+v)-y\|^2+\|(x+v)+y\|^2\tag{a}\\
+    %     2\|x-v\|^2+2\|y\|^2&=\|(x-v)-y\|^2+\|(x-v)+y\|^2\tag{b}
+    % \end{align*}
+    % Then, subtracting (b) from (a), we get
+    % \begin{align*}
+    %     2\|x+v\|^2-2\|x-v\|^2&=\|(x+v)+y\|^2-\|(x-v)+y\|^2+\|(x+v)-y\|^2-\|(x-v)-y\|^2\\
+    %     2[\|x+v\|^2-\|x-v\|^2]&=[\|(x+y)+v\|^2-\|(x+y)-v\|^2]+[\|(x-y)+v\|^2-\|(x-y)-v\|^2]\\
+    % %4\frac{1}{4}\left[\|(x-y)+v\|^2-\|(x-y)-v\|^2\right]+4\frac{1}{4}\left[\|(x+y)+v\|^2-\|(x+y)-v\|^2\right]&=2\cdot4\frac{1}{4}\left[\|x+v\|^2-\|x-v\|^2\right]\\
+    %     8\langle x,v\rangle&=4\langle x+y,v\rangle+4\langle x-y,v\rangle\\
+    %     2\langle x,v\rangle&=\langle x+y,v\rangle+\langle x-y,v\rangle
+    % \end{align*}
+    % Therefore, when we let $x=\frac{u_1+u_2}{2},\ y=\frac{u_1-u_2}{2},$
+    % we get
+    % \begin{align*}
+    %     \langle u_1+u_2,v\rangle
+    %     =2\langle \frac{u_1+u_2}{2},v\rangle
+    %     =\langle \frac{u_1+u_2}{2}+\frac{u_1-u_2}{2},v\rangle+\langle \frac{u_1+u_2}{2}-\frac{u_1-u_2}{2},v\rangle
+    %     =\langle u_1,v\rangle+\langle u_2,v\rangle.
+    % \end{align*}
+    \\For any $x,y,v\in X$, by the parallelogram identity,
+    \begin{align*}
+        \|(u_1+v)+u_2\|^2&=2\|u_1+v\|^2+2\|u_2\|^2-\|(u_1+v)-u_2\|^2\\
+        \|(u_2+v)+u_1\|^2&=2\|u_2+v\|^2+2\|u_1\|^2-\|(u_2+v)-u_1\|^2
+    \end{align*}
+    Then
+    \begin{align*}
+        \|u_1+u_2+v\|^2&=\frac{1}{2}(\|(u_1+v)+u_2\|^2+\|(u_2+v)+u_1\|^2)\\
+        &=\|u_1+v\|^2+\|u_2+v\|^2+\|u_1\|^2+\|u_2\|^2-\frac{1}{2}\|(u_1+v)-u_2\|^2-\frac{1}{2}\|(u_2+v)-u_1\|^2
+    \end{align*}
+    And so this also holds for $v=-v$:
+    \begin{align*}
+        \|u_1+u_2+(-v)\|^2&=\|u_1-v\|^2+\|u_2-v\|^2+\|u_1\|^2+\|u_2\|^2-\frac{1}{2}\|(u_1-v)-u_2\|^2-\frac{1}{2}\|(u_2-v)-u_1\|^2\\
+        &=\|u_1-v\|^2+\|u_2-v\|^2+\|u_1\|^2+\|u_2\|^2-\frac{1}{2}\|(u_2+v)-u_1\|^2-\frac{1}{2}\|(u_1+v)-u_2\|^2
+    \end{align*}
+    Therefore we can write
+    \begin{align*}
+        \langle u_1+u_2,v\rangle&=\frac{1}{4}[\|u_1+u_2+v\|^2-\|u_1+u_2-v\|^2]\\
+        &=\frac{1}{4}[\|u_1+v\|^2-\|u_1-v\|^2]+\frac{1}{4}[\|u_2+v\|^2-\|u_2-v\|^2]\\
+        &=\langle u_1,v\rangle+\langle u_2,v\rangle.
+    \end{align*}
+    (i) Bilinearity (homogeneity):
+    \\Let $S=\{\alpha\in\mathbb{R}\mid\alpha\langle u,v\rangle=\langle \alpha u,v\rangle\}$.
+    \\Clearly $1,0\in S$, and $-1\in S$ because
+    \[
+        -1\langle u,v\rangle=\frac{1}{4}[\|u-v\|^2-\|u+v\|^2]=\frac{1}{4}[\|-u+v\|^2-\|-u-v\|^2]=\langle -1u,v\rangle.
+    \]
+    \\Suppose $\alpha,\beta\in S$.
+    Then 
+    \begin{align*}
+        (\alpha+\beta)\langle u,v\rangle
+        &=\alpha\langle u,v\rangle+\beta\langle u,v\rangle\\
+        &=\langle \alpha u,v\rangle+\langle \beta u,v\rangle\\
+        &=\langle \alpha u+\beta u,v\rangle&&\text{by bilinearity (additivity)}\\
+        &=\langle (\alpha+\beta)u,v\rangle,
+    \end{align*}
+    so that $(\alpha+\beta)\in S$ and $S$ contains all integers.\\
+    \\Suppose $\alpha,\beta\in S$, $\beta\neq0$.
+    Then 
+    \[
+        \alpha\langle u,v\rangle=\langle \alpha u,v\rangle=\langle \frac{\beta}{\beta}\alpha u,v\rangle=\beta\langle \frac{\alpha}{\beta}u,v\rangle\implies \frac{\alpha}{\beta}\langle u,v\rangle=\langle\frac{\alpha}{\beta}u,v\rangle,
+    \]
+    so that $\frac{\alpha}{\beta}\in S$ and $S$ contains all rational numbers.\\
+    \\Fix any $x,y\in X$.
+    Consider the functions $f,g:\mathbb{R}\to\mathbb{R}$ defined by $f(\alpha)=\alpha\langle u,v\rangle$ and $g(\alpha)=\langle \alpha u,v\rangle$.
+    The function $f$ is linear and thus continuous ($\ast$), and the function $g$ is a composition of $\alpha\mapsto\alpha x$ and $t\mapsto\langle t,y\rangle$, which are both continuous ($\ast\ast$).
+    Then we have that $f,g$ are continuous with $f(\alpha)=g(\alpha)$ for all $\alpha\in\mathbb{Q}$, which implies that $f(\alpha)=g(\alpha)$ for all $\alpha\in\mathbb{R}$.
+    \\That is, $\alpha\langle u,v\rangle=\langle \alpha u,v\rangle$ for all scalars $\alpha$.
+    \\(ii) Symmetry:
+    \[\langle u,v \rangle = \frac{1}{4}[\|u+v\|^2-\|u-v\|^2]=\frac{1}{4}[\|v+u\|^2-\|v-u\|^2]=\langle v,u\rangle.\]
+    (iii) Positive Definiteness:
+    \\For $v\neq0$: $\langle v,v \rangle = \|v\|^2>0$ by (1) and positive definiteness of norm.
+    \\For $v=0$: $\langle v,v \rangle = \|v\|^2=0$ by (1) and positive definiteness of norm.\\
+    \\$\ast$Linear functions are continuous:
+    \\Let $H$ be a hilbert space, let $a\in H$, and let $f:H\to\mathbb{R}$ be a linear function:
+    \[
+        f(x):=\langle a,x\rangle\text{ for any }x\in X.
+    \]
+    Fix $\varepsilon>0$.
+    \\Then there exists $\delta=\frac{\varepsilon}{\|a\|}>0$.
+    \\For any $x,y\in H$ such that $\|x-y\|<\delta$, we use Cauchy-Schwarz inequality to see that
+    \[
+        |f(x)-f(y)|=|\langle a,x\rangle-\langle a,y\rangle|=|\langle a,x-y\rangle|\le\|a\|\cdot\|x-y\|<\varepsilon.
+    \]
+    \\$\ast\ast$For a normed linear space $X$ and $y\in X$, the function $x\mapsto\|x+y\|$ for $x\in X$ is continuous.
+    \\(Use this as a simplified version of $x\mapsto\langle x,y\rangle=\frac{1}{4}[\|x+y\|^2-\|x-y\|^2]$, which will also be continuous as it is the product and sum of continuous functions.)
+    \\Fix $\varepsilon>0$.
+    \\Let $\delta=\varepsilon>0$.
+    \\For $x_1,x_2\in X$ such that $\|x_1-x_2\|<\delta=\varepsilon$, we use the reverse triangle inequality to see
+    \[
+        |f(x_1)-f(x_2)|=|\|x_1+y\|-\|x_2+y\||\le\|x_1+y-(x_2+y)\|<\varepsilon.
+    \]
     \item Let $V$ be a closed subspace of $H$ and $P$ a projection of $H$ onto $V$. Show that $P$ is the orthogonal projection of $H$ onto $V$ iff (4) holds.
     \item Let $T$ belong to $\mathcal{L}(H)$. Show that $T$ is an isometry iff
     \[
         \langle T(u),T(v)\rangle=\langle u,v\rangle\text{ for all }u,v\in H.
     \]
-    Let $V$ be a finite dimensional subspace of $H$ and $\varphi_1,\cdots,\varphi_n$ a basis for $V$ consisting of unit vectors, each pair of which is orthogonal. Show that the orthogonal projection $P$ of $H$ onto $V$ is given by 
+    \\$(\implies)$ Suppose that $T$ is an isometry.
+    \\Then $\|Tu\|=\|u\|$ for any $u\in H$.
+    \\Let $u,v\in H$ so that we can derive:
+    \begin{align*}
+        \langle T(u),T(v)\rangle&=\frac{1}{4}[\|Tu+Tv\|^2-\|Tu-Tv\|^2]&&\text{Polarization identity}\\
+        &=\frac{1}{4}[\|T(u+v)\|^2-\|T(u-v)\|^2]&&T\text{ is linear}\\
+        &=\frac{1}{4}[\|u+v\|^2-\|u-v\|^2]&&T\text{ is an isometry}\\
+        &=\frac{1}{4}[\langle u+v,u+v\rangle-\langle u-v,u-v\rangle]&&\text{norm induced by inner product}\\
+        &=\frac{1}{4}[\|u\|^2+2\langle u,v\rangle+\|v\|^2-\|u\|^2+2\langle u,v\rangle-\|v\|^2]&&\text{norm induced by inner product}\\
+        &=\langle u,v\rangle.
+    \end{align*}
+    \\$(\impliedby)$ Suppose that $\langle T(u),T(v)\rangle=\langle u,v\rangle\text{ for all }u,v\in H$.
+    \\Therefore for any $u\in H$, we have 
+    \[
+        \|Tu\|=\sqrt{\langle Tu,Tu\rangle}=\sqrt{\langle u,u\rangle}=\|u\|.
+    \]
+    \item Let $V$ be a finite dimensional subspace of $H$ and $\varphi_1,\cdots,\varphi_n$ a basis for $V$ consisting of unit vectors, each pair of which is orthogonal. Show that the orthogonal projection $P$ of $H$ onto $V$ is given by 
     \[
         P(h)=\sum_{k=1}^n\langle h,\varphi_k\rangle\varphi_k\text{ for all }h\in V.
     \]
@@ -134,7 +262,7 @@ In the following problems, $H$ is a Hilbert space.
     \[
         \psi(u)=\langle \frac{h}{\|h\|},u\rangle\text{ for any }u\in H.
     \]
-    By the previous Problem 10, we proved that $\psi\in H^*$.
+    By the previous Problem 11, we proved that $\psi\in H^*$.
     \\Then 
     \[
         \psi(h)=\langle \frac{h}{\|h\|},h\rangle=\frac{1}{\|h\|}\langle h,h\rangle=\frac{1}{\|h\|}\|h\|^2=\|h\|.
@@ -155,7 +283,7 @@ In the following problems, $H$ is a Hilbert space.
         \|h\|=|\psi(h)|\le \|\psi\|_*\|h\|\implies 1\le \|\psi\|_*\tag{\text{a}}
     \]
     \[
-        \|\psi\|_*=\underset{\|u\|\le1}{\underset{u\in H}{\sup}}\psi(u)=\underset{\|u\|\le1}{\underset{u\in H}{\sup}}\langle \frac{h}{\|h\|},u\rangle\le \|\frac{h}{\|h\|}\|\cdot\|u\|\le1\tag{\text{b}}
+        \|\psi\|_*=\underset{\|u\|\le1}{\underset{u\in H}{\sup}}\langle \frac{h}{\|h\|},u\rangle\le \|\frac{h}{\|h\|}\|\cdot\|u\|\le1\tag{\text{b}}
     \]
     Then (a) and (b) imply $\|\psi\|_*=1$.
     \item Let $V$ be a closed subspace of $H$ and $P$ the orthogonal projection of $H$ onto $V$.
