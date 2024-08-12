@@ -7,7 +7,7 @@ Part 1:
 - 2.1-2.7 Done
 - 3.1-3.3 Done
 - 4.1-4.3~ 
-- 7.2~
+- 7.1-7.2~
 
 Part 2:
 - 9.1~
@@ -15,7 +15,7 @@ Part 2:
 - 16.1~
 
 Part 3:
-- 17.2~
+- 17.1-17.2~
 
 ### PART I: Lebesgue Integration for Functions of a Single Real Variable (156/368)
 - Chapter 01: 59/59*
