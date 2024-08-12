@@ -1,6 +1,6 @@
 # Exercise Completion
 
-Total Exercise Completion: (175/1048)
+Total Exercise Completion: (182/1048)
 
 Part 1:
 - 1.1-1.6 Done
@@ -11,6 +11,7 @@ Part 1:
 
 Part 2:
 - 9.1~
+- 13.1~,13.2~,13.4~
 - 16.1~
 
 Part 3:
@@ -26,15 +27,15 @@ Part 3:
 - Chapter 07: 5/51
 - Chapter 08: 0/45
 
-### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (8/408)
+### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (15/408)
 - Chapter 09: 4/78
 - Chapter 10: 0/44
 - Chapter 11: 0/56
 - Chapter 12: 0/36
-- Chapter 13: 0/40
+- Chapter 13: 4/40*
 - Chapter 14: 0/70
 - Chapter 15: 0/18*
-- Chapter 16: 4/66*
+- Chapter 16: 7/66*
 
 ### PART III: Measure and Integration: General Theory (11/272)
 - Chapter 17: 11/36*
@@ -111,11 +112,15 @@ This chapter has Young, Hölder, Minkowski inequalities
 
  #### Chapter 13: Continuous Linear Operators Between Banach Spaces
 
+ Definition of Banach Space
+
  #### Chapter 14: Duality for Normed Linear Spaces
 
  #### Chapter 15: Compactness Regained: The Weak Topology
 
  #### Chapter 16: Continuous Linear Operators on Hilbert Spaces
+
+ Definition of Hilbert Space
 
  16.1 Problems: Jordan-von Neumann Theorem
 

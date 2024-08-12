@@ -50,7 +50,7 @@ From the Cauchy-Schwarz (H\"older's) inequality, we infer that these inner produ
         \item By bilinearity of the inner product, $\|\alpha h\|=\sqrt{\langle \alpha h,\alpha h\rangle}=\sqrt{\alpha^2\langle h,h\rangle}=|\alpha|\sqrt{\langle h,h\rangle} =|\alpha|\|h\|$.
         \item Use the Cauchy-Schwarz inequality to see that 
         \[
-            \|u+v\|^2=\langle u+v,u+v\rangle=\langle u,u\rangle+2\langle u,v\rangle+\langle v,v\rangle\le \|u\|+2\|u\|\|v\|+\|v\|=(\|u\|+\|v\|)^2.
+            \|u+v\|^2=\langle u+v,u+v\rangle=\langle u,u\rangle+2\langle u,v\rangle+\langle v,v\rangle\le \|u\|^2+2\|u\|\|v\|+\|v\|^2=(\|u\|+\|v\|)^2.
         \]
     \end{enumerate}
 \end{proof}
@@ -77,9 +77,9 @@ The Riesz-Fischer Theorem tells us that for $E$ a measurable set of real numbers
         \|h_0-h_*\|=\text{dist}(h_0,K)=\underset{h\in K}{\inf}\|h_0-h\|.
     \]
 \end{namedthm*}
-\begin{proof}
-    d
-\end{proof}
+% \begin{proof}
+%     d
+% \end{proof}
 
 \begin{center}
 	\textbf{PROBLEMS}
@@ -87,8 +87,120 @@ The Riesz-Fischer Theorem tells us that for $E$ a measurable set of real numbers
 In the following problems, $H$ is a Hilbert space.
 \begin{enumerate}
 	\setcounter{enumi}{0}
-    \item Let $[a,b]$ be a closed, bounded interval of real numbers. Show that the $L^2[a,b]$ inner product is also an inner product on $C[a,b]$. Is $C[a,b]$ considered as an inner product space with the $L^2[a,b]$ inner product, a Hilbert space?
-    \item Show that the maximum norm on $C[a,b]$ is not induced by an inner product and neither is the usual norm on $\ell^1$.
+    \item Let $[a,b]$ be a closed, bounded interval of real numbers. Show that the $L^2[a,b]$ inner product is also an inner product on $C[a,b]$. Is $C[a,b]$ considered as an inner product space with the $L^2[a,b]$ inner product, a Hilbert space?\\
+    \\We see that it is true that the $L^2[a,b]$ inner product is also an inner product on $C[a,b]$:
+    \begin{enumerate}[(i)]
+        \item 
+        $
+            \langle \alpha f_1+\beta f_2,g\rangle_{L^2}
+            =\int_{[a,b]}( \alpha f_1+\beta f_2)
+            %=\int_{[a,b]} \alpha f_1\cdot g+\beta f_2\cdot g
+            %&=\int_{[a,b]} \alpha f_1\cdot g+\int_{[a,b]}\beta f_2\cdot g\\
+            =\alpha\int_{[a,b]} f_1\cdot g+\beta\int_{[a,b]} f_2\cdot g
+            =\alpha\langle f_1,g\rangle_{L^2}+\beta\langle f_2,g\rangle_{L^2}
+        $
+        \item $\langle f,g\rangle_{L^2}=\int_{[a,b]}f\cdot g=\int_{[a,b]}g\cdot f=\langle g,f\rangle_{L^2}$
+        \item $\langle f,f\rangle_{L^2}=\int_{[a,b]}f^2\ge0$, with $\langle f,f\rangle_{L^2}=0\iff f=0$
+    \end{enumerate}
+    However, the inner product space $(C[a,b],\langle\cdot,\cdot\rangle_{L^2})$ is not a Hilbert space because it is not complete (not a Banach space) with respect to the norm defined by $\|\cdot\|_{L^2}:=\sqrt{\langle\cdot,\cdot\rangle_{L^2}}$.\\
+    \\To see this, let $t\in(a,b)$ and consider a sequence of continuous functions $\{f_n\}$ defined on $[a,b]$ such that for each $n$,
+    \[
+        f_n(x):=
+        \begin{cases}
+            0 &x\le t\\
+            n(x-t)&t<x<t+\frac{1}{n}\\
+            1 &x\ge t+\frac{1}{n}
+        \end{cases}
+    \]
+    We aim to show that this sequence is Cauchy but does not converge to a continuous function, and therefore the space is not complete.\\
+    \\First we prove that this sequence is Cauchy:
+    \\Fix $\epsilon>0$.
+    \\Consider any natural numbers $m,n>\frac{1}{\epsilon^2}$, with $m\ge n$.
+    \[
+        (f_m-f_n)(x)=
+        \begin{cases}
+            0-0 &x\le t\\
+            m(x-t)-n(x-t)&x\in(t,t+\frac{1}{m})\\
+            1-n(x-t)&x\in[t+\frac{1}{m},t+\frac{1}{n})\\
+            1-1 &x\ge t+\frac{1}{n}
+        \end{cases}
+        \le
+        \begin{cases}
+            0 &x\le t\\
+            1&x\in(t,t+\frac{1}{m})\\
+            1&x\in[t+\frac{1}{m},t+\frac{1}{n})\\
+            0 &x\ge t+\frac{1}{n}
+        \end{cases}
+        :=g(x)
+    \]
+    By monotonicity of integration, we get
+    \[
+        \int_{[a,b]}|f_n-f_m|^2\le\int_{[a,b]}|g|^2=\int_{(t,t+\frac{1}{n})}1=m((t,t+\frac{1}{n}))=\frac{1}{n}.
+    \]
+    Therefore we see that
+    \[
+        \|f_n-f_m\|_{L^2}=\left(\int_{[a,b]}|f_n-f_m|^2\right)^{1/2}\le\left(\frac{1}{n}\right)^{1/2}<\epsilon,
+    \]
+    which implies that $\{f_n\}$ is Cauchy.\\
+    \\Very similarly, we prove that this sequence converges to a discontinuous function:
+    \\Define the discontinuous function $f:[a,b]\to\mathbb{R}$ by
+    \[
+        f(x):=
+        \begin{cases}
+            0 &x\le t\\
+            1 &x> t
+        \end{cases}
+    \]
+    \\Fix $\epsilon>0$.
+    \\Consider any natural number $n>\frac{1}{\epsilon^2}$.
+    \[
+        (f-f_n)(x)=
+        \begin{cases}
+            0-0 &x\le t\\
+            1-n(x-t)&x\in(t,t+\frac{1}{n})\\
+            1-1 &x\ge t+\frac{1}{n}
+        \end{cases}
+        \le
+        \begin{cases}
+            0 &x\le t\\
+            1&x\in(t,t+\frac{1}{n})\\
+            0 &x\ge t+\frac{1}{n}
+        \end{cases}
+        :=g(x)
+    \]
+    By monotonicity of integration, we get
+    \[
+        \int_{[a,b]}|f-f_n|^2\le\int_{[a,b]}|g|^2=\int_{(t,t+\frac{1}{n})}1=m((t,t+\frac{1}{n}))=\frac{1}{n}.
+    \]
+    Therefore we see that
+    \[
+        \|f-f_n\|_{L^2}=\left(\int_{[a,b]}|f-f_n|^2\right)^{1/2}\le\left(\frac{1}{n}\right)^{1/2}<\epsilon,
+    \]
+    which implies that $\{f_n\}$ converges to $f$.
+    \item Show that the maximum norm on $C[a,b]$ is not induced by an inner product and neither is the usual norm on $\ell^1$.\\
+    \\See Problem 7 to see that for a normed linear space $(X,\|\cdot\|)$, the norm is induced by an inner product iff the parallelogram identity holds.
+    Therefore it is sufficient to show that the parallelogram identity does not hold for the spaces $(C[a,b],\|\cdot\|_{\max})$ and $(\ell^1,\|\cdot\|_1)$.\\
+    \\$(C[a,b],\|\cdot\|_{\max})$\\
+    \\Let $f,g\in C[0,1]$ defined by $f(x)=x^2$, $g(x)=2$.
+    \\Recall that $\|f\|_{\max}:=\max_{x\in[a,b]}|f(x)|$.
+    \\Then $\|f-g\|_{\max}=2$, $\|f+g\|_{\max}=3$, $\|f\|_{\max}=1$, $\|g\|_{\max}=2$, so that 
+    \[
+        \|f-g\|_{\max}^2+\|f+g\|_{\max}^2=13\neq 6=2\|f\|_{\max}+2\|g\|_{\max}.
+    \]
+    $(\ell^2,\|\cdot\|_1)$\\
+    \\Let $x=(1,0,0,\dots)\in\ell^1$ and $y=(0,1,0,\dots)\in\ell^1$.
+    \\Recall that $\|x\|_1:=\sum_{i=1}^\infty|x_i|$.
+    \\Then
+    % \begin{align*}
+    %     \|x-y\|_1=|1-0|+|0-1|=2\\
+    %     \|x+y\|_1=|1+0|+|0+1|=2\\
+    %     \|x\|_1=1\\
+    %     \|y\|_1=1\\
+    % \end{align*}
+    $\|x-y\|_1=2,\ \|x+y\|_1=2,\ \|x\|_1=1,\ \|y\|_1=1$, so that
+    \[
+        \|x-y\|_2^2+\|x+y\|_2^2=8\neq 4=2\|x\|_2+2\|y\|_2.
+    \]
     \item Let $H_1$ and $H_2$ be Hilbert spaces. Show that the Cartesian product $H_1\times H_2$ is also a Hilbert space with an inner product with respect to which $H_1\times\{0\}=[\{0\}\times H_2]^\perp$.
     \item Show that if $S$ is a subset of an inner product space $H$, then $S^\perp$ is a closed subspace of $H$.
     \item Let $S$ be a subset of $H$. Show that $S=(S^\perp)^\perp$ iff $S$ is a closed subspace of $H$.
@@ -199,7 +311,8 @@ In the following problems, $H$ is a Hilbert space.
     (iii) Positive Definiteness:
     \\For $v\neq0$: $\langle v,v \rangle = \|v\|^2>0$ by (1) and positive definiteness of norm.
     \\For $v=0$: $\langle v,v \rangle = \|v\|^2=0$ by (1) and positive definiteness of norm.\\
-    \\$\ast$Linear functions are continuous:
+    \\Therefore $\langle\cdot,\cdot\rangle$ is an inner product.\\
+    \\($\ast$) Linear functions are continuous:
     \\Let $H$ be a hilbert space, let $a\in H$, and let $f:H\to\mathbb{R}$ be a linear function:
     \[
         f(x):=\langle a,x\rangle\text{ for any }x\in X.
@@ -210,7 +323,7 @@ In the following problems, $H$ is a Hilbert space.
     \[
         |f(x)-f(y)|=|\langle a,x\rangle-\langle a,y\rangle|=|\langle a,x-y\rangle|\le\|a\|\cdot\|x-y\|<\varepsilon.
     \]
-    \\$\ast\ast$For a normed linear space $X$ and $y\in X$, the function $x\mapsto\|x+y\|$ for $x\in X$ is continuous.
+    \\($\ast\ast$) For a normed linear space $X$ and $y\in X$, the function $x\mapsto\|x+y\|$ for $x\in X$ is continuous.
     \\(Use this as a simplified version of $x\mapsto\langle x,y\rangle=\frac{1}{4}[\|x+y\|^2-\|x-y\|^2]$, which will also be continuous as it is the product and sum of continuous functions.)
     \\Fix $\varepsilon>0$.
     \\Let $\delta=\varepsilon>0$.

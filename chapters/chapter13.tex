@@ -3,6 +3,8 @@
 
 % 13.1
 \section{Normed Linear Spaces}
+
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -16,18 +18,281 @@
         \item Show that span$[S]$ is the intersection of all the linear subspaces of $X$ that contain $S$ and therefore is a linear subspace of $X$.
         \item Show that $\overline{\text{span}}[S]$ is the intersection of all the closed linear subspaces of $X$ that contain $S$ and is therefore a closed linear subspace of $X$. 
     \end{enumerate}
-    \item For a normed linear space $X$, show that the function $\|\cdot\|:X\to\mathbb{R}$ is continuous.
-    \item For two normed linear spaces $(X,\|\cdot\|_1)$ and $(Y,\|\cdot\|_2)$, define a linear structure on the Cartesian product $X\times Y$ by ...
+    \item For a normed linear space $X$, show that the function $\|\cdot\|:X\to\mathbb{R}$ is continuous.\\
+    \\Fix $\epsilon>0$.
+    \\Then let $\delta:=\epsilon>0$.
+    \\Consider any $x,y\in X$ such that $\|x-y\|<\delta$.
+    \\Then by the reverse triangle inequality ($\ast$),
+    \[
+        |\|x\|-\|y\||\le\|x-y\|<\delta=\epsilon,
+    \]
+    and $\|\cdot\|$ is continuous.\\
+    \\($\ast$) Proof of reverse triangle inequality:
+    \[
+        \|x\|=\|x-y+y\|\le\|x-y\|+\|y\|.
+    \]
+    \item For two normed linear spaces $(X,\|\cdot\|_1)$ and $(Y,\|\cdot\|_2)$, define a linear structure on the Cartesian product $X\times Y$ by $\lambda\cdot(x,y)=(\lambda x,\lambda y)$ and $(x_1,y_1)+(x_2,y_2)=(x_1+x_2,y_1+y_2)$.
+    Define the product norm $\|\cdot\|$ by $\|(x,y)\|=\|x\|_1+\|y\|_2$, for $x\in X$ and $y\in Y$.
+    Show that this is a norm with respect to which a sequence converges if and only if each of the two component sequences converges.
+    Furthermore, show that if $X$ and $Y$ are Banach spaces, then so is $X\times Y$.\\
+    \\Let $(X\times Y,\|\cdot\|)$ be a normed linear space.\\
+    \\$(\implies)$ Let $\{(x_n,y_n)\}$ be a sequence in $X\times Y$, and suppose that it converges to some $(x,y)\in X\times Y$ with respect to the norm $\|\cdot\|$.\\
+    \\Fix $\epsilon>0$.
+    \\Then there exists an index $N$ such that for all $n\ge N$,
+    \[
+        0\le\|x_n-x\|_1+\|y_n-y\|_2=\|(x_n-x,y_n-y)\|=\|(x_n,y_n)-(x,y)\|<\epsilon,
+    \]
+    which implies that $\{x_n\}\to x$ w.r.t. the norm $\|\cdot\|_1$ and $\{y_n\}\to y$ w.r.t. the norm $\|\cdot\|_2$.\\
+    \\$(\impliedby)$ Let $\{x_n\}$ be a sequence in $X$, and $\{y_n\}$ be a sequence in $Y$, and suppose that there exist $x\in X$, $y\in Y$ such that $\{x_n\}\to x$ w.r.t. the norm $\|\cdot\|_1$ and $\{y_n\}\to y$ w.r.t. the norm $\|\cdot\|_2$.\\
+    \\Fix $\epsilon>0$.
+    \\Then there exists an index $N_x$ such that for all $n\ge N_x$,
+    \[
+        \|x_n-x\|_1<\frac{\epsilon}{2},
+    \]
+    and there also exists an index $N_y$ such that for all $n\ge N_y$,
+    \[
+        \|y_n-y\|_1<\frac{\epsilon}{2}.
+    \]
+    Thus for all $n\ge\max\{N_x,N_y\}$,
+    \[
+        \|(x_n,y_n)-(x,y)\|=\|(x_n-x,y_n-y)\|=\|x_n-x\|_1+\|y_n-y\|_2<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon,
+    \]
+    and therefore the sequence $\{(x_n,y_n)\}$ in $X\times Y$ converges to $(x,y)\in X\times Y$ with respect to the norm $\|\cdot\|$.\\
+    \\Finally, suppose that $X$ and $Y$ are Banach spaces.
+    \\Let $\{(x_n,y_n)\}$ be any sequence in $X\times Y$ that is Cauchy.
+    \\Then for any $\epsilon$, there exists an index $N$ such that for all $n,m\ge N$, then
+    \[
+        0\le\|x_n-x_m\|_1+\|y_n-y_m\|_2=\|(x_n-x_m,y_n-y_m)\|=\|(x_n,y_n)-(x_m,y_m)\|<\epsilon,
+    \]
+    which implies that the sequences $\{x_n\}$ and $\{y_n\}$ are also Cauchy.
+    \\Then because both $X$ and $Y$ are Banach spaces, then $\{x_n\}\to x$ and $\{y_n\}\to y$ for some $x\in X$ and $y\in Y$, and therefore we proved in $(\impliedby)$ that $\{(x_n,y_n)\}\to(x,y)$, which implies that $X\times Y$ is a Banach space.
+    \item Let $X$ be a normed linear space.
+    \begin{enumerate}[(i)]
+        \item Let $\{x_n\}$ and $\{y_n\}$ be sequences in $X$ such that $\{x_n\}\to x$ and $\{y_n\}\to y$.
+        Show that for any real numbers $\alpha$ and $\beta$, $\{\alpha x_n+\beta y_n\}\to\alpha x+\beta y$.
+        \item Use (i) to show that if $Y$ is a subspace of $X$, then its closure $\overline{Y}$ also is a linear subspace of $X$.
+        \item Use (i) to show that the vector sum is continuous from $X\times X$ to $X$ and scalar multiplication is continuous from $\mathbb{R}\times X$ to $X$.
+    \end{enumerate} 
+    \item Show that the set $\mathcal{P}$ of all polynomials on $[a,b]$ is a linear space.
+    For $\mathcal{P}$ considered as a subset of the normed linear space $C[a,b]$, show that $\mathcal{P}$ fails to be closed.
+    For $\mathcal{P}$ considered as a subset of the normed linear space $L^1[a,b]$, show that $\mathcal{P}$ fails to be closed.
+    \item A nonnegative real-valued function $\|\cdot\|$ defined on a vector space $X$ is called a \textbf{pseudonorm} if $\|x+y\|\le\|x\|+\|y\|$ and $\|\alpha x\|=|\alpha|\|x\|$.
+    Define $x\cong y$, provided $\|x-y\|=0$.
+    Show that this is an equivalence relation.
+    Define $X/\cong$ to be the set of equivalence classes of $X$ under $\cong$ and for $x\in X$ define $[x]$ to be the equivalence class of $x$.
+    Show that $X/\cong$ is a normed vector space if we define $\alpha[x]+\beta[y]$ to be the equivalence class of $\alpha x+\beta y$ and define $\|[x]\|=\|x\|$.
+    Illustrate this procedure with $X=L^p[a,b],1\le p<\infty$.
 \end{enumerate}
 
 % 13.2
 \section{Linear Operators}
+\begin{namedthm*}{Theorem 1}
+    A linear operator between normed linear spaces is continuous iff it is bounded.    
+\end{namedthm*}
+\begin{proof}
+    Let $T:(X,\|\cdot\|_X)\to(Y,\|\cdot\|_Y)$ be a linear operator.\\
+    \\$(\implies)$ Suppose that $T$ is continuous.
+    \\Then for $\epsilon=1$, there exists a $\delta>0$ such that, for any $x\in X$ such that $\|x-0\|_X=\|x\|_X\le\delta$, then
+    \[
+        \|T(x)-T(0)\|_Y=\|T(x)\|_Y<1.
+    \]
+    (Where $T(0)=0$ by linearity.)
+    \\Therefore consider any $u\in X$, $u\neq0$.
+    \begin{align*}
+        \|T(u)\|_Y&=\left\|T\left(\frac{\delta\cdot\|u\|_X}{\delta\cdot\|u\|_X}u\right)\right\|_Y\\
+        &=\frac{\|u\|_X}{\delta}\left\|T\left(\frac{\delta}{\|u\|_X}u\right)\right\|_Y&&\text{by linearity of $T$ and absolute homogeneity of $\|\cdot\|_Y$.}\\
+        &<\frac{\|u\|_X}{\delta}\cdot1,&&\text{because }\left\|\frac{\delta}{\|u\|_X}u\right\|_X=\frac{\delta\|u\|_X}{\|u\|_X}=\delta\le\delta.\\
+    \end{align*}
+    that is, there exists the positive constant $\frac{1}{\delta}$ such that 
+    \[
+        \|T(u)\|_Y\le\frac{1}{\delta}\|u\|_X\text{ for all }u\in X,
+    \]
+    which implies that $T$ is bounded.\\
+    \\$(\impliedby)$ Suppose that $T$ is bounded.
+    \\Then there exists an $M\ge0$ such that 
+    $
+        \|T(x)\|_Y\le M\|x\|_X\text{ for all }x\in X.
+    $
+    \\Fix $\epsilon>0$.
+    \\Consider any $x,x'\in X$ such that $\|x-x'\|_X<\frac{\epsilon}{M+1}$.
+    \\Then by linearity of $T$,
+    \[
+        \|T(x)-T(x')\|_Y=\|T(x-x')\|_Y\le M\|x-x'\|_X<M\frac{\epsilon}{M+1}<\epsilon,
+    \]
+    which implies that $T$ is continuous.
+\end{proof}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{8}
+    \item Let $X$ and $Y$ be normed linear spaces and $T:X\to Y$ be linear.
+    \begin{enumerate}[(i)]
+        \item Show that $T$ is continuous iff it is continuous at a single point $u_0$ in $X$.
+        \item Show that $T$ is Lipschitz iff it is continuous.
+        \item Show that neither $(i)$ nor $(ii)$ hold in the absence of the linearity assumption on $T$. 
+    \end{enumerate}
+    \item For $X$ and $Y$ normed linear spaces and $T\in\mathcal{L}(X,Y)$, show that $\|T\|$ is the smallest Lipschitz constant for the mapping $T$; that is, the smallest number $c\ge0$ for which
+    \[
+        \|T(u)-T(v)\|\le c\cdot\|u-v\|\text{ for all }u,v\in X.
+    \]
+    \\Consider any $x,y\in X$, and consider the vector $(x-y)\in X$.
+    \\Suppose that $T$ is Lipschitz; that is, there exists a $c\ge0$ such that 
+    \[
+        \|T(u-v)\|_Y=\|T(u)-T(v)\|_Y\le L\cdot\|u-v\|_X.
+    \]
+    Because $T$ is a Lipschitz function it is thus continuous (previous Problem 9(ii)), and because $T$ is linear, it is also thus bounded (Theorem 1), and so the operator norm of $T$ is well-defined.
+    In particular, $\|T\|$ is the infimum of all such $c\ge0$.
+    \item For $X$ and $Y$ normed linear spaces and $Y\in\mathcal{L}(X,Y)$, show that 
+    \[
+        \|T\|=\sup\{\|T(u)\|\mid u\in X, \|u\|\le1\}.
+    \]
+    \item For $X$ and $Y$ normed linear spaces, let $\{T_n\}\to T$ in $\mathcal{L}(X,Y)$ and $\{u_n\}\to u$ in $X$.
+    Show that $\{T_n(u_n)\}\to T_u$ in $Y$.
+    \item Let $X$ be a Banach space and $T\in\mathcal{L}(X,Y)$ have $\|T\|<1$.
+    \begin{enumerate}[(i)]
+        \item Use the Contraction Mapping Principle to show that $I-T\in\mathcal{L}(X,Y)$ is one-to-one and onto.
+        \item Show that $I-T$ is an isomorphism.
+    \end{enumerate}
+    \item (Neumann Series) Let $X$ be a Banach space and $Y\in\mathcal{L}(X,Y)$ have $\|T\|<1$.
+    Define $T^0=Id$.
+    \begin{enumerate}[(i)]
+        \item Use the completeness of $\mathcal{L}(X,X)$ to show that $\sum_{n=1}^\infty T^n$ converges in $\mathcal{L}(X,X)$.
+        \item Show that $(I-T)^{-1}=\sum_{n=0}^\infty T^n$
+    \end{enumerate}
+    \item For $X$ and $Y$ normed linear spaces and $T\in\mathcal{L}(X,Y)$, show that $T$ is an isomorphism iff there is an operator $S\in\mathcal{L}(Y,X)$ such that for each $u\in X$ and $v\in Y$,
+    \[
+        S(T(u))=u\text{ and }T(S(v))=v.
+    \]
+    \item For $X$ and $Y$ normed linear spaces and $T\in\mathcal{L}(X,Y)$, show that $\text{ker }T$ is a closed subspace of $X$ and that $T$ is one-to-one iff $\text{ker }T=\{0\}$.
+    \item Let $(X,\rho)$ be a metric space containing the point $x_0$.
+    Define $\text{Lip}_0(X)$ to be the set of real-valued Lipschitz functions $f$ on $X$ that vanish at $x_0$.
+    Show that $\text{Lip}_0(X)$ is a linear space that is normed by defining, for $f\in\text{Lip}_0(X)$,
+    \[
+        \|f\|=\sup_{x\neq y}\frac{|f(x)-f(y)|}{\rho(x,y)}.
+    \]
+    Show that $\text{Lip}_0(X)$ is a Banach space.
+    For each $x\in X$, define the linear functional $F_x$ on $\text{Lip}_0(X)$ by setting $F_x(f)=f(x)$.
+    Show that $F_x$ belongs to $\mathcal{L}(\text{Lip}_0(X),\mathbb{R})$ and that for $x,y\in X$, $\|F_x-F_y\|=\rho(x,y)$.
+    Thus $X$ is isometric to a subset of the Banach space $\mathcal{L}(\text{Lip}_0(X),\mathbb{R})$.
+    Since any closed subset of a complete metric space is complete, this provides another proof of the existence of a completion for any metric space $X$.
+    It also shows that any metric space is isometric to a subset of a normed linear space.
+    \item Use the preceding problem to show that every normed linear space is a dense subspace of a Banach space.
+    \item For $X$ a normed linear space and $T,S\in\mathcal{L}(X,X)$, show that the composition $S\circ T$ also belongs to $\mathcal{L}(X,X)$ and $\|S\circ T\|\le\|S\|\cdot\|T\|$.
+    \item Let $X$ be a normed linear space and $Y$ a closed linear subspace of $X$.
+    Show that $\|x\|_1=\inf_{y\in Y}\|x-y\|$ defines a pseudonorm on $X$.
+    The normed linear space induced by the pseudonorm $\|\cdot\|_1$ (see Problem 8) is denoted by $X/Y$ and called the \textbf{quotient space} of $X$ modulo $Y$.
+    Show that the natural map $\varphi$ of $X$ onto $X/Y$ takes open sets into open sets.
+    \item Show that if $X$ is a Banach space and $Y$ a closed linear proper subspace of $X$, then the quotient $X/Y$ also is a Banach space and the natural map $\varphi:X\to X/Y$ has norm 1.
+    \item Let $X$ and $Y$ be normed linear spaces, $T\in\mathcal{L}(X,Y)$ and $\text{ker }T=Z$.
+    Show that there is a unique bounded linear operator $S$ from $X/Z$ onto $Y$ such that $T=S\circ\varphi$ where $\varphi:X\to X/Z$ is the natural map.
+    Moreover, show that $\|T\|=\|S\|$.
+\end{enumerate}
 
 % 13.3
 \section{Compactness Lost: Infinite Dimensional Normed Linear Spaces}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{22}
+    \item Show that a subset of a finite dimensional normed linear space $X$ is compact iff it is closed and bounded.
+    \item Complete the proof of Riesz's Lemma for $\epsilon\neq1/2$.
+    \item Exhibit an open cover of the closed unit ball of $X=\ell^2$ that has not finite subcover.
+    Then do the same for $X=C[0,1]$ and $X=L^2[0,1]$.
+    \item For normed linear spaces $X$ and $Y$, let $T:X\to Y$ be linear.
+    If $X$ is finite dimensional, show that $T$ is continuous. 
+    If $Y$ is finite dimensional, show that $T$ is continuous iff $\text{ker }T$ is closed.
+    \item (Another proof of Riesz's Theorem) Let $X$ be an infinite dimensional normed linear space, $B$ the closed unit ball in $X$, and $B_0$ the unit open ball in $X$.
+    Suppose $B$ is compact.
+    Then the open cover $\{x+(1/3)B_0\}_{x\in B}$ of $B$ has a finite subcover $\{x_i+(1/3)B_0\}_{1\le i\le n}$.
+    Use Riesz's Lemma with $Y=\text{span}[\{x_1,\dots,x_n\}]$ to derive a contradiction.
+    \item Let $X$ be a normed linear space.
+    Show that $X$ is separable iff there is a compact subset $K$ of $X$ for which $\overline{\text{span}}[K]=X$.
+\end{enumerate}
 
 % 13.4
 \section{The Open Mapping and Closed Graph Theorems}\
+Hello
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{28}
+    \item Let $X$ be a finite dimensional normed linear space and $Y$ a normed linear space.
+    Show that every linear operator $T:X\to Y$ is continuous and open.\\
+    \\Let $\|\cdot\|_X$ and $\|\cdot\|_Y$ be the norms on $X$ and $Y$ respectively.
+    \\Because $X$ is finite dimensional, we can choose an orthonormal basis $\{e_1,\dots,e_n\}$ of $X$.
+    \\Define 
+    \[
+        M:=\max\{\|T(e_1)\|_Y,\dots,\|T(e_n)\|_Y\}\ge0.
+    \]
+    By Chapter 13 Theorem 4, any two norms on the finite dimensional linear space $X$ are equivalent; 
+    therefore in particular there exists $c\ge0$ such that
+    \[
+        \sum_{i=1}^n|x_i|=\|x\|_1\le c\|x\|_X\text{ for all }x\in X\tag{1}
+    \] 
+    Now consider any $x\in X$.
+    \begin{align*}
+        \|T(x)\|_Y&=\|T(\sum_{i=1}^nx_ie_i)\|_Y&&\text{using the orthonormal basis}\\
+        &=\|\sum_{i=1}^nx_iT(e_i)\|_Y&&\text{by linearity of }T\\
+        &\le\sum_{i=1}^n\|x_iT(e_i)\|_Y&&\text{by subadditivity of the norm }\|\cdot\|_Y\\
+        &=\sum_{i=1}^n|x_i|\|T(e_i)\|_Y&&\text{by absolute homogeneity of the norm }\|\cdot\|_Y\\
+        &\le\sum_{i=1}^n|x_i|M&&\text{by definition of }M\\
+        &=\|x\|_1M&&\text{by definition of the 1-norm}\\
+        &\le c\|x\|_XM,&&\text{by equivalence of norms (1)}
+    \end{align*}
+    and therefore there exists the constant $c\cdot M\ge0$ such that 
+    \[
+        \|T(x)\|_Y\le(c\cdot M)\|x\|_X\text{ for all }x\in X,
+    \]
+    which implies that $T$ is bounded, and thus by Chapter 13 Theorem 1, it is continuous.
+    \\(it remains to show that $T$ is open)
+    \item Let $X$ be a Banach space and $P\in\mathcal{L}(X,X)$ be a projection.
+    Show that $P$ is open.
+    \item Let $T:X\to Y$ be a continuous linear operator between the Banach spaces $X$ and $Y$.
+    Show that $T$ is open if the image under $T$ of the open unit ball in $X$ is dense in a neighborhood of the origin in $Y$.
+    \item Let $\{u_n\}$ be a sequence in a Banach space $X$.
+    Suppose that $\sum_{k=1}^\infty\|u_k\|<\infty$.
+    Show that there is an $x\in X$ for which
+    \[
+        \lim_{n\to\infty}\sum_{k=1}^\infty u_k=x.
+    \]
+    \item Let $T$ be a linear operator from a normed linear space $X$ to a finite-dimensional normed linear space $Y$.
+    Show that $T$ is continuous iff $\text{ker }T$ is a closed subspace of $X$.
+    \item Let $X$ be a Banach space, the operator $T\in\mathcal{L}(X,X)$ be open and $X_0$ be a closed subspace of $X$.
+    The restriction $T_0$ of $T$ to $X_0$ is continuous.
+    Is $T_0$ necessarily open?
+    \item Let $V$ be a linear subspace of a linear space $X$.
+    Argue as follows to show that $V$ has a linear complement in $X$.
+    \begin{enumerate}[(i)]
+        \item If $\text{dim }X<\infty$, let $\{e_i\}_{i=1}^n$ be a basis for $V$.
+        Extend this basis for $V$ to a basis $\{e_i\}_{i=1}^{n+k}$ for $X$.
+        Then define $W=\text{span}[\{e_{n+1},\dots,e_{n+k}\}]$.
+        \item If $\text{dim }X=\infty$, apply Zorn's Lemma to the collection $\mathcal{F}$ of all subspaces $Z$ of $X$ for which $V\cap Z=\{0\}$, ordered by set inclusion.
+        \item Verify (15) and (16).
+        \item Let $Y$ be a normed linear space.
+        Show that $Y$ is a Banach space iff there is a Banach space $X$ and a continuous, open mapping of $X$ onto $Y$.
+    \end{enumerate}
+\end{enumerate}
 
 % 13.5
 \section{The Uniform Boundedness Principle}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{37}
+    \item As a consequence of the Baire Category Theorem we showed that a real-valued mapping that is the pointwise limit of a sequence of continuous mapping on a complete metric space must be continuous at all points of a dense subset of its domain.
+    Adapt that proof so that it applies to mapping into any metric space.
+    Use this to prove that the pointwise limit of a sequence of continuous linear operators on a Banach space has a limit that is continuous at some point and hence, by linearity, is continuous.
+    \item Let $\{f_n\}$ be a sequence in $L^\infty[a,b]$.
+    Suppose that for each $g\in L^1[a,b]$, $\lim_{n\to\infty}\int_a^bg\cdot f_n$ exists.
+    Show that there is a function $f\in L^\infty[a,b]$ such that $\lim_{n\to\infty}\int_a^bg\cdot f_n=\int_a^bg\cdot f$ for all $g\in L^1[a,b]$.
+    \item Let $X$ be the linear space of all polynomials defined on $\mathbb{R}$.
+    For $p\in X$, define $\|p\|$ to be the sum of the absolute values of the coefficients of $p$.
+    Show that this is a norm on $X$.
+    For each $n$, define $\psi_n:X\to\mathbb{R}$ by $\psi_n(p)=p^{(n)}(0)$.
+    Use the properties of the sequence $\{\psi_n\}$ in $\mathcal{L}(X,\mathbb{R})$ to show that $X$ is not a Banach space.
+\end{enumerate}

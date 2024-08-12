@@ -146,7 +146,7 @@
 	\begin{namedthm*}{Example}[The Normed Linear Space $C\lbrack a,b\rbrack$]
 		Let $[a,b]$ be a closed, bounded interval. 
 		The the linear space of continuous real-valued functions on $[a,b]$ is denoted by $C[a,b]$. 
-		Since a continuous function on a compact set takes on a maximum value (ch1 problem 52), we can Define
+		Since a continuous function on a compact set takes on a maximum value (ch1 problem 52), we can define
 		\[
 		\|f\|_{\max}=\max_{x\in [a,b]}|f(x)|.	
 		\]		
@@ -162,7 +162,16 @@
 	\[
 	\| f \|_1 = \int_a^b |f|.	
 	\]
-	Show that this is a norm on $C[a,b]$.\\\\
+	Show that this is a norm on $C[a,b]$.
+	Also show that there is no number $c \ge 0$ for which
+	\[
+	\| f \|_{\max}	\le c \| f \|_1 \text{ for all $f$ in $C[a,b]$},
+	\]
+	but there is a $c \ge 0$ for which 
+	\[
+	\| f \|_1	\le c \| f \|_{\max} \text{ for all $f$ in $C[a,b]$}.
+	\]
+	\\
 	Let $f,g\in C[a,b]$. For each $x\in [a.b]$, we have the inequality $|f(x)+g(x)|\le|f(x)|+|g(x)|$, so by monotonicity and linearity of integration,
 	\[
 	\|f+g\|_1=\int_a^b|f(x)+g(x)| \le \int_a^b[|f(x)|+|g(x)|] = \int_a^b|f(x)| +\int_a^b|g(x)| = \|f\|_1+\|g\|_1.	
@@ -180,12 +189,7 @@
 	Clearly $\int_a^b |f| = 0$ iff $f\equiv 0$ on $[a,b]$.
 	Therefore positive definiteness holds.\\
 	Thus $\|\cdot\|_1$ is a norm on $C[a,b]$.\\
-	Also show that there is no number $c \ge 0$ for which
-	\[
-	\| f \|_{\max}	\le c \| f \|_1 \text{ for all $f$ in $C[a,b]$},
-	\]
-	\\
-	Consider the interval $[a,b]=[0,1]$.
+	\\Consider the interval $[a,b]=[0,1]$.
 	For any $c>0$ we choose, there exists an $n\in \mathbb{N}$ such that $n> c$, with the continuous function $f_n:[0,1]\to \mathbb{R}$ defined as
 	\[ 
 		f_n(x) =
@@ -205,12 +209,7 @@
 	Now, for any $n$, we have $\|f_n\|_1 = \int_0^1|f_n|=1$, and $\|f_n\|_{\max} = n$.\\
 	Then $\| f \|_{\max}=n > c =  c \| f \|_1$.\\
 	\\
-	but there is a $c \ge 0$ for which 
-	\[
-	\| f \|_1	\le c \| f \|_{\max} \text{ for all $f$ in $C[a,b]$}.
-	\]
-	\\
-	We can see that for any $f$ in $C[a,b]$, by monotonicity of the integral, 
+	Finally, we can see that for any $f$ in $C[a,b]$, by monotonicity of the integral, 
 	\begin{align*}
 	\|f\|_1 &= \int_a^b|f(x)|\\ 
 	&\le \int_a^b\max_{x\in [a,b]}|f(x)|\\
