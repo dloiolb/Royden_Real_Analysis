@@ -507,10 +507,22 @@
 	    \]
         (Each $f_n$ is a triangle-shaped function that achieves its max $f(1/n)=n$ and base corners $f(0)=0$ and $f(2/n)=0$.)\\
         In addition, consider the continuous function $f:[0,1]\to\mathbb{R}$ defined by $f(x)=0$ for all $x\in[0,1]$.\\\bigskip
-        The sequence $\{f_n\}$ converges to $f$ pointwise but not uniformly on $[0,1]$.
+        The sequence $\{f_n\}$ converges to $f$ pointwise (a.e) but not uniformly on $[0,1]$.
         \\Thus we have
         \[
             \{f_n\}\to f\text{ pointwise on }[0,1],\text{ but }\lim_{n\to\infty}\int_0^1f_n=1\neq0=\int_0^1f.
+        \]
+        \\Another example: we can define a sequence of nonnegative, measurable, continuous functions on $[0,1]$ by
+        \[
+            f_n(x)=
+            \begin{cases}
+                -n^2x+n&x\in[0,\frac{1}{n}]\\
+                0&x\in(\frac{1}{n},1]
+            \end{cases}
+        \]
+        Then $\{f_n\}\to f\equiv0$ pointwise a.e. on $[0,1]$, but $\int_{[0,1]}f_n=1/2$ for all $n$, and so
+        \[
+            \lim_{n\to\infty}\int_{[0,1]}f_n=1/2\neq0=\int_{[0,1]}f.
         \]
     \begin{namedthm*}{The Bounded Convergence Theorem}
         Let $\{f_n\}$ be a sequence of measurable functions on a set of finite measure $E$.
@@ -1010,7 +1022,19 @@
     \[
         \lim_{n\to\infty}\int_Ef_n=\int_Ef.
     \]
-    \item Show that the Monotone Convergence Theorem may not hold for decreasing sequences of functions.
+    \item Show that the Monotone Convergence Theorem may not hold for decreasing sequences of functions.\\
+    \\We can define a decreasing sequence of nonnegative measurable functions $f_n:[0,\infty)\to\mathbb{R}$ by
+    \[
+        f_n(x)=
+        \begin{cases}
+            0&x<n\\
+            1&x\ge n
+        \end{cases}
+    \]
+    Then $\{f_n\}\to f\equiv0$ pointwise on $[0,\infty)$, but $\int_{[0,\infty)}f_n=\infty$ (not integrable over $[0,\infty)$) for all $n$, and so
+    \[
+        \lim_{n\to\infty}\int_{[0,\infty)}f_n=\infty\neq0=\int_{[0,\infty)}f.
+    \]
     \item Prove the following generalization of Fatou's Lemma: If $\{f_n\}$ is a sequence of nonnegative measurable functions on $E$, then 
     \[
         \int_E\lim\inf f_n\le\lim\inf\int_Ef_n.     
