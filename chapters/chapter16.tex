@@ -303,7 +303,7 @@ In the following problems, $H$ is a Hilbert space.
     so that $\frac{\alpha}{\beta}\in S$ and $S$ contains all rational numbers.\\
     \\Fix any $x,y\in X$.
     Consider the functions $f,g:\mathbb{R}\to\mathbb{R}$ defined by $f(\alpha)=\alpha\langle u,v\rangle$ and $g(\alpha)=\langle \alpha u,v\rangle$.
-    The function $f$ is linear and thus continuous ($\ast$), and the function $g$ is a composition of $\alpha\mapsto\alpha x$ and $t\mapsto\langle t,y\rangle$, which are both continuous ($\ast\ast$).
+    The function $f$ is linear on a finite dimensional space and thus continuous (Chapter 13 Problem 29), and the function $g$ is a composition of $\alpha\mapsto\alpha x$ and $t\mapsto\langle t,y\rangle$, which are both continuous ($\ast$).
     Then we have that $f,g$ are continuous with $f(\alpha)=g(\alpha)$ for all $\alpha\in\mathbb{Q}$, which implies that $f(\alpha)=g(\alpha)$ for all $\alpha\in\mathbb{R}$.
     \\That is, $\alpha\langle u,v\rangle=\langle \alpha u,v\rangle$ for all scalars $\alpha$.
     \\(ii) Symmetry:
@@ -312,18 +312,18 @@ In the following problems, $H$ is a Hilbert space.
     \\For $v\neq0$: $\langle v,v \rangle = \|v\|^2>0$ by (1) and positive definiteness of norm.
     \\For $v=0$: $\langle v,v \rangle = \|v\|^2=0$ by (1) and positive definiteness of norm.\\
     \\Therefore $\langle\cdot,\cdot\rangle$ is an inner product.\\
-    \\($\ast$) Linear functions are continuous:
-    \\Let $H$ be a hilbert space, let $a\in H$, and let $f:H\to\mathbb{R}$ be a linear function:
-    \[
-        f(x):=\langle a,x\rangle\text{ for any }x\in X.
-    \]
-    Fix $\varepsilon>0$.
-    \\Then there exists $\delta=\frac{\varepsilon}{\|a\|}>0$.
-    \\For any $x,y\in H$ such that $\|x-y\|<\delta$, we use Cauchy-Schwarz inequality to see that
-    \[
-        |f(x)-f(y)|=|\langle a,x\rangle-\langle a,y\rangle|=|\langle a,x-y\rangle|\le\|a\|\cdot\|x-y\|<\varepsilon.
-    \]
-    \\($\ast\ast$) For a normed linear space $X$ and $y\in X$, the function $x\mapsto\|x+y\|$ for $x\in X$ is continuous.
+    % \\($\ast$) Linear functions are continuous:
+    % \\Let $H$ be a hilbert space, let $a\in H$, and let $f:H\to\mathbb{R}$ be a linear function:
+    % \[
+    %     f(x):=\langle a,x\rangle\text{ for any }x\in X.
+    % \]
+    % Fix $\varepsilon>0$.
+    % \\Then there exists $\delta=\frac{\varepsilon}{\|a\|}>0$.
+    % \\For any $x,y\in H$ such that $\|x-y\|<\delta$, we use Cauchy-Schwarz inequality to see that
+    % \[
+    %     |f(x)-f(y)|=|\langle a,x\rangle-\langle a,y\rangle|=|\langle a,x-y\rangle|\le\|a\|\cdot\|x-y\|<\varepsilon.
+    % \]
+    \\($\ast$) For a normed linear space $X$ and $y\in X$, the function $x\mapsto\|x+y\|$ for $x\in X$ is continuous.
     \\(Use this as a simplified version of $x\mapsto\langle x,y\rangle=\frac{1}{4}[\|x+y\|^2-\|x-y\|^2]$, which will also be continuous as it is the product and sum of continuous functions.)
     \\Fix $\varepsilon>0$.
     \\Let $\delta=\varepsilon>0$.

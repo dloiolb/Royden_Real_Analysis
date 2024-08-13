@@ -994,16 +994,103 @@
     so the Property implies that $\int_E f\le\lim\inf\left\{\int_Ef_n\right\}+\epsilon$.
     \\Because this is true for any $\epsilon$, then $\int_E f\le\lim\inf\left\{\int_Ef_n\right\}$ holds.
     \item Let the function $f$ be nonnegative and integrable over $E$ and $\epsilon>0$. Show there is a simple function $\eta$ on $E$ that has finite support, $0\le\eta\le f$ on $E$ and $\int_E|f-\eta|<\epsilon$.
-    If $E$ is a closed, bounded interval, show there is a step function $h$ on $E$ that has finite support and $\int_E|f-h|<\epsilon$.
+    If $E$ is a closed, bounded interval, show there is a step function $h$ on $E$ that has finite support and $\int_E|f-h|<\epsilon$.\\
+    \\Fix $\epsilon>0$.
+    \\For a nonnegative measurable function $f$ on $E$, we define the integral of $f$ over $E$ by
+    \[
+        \int_Ef:=\sup\biggl\{\int_Eh\ |\ h\text{ bounded, measurable, of finite support and }0\le h\le f\text{ on }E\biggr\},
+    \]
+    Then by definition of supremum, there exists $h\in\{ \text{h bounded, measurable, of finite support and }0\le h\le f\text{ on }E\}$ such that
+    \[
+        \int_Ef-\frac{\epsilon}{2}<\int_Eh\le\int_Ef.
+    \]
+    We can write this as
+    \[
+        \int_Ef-\int_Eh<\frac{\epsilon}{2}\tag{1}
+    \]
+    We have the definition of the integral of the bounded measurable function $h$ of finite support:
+    \[
+        \int_Eh:=\sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple, }0\le\varphi\le f\text{ on }E\biggr\}.
+    \]
+    Then by definition of supremum, there exists $\eta\in\{ \varphi\text{ simple, }0\le\varphi\le f\text{ on }E\}$ such that
+    \[
+        \int_Eh-\frac{\epsilon}{2}<\int_E\eta\le\int_Eh.
+    \]
+    We can write this as
+    \[
+        -\int_E\eta<-\int_Eh+\frac{\epsilon}{2}.\tag{2}
+    \]
+    Then by (1) and (2),
+    \[
+        \int_E[f-\eta]=\int_Ef-\int_E\eta<\int_Ef-\int_Eh+\frac{\epsilon}{2}<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon.
+    \]
     \item Let $\{f_n\}$ be a sequence of nonnegative measurable functions on $\mathbb{R}$ that converges pointwise on $\mathbb{R}$ to $f$ and $f$ be integrable over $\mathbb{R}$. Show that
     \[
         \text{if }\int_{\mathbb{R}}f=\lim_{n\to\infty}\int_{\mathbb{R}}f_n,\text{ then }\int_Ef=\lim_{n\to\infty}\int_Ef_n\text{ for any measurable set }E.    
     \]
-    \item Let $\{a_n\}$ be a sequence of nonnegative real numbers. Define the function $f$ on $E=[1,\infty)$ by setting $f(x)=a_n$ if $n\le x<n+1$. Show that $\int_Ef=\sum_{n=1}^\infty a_n$.
+    \\Let $E$ be a measurable set of real numbers.
+    \\By Theorem 11, we have, for each $n$,
+    \[
+        \int_\mathbb{R}f_n=\int_Ef_n+\int_{E^c}f_n.\tag{1}
+    \]
+    Then because $f$ is integrable, then its integral $\int_{\mathbb{R}}f$ is finite, which by equality to $\lim_{n\to\infty}\int_{\mathbb{R}}f_n$ implies that the sequence $\left\{\int_{\mathbb{R}}f_n\right\}$ converges; that is,
+    \[
+        \infty>\int_{\mathbb{R}}f=\lim_{n\to\infty}\int_{\mathbb{R}}f_n=\liminf\int_{\mathbb{R}}f_n=\limsup\int_{\mathbb{R}}f_n.\tag{2}
+    \]
+    In particular, we have by (1), (2), and Fatou's Lemma for $\{f_n\}$ on $E^c$,
+    % \[
+    %     \int_\mathbb{R}f=\limsup\int_Ef_n+\liminf\int_{E^c}f_n.
+    % \]
+    % By Fatou's Lemma,
+    \[
+        \int_\mathbb{R}f-\limsup\int_Ef_n=\liminf\int_{E^c}f_n\ge\int_{E^c}f,
+    \]
+    so that, rearranging,
+    \[
+        \int_Ef=\int_\mathbb{R}f-\int_{E^c}f\ge\limsup\int_Ef_n.\tag{a}
+    \]
+    Then by Fatou's Lemma for $\{f_n\}$ on $E$,
+    \[
+        \int_Ef\le\liminf\int_Ef_n.\tag{b}
+    \]
+    Then (a), (b), and the fact that $\liminf\int_Ef_n\le\limsup\int_Ef_n$ imply equality:
+    \[
+        \int_Ef=\lim_{n\to\infty}\int_Ef_n.
+    \]
+    \item Let $\{a_n\}$ be a sequence of nonnegative real numbers. Define the function $f$ on $E=[1,\infty)$ by setting $f(x)=a_n$ if $n\le x<n+1$. Show that $\int_Ef=\sum_{n=1}^\infty a_n$.\\
+    \\Because each $a_n$ is nonnegative, we can define a sequence of increasing functions $\{f_k\}$ on $[1,\infty)$ by
+    \[
+        f_k(x)=
+        \begin{cases}
+            a_n&x\in[n,n+1)\text{ for each }n\in\{1,\dots,k\}\\
+            0&\text{else}
+        \end{cases}
+    \]
+    Then each $f_k$ is a simple function of finite support $\bigcup_{n=1}^k[n,n+1)$ so that
+    \[
+        \int_{[1,\infty)}f_k=\sum_{n=1}^ka_n\cdot m([n,n+1))=\sum_{n=1}^ka_n.
+    \]
+    Also, $\{f_k\}\to f$ pointwise so that, by the Monotone Convergence Theorem,
+    \[
+        \sum_{n=1}^\infty a_n=\lim_{k\to\infty}\sum_{n=1}^k a_n=\lim_{k\to\infty}\int_{[1,\infty)}f_k=\int_{[1,\infty)}f.
+    \]
     \item Let $f$ be a nonnegative measurable function on $E$.
     \begin{enumerate}[label=(\roman*),align=left]
-        \item Show there is an increasing sequence $\{\varphi_n\}$ of nonnegative simple functions on $E$, each of finite support, which converges pointwise on $E$ to $f$.
-        \item Show that $\int_Ef=\sup\{\int_E\varphi\ |\ \varphi\text{ simple, of finite support and }0\le\varphi\le f\text{ on }E\}$.
+        \item Show there is an increasing sequence $\{\varphi_n\}$ of nonnegative simple functions on $E$, each of finite support, which converges pointwise on $E$ to $f$.\\
+        \\See the Simple Approximation Theorem from Chapter 3.
+        \item Show that $\int_Ef=\sup\{\int_E\varphi\ |\ \varphi\text{ simple, of finite support and }0\le\varphi\le f\text{ on }E\}$.\\
+        % \\For a nonnegative measurable function $f$ on $E$, we define the integral of $f$ over $E$ by
+        % \[
+        %     \int_Ef:=\sup\biggl\{\int_Eh\ |\ h\text{ bounded, measurable, of finite support and }0\le h\le f\text{ on }E\biggr\},
+        % \]
+        % where the integral of each bounded measurable function $h$ of finite support has an integral defined by
+        % \[
+        %     \int_Eh:=\sup\biggl\{\int_E\varphi\ |\ \varphi\text{ simple, }\varphi\le f\text{ on }E\biggr\}=\inf\biggl\{\int_E\psi\ |\ \psi\text{ simple, }\psi\ge f\text{ on }E\biggr\}.
+        % \]
+        \\By the Monotone Convergence Theorem with (i), we have that
+        \[
+            \sup_n\int_E\varphi_n=\lim_{n\to\infty}\int_E\varphi_n=\int_Ef.
+        \]
     \end{enumerate}
     \item Let $\{f_n\}$ be a sequence of nonnegative measurable functions on $E$ that converges pointwise on $E$ to $f$. Suppose $f_n\le f$ on $E$ for each $n$. Show that
     \[
