@@ -17,6 +17,11 @@ Part 2:
 Part 3:
 - 17.1-17.2~
 
+### Colors on Table of Contents:
+- black: finished
+- blue: in progress
+- green: untouched
+
 ### PART I: Lebesgue Integration for Functions of a Single Real Variable (165/368)
 - Chapter 01: 59/59*
 - Chapter 02: 43/43*

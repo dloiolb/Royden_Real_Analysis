@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[]{mdframed}
 \usepackage{lipsum}
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{amsfonts} 
 \usepackage{times}
 \usepackage[shortlabels]{enumitem}
@@ -15,6 +15,23 @@
 \usepackage{titletoc}
 \usepackage{graphicx}
 \usepackage{minitoc}
+
+\usepackage[titles]{tocloft}
+
+\newcommand{\defineauthorcolor}[2]{%
+  \colorlet{author#1}{#2}% Create an author colour
+  \expandafter\def\csname authoredby#1\endcsname{% Create author colour settings
+    \renewcommand{\cftchapfont}{\bfseries\color{author#1}}% Chapter colour
+    \renewcommand{\cftsecfont}{\color{author#1}}% Section colour
+    \renewcommand{\cftsubsecfont}{\color{author#1}}}% Subsection colour
+}
+\makeatletter
+\newcommand{\authoredby}[1]{\addtocontents{toc}{\protect\@nameuse{authoredby#1}}}%
+\makeatother
+
+\defineauthorcolor{finished}{black}% Author B will be coloured blue
+\defineauthorcolor{inprogress}{BlueViolet}% Author B will be coloured blue
+\defineauthorcolor{untouched}{ForestGreen}% Author A will be coloured red
 
 %\newtheorem*{theorem*}{}
 %\newtheorem{theorem}{Theorem}
@@ -91,6 +108,7 @@
 %\pagenumbering{arabic}
 
 \setcounter{chapter}{0}
+\authoredby{finished}
 \chapter*{I LEBESGUE INTEGRATION FOR FUNCTIONS OF A SINGLE REAL VARIABLE}
 \addcontentsline{toc}{chapter}{I LEBESGUE INTEGRATION FOR FUNCTIONS OF A SINGLE REAL VARIABLE}
 \setcounter{chapter}{0}
@@ -107,6 +125,7 @@
 \include{chapters/chapter08}
 
 \setcounter{chapter}{0}
+\authoredby{finished}
 \chapter*{II ABSTRACT SPACES: METRIC, TOPOLOGICAL, BANACH, AND HILBERT SPACES}
 \addcontentsline{toc}{chapter}{II ABSTRACT SPACES: METRIC, TOPOLOGICAL, BANACH, AND HILBERT SPACES}
 \setcounter{chapter}{8}
@@ -121,6 +140,7 @@
 \include{chapters/chapter16}
 
 \setcounter{chapter}{0}
+\authoredby{finished}
 \chapter*{III MEASURE AND INTEGRATION: GENERAL THEORY} 
 \addcontentsline{toc}{chapter}{III MEASURE AND INTEGRATION: GENERAL THEORY}
 \setcounter{chapter}{16}

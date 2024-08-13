@@ -1141,7 +1141,28 @@
 \end{enumerate}
     
 % 4.4
+\authoredby{inprogress}
 \section{The General Lebesgue Integral}
+For an extended real-valued function $f$ on $E$, we have defined the positive part $f^+$ and the negative part $f^-$ of $f$, respectively, by
+\[
+    f^+(x)=\max\{f(x),0\},\text{ and }f^-(x)=\max\{-f(x),0\}\text{ for all }x\in E.
+\]
+Then $f^+$ and $f^-$ are nonnegative functions on $E$,
+\[
+    f=f^+-f^-\text{ on }E,
+\]
+and
+\[
+    |f|=f^++f^-\text{ on }E.
+\]
+\begin{namedthm*}{Definition}
+    A measurable function $f$ on $E$ is said to be \textbf{integrable} over $E$ provided $|f|$ is integrable over $E$.
+    When this is so we define the integral of $f$ over $E$ by
+    \[
+        \int_Ef=\int_Ef^+-\int_Ef^-.
+    \]  
+\end{namedthm*}
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -1186,6 +1207,7 @@
 \end{enumerate}
 
 % 4.5
+\authoredby{untouched}
 \section{Countable Additivity and Continuity of Integration}
 \begin{center}
 	\textbf{PROBLEMS}
