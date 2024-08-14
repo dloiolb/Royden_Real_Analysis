@@ -1162,16 +1162,79 @@ and
         \int_Ef=\int_Ef^+-\int_Ef^-.
     \]  
 \end{namedthm*}
+\begin{namedthm*}{Proposition 16}[the Integral Comparison Test]
+    Let $f$ be a measurable function on $E$.
+    Suppose there is a nonnegative function $g$ that is integrable over $E$ and dominates $f$ in the sense that
+    \[
+        |f|\le g\text{ on }E.
+    \]
+    Then $f$ is integrable over $E$ and 
+    \[
+        \left|\int_Ef\right|\le\int_E|f|.
+    \]
+\end{namedthm*}
+\begin{proof}
+    By the monotonicity of integration for nonnegative functions, we have $\int_E|f|\le\int_Eg<\infty$, which implies $|f|$ is integrable, and thus $f$ is integrable.
+    \\Then by the triangle inequality and the linearity of integration,
+    \[
+        \left|\int_Ef\right|=\left|\int_Ef^+-\int_Ef^-\right|\le\int_Ef^++\int_Ef^-=\int_E|f|.
+    \]
+\end{proof}
+\begin{namedthm*}{The Lebesgue Dominated Convergence Theorem}
+    Let $\{f_n\}$ be a sequence of measurable functions on $E$.
+    Suppose there is a function $g$ that is integrable over $E$ and dominates $\{f_n\}$ on $E$ in the sense that $|f_n|\le g$ on $E$ for all $n$.
+    \[
+        \text{If }\{f_n\}\to f\text{ pointwise a.e. on }E,\text{ then }f\text{ is integrable over }E\text{ and }\lim_{n\to\infty}\int_Ef_n=\int_Ef.
+    \]
+\end{namedthm*}
+\begin{proof}
+    Since $|f_n|\le g$ on $E$ and $|f|\le g$ a.e. on $E$ and $g$ is integrable over $E$, by the integral comparison test, $f$ and each $f_n$ also are integrable over $E$.
+    We infer from Proposition 15 that, by possibly excising from $E$ a countable collection of sets of measure zero and using the countable additivity of Lebesgue measure, we may assume that $f$ and each $f_n$ is finite on $E$.
+    The function $g-f$ and for each $n$, the function $g-f_n$, are properly defined, nonnegative, and measurable.
+    Morever, the sequence $\{g-f_n\}$ converges pointwise a.e. on $E$ to $g-f$.
+    \\By Fatou's Lemma,
+    \[
+        \int_E(g-f)\le\liminf\int_E(g-f_n).
+    \]
+    Thus, by the linearity of integration for measurable functions and $\liminf(-a_n)=-\limsup(a_n)$ (Chapter 1 Proposition 19 (iii)),
+    \[
+        \int_Eg-\int_Ef=\int_E(g-f)\le\liminf\int_E(g-f_n)=\int_Eg+\liminf\left(-\int_Ef_n\right)=\int_Eg-\limsup\int_Ef_n,
+    \]
+    which tells us that
+    \[
+        \limsup\int_Ef_n\le\int_Ef.
+    \]
+    Similarly by Fatou's Lemma for the sequence $\{g+f_n\}$,
+    \[
+        \int_Eg+\int_Ef=\int_E(g+f)\le\liminf\int_E(g+f_n)=\int_Eg+\liminf\int_Ef_n,
+    \]
+    which tells us that
+    \[
+        \int_Ef\le\liminf\int_Ef_n.
+    \]
+\end{proof}
+\begin{namedthm*}{Theorem 19}[General Lebesgue Dominated Convergence Theorem]
+    Let $\{f_n\}$ be a sequence of measurable functions on $E$ that converges pointwise a.e. on $E$ to $f$.
+    Suppose there is a sequence $\{g_n\}$ of nonnegative measurable functions on $E$ that converges pointwise a.e. on $E$ to $g$ and dominates $\{f_n\}$ on $E$ in the sense that
+    \[
+        |f_n|\le g_n\text{ on }E\text{ for all }n. 
+    \]
+    \[
+        \text{If }\lim_{n\to\infty}\int_Eg_n=\int_Eg<\infty,\text{ then }\lim_{n\to\infty}\int_Ef_n=\int_Ef.
+    \]
+\end{namedthm*}
 
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{27}
-    \item Let $f$ be integrable over $E$ and let $C$ be a measurable subset of $E$. Show that $\int_Cf=\int_Ef\cdot\chi_C$.
+    \item Let $f$ be integrable over $E$ and let $C$ be a measurable subset of $E$. Show that $\int_Cf=\int_Ef\cdot\chi_C$.\\
+    \\We have
     \item For a measurable function $f$ on $[1,\infty)$ which is bounded on bounded sets, define $a_n=\int_n^{n+1}f$ for each natural number $n$.
     Is it true that $f$ is integrable over $[1,\infty)$ iff the series $\sum_{n=1}^\infty a_n$ converges?
-    Is it true that $f$ is integrable over $[1,\infty)$ iff the series $\sum_{n=1}^\infty a_n$ converges absolutely?
+    Is it true that $f$ is integrable over $[1,\infty)$ iff the series $\sum_{n=1}^\infty a_n$ converges absolutely?\\
+    \\
     \item Let $g$ be a nonnegative integrable function over $E$ and suppose $\{f_n\}$ is a sequence of measurable functions on $E$ such that for each $n$, $|f_n|\le g$ a.e. on $E$. Show that
     \[
         \int_E\lim\inf f_n \le \lim\inf\int_E f_n \le \lim\sup\int_E f_n \le \int_E\lim\sup f_n.
@@ -1184,7 +1247,16 @@ and
     \item Let $f$ be a nonnegative measurable function on $\mathbb{R}$. Show that 
     \[
         \lim_{n\to\infty}\int_{-n}^nf=\int_{\mathbb{R}}f.
-    \]   
+    \]  
+    \\Define, for each $n$, the function
+    \[
+        f_n=f\cdot\chi_{[-n,n]},
+    \] 
+    so that because $f$ is nonnegative and measurable, $\{f_n\}$ is an increasing sequence of nonnegative measurable functions on $\mathbb{R}$ that converges pointwise to $f$ on $\mathbb{R}$.
+    \\Then by the Monotone Convergence Theorem, 
+    \[
+        \lim_{n\to\infty}\int_{[-n,n]}f=\lim_{n\to\infty}\int_Ef\cdot\chi_{[-n,n]}=\lim_{n\to\infty}\int_Ef_n=\int_Ef.
+    \] 
     \item Let $f$ be a real-valued function of two variables $(x,y)$ that is defined on the square $Q=\{(x,y)\ |\ 0\le x\le 1,0\le y\le 1\}$ and is a measurable function of $x$ for each fixed value of $y$.
     Suppose for each fixed value of $x$, $\lim_{y\to0}f(x,y)=f(x)$ and that for all $y$, we have $|f(x,y)|\le g(x)$, where $g$ is integrable over $[0,1]$. Show that
     \[
