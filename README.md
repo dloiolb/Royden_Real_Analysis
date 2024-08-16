@@ -1,6 +1,6 @@
 # Exercise Completion
 
-Total Exercise Completion: (198/1048)
+Total Exercise Completion: (201/1048)
 
 Part 1:
 - 1.1-1.6 Done
@@ -32,8 +32,8 @@ Part 3:
 - Chapter 07: 5/51
 - Chapter 08: 0/45
 
-### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (15/408)
-- Chapter 09: 4/78
+### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (18/408)
+- Chapter 09: 7/78
 - Chapter 10: 0/44
 - Chapter 11: 0/56
 - Chapter 12: 0/36
