@@ -534,7 +534,7 @@
 \end{enumerate}
 
 % 17.2
-\authoredby{inprogress}
+\authoredby{finished}
 \section{Signed Measures: The Hahn and Jordan Decompositions}
 \begin{flushleft}
 	\begin{namedthm*}{Definition}
@@ -589,13 +589,13 @@
 		Without loss of generality assume $+\infty$ is the infinite value omitted by $\nu$.
 		(Otherwise let $A$ be the negative set and $B$ be the positive set. We need this to use Hahn's Lemma: $0<\nu(E)<\infty$.)
 		\\Let $\mathcal{P}$ be the collection of positive subsets of $X$.
-		Define $\lambda=\sup\{\nu(E)\ |\ \nu(E)\in\mathcal{P}\}$, and $\lambda\ge0$ and it is nonempty because $\emptyset\in\lambda$.
+		Define $\lambda=\sup\{\nu(E)\ |\ E\in\mathcal{P}\}$, and $\lambda\ge0$ and it is nonempty because $\emptyset\in\mathcal{P}$.
 		Then by definition of supremum, for each natural number $k$, there exists an element $A_k\in\lambda$ such that
 		\[
 			\lambda-\frac{1}{k}<\nu(A_k)\le\lambda.
 		\]
 		Then $\{A_k\}_{k=1}^\infty$ is a countable collection of positive subsets of $X$ for which $\lambda=\lim_{k\to\infty}\nu(A_k)$.
-		We can let $A=\cup_{k=1}^\infty$, and by Proposition 4, the union of a positive collection of positive sets is positive, and thus $A$ is a positive subset as well; then $\nu(A)\le\lambda$.
+		We can let $A=\cup_{k=1}^\infty A_k$, and by Proposition 4, the countable union of a positive collection of positive sets is positive, and thus $A$ is a positive subset as well; then $\nu(A)\le\lambda$.
 		Then for each $k$, we have $A\cap A_k^c\subseteq A$, and because $A$ is positive, all of its subsets including $A\setminus A_k$ is positive, so $\nu(A\setminus A_k)\ge0$.
 		Then by countable disjoint additivity,
 		\[
@@ -615,7 +615,7 @@
 	\[
 		\nu^+(E)=\nu(E\cap A)\text{ and }\nu^-(E)=-\nu(E\cap B).	
 	\]
-	(The disjoint sets $E\cap A$ and $E\cap B$ are positive and negative, respectively, because $A$ is positive (and thus all subsets are positive), and $B$ is negative (and thus all subsets are negative).) 
+	(The disjoint sets $E\cap A$ and $E\cap B$ have positive and negative measure, respectively, because $A$ is positive (and thus all subsets have positive measure), and $B$ is negative (and thus all subsets have negative measure).) 
 	\\\bigskip Two measures $\nu_1$ and $\nu_2$ on $(X,\mathcal{M})$ are said to be \textbf{mutually singular} ($\nu_1\perp\nu_2$) if there are disjoint measurable sets $A,B$ with $X=A\cup B$ for which $\nu_1(A)=\nu_2(B)=0$.
 	\begin{namedthm*}{The Jordan Decomposition Theorem}
 		Let $\nu$ be a signed measure on the measurable space $(X,\mathcal{M})$. 
@@ -636,13 +636,13 @@
 				\nu^-(E)&\ge0&&\text{because }B\cap E\subseteq B,\text{ and }B\text{ is negative, so for any }C\subseteq B,\text{ then }\nu(C)\le0\implies-\nu(C)\ge0
 			\end{align*}
 			\begin{align*}
-				\nu^+(E)&=\nu(A\cap\emptyset)=\nu(\emptyset)=0\\
-				\nu^-(E)&=-\nu(B\cap\emptyset)=-\nu(\emptyset)=0
+				\nu^+(\emptyset)&=\nu(A\cap\emptyset)=\nu(\emptyset)=0\\
+				\nu^-(\emptyset)&=-\nu(B\cap\emptyset)=-\nu(\emptyset)=0
 			\end{align*}
 			For disjoint measurable collection $\{E_k\}_{k=1}^\infty$,
 			\begin{align*}
 				\nu^+(\bigcup_{k=1}^\infty E_k)&=\nu(A\cap\bigcup_{k=1}^\infty E_k)=\nu(\bigcup_{k=1}^\infty [A\cap E_k])=\sum_{k=1}^\infty\nu(A\cap E_k)=\sum_{k=1}^\infty\nu^+(E_k)\\
-				\nu^-(\bigcup_{k=1}^\infty E_k)&=-\nu(B\cap\bigcup_{k=1}^\infty E_k)=-\nu(\bigcup_{k=1}^\infty [B\cap E_k])=-\sum_{k=1}^\infty\nu(B\cap E_k)=\sum_{k=1}^\infty\nu^-(E_k)
+				\nu^-(\bigcup_{k=1}^\infty E_k)&=-\nu(B\cap\bigcup_{k=1}^\infty E_k)=-\nu(\bigcup_{k=1}^\infty [B\cap E_k])=\sum_{k=1}^\infty-\nu(B\cap E_k)=\sum_{k=1}^\infty\nu^-(E_k)
 			\end{align*}
 		The measures $\nu^+$ and $\nu^-$ are mutually singular because $X=A\cup B$, $A\cap B=\emptyset$, and 
 		\begin{align*}
@@ -656,19 +656,46 @@
 	\end{proof}
 	We define $|\nu|$ on $\mathcal{M}$ by
 	\[
-		|\nu|(E)=\nu^+(E)+\nu^-(E)\text{ for all }E\subseteq\mathcal{M}.
+		|\nu|(E)=\nu^+(E)+\nu^-(E)\text{ for all }E\in\mathcal{M}.
 	\]
 	In Problem 16, prove that 
 	\begin{equation*}
 		|\nu|(X)=\sup\sum_{k=1}^n|\nu(E_k)|,\tag{4}
 	\end{equation*}
 	where the supremum is taken over all finite disjoint collections $\{E_k\}_{k=1}^n$ of measurable subsets of $X$.
-	Fore this reason $|\nu|(X)$ is called the \textbf{total variation} of $\nu$ and denoted by $\|\nu\|_{var}$.
+	For this reason $|\nu|(X)$ is called the \textbf{total variation} of $\nu$ and denoted by $\|\nu\|_{var}$.
 	\\\bigskip
 	\textbf{Example}
 	Let $f:\mathbb{R}\to\mathbb{R}$ be a function that is Lebesgue integrable over $\mathbb{R}$.
 	For a Lebesgue measurable set $E$, define $\nu(E)=\int_E f dm$.
-	\\Then $\nu$ is a signed measure on the measurable space $(\mathbb{R},\mathcal{L})$
+	\\Then $\nu$ is a signed measure on the measurable space $(\mathbb{R},\mathcal{L})$:
+	\begin{enumerate}[(i)]
+		\item $f$ is integrable means that we have $\int_\mathbb{R}|f|<\infty$.
+		Then because $|f\cdot\chi_E|\le|f|$ on $\mathbb{R}$, by the integral comparison test, $f\cdot\chi_E$ is integrable over $\mathbb{R}$.
+		That is,
+		\[
+			|\nu(E)|=\left|\int_Efdm\right|=\left|\int_\mathbb{R}f\cdot\chi_Edm\right|<\infty.
+		\]
+		\item $\nu(\emptyset)=\int_\emptyset f dm=0$ (See Chapter 4 Problem 17).
+		\item Let $E=\{E_k\}_{k=1}^\infty$ be a countable collection of disjoint measurable sets.
+		Then by Chapter 4 Theorem 20,
+		\[
+			\nu\left(\bigcup_{k=1}^\infty E_k\right)=\nu(E)=\int_{E}fdm=\sum_{k=1}^\infty\int_{E_k}fdm=\sum_{k=1}^\infty\nu(E_k).
+		\]
+	\end{enumerate}
+	Thus $\nu$ is a signed measure.
+	\\Define 
+	\begin{align*}
+		A&:=\{x\in\mathbb{R}\mid f(x)\ge0\}\\
+		B&:=\{x\in\mathbb{R}\mid f(x)<0\}
+	\end{align*}
+	and define for each Lebesgue measurable set $E$,
+	\begin{align*}
+		\nu^+(E)&:=\nu(A\cap E)=\int_{A\cap E} f dm\\
+		\nu^-(E)&:=-\nu(B\cap E)=-\int_{B\cap E} f dm
+	\end{align*}
+	Then $\{A,B\}$ is a Hahn decomposition of $\mathbb{R}$ w.r.t. the signed measure $\nu$.
+	Moreover, $\nu=\nu^+-\nu^-$ is a Jordan decomposition of $\nu$.
 \end{flushleft}
 \begin{center}
 	\textbf{PROBLEMS}
@@ -676,33 +703,201 @@
 \begin{enumerate}
 	\setcounter{enumi}{11}
 	\item In the above example, let $E$ be a Lebesgue measurable set such that $0<\nu(E)<\infty$.
-	Find a positive set $A$ contained in $E$ for which $\nu(A)>0$.
-	\item Let $\mu$ be a measure and $\mu_1$ an $\mu_2$ be mutually singular measures on a measurable space $(X,\mu)$ for which $\mu=\mu_1-\mu_2$.
-	Use this to establish the uniqueness assertion of the Jordan Decomposition Theorem.
+	Find a positive set $A$ contained in $E$ for which $\nu(A)>0$.\\
+	\\Consider the set $A'=A\cap E$, which is a positive set because it is a measurable subset of the positive set $A$.
+	\\Then
+	\[
+		\nu(A')=\nu(A\cap E)=\int_{A\cap A'} f dm-\int_{B\cap A'} f dm=\int_{A\cap E} f dm\ge0.
+	\]
+	If we suppose that $\nu(A')=0$, then we have
+	\[
+		\nu(E)=\int_{A\cap E} f dm-\int_{B\cap E} f dm=-\int_{B\cap E} f dm\le0,
+	\]
+	which is a contradiction to $\nu(E)>0$.
+	\\Therefore $\nu(A')>0$.
+	\item Let $\mu$ be a measure and $\mu_1$ and $\mu_2$ be mutually singular measures on a measurable space $(X,\mathcal{M})$ for which $\mu=\mu_1-\mu_2$.
+	Show that $\mu_2=0$.
+	Use this to establish the uniqueness assertion of the Jordan Decomposition Theorem.\\
+	\\Because $\mu_1$ and $\mu_2$ are mutually singular, then there exist disjoint measurable sets $A,B$ with $X=A\cup B$ for which $\mu_1(A)=\mu_2(B)=0$.
+	\\Consider $E\in\mathcal{M}$.
+	\\In the case $E\subseteq B$, we have $\mu_2(E)=0$ by monotonicity of measure.
+	\\In the case $E\subseteq A$, we have $\mu_1(E)=0$, so that
+	\[
+		\mu(E)=\mu_1(E)-\mu_2(E)=-\mu_2(E)\le0,
+	\]
+	where $\mu(E)\ge0$ implies $\mu_2(E)=0$.
+	\\Therefore for any measurable set $E$,
+	\[
+		\mu_2(E)=\mu_2(E\cap A)+\mu_2(E\cap B)=0+0=0.
+	\]
+	\\Suppose $\nu$ is a signed measure on the measurable space $(X,\mathcal{M})$, and suppose we have any two pairs of mutually singular measures $(\nu_1^+,\nu_1^-)$ and $(\nu_2^+,\nu_2^-)$ so that $\nu=\nu_1^+-\nu_1^-=\nu_2^+-\nu_2^-$.
+	\\By definition of mutually singular, there exist disjoint pairs $(A_1,B_1)$ and $(A_2,B_2)$ with $X=A_1\cup B_1=A_2\cup B_2$ for which $\nu_1^+(A_1)=\nu_1^-(B_1)=0$ and $\nu_2^+(A_2)=\nu_2^-(B_2)=0$.
+	\\Let $E\in\mathcal{M}$.
+	\\In the case $E\subseteq B_1$,
+	\[
+		\nu_1^+(E)=\nu_2^+(E)-\nu_2^-(E).
+	\]
+	Restricting $\nu_1^+$ to all measurable subsets of $B_1$ (see Problem 6), we have that $\nu_2^-=0$ so that $\nu_1^+=\nu_2^+$.
+	\\In the case $E\subseteq A_1$,
+	\[
+		\nu_1^-(E)=-\nu_2^+(E)+\nu_2^-(E).
+	\]
+	Restricting $\nu_1^-$ to all measurable subsets of $A_1$, we have that $\nu_2^+=0$ so that $\nu_1^-=\nu_2^-$.\\
+	\\Therefore for any measurable set $E$,
+	\[
+		\nu_1^+(E)=\nu_1^+(E\cap B_1)=\nu_2^+(E\cap B_1)=\nu_2^+(E),
+	\]
+	and Similarly,
+	\[
+		\nu_1^-(E)=\nu_1^-(E\cap A_1)=\nu_2^-(E\cap A_1)=\nu_2^-(E).
+	\]
 	\item Show that if $E$ is any measurable set, then
 	\[
 		-\nu^-(E)\le\nu(E)\le\nu^+(E)\text{ and }|\nu(E)|\le|\nu|(E).	
 	\]
-	\item Show that if $\nu_1$ and $\nu_2$ are any two finite signed measures, then so it $\alpha\nu_1+\beta\nu_2$, where $\alpha$ and $\beta$ are real numbers. Show that
+	\\We have the Jordan decomposition
+	\[
+		\nu(E)=\nu^+(E)-\nu^-(E),
+	\]
+	where $\nu^+$ and $\nu^-$ are measures so that they are nonnegative; therefore
+	\[
+		0\le\nu^-(E)\implies \nu(E)\le\nu^+(E),
+	\]
+	and
+	\[
+		\nu^+(E)\ge0\implies \nu(E)\ge-\nu^-(E).
+	\]
+	By the triangle inequality,
+	\[
+		|\nu(E)|=|\nu^+(E)-\nu^-(E)|\le\nu^+(E)+\nu^-(E)=|\nu|(E).
+	\]
+	\item Show that if $\nu_1$ and $\nu_2$ are any two finite signed measures, then so is $\alpha\nu_1+\beta\nu_2$, where $\alpha$ and $\beta$ are real numbers. Show that
 	\[
 		|\alpha\nu|=|\alpha||\nu|\text{ and }|\nu_1+\nu_2|\le|\nu_1|+|\nu_2|,
 	\]
-	where $\nu\le\mu$ means $\nu(E)\le\mu(E)$ for all measurable sets $E$.
-	\item Prove (4).
+	where $\nu\le\mu$ means $\nu(E)\le\mu(E)$ for all measurable sets $E$.\\
+	\\Let $E$ be any measurable set.
+	\begin{enumerate}[(i)]
+		\item $|\alpha\nu_1(E)+\beta\nu_2(E)|\le|\alpha||\nu_1(E)|+|\beta||\nu_2(E)|<|\alpha|\cdot\infty+|\beta|\cdot\infty=\infty$
+		\item $\alpha\nu_1(\emptyset)+\beta\nu_2(\emptyset)=\alpha\cdot0+\beta\cdot0=0$
+		\item Let $\{E_k\}_{k=1}^\infty$ be a countable collection of disjoint measurable sets.
+		\[
+			\alpha\nu_1(\bigcup_{k=1}^\infty E_k)+\beta\nu_2(\bigcup_{k=1}^\infty E_k)=\alpha\sum_{k=1}^\infty\nu_1(E_k)+\beta\sum_{k=1}^\infty\nu_2(E_k)=\sum_{k=1}^\infty\left[\alpha\nu_1(E_k)+\beta\nu_2(E_k)\right].
+		\]
+	\end{enumerate}
+	Therefore $\alpha\nu_1+\beta\nu_2$ is itself a finite signed measure.
+	\\Homogeneity and subadditivity of the absolute value come from the properties of the real numbers. 
+	\item Prove (4).\\
+	\\Let $\{E_k\}_{k=1}^n$ be a finite, measurable partition of $X$.
+	\\Recall the definition $|\nu|=\nu^++\nu^-$.
+	\\From problem 14, we have $|\nu(E_k)|\le|\nu|(E_k)$ for each $k$.
+	\\Then 
+	\begin{align*}
+		\sum_{k=1}^n|\nu(E_k)|
+		&\le\sum_{k=1}^n|\nu|(E_k)\\
+		&=\sum_{k=1}^n\nu^+(E_k)+\sum_{k=1}^n\nu^-(E_k)\\
+		&=\nu^+(\bigcup_{k=1}^n E_k)+\nu^-(\bigcup_{k=1}^n E_k)\\
+		&=\nu^+(X)+\nu^-(X)\\
+		&=|\nu|(X),
+	\end{align*}
+	so that
+	\[
+		\sup\sum_{k=1}^n|\nu(E_k)|\le|\nu|(X).\tag{a}
+	\]
+	\\Because $\nu^+$ and $\nu^-$ are mutually singular measures, consider the disjoint sets $E_1,E_2$ such that $X=E_1\cup E_2$ and $\nu^+(E_1)=\nu^-(E_2)=0$.
+	\\Therefore $\nu(E_1)=\nu^+(E_1)-\nu^-(E_1)=-\nu^-(E_1)$ and $\nu(E_2)=\nu^+(E_2)-\nu^-(E_2)=\nu^+(E_2)$ so that 
+	\begin{align*}
+		|\nu|(X)&=|\nu|(E_1\cup E_2)\\
+		&=\nu^+(E_1\cup E_2)+\nu^-(E_1\cup E_2)\\
+		%&=\nu^+(E_1)+\nu^+(E_2)+\nu^-(E_1)+\nu^-(E_2)&&\text{disjoint additivity}\\
+		&=\nu^-(E_1)+\nu^+(E_2)\\
+		&=|\nu(E_1)|+|\nu(E_2)|\\
+		&=\sum_{k=1}^2|\nu(E_k)|\\
+		&\le\sup\sum_{k=1}^n|\nu(E_k)|.\tag{b}
+	\end{align*}
+	Then (a) and (b) imply equality:
+	\[
+		|\nu|(X)=\sup\sum_{k=1}^n|\nu(E_k)|.
+	\]
 	\item Let $\mu$ and $\nu$ be finite signed measures.
 	Define $\mu\land\nu=\frac{1}{2}(\mu+\nu-|\mu-\nu|)$ and $\mu\lor\nu=\mu+\nu-\mu\land\nu$.
 	\begin{enumerate}[label=(\roman*),align=left]  
 		\item Show that the signed measure $\mu\land\nu$ is smaller than $\mu$ and $\nu$ but larger than any other signed measure that is smaller than $\mu$ and $\nu$.
 		\item Show that the signed measure $\mu\lor\nu$ is larger than $\mu$ and $\nu$ but smaller than any other signed measure that is larger than $\mu$ and $\nu$.
-		\item If $\mu$ and $\nu$ are positive measures, show that they are mutually singular iff $\mu\land\nu=0$.
+		\item If $\mu$ and $\nu$ are positive measures, show that they are mutually singular iff $\mu\land\nu=0$.\\
+	\end{enumerate}
+	We have the identities
+	\begin{align*}
+		\max(\mu,\nu)+\min(\mu,\nu)&=\mu+\nu\\
+		\max(\mu,\nu)-\min(\mu,\nu)&=|\mu-\nu|\\
+		\max(\mu,\nu)&=\frac{1}{2}(\mu+\nu+|\mu-\nu|)\\
+		\min(\mu,\nu)&=\frac{1}{2}(\mu+\nu-|\mu-\nu|)
+	\end{align*}
+	\begin{enumerate}[label=(\roman*),align=left]  
+		\item $\mu(E)\land\nu(E)=\min(\mu(E),\nu(E))\le\mu(E),\nu(E)$.
+		\\If $\lambda(E)\le\mu(E),\nu(E)$, then $\lambda(E)\le\min\{\mu(E),\nu(E)\}=\mu(E)\land\nu(E)$.
+		\item We can see
+		\[
+			\mu\lor\nu=\frac{1}{2}(2\mu+2\nu)-\frac{1}{2}(\mu+\nu-|\mu-\nu|)=\frac{1}{2}(\mu+\nu+|\mu-\nu|),
+		\]
+		So that $\mu(E)\lor\nu(E)=\max(\mu(E),\nu(E))\ge\mu(E),\nu(E)$.
+		\\If $\lambda(E)\ge\mu(E),\nu(E)$, then $\lambda(E)\ge\max\{\mu(E),\nu(E)\}=\mu(E)\lor\nu(E)$.
+		\item Let $\mu$ and $\nu$ be positive measures.
+		\\$(\implies)$ Suppose that $\mu$ and $\nu$ are mutually singular.
+		\\Then there exist disjoint measurable sets $A,B$ with $X=A\cup B$ s.t. $\mu(A)=\nu(B)=0$.
+		\\Let $E$ be a measurable set.
+		\\In the case $E\subseteq A$,
+		\[
+			(\mu\land\nu)(E)=\frac{1}{2}(0+\nu(E)-|0-\nu(E)|)=0.
+		\]
+		In the case $E\subseteq B$,
+		\[
+			(\mu\land\nu)(E)=\frac{1}{2}(\mu(E)+0-|\mu(E)-0|)=0.
+		\]
+		Therefore, for any measurable set $E$,
+		\[
+			(\mu\land\nu)(E)=(\mu\land\nu)(E\cap A)+(\mu\land\nu)(E\cap B)=0+0=0.
+		\]
+		\\$(\impliedby)$ Suppose that $\mu\land\nu=0$.\\
+		\\This implies that for any measurable set $E$, at least one of $\mu(E)$ and $\nu(E)$ must equal zero. 
+		\\Consider the finite signed measure $\lambda=\mu-\nu$. 
+		% By the Jordan Decomposition Theorem, there exists a pair of mutually singular measures $\lambda^+$ and $\lambda^-$ for which $\lambda=\lambda^+-\lambda^-$.
+		% By definition of mutually singular, there exist disjoint measurable sets $P,N$ with $X=P\cup N$ s.t. $\lambda^+(N)=\lambda^-(P)=0$.
+		\\By the Hahn Decomposition Theorem, there is a positive set $P$ for $\lambda$ and a negative set $N$ for $\lambda$ for which
+		\[
+			X=P\cup N\text{ and }P\cap N=\emptyset.	
+		\]
+		%By the Jordan Decomposition Theorem, we have $\lambda=\lambda^+-\lambda^-$.
+		Let $E$ be a measurable set.
+		\\In the case $E\subseteq P$,
+		\[
+			\mu(E)-\nu(E)\ge0.
+		\]
+		\begin{itemize}
+			\item If $\mu(E)-\nu(E)>0$, then $\mu(E)>0$ and $\nu(E)=0$.
+			\item If $\mu(E)-\nu(E)=0$, then $\mu(E)=\nu(E)=0$.
+		\end{itemize}
+		In the case $E\subseteq N$,
+		\[
+			\mu(E)-\nu(E)\le0.
+		\]
+		\begin{itemize}
+			\item If $\mu(E)-\nu(E)<0$, then $\mu(E)=0$ and $-\nu(E)<0$.
+			\item If $\mu(E)-\nu(E)=0$, then $\mu(E)=\nu(E)=0$.
+		\end{itemize}
+		Then $\mu(N)=\nu(P)=0$ so that $\mu$ and $\nu$ are mutually singular.
 	\end{enumerate}
 \end{enumerate}
 
 % 17.3
-\authoredby{untouched}
+\authoredby{inprogress}
 \section{The Cath\'eodory Measure Induced by an Outer Measure}
 
+
+% no problems
+
 % 17.4
+\authoredby{untouched}
 \section{The Construction of Outer Measures}
 \begin{center}
 	\textbf{PROBLEMS}

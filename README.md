@@ -1,6 +1,6 @@
 # Exercise Completion
 
-Total Exercise Completion: (192/1048)
+Total Exercise Completion: (198/1048)
 
 Part 1:
 - 1.1-1.6 Done
@@ -15,7 +15,7 @@ Part 2:
 - 16.1~
 
 Part 3:
-- 17.1-17.2~
+- 17.1-17.3~
 
 ### Colors on Table of Contents:
 - black: finished
@@ -26,7 +26,7 @@ Part 3:
 - Chapter 01: 59/59*
 - Chapter 02: 43/43*
 - Chapter 03: 31/31*
-- Chapter 04: 28/51* (+1)
+- Chapter 04: 28/51*
 - Chapter 05: 0/17*
 - Chapter 06: 0/71*
 - Chapter 07: 5/51
@@ -42,8 +42,8 @@ Part 3:
 - Chapter 15: 0/18*
 - Chapter 16: 7/66*
 
-### PART III: Measure and Integration: General Theory (11/272)
-- Chapter 17: 11/36*
+### PART III: Measure and Integration: General Theory (17/272)
+- Chapter 17: 17/36* (+6)
 - Chapter 18: 0/67
 - Chapter 19: 0/22
 - Chapter 20: 0/55
