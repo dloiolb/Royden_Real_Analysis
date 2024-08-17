@@ -36,7 +36,38 @@ For an extended real valued function $f$ of $X$ and a measurable subset $E$ of $
 In the following problems $(X,\mathcal{M},\mu)$ is a reference measure space and measurable means with respect to $\mathcal{M}$.
 \begin{enumerate}
 	\setcounter{enumi}{0}
-    \item Show that an extended real valued function on $X$ is measurable iff $f^{-1}\{\infty\}$ and $f^{-1}\{-\infty\}$ are measurable and so is $f^{-1}(E)$ for every Borel set of real numbers.
+    \item Show that an extended real valued function on $X$ is measurable iff $f^{-1}\{\infty\}$ and $f^{-1}\{-\infty\}$ are measurable and so is $f^{-1}(E)$ for every Borel set of real numbers.\\
+    \\Let $f$ be an extended real valued function on $X$.\\
+    \\$(\implies)$ Suppose that $f$ is measurable. 
+    \\Then the set
+    \[
+        f^{-1}\{\infty\}=\{x\in X\mid f(x)=\infty\}=\bigcap_{n=1}^\infty\{x\in X\mid f(x)>n\},
+    \]
+    is measurable because it is a countable intersection of measurable sets.
+    \\Similarly the set
+    \[
+        f^{-1}\{-\infty\}=\{x\in X\mid f(x)=-\infty\}=\bigcap_{n=1}^\infty\{x\in X\mid f(x)<n\},
+    \]
+    is measurable because it is a countable intersection of measurable sets.
+    \\By definition of measurable function we have that the set
+    \[
+        \{x\in X\mid f(x)>a\}=\{x\in X\mid f(x)\in(a,\infty)\}
+    \]
+    is measurable for any real $a$.
+    From Chapter 2 Problem 11, we have that that if a $\sigma$-algebra of subsets of R contains intervals of the form $(a,\infty)$, then it contains all intervals.
+    Therefore by the properties of a $\sigma$-algebra, it must contain all open sets (Chapter 1 Proposition 9 - Every nonempty open set is the union of a countable, disjoint collection of open intervals).
+    Then because the collection of Borel sets is the smallest $\sigma$-algebra that contains all of the open sets of real numbers, we have
+    \[
+        f^{-1}(E)\text{ is measurable for any Borel set }E.
+    \]
+    \\$(\impliedby)$ Suppose that the sets $f^{-1}\{\infty\}$ and $f^{-1}\{-\infty\}$ are measurable, and that $f^{-1}(E)$ is measurable for any Borel set $E$ of real numbers.
+    \\Fix any real number $c$.
+    \\The collection of Borel sets contain all intervals of the form $(c,\infty)$ so that the set
+    \[
+        \{x\in X\mid f(x)> c\}=\{x\in X\mid f(x)\in(c,\infty)\}=f^{-1}((c,\infty))
+    \]
+    is measurable.
+    \\Therefore $f$ is a measurable function.
     \item Suppose $(X,\mathcal{M},\mu)$ is not complete.
     Let $E$ be a subset of a set of measure zero that does not belong to $\mathcal{M}$.
     Let $f=0$ on $X$ and $g=\chi_E$.
@@ -53,7 +84,7 @@ In the following problems $(X,\mathcal{M},\mu)$ is a reference measure space and
     \\Let $a$ be any real number.
     \\Then for each natural number $n$, by density of the rationals in the reals there exists a rational $c_n$ such that 
     \[
-        a-\frac{1}{n}<c_n< a_n,
+        a_n-\frac{1}{n}<c_n< a_n,
     \]
     and we have that the set $\{x\in X\mid f(x)<c_n\}$ is measurable.
     \\Then we have $\bigcup_{n=1}^\infty[\infty,c_n)=[\infty,a)$, so that we have the set
@@ -67,7 +98,22 @@ In the following problems $(X,\mathcal{M},\mu)$ is a reference measure space and
     \\Therefore $f$ is a measurable function.
     \item Consider two extended real valued measurable functions $f$ and $g$ on $X$ that are finite a.e. on $X$.
     Define $X_0$ to be the set of points in $X$ at which both $f$ and $g$ are finite.
-    Show that $X_0$ is measurable and $\mu(X\setminus X_0)=0$.
+    Show that $X_0$ is measurable and $\mu(X\setminus X_0)=0$.\\
+    \\We have that $f$ and $g$ are finite a.e. on $X$, which means that there exist (measurable) subsets $X_f$, $X_g$ of $X$, both of measure zero, where the property holds on $X\setminus X_f$ and $X\setminus X_g$ respectively.
+    \\Then $X_f$ and $X_g$ are measurable imply that $X\setminus X_f$ and $X\setminus X_g$ are also measurable by the properties of a $\sigma$-algebra.
+    \\Therefore we have that the set
+    \[
+        X_0=[X\setminus X_f]\cap[X\setminus X_g]=\{x\in X\mid f(x)\text{ is finite},g(x)\text{ is finite}\}
+    \]
+    is measurable because it is the intersection of measurable sets.
+    \\We see that 
+    \[
+        X\setminus X_0=X\cap([X^c\cup X_f]\cup[X^c\cup X_g])=X_f\cup X_g,
+    \]
+    and we use countable monotonicity to see that
+    \[
+        \mu(X\setminus X_0)=\mu(X_f\cup X_g)\le\mu(X_f)+\mu(X_g)=0+0.
+    \]
     \item Let $X$ be a nonempty set.
     Show that every extended real valued function on $X$ is measurable w.r.t. the measurable space $(X,2^X)$.
     \begin{enumerate}[(i)]
@@ -84,19 +130,19 @@ In the following problems $(X,\mathcal{M},\mu)$ is a reference measure space and
     \item Prove Corollary 7.\\
     \\Let $(X,\mathcal{M},\mu)$ be a measure space and $\{f_n\}$ be a sequence of measurable function on $X$.
     \\\begin{enumerate}[(i)]
-        \item $f(x):=\sup_n\{f_n(x)\}$
+        \item $f(x):=\sup_{n\in\mathbb{N}}\{f_n(x)\}$
         \\Fix any real number $c$.
-        \\Let $y\in\{x\in X\mid f(x)>c\}$.
+        \\(1) Let $y\in\{x\in X\mid f(x)>c\}$.
         Then $f(y)>c$.
         \\By definition of supremum, there exists an index $k$ such that 
         \[
             f(y)\ge f_k(y)>c,
         \]
-        and therefore $y\in\{x\in X\mid f_k(x)>c\}$, which implies
+        and therefore $y\in\{x\in X\mid f_k(x)>c\}$ for some $k$, which implies
         \[
             \{x\in X\mid f(x)>c\}\subseteq\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)>c\}.\tag{1}
         \]
-        Let $y'\in\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)>c\}$.
+        (2)Let $y'\in\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)>c\}$.
         \\Then there exists an index $k$ such that $y'\in\{x\in X\mid f_k(x)>c\}$.
         \\By definition of supremum, we have 
         \[
@@ -112,12 +158,91 @@ In the following problems $(X,\mathcal{M},\mu)$ is a reference measure space and
             \{x\in X\mid f(x)>c\}=\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)>c\},
         \]
         which is measurable because it is the countable union of measurable sets.
-        \item $f(x):=\inf_n\{f_n(x)\}$
-        \\a
-        \item $f(x):=\limsup_n\{f_n(x)\}$
-        \\a
-        \item $f(x):=\liminf_n\{f_n(x)\}$
-        \\a
+        % \\We may also prove that $\{x\in X\mid f(x)<c\}=\bigcap_{n=1}^\infty\{x\in X\mid f_n(x)<c\}$ in a similar way.
+        \item $f(x):=\inf_{n\in\mathbb{N}}\{f_n(x)\}$
+        \\Fix any real number $c$.
+        \\(1) Let $y\in\{x\in X\mid f(x)\ge c\}$.
+        Then $f(y)\ge c$.
+        \\By definition of infimum, for all indices $n$, we have that
+        \[
+            c\le f(y)\le f_n(y),
+        \]
+        and therefore $y\in\{x\in X\mid f_n(x)\ge c\}$ for all $n$, which implies
+        \[
+            \{x\in X\mid f(x)\ge c\}\subseteq\bigcap_{n=1}^\infty\{x\in X\mid f_n(x)\ge c\}.\tag{1}
+        \]
+        (2) Let $y'\in\bigcap_{n=1}^\infty\{x\in X\mid f_n(x)\ge c\}$.
+        \\Then for all indices $n$, we have $y'\in\{x\in X\mid f_n(x)\ge c\}$ so that $c$ is a lower bound to the set $\{f_n(y')\}_{n\in\mathbb{N}}$.
+        \\Then by definition of infimum we have 
+        \[
+            c\le f(y'),
+        \]
+        and therefore $y'\in\{x\in X\mid f(x)\ge c\}$, which implies
+        \[
+            \{x\in X\mid f(x)\ge c\}\supseteq\bigcap_{n=1}^\infty\{x\in X\mid f_n(x)\ge c\}\tag{2}
+        \]
+        Then by (1) and (2),
+        \[
+            \{x\in X\mid f(x)\ge c\}=\bigcap_{n=1}^\infty\{x\in X\mid f_n(x)\ge c\},
+        \]
+        which is measurable because it is the countable intersection of measurable sets.
+        % \\Fix any real number $c$.
+        % \\(1) Let $y\in\{x\in X\mid f(x)<c\}$.
+        % Then $f(y)<c$.
+        % \\By definition of infimum, there exists an index $k$ such that 
+        % \[
+        %     f(y)\le f_k(y)<c,
+        % \]
+        % and therefore $y\in\{x\in X\mid f_k(x)<c\}$, which implies
+        % \[
+        %     \{x\in X\mid f(x)<c\}\subseteq\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)<c\}.\tag{1}
+        % \]
+        % (2) Let $y'\in\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)<c\}$.
+        % \\Then there exists an index $k$ such that $y'\in\{x\in X\mid f_k(x)<c\}$.
+        % \\By definition of infimum, we have 
+        % \[
+        %     f(y')\le f_k(y')<c,
+        % \]
+        % and therefore $y'\in\{x\in X\mid f(x)<c\}$, which implies
+        
+        % \[
+        %     \{x\in X\mid f(x)<c\}\supseteq\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)<c\}\tag{2}
+        % \]
+        % Then by (1) and (2),
+        % \[
+        %     \{x\in X\mid f(x)<c\}=\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)<c\},
+        % \]
+        % which is measurable because it is the countable union of measurable sets.\\
+        \item $f(x):=\limsup_n\{f_n(x)\}=\lim_{n\to\infty}\sup_{k\ge n}\{f_n(x)\}=\inf_{n\in\mathbb{N}}\sup_{k\ge n}\{f_n(x)\}$
+        \\Fix any real number $c$.
+        \\Pulling from (i), with a small modification, we have that the function $g_n(x):=\sup_{k\ge n}\{f_k(x)\}$ is measurable for each $n\in\mathbb{N}$.
+        \\That is, the set
+        \[
+            \{x\in X\mid g_n(x)> c\}=\bigcup_{k=n}^\infty\{x\in X\mid f_k(x)> c\}
+        \]
+        is measurable, and thus each function $g_n$ is measurable.
+        \\Then using the same process as (ii), the set
+        \[
+            \{x\in X\mid f(x)\ge c\}=\bigcap_{n=1}^\infty\{x\in X\mid g_n(x)\ge c\}%=\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty\{x\in X\mid f_k(x)\ge c\}
+        \]
+        is measurable because it is a countable intersection of measurable sets.
+        % \\(The first set equality can be proved using the same process as (ii).)
+        \item $f(x):=\liminf_n\{f_n(x)\}=\lim_{n\to\infty}\inf_{k\ge n}\{f_n(x)\}=\sup_{n\in\mathbb{N}}\inf_{k\ge n}\{f_n(x)\}$
+        \\Fix any real number $c$.
+        \\Pulling from (ii), with modification, we have that the function $g_n(x):=\inf_{k\ge n}\{f_k(x)\}$ is measurable for each $n\in\mathbb{N}$.
+        \\That is, the set
+        \[
+            \{x\in X\mid g_n(x)\ge c\}=\bigcap_{k=n}^\infty\{x\in X\mid f_k(x)\ge c\}
+        \]
+        is measurable, and thus each function $g_n$ is measurable.
+        \\Then using the same process as (i), the set
+        \[
+            \{x\in X\mid f(x)> c\}=\bigcup_{n=1}^\infty\{x\in X\mid g_n(x)> c\}%=\bigcup_{n=1}^\infty\bigcap_{k=n}^\infty\{x\in X\mid f_k(x)> c\}
+        \]
+        is measurable because it is a countable union of measurable sets.
+        % \\(The first set equality can be proved using the same process as (i).)
+
+        % The strict vs unstrict inequality might be a problem for (iii) and (iv) in the second part.
     \end{enumerate}
     \item Prove Egoroff's Theorem.
     Is Egoroff's Theorem true in the absence of the assumption that the limit function is finite a.e.?

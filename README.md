@@ -1,6 +1,6 @@
 # Exercise Completion
 
-Total Exercise Completion: (209/1048)
+Total Exercise Completion: (212/1048)
 
 Part 1:
 - 1.1-1.6 Done
@@ -43,9 +43,9 @@ Part 3:
 - Chapter 15: 0/18*
 - Chapter 16: 7/66*
 
-### PART III: Measure and Integration: General Theory (25/272)
+### PART III: Measure and Integration: General Theory (28/272)
 - Chapter 17: 24/36* 
-- Chapter 18: 1/67 (+1)
+- Chapter 18: 4/67 (+3)
 - Chapter 19: 0/22
 - Chapter 20: 0/55
 - Chapter 21: 0/61
@@ -144,6 +144,8 @@ This chapter we go over topics like sigma-finite measures and signed measures.
 The exercises from this chapter are pretty interesting so far (17.1, exercises 1-11).
 
 induced outer measure
+
+Problem 19: any measure that is induced by an outer measure is complete.
 
  #### Chapter 18: Integration Over General Measure Spaces
 
