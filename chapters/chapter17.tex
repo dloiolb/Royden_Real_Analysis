@@ -890,15 +890,92 @@
 \end{enumerate}
 
 % 17.3
-\authoredby{inprogress}
+\authoredby{finished}
 \section{The Cath\'eodory Measure Induced by an Outer Measure}
-
+\begin{namedthm*}{Definition}
+	A set function $\mu^*:2^X\to[0,\infty]$ is called an \textbf{outer measure} provided $\mu^*(\emptyset)=0$ and $\mu^*$ is countably monotone in the sense that whenever a set $E\in2^X$ is covered by a countable collection $\{E_k\}_{k=1}^\infty$ of sets in $2^X$, then
+	\[
+		\mu^*(E)\le\sum_{k=1}^\infty\mu^*(E_k).
+	\]
+\end{namedthm*}
+Clearly an outer measure is finitely monotone, which can be seen by setting $E_k=\emptyset$ for all $k>n$.
+\begin{namedthm*}{Definition}
+	For an outer measure $\mu^*:2^X\to[0,\infty]$, we call a subset $E$ of $X$ \textbf{measurable} (with respect to $\mu^*$) provided for every subset $A$ of $X$,
+	\[
+		\mu^*(A)=\mu^*(A\cap E)+\mu^*(A\cap E^c).
+	\]
+\end{namedthm*}
+Since $\mu^*$ is finitely monotone so that $\mu^*(A)\le\mu^*(A\cap E)+\mu^*(A\cap E^c)$, to show that $E\subseteq X$ is measurable, it is only necessary to prove that
+\[
+	\mu^*(A)\ge\mu^*(A\cap E)+\mu^*(A\cap E^c)\text{ for all }A\subseteq X\text{ such that }\mu^*(A)<\infty.
+\]
+\begin{namedthm*}{Theorem 8}
+	Let $\mu^*$ be an outer measure on $2^X$.
+	Then the collection $\mathcal{M}$ of sets that are measurable with respect to $\mu^*$ is a $\sigma$-algebra.
+	If $\overline{\mu}$ is the restriction of $\mu^*$ to $\mathcal{M}$, then $(X,\mathcal{M},\overline{\mu})$ is a complete measure space.
+\end{namedthm*}
 
 % no problems
 
 % 17.4
-\authoredby{untouched}
+\authoredby{finished}
 \section{The Construction of Outer Measures}
+\begin{namedthm*}{Theorem 9}
+	Let $\mathcal{S}$ be a collection of subsets of a set $X$ and $\mu:\mathcal{S}\to[0,\infty]$ a set function.
+	Define $\mu^*(\emptyset)=0$ and for $E\subseteq X$, $E\neq\emptyset$, define
+	\[
+		\mu^*(E)=\inf\sum_{k=1}^\infty\mu(E_k),
+	\]
+	where the infimum is taken over all countable collections $\{E_k\}_{k=1}^\infty$ of sets in $\mathcal{S}$ that cover $E$.
+	Then the set function $\mu^*:2^X\to[0,\infty]$ is an outer measure called the \textbf{outer measure induced by} $\mu$.
+\end{namedthm*}
+(If a subset $E$ of $X$ cannot be covered by a countable subcollection of $\mathcal{S}$, then it has outer measure equal to $\infty$.)
+\begin{proof}
+	We have $\mu^*(\emptyset)=0$ by definition so it remains to show countable monotonicity.
+	\\Consider any set $E\subseteq X$ that is covered by a countable collection $\{E_k\}_{k=1}^\infty$ of sets in $X$. 
+	% \[
+	% 	\mu^*(E)\le\sum_{k=1}^\infty\mu^*(E_k.)
+	% \]
+	\\We suppose that $\mu^*(E_k)<\infty$ for each $k$, otherwise the result is trivial.
+	\\Fix $\epsilon>0$.
+	\\For each $k$, by definition of infimum, there exists a countable collection $\{E_{ik}\}_{i=1}^\infty$ of sets in $\mathcal{S}$ that covers $E_k$ and
+	\[
+		\mu^*(E_k)\le\sum_{i=1}^\infty\mu(E_{ik})<\mu^*(E_k)+\frac{\epsilon}{2^k}.\tag{1}
+	\]
+	Then $\{E_{ik}\}_{1\le k,i<\infty}$ is a countable collection of sets in $S$ that covers $\bigcup_{k=1}^\infty E_k$ and therefore covers $E$.
+	Therefore because $\mu^*$ is defined as the infimum of all such collections,
+	\begin{align*}
+		\mu^*(E)&\le\sum_{1\le k,i<\infty}\mu(E_{ik})\\
+		&=\sum_{k=1}^\infty\sum_{i=1}^\infty\mu(E_{ik})\\
+		&<\sum_{k=1}^\infty\mu^*(E_k)+\sum_{k=1}^\infty\frac{\epsilon}{2^k}&&\text{by (1)}\\
+		&=\sum_{k=1}^\infty\mu^*(E_k)+\epsilon,
+	\end{align*}
+	and since this holds for all $\epsilon>0$, then $\mu^*(E)\le\sum_{k=1}^\infty\mu^*(E_k)$.
+\end{proof}
+\begin{namedthm*}{Definition}
+	Let $\mathcal{S}$ be a collection of subsets of $X$, let $\mu:\mathcal{S}\to[0,\infty]$ be a set function, and let $\mu^*$ be the outer measure induced by $\mu$.
+	The measure $\overline{\mu}$ that is the restriction of $\mu^*$ to the $\sigma$-algebra $\mathcal{M}$ of $\mu^*$-measurable sets is called the \textbf{Carath\'eodory measure induced by} $\mu$.
+\end{namedthm*}
+\[
+	\underset{\text{a general set function}}{\mu:\mathcal{S}\to[0,\infty]}\longrightarrow
+	\underset{\text{the induced outer measure}}{\mu^*:2^X\to[0,\infty]}\longrightarrow
+	\underset{\text{the induced Carath\'eodory measure}}{\overline{\mu}:\mathcal{M}\to[0,\infty]}
+\]
+For a collection $\mathcal{S}$ of subsets of $X$, we use $\mathcal{S}_\sigma$ to denote those sets that are countable unions of sets of $\mathcal{S}$ and use $\mathcal{S}_{\sigma\delta}$ to denote those sets that are countable intersections of sets in $\mathcal{S}_\sigma$.
+Observe that if $\mathcal{S}$ is the collection of open intervals of real numbers, the $\mathcal{S}_\sigma$ is the collection of open subsets of $\mathbb{R}$ (Chapter 1 Proposition 9: Every nonempty open sets is the union of a countable, disjoint collection of open intervals), and $\mathcal{S}_{\sigma\delta}$ is the collection of $G_\delta$ subsets of $\mathbb{R}$.
+\begin{namedthm*}{Proposition 10}
+	Let $\mu:\mathcal{S}\to[0,\infty]$ be a set function defined on a collection $\mathcal{S}$ of subsets of a set $X$ and $\overline{\mu}:\mathcal{M}\to[0,\infty]$ be the Carath\'eodory measure induced by $\mu$.
+	Let $E$ be a subset of $X$ for which $\mu^*(E)<\infty$.
+	Then there is a subset $A$ of $X$ for which 
+	\[
+		A\in\mathcal{S}_{\sigma\delta},\ E\subseteq A\text{ and }\mu^*(E)=\mu^*(A).
+	\]
+	Furthermore, if $E$ and each set in $\mathcal{S}$ is measurable with respect to $\mu^*$, then so is $A$ and 
+	\[
+		\overline{\mu}(A\setminus E)=0.
+	\]
+\end{namedthm*}
+(See Chapter 2 Theorem 11 (ii))
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -909,22 +986,141 @@
 	\[
 		\mu^*(A\cap E)=\sum_{k=1}^\infty \mu^*(A\cap E_k).
 	\]
-	\item Show that any measure that is induced by an outer measure is complete.
+	\\By definition, outer measure is countably monotone so that
+	\[
+		\mu^*(A\cap E)=\mu^*\left(A\cap \left[\bigcup_{k=1}^\infty E_k\right]\right)=\mu^*\left(\bigcup_{k=1}^\infty [A\cap E_k]\right)\le\sum_{k=1}^\infty \mu^*(A\cap E_k).
+	\]
+	By monotonicity of outer measure and Propositon 6 (finite additivity of outer measure),
+	\[
+		\mu^*(A\cap E)=\mu^*\left(A\cap \left[\bigcup_{k=1}^\infty E_k\right]\right)\ge\mu^*\left(A\cap \left[\bigcup_{k=1}^n E_k\right]\right)=\sum_{k=1}^n \mu^*(A\cap E_k).
+	\]
+	The left-hand side of the inequality is independent of $n$ so that $\mu^*(A\cap E)\ge\sum_{k=1}^\infty \mu^*(A\cap E_k)$.
+	\item Show that any measure that is induced by an outer measure is complete.\\
+	% \\Recall that a measure space $(X,\mathcal{M},\mu)$ is said to be \textbf{complete} provided $\mathcal{M}$ contains all subsets of sets of measure zero, that is, if $E$ belongs to $\mathcal{M}$ and $\mu(E)=0$, then every subset of $E$ also belongs to $\mathcal{M}$.
+	\\Let $X$ be a set, let $\mu^*$ be an outer measure on $2^X$, and let $\mathcal{M}$ be the $\sigma$-algebra of sets that are measurable w.r.t. $\mu^*$.
+	Then consider the measure $\overline{\mu}$ that is the restriction of $\mu^*$ to $\mathcal{M}$.
+	We aim to show that $(X,\mathcal{M},\overline{\mu})$ is complete; that is, $\mathcal{M}$ contains all subsets of sets of measure zero (under $\overline{\mu}$).\\
+	\\Let $E\in\mathcal{M}$ such that $\mu^*(E)=\overline{\mu}(E)=0$, and let $A\subseteq X$ be any set.
+	\\Consider any subset $E'$ of $E$.
+	\\By monotonicity of outer measure for $A\cap E'\subseteq E'\subseteq E$,
+	\[
+		\mu^*(A\cap E')\le\mu^*(E')\le\mu^*(E)=0,
+	\]
+	and by monotonicity of outer measure for $A\supseteq A\cap E'^c$,
+	\[
+		\mu^*(A)\ge\mu^*(A\cap E'^c)=\mu^*(A\cap E')+\mu^*(A\cap E'^c).
+	\]
+	Thus $E'$ is measurable.
 	\item Let $X$ be any set.
-	Define $\eta^*:2^X\to[0,\infty]$ by defining $\eta(\emptyset)=0$ and for $E\subseteq X,E\neq\emptyset$, defining $\eta(E)=\infty$.
+	Define $\eta:2^X\to[0,\infty]$ by defining $\eta(\emptyset)=0$ and for $E\subseteq X,E\neq\emptyset$, defining $\eta(E)=\infty$.
 	Show that $\eta$ is an outer measure.
-	Also show that the set function that assigns $0$ to every subset of $X$ is an outer measure.
+	Also show that the set function that assigns $0$ to every subset of $X$ is an outer measure.\\
+	\\We have $\eta(\emptyset)=0$ by definition so it remains to show countable monotonicity.
+	\\Let $E\subseteq X$ and let $\{E_k\}_{k=1}^\infty$ be a countable collection of sets that cover $E$.
+	\\If $E=\emptyset$, then the inequality is trivial, so assume $E\neq\emptyset$.
+	\\Then there exists a $k$ such that $E_k\neq\emptyset$, which implies $\eta(E_k)=\infty$ so that we have 
+	\[
+		\eta(E)=\infty\le\infty=\sum_{k=1}^\infty\eta(E_k)
+	\]
+	\\The set function $\mu$ that assigns $0$ to every subset of $X$ is an outer measure trivially because $\mu(\emptyset)=0$ and
+	\[
+		\mu(E)=0\le0=\sum_{k=1}^\infty\mu(E_k)
+	\]
+	for any set $E$ that is covered by a countable collection $\{E_k\}_{k=1}^\infty$.
 	\item Let $X$ be a set, $\mathcal{S}=\{\emptyset,X\}$, and define $\mu(\emptyset)=0,\mu(X)=1$. 
-	Determine the outer measure $\mu^*$ induced by the set function $\mu:\mathcal{S}\to[0,\infty)$ and the $\sigma$-algebra of measurable sets.
+	Determine the outer measure $\mu^*$ induced by the set function $\mu:\mathcal{S}\to[0,\infty)$ and the $\sigma$-algebra of measurable sets.\\
+	\\Recall that for any $E\subseteq X$, $E\neq\emptyset$, we have the definition of induced outer measure:
+	\[
+		\mu^*(E)=\inf\left\{\sum_{k=1}^\infty\mu(E_k)\mid E_k\in\mathcal{S},\ \bigcup_{k=1}^\infty E_k\supseteq E\right\}.
+	\]
+	For $E\neq\emptyset$, we have that $\mathcal{S}=\{\emptyset,X\}$ implies $\mu(E_k)\in\{0,1\}$ implies $\sum_{k=1}^\infty E_k\in\{1,2,\dots\}$, so that
+	\[
+		\mu^*(E)=1.
+	\]
+	($\sum_{k=1}^\infty E_k\neq0$ because otherwise we have a contradiction: $\emptyset=\bigcup_{k=1}^\infty E_k\supseteq E\neq\emptyset$)
+	\\Therefore for any $E\subseteq X$, the induced outer measure $\mu^*$ is defined by
+	\[
+		\mu^*(E)=
+		\begin{cases}
+			0&E=\emptyset\\
+			1&E\neq\emptyset
+		\end{cases}
+	\]
+	We have defined that a subset $E$ of $X$ is measurable provided for every subset $A$ of $X$,
+	\[
+		\mu^*(A)=\mu^*(A\cap E)+\mu^*(A\cap E^c).
+	\]
+	Consider $A=X$, so that we have
+	\[
+		1=\mu^*(X)=\mu^*(E)+\mu^*(E^c),
+	\]
+	and the only sets $E$ that satisfy this are $E=\emptyset$ and $E=X$.
+	\\Therefore the $\sigma$-algebra $\mathcal{M}$ of measurable sets (w.r.t. $\mu^*$) is simply
+	\[
+		\mathcal{M}=\{\emptyset,X\}.
+	\]
 	\item On the collection $\mathcal{S}=\{\emptyset,[1,2]\}$ of subsets of $\mathbb{R}$, define the set function $\mu:\mathcal{S}\to[0,\infty)$ as follows: $\mu(\emptyset)=0,\mu([1,2])=1$. 
-	Determine the outer measure $\mu^*$ induced by $\mu$ and the $\sigma$-algebra of measurable sets.
+	Determine the outer measure $\mu^*$ induced by $\mu$ and the $\sigma$-algebra of measurable sets.\\
+	\\Similarly to the previous Problem 21, we deduce that the induced outer measure $\mu^*$ will be defined by
+	\[
+		\mu^*(E)=
+		\begin{cases}
+			0&E=\emptyset\\
+			1&E\subseteq[1,2]\\
+			\infty&\text{else}\\
+		\end{cases}
+	\]
+	Now let $A$ be any set.
+	\\If $A=\emptyset$, then trivially $\mu^*(A)=0\ge0=\mu^*(A\cap E)+\mu^*(A\cap E^c)$.
+	\\If $A\not\subseteq[1,2]$, then trivially $\mu^*(A)=\infty\ge\mu^*(A\cap E)+\mu^*(A\cap E^c)$.
+	\\Therefore consider the case where $A\subseteq[1,2]$, so that we have
+	\[
+		1=\mu^*([1,2])=\mu^*([1,2]\cap E)+\mu^*([1,2]\cap E^c).
+	\]
+	However, because both $[1,2]\cap E$ and $[1,2]\cap E^c$ are subsets of $[1,2]$, then the sets $E$ that satisfy the inequality are such that $E=\emptyset$ or $E\supseteq[1,2]$.
+	\\Therefore the $\sigma$-algebra $\mathcal{M}$ of measurable sets (w.r.t. $\mu^*$) is
+	\[
+		\mathcal{M}=\{E\subseteq X\mid E=\emptyset\text{ or }E\supseteq[1,2]\}.
+	\]
 	\item On the collection $\mathcal{S}$ of all subsets of $\mathbb{R}$, define the set function $\mu:\mathcal{S}\to\mathbb{R}$ by setting $\mu(A)$ to be the number of integers in $A$.
-	Determine the outer measure $\mu^*$ induced by $\mu$ and the $\sigma$-algebra of measurable sets.
+	Determine the outer measure $\mu^*$ induced by $\mu$ and the $\sigma$-algebra of measurable sets.\\
+	\\We can determine the induced outer measure to be
+	\[
+		\mu^*(E)=\mu(E)\text{ for any }E\subseteq X,
+	\]
+	and the $\sigma$-algebra of measurable sets to be
+	\[
+		\mathcal{M}=2^\mathbb{R}.
+	\]
 	\item Let $\mathcal{S}$ be a collection of subsets of $X$ and $\mu:\mathcal{S}\to[0,\infty]$ a set function.
-	Is every set in $\mathcal{S}$ measurable with respect to the outer measure induced by $\mu$?
+	Is every set in $\mathcal{S}$ measurable with respect to the outer measure induced by $\mu$?\\
+	\\Let $\mathcal{S}=2^{[1,2]}$.
+	\\Define $\mu:\mathcal{S}\to[0,\infty)$ as follows: $\mu(\emptyset):=0$, $\mu([1,2]):=3$, and $\mu(E):=2,E\in\mathcal{S}\setminus\{\emptyset,[1,2]\}$. 
+	\\Then we can define the extension $\mu^*$ to be
+	\[
+		\mu^*(E)=
+		\begin{cases}
+			0&E=\emptyset\\
+			2&E\subset[1,2]\\
+			3&E=[1,2]\\
+			\infty&\text{else}\\
+		\end{cases}
+	\]
+	We can see that countable monotonicity holds:
+	\[
+		\mu^*(E)\le\sum_{k=1}^\infty\mu^*(E_k),
+	\]
+	and so $\mu^*$ is an outer measure.
+	\\Consider $E=[1,1.5]\in\mathcal{S}$.
+	\\Then $[1,2]\cap E=[1,1.5]\subset[1,2]$ and $[1,2]\cap E^c=(1.5,2]\subset[1,2]$ so that for $A=[1,2]$,
+	\[
+		\mu^*([1,2])=3\neq2+2=\mu^*([1,2]\cap E)+\mu^*([1,2]\cap E^c),
+	\]
+	which implies that $E$ is not measurable.
 \end{enumerate}
 
 % 17.5
+\authoredby{inprogress}
 \section{The Cath\'eodory-Hahn Theorem: The Extension of a Premeasure to a Measure}
 \begin{center}
 	\textbf{PROBLEMS}
@@ -940,7 +1136,7 @@
 	Show that $\mu:\mathcal{S}\to[0,\infty]$ is a premeasure.
 	Can $\mu$ be extended to a measure?
 	What are the subsets of $\mathbb{R}$ that are measurable with respect to the outer measure $\mu^*$ induced by $\mu$?
-	\item Let $\mathbb{S}$ be a collection of subsets of a set $X$ and $\mu:\mathcal{S}\to[0,\infty]$ a set function.
+	\item Let $\mathcal{S}$ be a collection of subsets of a set $X$ and $\mu:\mathcal{S}\to[0,\infty]$ a set function.
 	Show that $\mu$ is countably monotone iff $\mu^*$ is an extension of $\mu$.
 	\item Show that a set function is a premeasure if it has an extension that is a measure.
 	\item Show that a set function on a $\sigma$-algebra is a measure iff it is a premeasure.
