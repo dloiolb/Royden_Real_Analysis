@@ -1094,7 +1094,7 @@ Observe that if $\mathcal{S}$ is the collection of open intervals of real number
 	\]
 	\item Let $\mathcal{S}$ be a collection of subsets of $X$ and $\mu:\mathcal{S}\to[0,\infty]$ a set function.
 	Is every set in $\mathcal{S}$ measurable with respect to the outer measure induced by $\mu$?\\
-	\\Let $\mathcal{S}=2^{[1,2]}$.
+	\\Let $\mathcal{S}=2^{[1,2]}$, the set of all subsets of $[1,2]$.
 	\\Define $\mu:\mathcal{S}\to[0,\infty)$ as follows: $\mu(\emptyset):=0$, $\mu([1,2]):=3$, and $\mu(E):=2,E\in\mathcal{S}\setminus\{\emptyset,[1,2]\}$. 
 	\\Then we can define the extension $\mu^*$ to be
 	\[
@@ -1122,6 +1122,18 @@ Observe that if $\mathcal{S}$ is the collection of open intervals of real number
 % 17.5
 \authoredby{inprogress}
 \section{The Cath\'eodory-Hahn Theorem: The Extension of a Premeasure to a Measure}
+Let $\mu:\mathcal{S}\to[0,\infty]$ be a set function that is defined on a nonempty collection $\mathcal{S}$ of subsets of a set $X$.
+We ask the following question:
+What properties must the collection $\mathcal{S}$ and set function $\mu$ possess in order that the Carath\'eodory measure $\overline{\mu}$ induced by $\mu$ be an extension of $\mu$:
+that is; every set $E$ in $\mathcal{S}$ is measurable w.r.t. the outer measure $\mu^*$ induced by $\mu$ and, moreover, $\mu(E)=m^*(E)$?
+\begin{namedthm*}{Proposition 11}
+	Let $\mathcal{S}$ be a collection of subsets of a set $X$ and let $\mu:\mathcal{S}\to[0,\infty]$ be a set function.
+	In order that the Carath\'eodory measure induced by $\mu$ be an extension of $\mu$ it is necessary that $\mu$ be both finitely additive and countably monotone and, if $\emptyset$ belongs to $\mathcal{S}$, that $\mu(\emptyset)=0$.
+\end{namedthm*}
+\begin{namedthm*}{Definition}
+	Let $\mathcal{S}$ be a collection of subsets of a set $X$ and $\mu:\mathcal{S}\to[0,\infty]$ be a set function.
+	Then $\mu$ is called a \textbf{premeasure} provided $\mu$ is both finitely additive and countably monotone and, if $\emptyset$ belongs to $\mathcal{S}$, then $\mu(\emptyset)=0$.
+\end{namedthm*}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}

@@ -1,9 +1,187 @@
 % Chapter 18
-\authoredby{untouched}
+\authoredby{inprogress}
 \chapter{Integration Over General Measure Spaces}
 
+% 18.1
+\authoredby{inprogress}
 \section{Measurable Functions}
+Consider the measurable space $(X,\mathcal{M})$. 
+For an extended real valued function $f$ of $X$ and a measurable subset $E$ of $X$, the restriction of $f$ to both $E$ and $X\setminus E$ are measurable iff $f$ is measurable on $X$.
+\begin{namedthm*}{Proposition 3}
+    Let $(X,\mathcal{M},\mu)$ be a complete measure space and $X_0$ be a measurable subset of $X$ for which $\mu(X\setminus X_0)=0$.
+    Then an extended real valued function $f$ on $X$ is measurable iff its restriction to $X_0$ is measurable.
+    In particular, if $g$ and $h$ are extended real valued functions on $X$ for which $g=h$ a.e. on $X$, then $g$ is measurable iff $h$ is measurable.
+\end{namedthm*}
+\begin{namedthm*}{Theorem 6}
+    Let $(X,\mathcal{M},\mu)$ be a measure space and $\{f_n\}$ a sequence of measurable functions on $X$ for which $\{f_n\}\to f$ pointwise a.e. on $X$.
+    If either the measure space $(X,\mathcal{M},\mu)$ is complete or the convergence is pointwise on all of $X$, then $f$ is measurable.
+\end{namedthm*}
+\begin{namedthm*}{Corollary 7}
+    Let $(X,\mathcal{M},\mu)$ be a measure space and $\{f_n\}$ be a sequence of measurable function on $X$.
+    Then the following functions are measurable:
+    \[
+        \sup\{f_n\},\ \inf\{f_n\},\ \limsup\{f_n\},\ \liminf\{f_n\}. 
+    \]
+\end{namedthm*}
+\begin{namedthm*}{Egoroff's Theorem}
+    Let $(X,\mathcal{M},\mu)$ be a finite measure space and $\{f_n\}$ a sequence of measurable functions on $X$ that converges pointwise a.e. on $X$ to a function $f$ that is finite a.e. on $X$.
+    Then for each $\epsilon>0$, there is a measurable subset $X_\epsilon$ of $X$ for which 
+    \[
+        \{f_n\}\to f\text{ uniformly on }X_\epsilon\text{ and }\mu(X\setminus  X_\epsilon)<\epsilon.
+    \]
+\end{namedthm*}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+In the following problems $(X,\mathcal{M},\mu)$ is a reference measure space and measurable means with respect to $\mathcal{M}$.
+\begin{enumerate}
+	\setcounter{enumi}{0}
+    \item Show that an extended real valued function on $X$ is measurable iff $f^{-1}\{\infty\}$ and $f^{-1}\{-\infty\}$ are measurable and so is $f^{-1}(E)$ for every Borel set of real numbers.
+    \item Suppose $(X,\mathcal{M},\mu)$ is not complete.
+    Let $E$ be a subset of a set of measure zero that does not belong to $\mathcal{M}$.
+    Let $f=0$ on $X$ and $g=\chi_E$.
+    Show that $f=g$ a.e. on $X$ while $f$ is measurable and $g$ is not.
+    \item Suppose $(X,\mathcal{M},\mu)$ is not complete.
+    Show that there is a sequence $\{f_n\}$ of measurable functions on $X$ that converges pointwise a.e. on $X$ to a function $f$ that is not measurable.
+    \item Let $E$ be a measurable subset of $X$ and $f$ an extended real-valued function on $X$.
+    Show that $f$ is measurable iff its restrictions to $E$ and $X\setminus E$ are measurable.
+    \item Show that an extended real valued function $f$ on $X$ is measurable iff for each rational number $c$, $\{x\in X\mid f(x)<c\}$ is a measurable set.\\
+    \\Let $f$ be an extended real valued function on $X$.\\
+    \\$(\implies)$ Suppose that $f$ is measurable.
+    \\Then trivially for any rational number $c$, $\{x\in X\mid f(x)<c\}$ is a measurable set by definition of measurable function.\\
+    \\$(\impliedby)$ Suppose that for each rational number $c$, $\{x\in X\mid f(x)<c\}$ is a measurable set.
+    \\Let $a$ be any real number.
+    \\Then for each natural number $n$, by density of the rationals in the reals there exists a rational $c_n$ such that 
+    \[
+        a-\frac{1}{n}<c_n< a_n,
+    \]
+    and we have that the set $\{x\in X\mid f(x)<c_n\}$ is measurable.
+    \\Then we have $\bigcup_{n=1}^\infty[\infty,c_n)=[\infty,a)$, so that we have the set
+    \begin{align*}
+        \bigcup_{n=1}^\infty\{x\in X\mid f(x)<c_n\}
+        &=\bigcup_{n=1}^\infty\{x\in X\mid f(x)\in[\infty,c_n)\}\\
+        &=\{x\in X\mid f(x)\in[\infty,a)\},\\
+        &=\{x\in X\mid f(x)<a\},
+    \end{align*}
+    which is measurable because it is the countable union of measurable sets.
+    \\Therefore $f$ is a measurable function.
+    \item Consider two extended real valued measurable functions $f$ and $g$ on $X$ that are finite a.e. on $X$.
+    Define $X_0$ to be the set of points in $X$ at which both $f$ and $g$ are finite.
+    Show that $X_0$ is measurable and $\mu(X\setminus X_0)=0$.
+    \item Let $X$ be a nonempty set.
+    Show that every extended real valued function on $X$ is measurable w.r.t. the measurable space $(X,2^X)$.
+    \begin{enumerate}[(i)]
+        \item Let $x_0$ belong to $X$ and $\delta_{x_0}$ be the Dirac measure at $x_0$ on $2^X$.
+        Show that two function on $X$ are equal a.e. $[\delta_{x_0}]$ iff they take the same value at $x_0$.
+        \item Let $\eta$ be the counting measure on $2^X$.
+        Show that two functions on $X$ are equal a.e. $[\eta]$ iff they take the same value at every point in $X$.
+    \end{enumerate}
+    \item Let $X$ be a topological space and $\mathcal{B}(X)$ be the smallest $\sigma$-algebra containing the topology on $X$.
+    $\mathcal{B}(X)$ is called the Borel $\sigma$-algebra associated with the topological space $X$.
+    Show that any continuous real valued function on $X$ is measurable w.r.t. the Borel measurable space $(X,\mathcal{B}(X))$.
+    \item If a real valued function on $\mathbb{R}$ is measurable w.r.t. the $\sigma$-algebra of Lebesgue measurable sets, is it necessarily measurable w.r.t. the Borel measurable space $(\mathbb{R},\mathcal{B}(\mathbb{R}))$?
+    \item Check that the proofs of Proposition 1 and Theorem 4 follow from the proofs of the corresponding results in the case of Lebesgue measure on the real line.
+    \item Prove Corollary 7.\\
+    \\Let $(X,\mathcal{M},\mu)$ be a measure space and $\{f_n\}$ be a sequence of measurable function on $X$.
+    \\\begin{enumerate}[(i)]
+        \item $f(x):=\sup_n\{f_n(x)\}$
+        \\Fix any real number $c$.
+        \\Let $y\in\{x\in X\mid f(x)>c\}$.
+        Then $f(y)>c$.
+        \\By definition of supremum, there exists an index $k$ such that 
+        \[
+            f(y)\ge f_k(y)>c,
+        \]
+        and therefore $y\in\{x\in X\mid f_k(x)>c\}$, which implies
+        \[
+            \{x\in X\mid f(x)>c\}\subseteq\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)>c\}.\tag{1}
+        \]
+        Let $y'\in\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)>c\}$.
+        \\Then there exists an index $k$ such that $y'\in\{x\in X\mid f_k(x)>c\}$.
+        \\By definition of supremum, we have 
+        \[
+            f(y')\ge f_k(y')>c,
+        \]
+        and therefore $y'\in\{x\in X\mid f(x)>c\}$, which implies
+        
+        \[
+            \{x\in X\mid f(x)>c\}\supseteq\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)>c\}\tag{2}
+        \]
+        Then by (1) and (2),
+        \[
+            \{x\in X\mid f(x)>c\}=\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)>c\},
+        \]
+        which is measurable because it is the countable union of measurable sets.
+        \item $f(x):=\inf_n\{f_n(x)\}$
+        \\a
+        \item $f(x):=\limsup_n\{f_n(x)\}$
+        \\a
+        \item $f(x):=\liminf_n\{f_n(x)\}$
+        \\a
+    \end{enumerate}
+    \item Prove Egoroff's Theorem.
+    Is Egoroff's Theorem true in the absence of the assumption that the limit function is finite a.e.?
+    \item Let $\{f_n\}$ be a sequence of real valued measurable functions on $X$ such that, for each natural number $n$, $\mu\{x\in X\mid |f_n(x)-f_{n+1}(x)|>1/2^n\}<1/2^n$.
+    Show that $\{f_n\}$ is pointwise convergent a.e. on $X$. 
+    (Hint: Use the Borel-Cantelli Lemma.)
+    \item Under the assumptions of Egoroff's Theorem, show that $X=\bigcup_{k=0}^\infty X_k$, where each $X_k$ is measurable, $\mu(X_0)=0$ and, for $k\ge1$, $\{f_n\}$ converges uniformly to $f$ on $X_k$.
+    \item A sequence $\langle f_n\rangle$ of measurable real-valued functions on $X$ is said to \textbf{converge in measure} to a measurable function $f$ provided that for each $\eta>0$,
+    \[
+        \lim_{n\to\infty}\mu\{x\in X\mid|f_n(x)-f(x)>\eta|\}=0.
+    \]
+    A sequence $\langle f_n\rangle$ of measurable functions is said to \textbf{Cauchy in measure} provided that for each $\epsilon>0$ and $\eta>0$, there is an index $N$ such that for each $m,n\ge N$,
+    \[
+        \mu\{x\in X\mid|f_n(x)-f_m(x)>\eta|\}<\epsilon.
+    \]
+    \begin{enumerate}[(i)]
+        \item Show that if $\mu(X)<\infty$ and $\{f_n\}$ converges pointwise a.e. on $X$ to a measurable function $f$, then $\{f_n\}$ converges to $f$ in measure.
+        (Hint: Use Egoroff's Theorem.)
+        \item Show that if $\{f_n\}$ converges to $f$ in measure, then there is a subsequence of $\{f_n\}$ that converges pointwise a.e. on $X$ to $f$.
+        (Hint: Use the Borel-Cantelli Lemma.)
+        \item Show that if $\{f_n\}$ is Cauchy in measure, then there is a measurable function $f$ to which $\{f_n\}$ converges in measure.
+    \end{enumerate}
+    \item Assume $\mu(X)<\infty$.
+    Show that $\{f_n\}\to f$ in measure iff each subsequence of $\{f_n\}$ has a further subsequence that converges pointwise a.e. on $X$ to $f$.
+    Use this to show that for two sequences that converge in measure, the product sequence also converges in measure to the product of the limits.
+\end{enumerate}
+
+% 18.2
+\authoredby{untouched}
 \section{Integration of Nonnegative Measurable Functions}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{16}
+    \item 
+\end{enumerate}
+
+% 18.3
 \section{Integration of General Measurable Functions}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{26}
+    \item 
+\end{enumerate}
+
+% 18.4
 \section{The Radon-Nikodym Theorem}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{48}
+    \item 
+\end{enumerate}
+
+% 18.5
 \section{The Nikodym Metric Space: The Vitali-Hahn-Saks Theorem}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{60}
+    \item 
+\end{enumerate}
