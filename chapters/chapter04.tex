@@ -1279,8 +1279,52 @@ and
 \end{enumerate}
 
 % 4.5
-\authoredby{untouched}
+\authoredby{inprogress}
 \section{Countable Additivity and Continuity of Integration}
+\begin{namedthm*}{Theorem 20}[the Countable Additivity of Integration]
+    Let $f$ be integrable over $E$ and $\{E_n\}_{n=1}^\infty$ a disjoint countable collection of measurable subsets of $E$ whose union is $E$.
+    Then
+    \[
+        \int_Ef=\sum_{n=1}^\infty\int_{E_n}f.
+    \]
+\end{namedthm*}
+\begin{proof}
+    Let $n\in\mathbb{N}$, and define 
+    \[
+        f_n:=f\cdot\chi_n,
+    \]
+    where $\chi_n$ is the characteristic function of the measurable set $\bigcup_{k=1}^n E_k$.
+    Then $f_n$ is a measurable function on $E$ and 
+    \[
+        |f_n|=|f\cdot\chi_n|\le|f|\text{ on }E.
+    \]
+    Observe that $\{f_n\}\to f$ pointwise on $E$.
+    Thus, by the Lebesgue Dominated Convergence Theorem, 
+    \[
+        \int_Ef=\lim_{n\to\infty}\int_Ef_n.
+    \]
+    Then because each set $\{E_k\}_{k=1}^n$ is disjoint, by Corollary 18 (Additivity Over Domains of Integration) we have
+    \[
+        \int_Ef_n=\sum_{k=1}^n\int_{E_k}f.
+    \]
+    Thus
+    \[
+        \int_Ef=\lim_{n\to\infty}\int_Ef_n=\lim_{n\to\infty}\sum_{k=1}^n\int_{E_k}f=\sum_{k=1}^\infty\int_{E_k}f.
+    \]
+\end{proof}
+\begin{namedthm*}{Theorem 21}(the Continuity of Integration)
+    Let $f$ be integrable over $E$.
+    \begin{enumerate}[(i)]
+        \item If $\{E_n\}_{n=1}^\infty$ is an ascending countable collection of measurable subsets of $E$, then
+        \[
+            \int_{\bigcup_{n=1}^\infty E_n}f=\lim_{n\to\infty}\int_{E_n}f.\tag{24}
+        \]
+        \item If $\{E_n\}_{n=1}^\infty$ is a descending countable collection of measurable subsets of $E$, then
+        \[
+            \int_{\bigcap_{n=1}^\infty E_n}f=\lim_{n\to\infty}\int_{E_n}f.\tag{25}
+        \]
+    \end{enumerate}
+\end{namedthm*}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -1296,6 +1340,7 @@ and
 \end{enumerate}
 
 % 4.6
+\authoredby{untouched}
 \section{Uniform Integrability: The Vitali Convergence Theorem}
 \begin{center}
 	\textbf{PROBLEMS}

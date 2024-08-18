@@ -6,7 +6,8 @@ Part 1:
 - 1.1-1.6 Done
 - 2.1-2.7 Done
 - 3.1-3.3 Done
-- 4.1-4.4~ 
+- 4.1-4.4~,4.5~
+- 6.1~ 
 - 7.1-7.2~
 
 Part 2:
@@ -45,7 +46,7 @@ Part 3:
 
 ### PART III: Measure and Integration: General Theory (28/272)
 - Chapter 17: 24/36* 
-- Chapter 18: 4/67 (+3)
+- Chapter 18: 4/67 
 - Chapter 19: 0/22
 - Chapter 20: 0/55
 - Chapter 21: 0/61

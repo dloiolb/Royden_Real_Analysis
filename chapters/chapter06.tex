@@ -1,8 +1,25 @@
 % Chapter 6
+\authoredby{inprogress}
 \chapter{Differentiation and Integration}
+For a function $f$ on the closed, bounded interval $[a,b]$, when is
+\[
+    \int_a^bf'=f(b)-f(a)?\tag{i}
+\] 
+Assume $f$ is continuous.
+Extend $f$ to take the value $f(b)$ on $(b,b+1]$, and for $0<h\le1$, define the divided difference function $\text{Diff}_hf$ and average value function $\text{Av}_hf$ on $[a,b]$ by
+\[
+    \text{Diff}_hf(x):=\frac{f(x+h)-f(x)}{h}\ \text{ and }\ Av_hf(x):=\frac{1}{h}\int_x^{x+h}f(t)dt\ \text{ for all }x\in[a,b].
+\]
+A change of variables by translation, and cancellation, provides the discrete formulation of (i) fo the Riemann integral:
+\[
+    \int_a^b\text{Diff}_hf=Av_hf(b)-Av_hf(a).
+\]
+The limit of the RHS as $h\to0^+$ equals $f(b)-f(a)$.
 
 % 6.1
+\authoredby{inprogress}
 \section{Continuity of Monotone Functions}
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -15,6 +32,7 @@
 \end{enumerate}
 
 % 6.2
+\authoredby{untouched}
 \section{Differentiability of Monotone Functions: Lebesgue's Theorem}
 \begin{center}
 	\textbf{PROBLEMS}
