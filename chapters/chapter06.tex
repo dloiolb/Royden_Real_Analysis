@@ -19,14 +19,118 @@ The limit of the RHS as $h\to0^+$ equals $f(b)-f(a)$.
 % 6.1
 \authoredby{inprogress}
 \section{Continuity of Monotone Functions}
-
+Recall from Chapter 1.6 that a real-valued function $f$ defined on a set $E$ of real numbers is said to be increasing provided $f(x)\le f(x')$ whenever $x,x'\in E$ and $x\le x'$, and decreasing provided $f(x)\ge f(x')$ whenever $x,x'\in E$ and $x\le x'$.
+It is called monotone if it is either increasing or decreasing.
+\begin{namedthm*}{Theorem 1}
+    Let $f$ be a monotone function on the open interval $(a,b)$.
+    Then $f$ is continuous except possibly at a countable number of points in $(a,b)$.
+\end{namedthm*}
+\begin{proof}
+    Assume $f$ is increasing.\\
+    \\Case 1: $(a,b)$ is bounded and $f:[a,b]\to\mathbb{R}$:\\
+    \\For each $x_0\in(a,b)$, $f$ has a limit from the left and from the right:
+    \\Because $f$ is increasing, we can define
+    \begin{align*}
+        f(x_0^-)&=\lim_{x\to x_0^-}f(x)=\sup\{f(x)\mid a<x<x_0\},\\
+        f(x_0^+)&=\lim_{x\to x_0^+}f(x)=\sup\{f(x)\mid x_0<x<b\},
+    \end{align*}
+    and $f(x_0^-)\le f(x_0^+)$.
+    The function $f$ fails to be continuous at $x_0$ iff $f(x_0^-)<f(x_0^+)$, in which case we define the open ``jump'' interval $J(x_0)$ by
+    \[
+        J(x_0):=\{y\mid f(x_0^-)<y<f(x_0^+)\}.
+    \]
+    Each jump interval is contained in the bounded interval $[f(a),f(b)]$ and the collection of jump intervals is disjoint.
+    Therefore, for each natural number $n$, the number of jump intervals of length greater than $1/n$ is finite because the number is bounded by $\frac{f(b)-f(a)}{1/n}=n(f(b)-f(a))<\infty$.
+    Thus the set of points of discontinuity of $f$ is the union of a countable collection of finite sets and therefore is countable.\\
+    \\Case 2: $(a,b)$ is not bounded or $f(a^+)$ or $f(b^-)$ is not finite:\\
+    \\If $(a,b)$ is not bounded, express
+    \[
+        (a,b)=\bigcup_{n=1}^\infty\left(-n,n\right),
+    \]
+    where $\left(-n,n\right)$ is bounded and $f:\left[-n,n\right]\to\mathbb{R}$ for each $n$.\\
+    \\If $f(a^+)$ or $f(b^-)$ is not finite, express
+    \[
+        (a,b)=\bigcup_{n=1}^\infty\left(a+\frac{1}{n},b-\frac{1}{n}\right),
+    \]
+    where $\left(a+\frac{1}{n},b-\frac{1}{n}\right)$ is bounded and $f:\left[a+\frac{1}{n},b-\frac{1}{n}\right]\to\mathbb{R}$ for each $n$.\\
+    \\Then we can use Case 1 to see that each interval has a countable set of points of discontinuity.
+    \\Because $(a,b)$ is the union of an ascending sequence of such intervals, then $(a,b)$ also has a countable set of points of discontinuity.
+\end{proof}
+\begin{namedthm*}{Proposition 2}
+    Let $C$ be a countable subset of the open interval $(a,b)$.
+    Then there is an increasing function on $(a,b)$ that is continuous only at points in $(a,b)\setminus C$.
+\end{namedthm*}
+\begin{proof}
+    If $C$ is finite the proof is clear.
+    Assume $C$ is countably infinite.
+    Let $\{q_n\}_{n=1}^\infty$ be an enumeration of $C$.
+    Define the function $f$ on $(a,b)$ by setting
+    \[
+        f(x)=\sum_{\{n\mid q_n\le x\}}\frac{1}{2^n}\text{ for all }a<x<b.
+    \]
+    Then because $\{n\mid q_n\le x\}\subseteq\{n\mid n\in\mathbb{N}\}$, we have
+    \[
+        \sum_{\{n\mid q_n\le x\}}\frac{1}{2^n}\le \sum_{n=1}^\infty\frac{1}{2^n}=1.
+    \]
+    We see that the geometric series converges so that $f$ is properly defined.
+    Moreover,
+    \begin{align*}
+        &\text{if }a<u<v<b,\\
+        &\text{then }f(v)-f(u)=\sum_{\{n\mid q_n\le v\}}\frac{1}{2^n}-\sum_{\{n\mid q_n\le u\}}\frac{1}{2^n}=\sum_{\{n\mid u< q_n\le v\}}\frac{1}{2^n}\ge0,\tag{1}
+    \end{align*}
+    so that $f$ is increasing.\\
+    \\Let $x_0=q_k$ belong to $C$.
+    \\Then by (1),
+    \[
+        f(x_0)-f(x)=\sum_{\{n\mid x< q_n\le x_0=q_k\}}\frac{1}{2^n}\ge\frac{1}{2^k}\text{ for all }x<x_0.
+    \]
+    Therefore $f$ fails to be continuous at $x_0$:
+    \\For $\epsilon=\frac{1}{2^{k+1}}>0$, for all $\delta>0$, we have $|x_0-x|<\delta$ but $|f(x_0)-f(x)|\ge\frac{1}{2^k}>\frac{1}{2^{k+1}}$.\\
+    \\Let $x_0$ belong to $(a,b)\setminus C$.
+    \\Fix $\epsilon>0$.
+    \\Then there exists $k\in\mathbb{N}$ for which $\frac{1}{2^k}<\epsilon$, and there is an open interval $I$ containing $x_0$ for which $q_n$ does not belong to $I$ for $n\in\{1,\dots,k\}$.
+    \\Then from (1), for all $x\in I$,
+    \begin{align*}
+        |f(x_0)-f(x)|&=\sum_{\{n\mid x< q_n\le x_0,n>k\}}\frac{1}{2^n}\\
+        &\le\sum_{n={k+1}}^\infty\frac{1}{2^n}\\
+        &=\sum_{n=1}^\infty\frac{1}{2^n}-\sum_{n=1}^k\frac{1}{2^n}\\
+        &=1-\frac{1}{2}\sum_{n=1}^k\left(\frac{1}{2}\right)^{n-1}\\
+        &=1-\frac{1}{2}\frac{1-(1/2)^k}{1-(1/2)}\\
+        &=\frac{1}{2^k}\\
+        &<\epsilon.
+    \end{align*}
+    Therefore $f$ is continuous at $x_0$.
+\end{proof}
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{0}
-    \item Let $C$ be a countable subset of the nondegenerate closed, bounded interval $[a,b]$. Show that there is an increasing function on $[a,b]$ that is continuous only at points in $[a,b]\setminus C$.
-    \item Show that there is a strictly increasing function on $[0,1]$ that is continuous only at the irrational numbers in $[0,1]$.
+    \item Let $C$ be a countable subset of the nondegenerate closed, bounded interval $[a,b]$. Show that there is an increasing function on $[a,b]$ that is continuous only at points in $[a,b]\setminus C$.\\
+    \\Simply take the function $f$ from Proposition 2, where we have
+    \begin{align*}
+        \lim_{x\to a^+}f(x)&=\lim_{x\to a^+}\sum_{\{n\mid q_n\le a\}}\frac{1}{2^n}=0,\\
+        \lim_{x\to b^-}f(x)&=\lim_{x\to b^-}\sum_{\{n\mid q_n\le b\}}\frac{1}{2^n}=1.
+    \end{align*}
+    If the points $a$ or $b$ are not in $C$, we can extend $f$ to $[a,b]$ by defining
+    \begin{align*}
+        f(a)&:=0,\\
+        f(b)&:=1,
+    \end{align*}
+    which makes $f$ continuous at $a$ and $b$.
+    \\Else if $a$ or $b$ are in $C$, then we can extend $f$ to $[a,b]$ by defining
+    \begin{align*}
+        f(a)&:=y,\text{ for any real number }y\neq0,\\
+        f(b)&:=y,\text{ for any real number }y\neq1,
+    \end{align*}
+    which makes $f$ discontinuous at $a$ and $b$.
+    \item Show that there is a strictly increasing function on $[0,1]$ that is continuous only at the irrational numbers in $[0,1]$.\\
+    \\Enumerate $\mathbb{Q}\cap[0,1]$ by $\{q_n\}_{n=1}^\infty$, and define the function $f$ on $[0,1]$ by setting
+    \[
+        f(x)=\sum_{\{n\mid q_n\le x\}}\frac{1}{n^2}\text{ for }0<x\le1.
+    \]
+    In the case $x_0\in\mathbb{Q}\cap[0,1]$:
+    \\In the case $x_0\in\mathbb{Q}^c\cap[0,1]$:
     \item Let $f$ be a monotone function on a subset $E$ of $\mathbb{R}$. Show that $f$ is continuous except possibly at a countable number of points in $E$.
     \item Let $E$ be a subset of $\mathbb{R}$ and let $C$ be a countable subset of $E$. Is there a monotone function on $E$ that is continuous only at points in $E\setminus C$?
 \end{enumerate}

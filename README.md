@@ -1,6 +1,6 @@
 # Exercise Completion
 
-Total Exercise Completion: (212/1048)
+Total Exercise Completion: (213/1048)
 
 Part 1:
 - 1.1-1.6 Done
@@ -24,13 +24,13 @@ Part 3:
 - blue: in progress
 - green: untouched
 
-### PART I: Lebesgue Integration for Functions of a Single Real Variable (166/368)
+### PART I: Lebesgue Integration for Functions of a Single Real Variable (167/368)
 - Chapter 01: 59/59*
 - Chapter 02: 43/43*
 - Chapter 03: 31/31*
 - Chapter 04: 28/51*
 - Chapter 05: 0/17*
-- Chapter 06: 0/71*
+- Chapter 06: 1/71* (+1)
 - Chapter 07: 5/51
 - Chapter 08: 0/45
 
@@ -148,9 +148,13 @@ induced outer measure
 
 Problem 19: any measure that is induced by an outer measure is complete.
 
+premeasures
+
  #### Chapter 18: Integration Over General Measure Spaces
 
- measurable functions on measure space that is not complete
+measurable functions on measure space that is not complete
+
+Radon-Nikodym
 
  #### Chapter 19: General Lp spaces: Completeness, Duality, and Weak Convergence
 
