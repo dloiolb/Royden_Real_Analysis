@@ -30,7 +30,7 @@ Part 3:
 - Chapter 03: 31/31*
 - Chapter 04: 28/51*
 - Chapter 05: 0/17*
-- Chapter 06: 1/71* (+1)
+- Chapter 06: 1/71* 
 - Chapter 07: 5/51
 - Chapter 08: 0/45
 
