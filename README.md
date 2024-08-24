@@ -1,13 +1,13 @@
 # Exercise Completion
 
-Total Exercise Completion: (213/1048)
+Total Exercise Completion: (214/1048)
 
 Part 1:
 - 1.1-1.6 Done
 - 2.1-2.7 Done
 - 3.1-3.3 Done
 - 4.1-4.4~,4.5~
-- 6.1~ 
+- 6.1~,6.2~
 - 7.1-7.2~
 
 Part 2:
@@ -24,13 +24,13 @@ Part 3:
 - blue: in progress
 - green: untouched
 
-### PART I: Lebesgue Integration for Functions of a Single Real Variable (167/368)
+### PART I: Lebesgue Integration for Functions of a Single Real Variable (168/368)
 - Chapter 01: 59/59*
 - Chapter 02: 43/43*
 - Chapter 03: 31/31*
 - Chapter 04: 28/51*
 - Chapter 05: 0/17*
-- Chapter 06: 1/71* 
+- Chapter 06: 2/71* (+1) 
 - Chapter 07: 5/51
 - Chapter 08: 0/45
 
@@ -94,7 +94,7 @@ Littlewood's Three Principles:
 With the sequence of measurable functions $\{f_n\}\to f$ pointwise a.e. on E (with E finite measure?) what additional conditions do we need to imply that $\lim_{n\to\infty}[\int_Ef_n]=\int_E[\lim_{n\to\infty}f_n]=\int_Ef?$
 - Bounded Convergence Theorem: additional condition: $|f_n|\le M$ for all $n$ (proof uses Egoroff's Thm)
 
- #### Chapter 05: Lebesgue Integration: Further Topics
+ <!-- #### Chapter 05: Lebesgue Integration: Further Topics -->
 
  #### Chapter 06: Differentiation and Integration
 
@@ -104,26 +104,26 @@ Riesz-Fischer Theorem: $L^p$ is complete
 
 This chapter has Young, Hölder, Minkowski inequalities
 
- #### Chapter 08: The Lp Spaces: Duality and Weak Convergence
+ <!-- #### Chapter 08: The Lp Spaces: Duality and Weak Convergence -->
 
 
 ### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces
 
  #### Chapter 09: Metric Spaces: General Properties
 
- #### Chapter 10: Metric Spaces: Three Fundamental Theorems
+ <!-- #### Chapter 10: Metric Spaces: Three Fundamental Theorems
 
  #### Chapter 11: Topological Spaces: General Properties
 
- #### Chapter 12: Topological Spaces: Three Fundamental Theorems
+ #### Chapter 12: Topological Spaces: Three Fundamental Theorems -->
 
  #### Chapter 13: Continuous Linear Operators Between Banach Spaces
 
  Definition of Banach Space
 
- #### Chapter 14: Duality for Normed Linear Spaces
+ <!-- #### Chapter 14: Duality for Normed Linear Spaces
 
- #### Chapter 15: Compactness Regained: The Weak Topology
+ #### Chapter 15: Compactness Regained: The Weak Topology -->
 
  #### Chapter 16: Continuous Linear Operators on Hilbert Spaces
 
@@ -156,11 +156,11 @@ measurable functions on measure space that is not complete
 
 Radon-Nikodym
 
- #### Chapter 19: General Lp spaces: Completeness, Duality, and Weak Convergence
+ <!-- #### Chapter 19: General Lp spaces: Completeness, Duality, and Weak Convergence
 
  #### Chapter 20: The Construction of Particular Measures
 
  #### Chapter 21: Measure and Topology
 
- #### Chapter 22: Invariant Measures
+ #### Chapter 22: Invariant Measures -->
 

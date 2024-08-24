@@ -129,15 +129,40 @@ It is called monotone if it is either increasing or decreasing.
     \[
         f(x)=\sum_{\{n\mid q_n\le x\}}\frac{1}{n^2}\text{ for }0<x\le1.
     \]
-    In the case $x_0\in\mathbb{Q}\cap[0,1]$:
+    We can see that for any $0\le a< b\le1$, by density of the rationals there exists a rational number $q_k\in(a,b)$ so that we have
+    \[
+        f(b)-f(a)=\sum_{\{n\mid q_n\le b\}}\frac{1}{n^2}-\sum_{\{n\mid q_n\le a\}}\frac{1}{n^2}=\sum_{\{n\mid a<q_n\le b\}}\frac{1}{n^2}\ge\frac{1}{q_k^2}>0,
+    \]
+    and therefore $f$ is strictly increasing.\\
+    \\In the case $x_0\in\mathbb{Q}\cap[0,1]$, $x_0\neq0$:
+    \\Then there exists an index $k$ such that $x_0=q_k$.
+    \\We can write, for all $x\in[0,1]$ such that $x<x_0$,
+    \[
+        f(x_0)-f(x)=\sum_{\{n\mid x<q_n\le x_0=q_k\}}\frac{1}{n^2}\ge\frac{1}{q_k^2}.
+    \]
+    Then $f$ is discontinuous at $x_0$:
+    \\For $\epsilon=\frac{1}{2\cdot q_k^2}>0$, for all $\delta>0$, we have $|x_0-x|<\delta$ but $|f(x_0)-f(x)|\ge\frac{1}{q_k^2}>\frac{1}{2\cdot q_k^2}$.\\
     \\In the case $x_0\in\mathbb{Q}^c\cap[0,1]$:
-    \item Let $f$ be a monotone function on a subset $E$ of $\mathbb{R}$. Show that $f$ is continuous except possibly at a countable number of points in $E$.
-    \item Let $E$ be a subset of $\mathbb{R}$ and let $C$ be a countable subset of $E$. Is there a monotone function on $E$ that is continuous only at points in $E\setminus C$?
+    \\Fix $\epsilon>0$.
+    \\We have $\sum_{n=1}^\infty\frac{1}{n^2}=\frac{\pi^2}{6}$, so that the sequence of partial sums $\sum_{n=1}^k\frac{1}{n^2}$ converges.
+    \\That is, there exists $k\in\mathbb{N}$ for which $\sum_{n=1}^\infty\frac{1}{n^2}-\sum_{n=1}^k\frac{1}{n^2}=\sum_{n=k}^\infty\frac{1}{n^2}<\epsilon$, and there is an open interval $I$ containing $x_0$ for which $q_n$ does not belong to $I$ for $n\in\{1,\dots,k\}$.
+    \\Then for all $x\in I$,
+    \begin{align*}
+        |f(x_0)-f(x)|&=\sum_{\{n\mid x< q_n\le x_0,n>k\}}\frac{1}{n^2}
+        \le\sum_{n={k+1}}^\infty\frac{1}{n^2}
+        <\epsilon.
+    \end{align*}
+    Therefore $f$ is continuous at $x_0$.
+    \item Let $f$ be a monotone function on a subset $E$ of $\mathbb{R}$. Show that $f$ is continuous except possibly at a countable number of points in $E$.\\
+    \\a
+    \item Let $E$ be a subset of $\mathbb{R}$ and let $C$ be a countable subset of $E$. Is there a monotone function on $E$ that is continuous only at points in $E\setminus C$?\\
+    \\a
 \end{enumerate}
 
 % 6.2
-\authoredby{untouched}
+\authoredby{inprogress}
 \section{Differentiability of Monotone Functions: Lebesgue's Theorem}
+A closed, bounded interval $[c,d]$ is said to be nondegenerate provided $c<d$.
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -203,6 +228,7 @@ It is called monotone if it is either increasing or decreasing.
 \end{enumerate}
 
 % 6.3
+\authoredby{untouched}
 \section{Functions of Bounded Variation: Jordan's Theorem}
 \begin{center}
 	\textbf{PROBLEMS}
