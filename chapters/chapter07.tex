@@ -361,8 +361,108 @@
 \end{enumerate}
 
 % 7.3
-\authoredby{untouched}
+\authoredby{inprogress}
 \section{$L^p$ is Complete: The Riesz-Fischer Theorem}
 
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{22}
+	\item Provide an example of a Cauchy sequence of real numbers that is not rapidly Cauchy.
+	\item Let $X$ be a normed linear space.
+	Assume that $\{f_n\}\to f$ in $X$, $\{g_n\}\to g$ in $X$, and $\alpha$ and $\beta$ are real numbers.
+	Show that
+	\[
+		\{\alpha f_n+\beta g_n\}\to\alpha f+\beta g\text{ in }X.
+	\]
+	\item Assume that $E$ has finite measure and $1\le p_1< p_2\le\infty$.
+	Show that if $\{f_n\}\to f$ in $L^{p_2}(E)$, then $\{f_n\}\to f$ in $L^{p_1}(E)$.
+	\item (The $L^p$ Dominated Convergence Theorem) Let $\{f_n\}$ be a sequence of measurable functions that converges pointwise a.e. on $E$ to $f$.
+	For $1\le p<\infty$, suppose there is a function $g$ in $L^p(E)$ such that for all $n$, $|f_n|\le g$ a.e. on $E$.
+	Prove that $\{f_n\}\to f$ in $L^p(E)$.
+	\item For $E$ a measurable set and $1\le p<\infty$, assume $\{f_n\}\to f$ in $L^p(E)$.
+	Show that there is a subsequence $\{f_{n_k}\}$ and a function $g\in L^p(E)$ for which $|f_{n_k}|\le g$ a.e. on $E$ for all $k$.
+	\item Assume $E$ has finite measure and $1\le p<\infty$.
+	Suppose $\{f_n\}$ is a sequence of measurable functions that converges pointwise a.e. on $E$ to $f$.
+	For $1\le p<\infty$, show that $\{f_n\}\to f$ in $L^p(E)$ if there is a $\theta>0$ such that $\{f_n\}$ belongs to and is bounded as a subset of $L^{p+\theta}(E)$.
+	\item Consider the linear space of polynomials on $[a,b]$ normed by $\|\cdot\|_{\max}$ norm.
+	Is this normed linear space a Banach space?
+	\item Let $\{f_n\}$ be a sequence in $C[a,b]$ and $\sum_{k=1}^\infty a_k$ a convergent series of positive numbers such that
+	\[
+		\|f_{k+1}-f_k\|_{\max}\le a_k\text{ for all }k.
+	\]
+	Prove that
+	\[
+		|f_{n+k}(x)-f_n(x)|\le\|f_{n+k}-f_n\|_{\max}\le\sum_{j=n}^\infty a_j\text{ for all }k,n\text{ and all }x\in[a,b].
+	\]
+	Conclude that there is a function $f\in C[a,b]$ such that $\{f_n\}\to f$ uniformly on $[a,b]$.
+	\item Use the preceding problem to show that $C[a,b]$, normed by the maximum norm, is a Banach space.\\
+	\\Note: See Chapter 16 Problem 1 that $C[a,b]$ normed by the $L^2[a,b]$ norm is not a Banach space.
+	In particular, we had a sequence of continuous functions in $[a,b]$ that was Cauchy (w.r.t. the $L^2$ norm ) but converged ($L^2$) to a discontinuous function in $[a,b]$.
+	We again consider this sequence of functions $\{f_n\}$ and now show that it is no longer Cauchy (w.r.t. the maximum norm) and thus does not converge.
+	Recall the definition of each function:
+	\[
+        f_n(x):=
+        \begin{cases}
+            0 &x\le t\\
+            n(x-t)&t<x<t+\frac{1}{n}\\
+            1 &x\ge t+\frac{1}{n}
+        \end{cases}
+    \]
+	Fix $\epsilon=\frac{1}{2}$.
+	For any $N\in\mathbb{N}$, consider $n\ge N$ and $m=3n>n\ge N$. 
+	\\Then we have
+	\[
+        (f_m-f_n)(x)=
+        \begin{cases}
+            0-0 &x\le t\\
+            m(x-t)-n(x-t)&x\in(t,t+\frac{1}{m})\\
+            1-n(x-t)&x\in[t+\frac{1}{m},t+\frac{1}{n})\\
+            1-1 &x\ge t+\frac{1}{n}
+        \end{cases}
+	\]
+	then we can clearly see that the maximum occurs at $t+\frac{1}{m}$ so that 
+	\[
+		\|f_m-f_n\|_{\max}=\max_{x\in[a,b]}|(f_m-f_n)(x)|=1-n((t+\frac{1}{m})-t)=1-\frac{n}{3n}=\frac{2}{3}>\frac{1}{2},
+	\]
+	and the sequence is not Cauchy.\\
+	\\Back to the proof of Problem 31:
+	\\Consider the linear space $C[a,b]$ with the maximum norm. 
+	Suppose that $\{f_n\}$ is a Cauchy sequence of functions in this space.
+	By Proposition 5, there exists a rapidly Cauchy subsequence $\{f_{n_k}\}$.
+	That is, there is a convergent series of positive numbers $\sum_{k=1}^\infty\epsilon_k$ for which
+	\[
+		\|f_{n_{k+1}}-f_{n_k}\|_{\max}\le\epsilon_k^2\text{ for all }k.
+	\]
+	For $\varepsilon=1>0$, there exists $N\in\mathbb{N}$ such that $\sum_{k=p}^\infty\epsilon_k<1$ for all $p\ge N$.
+	Then because $0<\epsilon_k<1$ for each $n$, then $\epsilon_k^2<\epsilon_k$ so that  $\sum_{k=p}^\infty\epsilon_k^2<\sum_{k=p}^\infty\epsilon_k<\infty$, which implies that $\sum_{k=1}^\infty\epsilon_k^2$ is a convergent series of positive numbers.
+	\\Therefore by the previous Problem 30, there is a function $f\in C[a,b]$ such that $\{f_{n_k}\}\to f$ uniformly on $[a,b]$.
+	Then by Proposition 4, $\{f_n\}$ converges because it has a convergent subsequence $\{f_{n_k}\}$. 
+	\item Let $\{f_n\}$ be a sequence in $L^\infty(E)$ and $\sum_{k=1}^\infty a_k$ a convergent series of positive numbers such that
+	\[
+		\|f_{k+1}-f_k\|_{\infty}\le a_k\text{ for all }k.
+	\]
+	Prove that there is a subset $E_0$ of $E$ which has measure zero and 
+	\[
+		|f_{n+k}(x)-f_n(x)|\le\|f_{n+k}-f_n\|_{\infty}\le\sum_{j=n}^\infty a_j\text{ for all }k,n\text{ and all }x\in E\setminus E_0.
+	\]
+	Conclude that there is a function $f\in L^\infty(E)$ such that $\{f_n\}\to f$ uniformly on $E\setminus E_0$.
+	\item Use the preceding problem to show that $L^\infty(E)$ is a Banach space.\\
+	\\Consider the linear space $L^\infty(E)$ with the supremum norm. 
+	Suppose that $\{f_n\}$ is a Cauchy sequence of functions in this space.
+	By Proposition 5, there exists a rapidly Cauchy subsequence $\{f_{n_k}\}$.
+	That is, there is a convergent series of positive numbers $\sum_{k=1}^\infty\epsilon_k$ for which
+	\[
+		\|f_{n_{k+1}}-f_{n_k}\|_{\infty}\le\epsilon_k^2\text{ for all }k.
+	\]
+	Then $\sum_{k=1}^\infty\epsilon_k$ converges implies that $\sum_{k=1}^\infty\epsilon_k^2$ also converges.
+	\\Therefore by the previous Problem 32, there is a function $f\in L^\infty(E)$ and a set $E_0\subseteq E$ of measure zero such that $\{f_{n_k}\}\to f$ uniformly on $E\setminus E_0$.
+	Then by Proposition 4, $\{f_n\}$ converges because it has a convergent subsequence $\{f_{n_k}\}$. 
+	\item Prove that for $1\le p\le\infty$, $\ell^p$ is a Banach space.
+	\item Show that the space $c$ of all convergent sequences of real numbers and the space $c_0$ of all sequences that converge to zero are Banach spaces w.r.t. the $\ell^\infty$ norm. 
+\end{enumerate}
+
 % 7.4
+\authoredby{untouched}
 \section{Approximation and Separability}

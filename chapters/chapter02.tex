@@ -830,7 +830,7 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\]
 	Then $m^{**}(A)<m^*(A)+\epsilon$ implies $m^{**}(A)\le m^*(A)$.\\
 	Therefore $m^*(A)= m^{**}(A)$.
-	\item For any set $A$, define $m^{***}(A)\in[0,\infty]$ by
+	\item For any set $A$, def=ine $m^{***}(A)\in[0,\infty]$ by
 	\[
 		m^{***}(A)=\sup\{m^*(F)\ |\ F\subseteq A, F\text{ closed.}\}	
 	\]
@@ -918,8 +918,8 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\end{proof}
 	Let $\{A_k\}_{k=1}^\infty$ be a countable collection of sets that belong to a $\sigma$-algebra $\mathcal{A}$. Since $\mathcal{A}$ is closed w.r.t. countable unions and intersections, the following two sets belong to $\mathcal{A}$:
 	\begin{align*}
-		\lim\sup\{A_k\}_{k=1}^\infty&=\bigcap_{n=1}^\infty[\bigcup_{k=1}^\infty A_k]\\
-		\lim\inf\{A_k\}_{k=1}^\infty&=\bigcup_{n=1}^\infty[\bigcap_{k=1}^\infty A_k]
+		\lim\sup\{A_k\}_{k=1}^\infty&=\bigcap_{n=1}^\infty[\bigcup_{k=n}^\infty A_k]\\
+		\lim\inf\{A_k\}_{k=1}^\infty&=\bigcup_{n=1}^\infty[\bigcap_{k=n}^\infty A_k]
 	\end{align*}
 	The set $\lim\sup\{A_k\}_{k=1}^\infty$ is the set of points that belong to $A_n$ for countably infinitely many indices $n$ while the set $\lim\inf\{A_k\}_{k=1}^\infty$ is the set of points that belong to $A_n$ except for at most finitely many indices $n$.
 \end{flushleft}

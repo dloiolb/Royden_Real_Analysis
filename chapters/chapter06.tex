@@ -154,9 +154,51 @@ It is called monotone if it is either increasing or decreasing.
     \end{align*}
     Therefore $f$ is continuous at $x_0$.
     \item Let $f$ be a monotone function on a subset $E$ of $\mathbb{R}$. Show that $f$ is continuous except possibly at a countable number of points in $E$.\\
-    \\a
+    \\By the $\sigma$-finite property of the Lebesgue measure on the reals, we can write $E$ as a disjoint union of sets of finite measure:
+    \[
+        a
+    \]
     \item Let $E$ be a subset of $\mathbb{R}$ and let $C$ be a countable subset of $E$. Is there a monotone function on $E$ that is continuous only at points in $E\setminus C$?\\
-    \\a
+    \\(generalization of Proposition 2)
+    \\If $C$ is finite the proof is clear.
+    Assume $C$ is countably infinite.
+    Let $\{q_n\}_{n=1}^\infty$ be an enumeration of $C$.
+    Define the function $f$ on $E$ by setting
+    \[
+        f(x)=\sum_{\{n\mid q_n\le x\}}\frac{1}{2^n}\text{ for all }x\in E.
+    \]
+    Then because $\{n\mid q_n\le x\}\subseteq\{n\mid n\in\mathbb{N}\}$, we have
+    \[
+        \sum_{\{n\mid q_n\le x\}}\frac{1}{2^n}\le \sum_{n=1}^\infty\frac{1}{2^n}=1.
+    \]
+    We see that the geometric series converges so that $f$ is properly defined.
+    Moreover,
+    \begin{align*}
+        &\text{if }u,v\in E\text{ with }u<v,\\
+        &\text{then }f(v)-f(u)=\sum_{\{n\mid q_n\le v\}}\frac{1}{2^n}-\sum_{\{n\mid q_n\le u\}}\frac{1}{2^n}=\sum_{\{n\mid u< q_n\le v\}}\frac{1}{2^n}\ge0,\tag{1}
+    \end{align*}
+    so that $f$ is increasing.\\
+    \\Let $x_0=q_k$ belong to $C$.
+    \\Then by (1),
+    \[
+        f(x_0)-f(x)=\sum_{\{n\mid x< q_n\le x_0=q_k\}}\frac{1}{2^n}\ge\frac{1}{2^k}\text{ for all }x<x_0.
+    \]
+    Therefore $f$ fails to be continuous at $x_0$:
+    \\For $\epsilon=\frac{1}{2^{k+1}}>0$, for all $\delta>0$, we have $|x_0-x|<\delta$ but $|f(x_0)-f(x)|\ge\frac{1}{2^k}>\frac{1}{2^{k+1}}$.\\
+    \\Let $x_0$ belong to $(a,b)\setminus C$.
+    \\Fix $\epsilon>0$.
+    \\Then there exists $k\in\mathbb{N}$ for which $\frac{1}{2^k}<\epsilon$, and there is an open interval of real numbers $I$ containing $x_0$ for which $q_n$ does not belong to $I$ for $n\in\{1,\dots,k\}$.
+    \\Then from (1), for all $x\in I\cap E$,
+    \begin{align*}
+        |f(x_0)-f(x)|&=\sum_{\{n\mid x< q_n\le x_0,n>k\}}\frac{1}{2^n}\\
+        &\le\sum_{n={k+1}}^\infty\frac{1}{2^n}\\
+        &=\sum_{n=1}^\infty\frac{1}{2^n}-\sum_{n=1}^k\frac{1}{2^n}\\
+        &=1-\frac{1}{2}\sum_{n=1}^k\left(\frac{1}{2}\right)^{n-1}\\
+        &=1-\frac{1}{2}\frac{1-(1/2)^k}{1-(1/2)}\\
+        &=\frac{1}{2^k}\\
+        &<\epsilon.
+    \end{align*}
+    Therefore $f$ is continuous at $x_0$.
 \end{enumerate}
 
 % 6.2
