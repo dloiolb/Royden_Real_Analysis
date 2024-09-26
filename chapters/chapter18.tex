@@ -134,22 +134,13 @@ In the following problems $(X,\mathcal{M},\mu)$ is a reference measure space and
         \\Fix any real number $c$.
         \\(1) Let $y\in\{x\in X\mid f(x)>c\}$.
         Then $f(y)>c$.
-        \\By definition of supremum, there exists an index $k$ such that 
-        \[
-            f(y)\ge f_k(y)>c,
-        \]
-        and therefore $y\in\{x\in X\mid f_k(x)>c\}$ for some $k$, which implies
+        By definition of supremum, there exists an index $k$ such that $f(y)\ge f_k(y)>c$, and therefore $y\in\{x\in X\mid f_k(x)>c\}$ for some $k$, which implies
         \[
             \{x\in X\mid f(x)>c\}\subseteq\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)>c\}.\tag{1}
         \]
         (2) Let $y'\in\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)>c\}$.
-        \\Then there exists an index $k$ such that $y'\in\{x\in X\mid f_k(x)>c\}$.
-        \\By definition of supremum, we have 
-        \[
-            f(y')\ge f_k(y')>c,
-        \]
-        and therefore $y'\in\{x\in X\mid f(x)>c\}$, which implies
-        
+        Then there exists an index $k$ such that $y'\in\{x\in X\mid f_k(x)>c\}$.
+        By definition of supremum, we have $f(y')\ge f_k(y')>c$, and therefore $y'\in\{x\in X\mid f(x)>c\}$, which implies
         \[
             \{x\in X\mid f(x)>c\}\supseteq\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)>c\}\tag{2}
         \]
@@ -163,21 +154,13 @@ In the following problems $(X,\mathcal{M},\mu)$ is a reference measure space and
         \\Fix any real number $c$.
         \\(1) Let $y\in\{x\in X\mid f(x)\ge c\}$.
         Then $f(y)\ge c$.
-        \\By definition of infimum, for all indices $n$, we have that
-        \[
-            c\le f(y)\le f_n(y),
-        \]
-        and therefore $y\in\{x\in X\mid f_n(x)\ge c\}$ for all $n$, which implies
+        By definition of infimum, for all indices $n$, we have that $c\le f(y)\le f_n(y)$, and therefore $y\in\{x\in X\mid f_n(x)\ge c\}$ for all $n$, which implies
         \[
             \{x\in X\mid f(x)\ge c\}\subseteq\bigcap_{n=1}^\infty\{x\in X\mid f_n(x)\ge c\}.\tag{1}
         \]
         (2) Let $y'\in\bigcap_{n=1}^\infty\{x\in X\mid f_n(x)\ge c\}$.
-        \\Then for all indices $n$, we have $y'\in\{x\in X\mid f_n(x)\ge c\}$ so that $c$ is a lower bound to the set $\{f_n(y')\}_{n\in\mathbb{N}}$.
-        \\Then by definition of infimum we have 
-        \[
-            c\le f(y'),
-        \]
-        and therefore $y'\in\{x\in X\mid f(x)\ge c\}$, which implies
+        Then for all indices $n$, we have $y'\in\{x\in X\mid f_n(x)\ge c\}$ so that $c$ is a lower bound to the set $\{f_n(y')\}_{n\in\mathbb{N}}$.
+        Then by definition of infimum we have $f(y')\ge c$, and therefore $y'\in\{x\in X\mid f(x)\ge c\}$, which implies
         \[
             \{x\in X\mid f(x)\ge c\}\supseteq\bigcap_{n=1}^\infty\{x\in X\mid f_n(x)\ge c\}\tag{2}
         \]
@@ -213,7 +196,7 @@ In the following problems $(X,\mathcal{M},\mu)$ is a reference measure space and
         %     \{x\in X\mid f(x)<c\}=\bigcup_{n=1}^\infty\{x\in X\mid f_n(x)<c\},
         % \]
         % which is measurable because it is the countable union of measurable sets.\\
-        \item $f(x):=\limsup_n\{f_n(x)\}=\lim_{n\to\infty}\sup_{k\ge n}\{f_n(x)\}=\inf_{n\in\mathbb{N}}\sup_{k\ge n}\{f_n(x)\}$
+        \item $f(x):=\limsup_n\{f_n(x)\}=\lim_{n\to\infty}\sup_{k\ge n}\{f_k(x)\}=\inf_{n\in\mathbb{N}}\sup_{k\ge n}\{f_k(x)\}$
         \\Fix any real number $c$.
         \\Pulling from (i), with a small modification, we have that the function $g_n(x):=\sup_{k\ge n}\{f_k(x)\}$ is measurable for each $n\in\mathbb{N}$.
         \\That is, the set
@@ -227,7 +210,7 @@ In the following problems $(X,\mathcal{M},\mu)$ is a reference measure space and
         \]
         is measurable because it is a countable intersection of measurable sets.
         % \\(The first set equality can be proved using the same process as (ii).)
-        \item $f(x):=\liminf_n\{f_n(x)\}=\lim_{n\to\infty}\inf_{k\ge n}\{f_n(x)\}=\sup_{n\in\mathbb{N}}\inf_{k\ge n}\{f_n(x)\}$
+        \item $f(x):=\liminf_n\{f_n(x)\}=\lim_{n\to\infty}\inf_{k\ge n}\{f_k(x)\}=\sup_{n\in\mathbb{N}}\inf_{k\ge n}\{f_k(x)\}$
         \\Fix any real number $c$.
         \\Pulling from (ii), with modification, we have that the function $g_n(x):=\inf_{k\ge n}\{f_k(x)\}$ is measurable for each $n\in\mathbb{N}$.
         \\That is, the set

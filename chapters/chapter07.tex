@@ -209,7 +209,7 @@
 	\]
 	(This is a triangle-shaped function that reaches its peak $n$ at $x=\frac{1}{n}$.)\\
 	Now, for any $n$, we have $\|f_n\|_1 = \int_0^1|f_n|=1$, and $\|f_n\|_{\max} = n$.\\
-	Then $\| f \|_{\max}=n > c =  c \| f \|_1$.\\
+	Then $\| f_n \|_{\max}=n > c =  c \| f_n\|_1$.\\
 	\\
 	Finally, we can see that for any $f$ in $C[a,b]$, by monotonicity of the integral, 
 	\begin{align*}
@@ -363,6 +363,131 @@
 % 7.3
 \authoredby{inprogress}
 \section{$L^p$ is Complete: The Riesz-Fischer Theorem}
+\begin{namedthm*}{Definition}
+	A sequence $\{f_n\}$ in a linear space $X$ that is normed by $\|\cdot\|$ is said to \textbf{converge to $f$ in $X$} provided
+	\[
+		\lim_{n\to\infty}\|f-f_n\|=0.
+	\]
+	We write 
+	\[
+		\{f_n\}\to f\text{ in }X\text{ or }\lim_{n\to\infty}f_n=f\text{ in }X
+	\]
+	to mean that each $f_n$ and $f$ belong to $X$ and $\lim_{n\to\infty}\|f-f_n\|=0$.
+\end{namedthm*}
+For a sequence $\{f_n\}$ and a function $f$ in $C[a,b]$, $\{f_n\}\to f$ in $C[a,b]$, normed by the maximum norm, iff $\{f_n\}\to f$ uniformly on $[a,b]$.
+
+For a sequence $\{f_n\}$ and a function $f$ in $L^\infty(E)$, $\{f_n\}\to f$ in $L^\infty(E)$ iff $\{f_n\}\to f$ uniformly on the complement of a set of measure zero.
+
+For a sequence $\{f_n\}$ and a function $f$ in $L^p(E)$, $1\le p<\infty$, $\{f_n\}\to f$ in $L^p(E)$ iff $\lim_{n\to\infty}\int_E|f_n-f|^p=0.$
+\begin{namedthm*}{Definition}
+	A sequence $\{f_n\}$ in a linear space $X$ that is normed by $\|\cdot\|$ is said to be \textbf{Cauchy} in $X$ provided for each $\epsilon>0$, there is a natural number $N$ such that
+	\[
+		\|f_n-f_m\|<\epsilon\text{ for all }m,n\ge N.
+	\]
+	A normed linear space $X$ is said to be \textbf{complete} provided every Cauchy sequence in $X$ converges to a function in $X$.
+	A complete normed linear space is called a \textbf{Banach space}.
+\end{namedthm*}
+\begin{namedthm*}{Proposition 4}
+	Let $X$ be a normed linear space.
+	Then every convergent sequence in $X$ is Cauchy.
+	Moreover, a Cauchy sequence in $X$ converges if it has a convergent subsequence.
+\end{namedthm*}
+\begin{proof}
+	Let $\{f_n\}\to f$ in $X$.
+	By the triangle inequality of the norm,
+	\[
+		\|f_n-f_m\|=\|f_n-f+f-f_m\|\le\|f_n-f\|+\|f-f_m\|\text{ for all }m,n.
+	\]
+	Therefore $\{f_n\}$ is Cauchy.
+
+	Now let $\{f_n\}$ be a Cauchy sequence in $X$ that has a subsequence $\{f_{n_k}\}$ which converges in $X$ to $f$.
+	Let $\epsilon>0$.
+	Since $\{f_n\}$ is Cauchy, there exists an $N\in\mathbb{N}$ such that $\|f_n-f_m\|<\epsilon/2$ for all $n,m\ge N$.
+	Then, since $\{f_{n_k}\}$ converges to $f$ we can choose $k$ such that $n_k>N$ so that $\|f_{n_k}-f\|<\epsilon/2$.
+	Therefore we have
+	\[
+		\|f_n-f\|=\|f_n-f_{n_k}+f_{n_k}-f\|\le\|f_n-f_{n_k}\|+\|f_{n_k}-f\|<\epsilon/2+\epsilon/2\text{ for }n\ge N.
+	\]
+	Therefore $\{f_n\}\to f$ in $X$.
+\end{proof}
+\begin{namedthm*}{Definition}
+	Let $X$ be a linear space normed by $\|\cdot\|$.
+	A sequence $\{f_n\}$ in $X$ is said to be \textbf{rapidly Cauchy} provided there is a convergent series of positive numbers $\sum_{k=1}^\infty\epsilon_k$ for which 
+	\[
+		\|f_{k+1}-f_k\|\le\epsilon_k^2\text{ for all }k.
+	\]
+\end{namedthm*}
+\begin{namedthm*}{Proposition 5}
+	Let $X$ be a normed linear space.
+	Then every rapidly Cauchy sequence in $X$ is Cauchy.
+	Furthermore, every Cauchy sequence has a rapidly Cauchy subsequence.
+\end{namedthm*}
+\begin{proof}
+	Let $\{f_n\}$ be a rapidly Cauchy sequence in $X$ and $\sum_{k=1}^\infty\epsilon_k$ a convergent series of positive numbers for which 
+	\[
+		\|f_{k+1}-f_k\|\le\epsilon_k^2\text{ for all }k.
+	\]
+	We have by telescoping, 
+	\[
+		f_{n+k}-f_n=\sum_{j=n}^{n+k-1}[f_{j+1}-f_j]\text{ for all }n,k,
+	\]
+	and therefore by subadditivity of the norm,
+	\[
+		\|f_{n+k}-f_n\|=\sum_{j=n}^{n+k-1}\|f_{j+1}-f_j\|\le\sum_{j=n}^{n+k-1}\epsilon_j^2\le\sum_{j=n}^\infty\epsilon_j^2\text{ for all }n,k.
+	\]
+	For $\varepsilon_1=1>0$, there exists $N_1\in\mathbb{N}$ such that $\sum_{j=p}^\infty\epsilon_j<1$ for all $p\ge N_1$.
+	This implies $0<\epsilon_j<1$ for each $j\ge p$, which gives us $\epsilon_j^2<\epsilon_j$ so that $\sum_{j=p}^\infty\epsilon_j^2<\sum_{j=p}^\infty\epsilon_j<\infty$, which implies that $\sum_{j=1}^\infty\epsilon_j^2$ is a convergent series of positive numbers.
+	
+	Fix $\varepsilon_2>0$.
+	Then because $\sum_{j=1}^\infty\epsilon_j^2$ is convergent, there exists an index $N_2\in\mathbb{N}$ such that for all $n\ge N_2$, then 
+	\[
+		\|f_{n+k}-f_n\|\le\sum_{j=n}^\infty\epsilon_j^2=\sum_{j=1}^\infty\epsilon_j^2-\sum_{j=1}^{n-1}\epsilon_j^2<\varepsilon_2\text{ for all }k.
+	\]
+	Therefore $\{f_n\}$ is Cauchy.
+
+	Now assume that $\{f_n\}$ is a Cauchy sequence in $X$.
+	\\\underline{Base case: $P(1)$}:
+	\\Because $\{f_n\}$ is Cauchy, there exists an index $N$ such that for $n_1,n_2\ge N$ with $n_1<n_2$, then 
+	\[
+		\|f_{n_2}-f_{n_1}\|\le\frac{1}{2^3}<\frac{1}{2^1},
+	\]
+	and for all $n\ge n_{2}$, we have
+	\[
+		\|f_{n_2}-f_n\|<\frac{1}{2^3}.
+	\]
+	\underline{Inductive hypothesis: Suppose $P(k)$}: 
+	\\suppose that we already have $n_1,\dots,n_k$ such that
+	\[
+		\|f_{n_{k}}-f_{n_{k-1}}\|<1/2^{k-1},
+	\]
+	and for all $n\ge n_{k}$, we have
+	\[
+		\|f_{n_{k}}-f_{n}\|<1/2^{k+1}.\tag{1}
+	\]
+	\underline{$P(k+1)$}:
+	\\Because $\{f_n\}$ is Cauchy, there exists an index $N$ such that for $m,n\ge N$, then 
+	\[
+		\|f_m-f_n\|<1/2^{k+2}.\tag{2}
+	\]
+	Then choose $n_{k+1}>\max\{N,n_k\}$ so that by (2) and (1), for all $n\ge n_{k+1}$ we have
+	\[
+		\|f_{n_{k+1}}-f_{n_{k}}\|\le\|f_{n_{k+1}}-f_n\|+\|f_n-f_{n_{k}}\|\le\frac{1}{2^{k+2}}+\frac{1}{2^{k+1}}=(\frac{1}{2^2}+\frac{1}{2})\cdot\frac{1}{2^{k}}\le\frac{1}{2^{k}},
+	\]
+	and because $n_{k+1}\ge N$, for all $n\ge n_{k+1}$ we have
+	\[
+		\|f_{n_{k+1}}-f_{n}\|<1/2^{k+2}.
+	\]
+	Therefore we have shown that we can inductively choose a strictly increasing sequence $\{n_k\}$ such that 
+	\[
+		\|f_{n_{k+1}}-f_{n_k}\|\le\frac{1}{2^k}\text{ for all }k.
+	\]
+	and $\sqrt{2^k}=(2^k)^{1/2}=\sqrt{2}^k$ for each $k$ tells us that $\sum_{k=1}^\infty\frac{1}{\sqrt{2^k}}=\sum_{k=1}^\infty(\frac{1}{\sqrt{2}})^k$, which converges because $\left|\frac{1}{\sqrt{2}}\right|<1$.
+	Therefore $\{f_{n_k}\}$ is rapidly Cauchy.
+\end{proof}
+\begin{namedthm*}{Theorem 6}
+	Let $E$ be a measurable set and $1\le p\le\infty$.
+	Then every rapidly Cauchy sequence in $L^p(E)$ converges both w.r.t. the $L^p(E)$ norm and pointwise a.e. on $E$ to a function in $L^p(E)$.
+\end{namedthm*}
 
 \begin{center}
 	\textbf{PROBLEMS}
@@ -435,8 +560,7 @@
 	\[
 		\|f_{n_{k+1}}-f_{n_k}\|_{\max}\le\epsilon_k^2\text{ for all }k.
 	\]
-	For $\varepsilon=1>0$, there exists $N\in\mathbb{N}$ such that $\sum_{k=p}^\infty\epsilon_k<1$ for all $p\ge N$.
-	Then because $0<\epsilon_k<1$ for each $n$, then $\epsilon_k^2<\epsilon_k$ so that  $\sum_{k=p}^\infty\epsilon_k^2<\sum_{k=p}^\infty\epsilon_k<\infty$, which implies that $\sum_{k=1}^\infty\epsilon_k^2$ is a convergent series of positive numbers.
+	Then $\sum_{k=1}^\infty\epsilon_k$ converges implies that $\sum_{k=1}^\infty\epsilon_k^2$ also converges.
 	\\Therefore by the previous Problem 30, there is a function $f\in C[a,b]$ such that $\{f_{n_k}\}\to f$ uniformly on $[a,b]$.
 	Then by Proposition 4, $\{f_n\}$ converges because it has a convergent subsequence $\{f_{n_k}\}$. 
 	\item Let $\{f_n\}$ be a sequence in $L^\infty(E)$ and $\sum_{k=1}^\infty a_k$ a convergent series of positive numbers such that

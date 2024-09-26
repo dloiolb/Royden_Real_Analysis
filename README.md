@@ -30,8 +30,8 @@ Part 3:
 - Chapter 03: 31/31*
 - Chapter 04: 28/51*
 - Chapter 05: 0/17*
-- Chapter 06: 3/71* (+1)
-- Chapter 07: 7/51 (+2)
+- Chapter 06: 3/71*
+- Chapter 07: 7/51
 - Chapter 08: 0/45
 
 ### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (18/408)
