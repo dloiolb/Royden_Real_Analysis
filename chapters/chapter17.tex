@@ -1110,7 +1110,7 @@ Observe that if $\mathcal{S}$ is the collection of open intervals of real number
 	Is every set in $\mathcal{S}$ measurable with respect to the outer measure induced by $\mu$?\\
 	\\Let $\mathcal{S}=2^{[1,2]}$, the set of all subsets of $[1,2]$.
 	\\Define $\mu:\mathcal{S}\to[0,\infty)$ as follows: $\mu(\emptyset):=0$, $\mu([1,2]):=3$, and $\mu(E):=2,E\in\mathcal{S}\setminus\{\emptyset,[1,2]\}$. 
-	\\Then we can define the extension $\mu^*$ to be
+	\\Then we can define the extension $\mu^*$ to $2^{\mathbb{R}}$ to be
 	\[
 		\mu^*(E)=
 		\begin{cases}
@@ -1122,15 +1122,21 @@ Observe that if $\mathcal{S}$ is the collection of open intervals of real number
 	\]
 	We can see that countable monotonicity holds:
 	\[
-		\mu^*(E)\le\sum_{k=1}^\infty\mu^*(E_k),
+		\mu^*(E)\le\sum_{k=1}^\infty\mu^*(E_k)\quad\text{for any }E\subset\mathbb{R}
 	\]
 	and so $\mu^*$ is an outer measure.
-	\\Consider $E=[1,1.5]\in\mathcal{S}$.
+	\\However, the original set function $\mu$ is countably monotone but it is not finitely additive:
+	\[
+		\mu([1,2])=3\neq 4=\mu([1,1.5])+\mu((1.5,2])
+	\]
+	To see the effect on the outer measure, consider $E=[1,1.5]\in\mathcal{S}$.
 	\\Then $[1,2]\cap E=[1,1.5]\subset[1,2]$ and $[1,2]\cap E^c=(1.5,2]\subset[1,2]$ so that for $A=[1,2]$,
 	\[
 		\mu^*([1,2])=3\neq2+2=\mu^*([1,2]\cap E)+\mu^*([1,2]\cap E^c),
 	\]
 	which implies that $E$ is not measurable.
+	That is, because $\mu$ is not finitely additive, then every set in $\mathcal{S}$ is not measurable w.r.t the induced outer measure $\mu^*$.
+	Therefore $\overline{\mu}$ is not an extension of $\mu$.
 \end{enumerate}
 
 % 17.5
@@ -1150,6 +1156,13 @@ Therefore we want to know what additional properties of $\mathcal{S}$ and $\mu$ 
 \begin{namedthm*}{Definition}
 	Let $\mathcal{S}$ be a collection of subsets of a set $X$ and $\mu:\mathcal{S}\to[0,\infty]$ be a set function.
 	Then $\mu$ is called a \textbf{premeasure} provided $\mu$ is both finitely additive and countably monotone and, if $\emptyset$ belongs to $\mathcal{S}$, then $\mu(\emptyset)=0$.
+\end{namedthm*}
+Being a premeasure is a necessary but not sufficient condition for the Carath\'eodory measure induced by $\mu$ to be an extension of $\mu$. 
+(See problems 25, 26).
+However,  if we impose on $\mathcal{S}$ finer set-theoretic structure, this necessary condition is also sufficient.
+\begin{namedthm*}{Definition}
+	A collection $\mathcal{S}$ of subsets of $X$ is said to be closed with respect to the formulation of relative complements provided whenever $A$ and $B$ belong to $\mathcal{S}$, the relative complement $A\sim B$ belongs to $\mathcal{S}$.
+	The collection $\mathcal{S}$ is said to be closed with respect to the formulation of finite intersections provided whenever $A$ and $B$ belong to $\mathcal{S}$, the intersection $A\cap B$ belongs to $\mathcal{S}$.
 \end{namedthm*}
 \begin{center}
 	\textbf{PROBLEMS}

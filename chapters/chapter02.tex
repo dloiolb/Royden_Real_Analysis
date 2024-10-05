@@ -372,11 +372,11 @@ Then because $\emptyset\subseteq A$ for any set $A$, we have $0=m^*(\emptyset)\l
 	\end{namedthm*}
 	\begin{proof}
 		Consider $S=\{\mathcal{F}\ |\ \mathcal{C}\subseteq\mathcal{F},\mathcal{F}\text{ is a }\sigma\text{-algebra of }X\}$.\\
-		Now, $S$ is nonempty because $\mathcal{C}\in\mathcal{P}(X)$ and by Lemma 1, $\mathcal{P}(X)$ is a $\sigma$-algebra of $X$; therefore $\mathcal{P}(X)\in S$.\\
+		Now, $S$ is nonempty because $\mathcal{C}\subseteq\mathcal{P}(X)$ and by Lemma 1, $\mathcal{P}(X)$ is a $\sigma$-algebra of $X$; therefore $\mathcal{P}(X)\in S$.\\
 		Consider $\bigcap S$, the intersection of all the elements of $S$.\\
 		\begin{enumerate}
 			\item By Lemma 2, $\bigcap S$ is a $\sigma$-algebra,
-			\item $\mathcal{C}\in\mathcal{F},\forall\mathcal{F}\in S\implies\mathcal{C}\in\bigcap S$, so $\bigcap S$ is a $\sigma$-algebra that contains $\mathcal{C}$,
+			\item $\mathcal{C}\subseteq\mathcal{F},\forall\mathcal{F}\in S\implies\mathcal{C}\subseteq\bigcap S$, so $\bigcap S$ is a $\sigma$-algebra that contains $\mathcal{C}$,
 			\item  $\bigcap S\subseteq \mathcal{F}$ for any $\mathcal{F}\in S$ by def of intersection, so $\bigcap S$ is the smallest $\sigma$-algebra containing $\mathcal{C}$.
 		\end{enumerate}
 	\end{proof}

@@ -1,6 +1,6 @@
 # Exercise Completion
 
-Total Exercise Completion: (217/1048)
+Total Exercise Completion: (223/1048)
 
 Part 1:
 - 1.1-1.6 Done
@@ -12,7 +12,8 @@ Part 1:
 
 Part 2:
 - 9.1~
-- 13.1~,13.2~,13.4~
+- 13.1-13.2~,13.3~,13.4~
+- 14.1~
 - 16.1~
 
 Part 3:
@@ -34,12 +35,12 @@ Part 3:
 - Chapter 07: 7/51
 - Chapter 08: 0/45
 
-### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (18/408)
+### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (24/408)
 - Chapter 09: 7/78
 - Chapter 10: 0/44
 - Chapter 11: 0/56
 - Chapter 12: 0/36
-- Chapter 13: 4/40*
+- Chapter 13: 10/40* (+6)
 - Chapter 14: 0/70
 - Chapter 15: 0/18*
 - Chapter 16: 7/66*
@@ -113,15 +114,31 @@ This chapter has Young, Hölder, Minkowski inequalities
 
  <!-- #### Chapter 10: Metric Spaces: Three Fundamental Theorems
 
- #### Chapter 11: Topological Spaces: General Properties
+ <!-- #### Chapter 11: Topological Spaces: General Properties -->
 
- #### Chapter 12: Topological Spaces: Three Fundamental Theorems -->
+ #### Chapter 12: Topological Spaces: Three Fundamental Theorems
+
+ 12.3 Stone-Weierstrass Approximation Theorem
 
  #### Chapter 13: Continuous Linear Operators Between Banach Spaces
 
  Definition of Banach Space
 
- <!-- #### Chapter 14: Duality for Normed Linear Spaces
+ operator norms
+
+ 13.2 - Theorem 1: Linear operator: continuous iff bounded
+
+ any two norms on a finite dimensional linear space are equivalent
+
+ linear operators from finite dimensional linear spaces are continuous
+
+ #### Chapter 14: Duality for Normed Linear Spaces
+
+ Dual space of a linear space
+
+ Hahn-Banach
+
+ reflexive
 
  #### Chapter 15: Compactness Regained: The Weak Topology -->
 

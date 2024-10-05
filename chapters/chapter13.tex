@@ -1,11 +1,29 @@
 % Chapter 13
-\authoredby{inprogress}
+\authoredby{finished}
 \chapter{Continuous Linear Operators Between Banach Spaces}
 
 % 13.1
-\authoredby{inprogress}
+\authoredby{finished}
 \section{Normed Linear Spaces}
 
+\begin{namedthm*}{Definition}
+    Two norms $\|\cdot\|_1$ and $\|\cdot\|_2$ on a linear space $X$ are said to be \textbf{equivalent} provided there are constants $c_1,c_2\ge0$ for which
+    \[
+        c_1\|x\|_1\le\|x\|_2\le c_2\|x\|_1\quad\text{for all }x\in X.
+    \]
+    We immediately see that two norms are equivalent iff their induced metrics are equivalent.
+\end{namedthm*}
+
+For any two nonempty subspaces $Y,Z$ of $X$, then the sum $Y+Z=\{y+z\mid y\in Y,z\in Z\}$ is also a subspace of $X$.
+In the case $Y\cap Z=\{0\}$, we denote $Y+Z$ by $Y\oplus Z$ and call this subspace of $X$ the \textbf{direct sum} of $Y$ and $Z$.
+
+Almost all the important theorems for metric space require completeness:
+\begin{namedthm*}{Definition}
+    A normed linear space is called a \textbf{Banach space} provided it is complete as a metric space with the metric induced by the norm.
+\end{namedthm*}
+The Riesz-Fischer Theorem tells us that for $E$ a measurable set of real numbers and $1\le p\le\infty$, $L^p(E)$ is a Banach space.
+Also, for $X$ a compact topological space, $C(X)$ with the maximum norm is a Banach space (Chapter 7 Problem 31).
+From the Completeness Axiom for $\mathbb{R}$, each Euclidean space $\mathbb{R}^n$ is a Banach space.
 
 \begin{center}
 	\textbf{PROBLEMS}
@@ -13,14 +31,80 @@
 \begin{enumerate}
 	\setcounter{enumi}{0}
     \item Show that a nonempty subset $S$ of a linear space $X$ is a subspace iff $S+S=S$ and $\lambda \cdot S=S$ for each $\lambda\in\mathbb{R},\lambda\neq0$.
-    \item If $Y$ and $Z$ are subspaces of the linear space $X$, show that $T+Z$ is also a subspace and $Y+Z=\text{span}[Y\cup Z]$. 
-    \item Let $S$ be a subset of a normed linear space $X$.
+    
+    \ \\Let $X$ be a linear space and consider the nonempty subset $S$.
+
+    \ \\$(\implies)$ Suppose that $S$ is a subspace of $X$.
+    Then by definition of subspace, every linear combination of vectors in $S$ also belongs to $S$.
+    In particular, 
+    \begin{align*}
+        x&\in S+S=\{y+z\mid y\in S,z\in S\}\implies \text{ $x$ is a linear combination of vectors in $S$ }\implies x\in S\\
+        x&\in S\implies x=x+0\in S+S\text{ because }0\in S.
+    \end{align*}
+    Then the first implies $S+S\subset S$ and the second implies $S\subset S+S$.
+    Therefore $S=S+S$.
+    \begin{align*}
+        x&\in \lambda S=\{\lambda y\mid y\in S\}\implies \text{ $x$ is a linear combination of vectors in $S$ }\implies x\in S\\
+        x&\in S\implies x=\lambda \frac{x}{\lambda}\in \lambda S\text{ because }\frac{x}{\lambda}\in S.
+    \end{align*}
+    Then the first implies $\lambda S\subset S$ and the second implies $S\subset \lambda S$.
+    Therefore $\lambda S=S$.
+
+    \ \\$(\impliedby)$ Suppose that $S+S=S$ and $\lambda\cdot S=S$ for each nonzero $\lambda\in\mathbb{R}$.
+    Consider any $y,z\in S$ and scalars $\lambda_1,\lambda_2$. 
+    Then 
+    \[
+        \lambda_1 y+\lambda_1z\in \lambda_1 S+\lambda_2 S=S+S=S.
+    \]
+    Therefore any linear combination of vectors in $S$ also belongs to $S$, and thus $S$ is a subspace of $X$.
+    \ \\\item If $Y$ and $Z$ are subspaces of the linear space $X$, show that $Y+Z$ is also a subspace and $Y+Z=\text{span}[Y\cup Z]$. 
+
+    \ \\Let $x_1,x_2\in Y+Z$, and let $\alpha,\beta$ be any scalars.
+    Then $x_1=\alpha_1y_1+\beta_1z_1$ and $x_2=\alpha_2y_2+\beta_2z_2$.
+    Therefore the linear combination of $x_1$ and $x_2$ are in $Y+Z$:
+    \[
+        \alpha x_1+\beta x_2
+        =\alpha(\alpha_1y_1+\beta_1z_1)+\beta(\alpha_2y_2+\beta_2z_2)
+        =(\alpha\alpha_1)y_1+(\beta\alpha_2)y_2+(\alpha\beta_1)z_1+(\beta\beta_2)z_2
+        \in Y+Z,
+    \]
+    because $(\alpha\alpha_1)y_1+(\beta\alpha_2)y_2\in Y$ and $(\alpha\beta_1)z_1+(\beta\beta_2)z_2\in Z$.
+
+    Also, $x\in Y+Z$ trivially implies that $x\in\text{span}[Y\cup Z]$. 
+    To show the other side, $x\in\text{span}[Y\cup Z]$ implies that $x$ is a linear combination of vectors in $Y\cup Z$.
+    But we showed above that any linear combination of vectors in $Y\cup Z$ is in $Y+Z$, and so $x\in Y+Z$.
+    Therefore $Y+Z=\text{span}[Y\cup Z]$.
+    \ \\\item Let $S$ be a subset of a normed linear space $X$.
     \begin{enumerate}[label=(\roman*),align=left]
         \item Show that the intersection of a collection of linear subspaces of $X$ is also a linear subspace of $X$.
-        \item Show that span$[S]$ is the intersection of all the linear subspaces of $X$ that contain $S$ and therefore is a linear subspace of $X$.
-        \item Show that $\overline{\text{span}}[S]$ is the intersection of all the closed linear subspaces of $X$ that contain $S$ and is therefore a closed linear subspace of $X$. 
+        
+        \ \\Let $\{Y_\alpha\mid \alpha\in \mathcal{A}\}$ be a collection of linear subspaces of $X$.
+        Consider $x_1,x_2\in \cap_\alpha Y_\alpha$ and scalars $\alpha,\beta$.
+        (Then $x_1,x_2\in Y_\alpha$ for each $\alpha$ by definition of intersection.)
+        Now we have that $\alpha x_1+\beta x_2\in Y_\alpha$ for each $\alpha\in\mathcal{A}$ because each $Y_\alpha$ is a subspace.
+        Therefore $\alpha x_1+\beta x_2\in Y_\alpha\in\cap_\alpha Y_\alpha$ by definition of intersection.
+        Thus we have that $\cap_\alpha Y_\alpha$ is a subspace of $X$ because it contains all linear combinations of its elements.
+        \\\item Show that span$[S]$ is the intersection of all the linear subspaces of $X$ that contain $S$ and therefore is a linear subspace of $X$.
+        
+        \ \\Let $\mathcal{S}=\{Y\text{ subspace of }X,S\subset Y\}$.
+        Consider $\cap\mathcal{S}$, the intersection of all elements of $\mathcal{S}$.
+        Then by (i), $\cap\mathcal{S}$ is a subspace of $X$.
+        Recall that $\text{span}[S]$ is the collection of all linear combinations of elements of $S$.
+        It is clear to see that $\text{span}[S]$ is a linear subspace of $X$ such that $S\subset\text{span}[S]$, and therefore $\text{span}[S]\in\mathcal{S}$.
+        Then by definition of intersection, 
+        \[
+            \cap\mathcal{S}\subset \text{span}[S].\tag{a}
+        \]
+        Also, for any $Y\in\mathcal{S}$, any linear combination of elements of $S$ is in $Y$, which implies
+        \[
+            \text{span}[S]\subset\cap\mathcal{S}.\tag{b}
+        \]
+        Therefore by (a) and (b), $\text{span}[S]=\cap\mathcal{S}$.
+        \\\item Show that $\overline{\text{span}}[S]$ is the intersection of all the closed linear subspaces of $X$ that contain $S$ and is therefore a closed linear subspace of $X$. 
+
+        \ \\We can simply use (i) and (ii) along with the additional fact that any arbitrary intersection of closed sets (subspaces) is also a closed set (subspace).
     \end{enumerate}
-    \item For a normed linear space $X$, show that the function $\|\cdot\|:X\to\mathbb{R}$ is continuous.\\
+    \ \\\item For a normed linear space $X$, show that the function $\|\cdot\|:X\to\mathbb{R}$ is continuous.\\
     \\Fix $\epsilon>0$.
     \\Then let $\delta:=\epsilon>0$.
     \\Consider any $x,y\in X$ such that $\|x-y\|<\delta$.
@@ -33,7 +117,7 @@
     \[
         \|x\|=\|x-y+y\|\le\|x-y\|+\|y\|.
     \]
-    \item For two normed linear spaces $(X,\|\cdot\|_1)$ and $(Y,\|\cdot\|_2)$, define a linear structure on the Cartesian product $X\times Y$ by $\lambda\cdot(x,y)=(\lambda x,\lambda y)$ and $(x_1,y_1)+(x_2,y_2)=(x_1+x_2,y_1+y_2)$.
+    \ \\\item For two normed linear spaces $(X,\|\cdot\|_1)$ and $(Y,\|\cdot\|_2)$, define a linear structure on the Cartesian product $X\times Y$ by $\lambda\cdot(x,y)=(\lambda x,\lambda y)$ and $(x_1,y_1)+(x_2,y_2)=(x_1+x_2,y_1+y_2)$.
     Define the product norm $\|\cdot\|$ by $\|(x,y)\|=\|x\|_1+\|y\|_2$, for $x\in X$ and $y\in Y$.
     Show that this is a norm with respect to which a sequence converges if and only if each of the two component sequences converges.
     Furthermore, show that if $X$ and $Y$ are Banach spaces, then so is $X\times Y$.\\
@@ -68,27 +152,131 @@
     \]
     which implies that the sequences $\{x_n\}$ and $\{y_n\}$ are also Cauchy.
     \\Then because both $X$ and $Y$ are Banach spaces, then $\{x_n\}\to x$ and $\{y_n\}\to y$ for some $x\in X$ and $y\in Y$, and therefore we proved in $(\impliedby)$ that $\{(x_n,y_n)\}\to(x,y)$, which implies that $X\times Y$ is a Banach space.
-    \item Let $X$ be a normed linear space.
+    \ \\\item Let $X$ be a normed linear space.
     \begin{enumerate}[(i)]
         \item Let $\{x_n\}$ and $\{y_n\}$ be sequences in $X$ such that $\{x_n\}\to x$ and $\{y_n\}\to y$.
         Show that for any real numbers $\alpha$ and $\beta$, $\{\alpha x_n+\beta y_n\}\to\alpha x+\beta y$.
-        \item Use (i) to show that if $Y$ is a subspace of $X$, then its closure $\overline{Y}$ also is a linear subspace of $X$.
-        \item Use (i) to show that the vector sum is continuous from $X\times X$ to $X$ and scalar multiplication is continuous from $\mathbb{R}\times X$ to $X$.
+
+        \ \\Because $\{x_n\}\to x$ and $\{y_n\}\to y$, choose an index $N$ such that for $n\ge N$, we have $\|x_n-x\|<\frac{\epsilon}{2|\alpha|}$ and $\|y_n-y\|<\frac{\epsilon}{2|\beta|}$ (assuming $|\alpha|,|\beta|>0$).
+        Then by subadditivity and absolute homogeneity of the norm,
+        \[
+            \|\alpha x_n+\beta y_n-(\alpha x+\beta y)\|
+            % =\|\alpha (x_n-x)+\beta (y_n-y)\|
+            \le|\alpha|\| x_n-x\|+|\beta| \|y_n-y\|
+            <|\alpha|\frac{\epsilon}{2|\alpha|}+|\beta|\frac{\epsilon}{2|\beta|}
+            =\epsilon,
+        \]
+        which implies that $\{\alpha x_n+\beta y_n\}\to\alpha x+\beta y$.
+        \\\item Use (i) to show that if $Y$ is a subspace of $X$, then its closure $\overline{Y}$ also is a linear subspace of $X$.
+    
+        \ \\(Recall that for a metric space $X$ and a subset $C\subset X$, then $x\in\overline{C}\iff$ there exists a sequence $\{x_n\}\text{ in }C\text{ such that }\{x_n\}\to x$.)
+        
+        \ \\Let $x,y\in\overline{Y}$.
+        Then there exist sequences $\{x_n\}$ and $\{y_n\}$ in $Y$ such that $\{x_n\}\to x$ and $\{y_n\}\to y$.
+        Let $\alpha,\beta$ be any two real numbers.
+        Then $\alpha x_n+\beta y_n\in Y$ for each $n$, and by (i), we have $\{\alpha x_n+\beta y_n\}\to\alpha x+\beta y$. 
+        Therefore $\alpha x+\beta y\in\overline{Y}$, and $\overline{Y}$ is a linear subspace because it contains all linear combinations of its elements.
+        \\\item Use (i) to show that the vector sum is continuous from $X\times X$ to $X$ and scalar multiplication is continuous from $\mathbb{R}\times X$ to $X$.
+
+        \ \\We use the product norm $\|(x,y)\|_P:=\|x\|_X+\|y\|_X$ (see problem 5).
+        
+        \ \\Define $f:X\times X\to X$ by $f(x,y)=x+y$.
+        
+        Fix $\epsilon>0$. 
+        Then for $(x_1,y_1),(x_2,y_2)\in X\times X$ such that 
+        \[
+           \epsilon> \|(x_1,y_1)-(x_2,y_2)\|_P=\|(x_1-x_2,y_1-y_2)\|_P=\|x_1-x_2\|_X+\|y_1-y_2\|_X,
+        \]
+        we have
+        \[
+            \begin{split}
+            \|f(x_1,y_1)-f(x_2,y_2)\|_X
+            &=\|x_1+y_1-(x_2+y_2)\|_X\\
+            &=\|x_1-x_2+y_1-y_2\|_X\\
+            &\le\|x_1-x_2\|_X+\|y_1-y_2\|_X\\
+            &<\epsilon,
+            \end{split}
+        \]
+        and thus $f$ is continuous.
+
+        \ \\Define $g:\mathbb{R}\times X\to X$ by $g(\alpha,x)=\alpha x$.
+        
+        Fix $\epsilon>0$. 
+        Then let $\delta:=\min\left\{\frac{\epsilon}{2(\|x_1\|_X+1)},\frac{\epsilon}{2(|\alpha_2|+1)}\right\}>0$.
+        Then for $(\alpha_1,x_1),(\alpha_2,x_2)\in \mathbb{R}\times X$ such that
+        \[
+           \delta> \|(\alpha_1,x_1)-(\alpha_2,x_2)\|_P=\|(\alpha_1-\alpha_2,x_1-x_2)\|_P=|\alpha_1-\alpha_2|+\|x_1-x_2\|_X,
+        \]
+        we have
+        \[
+            \begin{split}
+            \|g(\alpha_1,x_1)-g(\alpha_2,x_2)\|_X
+            &=\|\alpha_1 x_1-\alpha_2 x_2\|_X\\
+            &=\|(\alpha_1 -\alpha_2)x_1+\alpha_2(x_1- x_2)\|_X\\
+            &\le|\alpha_1 -\alpha_2|\|x_1\|_X+|\alpha_2|\|x_1- x_2\|_X\\
+            &<\frac{\epsilon}{2(\|x_1\|_X+1)}\|x_1\|_X+|\alpha_2|\frac{\epsilon}{2(|\alpha_2|+1)}\\
+            &<\frac{\epsilon}{2}+\frac{\epsilon}{2},
+            \end{split}
+        \]
+        and thus $g$ is continuous.
     \end{enumerate} 
-    \item Show that the set $\mathcal{P}$ of all polynomials on $[a,b]$ is a linear space.
+    \ \\\item Show that the set $\mathcal{P}$ of all polynomials on $[a,b]$ is a linear space.
     For $\mathcal{P}$ considered as a subset of the normed linear space $C[a,b]$, show that $\mathcal{P}$ fails to be closed.
     For $\mathcal{P}$ considered as a subset of the normed linear space $L^1[a,b]$, show that $\mathcal{P}$ fails to be closed.
-    \item A nonnegative real-valued function $\|\cdot\|$ defined on a vector space $X$ is called a \textbf{pseudonorm} if $\|x+y\|\le\|x\|+\|y\|$ and $\|\alpha x\|=|\alpha|\|x\|$.
+
+    \ \\To see that $\mathcal{P}$ is a linear space, look at chapter 7 problem 2.
+    
+    Let $t\in(a,b)$ and consider the continuous function $f:[a,b]\to\mathbb{R}$ defined by
+    \[
+        f(x):=
+        \begin{cases}
+            0 &x\in[a, t]\\
+            (\frac{1}{b-t})(x-t)&x\in(t,b]\\
+        \end{cases}
+    \]
+    Then $f$ is not differentiable at $t$, and is thus not a polynomial.
+    We can write $f\in C[a,b]$, $f\notin\mathcal{P}$.
+    However, by Chapter 12.3 - The Stone-Weierstrass Theorem, there exists a sequence of polynomials $\{p_n\}$ in $\mathcal{P}$ that converges uniformly to $f\notin\mathcal{P}$.
+    Therefore $\mathcal{P}$ is not closed.
+    Because $\int_a^b|f|=\frac{b-t}{2}<\infty$, then $f\in L^1[a,b]$, and we can use the same argument to say that $\mathcal{P}$ is not closed.
+    \ \\\item A nonnegative real-valued function $\|\cdot\|$ defined on a vector space $X$ is called a \textbf{pseudonorm} if $\|x+y\|\le\|x\|+\|y\|$ and $\|\alpha x\|=|\alpha|\|x\|$.
     Define $x\cong y$, provided $\|x-y\|=0$.
     Show that this is an equivalence relation.
     Define $X/\cong$ to be the set of equivalence classes of $X$ under $\cong$ and for $x\in X$ define $[x]$ to be the equivalence class of $x$.
     Show that $X/\cong$ is a normed vector space if we define $\alpha[x]+\beta[y]$ to be the equivalence class of $\alpha x+\beta y$ and define $\|[x]\|=\|x\|$.
     Illustrate this procedure with $X=L^p[a,b],1\le p<\infty$.
+
+    \ \\To see that this is an equivalence relation:
+    \begin{enumerate}[(i)]
+        \item $x\cong x$ because $\|x-x\|=0$ for all $x\in X$.
+        \item $x\cong y\iff0=\|x-y\|=\|y-x\|\iff y\cong x$.
+        \item Suppose $x\cong y$ and $y\cong z$. 
+        Then $\|x-z\|\le\|x-y\|+\|y-z\|=0$, which implies $x\cong z$.
+    \end{enumerate}
 \end{enumerate}
 
 % 13.2
 \authoredby{inprogress}
 \section{Linear Operators}
+
+\begin{namedthm*}{Definition}
+    Let $X$ and $Y$ be linear spaces.
+    A mapping $T:X\to Y$ is said to be \textbf{linear} provided for each $u,v\in X$, and real numbers $\alpha,\beta$, we have
+    \[
+        T(\alpha u+\beta v)=\alpha T(u)+\beta T(v).
+    \]
+\end{namedthm*}
+Linear mappings are often called linear operators or linear transformations.
+\begin{namedthm*}{Definition}
+    Let $X$ and $Y$ be normed linear spaces.
+    A linear operator $T:X\to Y$ is said to be \textbf{bounded} provided there is a constant $M\ge0$ for which 
+    \[
+        \|T(u)\|\le M\|u\|\quad\text{for all }u\in X.
+    \]
+    The infimum of all such $M$ is called the \textbf{operator norm} of $T$ and denoted by $\|T\|$.
+    The collection of bounded linear operators from $X$ to $Y$ is denoted by $\mathcal{L}(X,Y)$.
+\end{namedthm*}
+
 \begin{namedthm*}{Theorem 1}
     A linear operator between normed linear spaces is continuous iff it is bounded.    
 \end{namedthm*}
@@ -124,6 +312,91 @@
     \]
     which implies that $T$ is continuous.
 \end{proof}
+The continuity property of a bounded linear operator $T:X\to Y$ says that:
+\[
+    \text{if }\{u_n\}\to u\text{ in }X,\text{ then }\{T(u_n)\}\to T(u)\text{ in }Y.
+\]
+The collection of linear operators between two linear spaces is a linear space. 
+\begin{namedthm*}{Proposition 2}
+    Let $X$ and $Y$ be normed linear spaces.
+    Then the collection of bounded linear operators from $X$ to $Y$, $\mathcal{L}(X,Y)$, is a normed linear space.
+\end{namedthm*}
+\begin{proof}
+    Let $T,S\in\mathcal{L}(X,Y)$, and let $\alpha,\beta$ be real numbers.
+    Then using the norm $\|\cdot\|$ on $Y$, we have by subadditivity, absolute homogeneity, and the definition of the operator norm that 
+    \[
+        \|(\alpha T+\beta S)(u)\|=\|\alpha T(u)+\beta S(u)\|\le|\alpha|\| T(u)\|+|\beta|\| S(u)\|\le
+        % |\alpha|\|T\|\|u\|+|\beta|\|S\|\|u\|
+        (|\alpha|\|T\|+|\beta|\|S\|)\|u\|\quad\text{for all }u\in X,
+    \]
+    which implies that $\alpha T+\beta S$ is bounded (and clearly linear) and is thus in $\mathcal{L}(X,Y)$.
+    To show that the operator norm is a norm on $\mathcal{L}(X,Y)$:
+    \begin{enumerate}[(i)]
+        \item $\|T\|=0\iff T(u)=0$ follows from $\|T\|=\inf\{M\ge0\mid \|T(u)\|\le M\|u\|,u\in X\}$
+        \item $\|\alpha T\|=|\alpha|\|T\|$ because $\|\alpha T(u)\|=|\alpha|\|T(u)\|$ implies that 
+        \[
+            \|\alpha T\|=\inf\{M\mid |\alpha|\| T(u)\|\le M\|u\|\}=\inf\{M\mid \| T(u)\|\le \frac{M}{|\alpha|}\|u\|\}=|\alpha|\|T\|.
+        \]
+        \item $\|T+S\|\le\|T\|+\|S\|$ follows from above:
+        \[
+            \|(T+S)(u)\|%\le\|T(u)\|+\|S(u)\|
+            \le (\|T\|+\|S\|)\|u\|,
+        \]
+        and therefore $\|T+S\|=\inf\{M\ge0\mid \|(T+S)(u)\|\le M\|u\|,u\in X\}\le \|T\|+\|S\|$.
+    \end{enumerate}
+\end{proof}
+\begin{namedthm*}{Theorem 3}
+    Let $X$ and $Y$ be normed linear spaces.
+    If $Y$ is a Banach space, then so is $\mathcal{L}(X,Y)$.
+\end{namedthm*}
+\begin{proof}
+    Let $\{T_n\}$ be a Cauchy sequence in $\mathcal{L}(X,Y)$.
+    Consider any $u\in X$.
+    Then for all indices $n,m$,
+    \[
+        \|T_n(u)-T_m(u)\|=\|(T_n-T_m)(u)\|\le\|T_n-T_m\|\|u\|.
+    \]  
+    Thus $\{T_n(u)\}$ is a Cauchy sequence in $Y$.
+    Since $Y$ is complete, then the sequence $\{T_n(u)\}$ converges to a member of $Y$, which we can denote $T(u)$.
+    This $T(u)$ is defined for any $u\in X$, and so $T:X\to Y$ is well-defined.
+    We must show that $T$ belongs to $\mathcal{L}(X,Y)$ and that $\{T_n\}\to T$ in $\mathcal{L}(X,Y)$.
+    
+    To show linearity of $T$:
+    Using the fact that $T_n(u)$ converges to $T(u)$ for any $u$, and that each $T_n$ is linear, for any $u_1,u_2\in X$ and scalars $\lambda_1,\lambda_2$, we have 
+    \[
+        \lambda_1T(u_1)+\lambda_2T(u_2)=\lambda_1\lim_{n\to\infty}T_n(u_1)+\lambda_2\lim_{n\to\infty}T_n(u_2)=\lim_{n\to\infty}T_n(\lambda_1u_1+\lambda_2u_2)=T(\lambda_1u_1+\lambda_2u_1).
+    \]
+    
+    To show boundedness of $T$ and convergence of $\{T_n\}$ to $T$:
+    Fix $\epsilon>0$.
+    Because $\{T_n\}$ is a Cauchy sequence, there exists an index $N$ such that for all $n\ge N$ and $k\ge1$, we have $\|T_n-T_{n+k}\|<\epsilon/2$.
+    Therefore for all $u\in X$, using the definition of operator norm,
+    \[
+        \|T_n(u)-T_{n+k}(u)\|=\|(T_n-T_{n+k})(u)\|\le\|T_n-T_{n+k}\|\|u\|<\epsilon/2\|u\|.
+    \]  
+    Now fix $n\ge N$ and $u\in X$.
+    Because $\lim_{k\to\infty}T_{n+k}(u)=T(u)$ and the norm is continuous, we have
+    \[
+        \|T_n(u)-T(u)\|=\|T_n(u)-\lim_{k\to\infty}T_{n+k}(u)\|\le\epsilon/2\|u\|.
+    \]  
+    Thus the linear operator $T_N-T$ is bounded, and because $T_N$ is also bounded, so is $T$.
+    Moreover, by the definition of the operator norm, we have for $n\ge N$, that 
+    $
+        \|T_n-T\|\le\epsilon/2<\epsilon,
+    $
+    and thus $\{T_n\}\to T$ in $\mathcal{L}(X,Y)$.
+
+\end{proof}
+
+For two normed linear spaces $X$ and $Y$, an operator $T\in\mathcal{L}(X,Y)$ is called an \textbf{isomorphism} provided it is one-to-one, onto, and has a continuous inverse.
+For $T$ in $\mathcal{L}(X,Y)$, if it is one-to-one and onto, its inverse is linear.
+Therefore (because bounded $\iff$ continuous for linear operators,) to be an isomorphism requires the inverse to be bounded; that is, the inverse belong to $\mathcal{L}(X,Y)$.
+Two normed linear spaces are said to be \textbf{isomorphic} provided there is an isomorphism between them.
+An isomorphism that also preserves the norm is called an \textbf{isometric isomorphism}: it is an isometry of the metric structures associated with the norms.
+
+For a linear operator $T:X\to Y$, the subspace of $X$, $\{x\in X\mid T(x)=0\}$, is called the \textbf{kernel} of $T$ and denoted by $\text{ker }T$.
+Observe that $T$ is one-to-one iff $\text{ker }T=\{0\}$.
+We denote the \textbf{image} of $T$, $T(X)$, by $\text{Im }T$.
 
 \begin{center}
 	\textbf{PROBLEMS}
@@ -194,8 +467,102 @@
 \end{enumerate}
 
 % 13.3
-\authoredby{untouched}
+\authoredby{inprogress}
 \section{Compactness Lost: Infinite Dimensional Normed Linear Spaces}
+
+A linear space $X$ is said to be finite dimensional provided there is a subset $\{e_1,\dots,e_n\}$ of $X$ that spans $X$.
+If no proper subset also spans $X$, we call the set $\{e_1,\dots,e_n\}$ a basis for $X$ and call $n$ the dimension of $X$.
+If $X$ is not spanned by a finite collection of vectors it is said to be finite dimensional.
+Observe that a basis $\{e_1,\dots,e_n\}$ for $X$ is linearly independent in the sense that 
+\[
+    \text{if }\sum_{i=1}^nx_ie_i=0,\ \text{then }x_i=0\ \text{for all }1\le i\le n,
+\]
+for otherwise a proper subset of $\{e_1,\dots,e_n\}$ would span $X$.
+
+For example, if there exists a nontrivial solution to the above homogenous equation, then there exists an index $j$ such that
+\[
+    \sum_{i=1,i\neq j}^n \frac{x_i}{-x_j}e_i=e_j,
+\]
+and so for any $y\in X$, we can essentially remove the $e_j$: 
+\[
+    y=\sum_{i=1}^ny_ie_i= \sum_{i=1,i\neq j}^ny_ie_i+y_je_j=\sum_{i=1,i\neq j}^ny_ie_i+\sum_{i=1,i\neq j}^n y_j\frac{x_i}{-x_j}e_i=\sum_{i=1,i\neq j}^n(y_i-y_j\frac{x_i}{x_j})e_i
+\]
+That is, the proper subset $\{e_1,\dots,e_n\}\setminus \{e_j\}$ spans $X$.
+\begin{namedthm*}{Theorem 4}
+    Any two norms on a finite dimensional linear space are equivalent.
+\end{namedthm*}
+\begin{proof}
+    Since equivalnece of norms is an equivalence relation on the set of norms on $X$, it suffices to select a particular norm $\|\cdot\|_*$ on $X$ and show that any norm on $X$ is equivalent to $\|\cdot\|_*$.
+    Let $\text{dim} X=n$ and $\{e_1,\dots,e_n\}$ be a basis for $X$.
+    For any $x=x_1e_1+\dots x_ne_n\in X$, define
+    \[
+        \|x\|_*=\sqrt{x_1^2+\dots+x_n^2}.
+    \]
+    This is a norm on $X$ because the Euclidean norm is a norm on $\mathbb{R}^n$.
+
+    Now let $\|\cdot\|$ be any norm on $X$.
+    We must show the existance of $c_1,c_2\ge0$ such that (1) $ \|x\|\le c_1\|x\|_*$ and (2) $ c_2\|x\|_*\le \|x\|$ for all $x\in X$.
+    
+    (1) Consider any $x=\sum_{i=1}^n x_ie_i\in X$, where $\{e_i\}$ is a basis for $X$.
+    Then by subadditivity and absolute homogeneity of $\|\cdot\|$, and by Cauchy-Schwarz, we get
+    \[
+      \|x\|
+      \le\sum_{i=1}^n|x_i|\|e_i\|
+    %   =\sum_{i=1}^n|x_i|\sqrt{\|e_i\|^2}
+    %   \le\sum_{i=1}^n|x_i|\sqrt{\sum_{j=1}^n\|e_j\|^2}
+      \le\left(\sqrt{\sum_{j=1}^n\|e_j\|^2}\right)\sqrt{\sum_{j=1}^n|x_i|^2}
+      =\left(\sqrt{\sum_{j=1}^n\|e_j\|^2}\right)\|x\|_*
+      :=c_1\|x\|_*\tag{1}
+    \]
+    (2) Now define the real-valued function $f:\mathbb{R}^n\to\mathbb{R}$ by
+    \[
+        f(x_1,\dots,x_n):=\|\sum_{i=1}^n x_ie_i\|
+    \]
+    Then by (1), we see that $f$ is Lipschitz continuous with respect to the topology induced by the $\|\cdot\|_*$ norm on $\mathbb{R}^n$:
+    \[
+      |f(x)-f(x')|=|\sum_{i=1}^n (x_i-x_i')e_i|=\|x-x'\|\le c_1\|x-x'\|_*
+    \]
+    Because $\{e_1,\dots,e_n\}$ is linearly independent, then $f(x)=\|\sum_{i=1}^n x_ie_i\|=\|0\|=0\iff x_i=0$ for each $i$, which tells us that $f$ takes positive values on the boundary of the unit ball $S=\{x\in\mathbb{R}^n\mid \|x\|_*=(\sum_{i=1}^n x_i^2)^{1/2}=1\}$, which is compact because it is closed and bounded.
+    A continuous real-valued function on a compact topological space takes a minimum value.
+    Therefore there exists the value $m>0$ and the point $x_m\in S$ such that $f(x_m)=m$, and 
+    \[
+        0<m=f(x_m)\le f(x)\quad\text{for all }x\in S.
+    \]
+    Now, for any $x\neq0$, we have $\frac{x}{\|x\|_*}\in S$, so that 
+    $
+        m\le f(\frac{x}{\|x\|_*})=\|\frac{x}{\|x\|_*}\|,
+    $
+    and by absolute homogeneity of the norm $\|\cdot\|$, we have
+    \[
+        m\|x\|_*\le \|x\|\quad\text{for all }x\in X.\tag{2}
+    \]  
+    Therefore by (1) and (2), there exists $c_1,m\ge0$ such that 
+    \[
+        m\|x\|_*\le \|x\|\le c_1\|x\|_*\quad\text{for all }x\in X.
+    \] 
+
+\end{proof}
+\begin{namedthm*}{Corollary 5}
+    Any two normed space of the same finite dimension are isomorphic.
+\end{namedthm*}
+\begin{namedthm*}{Corollary 6}
+    Any finite dimensional normed linear space is complete and therefore any finite dimensional subspace of a normed linear space is closed.
+\end{namedthm*}
+``completeness is preserved under isomorphisms''
+\begin{namedthm*}{Corollary 7}
+    The closed unit ball in a finite dimensional normed linear space is compact.
+\end{namedthm*}
+\begin{namedthm*}{Riesz's Theorem}
+    The closed unit ball of a normed linear space $X$ is compact iff $X$ is finite dimensional.
+\end{namedthm*}
+\begin{namedthm*}{Riesz's Lemma}
+    Let $Y$ be a closed proper linear subspace of a normed linear space $X$.
+    Then for each $\epsilon>0$, there is a unit vector $x_0\in X$ for which 
+    \[
+        \|x_0-y\|>1-\epsilon\text{ for all }y\in Y.
+    \]
+\end{namedthm*}
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -219,7 +586,7 @@
 % 13.4
 \authoredby{inprogress}
 \section{The Open Mapping and Closed Graph Theorems}\
-Hello
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
