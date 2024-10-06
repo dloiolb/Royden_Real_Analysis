@@ -340,12 +340,144 @@
 \authoredby{inprogress}
 \section{The Inequalities of Young, H\"older, and Minkowski}
 
+\begin{namedthm*}{Definition}
+	The conjugate of a number $p\in(1,\infty)$ is the number $q=\frac{p}{p-1}$, which is the unique number $q\in(1,\infty)$ for which 
+	\[
+		\frac{1}{p}+\frac{1}{q}=1.
+	\]
+	The conjugate of $1$ is defined to be $\infty$ and the conjugate of $\infty$ defined to be $1$.
+\end{namedthm*}
+\begin{namedthm*}{Young's Inequality}
+	For $1<p<\infty$, $q$ the conjugate of $p$, and any two positive numbers $a$ and $b$,
+	\[	
+		ab\le\frac{a^p}{p}+\frac{b^q}{q}.
+	\]
+\end{namedthm*}
+\begin{proof}
+	By convexity of the function $e^x$, we have
+	\[
+		ab=e^{ln(ab)}=e^{\frac{1}{p}ln(a^p)+\frac{1}{q}ln(b^q)}\le \frac{1}{p}e^{ln(a^p)}+\frac{1}{q}e^{ln(b^q)}=\frac{a^p}{p}+\frac{b^q}{q}.
+	\]	
+\end{proof}
+\begin{namedthm*}{Theorem 1}
+	Let $E$ be a measurable set, $1\le p<\infty$, and $q$ the conjugate of $p$.
+	If $f$ belongs to $L^p(E)$ and $g$ belongs to $L^q(E)$, the their product $f\cdot g$ is integrable over $E$ and
+\end{namedthm*}
+\begin{namedthm*}{H\"older's Inequality}
+	\[
+		\int_E|f\cdot g|\le\|f\|_p\cdot\|g\|_q.
+	\]
+	Moreover, if $f\neq0$, the function $f^*:=\|f\|_p^{1-p}\cdot\text{sgn}(f)\cdot|f|^{p-1}$ belongs to $L^q(E)$,
+	\[
+		\int_Ef\cdot f^*=\|f\|_p\quad\text{and}\quad\|f^*\|_q=1.
+	\]
+	(We define $\text{sgn}(f)(x):=1$ for $\{x\mid f(x)\ge0\}$ and $\text{sgn}(f)(x):=-1$ for $\{x\mid f(x)<0\}$.
+	Therefore $\text{sgn}(f)\cdot f=|f|$ a.e. on $E$ since $f$ is finite a.e. on $E$.)
+\end{namedthm*}
+\begin{proof}
+	First consider the case $p=1$.
+	Then $q=\infty$.
+	By the definition of the essential supremum so that $|g|\le\|g\|_\infty$ a.e. on $E$, we have by the monotonicity of integration that
+	\[
+		\int_E|f\cdot g|\le\int_E|f|\cdot\|g\|_\infty=\|g\|_\infty\int_E|f|=\|g\|_\infty\cdot\|f\|_1.
+	\]
+	Also, $f^*=\|f\|_1^{1-1}\cdot\text{sgn}(f)\cdot|f|^{1-1}=\text{sgn}(f)$ so that 
+	\[
+		\int_Ef\cdot f^*=\int_E|f|=\|f\|_1\quad\text{and}\quad\|f^*\|_\infty=1.
+	\]
+	Now consider the case $p>1$, with $f\neq0$, $g\neq0$.
+	It is clear that if H\"older's Inequality is true when $f$ is replaced by its normalization $f/\|f\|_p$ and $g$ is replaced by its normalization $g/\|g\|_q$, then it is true for $f$ and $g$ (See problem 6).
+	We therefore assume that $\|f\|_p=1$ and $\|g\|_q=1$, in which case H\"older's Inequality becomes
+	\[
+		\int_E|f\cdot g|\le 1.
+	\]
+	Since $|f|^p$ and $|g|^q$ are integrable over $E$, then $g$ and $g$ are finite a.e. on $E$.
+	Thus, by Young's Inequality,
+	\[
+		|f\cdot g|=|f|\cdot|g|\le\frac{|f|^p}{p}+\frac{|g|^q}{q}\text{ a.e. on }E.
+	\]
+	We infer from the linearity of integration and the integral comparison test that $f\cdot g$ is integrable over $E$ and, by the monotonicity and linearity of integration, that
+	\[
+		\int_E|f\cdot g|\le\frac{1}{p}\int_E|f|^p+\frac{1}{q}\int_E|g|^q=\frac{1}{p}+\frac{1}{q}=1.
+	\]
+	Now observe that 
+	\[
+		f\cdot f^*=f\cdot\|f\|_p^{1-p}\cdot \text{sgn}(f)\cdot|f|^{p-1}=\|f\|_p^{1-p}|f|^p\text{ a.e. on }E.
+	\]
+	Therefore
+	\[
+		\int_Ef\cdot f^*=\|f\|_p^{1-p}\int_E|f|^p=\|f\|_p^{1-p}\|f\|_p^p=\|f\|_p,
+	\]
+	and because $q=\frac{p}{p-1}$, we have
+	\[
+		\|f^*\|_q
+		=\left(\int_E|\ \|f\|_p^{1-p}\text{sgn}(f)|f|^{p-1}\ |^{q}\right)^{\frac{1}{q}}
+		=\|f\|_p^{1-p}\left(\int_E|f|^p\right)^{\frac{1}{p}(p-1)}
+		=\|f\|_p^{1-p}\|f\|_p^{p-1}
+		=1.
+	\]
+\end{proof}
+\begin{namedthm*}{Minkowski's Inequality}
+	Let $E$ be a measurable set and $1\le p\le\infty$.
+	If the functions $f$ and $g$ belong to $L^p(E)$, then so does their sum $f+g$ and, moreover,
+	\[
+		\|f+g\|_p\le\|f\|_p+\|g\|_p.
+	\]
+\end{namedthm*}
+\begin{proof}
+	We already considered the cases $p=1$ and $p=\infty$.
+	Assume $1<p<\infty$.
+	We infer from 7.1 that $f+g$ belongs to $L^p(E)$.
+	Suppose $f+g\neq0$.
+	Then by H\"older's Inequality,
+	\[
+		\|f+g\|_p
+		=\int_E(f+g)(f+g)^*
+		=\int_Ef(f+g)^*+\int_Eg(f+g)^*
+		\le\|f\|_p\|(f+g)^*\|_q+\|g\|_p\|(f+g)^*\|_q
+		=\|f\|_p+\|g\|_q.
+	\]
+\end{proof}
+\begin{namedthm*}{Corollary 3}
+	Let $E$ be a measurable set of finite measure and $1\le p_1<p_2\le\infty$.
+	Then $L^{p_2}(E)\subseteq L^{p_1}(E)$.
+	Furthermore,
+	\[
+		\|f\|_{p_1}\le c\|f\|_{p_2}\text{ for all }f\in L^{p_2}(E),
+	\]
+	where $c=[m(E)]^{\frac{p_2-p_1}{p_1p_2}}$ if $p_2<\infty$ and $c=[m(E)]^{\frac{1}{p_1}}$ if $p_2=\infty$.
+\end{namedthm*}
+\begin{proof}
+	The case $p_2=\infty$ is left as an exercise.
+	Assume $p<\infty$.
+	Observe that $f^{p_1}$ belongs to $L^{p_2/p_1}(E)$ and $\chi_E$ belongs to $L^{1-{p_1/p_2}}(E)$ because $m(E)<\infty$.
+	Then by H\"older's Inequality,
+	\[
+		\|f\|_{p_1}^{p_1}
+		=\int_E|f|^{p_1}
+		=\int_E|f|^{p_1}\chi_E
+		\le\left(\int_E|\ |f|^{p_1}\ |^{p_2/p_1}\right)^{p_1/p_2}\left(\int_E|\chi_E|^{\frac{1}{1-p_1/p_2}}\right)^{1-{p_1/p_2}}
+		=\|f\|_{p_2}^{p_1}\cdot[m(E)]^{\frac{p_2-p_1}{p_2}}.
+	\]
+	Therefore $\|f\|_{p_1}\le \|f\|_{p_2}\cdot[m(E)]^{\frac{p_2-p_1}{p_1p_2}}$, so that 
+	\[
+		\|f\|_{p_2}<\infty\implies \|f\|_{p_1}<\infty,
+	\]
+	which gives us $L^{p_2}(E)\subseteq L^{p_1}(E)$.
+\end{proof}
+In general, for $E$ of infinite measure, there are no inclusion relationships among the $L^p(E)$ spaces.
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{5}
 	\item Show that if H\"older's Inequality is true for normalized functions it is true in general.
+	
+	\ \\We may simply see that, for $f,g\neq0$,
+	\[
+		\frac{1}{\|f\|_p\|g\|_q}\int_E|f\cdot g|=\int_E|\frac{f}{\|f\|_p}\cdot \frac{g}{\|g\|_q}|\le\frac{1}{p}\int_E|\frac{f}{\|f\|_p}|^p+\frac{1}{q}\int_E|\frac{g}{\|g\|_q}|^q=\frac{1}{p}\frac{\int_E|f|^p}{\|f\|_p^p}+\frac{1}{q}\frac{\int_E|g|^q}{\|g\|_q^q}=1.
+	\]
 	\item Verify the assertions in the above two examples regarding the membership of the function $f$ in $L^p(E)$. 
 	\item Let $f$ and $g$ belong to $L^2(E)$. From the linearity of integration show that for any number $\lambda$,
 	\[
@@ -588,5 +720,53 @@ For a sequence $\{f_n\}$ and a function $f$ in $L^p(E)$, $1\le p<\infty$, $\{f_n
 \end{enumerate}
 
 % 7.4
-\authoredby{untouched}
+\authoredby{inprogress}
 \section{Approximation and Separability}
+
+\begin{namedthm*}{Definition}
+	Let $X$ be a normed linear space with norm $\|\cdot\|$.
+	Given two subsets $\mathcal{F}$ and $\mathcal{G}$ of $X$ with $\mathcal{F}\subseteq\mathcal{G}$, we say that $\mathcal{F}$ is \textbf{dense} in $\mathcal{G}$ provided for each function $g$ in $\mathcal{G}$ and $\epsilon>0$, there is a function $f$ in $\mathcal{F}$ for which $\|f-g\|<\epsilon$.
+\end{namedthm*}
+It is clear that $\mathcal{F}$ is dense in $\mathcal{G}$ iff for each $g$ in $\mathcal{G}$ there is a sequence $\{f_n\}$ in $\mathcal{F}$ for which 
+\[
+	\lim_{n\to\infty}f_n=g\text{ in }X.
+\]	
+Moreover, it is also useful to observe that for $\mathcal{F}\subseteq\mathcal{G}\subseteq X$,
+\[
+	\text{if }\mathcal{F}\text{ is dense in }\mathcal{G}\text{ and }\mathcal{G}\text{ is dense in }\mathcal{H},\text{ then }\mathcal{F}\text{ is dense in }\mathcal{H}.
+\]
+
+The rational numbers are dense in $\mathbb{R}$, as are the irrational numbers.
+The Weierstrass Approximation Theorem tells us that the family of polynomials restricted to $[a,b]$ is dense in the linear space $C[a,b]$, normed by the maximum norm.
+
+\begin{namedthm*}{Proposition 9}
+	Let $E$ be a measurable set and $1\le p\le\infty$.
+	Then the subspace of simple functions in $L^p(E)$ is dense in $L^p(E)$.
+\end{namedthm*}
+\begin{namedthm*}{Proposition 10}
+	Let $[a,b]$ be a closed, bounded interval and $1\le p<\infty$.
+	Then the subspace of step functions on $[a,b]$ is dense in $L^p[a,b]$.
+\end{namedthm*}
+(To prove proposition 10, it suffices to show that the step functions are dense in the simple functions, with respect to the $\|\cdot\|_p$ norm.)
+\begin{namedthm*}{Definition}
+	A normed linear space $X$ is said to be \textbf{separable} provided there is a countable subset that is dense in $X$.
+\end{namedthm*}
+The real numbers are separable since the rational numbers are a countable dense subset.
+For $[a,b]$ a closed, bounded interval, $C[a,b]$, normed by the maximum norm, is separable since we infer from the Weierstrass Approximation Theorem that the polynomials with rational coefficients are a countable set that is dense in $C[a,b]$.
+\begin{namedthm*}{Theorem 11}
+	Let $E$ be a measurable set and $1\le p<\infty$.
+	Then the normed linear space $L^p(E)$ is separable.
+\end{namedthm*}
+In general $L^\infty(E)$ is not separable.
+\begin{namedthm*}{Theorem 12}
+	Let $E$ be a measurable set and $1\le p<\infty$.
+	Then $C_c(E)$ is dense in $L^p(E)$, where $C_c(E)$ denotes the linear space of continuous real-valued functions on $E$ that vanish outside a bounded set.
+\end{namedthm*}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{22}
+	\item had
+\end{enumerate}

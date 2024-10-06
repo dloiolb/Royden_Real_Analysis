@@ -5,13 +5,107 @@
 % 8.1
 \authoredby{inprogress}
 \section{The Riesz Representation for the Dual of $L^p,a\le p\le \infty$}
+
+\textbf{Example}
+Let $E$ be a measurable set, $1\le p<\infty$, $q$ the conjugate of $p$, and $g$ belong to $L^q(E)$.
+Define the functional $T$ on $L^p(E)$ by
+\[
+    T(f)=\int_Eg\cdot f\text{ for all }f\in L^p(E).
+\]
+H\"older's Inequality tells us that for $f\in L^p(E)$, the product $g\cdot f$ is integrable over $E$ so the functional $T$ is properly defined.
+By the linearity of integration, $T$ is linear.
+Observe that H\"older's inequality is the statement that 
+\[
+    |T(f)|\le\|g\|_q\cdot\|f\|_p\text{ for all }f\in L^p(E).
+\]
+\begin{flushleft}
+
+\textbf{Example}
+Let $[a,b]$ be a closed, bounded interval and the function $g$ be of bounded variation on $[a,b]$.
+Define the functional $T$ on $C[a,b]$ by
+\[
+    T(f)=\int_a^bf(x)dg(x)\text{ for all }f\in C[a,b],
+\]  
+where the integral is in the sense of Riemann-Stieltjes.
+The functional $T$ is properly defined and linear.
+Moreover, it follows immediately from the definition of this integral that 
+\[
+    |T(f)|\le TV(g)\cdot\|f\|_{\max}\text{ for all }f\in C[a,b],
+\]  
+where $TV(g)$ is the total variation of $g$ over $[a,b]$.
+\end{flushleft}
+\begin{namedthm*}{Definition}
+    For a normed linear space $X$, a linear functional $T$ on $X$ is said to be \textbf{bounded} provided there is an $M\ge0$ for which 
+\[
+    |T(f)|\le M\|f\|\text{ for all }f\in X.
+\]
+The infimum of all such $M$ is called the \textbf{norm} of $T$ and denoted by $\|T\|_*$.
+\end{namedthm*}
+The inequalities in the first and second example above tell us that the linear functionals are bounded.
+
+Let $T$ be a bounded linear functional on the normed linear space $X$.
+It is easy to see that the above equation holds for $M=\|T\|_*$.
+Hence, by the linearity of $T$,
+\[
+    |T(f)-T(h)|\le \|T\|_*\|f-h\|\text{ for all }f,h\in X.
+\]
+From this we infer the following continuity property of a bounded linear functional $T$:
+\[
+    \text{if }\{f_n\}\to f\text{ in }X,\text{ then }\{T(f_n)\}\to T(f).\tag{7}
+\]
+We leave it as an exercise (see chapter 13 problem 11) to show that 
+\[
+    \|T\|_*=\sup\{T(f)\mid f\in X,\|f\|\le1\},\tag{8}
+\]
+and use this characterization of $\|\cdot\|_*$ to prove the following proposition.
+\begin{namedthm*}{Proposition 1}
+    Let $X$ be a normed linear space.
+    Then the collection of bounded linear functionals on $X$ is a linear space on which $\|\cdot\|_*$ is a norm.
+    This normed linear space is called the \textbf{dual space} of $X$ and denoted by $X^*$.
+\end{namedthm*}
+\begin{namedthm*}{Proposition 2}
+    Let $E$ be a measurable set, $1\le p<\infty$, $q$ the conjugate of $p$, and $g$ belong to $L^q(E)$.
+    Define the functional $T$ on $L^p(E)$ by
+    \[
+        T(f)=\int_Eg\cdot f\text{ for all }f\in L^p(E).
+    \]
+    Then $T$ is a bounded linear functional on $L^p(E)$ and $\|T\|_*=\|g\|_q$.
+\end{namedthm*}
+\begin{proof}
+    By linearity of integration, $T$ is linear, and from H\"older's inequality, we infer that $T$ is bounded and $\|T\|_*\le\|g\|_q$.
+    For $p>1$, according to Chapter 7 Theorem 1, the conjugate function of $g$, $g^*=\|g\|_q^{1-q}\text{sgn}(g)|g|^{q-1}$, belongs to $L^p(E)$, and 
+    \[
+        T(g^*)=\int_Eg\cdot g^*=\|g\|_q\quad\text{and}\quad\|g^*\|_p=1.
+    \] 
+    Then by definition of the operator norm as a supremum (8), we have $\|T\|_*\ge T(g^*)=\|g\|_q$.
+    Thus from the two inequalities we obtain $\|T\|_*=\|g\|_q$.
+    For $p=1$, we argue by contradiction.
+
+\end{proof}
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{0}
     \item Verify (8).
-    \item Prove Proposition 1.
+    
+    \ \\(See Chapter 13 Problem 11) 
+    Define 
+    \[
+        \begin{split}
+        M'&:=\inf\{M\ge0\mid\|T(f)\|\le M\|f\|\text{ for all }f\in X\},\\
+        N'&:=\sup\{\|T(f)\|\mid f\in X, \|f\|\le1\}.
+        \end{split}
+    \]
+    We aim to show that they are equal.
+    
+    First, for $f\neq0$, then $\|\frac{f}{\|f\|}\|\le1$ so that by linearity of $T$,
+    \[\|T(\frac{f}{\|f\|})\|\le N'\implies\|Tf\|\le N'\|f\|\implies M'\le N'.\]
+    On the other hand, for $f$ such that $\|f\|\le1$, then
+    \[\|Tf\|\le M'\|f\|\le M'\implies N'\le M.\]
+    Therefore $M'=N'$.
+    \\\item Prove Proposition 1.
     \item Let $T$ be a linear functional on a normed linear space $X$. Show that $T$ is bounded iff the continuity property (7) holds.
     \item A functional $T$ on a normed linear space $X$ is said to be Lipschitz provided there is a $c\ge0$ such that
     \[

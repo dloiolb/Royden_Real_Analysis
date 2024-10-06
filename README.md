@@ -1,6 +1,6 @@
 # Exercise Completion
 
-Total Exercise Completion: (223/1048)
+Total Exercise Completion: (228/1048)
 
 Part 1:
 - 1.1-1.6 Done
@@ -9,6 +9,7 @@ Part 1:
 - 4.1-4.4~,4.5~
 - 6.1~,6.2~
 - 7.1-7.2~
+- 8.1~
 
 Part 2:
 - 9.1~
@@ -25,22 +26,22 @@ Part 3:
 - blue: in progress
 - green: untouched
 
-### PART I: Lebesgue Integration for Functions of a Single Real Variable (171/368)
+### PART I: Lebesgue Integration for Functions of a Single Real Variable (173/368)
 - Chapter 01: 59/59*
 - Chapter 02: 43/43*
 - Chapter 03: 31/31*
 - Chapter 04: 28/51*
 - Chapter 05: 0/17*
 - Chapter 06: 3/71*
-- Chapter 07: 7/51
-- Chapter 08: 0/45
+- Chapter 07: 8/51 (+1) 7.2
+- Chapter 08: 1/45 (+1) 8.1
 
-### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (24/408)
+### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (27/408)
 - Chapter 09: 7/78
 - Chapter 10: 0/44
 - Chapter 11: 0/56
 - Chapter 12: 0/36
-- Chapter 13: 10/40* (+6)
+- Chapter 13: 13/40* (+3) 13.2,13.3
 - Chapter 14: 0/70
 - Chapter 15: 0/18*
 - Chapter 16: 7/66*
@@ -99,6 +100,10 @@ With the sequence of measurable functions $\{f_n\}\to f$ pointwise a.e. on E (wi
 
  #### Chapter 06: Differentiation and Integration
 
+ bounded variation
+
+ absolutely continuous
+
  #### Chapter 07: The Lp Spaces: Completeness and Approximation
 
 Riesz-Fischer Theorem: $L^p$ is complete
@@ -111,6 +116,10 @@ This chapter has Young, Hölder, Minkowski inequalities
 ### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces
 
  #### Chapter 09: Metric Spaces: General Properties
+
+9.5 - metric space X is sequentially compact: every sequence in X has a subsequence that converges to a point in X. 
+
+Lebesgue Covering Lemma
 
  <!-- #### Chapter 10: Metric Spaces: Three Fundamental Theorems
 
@@ -132,6 +141,8 @@ This chapter has Young, Hölder, Minkowski inequalities
 
  linear operators from finite dimensional linear spaces are continuous
 
+ Riesz's Theorem
+
  #### Chapter 14: Duality for Normed Linear Spaces
 
  Dual space of a linear space
@@ -140,7 +151,7 @@ This chapter has Young, Hölder, Minkowski inequalities
 
  reflexive
 
- #### Chapter 15: Compactness Regained: The Weak Topology -->
+ <!-- #### Chapter 15: Compactness Regained: The Weak Topology -->
 
  #### Chapter 16: Continuous Linear Operators on Hilbert Spaces
 
@@ -173,11 +184,17 @@ measurable functions on measure space that is not complete
 
 Radon-Nikodym
 
- <!-- #### Chapter 19: General Lp spaces: Completeness, Duality, and Weak Convergence
+ <!-- #### Chapter 19: General Lp spaces: Completeness, Duality, and Weak Convergence -->
 
  #### Chapter 20: The Construction of Particular Measures
 
- #### Chapter 21: Measure and Topology
+ 20.3 - Cumulative Distribution Function
 
- #### Chapter 22: Invariant Measures -->
+ 20.3 - Lebesgue-Stieltjes integral, Riemann-Stieltjes integral
+ 
+ 20.4 - Carath\'eodory outer measure
+
+ <!-- #### Chapter 21: Measure and Topology
+
+ #### Chapter 22: Invariant Measures  -->
 

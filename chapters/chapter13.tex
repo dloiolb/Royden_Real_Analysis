@@ -14,6 +14,14 @@
     We immediately see that two norms are equivalent iff their induced metrics are equivalent.
 \end{namedthm*}
 
+Given vectors $x_1,\dots,x_n$ in a linear space $X$ and real numbers $\lambda_1,\dots,\lambda_n$, the vector
+\[
+    x=\sum_{k=1}^n\lambda_kx_k
+\]
+is called a \textbf{linear combination} of the $x_i$'s.
+A nonempty subset $Y$ of $X$ is called a \textbf{linear subspace}, or simply a subspace, provided every linear combination of vectors in $Y$ also belongs to $Y$.
+For a nonempty subset $S$ of $X$, by the \textbf{span} of $S$ we mean the set of all linear combinations of vectors in $S$, we denote this by $\text{span }S$.
+
 For any two nonempty subspaces $Y,Z$ of $X$, then the sum $Y+Z=\{y+z\mid y\in Y,z\in Z\}$ is also a subspace of $X$.
 In the case $Y\cap Z=\{0\}$, we denote $Y+Z$ by $Y\oplus Z$ and call this subspace of $X$ the \textbf{direct sum} of $Y$ and $Z$.
 
@@ -406,10 +414,42 @@ We denote the \textbf{image} of $T$, $T(X)$, by $\text{Im }T$.
     \item Let $X$ and $Y$ be normed linear spaces and $T:X\to Y$ be linear.
     \begin{enumerate}[(i)]
         \item Show that $T$ is continuous iff it is continuous at a single point $u_0$ in $X$.
-        \item Show that $T$ is Lipschitz iff it is continuous.
-        \item Show that neither $(i)$ nor $(ii)$ hold in the absence of the linearity assumption on $T$. 
+        
+        \ \\$(\implies)$ Suppose that $T$ is continuous.
+        Then it is trivial that $T$ is continuous for any point $u_0$ in $X$.
+
+        \ \\$(\impliedby)$ Suppose that $T$ is continuous at the point $u_0$ in $X$.
+        Then there exists a $\delta>0$ such that for any $x\in X$ such that $\|u_0-x\|_X<\delta$, then $\|Tu_0-Tx\|_X<\epsilon$. 
+        Let $y:=u_0-x$, and by linearity, we have
+        \[
+            \|y-0\|_X=\|y\|_X<\delta\implies \|Ty-T0\|_Y=\|Ty\|_Y<\epsilon,
+        \]
+        which tells us that $T$ is continuous at $0$.
+        Now consider any point $x'\in X$.
+        Then by continuity at zero, there exists a $\delta>0$ such that 
+        \[
+            \text{ for }x\in X\text{ s.t. }\|x'-x\|_X=\|(x'-x)-0\|_X<\delta\implies\|T(x'-x)-T0\|_Y=\|Tx'-Tx\|_Y<\epsilon.
+        \]
+        Therefore $T$ is continuous at every point.
+        \ \\\item Show that $T$ is Lipschitz iff it is continuous.
+        \\$(\implies)$ Suppose that $T$ is Lipschitz with Lipschitz constant $L\ge0$.
+        Then for any $x\in X$, by linearity of $T$, we have
+        \[  
+            \|Tx\|=\|Tx-T0\|\le L\|x-0\|=L\|x\|,
+        \]
+        and $T$ is bounded and thus continuous.
+        \\$(\impliedby)$ Suppose that $T$ is continuous.
+        Then $T$ is bounded and there exists an $M\ge0$ for which 
+        \[  
+            \|Tx-Ty\|=\|T(x-y)\|\le M\|x-y\|,
+        \]
+        and thus $T$ is Lipschitz.
+        \\\item Show that neither $(i)$ nor $(ii)$ hold in the absence of the linearity assumption on $T$. 
+
+        \ \\$(i)$ The function $f(x):=1$ for $x\ge0$ and $f(x):=0$ for $x<0$ is continuous at the point $2$ but not continuous on all of $X$ (namely, $0$).
+        \ \\$(ii)$ The function $g(x):=\sqrt{|x|}$ is continuous but it is not Lipschitz.
     \end{enumerate}
-    \item For $X$ and $Y$ normed linear spaces and $T\in\mathcal{L}(X,Y)$, show that $\|T\|$ is the smallest Lipschitz constant for the mapping $T$; that is, the smallest number $c\ge0$ for which
+    \ \\\item For $X$ and $Y$ normed linear spaces and $T\in\mathcal{L}(X,Y)$, show that $\|T\|$ is the smallest Lipschitz constant for the mapping $T$; that is, the smallest number $c\ge0$ for which
     \[
         \|T(u)-T(v)\|\le c\cdot\|u-v\|\text{ for all }u,v\in X.
     \]
@@ -420,12 +460,29 @@ We denote the \textbf{image} of $T$, $T(X)$, by $\text{Im }T$.
     \]
     Because $T$ is a Lipschitz function it is thus continuous (previous Problem 9(ii)), and because $T$ is linear, it is also thus bounded (Theorem 1), and so the operator norm of $T$ is well-defined.
     In particular, $\|T\|$ is the infimum of all such $c\ge0$.
-    \item For $X$ and $Y$ normed linear spaces and $Y\in\mathcal{L}(X,Y)$, show that 
+    \ \\\item For $X$ and $Y$ normed linear spaces and $Y\in\mathcal{L}(X,Y)$, show that 
     \[
         \|T\|=\sup\{\|T(u)\|\mid u\in X, \|u\|\le1\}.
     \]
-    \item For $X$ and $Y$ normed linear spaces, let $\{T_n\}\to T$ in $\mathcal{L}(X,Y)$ and $\{u_n\}\to u$ in $X$.
-    Show that $\{T_n(u_n)\}\to T_u$ in $Y$.
+
+    \ \\Define 
+    \[
+        \begin{split}
+        M'&:=\inf\{M\ge0\mid\|T(u)\|\le M\|u\|\text{ for all }u\in X\},\\
+        N'&:=\sup\{\|T(u)\|\mid u\in X, \|u\|\le1\}.
+        \end{split}
+    \]
+    We aim to show that they are equal.
+    
+    First, for $u\neq0$, then $\|\frac{u}{\|u\|}\|\le1$ so that by linearity of $T$,
+    \[\|T(\frac{u}{\|u\|})\|\le N'\implies\|Tu\|\le N'\|u\|\implies M'\le N'.\]
+    On the other hand, for $u$ such that $\|u\|\le1$, then
+    \[\|Tu\|\le M'\|u\|\le M'\implies N'\le M.\]
+    Therefore $M'=N'$.
+    \ \\\item For $X$ and $Y$ normed linear spaces, let $\{T_n\}\to T$ in $\mathcal{L}(X,Y)$ and $\{u_n\}\to u$ in $X$.
+    Show that $\{T_n(u_n)\}\to T(u)$ in $Y$.
+
+    \ \\
     \item Let $X$ be a Banach space and $T\in\mathcal{L}(X,Y)$ have $\|T\|<1$.
     \begin{enumerate}[(i)]
         \item Use the Contraction Mapping Principle to show that $I-T\in\mathcal{L}(X,Y)$ is one-to-one and onto.
@@ -562,6 +619,23 @@ That is, the proper subset $\{e_1,\dots,e_n\}\setminus \{e_j\}$ spans $X$.
         \|x_0-y\|>1-\epsilon\text{ for all }y\in Y.
     \]
 \end{namedthm*}
+\begin{proof}[Proof of Riesz's Theorem]
+    By Corollary 7, the closed unit ball in a finite dimensional normed linear space is compact.
+    It remains to show that $B$ fails to be compact if $X$ is finite dimensional.
+    Assume $X$ is finite dimensional.
+    We will inductively choose a sequence $\{x_n\}$ in $B$ such that $\|x_n-x_m\|>1/2$ for $n\neq m$.
+    This sequence has no Cauchy subsequence and therefore no convergent subsequence.
+    Thus $B$ is not sequentially compact (see chapter 9.5), and therefore, since $B$ is a metric space, not compact.
+
+    It remains to choose this subsequence.
+    Choose any vector $x_1\in B$.
+    For a natural number $n$, suppose we have chosen $n$ vectors in $B$, $\{x_1,\dots,x_n\}$, each pair of which are more than a distance $1/2$ apart.
+    Let $X_n$ be the linear space spanned by these $n$ vectors.
+    Then $X_n$ is a finite dimensional subspace of $X$, and so by Corollary 6, it is closed.
+    Moreover, $X_n$ is a proper subspace of $X$ since $\text{dim }X=\infty$.
+    By the preceding lemma we may choose $x_{n+1}$ in $B$ such that $\|x_{n+1}-x_i\|>1/2$ for all $1\le i\le n$.
+    Thus we have inductively chosen a sequence in $B$, any two terms of which are more than a distance $1/2$ apart.
+\end{proof}
 
 \begin{center}
 	\textbf{PROBLEMS}
@@ -569,17 +643,45 @@ That is, the proper subset $\{e_1,\dots,e_n\}\setminus \{e_j\}$ spans $X$.
 \begin{enumerate}
 	\setcounter{enumi}{22}
     \item Show that a subset of a finite dimensional normed linear space $X$ is compact iff it is closed and bounded.
-    \item Complete the proof of Riesz's Lemma for $\epsilon\neq1/2$.
-    \item Exhibit an open cover of the closed unit ball of $X=\ell^2$ that has not finite subcover.
+    \\\item Complete the proof of Riesz's Lemma for $\epsilon\neq1/2$.
+    
+    \ \\The case where $\epsilon\ge1$ holds trivially, so consider $0<\epsilon<1$.
+    Since $Y$ is a proper subset of $X$, there exists $x\in X\setminus Y$.
+    Then, because $Y$ is closed, then $X\setminus Y$ is open, so that there exists an open ball centered at $x$ that is disjoint from $Y$.
+    That is, 
+    % That is, $y\notin\mathbb{B}(x,\delta)=\{z\in X\mid \|x-z\|<\delta\}\implies$
+    \[
+        0<d:=\inf\{\|x-y\|, y\in Y\}.\tag{1}
+    \]
+    Because $1-\epsilon<1$, by definition of infimum, there exists a vector $y_1\in Y$ for which 
+    \[
+        d\le\|x-y_1\|<\frac{d}{1-\epsilon}.\tag{2}
+    \]
+    Now define 
+    \[
+        x_0:=\frac{x-y_1}{\|x-y_1\|},
+    \]
+    so that $x_0$ is a unit vector.
+    Moreover, for any $y\in Y$, we have
+    \[
+        x_0-y=\frac{x-(y_1+y\|x-y_1\|)}{\|x-y_1\|}:=\frac{1}{\|x-y_1\|}(x-y'),
+    \] 
+    where $y'=y_1+y\|x-y_1\|$ is a linear combination of elements of $Y$, and so is in $Y$.
+    
+    Therefore by (1) and (2),
+    \[
+        \|x_0-y\|=\frac{1}{\|x-y_1\|}\|x-y'\|>\frac{1-\epsilon}{d}\|x-y'\|\ge1-\epsilon.
+    \]
+    \\\item Exhibit an open cover of the closed unit ball of $X=\ell^2$ that has not finite subcover.
     Then do the same for $X=C[0,1]$ and $X=L^2[0,1]$.
-    \item For normed linear spaces $X$ and $Y$, let $T:X\to Y$ be linear.
+    \\\item For normed linear spaces $X$ and $Y$, let $T:X\to Y$ be linear.
     If $X$ is finite dimensional, show that $T$ is continuous. 
     If $Y$ is finite dimensional, show that $T$ is continuous iff $\text{ker }T$ is closed.
-    \item (Another proof of Riesz's Theorem) Let $X$ be an infinite dimensional normed linear space, $B$ the closed unit ball in $X$, and $B_0$ the unit open ball in $X$.
+    \\\item (Another proof of Riesz's Theorem) Let $X$ be an infinite dimensional normed linear space, $B$ the closed unit ball in $X$, and $B_0$ the unit open ball in $X$.
     Suppose $B$ is compact.
     Then the open cover $\{x+(1/3)B_0\}_{x\in B}$ of $B$ has a finite subcover $\{x_i+(1/3)B_0\}_{1\le i\le n}$.
     Use Riesz's Lemma with $Y=\text{span}[\{x_1,\dots,x_n\}]$ to derive a contradiction.
-    \item Let $X$ be a normed linear space.
+    \\\item Let $X$ be a normed linear space.
     Show that $X$ is separable iff there is a compact subset $K$ of $X$ for which $\overline{\text{span}}[K]=X$.
 \end{enumerate}
 
