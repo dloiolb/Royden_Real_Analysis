@@ -80,8 +80,16 @@ and use this characterization of $\|\cdot\|_*$ to prove the following propositio
     Then by definition of the operator norm as a supremum (8), we have $\|T\|_*\ge T(g^*)=\|g\|_q$.
     Thus from the two inequalities we obtain $\|T\|_*=\|g\|_q$.
     For $p=1$, we argue by contradiction.
+    If we have strict inequality, i.e., $\|g\|_\infty>\|T\|_*$, then by definition of supremum norm there is a set $A$ of finite positive measure on which $|g|>\|T\|_*$.
+    Define $f:=[1/m(A)][\text{sgn}(g)]\chi_A$. 
+    Then $\|f\|_1=1/m(A)\int_E\chi_A=1$ and yet, using the fact that $g\cdot\text{sgn}(g)=|g|$ and monotonicity of integration,
+    \[
+        T(f)=1/m(A)\int_E|g|\chi_A>1/m(A)\int_E\|T\|_*\chi_A=\|T\|_*,
+    \]
+    which is a contradiction to the fact that $\|T\|_*$ is the supremum.
 
 \end{proof}
+Our goal now is to prove that for $1\le p<\infty$, every bounded linear functional on $L^p(E)$ is given by integration against a function in $L^q(E)$, where $q$ is the conjugate of $p$.
 
 \begin{center}
 	\textbf{PROBLEMS}
