@@ -672,11 +672,34 @@ That is, the proper subset $\{e_1,\dots,e_n\}\setminus \{e_j\}$ spans $X$.
     \[
         \|x_0-y\|=\frac{1}{\|x-y_1\|}\|x-y'\|>\frac{1-\epsilon}{d}\|x-y'\|\ge1-\epsilon.
     \]
-    \\\item Exhibit an open cover of the closed unit ball of $X=\ell^2$ that has not finite subcover.
+    \\\item Exhibit an open cover of the closed unit ball of $X=\ell^2$ that has no finite subcover.
     Then do the same for $X=C[0,1]$ and $X=L^2[0,1]$.
     \\\item For normed linear spaces $X$ and $Y$, let $T:X\to Y$ be linear.
     If $X$ is finite dimensional, show that $T$ is continuous. 
     If $Y$ is finite dimensional, show that $T$ is continuous iff $\text{ker }T$ is closed.
+
+    From Chapter 13 Theorem 1, we showed that continuous is equivalent to bounded for the linear operator $T$.
+    Therefore it is sufficient to show that $T$ is bounded.
+    Because $X$ is finite dimensional of some dimension $n$, choose a normalized basis $\{e_i\}_{i\in[n]}$ of $X$.
+    Thus for any $x\in X$, then $x=\sum_{i=1}^nx_ie_i$, and then by linearity, $T(x)=\sum_{i=1}^nx_if(e_i)$.
+    By subadditivity and absolute homogeneity,
+    \[
+        \|f(x)\|_Y\le\sum_{i=1}^n|x_i|\|f(e_i)\|_Y.
+    \]
+    \begin{enumerate}
+        \item Let $M:=\sup_{i\in[n]}\{\|f(e_i)\|_Y\}=\max_{i\in[n]}\{\|f(e_i)\|_Y\}$.
+        \item Note that any two norms on a finite-dimensional space are equivalent, so that 
+        \[
+            \sum_{i=1}^n|x_i|=\|x\|_1\le C\|x\|_X\quad\text{for some }C>0.
+        \]
+    \end{enumerate}
+    Therefore by (i) and (ii),
+    \begin{align*}
+        \|f(x)\|_Y
+        &\le\sum_{i=1}^n|x_i|\|f(e_i)\|_Y\\
+        &\le C\|x\|_XM,
+    \end{align*}
+    which implies $f$ is bounded.
     \\\item (Another proof of Riesz's Theorem) Let $X$ be an infinite dimensional normed linear space, $B$ the closed unit ball in $X$, and $B_0$ the unit open ball in $X$.
     Suppose $B$ is compact.
     Then the open cover $\{x+(1/3)B_0\}_{x\in B}$ of $B$ has a finite subcover $\{x_i+(1/3)B_0\}_{1\le i\le n}$.

@@ -220,15 +220,24 @@ This is an equivalence relation that separates $X$ into a disjoint collection of
     \[
         \rho^+(x,y)\le\rho^*(x,y)\le n\rho^+(x,y).
     \]
+    Note that $\rho^*$ corresponds to what is called $\ell_1$ and $\rho^+$ corresponds to what is called $\ell_\infty$.
+    In Chapter 13 Theorem 4 we discuss how any two norms on $R^n$ are equivalent.
     \item Find a metric on $\mathbb{R}^n$ that fails to be equivalent to either of those defined in the preceding problem.\\
     Let 
     \[
-    \rho(x,y)=
+    \tau(x,y):=
     \begin{cases}
-        \min\{|x-y|,1\}&\text{if $x,y$ are both rational or $x,y$ are both irrational}\\
+        \min\{|x-y|,1\}&\text{if both $x,y$ have each $x_i,y_i\in\mathbb{Q}$ or both $x,y$ have each $x_i,y_i\in\mathbb{Q}^c$,}\\
         1&\text{else}
     \end{cases}    
     \]
+    Consider any $c_2>0$.
+    Then choose a specific $\epsilon>0$ so that $\epsilon<\frac{1}{c_2}$.
+    Then consider $x\in\mathbb{R}^n$ that has each $x_i\in\mathbb{Q}$.
+    By the density of $\mathbb{Q}$ in $\mathbb{R}$ it is possible to find a sequence $\{x^k\}_k\subset \mathbb{R}^n$ that has each $x_i^k\in\mathbb{Q}$, and $x^k\to x$ (in $\rho=\rho^*$ or $\rho=\rho^+$).
+    Choose $K$ large enough so that $\rho(x^K,x)<\epsilon$.
+    However, then we have $\tau(x^k,x)=1>c_2\epsilon>c_2\rho(x^K,x)$, and thus $\tau(x^k,x)\not\le c_2\rho(x^K,x)$ and the metrics $\rho$ and $\tau$ are not equivalent.
+
     \item For a closed, bounded interval $[a,b]$, consider the set $X=C[a,b]$ of continuous real-valued functions on $[a,b]$.
     Show that the metric induced by the maximum norm and that induced by the $L^1[a,b]$ norm are not equivalent.\\
     From Chapter 7 Problem 1, we proved that there is no number $c \ge 0$ for which
@@ -250,6 +259,31 @@ This is an equivalence relation that separates $X$ into a disjoint collection of
     \rho(A,B)=\int_E|\chi_A-\chi_B|,    
     \]
     where $\chi_A$ and $\chi_B$ are the characteristic functions of $A$ and $B$, respectively.
+    
+    \begin{enumerate}[(i)]
+        \item $\rho(A,B)=m(A\Delta B)\ge0$ by nonnegativity of Lebesgue measure.
+        \item $A=B\implies \rho(A,B)=m[(A\setminus A)\cup(A\setminus A)]=0$.
+        However, for sets $A\neq B$ but $A=B$ except for a set $C$ of $m$-measure zero (ex: $E=[0,2]$, $A=[0,1]$, $B=[0,1]\setminus\mathbb{Q}$), then $\rho(A,B)=m[(A\setminus B)\cup(B\setminus A)]=m[([0,1]\cap\mathbb{Q})\cup\emptyset]=0$.
+        \item $\rho(A,B)=m[(A\setminus B)\cup(B\setminus A)]=m[(B\setminus A)\cup(A\setminus B)]=\rho(B,A)$.
+        \item Through some movement we may obtain that 
+        \begin{align*}
+            [(A\setminus B)\cup(B\setminus A)]
+            &=[(A\setminus B)\cup(B\setminus A)]\cap[C^c\cup C]\\
+            &=([A\setminus C]\cap B^c)\cup([B\setminus C]\cap A^c)\cup([C\setminus B]\cap A)\cup([C\setminus A]\cap B)\\
+            &\subset[(A\setminus C)\cup(C\setminus A)]\cup[(C\setminus B)\cup(B\setminus C)],
+        \end{align*}
+        and thus by monotonicity,
+        \begin{align*}
+            \rho(A,B)
+            &\le m\left(\ [(A\setminus C)\cup(C\setminus A)]\cup[(C\setminus B)\cup(B\setminus C)]\ \right)\\
+            &\le m[(A\setminus C)\cup(C\setminus A)]+m[(C\setminus B)\cup(B\setminus C)]\\
+            &=\rho(A,C)+\rho(C,B).
+            \end{align*}
+    \end{enumerate}
+    Thus $\rho$ is a pseudometric.
+    \[
+        \rho(A,B)=m[(A\setminus B)\cup(B\setminus A)]=\int_{E}1_{(A\setminus B)\cup(B\setminus A)}dm=\int_E|\chi_A-\chi_B|dm.
+    \]
     \item Show that for $a,b,c\ge0$,
     \[
     \text{if }a\le b+c,\text{ then }\frac{a}{1+a}\le\frac{b}{1+b}+\frac{c}{1+c}.
@@ -286,7 +320,10 @@ This is an equivalence relation that separates $X$ into a disjoint collection of
     \[
     (a+b)^p\le a^p+b^p\text{ for all }a,b\ge0.    
     \]
-    
+    For any $b\ge0$, define $\varphi_b:[0,\infty)\to\mathbb{R}$ by $\varphi_b(a):=(a+b)^p-a^p-b^p$, so that $\varphi_b'(a)=p((a+b)^{p-1}-a^{p-1})$.
+    Note that because $c:=p-1<0$, then $a\mapsto a^c$ is decreasing on $[0,\infty)$, and so $\varphi_b'(a)<0$ for each $a$.
+    This implies that $(a+b)^p-a^p-b^p=\varphi_b(a)\le \varphi_b(0)=b^p-b^p=0$.
+
     \item For $E$ a Lebesgue measurable set of real numbers, $0<p<1$, and $g,h$ Lebesgue measurable functions on $E$ that have integrable $p^{th}$ powers, define
     \[
     \rho_p(h,g)=\int_E|g-h|^p.    
@@ -315,11 +352,59 @@ This is an equivalence relation that separates $X$ into a disjoint collection of
     Show that there is a unique metric on $A$ for which $f$ is an isometry of metric spaces.
     (This is the sense in which an isometry amounts merely to a relabeling of the points in a space.)
     \item Show that the triangle inequality for Euclidean space $\mathbb{R}^n$ follows from the triangle inequality for $L^2[0,1]$.
+    
+
 \end{enumerate}
 
 % 9.2
-\authoredby{untouched}
+\authoredby{inprogress}
 \section{Open Sets, Closed Sets, and Convergent Sequences}
+\begin{namedthm*}{Definition}
+    Let $(X,\rho)$ be a metric space. For a point $x\in X$ and $r>0$, the set 
+    \[
+        B(x,r)\equiv\{x'\in X:\rho(x',x)<r\}
+    \]
+    is called the \textbf{open ball} centered at $x$ of radius $r$.
+    A subset $\mathcal{O}$ of $X$ is said to be \textbf{open} provided for every point $x\in\mathcal{O}$, there is an open ball centered at $x$ that is contained in $\mathcal{O}$.
+    For a point $x\in X$, an open set that contains $x$ is called a \textbf{neighborhood} of $x$.
+\end{namedthm*}
+
+\begin{namedthm*}{Proposition 2}
+    Let $X$ be a subspace of the metric space $Y$ and $E$ a subset of $X$.
+    Then $E$ is open in $X$ iff $E=X\cap\mathcal{O}$, where $\mathcal{O}$ is open in $Y$.
+\end{namedthm*}
+Example: for prop 2, consider the sets $Y=\mathbb{R}$, $X=[0,2]$ and $E=[0,1)$.
+Then $E$ is not open in $Y$ but $E=[0,2]\cap(-1,1)$ is open in $X$.
+
+\begin{namedthm*}{Definition}
+    A sequence $\{x_n\}$ in a metric space $(X,\rho)$ is said to \textbf{converge} to the point $x\in X$ provided
+    \[
+        \lim_{n\to\infty}\rho(x_n,x)=0,
+    \]
+    that is, for each $\epsilon>0$, there is an index $N$ such that for every $n\ge N$, then $\rho(x_n,x)<\epsilon$.
+    The point to which the sequence converges is called the \textbf{limit} of the sequence and we often write $\{X_n\}\to x$ to denote the convergence of $\{x_n\}$ to $x$.
+\end{namedthm*}
+
+\begin{namedthm*}{Proposition 7}
+    Let $\rho$ and $\sigma$ be equivalent metrics on a nonempty set $X$.
+    Then a subset of $X$ is open in the metric space $(X,\rho)$ iff it is open in the metric space $(X,\sigma)$.
+\end{namedthm*}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+    \setcounter{enumi}{12}
+    \item In a metric space $X$, is it possible for $r>0$ and two distinct points $u$ and $v$ in $X$ to have $B(u,r)=B(v,r)?$
+    Is this possible in Euclidean space $\mathbb{R}^n$?
+    Is is possible in a normed linear space?
+
+    Let $f:[0,1]\to\mathbb{R}$ be defined as $f(x)=1$ for $x$ rational, and $f(x)=0$ otherwise.
+    Then $f=0$ $m$-a.e. (for $m$ Lebesgue measure).
+    Consider the metric space ($X:=L^\infty([0,1]),\rho(f,g):=\|f-g\|_\infty$).
+    Considering any $r>0$ and $B(f,r)=\{g\in X:\rho(f,g)<r\}$, note that because $f$ is zero except for a set of measure zero, then $r>\rho(f,g)=\|f-g\|_\infty=\text{esssup}_{[0,1]}|f-g|=\text{esssup}_{[0,1]}|g|=\|g\|_\infty=\rho(0,g)$.
+
+\end{enumerate}
 
 % 9.3
 \section{Continuous Mappings Between Metric Spaces}
