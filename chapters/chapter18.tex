@@ -282,12 +282,36 @@ For $\mu$ a measure on $(X,\mathcal{M})$ and $f$ a nonnegative function on $X$ t
 \[
     \nu(E)=\int_Efd\mu\text{ for all }E\in\mathcal{M}.
 \]
+
+\begin{namedthm*}{The Radon-Nikodym Theorem}
+    Let $(X,\mathcal{M},\mu)$ be a $\sigma$-finite measure space and $\nu$ a $\sigma$-finite measure defined on the measurable space $(X,\mathcal{M})$ that is absolutely continuous with respect to $\mu$.
+    Then there is a nonnegative function $f$ on $X$ that is measurable with respect to $\mathcal{M}$ for which 
+    \[
+        \nu(E)=\int_Efd\mu\quad\text{for all }E\in\mathcal{M}.
+    \]
+    The function $f$ is unique in the sense that if $g$ is any nonnegative measurable function on $X$ that also has this property, then $g=f$ a.e. $[\mu]$.
+\end{namedthm*}
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
 	\setcounter{enumi}{48}
-    \item 
+    \item Show that the Radon-Nikodym Theorem for finite measures $\mu$ and $\nu$ implies the theorem for $\sigma$-finite measures $\mu$ and $\nu$.
+    \item Establish the uniqueness of the function $f$ in the Radon-Nikodym Theorem.
+    
+    Suppose that both $f$ and $g$ satisfy the RND property.
+    Then 
+    \[
+        \int_Efd\mu=\nu(E)=\int_Egd\mu,\quad\text{for any }E\in\mathcal{M}.
+    \]
+    And so for $\{f>g\}\in\mathcal{M}$, we have
+    \[
+        \int_{\{f>g\}}(f-g)d\mu=0.
+    \]
+    Because $f-g>0$, then we must have that $\{f>g\}$ has measure zero.
+    The same argument can be used for $\{f<g\}$.
+    Therefore $f=g$ $\mu$-a.e., as $\{f\neq g\}=\{f>g\}\cup\{f<g\}$ has measure zero.
 \end{enumerate}
 
 % 18.5

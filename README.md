@@ -1,6 +1,6 @@
 # Exercise Completion
 
-Total Exercise Completion: (241/1048)
+Total Exercise Completion: (242/1048)
 
 Part 1:
 - 1.1-1.6 Done
@@ -19,7 +19,7 @@ Part 2:
 
 Part 3:
 - 17.1-17.5~
-- 18.1~
+- 18.1~,18.4~
 
 ### Colors on Table of Contents:
 - black: finished
@@ -33,8 +33,8 @@ Part 3:
 - Chapter 04: 28/51*
 - Chapter 05: 0/17*
 - Chapter 06: 4/71*
-- Chapter 07: 11/51 (+3)
-- Chapter 08: 5/45 (+4)
+- Chapter 07: 11/51 
+- Chapter 08: 5/45 
 
 ### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (32/408)
 - Chapter 09: 10/78
@@ -46,9 +46,9 @@ Part 3:
 - Chapter 15: 0/18*
 - Chapter 16: 7/66*
 
-### PART III: Measure and Integration: General Theory (28/272)
+### PART III: Measure and Integration: General Theory (29/272)
 - Chapter 17: 24/36* 
-- Chapter 18: 4/67 
+- Chapter 18: 5/67 (+1)
 - Chapter 19: 0/22
 - Chapter 20: 0/55
 - Chapter 21: 0/61
