@@ -114,12 +114,21 @@ Our goal now is to prove that for $1\le p<\infty$, every bounded linear function
     \[\|Tf\|\le M'\|f\|\le M'\implies N'\le M.\]
     Therefore $M'=N'$.
     \\\item Prove Proposition 1.
+
+    This was proved in Chapter 13.2 Proposition 2.
     \item Let $T$ be a linear functional on a normed linear space $X$. Show that $T$ is bounded iff the continuity property (7) holds.
+    
+    This was proved in Chapter 13.2 Theorem 1.
     \item A functional $T$ on a normed linear space $X$ is said to be Lipschitz provided there is a $c\ge0$ such that
     \[
         |T(g)-T(h)|\le c\|g-h\|\text{ for all }g,h\in X.  
     \]
     The infimum of such $c$'s is called the Lipschitz constant for $T$. Show that a linear functional is bounded iff it is Lipschitz, in which case its Lipschitz constant is $\|T\|_*$.
+    
+    Suppose a linear functional $T$ is Lipschitz. We know that Lipschitz implies continuity, and so the linear functional is bounded by Problem 3 above.
+    On the other hand, suppose the linear functional is bounded.
+    Then we may consider the norm defined by $\|T\|_*=\inf\{C>0:|T(x)|\le C\|x\|\text{ for all }x\in X\}$.
+    But simply by linearity, $|T(g)-T(h)|=\|T(g-h)\|\le \|T\|_*\|g-h\|\text{ for all }g,h\in X$.
     \item Let $E$ be a measurable set and $1\le 0<\infty$. Show that the functions in $L^p(E)$ that vanish outside a bounded set are dense in $L^p(E)$. Show that this is false for $L^\infty(\mathbb{R})$.
     \item Establish the Riesz Representation Theorem in the case $p=1$ by first showing, in the notation of the proof of the theorem, that the function $\Phi$ is Lipschitz and therefore it is absolutely continuous. Then follow the $p>1$ proof.
     \item State and prove a Riesz Representation Theorem for the bounded linear functionals on $\ell^p$, $1\le p<\infty$.
@@ -134,8 +143,60 @@ Our goal now is to prove that for $1\le p<\infty$, every bounded linear function
 \end{enumerate}
 
 % 8.2
-\authoredby{untouched}
+\authoredby{inprogress}
 \section{Weak Sequential Convergence in $L^p$}
+
+The Bolzano-Weierstrass Theorem for the real numbers is the assertion that every bounded sequence of real numbers has a convergent subsequence.
+This property immediately extends to bounded sequences in each Euclidean space $\mathbb{R}^n$.
+This property fails in an infinite dimensional normed linear space (See Riesz's Theorem, Chapter 13.3).
+The following example shows that for $1\le p\le\infty$, there are bounded sequences in $L^p[0,1]$ that fail to have any subsequences that converge in $L^p[0,1]$ (Radamacher functions).
+
+\textbf{Example.}
+For $I=[0,1]$ and a natural number $n$, consider the step function $f_n$ defined on $I$ by
+\[
+    f_n(x):=(-1)^k\quad\text{for}\quad k/2^n\le x<(k+1)/2^n\quad\text{where}\quad0\le k<2^n-1.
+\]
+Fix $1\le p\le\infty$.
+It is clear that $\|f_n\|_p=1$ for each index $n$, and so the sequence is bounded in $L^p(I)$.
+However, for $n\neq m$, then $|f_n-f_m|$ takes the value 2 on a set of measure 1/2.
+Therefore for any index $N$, we may always find $m,n\ge N$ with $\|f_n-f_m\|_p\ge(2)^{1-1/p}$, which implies that no subsequence of $\{f_n\}$ is Cauchy in $L^p(I)$, and thus no subsequence can converge in $L^p(I)$.
+Further, no subsequence can converge pointwise a.e. on $I$ since, for $1\le p<\infty$, if there were such a sequence, then by the Bounded Convergence Theorem it would converge in $L^p(I)$.
+
+\begin{namedthm*}{Definition}
+    Let $X$ be a normed linear space.
+    A sequence $\{f_n\}$ in $X$ is said to \textbf{converge weakly} in $X$ to $f$ in $X$ provided
+    \[
+        \lim_{n\to\infty}T(f_n)=T(f)\quad\text{for all }T\in X^*.
+    \]
+    We write 
+    \[
+        \{f_n\}\rightharpoonup f\quad\text{in }X
+    \]
+    to mean that $f$ and each $f_n$ belong to $X$ and $\{f_n\}$ converges weakly in $X$ to $f$.
+\end{namedthm*}
+We continue to write $\{f_n\}\to f$ in $X$ to mean that $\lim_{n\to\infty}\|f_n-f\|=0$, and we refer to this as \textbf{strong convergence}.
+Strong convergence is a stronger condition as weak convergence as
+\[
+    |T(f_n)-T(f)|=|T(f_n-f)|\le\|T\|_*\|f_n-f\|\quad\text{for all }T\in X^*.
+\]
+\begin{namedthm*}{Proposition 6}
+    Let $E$ be a measurable set, $1\le p<\infty$, and $q$ the conjugate of $p$.
+    Then $\{f_n\}\rightharpoonup f$ in $L^p(E)$ if and only if 
+    \[
+        \lim_{n\to\infty}\int_Eg\cdot f_n=\int_Eg\cdot f\quad\text{for all }g\in L^q(E).
+    \]
+\end{namedthm*}
+\begin{proof}
+    The Riesz Representation Theorem tells us that every bounded linear functional on $L^p(E)$ is given by integration against a function in $L^q(E)$.
+\end{proof}
+
+By the \textbf{linear span} of a subset $\mathcal{S}$ if a linear space $X$ we mean the linear space consisting of all linear combinations of functions in $\mathcal{S}$;
+that is, the linear space of functions of the form 
+\[
+    f=\sum_{k=1}^n\alpha_k\cdot f_k,
+\]
+where each $\alpha_k$ is a real number and each $f_k$ belongs to $\mathcal{S}$.
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -156,10 +217,62 @@ Our goal now is to prove that for $1\le p<\infty$, every bounded linear function
 
 % 8.4
 \section{The Minimization of Convex Functionals}
+
+\begin{namedthm*}{Definition}
+    A subset $C$ of a linear space $X$ is said to be \textbf{convex} provided whenever $f$ and $g$ belong to $C$ and $\lambda\in[0,1]$, then $\lambda f+(1-\lambda)g$ also belongs to $C$.
+\end{namedthm*}
+
+\begin{namedthm*}{Definition}
+    A subset $C$ of a normed linear space $X$ is said to be \textbf{closed} provided whenever $\{f_n\}$ is a sequence in $X$ that converges strongly in $X$ to $f$, then if each $f_n$ belongs to $C$, the limit $f$ also belongs to $C$.
+\end{namedthm*}
+
+\textbf{Example}
+Let $E$ be a measurable set, $1\le p<\infty$, and $g$ nonnegative function in $L^p(E)$.
+Define
+\[
+    C:=\{f\text{ measurable on }E: |f|\le g\text{ a.e. on }E\}.
+\]
+Then $C$ is a closed, convex subset of $L^p(E)$.
+
+\textbf{Example}
+Let $E$ be a measurable set and $1\le p<\infty$.
+Then $B:=\{f\in L^p(E):\|f\|_p\le1\}$ is closed and convex.
+Convexity follows from the minkowski (triangle) inequality and absolute homogeneity.
+To see the closed property, let $\{f_n\}$ be a sequence in $B$ that converges in $L^p(E)$ to $f\in L^p(E)$.
+The reverse triangle inequality gives us that $|\|f_n\|_p-\|f\|_p|\le\|f_n-f\|_p$, and so $\{\|f_n\|_p\}$ converges to $\|f\|_p$.
+Therefore $\|f\|_p\le1$.
+
+\begin{namedthm*}{Definition}
+    A real-valued functional $T$ defined on a subset $C$ of a normed linear space $X$ is said to be \textbf{continuous} provided whenever a sequence $\{f_n\}$ in $C$ converges strongly to $f\in C$, then $\{T(f_n)\}\to T(f)$.    
+\end{namedthm*}
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
-	\setcounter{enumi}{36}
-    \item f
+	\setcounter{enumi}{37}
+    \item For $1<p<\infty$ and each index $n$, let $e_n\in\ell^p$ have $n$th component 1 and the other components 0.
+    Show that $\{e_n\}$ converges weakly to 0 in $\ell^p$, but no subsequence converges strongly to 0.
+    Find a subsequence whose arithmetic means converge strongly to 0 in $\ell^p$.
+
+    By the Riesz Representation Theorem for $\ell^p$, for any $\varphi\in(\ell^p)^*$, there exists $g\in\ell^q$ such that 
+    \[
+        \varphi(x)=\sum_{i=1}^\infty x(i)g(i)\quad\text{for all }x\in\ell^p.
+    \]
+    Consider any linear functional $\varphi_g$ represented by integration against $g\in\ell^q$.
+    Because $g\in\ell^p$, then we have that $\sum_{i=1}^\infty|g(i)|^q=\|g\|_q^q<\infty$; that is, the series is summable.
+    From Chapter 1.5 Proposition 20(i), then for each $\epsilon>0$, there is an index $N$ for which 
+    \[
+        |g(n)|^q<\epsilon^q\quad\text{for }n\ge N.
+    \]
+    Then because $\varphi_g(0)=0$, we have
+    \[
+        |\varphi_g(e_n)-\varphi_g(0)|=|\varphi_g(e_n)|=\left|\sum_{i=1}^\infty e_n(i)g(i)\right|=|g(n)|<\epsilon\quad\text{for }n\ge N,
+    \]
+    and so $\{e_n\}$ converges weakly to $0$.
+    No subsequence of $\{e_n\}$ converges strongly to zero because for any $e_n$, we have that 
+    \[
+        \|e_n-0\|_p^p=\sum_{i=1}^\infty |e_n(i)|^p=|e_n(n)|^p=1.
+    \]
+
 \end{enumerate}

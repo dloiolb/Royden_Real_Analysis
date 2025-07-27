@@ -635,6 +635,8 @@ For a sequence $\{f_n\}$ and a function $f$ in $L^p(E)$, $1\le p<\infty$, $\{f_n
 	\]
 	\item Assume that $E$ has finite measure and $1\le p_1< p_2\le\infty$.
 	Show that if $\{f_n\}\to f$ in $L^{p_2}(E)$, then $\{f_n\}\to f$ in $L^{p_1}(E)$.
+	
+	From Chapter 7.2 Corollary 3 we obtain that there exists $c>0$ where $\|f_n-f\|_{p_1}\le c\|f_n-f\|_{p_2}$, and because we have $\|f_n-f\|_{p_2}\to0$, we are done.
 	\item (The $L^p$ Dominated Convergence Theorem) Let $\{f_n\}$ be a sequence of measurable functions that converges pointwise a.e. on $E$ to $f$.
 	For $1\le p<\infty$, suppose there is a function $g$ in $L^p(E)$ such that for all $n$, $|f_n|\le g$ a.e. on $E$.
 	Prove that $\{f_n\}\to f$ in $L^p(E)$.
@@ -763,10 +765,53 @@ In general $L^\infty(E)$ is not separable.
 	Then $C_c(E)$ is dense in $L^p(E)$, where $C_c(E)$ denotes the linear space of continuous real-valued functions on $E$ that vanish outside a bounded set.
 \end{namedthm*}
 
+(
+	We know that a closed subset $E$ of a Banach space $X$ is also Banach itself: 
+	consider a Cauchy sequence $\{x_n\}$ in $E$. 
+	Then it is a Cauchy sequence in $X$, and thus by completeness of $X$, it converges to an element $x$ in $X$.
+	However, because $E$ is closed, it contains all its limit points and thus $x$ is also in $E$.
+)
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
 \begin{enumerate}
-	\setcounter{enumi}{22}
-	\item had
+	\setcounter{enumi}{35}
+	\item
+	\item
+	\item
+	\item
+	\item
+	\item Let $E$ be a measurable set of finite measure and $1\le p_1<p_2<\infty$.
+	Consider the linear space $L^{p_2}(E)$ normed by $\|\cdot\|_{p_1}$.
+	Is this normed linear space a Banach space?
+	
+	% From the Riesz-Fischer Theorem of Chapter 7.3, we have that the space $L^{p_1}$ is a Banach space.
+	Recall from Chapter 7.2 Corollary 3, we have that $L^{p_2}\subset L^{p_1}$ and $\|f\|_{p_1}\le c\|f\|_{p_2}$ for $f\in L^{p_2}$.
+	Therefore it is justified to consider the normed linear space $(L^{p_2},\|\cdot\|_{p_1})$.
+	Consider the counterexample with $(L^2,\|\cdot\|_1)$:
+	Let $f:(0,1)\to\mathbb{R}$ be defined by $f(x):=x^{-1/2}$.
+	Then 
+	\begin{align*}
+		\|f\|_1&=\int_0^1x^{-1/2}dx=2\quad\implies f\in L^1,\\
+		\|f\|_2&=\int_0^1x^{-2}dx=\infty\quad\implies f\notin L^2.
+	\end{align*}
+	We may consider the sequence $f_n(x):=\min\{f(x),n\}$ for $n\in\mathbb{N}$.
+	Because each function $f_n$ is bounded, then we have each $f_n\in L^\infty\subset L^2\subset L^1$.
+	Then by the Monotone Convergence Theorem, we have $\lim_{n\to\infty}\int_{(0,1)}f_n=\int_{(0,1)}f$.
+	This implies convergence in $L^1$ and thus the sequence $\{f_n\}$ is Cauchy in $(L^2,\|\cdot\|_1)$.
+	However, the limit $f$ is not in $L^2$, and thus $(L^2,\|\cdot\|_1)$ is not a Banach space.
+
+	\item
+	\item Suppose that $X$ is a Banach space with norm $\|\cdot\|$.
+	Let $X_0$ be a dense subspace of $X$.
+	Assume that $X_0$, when normed by the norm it inherits from $X$, is also a Banach space.
+	Prove that $X=X_0$.
+
+	Because $X_0$ is already a subset of $X$, it is sufficient to prove that $X\subset X_0$.
+	Consider any $x\in X$.
+	Then because $X_0$ is dense in $X$, then we may find a sequence $\{x_n\}_n$ in $X_0$ that converges to $x$ w.r.t. the norm $\|\cdot\|$.
+	Then we know by the triangle inequality that this sequence $\{x_n\}$ is Cauchy in $X_0$.
+	However, because $X_0$ is a Banach space, then every Cauchy sequence (in $X_0$) converges to an element in the space ($X_0$).
+	Therefore $x$ must be in $X_0$, and we have $X\subset X_0$.
 \end{enumerate}
