@@ -373,6 +373,19 @@ This is an equivalence relation that separates $X$ into a disjoint collection of
     Let $X$ be a subspace of the metric space $Y$ and $E$ a subset of $X$.
     Then $E$ is open in $X$ iff $E=X\cap\mathcal{O}$, where $\mathcal{O}$ is open in $Y$.
 \end{namedthm*}
+\begin{proof}
+    Suppose that $E$ is open in $X$.
+    Then for every point $x\in E$, there is an open ball $B(x,r)=\{x'\in X:\rho(x,x')<r\}$.
+    But $B(x,r)=X\cap\{x'\in Y:\rho(x,x')<r\}$, where $\{x'\in Y:\rho(x,x')<r\}$ is open in $Y$.
+
+    Suppose that $E=X\cap\mathcal{O}$ for some $\mathcal{O}$ open in $Y$.
+    Then for any $x\in E$, we have $x\in X$ and there exists $r>0$ such that $B(x,r)=\{x'\in Y:\rho(x,x')<r\}\subset\mathcal{O}$.
+    But then 
+    \[
+        B'(x,r)=\{x'\in X:\rho(x,x')<r\}=X\cap B(x,r)\subset X\cap\mathcal{O}=E,
+    \] 
+    and thus $E$ is open in $X$.
+\end{proof}
 Example: for prop 2, consider the sets $Y=\mathbb{R}$, $X=[0,2]$ and $E=[0,1)$.
 Then $E$ is not open in $Y$ but $E=[0,2]\cap(-1,1)$ is open in $X$.
 
@@ -389,6 +402,22 @@ Then $E$ is not open in $Y$ but $E=[0,2]\cap(-1,1)$ is open in $X$.
     Let $\rho$ and $\sigma$ be equivalent metrics on a nonempty set $X$.
     Then a subset of $X$ is open in the metric space $(X,\rho)$ iff it is open in the metric space $(X,\sigma)$.
 \end{namedthm*}
+\begin{proof}
+    Suppose $E\subset X$ is open in $(X,\rho)$.
+    Then for any $x\in E$, there exists $r>0$ such that $B_\rho(x,r)\subset E$; that is,
+    \[
+        \rho(x,e)<r\implies e\in E,
+    \]
+    and by the equivalence of metrics, there exists $c_1>0$ with
+    \[
+        c_1\cdot\sigma(x,e)<\rho(x,e)<r,
+    \]
+    which implies
+    \[
+        \sigma(x,e)<\frac{r}{c_1}\implies e\in E,
+    \]
+    and $B_\sigma(x,r/c_1)\subset E$.
+\end{proof}
 
 \begin{center}
 	\textbf{PROBLEMS}
@@ -403,17 +432,153 @@ Then $E$ is not open in $Y$ but $E=[0,2]\cap(-1,1)$ is open in $X$.
     Then $f=0$ $m$-a.e. (for $m$ Lebesgue measure).
     Consider the metric space ($X:=L^\infty([0,1]),\rho(f,g):=\|f-g\|_\infty$).
     Considering any $r>0$ and $B(f,r)=\{g\in X:\rho(f,g)<r\}$, note that because $f$ is zero except for a set of measure zero, then $r>\rho(f,g)=\|f-g\|_\infty=\text{esssup}_{[0,1]}|f-g|=\text{esssup}_{[0,1]}|g|=\|g\|_\infty=\rho(0,g)$.
+    \item Let $(X,\rho)$ be a metric space in which $\{u_n\}\to u$ and $\{v_n\}\to v$.
+    Show that $\{\rho(u_n,v_n)\}\to\rho(u,v)$.
 
+    For any $\epsilon>0$, choose $n$ large enough so that both $\rho(u_n,u)<\epsilon/2$ and $\rho(v,v_n)<\epsilon/2$.
+    Then by the triangle inequality applied twice, 
+    \begin{align*}
+        \rho(u_n,v_n)\le\rho(u_n,u)+\rho(u,v)+\rho(v,v_n)<\epsilon/2+\rho(u,v)+\epsilon/2,
+    \end{align*}
+    % Therefore 
+    % \begin{align*}
+    %     \rho(u_n,v_n)-\rho(u,v)\le\rho(u_n,u)+\rho(v,v_n)<\epsilon/2+\epsilon/2
+    % \end{align*}
+    and we are done as $\rho(u_n,v_n)-\rho(u,v)<\epsilon.$
+    \item Let $X$ be a metric space, $x$ belong to $X$, and $r>0$.
+    \begin{enumerate}[(i)]
+        \item Show that $\overline{B}(x,r)$ is closed and contains $B(x,r)$.
+        
+        It is sufficient to show that the complement of $\overline B(x,r)$ in $X$ is open, and that $x\in B(x,r)\implies x\in\overline{B}(x,r)$.
+        
+        Let $y\in \overline{B}(x,r)^c$, so that $\rho(x,y)>r$.
+        Then the ball $B(y,\rho(x,y)-r)\subset \overline{B}(x,r)^c$ because for $y'\in B(y,\rho(x,y)-r)$, then 
+        \[ 
+            \rho(x,y')\ge\rho(x,y)-\rho(y',y)>\rho(x,y)-(\rho(x,y)-r)=r,
+        \]
+        and $y'\in\overline{B}(x,r)$.
+        
+        Let $z\in B(x,r)$. 
+        Then clearly $\rho(x,z)<r\le r$ implies that $z\in\overline{B}(x,r):\{x'\in X:\rho(x,x')\le r\}$.
+        \item Show that in a normed linear space $X$ the closed ball $\overline{B}(x,r)$ is the closure of the open ball $B(x,r)$, but this isn't so in a general metric space.
+        TBD
+    \end{enumerate}
+    \item Prove Proposition 2.
+
+    Proved above.
+    \item Prove Proposition 7.
+    
+    Proved above.
+    \item Let $X$ be a subspace of the metric space $Y$ and $A$ a subset of $X$.
+    Show that $A$ is closed in $X$ if and only if $A=X\cap F$, where $F$ is closed in $Y$.
+    
+    
+    \item Let $X$ be a subspace of the metric space $Y$.
+    \begin{enumerate}
+        \item If $\mathcal{O}$ is an open subset of the metric subspace $X$, is $\mathcal{O}$ an open subset of $Y$?
+        What if $X$ is an open subset of $Y$?
+        \item If $F$ is a closed subset of the metric subspace $X$, is $F$ a closed subset of $Y$?
+        What if $X$ is a closed subset of $Y$?
+    \end{enumerate}
+    \item For a subset $E$ of a metric space $X$, a point $x\in X$ is called an interior point of $E$ provided there is an open ball centered at $x$ that is contained in $E$:
+    the collection of interior points of $E$ is called the interior of $E$ and denoted by int $E$.
+    Show that int $E$ is always open and $E$ is open iff $E=$ int $E$.
+    \item For a subset $E$ of a metric space $X$, a point $x\in X$ is called an exterior point of $E$ provided there is an open ball centered at $x$ that is contained in $X\setminus E$: 
+    the collection of exterior points of $E$ is called the exterior of $E$ and denoted by ext $E$.
+    Show that ext $E$ is always open.
+    Show that $E$ is closed iff $X\setminus E=$ ext $E$.
+    \item For a subset $E$ of a metric space $X$, a point $x\in X$ is called a boundary point of $E$ provided every open ball centered at $x$ contains points in $E$ and points in $X\setminus E$:
+    the collection of boundary points of $E$ is called the boundary of $E$ and denoted by bd $E$.
+    Show 
+    \begin{enumerate}[(i)]
+        \item that bd $E$ is always closed,
+        \item that $E$ is open iff $E\cap$ bd $E=\emptyset$,
+        \item that $E$ is closed iff bd $E\subset E$.
+    \end{enumerate}
+    \item Let $A$ and $B$ be subsets of a metric space $X$.
+    Show that if $A\subseteq B$, then $\overline{A}\subset\overline{B}$.
+    Also, show that $(\overline{A\cup B})=\overline{A}\cup\overline{B}$ and $(\overline{A\cup B})\subseteq\overline{A}\cap\overline{B}$.
+    \item Show that for a subset $E$ of a metric space $X$, the closure of $E$ is the intersection of all closed subsets of $X$ that contain $E$.
 \end{enumerate}
 
 % 9.3
+\authoredby{inprogress}
 \section{Continuous Mappings Between Metric Spaces}
 
+\begin{namedthm*}{Definition}
+    A mapping $f$ from a metric space $X$ to a metric space $Y$ is said to be continuous at the point $x\in X$ provided for any sequence $\{x_n\}$ in $X$,
+    \[
+        \text{if $\{x_n\}\to x$, then $\{f(x_n)\}\to f(x)$}.
+    \]
+    The mapping is said to be \textbf{continuous} provided it is continuous at every point in $X$.
+\end{namedthm*}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+    \setcounter{enumi}{24}
+    \item Exhibit a continuous mapping that is not uniformly continuous and a uniformly continuous mapping that is not Lipschitz.
+    \item Show that every mapping from a metric space $(X,\rho)$ to a metric space $(Y,\sigma)$ is continuous if $\rho$ is the discrete metric.
+    \item 
+\end{enumerate}
+
+
 % 9.4
+\authoredby{untouched}
 \section{Complete Metric Spaces}
 
+\begin{namedthm*}{Definition}
+    A sequence $\{x_n\}$ in a metric space $(X,\rho)$ is said to be a \textbf{Cauchy sequence} provided for each $\epsilon>0$, there is an index $N$ for which 
+    \[
+        \text{if }n,m\ge N,\text{ then }\rho(x_n,x_m)<\epsilon.
+    \]
+\end{namedthm*}
+\begin{namedthm*}{Definiton}
+    A metric space $X$ is said to be \textbf{complete} provided every Cauchy sequence in $X$ converges to a point in $X$.
+\end{namedthm*}
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+    \setcounter{enumi}{36}
+    \item In a metric space $X$, show (i) that a convergent sequence is Cauchy and (ii) that a Cauchy sequence is bounded.
+    
+    See simply that, for any $\epsilon>0$, because the sequence is convergent, there exists the index $N$ so that $\rho(x_n,x)<\epsilon/2$ for any $n\ge N$.
+    Therefore for any $n,m\ge N$, we have
+    \[
+        \rho(x_n,x_m)\le \rho(x_n,x)+\rho(x,x_m)<\epsilon/2+\epsilon/2,
+    \]
+    and the sequence is Cauchy.
+    To show that any Cauchy sequence is bounded, consider $\epsilon=1$.
+    Therefore there exists the index $N$ such that $n,m\ge N$ implies $\rho(x_n,x_m)<1$.
+    Then in particular we have that 
+    \[
+        \text{diam}(\{x_n\}_n)\le \max\{\rho(x_1,x_2),\rho(x_1,x_3),\cdots,\rho(x_1,x_{N-1}),\rho(x_2,x_3),\cdots,\rho(x_{N-2},x_{N-1}),1\},
+    \]
+    and the sequence is bounded.
+\end{enumerate}
+
 % 9.5
+\authoredby{untouched}
 \section{Compact Metric Spaces}
 
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+    \setcounter{enumi}{50}
+    \item 
+\end{enumerate}
+
 % 9.6
+\authoredby{untouched}
 \section{Separable Metric Spaces}
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+    \setcounter{enumi}{73}
+    \item 
+\end{enumerate}

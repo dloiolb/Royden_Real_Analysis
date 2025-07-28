@@ -1,7 +1,88 @@
 % Chapter 22
+\authoredby{inprogress}
 \chapter{Invariant Measures}
 
+% 22.1
+\authoredby{untouched}
 \section{Topological Groups: The General Linear Group}
+
+% 22.2
+\authoredby{untouched}
 \section{Kakutani's Fixed Point Theorem}
+% 22.3
+\authoredby{untouched}
 \section{Invariant Borel Measures on Compact Groups: von Neumann's Theorem}
+% 22.4
+\authoredby{inprogress}
 \section{Measure-Preserving Transformations and Ergodicity: The Bogoliubov-Krilov Theorem}
+
+For a measurable space $(X,\mathcal{M})$, a mapping $T:X\to X$ is said to be a \textbf{measurable transformation} provided for each measurable set $E$, $T^{-1}(E)$ is also measurable.
+(This may be considered a more specific case of $T:(X,\mathcal{M})\to(Y,\mathcal{N})$ measurable where $(X,\mathcal{M})=(Y,\mathcal{N})$ is the same space).
+Observe that for a mapping $T:X\to X$,
+\[
+    T\text{ is measurable }\iff g\circ T\text{ is measurable whenever the function $g$ is measurable.}
+\]
+
+For a measure space $(X,\mathcal{M},\mu)$, a measurable transformation $T:X\to X$ is said to be \textbf{measure preserving} provided
+\[
+    \mu(T^{-1}(A))=\mu(A)\quad\text{for all }A\in\mathcal{M}.
+\]
+
+\begin{namedthm*}{Proposition 10}
+    Let $(X,\mathcal{M},\mu)$ be a finite measure space and $T:X\to X$ a measurable transformation.
+    Then $T$ is measure preserving iff $g\circ T$ is integrable over $X$ whenever $g$ is, and 
+    \[
+        \int_Xg\circ Td\mu=\int_Xgd\mu\quad\text{for all }g\in L^1(X,\mu).
+    \]
+\end{namedthm*}
+
+For a measure space $(X,\mathcal{M},\mu)$ and a measurable transformation $T:X\to X$, a measurable set $A$ is said to be \textbf{invariant} under $T$ (with respect to $\mu$) provided
+\[
+    \mu(A\sim T^{-1}(A))=\mu(T^{-1}(A)\sim A)=0,
+\]
+that is, modulo sets of measure 0, $T^{-1}(A)=A$.
+It is clear that 
+\[
+    A\text{ is invariant under }T\iff\chi_A\circ T=\chi_A \text{ a.e. on }X.
+\]
+
+If $(X,\mathcal{M},\mu)$ is also a probability space, then a measure preserving transformation $T$ is said to be \textbf{ergodic} provided any set $A$ that is invariant under $T$ w.r.t. $\mu$ has $\mu(A)\in\{0,1\}$.
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{25}
+    \item 26
+    \item 27
+    \item Let $(X,\mathcal{M},\mu)$ be a finite space and $T:X\to X$ a measurable transformation.
+    For a measurable function $g$ on $X$, define the measurable function $U_T(g)$ by $U_T(g)(x):=g(T(x))$.
+    Show that $T$ is measure preserving iff for every $1\le p<\infty$, then $U_T$ maps $L^p(X,\mu)$ into itself and is an isometry.
+
+    Note that for $1\le p<\infty$ and $g\in L^p(X,\mu)$, then $|g|^p\in L^1(X,\mu)$ as 
+    \[
+        \||g|^p\|_1=\int_X|g|^pd\mu=\|g\|_p^p<\infty.
+    \]
+    % From Proposition 10, we have that $T$ is measure preserving iff $(*)$ holds, and
+    
+    $(\implies)$ Suppose that $T$ is measure preserving.
+    Then by Proposition 10, we have $(*)$ so that 
+    \begin{align*}
+        \|g\circ(T)\|_p^p
+        &=\int_X|g(T(x))|^pd\mu(x)\\
+        &=\int_X(|g|^p\circ T)(x)d\mu(x)\\
+        &\overset{(*)}{=}\int_X|g(x)|^pd\mu(x)\\
+        &=\|g\|_p^p
+        \quad\text{for }|g|^p\in L^1(X,\mu).
+    \end{align*}
+    $(\impliedby)$ Suppose that $U_T$ maps $L^p(X,\mu)$ into itself and is an isometry.
+    Then $(**)$ holds, and so 
+    \begin{align*}
+        % &=\int_X|g(T(x))|^pd\mu(x)\\
+        \int_X(|g|^p\circ T)(x)d\mu(x)
+        &=\|g\circ(T)\|_p^p
+        \overset{(**)}{=}\|g\|_p^p=\int_X|g(x)|^pd\mu(x)
+        \quad\text{for }|g|^p\in L^1(X,\mu)
+    \end{align*}
+    implies that $T$ is measure preserving by Proposition 10.
+\end{enumerate}

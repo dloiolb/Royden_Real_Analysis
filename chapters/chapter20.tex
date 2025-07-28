@@ -56,6 +56,20 @@ If $A\in\mathcal{A}$ and $B\in\mathcal{B}$, we call $A\times B$ a \textbf{measur
 % 20.3
 \authoredby{inprogress}
 \section{Cumulative Distribution Functions and Borel Measures on $\mathbb{R}$}
+
+Let $I=[a,b]$ be a closed, bounded interval of real numbers and $\mathcal{B}(I)$ the collection of Borel subsets of $I$.
+We call a finite measure $\mu$ on $\mathcal{B}(I)$ a \textbf{Borel measrure}.
+For such a measure, define the function $g_\mu:I\to\mathbb{R}$ by
+\[
+    g_\mu(x):=\mu[a,x]\quad\text{for all }x\in I.
+\]
+The function $g_\mu$ is called the \textbf{cumulative distribution function} of $\mu$.
+
+\begin{namedthm*}{Proposition 26}
+    Let $\mu$ be a Borel measure on $\mathcal{B}(I)$ and $g_\mu$ its cumulative distribution function.
+    Then the measure $\mu$ is absolutely continuous with respect to Lebesgue measure if and only if the function $g_\mu$ is absolutely continuous.
+\end{namedthm*}
+
 For a bounded Lebesgue measurable function $f$ on $[a,b]$, denote the Lebesgue integral of $f$ over $[a,b]$ by $\int_{[a,b]}fdm$.
 For a bounded function $f$ on $[a,b]$ whose set of discontinuities has Lebesgue measure zero, we proved that the Riemann integral $\int_a^bf(x)dx$ is defined and 
 \[
@@ -66,6 +80,188 @@ There are two generalizations of these integrals, the Lebesgue-Stieltjes integra
 Let the function $g:I\to\mathbb{R}$ be increasing and continuous on the right.
 For a bounded measurable function $f:I\to\mathbb{R}$, define the \textbf{Lebesgue-Stieltjes integral} of $f$ with respect to $g$ over $[a,b]$, which we denote by $\int_{[a,b]}fdg$, by
 
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{34}
+    \item Prove Propositon 26.
+    \item Suppose $f$ is a Bounded Borel measurable function on $[a,b]$ and $g$ is increasing and absolutely continuous on $[a,b]$.
+    Prove that if $m$ denotes Lebesgue measure, then 
+    \[
+        \int_{[a,b]}fdg=\int_{[a,b]}fg'dm.
+    \]
+
+    % Because $g$ is absolutely continuous, then by Proposition 26, we have that the measure $\mu$ is a.c. w.r.t. the Lebesgure measure $m$.
+    % Notation:
+    % \[
+    %     \int_{E}dg=\int_{E}d\mu_g=\int_Ed\mu
+    % \]
+\end{enumerate}
+
 % 20.4
-\authoredby{untouched}
+\authoredby{inprogress}
 \section{Carath\'eodory Outer Measures and Hausdorff Measures on a Metric Space}
+
+Lebesgue outer measure on Euclidean space $\mathbb{R}^n$ has the property that if $A$ and $B$ are subsets of $\mathbb{R}^n$ and there is a $\delta>0$ for which $\|u-v\|\ge\delta$ for all $u\in A$ and $v\in B$, then 
+\[
+    \mu_n^*(A\cup B)=\mu_n^*(A)+\mu_n^*(B).
+\]
+This section is devoted to the study of measures induced by outer measures on a metric space that possesses this property, and a particular class of such measures called Hausdorff measures.
+
+\begin{namedthm*}{Definition}
+    Let $(X,\rho)$ be a metric space.
+    An outer measure $\mu^*:2^X\to[0,\infty]$ is called a \textbf{Carath\'eodory outer measure} provided whenever $A$ and $B$ are subsets of $X$ for which $\rho(A,B)>0$, then 
+    \[
+        \mu(A\cup B)=\mu^*(A)+\mu^*(B).
+    \] 
+\end{namedthm*}
+
+\begin{namedthm*}{Theorem 28}
+    Let $\mu^*$ be a Carath\'eodory outer measure on a metric space $(X,\rho)$.
+    Then every Borel subset of $X$ is measurable w.r.t. $\mu^*$.
+\end{namedthm*}
+
+Consider the metric space $(X,\rho)$.
+We define the diameter of a subset $A$ of $X$, $\text{diam}(A)$, by
+\[
+    \text{diam}(A):=\sup_{u,v\in A}\rho(u,v).
+\]
+Fix any positive real number $\alpha>0$.
+Then we may define a measure $H_\alpha$ on the Borel $\sigma$-algebra $\mathcal{B}(X)$ called the Hausdorff measure on $X$ of dimension $\alpha$.
+
+Fix $\alpha>0$.
+Take $\epsilon>0$ and for a subset $E$ of $X$, define 
+\[
+    H_\alpha^{(\epsilon)}(E):=\inf
+    \left\{
+        \sum_{k=1}^\infty[\text{diam}(A_k)]^\alpha:\{A_k\}_{k=1}^\infty\subset X\text{ countable, covers }E,\text{diam}(A_k)<\epsilon.
+    \right\}
+\]
+Observe that $H_\alpha^{(\epsilon)}$ increases as $\epsilon$ decreases;
+% as $\epsilon$ decreases, as
+% \[
+%     \sum_{k=1}^\infty[\text{diam}(A_k)]^\alpha
+%     \le 
+%     \sum_{k=1}^\infty[\text{diam}(B_k)]^\alpha
+% \]
+see that for $0<\delta<\epsilon$, note that 
+\begin{align*}
+    \mathcal{C}_\epsilon:=\left\{
+        A_k:\text{diam}(A_k)<\epsilon
+    \right\}
+    \supset
+    \left\{
+        A_k:\text{diam}(A_k)<\delta
+    \right\}
+    :=\mathcal{C}_{\delta}
+\end{align*}
+implies that 
+\[
+    \inf\mathcal{C}_\epsilon\le\inf\mathcal{C}_\delta.
+\]
+% in general when $\text{diam}(A_k)<\epsilon$ and $\text{diam}(B_k)<\epsilon+\delta$ for $\epsilon<\epsilon+\delta$
+Thus define 
+\[
+    H_\alpha^*(E):=\sup_{\epsilon>0}H_\alpha^{(\epsilon)}(E)=\lim_{\epsilon\to0}H_\alpha^{(\epsilon)}(E).
+\]
+
+\begin{namedthm*}{Proposition 29}
+    Let $(X,\rho)$ be a metric space and $\alpha$ a positive real number.
+    Then $H_\alpha^*:2^X\to[0,\infty]$ is a Carath\'eodory outer measure.
+\end{namedthm*}
+We infer from Theorem 28 that $H_\alpha^*$ induces a measure on a $\sigma$-algebra that contains the Borel subsets of $X$.
+We denote the restriction of this measure to $\mathcal{B}(X)$ by $H_\alpha$ and call it \textbf{Hausdorff $\alpha$-dimensional measure} on the metric space $X$.
+
+\begin{namedthm*}{Proposition 30}   
+    Let $(X,\rho)$ be a metric space, $A$ a Borel subset of $X$, and $\alpha,\beta$ positive real numbers for which $\alpha<\beta$.
+    If $H_\alpha(A)<\infty$, then $H_\beta(A)=0$.
+\end{namedthm*}
+\begin{proof}
+    Let $\epsilon>0$.
+    Choose $\{A_k\}_k$ to be a countable convering of $A$ by sets of diameter less than $\epsilon$ for which 
+    \[
+        \sum_{k=1}^\infty[\text{diam}(A_k)]^\alpha\le H_\alpha(A)+1.
+    \] 
+    Then because $\text{diam}(A_k)^\beta=\text{diam}(A_k)^{\beta-\alpha}\text{diam}(A_k)^\alpha\le\epsilon^{\beta-\alpha}\text{diam}(A_k)^\alpha$, we have
+    \[
+        H_\beta^{(\epsilon)}(A)\le\sum_{k=1}^\infty[\text{diam}(A_k)]^\beta\le\epsilon^{\beta-\alpha}\sum_{k=1}^\infty[\text{diam}(A_k)]^\alpha
+        \le\epsilon^{\beta-\alpha}[H_\alpha(A)+1].
+    \]
+    Because $H_\alpha(A)+1$ is a fixed (finite) number, take the limit as $\epsilon\to0$ to conclude that $H_\beta(A)=0$.
+\end{proof}
+For a subset $E$ of $\mathbb{R}^n$, we define the Hausdorff dimension of $E$, $\text{dim}_H(E)$, by
+\[
+    \text{dim}_H(E):=\inf\{\beta\ge0:H_\beta(E)=0\}.
+\]  
+
+\begin{center}
+	\textbf{PROBLEMS}
+\end{center}
+\begin{enumerate}
+	\setcounter{enumi}{45}
+    \item Show that in the definition of Hausdorff measure one can take the coverings to be by open sets or by closed sets.
+    
+
+    \item Show that the set function outer Hausdorff measure $H_\alpha^*$ is countably monotone.
+    
+    Recall that $H_\alpha^*$ is countably monotone if whenever a set $E\in2^X$ is covered by a countable collection $\{E_k\}_{k=1}^\infty$ of sets in $2^X$, then
+	\[
+		H_\alpha^*(E)\le\sum_{k=1}^\infty H_\alpha^*(E_k).
+	\]
+    % Indeed,
+    % \[
+    % H_\alpha^{(\epsilon)}:=\inf
+    % \left\{
+    %     \sum_{k=1}^\infty[\text{diam}(A_k)]^\alpha:\{A_k\}_{k=1}^\infty\subset X\text{ countable, covers }E,\text{diam}(A_k)<\epsilon.
+    % \right\}
+    % \]
+
+    \item In the plane $\mathbb{R}^2$ show that a bounded set may be enclosed in a ball of the same diameter.
+    Use this to show that for a bounded subset $A$ of $\mathbb{R}^2$, $H_2(A)\ge4/\pi\cdot\mu_2(A)$, where $\mu_2$ is Lebesgue measure on $\mathbb{R}^2$.
+    \item Let $(X,\rho)$ be a metric space and $\alpha>0$.
+    For $E\subset X$, define 
+    \[
+        H_\alpha'(E):=\inf\sum_{k=1}^\infty[\text{diam}(A_k)]^\alpha,
+    \]
+    where $\{A_k\}_{k=1}^\infty$ is a countable collection of subsets of $X$ that covers $E$: there is no restriction regarding the size of the diameters of the sets in the cover.
+    Compare the set functions $H_\alpha'$ and $H_\alpha$.
+    \item Show that each Hausdorff measure $H_\alpha$ on Euclidean space $\mathbb{R}^n$ is invariant w.r.t. rigid motions.
+    \item Give a direct proof to show that if $I$ is a nontrivial interval in $\mathbb{R}^n$, then $H_n(I)>0$.
+    
+    
+    \item Show that in any metric space, $H_0$ is counting measure.
+    
+    (needs to be fixed but the idea is there) Note that for any $\epsilon>0$,
+    \[
+    H_0^{(\epsilon)}(E):=\inf
+    \left\{
+        \sum_{k=1}^\infty[\text{diam}(A_k)]^0=\sum_{k=1}^\infty 1:\{A_k\}_{k=1}^\infty\subset X\text{ countable, covers }E,\text{diam}(A_k)<\epsilon.
+    \right\}
+    \]
+    Consider $E=\{x_1,\dots,x_n\}$ finite with $n$ elements, and consider any $\epsilon>0$ small enough so that $\rho(x_i,x_j)\ge\epsilon$ for $i\neq j\in[n]$.
+    Then any covering $\{A_k\}_{k=1}^\infty$ must have at least $n$ sets $A_k$ of diameter less than $\epsilon$, because the distance between any two points is too large.
+    Further, there exists the open sets $\{A_k=(x_k-\epsilon/3,x_k+\epsilon/3)\}_{k=1}^n$ so that $E\subset\cup_{k=1}^nA_k$ and $\sum_{k=1}^n[\text{diam}(A_k)]^0=\sum_{k=1}^n1=n$.
+    In particular, for any $\delta>0$, then there exists $\{A_k\}_{k=1}^\infty$ so that
+    \[
+        H_0^{(\epsilon)}(E)\le n=\sum_{k=1}^n1\le\sum_{k=1}^\infty \text{diam}(A_k)^0<H_0^{(\epsilon)}+\delta,
+    \]
+    and $n-H_0^{(\epsilon)}(E)<\delta$.
+    Taking $\epsilon\to0$ maintains $H_0(E)=n$.
+    If $E$ is countably infinite, then in a similar fashion $\sum_{k=1}^\infty1=\infty$ and so $H_0(E)=\infty$.
+    If $E$ is uncountably infinite but unbounded, then there exists a countably infinite subset of $E$ and so $H_0(E)=\infty$.
+    Finally, if $E$ is uncountably infinite but bounded, then for any $\epsilon>0$, there exists the finite covering $\{A_k\}_{k=1}^p$ that covers $E$.
+    However, when $\epsilon\to\infty$ then it must be that $p\to\infty$ and so $H_0(E)=\infty$. 
+    
+    \item Let $[a,b]$ be a closed, bounded interval of real numbers and $R=\{(x,y)\in\mathbb{R}^2:a\le x\le b,y=0\}$.
+    Show that $H_2(R)=0$.
+    Then show that $H_1(R)=b-a$.
+    Conclude that the Hausdorff dimension of $R$ is 1.
+    \item Let $f:[a,b]\to\mathbb{R}$ be a continuous bounded function on the closed, bounded interval $[a,b]$ that has continuous bounded derivative on the open interval $(a,b)$.
+    Consider the graph $G$ of $f$ as a subset of the plane.
+    Show that $H_1(G)=\int_a^b\sqrt{1+|f'(x)|^2}dx$.
+    \item Let $J$ be an interval in $\mathbb{R}^n$, each of whose sides has length $1$.
+    Define $\gamma_n:=H_n(J)$.
+    Show that if $I$ is any bounded interval in $\mathbb{R}^n$, then $H_n(I)=\gamma_n\cdot\mu_n(I)$.
+    From this infer, using the uniqueness assertion of the Carath\'eodory-Hahn Theorem, that $H_n=\gamma_n\cdot\mu_n$ on the Borel subsets of $\mathbb{R}^n$.
+\end{enumerate}
