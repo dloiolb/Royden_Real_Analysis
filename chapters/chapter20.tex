@@ -6,6 +6,27 @@
 \authoredby{inprogress}
 \section{Product Measures: The Theorems of Fubini and Tonelli}
 
+Throughout this section $(X,\mathcal{A},\mu)$ and $Y,\mathcal{B},\nu$ are two reference measure spaces.
+Consider the Cartesian product $X\times Y$ of $X$ and $Y$.
+If $A\subset X$ and $B\subset Y$, we call $A\times B$ a rectangle.
+If $A\in\mathcal{A}$ and $B\in\mathcal{B}$, we call $A\times B$ a \textbf{measurable rectangle}.
+
+\begin{namedthm*}{Proposition 2}
+    Let $\mathcal{R}$ be the collection of measurable rectangles in $X\times Y$ and for a measurable rectangle $A\times B$, define
+    \[
+        \lambda(A\times B):=\mu(A)\cdot\nu(B).
+    \]
+    Then $\mathcal{R}$ is a semiring and $\lambda:\mathcal{R}\to[0,\infty]$ is a premeasure.
+\end{namedthm*}
+
+\begin{namedthm*}{Definition}
+    Let $(X,\mathcal{A},\mu)$ and $(Y,\mathcal{B},\nu)$ be measure spaces, $\mathcal{R}$ the collection of measurable rectangles contained in $X\times Y$, and $\lambda$ the premeasure defined on $\mathcal{R}$ by
+    \[
+        \lambda(A\times B):=\mu(A)\cdot\nu(B)\quad\text{for }A\times B\in\mathcal{R}.
+    \]
+    By the \textbf{product measure} $\lambda=\mu\times\nu$ we mean the Carath\'eodory extension of $\lambda:\mathcal{R}\to[0,\infty]$ defined on the $\sigma$-algebra of $(\mu\times\nu)^*$-measurable subsets of $X\times Y$.
+\end{namedthm*}
+
 \begin{center}
 	\textbf{PROBLEMS}
 \end{center}
@@ -14,8 +35,18 @@
     \item Let $A\subset X$ and let $B$ be $\nu$-measurable subset of $Y$.
     If $A\times B$ is measurable w.r.t. the product measure $\mu\times\nu$, is $A$ necessarily measurable w.r.t. $\mu$?
     
-    % No.
+    No.
+    Consider the measurable spaces $(X=[0,1],\mathcal{A}=\mathcal{L}(\mathbb{R})|_X,\mu)$, $(Y=\mathbb{R},\mathcal{B}=\mathcal{L}(\mathbb{R}),\nu)$, where $\mathcal{L}(\mathbb{R})$ is the $\sigma$-algebra of Lebesgue-measurable sets, $\mathcal{L}(\mathbb{R})|_X=\{E\cap X:E\in\mathcal{L}(\mathbb{R})\}$, and both $\mu$ and $\nu$ are the Lebesgue measure.
+    Then defining $\mathcal{R}:=\{A\times B:A\in\mathcal{A},B\in\mathcal{B}\}$ and $\lambda(A\times B):=\mu(A)\nu(B)$ for each $(A\times B)\in\mathcal{R}$ as in Proposition 2, we have that $\mathcal{R}$ is a semiring and $\lambda$ is a premeasure on $\mathcal{R}$.
+    By the Carath\'eodory-Hahn Theorem from Chapter 17.5, then the Carath\'eodory measure $\overline\lambda$ induced by $\lambda$ is an extension of $\lambda$.
+    Recall That the Carath\'eodory measure is the restriction of the induced outer measure $\lambda^*$ (For $E\in(X\times Y)$, define $\lambda^*(E):=\inf\{\sum_{k=1}^\infty\lambda((A\times B)_k):\{(A\times B)_k\}_k\subset (X\times Y)\text{ countable, covers }E $) to the $\sigma$-algebra $\mathcal{M}$ of $\lambda^*$-measurable sets of $X\times Y$.
     
+    Then note that for the Vitali set $V$ (see definition in Chapter 2.6) and any real number $x\in B$, then the set $(V\times \{x\})\subset(X\times Y)$ is $\lambda^*$-measurable because it has outer measure zero: 
+    \[
+        \lambda^*(V\times\{x\})\le\lambda([0,1]\times\{x\})=\mu([0,1])\cdot\nu(\{x\})=1\cdot0=0.
+    \]
+    However, the set $V$ is not measurable w.r.t. $\mu$ by definition.
+
 \end{enumerate}
 
 % 20.2
