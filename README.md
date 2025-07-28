@@ -39,7 +39,7 @@ Part 3:
 - Chapter 08: 5/45 
 
 ### PART II: Abstract Spaces: Metric, Topological, Banach, and Hilbert Spaces (37/408)
-- Chapter 09: 15/78 (+5) 9.2-P14,P15(i),P16,P17, 9.4-37
+- Chapter 09: 15/78
 - Chapter 10: 0/44
 - Chapter 11: 0/56
 - Chapter 12: 0/36
@@ -52,9 +52,9 @@ Part 3:
 - Chapter 17: 24/36* 
 - Chapter 18: 5/67 
 - Chapter 19: 0/22
-- Chapter 20: 2/55 (+1) 20.4-P52
+- Chapter 20: 2/55 
 - Chapter 21: 0/61
-- Chapter 22: 1/31 (+1) 22.4-P28
+- Chapter 22: 1/31
 
 # Comments
 
