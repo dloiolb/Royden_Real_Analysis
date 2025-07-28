@@ -51,7 +51,7 @@ Part 3:
 - Chapter 17: 24/36* 
 - Chapter 18: 5/67 
 - Chapter 19: 0/22
-- Chapter 20: 1/55 (+1) 20.1-P1
+- Chapter 20: 1/55 
 - Chapter 21: 0/61
 - Chapter 22: 0/31
 
